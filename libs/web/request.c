@@ -86,7 +86,7 @@ int request_test() {
         fprintf(stderr, "%d: GET failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
             fprintf(stderr, "Have no connection to host\n");
-        return 0;
+        return 1;
     }
     fprintf(stderr, "- GET request worked successfully\n");
 
@@ -96,12 +96,12 @@ int request_test() {
         fprintf(stderr, "%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
             fprintf(stderr, "Have no connection to host\n");
-        return 0;
+        return 1;
     }
     fprintf(stderr, "- POST request worked successfully\n");
 
     free(result);
     curl_easy_cleanup(handle);
 
-    return 1;
+    return 0;
 }

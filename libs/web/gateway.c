@@ -4,31 +4,89 @@
 #include <stdio.h>
 #include <string.h>
 
-static int interrupted = 0, rx_seen = 0, test = 1;
-static struct lws *client_wsi;
+static int nclients = 1;
+unsigned char msg[LWS_PRE + 128];
+static int message_delay = 500000;
+static int connection_delay = 100000;
+static struct lws_context *context;
+static const char *pro = "lws-minimal";
+static int interrupted = 0, port = 443, ssl_connection = 1;
 
-static int callback_receive(struct lws *wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len) {
+static int connect_client() {
+    struct lws_client_connect_info i;
+
+    memset(&i, 0, sizeof i);
+
+    i.context = context;
+    i.port = port;
+    i.address = "gateway.discord.gg";
+    i.path = "/?v=9&encoding=json";
+    i.host = i.address;
+    i.origin = i.address;
+    i.ssl_connection = ssl_connection;
+    i.protocol = pro;
+    i.local_protocol_name = pro;
+    lwsl_notice("%s: connection %s:%d\n", __func__, i.address, i.port);
+    if (!lws_client_connect_via_info(&i))
+        return 1;
+
+    return 0;
+}
+
+static int callback(struct lws *wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len) {
+    int m = 0, n = 0;
+
     switch (reason) {
+    case LWS_CALLBACK_PROTOCOL_INIT:
+        lwsl_user("Callback protocol init");
+        for (n = 0; n < nclients; n++)
+            connect_client();
+        break;
+
     case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
         lwsl_err("CLIENT CONNECTION ERROR: %s\n", in ? (char *)in : "(null)");
-        client_wsi = NULL;
+        if (--nclients == 0)
+            interrupted = 1;
         break;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
-        lwsl_user("%s: established\n", __func__);
-        break;
-
-    case LWS_CALLBACK_CLIENT_RECEIVE:
-        lwsl_user("RX: %s\n", (const char *)in);
-        unsigned char *m = (unsigned char *)malloc(9 * sizeof(unsigned char));
-        unsigned char *o = "{\"op\":1}";
-        memcpy(m, o, 9);
-        lws_write(wsi, m, 9, LWS_WRITE_TEXT);
+        lws_callback_on_writable(wsi);
+        lwsl_user("%s: established connection, wsi = %p\n", __func__, (void *)wsi);
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
         lwsl_user("Callback closed\n");
+        if (--nclients == 0)
+            interrupted = 1;
         break;
+
+    case LWS_CALLBACK_CLIENT_WRITEABLE:
+        lwsl_user("Callback Client Writeable: %s\n", msg);
+        m = lws_write(wsi, msg + LWS_PRE, 128, LWS_WRITE_TEXT);
+        if (m < 128) {
+            lwsl_err("sending message failed: %d < %d\n", m, n);
+            return -1;
+        }
+
+        short r;
+        if (lws_get_random(lws_get_context(wsi), &r, 2) == 2) {
+            n = message_delay * 10000 * (r % 100);
+            lwsl_debug("set timer on %d usecs\n", n);
+            lws_set_timer_usecs(wsi, n);
+        }
+        break;
+
+    case LWS_CALLBACK_TIMER:
+        lws_callback_on_writable(wsi);
+        break;
+
+    case LWS_CALLBACK_CLIENT_RECEIVE:
+        lwsl_user("RX: %s\n", (const char *)in);
+        break;
+
+    case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
+        lwsl_notice("server initiated connection close: len = %lu, in = %s\n", (unsigned long)len, (char *)in);
+        return 0;
 
     default:
         break;
@@ -38,59 +96,45 @@ static int callback_receive(struct lws *wsi, enum lws_callback_reasons reason, v
 }
 
 static const struct lws_protocols protocols[] = {
-    {"discord-gateway",
-     callback_receive,
-     0, 0, 0, NULL, 0},
+    {"discord-gateway", callback, 4096, 4096, 0, NULL, 0},
     LWS_PROTOCOL_LIST_TERM};
 
 static void sigint_handler(int sig) {
+    (void)sig;
     interrupted = 1;
 }
 
 int websocket_test() {
+    (void)connection_delay;
+
     struct lws_context_creation_info info;
-    struct lws_client_connect_info i;
-    struct lws_context *context;
-    const char *p;
     int n = 0, logs = LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE;
 
+    // memcpy(msg, "{\"op\":1,\"d\":null}", 18);
+    memcpy(msg, "test msg", 9);
+    // memset(msg, 'x', sizeof msg);
     signal(SIGINT, sigint_handler);
     lws_set_log_level(logs, NULL);
 
     memset(&info, 0, sizeof info);
     info.options = LWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT;
-    info.port = CONTEXT_PORT_NO_LISTEN;
+    info.port = CONTEXT_PORT_NO_LISTEN; // we run client side
     info.protocols = protocols;
-    info.timeout_secs = 10;
-    info.connect_timeout_secs = 30;
 
-    info.fd_limit_per_thread = 1 + 1 + 1;
+    info.fd_limit_per_thread = (unsigned int)(1 + nclients + 1);
 
     context = lws_create_context(&info);
     if (!context) {
         lwsl_err("lws init failed\n");
-        return 0;
+        return 1;
     }
 
-    memset(&i, 0, sizeof i);
-    i.context = context;
-    i.port = 443;
-    i.address = "gateway.discord.gg";
-    i.path = "/?v=9&encoding=json";
-    i.host = i.address;
-    i.origin = i.address;
-    i.ssl_connection = LCCSCF_USE_SSL;
-    i.protocol = protocols[0].name;
-    i.pwsi = &client_wsi;
-
-    lws_client_connect_via_info(&i);
-
-    while (n >= 0 && client_wsi && !interrupted) {
+    while (n >= 0 && !interrupted)
         n = lws_service(context, 0);
-    }
+
+    lwsl_notice("%s: exiting service loop. n = %d, interrupted = %d\n", __func__, n, interrupted);
 
     lws_context_destroy(context);
-    lwsl_user("Completed %s\n", rx_seen > 10 ? "OK" : "Failed");
 
-    return rx_seen <= 10;
+    return 0;
 }
