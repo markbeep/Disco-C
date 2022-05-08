@@ -5,12 +5,23 @@
 #include <string.h>
 
 static int nclients = 1;
-unsigned char msg[LWS_PRE + 128];
 static int message_delay = 500000;
 static int connection_delay = 100000;
 static struct lws_context *context;
 static const char *pro = "lws-minimal";
 static int interrupted = 0, port = 443, ssl_connection = 1;
+
+int websocket_send(struct lws *wsi, char *data, size_t len) {
+
+    lwsl_user("websocket_send\n");
+
+    unsigned char cdata[LWS_PRE + len + 1];
+    memcpy(&cdata[LWS_PRE], data, len);
+    cdata[LWS_PRE + len] = '\0';
+
+    int m = lws_write(wsi, &cdata[LWS_PRE], len, LWS_WRITE_TEXT);
+    return m;
+}
 
 static int connect_client() {
     struct lws_client_connect_info i;
@@ -21,6 +32,8 @@ static int connect_client() {
     i.port = port;
     i.address = "gateway.discord.gg";
     i.path = "/?v=9&encoding=json";
+    // i.address = "socketsbay.com";
+    // i.path = "/wss/v2/2/demo/";
     i.host = i.address;
     i.origin = i.address;
     i.ssl_connection = ssl_connection;
@@ -60,28 +73,9 @@ static int callback(struct lws *wsi, enum lws_callback_reasons reason, void *use
             interrupted = 1;
         break;
 
-    case LWS_CALLBACK_CLIENT_WRITEABLE:
-        lwsl_user("Callback Client Writeable: %s\n", msg);
-        m = lws_write(wsi, msg + LWS_PRE, 128, LWS_WRITE_TEXT);
-        if (m < 128) {
-            lwsl_err("sending message failed: %d < %d\n", m, n);
-            return -1;
-        }
-
-        short r;
-        if (lws_get_random(lws_get_context(wsi), &r, 2) == 2) {
-            n = message_delay * 10000 * (r % 100);
-            lwsl_debug("set timer on %d usecs\n", n);
-            lws_set_timer_usecs(wsi, n);
-        }
-        break;
-
-    case LWS_CALLBACK_TIMER:
-        lws_callback_on_writable(wsi);
-        break;
-
     case LWS_CALLBACK_CLIENT_RECEIVE:
         lwsl_user("RX: %s\n", (const char *)in);
+        websocket_send(wsi, "{\"op\":1,\"d\":null}", 18);
         break;
 
     case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
@@ -110,9 +104,6 @@ int websocket_test() {
     struct lws_context_creation_info info;
     int n = 0, logs = LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE;
 
-    // memcpy(msg, "{\"op\":1,\"d\":null}", 18);
-    memcpy(msg, "test msg", 9);
-    // memset(msg, 'x', sizeof msg);
     signal(SIGINT, sigint_handler);
     lws_set_log_level(logs, NULL);
 
