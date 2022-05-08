@@ -31,3 +31,10 @@ CURLcode request_get(char *url, char **response, CURL *handle);
  * @return CURLcode
  */
 CURLcode request_post(char *url, char **response, CURL *handle);
+
+/**
+ * @brief Tests if request POST and GET work
+ *
+ * @return int 1 if it works, 0 else
+ */
+int request_test();
