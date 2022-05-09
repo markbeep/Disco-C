@@ -8,7 +8,6 @@ static int interrupted = 0, port = 443, ssl_connection = 1;
 static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len) {
 
     client_websocket_t *client = (client_websocket_t *)user;
-    char cdata[len + 1];
 
     switch (reason) {
     case LWS_CALLBACK_PROTOCOL_INIT:
@@ -26,23 +25,28 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
-        lwsl_user("Callback closed\n");
+        lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
         interrupted = 1;
         break;
 
     case LWS_CALLBACK_CLIENT_RECEIVE:
         // we add a EOL at the end of the input data
-        lwsl_user("RX: %s\n", (const char *)in);
-        memcpy(cdata, in, len);
-        cdata[len] = '\0';
+
+        client->content = (char *)realloc(client->content, client->size + len + 1);
+        memcpy(client->content + client->size, in, len);
+        client->content[client->size + len] = '\0';
+        client->size += len;
 
         // calls the on_receive function
-        if (client && client->callbacks && client->callbacks->on_receive)
-            client->callbacks->on_receive(client, cdata, len);
+        if (lws_is_final_fragment(wsi)) {
+            if (client && client->callbacks && client->callbacks->on_receive)
+                client->callbacks->on_receive(client, client->content, client->size);
+            client->size = 0;
+        }
         break;
 
     case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
-        lwsl_notice("server initiated connection close: len = %lu, in = %s\n", (unsigned long)len, (char *)in);
+        lwsl_notice("server initiated connection close: len = %lu, in = %s\n", (unsigned long)len, ntohs(*(uint16_t *)in));
         return 0;
 
     default:
@@ -74,10 +78,10 @@ int create_client_websocket(client_websocket_t *client, callback_receive_fn on_r
     memset(&i, 0, sizeof i);
     i.context = context;
     i.port = port;
-    // i.address = "gateway.discord.gg";
-    // i.path = "/?v=9&encoding=json";
-    i.address = "socketsbay.com";
-    i.path = "/wss/v2/2/demo/";
+    i.address = "gateway.discord.gg";
+    i.path = "/?v=9&encoding=json";
+    // i.address = "socketsbay.com";
+    // i.path = "/wss/v2/2/demo/";
     i.host = i.address;
     i.origin = i.address;
     i.ssl_connection = ssl_connection;
@@ -88,8 +92,11 @@ int create_client_websocket(client_websocket_t *client, callback_receive_fn on_r
 
     client->wsi = lws_client_connect_via_info(&i);
     client->context = context;
+    client->handle = curl_easy_init();
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
+    client->content = (char *)malloc(1);
+    client->size = 0;
 
     return 0;
 }
@@ -102,7 +109,7 @@ void free_client_websocket(client_websocket_t *client_websocket) {
 
 int websocket_send(struct lws *wsi, char *data, size_t len) {
 
-    lwsl_user("websocket_send\n");
+    lwsl_user("websocket_send operation\n");
 
     unsigned char cdata[LWS_PRE + len + 1];
     memcpy(&cdata[LWS_PRE], data, len);
@@ -124,7 +131,6 @@ int websocket_test() {
     lws_set_log_level(logs, NULL);
 
     client_websocket_t *client = (client_websocket_t *)malloc(sizeof(struct client_websocket));
-    fprintf(stderr, "BEFORE START\n");
     create_client_websocket(client, NULL);
 
     while (!interrupted)

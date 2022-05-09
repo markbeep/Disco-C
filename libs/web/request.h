@@ -5,6 +5,9 @@
 
 #define VERBOSE 0
 
+#ifndef REQUEST
+#define REQUEST
+
 struct MemoryChunk {
     char *memory;
     size_t size;
@@ -13,24 +16,24 @@ struct MemoryChunk {
 /**
  * @brief Performs a HTTP GET request to the specified URL
  *
- * @param url URL to request from
+ * @param uri URI to append to Discord Gateway
  * @param response Pointer to a pointer that will be
  *                 modified to point to point to the data
  * @param handle   Curl handle
  * @return CURLcode
  */
-CURLcode request_get(char *url, char **response, CURL *handle);
+CURLcode request_get(char *uri, char **response, CURL *handle);
 
 /**
  * @brief Performs a HTTP POST request to the specified URL
  *
- * @param url URL to request to
+ * @param uri URI to append to Discord Gateway
  * @param response Pointer to a pointer that will be
  *                 modified to point to point to the data
  * @param handle   Curl handle
  * @return CURLcode
  */
-CURLcode request_post(char *url, char **response, CURL *handle);
+CURLcode request_post(char *uri, char **response, CURL *handle, curl_mime *multipart);
 
 /**
  * @brief Tests if request POST and GET work
@@ -38,3 +41,5 @@ CURLcode request_post(char *url, char **response, CURL *handle);
  * @return int 1 if it works, 0 else
  */
 int request_test();
+
+#endif

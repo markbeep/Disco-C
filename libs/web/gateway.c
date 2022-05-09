@@ -1,17 +1,40 @@
 #include "gateway.h"
 #include "../../config.h"
+#include "../discord/event.h"
 #include "../utils/cJSON.h"
 #include "websocket.h"
 
-static void on_receive(client_websocket_t *client_websocket, char *data, size_t len) {
-    (void)client_websocket;
+static int s = 0; // sequence id
+
+static void gateway_handle_identify(client_websocket_t *client) {
+    lwsl_user("TX: Sending gateway identify");
+    char response[256];
+    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", DISCORD_TOKEN);
+    websocket_send(client->wsi, response, strlen(response));
+}
+
+static void gateway_handle_dispatch(client_websocket_t *client, cJSON *json) {
+    // increases the sequence ID if the new value is greater
+    cJSON *local_s = cJSON_GetObjectItemCaseSensitive(json, "s");
+    if (cJSON_IsNumber(local_s) && local_s->valueint > s)
+        s = local_s->valueint;
+
+    cJSON *event_type = cJSON_GetObjectItemCaseSensitive(json, "t");
+    cJSON *data = cJSON_GetObjectItemCaseSensitive(json, "d");
+    event_handle(client, data, event_type->valuestring);
+
+    free(data);
+    free(event_type);
+    free(local_s);
+}
+
+static void on_receive(client_websocket_t *client, char *data, size_t len) {
     (void)len;
-    lwsl_user("%s: %s\n", __func__, data);
     cJSON *result = cJSON_Parse(data);
     if (!result) {
         const char *error_ptr = cJSON_GetErrorPtr();
         if (error_ptr) {
-            fprintf(stderr, "Error or no JSON format: %s\n", error_ptr);
+            fprintf(stderr, "Error or no JSON format at: %s\n", error_ptr);
         }
         goto json_cleanup;
     }
@@ -19,9 +42,30 @@ static void on_receive(client_websocket_t *client_websocket, char *data, size_t 
     if (cJSON_IsNumber(op)) {
         fprintf(stderr, "Received opcode: %d\n", op->valueint);
 
-        } else {
+        switch (op->valueint) {
+        case DISCORD_DISPATCH:
+            fprintf(stderr, "DISPATCH: %s\n\n", data);
+            gateway_handle_dispatch(client, result);
+            break;
+
+        case DISCORD_RECONNECT:
+            break;
+
+        case DISCORD_INVALID_SESSION:
+            break;
+
+        case DISCORD_HELLO:
+            gateway_handle_identify(client);
+            break;
+
+        case DISCORD_HEARTBEAT_ACK:
+            break;
+        }
+    } else {
         fprintf(stderr, "JSON missing opcode\n");
     }
+
+    free(op);
 
 json_cleanup:
     free(result);
