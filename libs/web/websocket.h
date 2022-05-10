@@ -18,12 +18,14 @@ typedef struct client_websocket {
     struct lws *wsi;
     char *content;
     size_t size;
+    int connected;
 } client_websocket_t;
 
 int websocket_send(struct lws *wsi, char *data, size_t len);
-int websocket_close(client_websocket_t *client);
 int websocket_create(client_websocket_t *client, callback_receive_fn on_receive);
 int websocket_connect(client_websocket_t *client);
+void websocket_close(client_websocket_t *client);
+void websocket_reconnect(client_websocket_t *client);
 int websocket_test();
 
 #endif

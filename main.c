@@ -1,3 +1,4 @@
+#include "libs/discord/event.h"
 #include "libs/web/gateway.h"
 #include "libs/web/request.h"
 #include "libs/web/websocket.h"
@@ -8,4 +9,5 @@
 int main() {
 
     gateway_test();
+    // channel_test_send_message(NULL, "test message");
 }

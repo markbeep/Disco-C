@@ -84,7 +84,7 @@ void gateway_heartbeat_loop(client_websocket_t *client) {
 }
 
 void gateway_event_loop(client_websocket_t *client) {
-    while (1) {
+    while (client->connected) {
         lws_service(client->context, 500);
     }
 }

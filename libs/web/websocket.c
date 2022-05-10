@@ -16,18 +16,18 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 
     case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
         lwsl_err("CLIENT CONNECTION ERROR: %s\n", in ? (char *)in : "(null)");
-        interrupted = 1;
-        break;
+        websocket_close(client);
+        return -1;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
         lwsl_user("%s: established connection, wsi = %p\n", __func__, (void *)wsi);
+        lws_callback_on_writable(wsi);
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
         lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
         websocket_close(client);
-        interrupted = 1;
-        break;
+        return -1;
 
     case LWS_CALLBACK_CLIENT_RECEIVE:
         // we add a EOL at the end of the input data
@@ -43,6 +43,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
                 client->callbacks->on_receive(client, client->content, client->size);
             client->size = 0;
         }
+        lws_callback_on_writable(wsi);
         break;
 
     case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
@@ -57,7 +58,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 }
 
 static const struct lws_protocols protocols[] = {
-    {"discord-gateway", websocket_callback, 1024, 1024, 0, NULL, 0},
+    {"discord-gateway", websocket_callback, 0, 0, 0, NULL, 0},
     LWS_PROTOCOL_LIST_TERM};
 
 int websocket_create(client_websocket_t *client, callback_receive_fn on_receive) {
@@ -74,6 +75,7 @@ int websocket_create(client_websocket_t *client, callback_receive_fn on_receive)
         return 1;
     }
     client->context = context;
+    client->connected = 0;
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
 
@@ -100,6 +102,7 @@ int websocket_connect(client_websocket_t *client) {
     client->wsi = lws_client_connect_via_info(&i);
     client->content = (char *)malloc(1);
     client->size = 0;
+    client->connected = 1;
 
     return 0;
 }
@@ -122,9 +125,15 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
     return m;
 }
 
-int websocket_close(client_websocket_t *client) {
+void websocket_reconnect(client_websocket_t *client) {
+    websocket_close(client);
+    websocket_connect(client);
+}
+
+void websocket_close(client_websocket_t *client) {
+    lws_set_timeout(client->wsi, PENDING_TIMEOUT_USER_REASON_BASE, LWS_TO_KILL_SYNC);
     lws_cancel_service(client->context);
-    exit(0);
+    client->connected = 0;
 }
 
 static void sigint_handler(int sig) {

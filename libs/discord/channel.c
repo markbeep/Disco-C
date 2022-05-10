@@ -4,6 +4,7 @@
 
 void channel_test_send_message(client_websocket_t *client, char *content) {
     (void)content;
+    (void)client;
 
     cJSON *json = cJSON_CreateObject();
     cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
