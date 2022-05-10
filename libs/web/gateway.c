@@ -30,6 +30,7 @@ static void gateway_handle_dispatch(client_websocket_t *client, cJSON *json) {
 
 static void on_receive(client_websocket_t *client, char *data, size_t len) {
     (void)len;
+
     cJSON *result = cJSON_Parse(data);
     if (!result) {
         const char *error_ptr = cJSON_GetErrorPtr();
@@ -40,7 +41,7 @@ static void on_receive(client_websocket_t *client, char *data, size_t len) {
     }
     cJSON *op = cJSON_GetObjectItemCaseSensitive(result, "op");
     if (cJSON_IsNumber(op)) {
-        fprintf(stderr, "Received opcode: %d\n", op->valueint);
+        fprintf(stderr, "Received opcode: %d ", op->valueint);
 
         switch (op->valueint) {
         case DISCORD_DISPATCH:
@@ -49,16 +50,23 @@ static void on_receive(client_websocket_t *client, char *data, size_t len) {
             break;
 
         case DISCORD_RECONNECT:
+            fprintf(stderr, "RECONNECT\n");
             break;
 
         case DISCORD_INVALID_SESSION:
+            fprintf(stderr, "INVALID SESSION\n");
             break;
 
         case DISCORD_HELLO:
+            fprintf(stderr, "HELLO\n");
             gateway_handle_identify(client);
             break;
 
         case DISCORD_HEARTBEAT_ACK:
+            fprintf(stderr, "HEARTBEAT ACK\n");
+            break;
+
+        default:
             break;
         }
     } else {
@@ -77,7 +85,7 @@ void gateway_heartbeat_loop(client_websocket_t *client) {
 
 void gateway_event_loop(client_websocket_t *client) {
     while (1) {
-        lws_service(client->context, 0);
+        lws_service(client->context, 500);
     }
 }
 
@@ -86,7 +94,8 @@ int gateway_test() {
     lws_set_log_level(logs, NULL);
 
     client_websocket_t *client = (client_websocket_t *)malloc(sizeof(struct client_websocket));
-    create_client_websocket(client, &on_receive);
+    websocket_create(client, &on_receive);
+    websocket_connect(client);
 
     gateway_event_loop(client);
 

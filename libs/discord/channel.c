@@ -5,14 +5,19 @@
 void channel_test_send_message(client_websocket_t *client, char *content) {
     (void)content;
 
-    curl_mime *multipart = curl_mime_init(client->handle);
-    curl_mimepart *part = curl_mime_addpart(multipart);
-    curl_mime_name(part, "content");
-    curl_mime_data(part, "this was sent via C code", CURL_ZERO_TERMINATED);
+    cJSON *json = cJSON_CreateObject();
+    cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
+
     char *response;
     fprintf(stderr, "Sending message...\n");
-    request_post("/channels/944968090490380321/message", &response, client->handle, multipart);
-    fprintf(stderr, "Message sent!\n");
+    CURLcode res = request_post("/channels/944968090490380321/messages", &response, json);
 
-    curl_mime_free(multipart);
+    if (res != CURLE_OK) {
+        fprintf(stderr, "%d: POST failed: %s\n", res, curl_easy_strerror(res));
+        if (res == CURLE_COULDNT_RESOLVE_HOST)
+            fprintf(stderr, "Have no connection to host\n");
+        return;
+    }
+    fprintf(stderr, "Message sent!\n");
+    fprintf(stderr, "Response: char = %s\n", response);
 }

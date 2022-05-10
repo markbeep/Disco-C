@@ -1,3 +1,4 @@
+#include "../utils/cJSON.h"
 #include <curl/curl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +23,7 @@ struct MemoryChunk {
  * @param handle   Curl handle
  * @return CURLcode
  */
-CURLcode request_get(char *uri, char **response, CURL *handle);
+CURLcode request_get(char *uri, char **response);
 
 /**
  * @brief Performs a HTTP POST request to the specified URL
@@ -33,7 +34,7 @@ CURLcode request_get(char *uri, char **response, CURL *handle);
  * @param handle   Curl handle
  * @return CURLcode
  */
-CURLcode request_post(char *uri, char **response, CURL *handle, curl_mime *multipart);
+CURLcode request_post(char *uri, char **response, cJSON *content);
 
 /**
  * @brief Tests if request POST and GET work

@@ -6,9 +6,6 @@
 #include <string.h>
 
 int main() {
-    curl_global_init(CURL_GLOBAL_ALL);
 
     gateway_test();
-
-    curl_global_cleanup();
 }

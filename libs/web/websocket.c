@@ -20,12 +20,12 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
-        lws_callback_on_writable(wsi);
         lwsl_user("%s: established connection, wsi = %p\n", __func__, (void *)wsi);
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
         lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
+        websocket_close(client);
         interrupted = 1;
         break;
 
@@ -46,21 +46,21 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
-        lwsl_notice("server initiated connection close: len = %lu, in = %s\n", (unsigned long)len, ntohs(*(uint16_t *)in));
-        return 0;
+        lwsl_notice("server initiated connection close: len = %lu, in = %u\n", (unsigned long)len, (*(uint16_t *)in));
+        break;
 
     default:
         break;
     }
 
-    return lws_callback_http_dummy(wsi, reason, user, in, len);
+    return 0;
 }
 
 static const struct lws_protocols protocols[] = {
     {"discord-gateway", websocket_callback, 1024, 1024, 0, NULL, 0},
     LWS_PROTOCOL_LIST_TERM};
 
-int create_client_websocket(client_websocket_t *client, callback_receive_fn on_receive) {
+int websocket_create(client_websocket_t *client, callback_receive_fn on_receive) {
     struct lws_context_creation_info info;
     memset(&info, 0, sizeof info);
     info.options = LWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT;
@@ -73,10 +73,17 @@ int create_client_websocket(client_websocket_t *client, callback_receive_fn on_r
         lwsl_err("lws init failed\n");
         return 1;
     }
+    client->context = context;
+    client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
+    client->callbacks->on_receive = on_receive;
 
+    return 0;
+}
+
+int websocket_connect(client_websocket_t *client) {
     struct lws_client_connect_info i;
     memset(&i, 0, sizeof i);
-    i.context = context;
+    i.context = client->context;
     i.port = port;
     i.address = "gateway.discord.gg";
     i.path = "/?v=9&encoding=json";
@@ -91,10 +98,6 @@ int create_client_websocket(client_websocket_t *client, callback_receive_fn on_r
     lwsl_notice("%s: connection %s:%d\n", __func__, i.address, i.port);
 
     client->wsi = lws_client_connect_via_info(&i);
-    client->context = context;
-    client->handle = curl_easy_init();
-    client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
-    client->callbacks->on_receive = on_receive;
     client->content = (char *)malloc(1);
     client->size = 0;
 
@@ -119,6 +122,11 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
     return m;
 }
 
+int websocket_close(client_websocket_t *client) {
+    lws_cancel_service(client->context);
+    exit(0);
+}
+
 static void sigint_handler(int sig) {
     (void)sig;
     interrupted = 1;
@@ -131,7 +139,7 @@ int websocket_test() {
     lws_set_log_level(logs, NULL);
 
     client_websocket_t *client = (client_websocket_t *)malloc(sizeof(struct client_websocket));
-    create_client_websocket(client, NULL);
+    websocket_create(client, NULL);
 
     while (!interrupted)
         lws_service(client->context, 0);
