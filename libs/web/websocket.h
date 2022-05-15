@@ -28,12 +28,55 @@ typedef struct websocket_client {
     int heartbeat_active;
 } websocket_client_t;
 
+/**
+ * @brief Sends data through the websocket connection
+ *
+ * @param wsi Websocket connection
+ * @param data Data to send
+ * @param len Length of data to send
+ * @return int
+ */
 int websocket_send(struct lws *wsi, char *data, size_t len);
+
+/**
+ * @brief Sets up the websocket client
+ *
+ * @param client Pointer to a websocket client
+ * @param on_receive Callback function for the receiving websocket packages
+ * @return int
+ */
 int websocket_create(websocket_client_t *client, callback_receive_fn on_receive);
+
+/**
+ * @brief Connects to the Discord websocket
+ *
+ * @param bot_client Bot client instance
+ * @return int
+ */
 int websocket_connect(bot_client_t *bot_client);
+
+/**
+ * @brief Attempts to close the websocket connection.
+ * Currently doesn't work as intended and doesn't send a closing package.
+ *
+ * @param bot_client
+ */
 void websocket_close(bot_client_t *bot_client);
+
+/**
+ * @brief Reconnects to the websocket
+ *
+ * @param bot_client
+ */
 void websocket_reconnect(bot_client_t *bot_client);
+
+/**
+ * @brief Frees up all memory allocated with the bot_client struct
+ *
+ * @param bot_client
+ */
 void free_websocket_client(bot_client_t *bot_client);
+
 int websocket_test();
 
 #endif

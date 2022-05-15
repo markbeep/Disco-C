@@ -1,11 +1,14 @@
 #include "libs/discord/disco.h"
-#include "libs/discord/event.h"
-#include "libs/web/gateway.h"
-#include "libs/web/request.h"
-#include "libs/web/websocket.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+void sample_on_ready(bot_client_t *bot, int argc, char **argv) {
+    (void)bot;
+    (void)argc;
+    (void)argv;
+    printf("Successfully logged in\n");
+}
 
 int main() {
 
@@ -15,6 +18,7 @@ int main() {
 
     // init to 0. Without this some errors could show up
     disco_callbacks_t callbacks = {0};
+    callbacks.on_ready = &sample_on_ready;
 
     // starts the bot. This function blocks
     disco_start_bot(&callbacks);

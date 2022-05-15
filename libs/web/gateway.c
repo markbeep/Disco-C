@@ -113,7 +113,7 @@ json_cleanup:
 
 void *gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
-    while (client->connected) {
+    while (client->connected && client->heartbeat_active) {
         gateway_send_heartbeat(client);
         usleep(HEARTBEAT_INTERVAL * 1000);
     }
