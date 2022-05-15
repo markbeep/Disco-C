@@ -1,6 +1,6 @@
 #include "event.h"
 
-void event_handle(client_websocket_t *client, cJSON *data, char *event) {
+void event_handle(bot_client_t *bot_client, cJSON *data, char *event) {
     lwsl_user("Event: %s\n", event);
     (void)data;
 
@@ -10,6 +10,6 @@ void event_handle(client_websocket_t *client, cJSON *data, char *event) {
 
     if (strncmp(event, "MESSAGE_CREATE", 30) == 0) {
         fprintf(stderr, "Received a MESSAGE_CREATE event\n");
-        channel_test_send_message(client, "this was sent by a Discord C library");
+        channel_test_send_message(bot_client, "this was sent by a Discord C library");
     }
 }

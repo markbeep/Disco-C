@@ -68,7 +68,7 @@ CURLcode request_post(char *uri, char **response, cJSON *content) {
     chunk.memory = malloc(1);
     chunk.size = 0;
 
-    // the minus one is because of the 0 char
+    // the plus one is because of the 0 char
     size_t len = strlen(DISCORD_REQUEST_URL), uri_len = strlen(uri);
     char url[len + uri_len + 1];
     memcpy(url, DISCORD_REQUEST_URL, len);

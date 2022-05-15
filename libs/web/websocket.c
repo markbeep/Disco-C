@@ -7,7 +7,10 @@ static int interrupted = 0, port = 443, ssl_connection = 1;
 
 static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len) {
 
-    client_websocket_t *client = (client_websocket_t *)user;
+    bot_client_t *bot_client = (bot_client_t *)user;
+    websocket_client_t *client = NULL;
+    if (bot_client)
+        client = bot_client->websocket_client;
 
     switch (reason) {
     case LWS_CALLBACK_PROTOCOL_INIT:
@@ -16,7 +19,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 
     case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
         lwsl_err("CLIENT CONNECTION ERROR: %s\n", in ? (char *)in : "(null)");
-        websocket_close(client);
+        websocket_close(bot_client);
         return -1;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
@@ -26,12 +29,15 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 
     case LWS_CALLBACK_CLIENT_CLOSED:
         lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
-        websocket_close(client);
+        websocket_close(bot_client);
         return -1;
 
     case LWS_CALLBACK_CLIENT_RECEIVE:
         // we add a EOL at the end of the input data
-
+        if (!client) {
+            lwsl_err("Client struct is unspecified in CLIENT RECEIVE callback");
+            break;
+        }
         client->content = (char *)realloc(client->content, client->size + len + 1);
         memcpy(client->content + client->size, in, len);
         client->content[client->size + len] = '\0';
@@ -40,7 +46,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         // calls the on_receive function
         if (lws_is_final_fragment(wsi)) {
             if (client && client->callbacks && client->callbacks->on_receive)
-                client->callbacks->on_receive(client, client->content, client->size);
+                client->callbacks->on_receive(bot_client, client->content, client->size);
             client->size = 0;
         }
         lws_callback_on_writable(wsi);
@@ -61,7 +67,7 @@ static const struct lws_protocols protocols[] = {
     {"discord-gateway", websocket_callback, 0, 0, 0, NULL, 0},
     LWS_PROTOCOL_LIST_TERM};
 
-int websocket_create(client_websocket_t *client, callback_receive_fn on_receive) {
+int websocket_create(websocket_client_t *client, callback_receive_fn on_receive) {
     struct lws_context_creation_info info;
     memset(&info, 0, sizeof info);
     info.options = LWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT;
@@ -76,16 +82,17 @@ int websocket_create(client_websocket_t *client, callback_receive_fn on_receive)
     }
     client->context = context;
     client->connected = 0;
+    client->heartbeat_active = 0;
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
 
     return 0;
 }
 
-int websocket_connect(client_websocket_t *client) {
+int websocket_connect(bot_client_t *bot_client) {
     struct lws_client_connect_info i;
     memset(&i, 0, sizeof i);
-    i.context = client->context;
+    i.context = bot_client->websocket_client->context;
     i.port = port;
     i.address = "gateway.discord.gg";
     i.path = "/?v=9&encoding=json";
@@ -96,21 +103,22 @@ int websocket_connect(client_websocket_t *client) {
     i.ssl_connection = ssl_connection;
     i.protocol = "lws-minimal";
     i.local_protocol_name = "lws-minimal";
-    i.userdata = client;
+    i.userdata = bot_client;
     lwsl_notice("%s: connection %s:%d\n", __func__, i.address, i.port);
 
-    client->wsi = lws_client_connect_via_info(&i);
-    client->content = (char *)malloc(1);
-    client->size = 0;
-    client->connected = 1;
+    bot_client->websocket_client->wsi = lws_client_connect_via_info(&i);
+    bot_client->websocket_client->content = (char *)malloc(1);
+    bot_client->websocket_client->size = 0;
+    bot_client->websocket_client->connected = 1;
 
     return 0;
 }
 
-void free_client_websocket(client_websocket_t *client_websocket) {
-    lws_context_destroy(client_websocket->context);
-    free(client_websocket->wsi);
-    free(client_websocket);
+void free_websocket_client(bot_client_t *bot_client) {
+    lws_context_destroy(bot_client->websocket_client->context);
+    free(bot_client->websocket_client->callbacks);
+    free(bot_client->websocket_client->wsi);
+    free(bot_client->websocket_client);
 }
 
 int websocket_send(struct lws *wsi, char *data, size_t len) {
@@ -125,15 +133,17 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
     return m;
 }
 
-void websocket_reconnect(client_websocket_t *client) {
-    websocket_close(client);
-    websocket_connect(client);
+void websocket_reconnect(bot_client_t *bot_client) {
+    websocket_close(bot_client);
+    websocket_connect(bot_client);
 }
 
-void websocket_close(client_websocket_t *client) {
+void websocket_close(bot_client_t *bot_client) {
+    websocket_client_t *client = bot_client->websocket_client;
     lws_set_timeout(client->wsi, PENDING_TIMEOUT_USER_REASON_BASE, LWS_TO_KILL_SYNC);
     lws_cancel_service(client->context);
     client->connected = 0;
+    client->heartbeat_active = 0;
 }
 
 static void sigint_handler(int sig) {
@@ -147,7 +157,7 @@ int websocket_test() {
     signal(SIGINT, sigint_handler);
     lws_set_log_level(logs, NULL);
 
-    client_websocket_t *client = (client_websocket_t *)malloc(sizeof(struct client_websocket));
+    websocket_client_t *client = (websocket_client_t *)malloc(sizeof(struct websocket_client));
     websocket_create(client, NULL);
 
     while (!interrupted)

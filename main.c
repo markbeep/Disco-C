@@ -1,3 +1,4 @@
+#include "libs/discord/disco.h"
 #include "libs/discord/event.h"
 #include "libs/web/gateway.h"
 #include "libs/web/request.h"
@@ -8,6 +9,15 @@
 
 int main() {
 
-    gateway_test();
-    // channel_test_send_message(NULL, "test message");
+    // LOG LEVEL
+    int logs = LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE;
+    lws_set_log_level(logs, NULL);
+
+    // init to 0. Without this some errors could show up
+    disco_callbacks_t callbacks = {0};
+
+    // starts the bot. This function blocks
+    disco_start_bot(&callbacks);
+
+    return 0;
 }

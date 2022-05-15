@@ -2,9 +2,9 @@
 #include "event.h"
 #include <curl/curl.h>
 
-void channel_test_send_message(client_websocket_t *client, char *content) {
+void channel_test_send_message(bot_client_t *bot_client, char *content) {
     (void)content;
-    (void)client;
+    (void)bot_client;
 
     cJSON *json = cJSON_CreateObject();
     cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
@@ -21,4 +21,6 @@ void channel_test_send_message(client_websocket_t *client, char *content) {
     }
     fprintf(stderr, "Message sent!\n");
     fprintf(stderr, "Response: char = %s\n", response);
+
+    free(response);
 }

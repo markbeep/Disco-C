@@ -1,3 +1,11 @@
+#ifndef GATEWAY
+#define GATEWAY
+
+#include "../discord/disco.h"
+#include "../discord/event.h"
+#include "../utils/cJSON.h"
+#include "websocket.h"
+
 #define DISCORD_DISPATCH 0
 #define DISCORD_HEARTBEAT 1
 #define DISCORD_IDENTIFY 2
@@ -11,3 +19,8 @@
 #define DISCORD_HEARTBEAT_ACK 11
 
 int gateway_test();
+void gateway_on_receive(bot_client_t *client, char *data, size_t len);
+void *gateway_heartbeat_loop(void *vargp);
+void gateway_event_loop(bot_client_t *bot);
+
+#endif

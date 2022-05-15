@@ -1,5 +1,11 @@
+#ifndef EVENT
+#define EVENT
+
 #include "../utils/cJSON.h"
 #include "../web/websocket.h"
+#include "disco.h"
 
-void channel_test_send_message(client_websocket_t *client, char *content);
-void event_handle(client_websocket_t *client, cJSON *data, char *event);
+void channel_test_send_message(bot_client_t *client, char *content);
+void event_handle(bot_client_t *client, cJSON *data, char *event);
+
+#endif
