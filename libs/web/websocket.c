@@ -1,4 +1,5 @@
 #include "websocket.h"
+#include <curl/curl.h>
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>

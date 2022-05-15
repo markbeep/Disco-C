@@ -1,4 +1,5 @@
 #include "event.h"
+#include "../web/websocket.h"
 
 void event_handle(bot_client_t *bot_client, cJSON *data, char *event) {
     lwsl_user("Event: %s\n", event);

@@ -1,12 +1,11 @@
-#define VERBOSE 0
 
 #ifndef REQUEST
 #define REQUEST
 
+#define VERBOSE 0
+
 #include "../utils/cJSON.h"
 #include <curl/curl.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 struct MemoryChunk {

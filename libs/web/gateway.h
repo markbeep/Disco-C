@@ -2,9 +2,6 @@
 #define GATEWAY
 
 #include "../discord/disco.h"
-#include "../discord/event.h"
-#include "../utils/cJSON.h"
-#include "websocket.h"
 
 #define DISCORD_DISPATCH 0
 #define DISCORD_HEARTBEAT 1

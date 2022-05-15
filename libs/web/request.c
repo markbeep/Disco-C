@@ -1,5 +1,7 @@
 #include "request.h"
 #include "../../config.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 static char *DISCORD_REQUEST_URL = "https://discord.com/api";
 

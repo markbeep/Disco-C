@@ -1,5 +1,8 @@
 #include "gateway.h"
 #include "../../config.h"
+#include "../discord/event.h"
+#include "../utils/cJSON.h"
+#include "websocket.h"
 #include <pthread.h>
 #include <unistd.h>
 
