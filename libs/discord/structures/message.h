@@ -1,3 +1,5 @@
+#include "../disco.h"
+
 // https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
 struct discord_allowed_mentions {
     int parse_role_mentions;     // if roles should be mentioned
@@ -81,6 +83,7 @@ struct discord_create_message {
     struct discord_component **components;
     int components_count;
     char **sticker_ids;
+    int sticker_ids_count;
     struct discord_attachment **attachments;
     int attachments_count;
     int flags;
@@ -158,3 +161,5 @@ struct discord_message {
     struct discord_sticker **stickers;
     int stickers_count;
 };
+
+void channel_send_message(bot_client_t *bot, struct discord_create_message *message, char *channel_id);
