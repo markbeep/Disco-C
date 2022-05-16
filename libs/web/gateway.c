@@ -5,6 +5,7 @@
 #include "websocket.h"
 #include <pthread.h>
 #include <unistd.h>
+#include <string.h>
 
 // sequence id
 static int s = -1;
@@ -14,6 +15,10 @@ static unsigned int HEARTBEAT_INTERVAL = 10000;
 static void gateway_handle_identify(websocket_client_t *client) {
     lwsl_user("TX: Sending gateway identify");
     char response[256];
+    if (strcmp(DISCORD_TOKEN, "token_placeholder") == 0) {
+        lwsl_err("Please set DISCORD_TOKEN to your bot token in config.h");
+        exit(1);
+    }
     sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", DISCORD_TOKEN);
     websocket_send(client->wsi, response, strlen(response));
 
