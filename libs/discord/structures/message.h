@@ -42,7 +42,7 @@ struct discord_embed_author {
 struct discord_embed_field {
     char *name;
     char *value;
-    int is_inline;
+    int is_inline; // called "inline"
 };
 
 // https://discord.com/developers/docs/resources/channel#embed-object
@@ -60,7 +60,7 @@ struct discord_embed {
     struct discord_embed_provider *provider;
     struct discord_embed_author *author;
     struct discord_embed_field **fields;
-    int field_count;
+    int fields_count;
 };
 
 struct discord_message_reference {
