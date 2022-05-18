@@ -38,9 +38,9 @@ CURLcode request_get(char *uri, char **response) {
     chunk.size = 0;
 
     // the minus one is because of the 0 char
-    size_t len = strlen(DISCORD_REQUEST_URL), uri_len = strlen(uri);
+    size_t len = strnlen(DISCORD_REQUEST_URL, 64), uri_len = strnlen(uri, 64);
     char *url[len + uri_len - 1];
-    memcpy(url, DISCORD_REQUEST_URL, strlen(DISCORD_REQUEST_URL));
+    memcpy(url, DISCORD_REQUEST_URL, strnlen(DISCORD_REQUEST_URL, 64));
     memcpy(url + len - 1, uri, uri_len);
 
     curl_easy_setopt(handle, CURLOPT_URL, url);
@@ -71,7 +71,7 @@ CURLcode request_post(char *uri, char **response, cJSON *content) {
     chunk.size = 0;
 
     // the plus one is because of the 0 char
-    size_t len = strlen(DISCORD_REQUEST_URL), uri_len = strlen(uri);
+    size_t len = strnlen(DISCORD_REQUEST_URL, 64), uri_len = strnlen(uri, 64);
     char url[len + uri_len + 1];
     memcpy(url, DISCORD_REQUEST_URL, len);
     memcpy(url + len, uri, uri_len);

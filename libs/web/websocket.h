@@ -74,7 +74,7 @@ void websocket_reconnect(bot_client_t *bot_client);
  *
  * @param bot_client
  */
-void free_websocket_client(bot_client_t *bot_client);
+void websocket_destroy_client(bot_client_t *bot_client);
 
 int websocket_test();
 

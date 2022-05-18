@@ -74,7 +74,6 @@ struct discord_message_reference {
 
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
-    char *content;
     int tts;
     struct discord_embed **embeds;
     int embeds_count;
@@ -162,4 +161,4 @@ struct discord_message {
     int stickers_count;
 };
 
-void channel_send_message(bot_client_t *bot, struct discord_create_message *message, char *channel_id);
+void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message);

@@ -15,7 +15,7 @@ static void gateway_handle_identify(websocket_client_t *client) {
     lwsl_user("TX: Sending gateway identify");
     char response[256];
     sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", DISCORD_TOKEN);
-    websocket_send(client->wsi, response, strlen(response));
+    websocket_send(client->wsi, response, strnlen(response, 256));
 
     if (!client->heartbeat_active) {
         client->heartbeat_active = 1;
@@ -31,7 +31,7 @@ static void gateway_send_heartbeat(websocket_client_t *client) {
         sprintf(response, "{\"op\":1, \"d\":null}");
     else
         sprintf(response, "{\"op\":1, \"d\":%d}", s);
-    websocket_send(client->wsi, response, strlen(response));
+    websocket_send(client->wsi, response, strnlen(response, 128));
 }
 
 static void gateway_handle_dispatch(bot_client_t *bot_client, cJSON *json) {

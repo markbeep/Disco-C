@@ -131,43 +131,46 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     return ref_obj;
 }
 
-void channel_send_message(bot_client_t *bot, struct discord_create_message *message, char *channel_id) {
+void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message) {
     (void)bot;
 
     char uri[48];
     sprintf(uri, "/channels/%s/messages", channel_id);
     cJSON *json = cJSON_CreateObject();
+
     // content
-    if (message->content) {
-        cJSON_AddItemToObject(json, "content", cJSON_CreateString(message->content));
+    if (content && strnlen(content, 1) > 0) {
+        cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
     }
-    // embeds
-    if (message->embeds_count > 0) {
-        cJSON *embeds = cJSON_AddArrayToObject(json, "embeds");
-        for (int i = 0; i < message->embeds_count; i++) {
-            cJSON_AddItemToArray(embeds, create_embed(message->embeds[i]));
+    if (message) {
+        // embeds
+        if (message->embeds_count > 0) {
+            cJSON *embeds = cJSON_AddArrayToObject(json, "embeds");
+            for (int i = 0; i < message->embeds_count; i++) {
+                cJSON_AddItemToArray(embeds, create_embed(message->embeds[i]));
+            }
         }
+        // allowed mentions
+        if (message->allowed_mentions)
+            cJSON_AddItemToObject(json, "allowed_mentions", create_allowed_mentions(message->allowed_mentions));
+        // message reference
+        if (message->message_reference)
+            cJSON_AddItemToObject(json, "message_reference", create_message_reference(message->message_reference));
+        // TODO discord_component
+        // if (message->components_count > 0) {}
+        // stickers
+        if (message->sticker_ids_count > 0) {
+            cJSON *stickers = cJSON_CreateArray();
+            for (int i = 0; i < message->sticker_ids_count; i++)
+                cJSON_AddItemToArray(stickers, cJSON_CreateString(message->sticker_ids[i]));
+            cJSON_AddItemToObject(json, "sticker_ids", stickers);
+        }
+        // TODO attachments
+        // if (message->attachments_count > 0) {}
+        // flags
+        if (message->flags)
+            cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
     }
-    // allowed mentions
-    if (message->allowed_mentions)
-        cJSON_AddItemToObject(json, "allowed_mentions", create_allowed_mentions(message->allowed_mentions));
-    // message reference
-    if (message->message_reference)
-        cJSON_AddItemToObject(json, "message_reference", create_message_reference(message->message_reference));
-    // TODO discord_component
-    // if (message->components_count > 0) {}
-    // stickers
-    if (message->sticker_ids_count > 0) {
-        cJSON *stickers = cJSON_CreateArray();
-        for (int i = 0; i < message->sticker_ids_count; i++)
-            cJSON_AddItemToArray(stickers, cJSON_CreateString(message->sticker_ids[i]));
-        cJSON_AddItemToObject(json, "sticker_ids", stickers);
-    }
-    // TODO attachments
-    // if (message->attachments_count > 0) {}
-    // flags
-    if (message->flags)
-        cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
 
     char *response;
     CURLcode res = request_post(uri, &response, json);

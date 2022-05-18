@@ -14,7 +14,7 @@ DISCORD_OBJECTS=$(patsubst libs/discord/%.c, $(BUILD)/%.o, $(DISCORD_SOURCES))
 
 all: main
 
-main: config.h build $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
+main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(LIBS) -o $@
 
 $(WEB_OBJECTS): $(BUILD)/%.o : libs/web/%.c

@@ -115,7 +115,7 @@ int websocket_connect(bot_client_t *bot_client) {
     return 0;
 }
 
-void free_websocket_client(bot_client_t *bot_client) {
+void websocket_destroy_client(bot_client_t *bot_client) {
     lws_context_destroy(bot_client->websocket_client->context);
     free(bot_client->websocket_client->callbacks);
     free(bot_client->websocket_client->wsi);
