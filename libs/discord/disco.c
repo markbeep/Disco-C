@@ -1,6 +1,7 @@
 #include "disco.h"
 #include "../utils/cJSON.h"
 #include "../web/gateway.h"
+#include <string.h>
 
 void disco_start_bot(disco_event_callbacks_t *callbacks) {
     bot_client_t *bot = (bot_client_t *)calloc(1, sizeof(struct bot_client));
@@ -31,10 +32,7 @@ char *get_string_from_json(cJSON *data, const char *name) {
     if (!cJSON_IsString(field))
         return NULL;
     size_t len = strnlen(field->valuestring, 4096); // max length any single discord string can be
-    char *str = (char *)malloc(len + 1);            // extra for '\0'
-    strncpy(str, field->valuestring, len);
-    str[len] = '\0'; // saftey net to make sure all strings end
-    return str;
+    return strndup(field->valuestring, 4096);
 }
 
 int get_bool_from_json(cJSON *data, const char *name) {

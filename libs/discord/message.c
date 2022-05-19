@@ -283,11 +283,7 @@ struct discord_message *disco_create_message_struct_json(cJSON *data) {
         msg->mention_roles = (char **)malloc((size_t)msg->mention_roles_count * sizeof(char *));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            size_t len = strnlen(cur->string, 32);
-            msg->mention_roles[i] = (char *)malloc(len + 1);
-            strncpy(msg->mention_roles[i], cur->string, len);
-            msg->mention_roles[i][len] = '\0';
-            i++;
+            msg->mention_roles[i++] = strndup(cur->string, 32);
         }
     }
 
