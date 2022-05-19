@@ -1,3 +1,6 @@
+#ifndef DISCO_PERMISSION
+#define DISCO_PERMISSION
+
 // https://discord.com/developers/docs/resources/channel#overwrite-object
 struct discord_overwrite {
     char *id;
@@ -5,3 +8,5 @@ struct discord_overwrite {
     char *allow;
     char *deny;
 };
+
+#endif

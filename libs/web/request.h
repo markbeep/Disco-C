@@ -13,27 +13,25 @@ struct MemoryChunk {
     size_t size;
 };
 
-/**
- * @brief Performs a HTTP GET request to the specified URL
- *
- * @param uri URI to append to Discord Gateway
- * @param response Pointer to a pointer that will be
- *                 modified to point to point to the data
- * @param handle   Curl handle
- * @return CURLcode
- */
-CURLcode request_get(char *uri, char **response);
+enum Request_Type { REQUEST_GET,
+                    REQUEST_POST,
+                    REQUEST_PATCH,
+                    REQUEST_PUT,
+                    REQUEST_DELETE,
+                    REQUEST_UPDATE };
 
 /**
- * @brief Performs a HTTP POST request to the specified URL
+ * @brief Performs a HTTP request to the specified URL
  *
  * @param uri URI to append to Discord Gateway
  * @param response Pointer to a pointer that will be
  *                 modified to point to point to the data
- * @param handle   Curl handle
+ * @param content Pointer to JSON that should be sent. If there's
+ *                nothing to send, it should be NULL.
+ * @param request_type The type of request to execute
  * @return CURLcode
  */
-CURLcode request_post(char *uri, char **response, cJSON *content);
+CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type);
 
 /**
  * @brief Tests if request POST and GET work

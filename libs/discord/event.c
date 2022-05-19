@@ -18,12 +18,14 @@ void event_handle(bot_client_t *bot_client, cJSON *data, char *event) {
 
         // calls the on_ready callback
         if (bot_client->callbacks->on_ready)
-            bot_client->callbacks->on_ready(bot_client, 0, NULL);
+            bot_client->callbacks->on_ready(bot_client);
     }
 
     if (strncmp(event, "MESSAGE_CREATE", 30) == 0) {
         fprintf(stderr, "Received a MESSAGE_CREATE event\n");
-        if (bot_client->callbacks->on_message)
-            bot_client->callbacks->on_message(bot_client, 0, NULL);
+        if (bot_client->callbacks->on_message) {
+            struct discord_message message = {0};
+            bot_client->callbacks->on_message(bot_client, NULL);
+        }
     }
 }

@@ -1,4 +1,16 @@
+#ifndef DISCO_MESSAGE
+#define DISCO_MESSAGE
+
 #include "../disco.h"
+#include "attachment.h"
+#include "channel.h"
+#include "component.h"
+#include "message_activity.h"
+#include "reaction.h"
+#include "sticker.h"
+#include "user.h"
+
+typedef struct bot_client bot_client_t;
 
 // https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
 struct discord_allowed_mentions {
@@ -11,9 +23,6 @@ struct discord_allowed_mentions {
     int users_count;
     int replied_user;
 };
-
-struct discord_component;
-struct discord_attachment;
 
 struct discord_embed_footer {
     char *text;
@@ -72,6 +81,10 @@ struct discord_message_reference {
     int fail_if_not_exists;
 };
 
+// TODO implement
+struct discord_message_reference *disco_create_message_reference_struct_json(cJSON *data);
+void free_discord_message_reference(struct discord_message_reference *message);
+
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
     int tts;
@@ -87,14 +100,6 @@ struct discord_create_message {
     int attachments_count;
     int flags;
 };
-
-struct discord_role;
-struct discord_reaction;
-struct discord_message_activity;
-struct discord_application;
-struct discord_interaction;
-struct discord_message_sticker_item;
-struct discord_sticker;
 
 // https://discord.com/developers/docs/resources/channel#message-object-message-types
 enum discord_message_type { DEFAULT,
@@ -135,8 +140,10 @@ struct discord_message {
     int mention_everyone;
     struct discord_member **mentions;
     int mentions_count;
-    struct discord_role **mention_roles;
+    char **mention_roles;
     int mention_roles_count;
+    struct discord_channel **mention_channels;
+    int mention_channels_count;
     struct discord_attachment **attachments;
     int attachments_count;
     struct discord_embed **embeds;
@@ -151,14 +158,23 @@ struct discord_message {
     struct discord_application *application;
     char *application_id;
     struct discord_message_reference *message_reference;
+    int flags;
+    struct discord_message *referenced_message;
     struct discord_interaction *interaction;
     struct discord_channel *thread;
     struct discord_component **components;
     int components_count;
     struct discord_message_sticker_item **sticker_items;
-    int message_sticker_item_count;
+    int sticker_items_count;
     struct discord_sticker **stickers;
     int stickers_count;
 };
 
+// TODO implement
+struct discord_message *disco_create_message_struct_json(cJSON *data);
+void disco_destroy_message(struct discord_message *message);
+
 void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message);
+void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message);
+
+#endif

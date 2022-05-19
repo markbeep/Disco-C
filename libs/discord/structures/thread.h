@@ -1,3 +1,6 @@
+#ifndef DISCO_THREAD
+#define DISCO_THREAD
+
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {
     int archived;
@@ -15,3 +18,5 @@ struct discord_thread_member {
     char *join_timestamp;
     int flags;
 };
+
+#endif

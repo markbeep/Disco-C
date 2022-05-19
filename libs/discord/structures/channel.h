@@ -1,3 +1,6 @@
+#ifndef DISCO_CHANNEL
+#define DISCO_CHANNEL
+
 #include "permission.h"
 #include "thread.h"
 #include "user.h"
@@ -47,3 +50,19 @@ struct discord_channel {
     char *permissions;
     int flags;
 };
+
+struct discord_channel_mention {
+    char *id;
+    char *guild_id;
+    int type;
+    char *name;
+};
+
+// TODO comments
+struct discord_channel *disco_create_channel_struct_json(cJSON *data);
+void disco_destroy_channel(struct discord_channel *channel);
+
+struct discord_channel_mention *disco_create_channel_mention_struct_json(cJSON *data);
+void disco_destroy_channel_mention(struct discord_channel_mention *channel);
+
+#endif

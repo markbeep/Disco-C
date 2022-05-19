@@ -53,4 +53,8 @@ struct discord_user *disco_create_user_struct_json(cJSON *data);
  */
 void disco_destroy_user(struct discord_user *user);
 
+// TODO comment
+struct discord_member *disco_create_member_struct_json(cJSON *data, struct discord_user *user);
+void disco_destroy_member(struct discord_user *member);
+
 #endif
