@@ -174,7 +174,18 @@ struct discord_message {
 struct discord_message *disco_create_message_struct_json(cJSON *data);
 void disco_destroy_message(struct discord_message *message);
 
-void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message);
+/**
+ * @brief Sends a message and if enabled also returns the sent message struct
+ *
+ * @param bot Active bot instance
+ * @param content Message content to send (if empty, embed or components need to exist)
+ * @param channel_id ID of the channel the message should be sent in
+ * @param message A discord_create_message struct. Can be NULL
+ * @param return_struct Bool if the sent message should be returned or not (if yes,
+ *                      it has to be destroyed with disco_destroy_message() after)
+ * @return struct discord_message* NULL or the struct of the sent message
+ */
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct);
 void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message);
 
 #endif

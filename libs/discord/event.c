@@ -24,8 +24,8 @@ void event_handle(bot_client_t *bot_client, cJSON *data, char *event) {
     if (strncmp(event, "MESSAGE_CREATE", 30) == 0) {
         fprintf(stderr, "Received a MESSAGE_CREATE event\n");
         if (bot_client->callbacks->on_message) {
-            struct discord_message message = {0};
-            bot_client->callbacks->on_message(bot_client, NULL);
+            struct discord_message *message = disco_create_message_struct_json(data);
+            bot_client->callbacks->on_message(bot_client, message);
         }
     }
 }

@@ -131,7 +131,7 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     return ref_obj;
 }
 
-void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message) {
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
 
@@ -177,13 +177,21 @@ void disco_channel_send_message(bot_client_t *bot, char *content, char *channel_
         fprintf(stderr, "%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
             fprintf(stderr, "Have no connection to host\n");
-        return;
+        goto end;
     }
     fprintf(stderr, "Message sent!\n");
     fprintf(stderr, "Response: char = %s\n", response);
 
+    struct discord_message *sent_message = NULL;
+    if (return_struct) { // only if a struct is requested to be returned
+        cJSON *res_json = cJSON_Parse(response);
+        sent_message = disco_create_message_struct_json(res_json);
+        cJSON_Delete(res_json);
+    }
+end: // free up allocated stuff
     cJSON_Delete(json);
     free(response);
+    return sent_message;
 }
 
 void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message) {
@@ -337,10 +345,15 @@ struct discord_message *disco_create_message_struct_json(cJSON *data) {
 }
 
 // TODO implement
+void disco_destroy_message(struct discord_message *message) {
+    (void)message;
+}
+
+// TODO implement
 struct discord_message_reference *disco_create_message_reference_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }
-void free_discord_message_reference(struct discord_message_reference *message) {
+void disco_destroy_message_reference(struct discord_message_reference *message) {
     (void)message;
 }
