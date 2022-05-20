@@ -2,6 +2,7 @@
 #define WEBSOCKET
 
 #include "../discord/disco.h"
+#include <curl/curl.h>
 #include <libwebsockets.h>
 
 typedef struct bot_client bot_client_t;
@@ -25,6 +26,8 @@ typedef struct websocket_client {
     int connected;
     // if a heartbeat thread has already been started
     int heartbeat_active;
+    // curl handle for sending requests
+    CURL *handle;
 } websocket_client_t;
 
 /**

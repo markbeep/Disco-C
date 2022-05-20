@@ -2,6 +2,7 @@
 #include "../../config.h"
 #include "../discord/event.h"
 #include "../utils/cJSON.h"
+#include "../utils/disco_logging.h"
 #include "websocket.h"
 #include <pthread.h>
 #include <unistd.h>
@@ -56,30 +57,32 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
     if (!result) {
         const char *error_ptr = cJSON_GetErrorPtr();
         if (error_ptr) {
-            fprintf(stderr, "Error or no JSON format at: %s\n", error_ptr);
+            d_log_err("Error or no JSON format at: %s\n", error_ptr);
         }
         goto json_cleanup;
     }
     cJSON *op = cJSON_GetObjectItemCaseSensitive(result, "op");
     if (cJSON_IsNumber(op)) {
-        fprintf(stderr, "Received opcode: %d ", op->valueint);
+        d_log_notice("Received opcode: %d\n", op->valueint);
 
         switch (op->valueint) {
         case DISCORD_DISPATCH:
-            fprintf(stderr, "DISPATCH: %s\n\n", data);
+            d_log_notice("Received DISPATCH \n");
+            d_log_normal("Dispatch data: %s\n", data);
+
             gateway_handle_dispatch(bot_client, result);
             break;
 
         case DISCORD_RECONNECT:
-            fprintf(stderr, "RECONNECT\n");
+            d_log_notice("Received RECONNECT\n");
             break;
 
         case DISCORD_INVALID_SESSION:
-            fprintf(stderr, "INVALID SESSION\n");
+            d_log_notice("Received INVALID SESSION\n");
             break;
 
         case DISCORD_HELLO:
-            fprintf(stderr, "HELLO: %s\n\n", data);
+            d_log_notice("Received HELLO: %s\n\n", data);
             gateway_handle_identify(bot_client->websocket_client);
 
             // gets the heartbeat interval out of the data adjusts
@@ -88,7 +91,7 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
                 cJSON *heartbeat_interval = cJSON_GetObjectItemCaseSensitive(d, "heartbeat_interval");
                 if (cJSON_IsNumber(heartbeat_interval)) {
                     HEARTBEAT_INTERVAL = (unsigned int)heartbeat_interval->valueint;
-                    fprintf(stderr, "Adjusted the heartbeat interval to %d\n", HEARTBEAT_INTERVAL);
+                    d_log_notice("Adjusted the heartbeat interval to %d\n", HEARTBEAT_INTERVAL);
                 }
             }
             break;
@@ -98,14 +101,14 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
             break;
 
         case DISCORD_HEARTBEAT_ACK:
-            fprintf(stderr, "HEARTBEAT ACK\n");
+            d_log_notice("Received HEARTBEAT ACK\n");
             break;
 
         default:
             break;
         }
     } else {
-        fprintf(stderr, "JSON missing opcode\n");
+        d_log_err("JSON missing opcode\n");
     }
 
     free(op);

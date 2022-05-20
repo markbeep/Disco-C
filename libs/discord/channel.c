@@ -7,11 +7,11 @@
 // TODO implement
 struct discord_channel *disco_create_channel_struct_json(cJSON *data) {
     (void)data;
+    return NULL;
 }
 
 void disco_destroy_channel(struct discord_channel *channel) {
     (void)channel;
-    return NULL;
 }
 
 // TODO implement

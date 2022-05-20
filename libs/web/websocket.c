@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static int interrupted = 0, port = 443, ssl_connection = 1;
+static int port = 443, ssl_connection = 1;
 
 static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len) {
 
@@ -149,7 +149,6 @@ void websocket_close(bot_client_t *bot_client) {
 
 static void sigint_handler(int sig) {
     (void)sig;
-    interrupted = 1;
 }
 
 int websocket_test() {
@@ -161,10 +160,10 @@ int websocket_test() {
     websocket_client_t *client = (websocket_client_t *)malloc(sizeof(struct websocket_client));
     websocket_create(client, NULL);
 
-    while (!interrupted)
+    while (client->connected)
         lws_service(client->context, 0);
 
-    lwsl_notice("%s: exiting service loop. n = %d, interrupted = %d\n", __func__, n, interrupted);
+    lwsl_notice("%s: exiting service loop. n = %d, connected = %d\n", __func__, n, client->connected);
 
     return 0;
 }

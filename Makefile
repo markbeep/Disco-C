@@ -21,17 +21,17 @@ all: main
 main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(LIBS) -o $@
 
-$(WEB_OBJECTS): $(BUILD)/%.o : libs/web/%.c
+$(WEB_OBJECTS): $(BUILD)/%.o : libs/web/%.c libs/utils/disco_logging.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
-$(UTILS_OBJECTS): $(BUILD)/%.o : libs/utils/%.c
+$(UTILS_OBJECTS): $(BUILD)/%.o : libs/utils/%.c libs/utils/disco_logging.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
-$(DISCORD_OBJECTS): $(BUILD)/%.o : libs/discord/%.c
+$(DISCORD_OBJECTS): $(BUILD)/%.o : libs/discord/%.c libs/utils/disco_logging.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 # COMPILES THE EXAMPLE FILES
-$(EXAMPLE_OBJECTS): $(BUILD)/%.o : example/%.c
+$(EXAMPLE_OBJECTS): $(BUILD)/%.o : example/%.c libs/utils/disco_logging.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 build:
@@ -39,7 +39,7 @@ build:
 
 clean:
 	rm -rf $(BUILD)
-	rm main
+	rm -f main
 
 config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"' > $@

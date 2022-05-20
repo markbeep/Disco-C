@@ -1,7 +1,11 @@
 #include "request.h"
 #include "../../config.h"
+#include "../utils/disco_logging.h"
+#include "../utils/timer.h"
+#include <libwebsockets.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 static char *DISCORD_REQUEST_URL = "https://discord.com/api";
 
@@ -28,7 +32,7 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type) {
+CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type, CURL *handle) {
     char *request_str = NULL;
     switch (request_type) {
     case REQUEST_GET:
@@ -51,13 +55,7 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
         break;
     }
 
-    curl_global_init(CURL_GLOBAL_ALL);
-
-    CURL *handle = curl_easy_init();
-
     struct MemoryChunk chunk;
-    chunk.memory = malloc(1);
-    chunk.size = 0;
 
     // the plus one is because of the 0 char
     size_t len = strnlen(DISCORD_REQUEST_URL, 64), uri_len = strnlen(uri, 64);
@@ -66,59 +64,79 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
     memcpy(url + len, uri, uri_len);
     url[len + uri_len] = '\0';
 
-    fprintf(stderr, "REQUEST '%s' URL: %s\n", request_str, url);
+    d_log_normal("REQUEST '%s' URL: %s\n", request_str, url);
 
     curl_easy_setopt(handle, CURLOPT_URL, url);
     curl_easy_setopt(handle, CURLOPT_CUSTOMREQUEST, request_str);
-    curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)&chunk);
     if (content)
         curl_easy_setopt(handle, CURLOPT_POSTFIELDS, cJSON_Print(content));
 
+    CURLcode res;
+    int sent_message = 0;
+    do {
+        chunk.memory = malloc(1);
+        chunk.size = 0;
+        res = curl_easy_perform(handle);
+        *response = chunk.memory;
+
+        // checks if we're being ratelimited, if yes it waits
+        cJSON *res_json = cJSON_Parse(*response);
+        cJSON *res_msg = cJSON_GetObjectItem(res_json, "message");
+        if (cJSON_IsString(res_msg) && strncmp(res_msg->valuestring, "You are being rate limited.", 28) == 0) {
+            cJSON *wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
+            if (cJSON_IsNumber(wait_ms)) {
+                lwsl_notice("We are being ratelimited, waiting %d ms.", wait_ms->valueint);
+                usleep((unsigned int)wait_ms->valueint * 1000u);
+            }
+        } else
+            sent_message = 1;
+        cJSON_Delete(res_json);
+    } while (!sent_message);
+    return res;
+}
+
+struct curl_slist *curl_setup_discord_header(CURL *handle) {
+    curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+    curl_easy_setopt(handle, CURLOPT_ENCODING, "br, gzip, deflate");
+    curl_easy_setopt(handle, CURLOPT_ACCEPT_ENCODING, "br, gzip, deflate");
     char authorizationHeader[100];
     sprintf(authorizationHeader, "Authorization: Bot %s", DISCORD_TOKEN);
     struct curl_slist *list = NULL;
     list = curl_slist_append(list, authorizationHeader);
     list = curl_slist_append(list, "Accept: application/json");
     list = curl_slist_append(list, "Content-Type: application/json");
-    list = curl_slist_append(list, "User-Agent: DiscordBot (null, v0.0.1)");
+    list = curl_slist_append(list, "User-Agent: DiscordBot (v0.0.1)");
     curl_easy_setopt(handle, CURLOPT_HTTPHEADER, list);
-
-    CURLcode res = curl_easy_perform(handle);
-    *response = chunk.memory;
-
-    curl_slist_free_all(list);
-    curl_easy_cleanup(handle);
-    curl_global_cleanup();
-    return res;
+    return list;
 }
 
 int request_test() {
-    fprintf(stderr, "Testing HTTP requests...\n");
+    d_log_normal("Testing HTTP requests...\n");
 
     char *url = "https://www.google.com/";
     char *result;
     CURLcode res;
 
     // GET REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_GET);
+    res = request(url, &result, NULL, REQUEST_GET, NULL);
     if (res != CURLE_OK) {
-        fprintf(stderr, "%d: GET failed: %s\n", res, curl_easy_strerror(res));
+        d_log_err("%d: GET failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
-            fprintf(stderr, "Have no connection to host\n");
+            d_log_err("Have no connection to host\n");
         return 1;
     }
-    fprintf(stderr, "- GET request worked successfully\n");
+    d_log_err("- GET request worked successfully\n");
 
     // POST REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_POST);
+    res = request(url, &result, NULL, REQUEST_POST, NULL);
     if (res != CURLE_OK) {
-        fprintf(stderr, "%d: POST failed: %s\n", res, curl_easy_strerror(res));
+        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
-            fprintf(stderr, "Have no connection to host\n");
+            d_log_err("Have no connection to host\n");
         return 1;
     }
-    fprintf(stderr, "- POST request worked successfully\n");
+    d_log_notice("- POST request worked successfully\n");
 
     free(result);
 

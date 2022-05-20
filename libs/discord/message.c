@@ -1,4 +1,5 @@
 #include "structures/message.h"
+#include "../utils/disco_logging.h"
 #include "../web/request.h"
 #include <curl/curl.h>
 #include <string.h>
@@ -172,15 +173,15 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     char uri[48];
     sprintf(uri, "/channels/%s/messages", channel_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST);
+    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->handle);
     if (res != CURLE_OK) {
-        fprintf(stderr, "%d: POST failed: %s\n", res, curl_easy_strerror(res));
+        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
-            fprintf(stderr, "Have no connection to host\n");
+            d_log_err("Have no connection to host\n");
         goto end;
     }
-    fprintf(stderr, "Message sent!\n");
-    fprintf(stderr, "Response: char = %s\n", response);
+    d_log_normal("Message sent!\n");
+    d_log_normal("Response: char = %s\n", response);
 
     struct discord_message *sent_message = NULL;
     if (return_struct) { // only if a struct is requested to be returned
@@ -225,15 +226,15 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_
     char uri[70];
     sprintf(uri, "/channels/%s/messages/%s", channel_id, message_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_PATCH);
+    CURLcode res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->handle);
     if (res != CURLE_OK) {
-        fprintf(stderr, "%d: PATCH failed: %s\n", res, curl_easy_strerror(res));
+        d_log_err("%d: PATCH failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
-            fprintf(stderr, "Have no connection to host\n");
+            d_log_err("Have no connection to host\n");
         return;
     }
-    fprintf(stderr, "Message sent!\n");
-    fprintf(stderr, "Response: char = %s\n", response);
+    d_log_normal("Message sent!\n");
+    d_log_normal("Response: char = %s\n", response);
 
     cJSON_Delete(json);
     free(response);
