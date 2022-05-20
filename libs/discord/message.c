@@ -186,7 +186,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     struct discord_message *sent_message = NULL;
     if (return_struct) { // only if a struct is requested to be returned
         cJSON *res_json = cJSON_Parse(response);
-        sent_message = disco_create_message_struct_json(res_json);
+        sent_message = (struct discord_message *)disco_create_message_struct_json(res_json);
         cJSON_Delete(res_json);
     }
 end: // free up allocated stuff
@@ -240,7 +240,7 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_
     free(response);
 }
 
-struct discord_message *disco_create_message_struct_json(cJSON *data) {
+void *disco_create_message_struct_json(cJSON *data) {
     struct discord_message *msg = (struct discord_message *)calloc(1, sizeof(struct discord_message));
     cJSON *tmp_json = NULL;
 
@@ -252,11 +252,11 @@ struct discord_message *disco_create_message_struct_json(cJSON *data) {
         // only creates a user if its not a webhook
         cJSON *user = cJSON_GetObjectItem(data, "user");
         if (user)
-            msg->author = disco_create_user_struct_json(user);
+            msg->author = (struct discord_user *)disco_create_user_struct_json(user);
         // if theres additionally a member, it creates that as well
         cJSON *member = cJSON_GetObjectItem(data, "member");
         if (member)
-            msg->member = disco_create_member_struct_json(member, msg->author);
+            msg->member = (struct discord_member *)disco_create_member_struct_json(member, msg->author);
     }
     msg->content = get_string_from_json(data, "content");
     msg->timestamp = get_string_from_json(data, "timestamp");
@@ -269,10 +269,10 @@ struct discord_message *disco_create_message_struct_json(cJSON *data) {
     msg->mentions_count = cJSON_GetArraySize(tmp_json);
     if (msg->mentions_count > 0) {
         cJSON *cur = NULL;
-        msg->mentions = (struct discord_members **)malloc((size_t)msg->mentions_count * sizeof(struct discord_members *));
+        msg->mentions = (struct discord_member **)malloc((size_t)msg->mentions_count * sizeof(struct discord_members *));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mentions[i++] = disco_create_member_struct_json(cur, NULL);
+            msg->mentions[i++] = (struct discord_member *)disco_create_member_struct_json(cur, NULL);
         }
     }
 
@@ -304,30 +304,30 @@ struct discord_message *disco_create_message_struct_json(cJSON *data) {
     // activity
     tmp_json = cJSON_GetObjectItem(data, "activity");
     if (tmp_json)
-        msg->activity = disco_create_message_activity_struct_json(tmp_json);
+        msg->activity = (struct discord_message_activity *)disco_create_message_activity_struct_json(tmp_json);
 
     // application
     tmp_json = cJSON_GetObjectItem(data, "application");
     if (tmp_json)
-        msg->application = disco_create_application_struct_json(tmp_json);
+        msg->application = (struct discord_application *)disco_create_application_struct_json(tmp_json);
     msg->application_id = get_string_from_json(data, "application_id");
 
     // message_reference
     tmp_json = cJSON_GetObjectItem(data, "message_reference");
     if (tmp_json)
-        msg->message_reference = disco_create_message_reference_struct_json(tmp_json);
+        msg->message_reference = (struct discord_message_reference *)disco_create_message_reference_struct_json(tmp_json);
 
     msg->flags = get_int_from_json(data, "flags");
 
     // referenced_message
     tmp_json = cJSON_GetObjectItem(data, "referenced_message");
     if (tmp_json && !cJSON_IsNull(tmp_json))
-        msg->referenced_message = disco_create_message_struct_json(tmp_json);
+        msg->referenced_message = (struct discord_message *)disco_create_message_struct_json(tmp_json);
 
     // interaction
     tmp_json = cJSON_GetObjectItem(data, "interaction");
     if (tmp_json)
-        msg->interaction = disco_create_interaction_struct_json(tmp_json);
+        msg->interaction = (struct discord_interaction *)disco_create_interaction_struct_json(tmp_json);
 
     // components
     msg->components_count = get_array_from_json(data, "components", (void ***)&msg->components, sizeof(struct discord_component), &disco_create_component_struct_json);
@@ -347,7 +347,7 @@ void disco_destroy_message(struct discord_message *message) {
 }
 
 // TODO implement
-struct discord_message_reference *disco_create_message_reference_struct_json(cJSON *data) {
+void *disco_create_message_reference_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }

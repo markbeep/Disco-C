@@ -59,10 +59,10 @@ struct discord_channel_mention {
 };
 
 // TODO comments
-struct discord_channel *disco_create_channel_struct_json(cJSON *data);
+void *disco_create_channel_struct_json(cJSON *data);
 void disco_destroy_channel(struct discord_channel *channel);
 
-struct discord_channel_mention *disco_create_channel_mention_struct_json(cJSON *data);
+void *disco_create_channel_mention_struct_json(cJSON *data);
 void disco_destroy_channel_mention(struct discord_channel_mention *channel);
 
 #endif

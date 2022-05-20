@@ -3,11 +3,22 @@
 
 #include "../utils/cJSON.h"
 #include "../web/websocket.h"
+#include "structures/application.h"
+#include "structures/attachment.h"
+#include "structures/channel.h"
+#include "structures/component.h"
 #include "structures/message.h"
+#include "structures/message_activity.h"
+#include "structures/permission.h"
+#include "structures/reaction.h"
+#include "structures/role.h"
+#include "structures/sticker.h"
+#include "structures/thread.h"
 #include "structures/user.h"
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
+struct discord_message;
 
 typedef struct disco_event_callbacks {
     void (*on_ready)(struct bot_client *);
