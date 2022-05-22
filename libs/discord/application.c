@@ -1,7 +1,7 @@
 #include "structures/application.h"
 
 // TODO implement
-struct discord_application *disco_create_application_struct_json(cJSON *data) {
+void *disco_create_application_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }

@@ -7,7 +7,7 @@ struct discord_application {
 };
 
 // TODO implement
-struct discord_application *disco_create_application_struct_json(cJSON *data);
+void *disco_create_application_struct_json(cJSON *data);
 void disco_destroy_application(struct discord_application *application);
 
 #endif

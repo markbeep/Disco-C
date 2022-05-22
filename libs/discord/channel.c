@@ -5,7 +5,7 @@
 #include <curl/curl.h>
 
 // TODO implement
-struct discord_channel *disco_create_channel_struct_json(cJSON *data) {
+void *disco_create_channel_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }
@@ -15,7 +15,7 @@ void disco_destroy_channel(struct discord_channel *channel) {
 }
 
 // TODO implement
-struct discord_channel_mention *disco_create_channel_mention_struct_json(cJSON *data) {
+void *disco_create_channel_mention_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }

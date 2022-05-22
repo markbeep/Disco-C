@@ -82,7 +82,7 @@ struct discord_message_reference {
 };
 
 // TODO implement
-struct discord_message_reference *disco_create_message_reference_struct_json(cJSON *data);
+void *disco_create_message_reference_struct_json(cJSON *data);
 void free_discord_message_reference(struct discord_message_reference *message);
 
 // https://discord.com/developers/docs/resources/channel#create-message
@@ -171,7 +171,7 @@ struct discord_message {
 };
 
 // TODO implement
-struct discord_message *disco_create_message_struct_json(cJSON *data);
+void *disco_create_message_struct_json(cJSON *data);
 void disco_destroy_message(struct discord_message *message);
 
 /**

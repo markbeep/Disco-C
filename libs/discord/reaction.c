@@ -1,7 +1,7 @@
 #include "structures/reaction.h"
 
 // TODO implement
-struct discord_reaction *disco_create_reaction_struct_json(cJSON *data) {
+void *disco_create_reaction_struct_json(cJSON *data) {
     (void)data;
     return NULL;
 }

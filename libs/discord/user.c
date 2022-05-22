@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct discord_user *disco_create_user_struct_json(cJSON *data) {
+void *disco_create_user_struct_json(cJSON *data) {
     struct discord_user *user = (struct discord_user *)calloc(1, sizeof(struct discord_user));
     user->id = get_string_from_json(data, "id");
     user->username = get_string_from_json(data, "username");
@@ -46,7 +46,7 @@ void disco_destroy_user(struct discord_user *user) {
 }
 
 // TODO implement
-struct discord_member *disco_create_member_struct_json(cJSON *data, struct discord_user *user) {
+void *disco_create_member_struct_json(cJSON *data, struct discord_user *user) {
     (void)data;
     (void)user;
     return NULL;
