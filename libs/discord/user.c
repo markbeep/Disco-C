@@ -11,19 +11,17 @@ void *disco_create_user_struct_json(cJSON *data) {
     user->username = get_string_from_json(data, "username");
     user->discriminator = get_string_from_json(data, "discriminator");
     user->avatar = get_string_from_json(data, "avatar");
-    // for the booleans we can check if they're greater than 0
-    // -1 would mean we turn to the default value, but these are false by default
-    user->bot = get_bool_from_json(data, "bot") > 0;
-    user->system = get_bool_from_json(data, "system") > 0;
-    user->mfa_enabled = get_bool_from_json(data, "mfa_enabled") > 0;
+    user->bot = get_bool_from_json(data, "bot", 0);
+    user->system = get_bool_from_json(data, "system", 0);
+    user->mfa_enabled = get_bool_from_json(data, "mfa_enabled", 0);
     user->banner = get_string_from_json(data, "banner");
-    user->accent_color = get_int_from_json(data, "accent_color");
+    user->accent_color = get_int_from_json(data, "accent_color", 0);
     user->locale = get_string_from_json(data, "locale");
-    user->verified = get_bool_from_json(data, "verified");
+    user->verified = get_bool_from_json(data, "verified", 0);
     user->email = get_string_from_json(data, "email");
-    user->flags = get_int_from_json(data, "flags");
-    user->premium_type = get_int_from_json(data, "premium_type");
-    user->public_flags = get_int_from_json(data, "public_flags");
+    user->flags = get_int_from_json(data, "flags", 0);
+    user->premium_type = get_int_from_json(data, "premium_type", 0);
+    user->public_flags = get_int_from_json(data, "public_flags", 0);
     return user;
 }
 
@@ -52,6 +50,6 @@ void *disco_create_member_struct_json(cJSON *data, struct discord_user *user) {
     return NULL;
 }
 
-void disco_destroy_member(struct discord_user *member) {
+void disco_destroy_member(struct discord_member *member) {
     (void)member;
 }

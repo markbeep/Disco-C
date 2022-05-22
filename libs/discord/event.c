@@ -29,6 +29,7 @@ void event_handle(bot_client_t *bot_client, cJSON *data, char *event) {
         if (bot_client->callbacks->on_message) {
             struct discord_message *message = (struct discord_message *)disco_create_message_struct_json(data);
             bot_client->callbacks->on_message(bot_client, message);
+            disco_destroy_message(message);
         }
         TIMER_END("message_event");
     }

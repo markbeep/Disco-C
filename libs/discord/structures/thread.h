@@ -1,6 +1,8 @@
 #ifndef DISCO_THREAD
 #define DISCO_THREAD
 
+#include "../../utils/cJSON.h"
+
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {
     int archived;
@@ -11,6 +13,10 @@ struct discord_thread_metadata {
     char *create_timestamp;
 };
 
+// TODO implement
+void *disco_create_thread_metadata_struct_json(cJSON *data);
+void disco_destroy_thread_metadata(struct discord_thread_metadata *thread);
+
 // https://discord.com/developers/docs/resources/channel#thread-member-object
 struct discord_thread_member {
     char *id;
@@ -18,5 +24,9 @@ struct discord_thread_member {
     char *join_timestamp;
     int flags;
 };
+
+// TODO implement
+void *disco_create_thread_member_struct_json(cJSON *data);
+void disco_destroy_thread_member(struct discord_thread_member *member);
 
 #endif

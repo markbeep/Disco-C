@@ -11,7 +11,7 @@ prio_node_t *prio_push(struct prio_queue *queue, enum Request_Type request_type,
     if (!queue) {
         struct prio_queue *q = (struct prio_queue *)malloc(sizeof(struct prio_queue));
         q->head = node;
-        return q;
+        return node;
     }
     prio_node_t *cur = queue->head;
     prio_node_t *prev = NULL;
@@ -40,7 +40,7 @@ prio_node_t *prio_pop(struct prio_queue *queue) {
 
 void prio_destroy_node(prio_node_t *node) {
     if (!node)
-        return NULL;
+        return;
     if (node->data)
         free(node->data);
     free(node);

@@ -47,8 +47,24 @@ void disco_start_bot(disco_event_callbacks_t *callbacks);
 void disco_free_bot(bot_client_t *bot);
 
 char *get_string_from_json(cJSON *data, const char *name);
-int get_bool_from_json(cJSON *data, const char *name);
-int get_int_from_json(cJSON *data, const char *name);
+/**
+ * @brief Get a bool from json object
+ *
+ * @param data
+ * @param name
+ * @param def The default value incase the field doesn't exist
+ * @return int
+ */
+int get_bool_from_json(cJSON *data, const char *name, int def);
+/**
+ * @brief Get an int from json object
+ *
+ * @param data
+ * @param name
+ * @param def The default value incase the field doesn't exist
+ * @return int
+ */
+int get_int_from_json(cJSON *data, const char *name, int def);
 
 typedef void *(*disco_struct_fn)(cJSON *);
 int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, disco_struct_fn func);

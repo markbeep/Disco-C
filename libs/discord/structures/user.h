@@ -55,6 +55,6 @@ void disco_destroy_user(struct discord_user *user);
 
 // TODO comment
 void *disco_create_member_struct_json(cJSON *data, struct discord_user *user);
-void disco_destroy_member(struct discord_user *member);
+void disco_destroy_member(struct discord_member *member);
 
 #endif

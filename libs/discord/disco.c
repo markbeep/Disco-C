@@ -46,19 +46,19 @@ char *get_string_from_json(cJSON *data, const char *name) {
     return strndup(field->valuestring, 4096);
 }
 
-int get_bool_from_json(cJSON *data, const char *name) {
+int get_bool_from_json(cJSON *data, const char *name, int def) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsBool(field))
-        return -1;
+        return def;
     if (field->valueint)
         return 1;
     return 0;
 }
 
-int get_int_from_json(cJSON *data, const char *name) {
+int get_int_from_json(cJSON *data, const char *name, int def) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsNumber(field))
-        return 0;
+        return def;
     return field->valueint;
 }
 

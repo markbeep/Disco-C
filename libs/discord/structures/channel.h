@@ -6,7 +6,7 @@
 #include "user.h"
 
 // https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-enum discord_channel_type { GUILD_TEXT,
+enum Discord_Channel_Type { GUILD_TEXT,
                             GUILD_VOICE,
                             GROUP_DM,
                             GUILD_CATEGORY,
@@ -21,7 +21,7 @@ enum discord_channel_type { GUILD_TEXT,
 // https://discord.com/developers/docs/resources/channel#channel-object
 struct discord_channel {
     char *id;
-    enum discord_channel_type type;
+    enum Discord_Channel_Type type;
     char *guild_id;
     int position;
     struct discord_overwrite **permission_overwrites;
@@ -51,6 +51,7 @@ struct discord_channel {
     int flags;
 };
 
+// https://discord.com/developers/docs/resources/channel#channel-mention-object
 struct discord_channel_mention {
     char *id;
     char *guild_id;
@@ -58,11 +59,32 @@ struct discord_channel_mention {
     char *name;
 };
 
-// TODO comments
+/**
+ * @brief Creates a channel structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_channel struct
+ */
 void *disco_create_channel_struct_json(cJSON *data);
-void disco_destroy_channel(struct discord_channel *channel);
+/**
+ * @brief Destroys the given structure and frees the pointer
+ *
+ * @param ch channel struct
+ */
+void disco_destroy_channel(struct discord_channel *ch);
 
+/**
+ * @brief Creates a channel_mention structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_channel_mention struct
+ */
 void *disco_create_channel_mention_struct_json(cJSON *data);
-void disco_destroy_channel_mention(struct discord_channel_mention *channel);
+/**
+ * @brief Destroys the given structure and frees the pointer
+ *
+ * @param ch channel_mention struct
+ */
+void disco_destroy_channel_mention(struct discord_channel_mention *ch);
 
 #endif

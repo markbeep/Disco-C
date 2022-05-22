@@ -5,6 +5,7 @@
 #include "attachment.h"
 #include "channel.h"
 #include "component.h"
+#include "embed.h"
 #include "message_activity.h"
 #include "reaction.h"
 #include "sticker.h"
@@ -24,56 +25,7 @@ struct discord_allowed_mentions {
     int replied_user;
 };
 
-struct discord_embed_footer {
-    char *text;
-    char *icon_url;
-    char *proxy_icon_url;
-};
-
-// video, image and thumbnail are all the same format
-struct discord_embed_media {
-    char *url;
-    char *proxy_url;
-    int height;
-    int width;
-};
-
-struct discord_embed_provider {
-    char *name;
-    char *url;
-};
-
-struct discord_embed_author {
-    char *name;
-    char *url;
-    char *icon_url;
-    char *proxy_icon_url;
-};
-
-struct discord_embed_field {
-    char *name;
-    char *value;
-    int is_inline; // called "inline"
-};
-
-// https://discord.com/developers/docs/resources/channel#embed-object
-struct discord_embed {
-    char *title;
-    char *type; // should always be "rich" for generic embed
-    char *description;
-    char *url;
-    char *timestamp;
-    int color;
-    struct discord_embed_footer *footer;
-    struct discord_embed_media *image;
-    struct discord_embed_media *thumbnail;
-    struct discord_embed_media *video;
-    struct discord_embed_provider *provider;
-    struct discord_embed_author *author;
-    struct discord_embed_field **fields;
-    int fields_count;
-};
-
+// https://discord.com/developers/docs/resources/channel#message-reference-object
 struct discord_message_reference {
     char *message_id;
     char *channel_id;
@@ -81,9 +33,19 @@ struct discord_message_reference {
     int fail_if_not_exists;
 };
 
-// TODO implement
+/**
+ * @brief Creates a message_reference structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_message_reference struct
+ */
 void *disco_create_message_reference_struct_json(cJSON *data);
-void free_discord_message_reference(struct discord_message_reference *message);
+/**
+ * @brief Destroys the given structure and frees the pointer
+ *
+ * @param message
+ */
+void disco_destroy_message_reference(struct discord_message_reference *message);
 
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
@@ -170,8 +132,18 @@ struct discord_message {
     int stickers_count;
 };
 
-// TODO implement
+/**
+ * @brief Creates a message structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_message struct
+ */
 void *disco_create_message_struct_json(cJSON *data);
+/**
+ * @brief Destroys the given structure and frees the pointer
+ *
+ * @param message
+ */
 void disco_destroy_message(struct discord_message *message);
 
 /**

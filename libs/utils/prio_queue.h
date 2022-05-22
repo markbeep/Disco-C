@@ -7,12 +7,14 @@ struct discord_prio_packet {
     cJSON *json;
 };
 
+typedef struct prio_node prio_node_t;
+
 typedef struct prio_node {
     struct discord_prio_packet *data;
     prio_node_t *next;
 } prio_node_t;
 
-typedef struct prio_queue {
+struct prio_queue {
     prio_node_t *head;
 };
 
