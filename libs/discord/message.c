@@ -133,7 +133,6 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
 }
 
 struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
-    (void)bot;
     cJSON *json = cJSON_CreateObject();
 
     // content
@@ -173,7 +172,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     char uri[48];
     sprintf(uri, "/channels/%s/messages", channel_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->handle);
+    CURLcode res = request(uri, &response, json, REQUEST_POST);
     if (res != CURLE_OK) {
         d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
@@ -226,7 +225,7 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_
     char uri[70];
     sprintf(uri, "/channels/%s/messages/%s", channel_id, message_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->handle);
+    CURLcode res = request(uri, &response, json, REQUEST_PATCH);
     if (res != CURLE_OK) {
         d_log_err("%d: PATCH failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)

@@ -30,6 +30,8 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             disco_channel_edit_message(bot, time_passed, msg->channel_id, msg->id, NULL);
             // don't forget to destroy the message in the end to avoid memory leaks
             disco_destroy_message(msg);
+        } else if (strncmp(message->content, "!exit", 6) == 0) {
+            websocket_close(bot);
         }
     }
 }

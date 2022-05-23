@@ -14,11 +14,10 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     websocket_client_t client = {0};
 
     curl_global_init(CURL_GLOBAL_ALL);
-    client.handle = curl_easy_init();
-    struct curl_slist *list = curl_setup_discord_header(client.handle);
 
     bot.websocket_client = &client;
     bot.callbacks = callbacks;
+    bot.thread_pool = t_pool_init(t_process_count());
 
     // creates the client
     websocket_create(&client, &gateway_on_receive);
@@ -27,16 +26,19 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     // starts the event loop which is BLOCKING
     gateway_event_loop(&bot);
 
-    curl_slist_free_all(list);
-    curl_easy_cleanup(client.handle);
+    // cleanup
+    // closes and waits for all threads
+    t_pool_destroy(bot.thread_pool);
+    websocket_destroy_client(&client);
+    // if there is a bot user, destroy it
+    if (bot.user)
+        disco_destroy_user(bot.user);
     curl_global_cleanup();
 }
 
+// TODO fix implementation
 void disco_free_bot(bot_client_t *bot) {
-    websocket_destroy_client(bot);
-    if (bot->user)
-        disco_destroy_user(bot->user);
-    free(bot);
+    (void)bot;
 }
 
 char *get_string_from_json(cJSON *data, const char *name) {

@@ -26,8 +26,6 @@ typedef struct websocket_client {
     int connected;
     // if a heartbeat thread has already been started
     int heartbeat_active;
-    // curl handle for sending requests
-    CURL *handle;
 } websocket_client_t;
 
 /**
@@ -77,7 +75,7 @@ void websocket_reconnect(bot_client_t *bot_client);
  *
  * @param bot_client
  */
-void websocket_destroy_client(bot_client_t *bot_client);
+void websocket_destroy_client(websocket_client_t *client);
 
 int websocket_test();
 

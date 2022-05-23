@@ -4,8 +4,6 @@
 #include "../utils/cJSON.h"
 #include "disco.h"
 
-void channel_test_send_message(bot_client_t *client, char *content);
-
 /**
  * @brief All event websocket responses call this function.
  *
@@ -14,5 +12,10 @@ void channel_test_send_message(bot_client_t *client, char *content);
  * @param event The event that was called as a string
  */
 void event_handle(bot_client_t *bot_client, cJSON *data, char *event);
+
+typedef struct event_pool_workload {
+    bot_client_t *bot;
+    cJSON *data;
+} event_pool_workload_t;
 
 #endif

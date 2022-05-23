@@ -41,13 +41,11 @@ static void gateway_handle_dispatch(bot_client_t *bot_client, cJSON *json) {
     if (cJSON_IsNumber(local_s) && local_s->valueint > s)
         s = local_s->valueint;
 
+    // freed after the event is handled
     cJSON *event_type = cJSON_GetObjectItemCaseSensitive(json, "t");
+    // freed once the event struct is created
     cJSON *data = cJSON_GetObjectItemCaseSensitive(json, "d");
     event_handle(bot_client, data, event_type->valuestring);
-
-    free(data);
-    free(event_type);
-    free(local_s);
 }
 
 void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
@@ -111,10 +109,8 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
         d_log_err("JSON missing opcode\n");
     }
 
-    free(op);
-
 json_cleanup:
-    free(result);
+    cJSON_Delete(result);
 }
 
 void *gateway_heartbeat_loop(void *vargp) {

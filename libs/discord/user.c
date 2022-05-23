@@ -31,7 +31,7 @@ void disco_destroy_user(struct discord_user *user) {
     if (user->username)
         free(user->username);
     if (user->discriminator)
-        free(user->avatar);
+        free(user->discriminator);
     if (user->avatar)
         free(user->avatar);
     if (user->banner)

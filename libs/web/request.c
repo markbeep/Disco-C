@@ -32,7 +32,11 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type, CURL *handle) {
+CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type) {
+    // we create a new handle each call because we can't use the same handle over multiple threads
+    CURL *handle = curl_easy_init();
+    struct curl_slist *list = curl_setup_discord_header(handle);
+
     char *request_str = NULL;
     switch (request_type) {
     case REQUEST_GET:
@@ -93,6 +97,9 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
             sent_message = 1;
         cJSON_Delete(res_json);
     } while (!sent_message);
+
+    curl_slist_free_all(list);
+    curl_easy_cleanup(handle);
     return res;
 }
 
@@ -119,7 +126,7 @@ int request_test() {
     CURLcode res;
 
     // GET REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_GET, NULL);
+    res = request(url, &result, NULL, REQUEST_GET);
     if (res != CURLE_OK) {
         d_log_err("%d: GET failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
@@ -129,7 +136,7 @@ int request_test() {
     d_log_err("- GET request worked successfully\n");
 
     // POST REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_POST, NULL);
+    res = request(url, &result, NULL, REQUEST_POST);
     if (res != CURLE_OK) {
         d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)

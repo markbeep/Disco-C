@@ -2,6 +2,7 @@
 #define DISCO
 
 #include "../utils/cJSON.h"
+#include "../utils/t_pool.h"
 #include "../web/websocket.h"
 #include "structures/application.h"
 #include "structures/attachment.h"
@@ -29,6 +30,7 @@ typedef struct bot_client {
     websocket_client_t *websocket_client;
     disco_event_callbacks_t *callbacks;
     struct discord_user *user;
+    t_pool_t *thread_pool;
 } bot_client_t;
 
 /**

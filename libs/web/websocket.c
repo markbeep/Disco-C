@@ -115,11 +115,9 @@ int websocket_connect(bot_client_t *bot_client) {
     return 0;
 }
 
-void websocket_destroy_client(bot_client_t *bot_client) {
-    lws_context_destroy(bot_client->websocket_client->context);
-    free(bot_client->websocket_client->callbacks);
-    free(bot_client->websocket_client->wsi);
-    free(bot_client->websocket_client);
+void websocket_destroy_client(websocket_client_t *client) {
+    lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
+    lws_context_destroy(client->context);
 }
 
 int websocket_send(struct lws *wsi, char *data, size_t len) {
@@ -141,7 +139,6 @@ void websocket_reconnect(bot_client_t *bot_client) {
 
 void websocket_close(bot_client_t *bot_client) {
     websocket_client_t *client = bot_client->websocket_client;
-    lws_set_timeout(client->wsi, PENDING_TIMEOUT_USER_REASON_BASE, LWS_TO_KILL_SYNC);
     lws_cancel_service(client->context);
     client->connected = 0;
     client->heartbeat_active = 0;
