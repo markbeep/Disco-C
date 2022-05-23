@@ -7,12 +7,9 @@
 void thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
     while (1) {
-        d_log_debug("Thread %ld into loop\n", syscall(__NR_gettid));
         pthread_mutex_lock(pool->lock);
         while (pool->work_count == 0 && !pool->stop) {
-            d_log_debug("Thread %ld going to sleep\n", syscall(__NR_gettid));
             pthread_cond_wait(pool->work_cond, pool->lock);
-            d_log_debug("Thread %ld woke up\n", syscall(__NR_gettid));
         }
         if (pool->stop) {
             pool->thread_count--;
@@ -26,6 +23,7 @@ void thread_work_loop(void *tp) {
         // we can now unlock as the work afterwards is single memory
         pthread_mutex_unlock(pool->lock);
         work->func(work->arg);
+        free(work);
     }
 }
 
@@ -109,8 +107,11 @@ void t_pool_destroy(t_pool_t *tp) {
     // waits for all threads to finish
     t_pool_wait(tp);
     pthread_cond_destroy(tp->work_cond);
+    free(tp->work_cond);
     pthread_cond_destroy(tp->finished_cond);
+    free(tp->finished_cond);
     pthread_mutex_destroy(tp->lock);
+    free(tp->lock);
     free(tp);
 }
 

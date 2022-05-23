@@ -8,7 +8,7 @@
 
 int main() {
     // Enable logging
-    d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE | D_LOG_DEBUG);
+    d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE);
 
     // init to 0. Without this some errors could show up
     disco_event_callbacks_t callbacks = {0};

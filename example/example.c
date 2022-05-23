@@ -31,7 +31,10 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             // don't forget to destroy the message in the end to avoid memory leaks
             disco_destroy_message(msg);
         } else if (strncmp(message->content, "!exit", 6) == 0) {
+            bot->websocket_client->active = 0;
             websocket_close(bot);
+        } else if (strncmp(message->content, "!r", 3) == 0) {
+            websocket_reconnect(bot);
         }
     }
 }

@@ -27,6 +27,13 @@ typedef struct t_work {
 
 t_pool_t *t_pool_init(unsigned int num_t);
 int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
+/**
+ * @brief Pops the head of the pool and returns the pointer to the head.
+ * IMPORTANT: The received work needs to be freed to avoid memory leak!
+ *
+ * @param tp
+ * @return t_work_t*
+ */
 t_work_t *t_pool_pop_work(t_pool_t *tp);
 void t_pool_wait(t_pool_t *tp);
 void t_pool_destroy(t_pool_t *tp);

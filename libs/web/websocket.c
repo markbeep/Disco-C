@@ -19,18 +19,27 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
+        bot_client->websocket_client->connected = 0;
         lwsl_err("CLIENT CONNECTION ERROR: %s\n", in ? (char *)in : "(null)");
         websocket_close(bot_client);
         return -1;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
+        bot_client->websocket_client->connected = 1;
         lwsl_user("%s: established connection, wsi = %p\n", __func__, (void *)wsi);
         lws_callback_on_writable(wsi);
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
+        bot_client->websocket_client->connected = 0;
         lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
-        websocket_close(bot_client);
+        if (bot_client->websocket_client->reconnect) {
+            websocket_connect(bot_client);
+            bot_client->websocket_client->reconnect = 0;
+        } else { // something else went wrong, so closing bot
+            bot_client->websocket_client->active = 0;
+            websocket_close(bot_client);
+        }
         return -1;
 
     case LWS_CALLBACK_CLIENT_RECEIVE:
@@ -49,6 +58,8 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
             if (client && client->callbacks && client->callbacks->on_receive)
                 client->callbacks->on_receive(bot_client, client->content, client->size);
             client->size = 0;
+            free(client->content);
+            client->content = (char *)malloc(1);
         }
         lws_callback_on_writable(wsi);
         break;
@@ -58,6 +69,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     default:
+        lwsl_notice("other callback message\n");
         break;
     }
 
@@ -83,6 +95,7 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
     }
     client->context = context;
     client->connected = 0;
+    client->active = 1;
     client->heartbeat_active = 0;
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
@@ -110,14 +123,22 @@ int websocket_connect(bot_client_t *bot_client) {
     bot_client->websocket_client->wsi = lws_client_connect_via_info(&i);
     bot_client->websocket_client->content = (char *)malloc(1);
     bot_client->websocket_client->size = 0;
-    bot_client->websocket_client->connected = 1;
+    bot_client->websocket_client->active = 1;
 
     return 0;
 }
 
 void websocket_destroy_client(websocket_client_t *client) {
-    lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
+    // closes the connection if there is one
+    if (client->connected)
+        lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
     lws_context_destroy(client->context);
+    client->active = 0;
+    client->heartbeat_active = 0;
+    free(client->callbacks);
+    free(client->content);
+    if (client->heartbeat_active)
+        pthread_join(client->heartbeat_thread, NULL);
 }
 
 int websocket_send(struct lws *wsi, char *data, size_t len) {
@@ -133,15 +154,19 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
 }
 
 void websocket_reconnect(bot_client_t *bot_client) {
+    lwsl_notice("Reconnecting");
+    bot_client->websocket_client->reconnect = 1;
     websocket_close(bot_client);
-    websocket_connect(bot_client);
 }
 
 void websocket_close(bot_client_t *bot_client) {
     websocket_client_t *client = bot_client->websocket_client;
+    if (client->heartbeat_active) {
+        client->heartbeat_active = 0;
+        pthread_join(client->heartbeat_thread, NULL);
+    }
+    lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
     lws_cancel_service(client->context);
-    client->connected = 0;
-    client->heartbeat_active = 0;
 }
 
 static void sigint_handler(int sig) {
@@ -157,10 +182,10 @@ int websocket_test() {
     websocket_client_t *client = (websocket_client_t *)malloc(sizeof(struct websocket_client));
     websocket_create(client, NULL);
 
-    while (client->connected)
+    while (client->active)
         lws_service(client->context, 0);
 
-    lwsl_notice("%s: exiting service loop. n = %d, connected = %d\n", __func__, n, client->connected);
+    lwsl_notice("%s: exiting service loop. n = %d, connected = %d\n", __func__, n, client->active);
 
     return 0;
 }

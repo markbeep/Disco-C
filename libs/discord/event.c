@@ -6,7 +6,6 @@
 #include "structures/user.h"
 
 void event_handle_message_create(void *m) {
-    d_log_debug("Inside event handle thread\n");
     event_pool_workload_t *work = (event_pool_workload_t *)m;
     struct discord_message *message = (struct discord_message *)work->data;
     work->bot->callbacks->on_message(work->bot, message);

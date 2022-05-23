@@ -30,7 +30,7 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len);
  * @param vargp Pointer to the active websocket client
  * @return void*
  */
-void *gateway_heartbeat_loop(void *vargp);
+void gateway_heartbeat_loop(void *vargp);
 
 /**
  * @brief Initiates the event loop. This is the main loop that needs to be run

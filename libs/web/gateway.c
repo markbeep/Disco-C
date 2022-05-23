@@ -19,9 +19,9 @@ static void gateway_handle_identify(websocket_client_t *client) {
     websocket_send(client->wsi, response, strnlen(response, 256));
 
     if (!client->heartbeat_active) {
+        d_log_notice("Creating heartbeat thread\n");
         client->heartbeat_active = 1;
-        pthread_t thread_id;
-        pthread_create(&thread_id, NULL, gateway_heartbeat_loop, (void *)client);
+        pthread_create(&client->heartbeat_thread, NULL, gateway_heartbeat_loop, (void *)client);
     }
 }
 
@@ -35,7 +35,7 @@ static void gateway_send_heartbeat(websocket_client_t *client) {
     websocket_send(client->wsi, response, strnlen(response, 128));
 }
 
-static void gateway_handle_dispatch(bot_client_t *bot_client, cJSON *json) {
+static void gateway_handle_dispatch(bot_client_t *bot, cJSON *json) {
     // increases the sequence ID if the new value is greater
     cJSON *local_s = cJSON_GetObjectItemCaseSensitive(json, "s");
     if (cJSON_IsNumber(local_s) && local_s->valueint > s)
@@ -45,10 +45,10 @@ static void gateway_handle_dispatch(bot_client_t *bot_client, cJSON *json) {
     cJSON *event_type = cJSON_GetObjectItemCaseSensitive(json, "t");
     // freed once the event struct is created
     cJSON *data = cJSON_GetObjectItemCaseSensitive(json, "d");
-    event_handle(bot_client, data, event_type->valuestring);
+    event_handle(bot, data, event_type->valuestring);
 }
 
-void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
+void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
     (void)len;
 
     cJSON *result = cJSON_Parse(data);
@@ -66,9 +66,9 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
         switch (op->valueint) {
         case DISCORD_DISPATCH:
             d_log_notice("Received DISPATCH \n");
-            d_log_normal("Dispatch data: %s\n", data);
+            d_log_debug("Dispatch data: %s\n", data);
 
-            gateway_handle_dispatch(bot_client, result);
+            gateway_handle_dispatch(bot, result);
             break;
 
         case DISCORD_RECONNECT:
@@ -77,11 +77,12 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
 
         case DISCORD_INVALID_SESSION:
             d_log_notice("Received INVALID SESSION\n");
+            websocket_reconnect(bot);
             break;
 
         case DISCORD_HELLO:
             d_log_notice("Received HELLO: %s\n\n", data);
-            gateway_handle_identify(bot_client->websocket_client);
+            gateway_handle_identify(bot->websocket_client);
 
             // gets the heartbeat interval out of the data adjusts
             cJSON *d = cJSON_GetObjectItemCaseSensitive(result, "d");
@@ -95,7 +96,7 @@ void gateway_on_receive(bot_client_t *bot_client, char *data, size_t len) {
             break;
 
         case DISCORD_HEARTBEAT:
-            gateway_send_heartbeat(bot_client->websocket_client);
+            gateway_send_heartbeat(bot->websocket_client);
             break;
 
         case DISCORD_HEARTBEAT_ACK:
@@ -113,17 +114,23 @@ json_cleanup:
     cJSON_Delete(result);
 }
 
-void *gateway_heartbeat_loop(void *vargp) {
+void gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
-    while (client->connected && client->heartbeat_active) {
-        gateway_send_heartbeat(client);
-        usleep(HEARTBEAT_INTERVAL * 1000);
+    int64_t t = HEARTBEAT_INTERVAL;
+    useconds_t slp = 1e5; // 100ms
+    while (client->active && client->heartbeat_active) {
+        t += 1;
+        if (t * 100 >= HEARTBEAT_INTERVAL) {
+            gateway_send_heartbeat(client);
+            t = 0;
+        }
+        usleep(slp);
     }
-    return NULL;
+    d_log_debug("Heartbeat loop closing\n");
 }
 
 void gateway_event_loop(bot_client_t *bot) {
-    while (bot->websocket_client->connected) {
+    while (bot->websocket_client->active) {
         lws_service(bot->websocket_client->context, 500);
     }
 }

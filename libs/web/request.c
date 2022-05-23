@@ -73,8 +73,11 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
     curl_easy_setopt(handle, CURLOPT_URL, url);
     curl_easy_setopt(handle, CURLOPT_CUSTOMREQUEST, request_str);
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)&chunk);
-    if (content)
-        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, cJSON_Print(content));
+    char *content_p = NULL;
+    if (content) {
+        content_p = cJSON_Print(content);
+        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, content_p);
+    }
 
     CURLcode res;
     int sent_message = 0;
@@ -98,6 +101,8 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
         cJSON_Delete(res_json);
     } while (!sent_message);
 
+    if (content_p)
+        free(content_p);
     curl_slist_free_all(list);
     curl_easy_cleanup(handle);
     return res;
