@@ -4,7 +4,7 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-void thread_work_loop(void *tp) {
+static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
     while (1) {
         pthread_mutex_lock(pool->lock);
@@ -25,9 +25,10 @@ void thread_work_loop(void *tp) {
         work->func(work->arg);
         free(work);
     }
+    return NULL;
 }
 
-t_pool_t *t_pool_init(unsigned int num_t) {
+t_pool_t *t_pool_init(int num_t) {
     t_pool_t *pool = malloc(sizeof(struct t_pool));
     pool->first_work = NULL;
     pool->last_work = NULL;
@@ -46,7 +47,7 @@ t_pool_t *t_pool_init(unsigned int num_t) {
 
     // TODO create the threads
     pthread_t thread;
-    for (unsigned int i = 0; i < num_t; i++) {
+    for (int i = 0; i < num_t; i++) {
         pthread_create(&thread, NULL, &thread_work_loop, (void *)pool);
         pthread_detach(thread);
     }
@@ -115,6 +116,6 @@ void t_pool_destroy(t_pool_t *tp) {
     free(tp);
 }
 
-unsigned int t_process_count() {
-    return (unsigned int)sysconf(_SC_NPROCESSORS_ONLN);
+int t_process_count() {
+    return (int)sysconf(_SC_NPROCESSORS_ONLN);
 }

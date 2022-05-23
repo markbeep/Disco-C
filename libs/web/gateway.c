@@ -114,7 +114,7 @@ json_cleanup:
     cJSON_Delete(result);
 }
 
-void gateway_heartbeat_loop(void *vargp) {
+void *gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
     int64_t t = HEARTBEAT_INTERVAL;
     useconds_t slp = 1e5; // 100ms
@@ -127,6 +127,7 @@ void gateway_heartbeat_loop(void *vargp) {
         usleep(slp);
     }
     d_log_debug("Heartbeat loop closing\n");
+    return NULL;
 }
 
 void gateway_event_loop(bot_client_t *bot) {

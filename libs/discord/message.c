@@ -133,6 +133,7 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
 }
 
 struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
+    (void)bot;
     cJSON *json = cJSON_CreateObject();
 
     // content
@@ -195,7 +196,7 @@ end: // free up allocated stuff
 }
 
 void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message) {
-
+    (void)bot;
     cJSON *json = cJSON_CreateObject();
 
     // content

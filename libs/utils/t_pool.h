@@ -17,7 +17,7 @@ typedef struct t_pool {
     pthread_cond_t *finished_cond;
 } t_pool_t;
 
-typedef void (*t_func)(t_pool_t *);
+typedef void (*t_func)(void *);
 
 typedef struct t_work {
     t_func func;
@@ -25,7 +25,7 @@ typedef struct t_work {
     t_work_t *next;
 } t_work_t;
 
-t_pool_t *t_pool_init(unsigned int num_t);
+t_pool_t *t_pool_init(int num_t);
 int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
 /**
  * @brief Pops the head of the pool and returns the pointer to the head.
@@ -37,6 +37,6 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
 t_work_t *t_pool_pop_work(t_pool_t *tp);
 void t_pool_wait(t_pool_t *tp);
 void t_pool_destroy(t_pool_t *tp);
-unsigned int t_process_count();
+int t_process_count();
 
 #endif
