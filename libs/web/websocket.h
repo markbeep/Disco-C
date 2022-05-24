@@ -61,8 +61,8 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
 int websocket_connect(bot_client_t *bot_client);
 
 /**
- * @brief Attempts to close the websocket connection.
- * Currently doesn't work as intended and doesn't send a closing package.
+ * @brief Closes the websocket connection and sends a
+ * normal close reason to the websocket server reason.
  *
  * @param bot_client
  */

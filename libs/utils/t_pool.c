@@ -40,12 +40,7 @@ t_pool_t *t_pool_init(int num_t) {
     pool->lock = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
     pthread_cond_init(pool->work_cond, NULL);
     pthread_cond_init(pool->finished_cond, NULL);
-    pthread_mutexattr_t attr;
-    pthread_mutexattr_init(&attr);
-    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
-    pthread_mutex_init(pool->lock, &attr);
 
-    // TODO create the threads
     pthread_t thread;
     for (int i = 0; i < num_t; i++) {
         pthread_create(&thread, NULL, &thread_work_loop, (void *)pool);
@@ -77,7 +72,6 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg) {
 }
 
 t_work_t *t_pool_pop_work(t_pool_t *tp) {
-    pthread_mutex_lock(tp->lock);
     if (tp->work_count == 0)
         return NULL;
     t_work_t *head = tp->first_work;
@@ -88,7 +82,6 @@ t_work_t *t_pool_pop_work(t_pool_t *tp) {
         tp->last_work = NULL;
     }
     tp->work_count--;
-    pthread_mutex_unlock(tp->lock);
     return head;
 }
 

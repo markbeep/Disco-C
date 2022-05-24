@@ -3,10 +3,16 @@
 
 #include <pthread.h>
 
+typedef void (*t_func)(void *);
 typedef struct t_work t_work_t;
 
+typedef struct t_work {
+    t_func func;
+    void *arg;
+    t_work_t *next;
+} t_work_t;
+
 typedef struct t_pool {
-    pthread_t **threads;
     t_work_t *first_work;
     t_work_t *last_work;
     int work_count;   // amount of active work load
@@ -17,20 +23,20 @@ typedef struct t_pool {
     pthread_cond_t *finished_cond;
 } t_pool_t;
 
-typedef void (*t_func)(void *);
-
-typedef struct t_work {
-    t_func func;
-    void *arg;
-    t_work_t *next;
-} t_work_t;
-
 t_pool_t *t_pool_init(int num_t);
+/**
+ * @brief Adds work to the thread pool.
+ *
+ * @param tp
+ * @param func
+ * @param work
+ * @return int
+ */
 int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
 /**
  * @brief Pops the head of the pool and returns the pointer to the head.
  * IMPORTANT: The received work needs to be freed to avoid memory leak!
- *
+ * (Not thread-safe)
  * @param tp
  * @return t_work_t*
  */

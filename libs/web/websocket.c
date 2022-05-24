@@ -36,7 +36,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         if (bot_client->websocket_client->reconnect) {
             websocket_connect(bot_client);
             bot_client->websocket_client->reconnect = 0;
-        } else { // something else went wrong, so closing bot
+        } else { // internet failed or the websocket was closed on purpose
             bot_client->websocket_client->active = 0;
             websocket_close(bot_client);
         }
