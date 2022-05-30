@@ -1,7 +1,7 @@
 #ifndef EVENT
 #define EVENT
 
-#include "../utils/cJSON.h"
+#include "../utils/cJSON/cJSON.h"
 #include "disco.h"
 
 /**

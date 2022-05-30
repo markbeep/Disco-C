@@ -1,7 +1,7 @@
 #ifndef DISCO_APPLICATION
 #define DISCO_APPLICATION
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 #include "user.h"
 
 // https://discord.com/developers/docs/topics/teams#data-models-team-member-object

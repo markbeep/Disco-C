@@ -1,7 +1,7 @@
 #ifndef DISCO_REACTION
 #define DISCO_REACTION
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 struct discord_reaction {
 };

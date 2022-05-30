@@ -1,7 +1,7 @@
 #ifndef DISCO_THREAD
 #define DISCO_THREAD
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {

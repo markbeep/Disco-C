@@ -1,7 +1,7 @@
 #ifndef DISCO_MESSAGE_ACTIVITY
 #define DISCO_MESSAGE_ACTIVITY
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 struct discord_message_activity {
 };

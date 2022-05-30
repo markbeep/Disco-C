@@ -1,5 +1,5 @@
 #include "disco.h"
-#include "../utils/cJSON.h"
+#include "../utils/cJSON/cJSON.h"
 #include "../web/gateway.h"
 #include "../web/request.h"
 #include <curl/curl.h>

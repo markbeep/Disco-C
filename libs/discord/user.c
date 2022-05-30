@@ -1,5 +1,5 @@
 #include "structures/user.h"
-#include "../utils/cJSON.h"
+#include "../utils/cJSON/cJSON.h"
 #include "disco.h"
 #include <stdio.h>
 #include <stdlib.h>

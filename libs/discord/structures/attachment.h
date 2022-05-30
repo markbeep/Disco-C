@@ -1,7 +1,7 @@
 #ifndef DISCO_ATTACHMENT
 #define DISCO_ATTACHMENT
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 // https://discord.com/developers/docs/resources/channel#attachment-object
 struct discord_attachment {

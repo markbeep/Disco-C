@@ -1,7 +1,7 @@
 #ifndef DISCO
 #define DISCO
 
-#include "../utils/cJSON.h"
+#include "../utils/cJSON/cJSON.h"
 #include "../utils/t_pool.h"
 #include "../web/websocket.h"
 #include "structures/application.h"

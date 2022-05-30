@@ -1,7 +1,7 @@
 #ifndef DISCO_STICKER
 #define DISCO_STICKER
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 struct discord_message_sticker_item {
 };

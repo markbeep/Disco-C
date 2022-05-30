@@ -18,8 +18,8 @@ EXAMPLE_OBJECTS=$(patsubst example/%.c, $(BUILD)/%.o, $(EXAMPLE_SOURCES))
 
 all: main
 
-main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS)
-	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(LIBS) -o $@
+main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) cJSON
+	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@
 
 $(WEB_OBJECTS): $(BUILD)/%.o : libs/web/%.c libs/utils/disco_logging.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
@@ -43,3 +43,6 @@ clean:
 
 config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"' > $@
+
+cJSON:
+	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) libs/utils/cJSON/cJSON.c -o $(BUILD)/cJSON.o

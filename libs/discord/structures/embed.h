@@ -1,7 +1,7 @@
 #ifndef DISCO_EMBED
 #define DISCO_EMBED
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 
 struct discord_embed_footer {
     char *text;

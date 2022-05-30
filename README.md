@@ -1,5 +1,8 @@
 # Disco.c, a Discord C bot library
 
+### Installing
+Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clone the submodules as well.
+
 ### File explanations
 
 - libs/web/**websocket**: Contains the required methods to abstract the background websocket connection.

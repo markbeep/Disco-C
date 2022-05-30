@@ -1,7 +1,7 @@
 #ifndef DISCO_COMPONENT
 #define DISCO_COMPONENT
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 #include "emoji.h"
 #include "user.h"
 

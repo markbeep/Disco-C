@@ -1,7 +1,7 @@
 #ifndef DISCO_EMOJI
 #define DISCO_EMOJI
 
-#include "../../utils/cJSON.h"
+#include "../../utils/cJSON/cJSON.h"
 #include "user.h"
 
 // https://discord.com/developers/docs/resources/emoji#emoji-object
