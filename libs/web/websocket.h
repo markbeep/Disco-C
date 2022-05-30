@@ -22,8 +22,10 @@ typedef struct websocket_client {
     char *content;
     // the size of the above content
     size_t size;
-    // if the client is connected to the discord websocket
+    // if the client is connected to the Discord websocket
     int connected;
+    // if the client was able to successfully login with the Discord token
+    int success_login;
     // if the client is active
     int active;
     // if a heartbeat thread has already been started

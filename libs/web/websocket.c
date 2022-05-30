@@ -31,14 +31,19 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_CLIENT_CLOSED:
-        bot_client->websocket_client->connected = 0;
         lwsl_user("Callback closed, in = %s\n", in ? (char *)in : "(null)");
         if (bot_client->websocket_client->reconnect) {
             websocket_connect(bot_client);
             bot_client->websocket_client->reconnect = 0;
         } else { // internet failed or the websocket was closed on purpose
             bot_client->websocket_client->active = 0;
+            if (!bot_client->websocket_client->success_login)
+                lwsl_err("Connection closed. Probably the Discord token is invalid.\n");
+            else
+                lwsl_err("Connection closed.\n");
             websocket_close(bot_client);
+            bot_client->websocket_client->connected = 0;
+            client->success_login = 0;
         }
         return -1;
 
@@ -99,6 +104,7 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
     client->heartbeat_active = 0;
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
+    client->success_login = 0;
 
     return 0;
 }
@@ -110,8 +116,6 @@ int websocket_connect(bot_client_t *bot_client) {
     i.port = port;
     i.address = "gateway.discord.gg";
     i.path = "/?v=9&encoding=json";
-    // i.address = "socketsbay.com";
-    // i.path = "/wss/v2/2/demo/";
     i.host = i.address;
     i.origin = i.address;
     i.ssl_connection = ssl_connection;
@@ -142,8 +146,6 @@ void websocket_destroy_client(websocket_client_t *client) {
 }
 
 int websocket_send(struct lws *wsi, char *data, size_t len) {
-
-    lwsl_user("websocket_send operation\n");
 
     unsigned char cdata[LWS_PRE + len + 1];
     memcpy(&cdata[LWS_PRE], data, len);

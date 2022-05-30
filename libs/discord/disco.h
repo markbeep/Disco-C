@@ -8,6 +8,7 @@
 #include "structures/attachment.h"
 #include "structures/channel.h"
 #include "structures/component.h"
+#include "structures/guild.h"
 #include "structures/message.h"
 #include "structures/message_activity.h"
 #include "structures/permission.h"
@@ -23,7 +24,15 @@ struct discord_message;
 
 typedef struct disco_event_callbacks {
     void (*on_ready)(struct bot_client *);
+    void (*on_resumed)(struct bot_client *);
     void (*on_message)(struct bot_client *, struct discord_message *message);
+    void (*on_message_edit)(struct bot_client *, struct discord_message *old, struct discord_message *new);
+    void (*on_message_delete)(struct bot_client *, struct discord_message *);
+    void (*on_error)(struct bot_client *, int code, char *message);
+    void (*on_guild_status)(struct bot_client *, struct discord_guild *old_guild, struct discord_guild *new_guild);
+    void (*on_guild_create)(struct bot_client *, struct discord_guild *);
+    void (*on_channel_create)(struct bot_client *, struct discord_channel *);
+    void (*on_voice_channel_select)(struct bot_client *, char *channel_id, char *guild_id);
 } disco_event_callbacks_t;
 
 typedef struct bot_client {

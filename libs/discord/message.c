@@ -259,6 +259,10 @@ void *disco_create_message_struct_json(cJSON *data) {
             msg->member = (struct discord_member *)disco_create_member_struct_json(member, msg->author);
     }
     msg->content = get_string_from_json(data, "content");
+    // gives us the guarantee that if the message content is empty,
+    // the pointer is NULL
+    if (msg->content && strnlen(msg->content, 1) == 0)
+        msg->content = NULL;
     msg->timestamp = get_string_from_json(data, "timestamp");
     msg->tts = get_bool_from_json(data, "tts", 0);
     msg->mention_everyone = get_bool_from_json(data, "mention_everyone", 0);

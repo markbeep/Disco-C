@@ -95,8 +95,17 @@ void t_pool_wait(t_pool_t *tp) {
 void t_pool_destroy(t_pool_t *tp) {
     pthread_mutex_lock(tp->lock);
     tp->stop = 1;
+    // delete all nodes still in the queue
+    t_work_t *cur = tp->first_work, *prev = NULL;
+    while (cur) {
+        prev = cur;
+        cur = cur->next;
+        if (prev)
+            free(prev);
+    }
     tp->work_count = 0;
-    pthread_cond_broadcast(tp->work_cond); // wakes up all sleeping threads
+    // wakes up all sleeping threads
+    pthread_cond_broadcast(tp->work_cond);
     pthread_mutex_unlock(tp->lock);
     // waits for all threads to finish
     t_pool_wait(tp);
