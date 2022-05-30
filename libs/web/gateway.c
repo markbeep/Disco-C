@@ -10,6 +10,7 @@
 // sequence id
 static int s = -1;
 // time to wait between heartbeats
+// gets set dynamically upon receiving the HELLO event
 static unsigned int HEARTBEAT_INTERVAL = 10000;
 
 static void gateway_handle_identify(websocket_client_t *client) {
