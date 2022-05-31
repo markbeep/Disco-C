@@ -1,16 +1,17 @@
 #include "event.h"
+#include "../utils/cache.h"
 #include "../utils/disco_logging.h"
 #include "../utils/t_pool.h"
 #include "../utils/timer.h"
 #include "../web/websocket.h"
 #include "structures/user.h"
 
-void event_handle_message_create(void *m) {
-    event_pool_workload_t *work = (event_pool_workload_t *)m;
+void event_handle_message_create(void *w) {
+    event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct discord_message *message = (struct discord_message *)work->data;
+
     work->bot->callbacks->on_message(work->bot, message);
-    disco_destroy_message(message);
-    free(m);
+    free(w);
 }
 
 void event_handle(bot_client_t *bot, cJSON *data, char *event) {
@@ -188,16 +189,21 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     }
 
     else if (strncmp(event, "MESSAGE_CREATE", 15) == 0) {
-        TIMER_START_FIRST
         d_log_normal("Received a MESSAGE_CREATE event\n");
         if (bot->callbacks->on_message) {
-            // this is then freed inside the thread function
+            // the work struct is then freed inside the thread function
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
-            work->data = (void *)disco_create_message_struct_json(data);
+            // we free the message struct when cleaning up the cache
+            struct discord_message *message = disco_create_message_struct_json(data);
+            d_log_debug("Message ID = %s\n", message->id);
+
+            // adds the message to cache
+            disco_cache_set_message(message);
+
+            work->data = (void *)message;
             t_pool_add_work(bot->thread_pool, &event_handle_message_create, work);
         }
-        TIMER_END("message_event");
     }
 
     else if (strncmp(event, "MESSAGE_UPDATE", 15) == 0) {

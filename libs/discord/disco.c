@@ -1,5 +1,7 @@
 #include "disco.h"
 #include "../utils/cJSON/cJSON.h"
+#include "../utils/cache.h"
+#include "../utils/disco_logging.h"
 #include "../web/gateway.h"
 #include "../web/request.h"
 #include <curl/curl.h>
@@ -19,10 +21,17 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     bot.callbacks = callbacks;
     bot.thread_pool = t_pool_init(t_process_count());
 
+    // inits the cache
+    if (0 != disco_cache_init()) {
+        d_log_err("Cache initialization failed\n");
+        exit(1);
+    }
+
     // creates the client
     websocket_create(&client, &gateway_on_receive);
     // connects the client to the discord websocket
     websocket_connect(&bot);
+
     // starts the event loop which is BLOCKING
     gateway_event_loop(&bot);
 
@@ -34,11 +43,7 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     if (bot.user)
         disco_destroy_user(bot.user);
     curl_global_cleanup();
-}
-
-// TODO fix implementation
-void disco_free_bot(bot_client_t *bot) {
-    (void)bot;
+    disco_cache_destroy();
 }
 
 char *get_string_from_json(cJSON *data, const char *name) {
