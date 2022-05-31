@@ -35,9 +35,9 @@ t_pool_t *t_pool_init(int num_t) {
     pool->thread_count = num_t;
     pool->work_count = 0;
     pool->stop = 0;
-    pool->work_cond = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
-    pool->finished_cond = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
-    pool->lock = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+    pool->work_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
+    pool->finished_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
+    pool->lock = (pthread_mutex_t *)calloc(1, sizeof(pthread_mutex_t));
     pthread_cond_init(pool->work_cond, NULL);
     pthread_cond_init(pool->finished_cond, NULL);
 

@@ -50,7 +50,7 @@ void disco_cache_destroy() {
     while (!TAILQ_EMPTY(&messages_queue.head)) {
         struct node *first = TAILQ_FIRST(&messages_queue.head);
         TAILQ_REMOVE(&messages_queue.head, first, pointers);
-        free(first->data);
+        disco_destroy_message(first->data);
         free(first);
         messages_queue.size--;
     }
@@ -66,7 +66,7 @@ int disco_cache_set_message(struct discord_message *message) {
     struct node *old = (struct node *)hashmap_get(&messages_map, message->id, id_len);
     if (old) { // frees the old message if it exists
         d_log_debug("Freed older message in cache\n");
-        free(old->data);
+        disco_destroy_message(old->data);
         TAILQ_REMOVE(&messages_queue.head, old, pointers);
         free(old);
     } else { // new message, so increment size
@@ -85,10 +85,8 @@ int disco_cache_set_message(struct discord_message *message) {
             struct node *first = TAILQ_FIRST(&messages_queue.head);
             TAILQ_REMOVE(&messages_queue.head, first, pointers);
             struct discord_message *msg = first->data;
-            d_log_notice("p = %p\n", (void *)msg);
-            d_log_notice("id = %s\n", msg->id);
             hashmap_remove(&messages_map, msg->id, (unsigned int)strnlen(msg->id, 20));
-            free(msg);
+            disco_destroy_message(msg);
             free(first);
             messages_queue.size--;
         }
