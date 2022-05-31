@@ -2,8 +2,12 @@
 #define DISCO_REACTION
 
 #include "../../utils/cJSON/cJSON.h"
+#include "emoji.h"
 
 struct discord_reaction {
+    int count;
+    int me;
+    struct discord_emoji *emoji;
 };
 
 // TODO implement

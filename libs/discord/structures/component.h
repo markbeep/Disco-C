@@ -118,11 +118,6 @@ enum Discord_Application_Command_Type { COMMAND_CHAT_INPUT = 1,
                                         COMMAND_USER = 2,
                                         COMMAND_MESSAGE = 3 };
 
-// TODO implement
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
-struct discord_resolved_data {
-};
-
 enum Value_Type { VALUE_STRING,
                   VALUE_INTEGER,
                   VALUE_DOUBLE };
@@ -147,7 +142,6 @@ struct discord_interaction_data {
     char *id;
     char *name;
     enum Discord_Application_Command_Type type;
-    struct discord_resolved_data *resolved;
     struct discord_application_command_interaction_data_option **options;
     int options_count;
     char *guild_id;
