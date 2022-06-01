@@ -20,9 +20,40 @@ struct edit_message {
 
 void event_handle_message_update(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct edit_message *message = (struct edit_message *)work->data;
-    work->bot->callbacks->on_message_edit(work->bot, message->old, message->new);
-    free(work->data);
+    struct edit_message *edit = (struct edit_message *)work->data;
+    work->bot->callbacks->on_message_edit(work->bot, edit->old, edit->new);
+    free(edit);
+    free(work);
+}
+
+struct delete_message {
+    char *id;
+    char *channel_id;
+    char *guild_id;
+    struct discord_message *message;
+};
+
+void event_handle_message_delete(void *w) {
+    event_pool_workload_t *work = (event_pool_workload_t *)w;
+    struct delete_message *del = (struct delete_message *)work->data;
+    d_log_notice("id = %s, cid = %s, gid = %s\n", del->id, del->channel_id, del->guild_id);
+
+    if (!del->id || !del->channel_id) {
+        d_log_debug("Message or channel ID in event_handle_message_delete is NULL\n");
+    } else {
+        work->bot->callbacks->on_message_delete(work->bot, del->id, del->channel_id, del->guild_id, del->message);
+    }
+
+    // deletes the message from the cache
+    if (del->message)
+        disco_cache_delete_message(del->id);
+    if (del->id)
+        free(del->id);
+    if (del->channel_id)
+        free(del->channel_id);
+    if (del->guild_id)
+        free(del->guild_id);
+    free(del);
     free(work);
 }
 
@@ -240,7 +271,25 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     }
 
     else if (strncmp(event, "MESSAGE_DELETE", 15) == 0) {
-
+        if (bot->callbacks->on_message_delete) {
+            // the work struct is then freed inside the thread function
+            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
+            work->bot = bot;
+            struct delete_message *del = (struct delete_message *)malloc(sizeof(struct delete_message));
+            // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
+            del->id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
+            if (del->id)
+                del->id = strndup(del->id, strnlen(del->id, 20));
+            del->channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
+            if (del->channel_id)
+                del->channel_id = strndup(del->channel_id, strnlen(del->channel_id, 20));
+            del->guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
+            if (del->guild_id)
+                del->guild_id = strndup(del->guild_id, strnlen(del->guild_id, 20));
+            del->message = del->id ? disco_cache_get_message(del->id) : NULL;
+            work->data = (void *)del;
+            t_pool_add_work(bot->thread_pool, &event_handle_message_delete, work);
+        }
     }
 
     else if (strncmp(event, "MESSAGE_DELETE_BULK", 20) == 0) {

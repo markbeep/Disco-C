@@ -34,4 +34,12 @@ int disco_cache_set_message(struct discord_message *message);
  */
 struct discord_message *disco_cache_get_message(char *id);
 
+/**
+ * @brief Removes a message from the cache and
+ * deallocates the message from memory
+ *
+ * @param id ID of the message to remove
+ */
+void disco_cache_delete_message(char *id);
+
 #endif

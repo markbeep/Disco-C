@@ -27,12 +27,13 @@ typedef struct disco_event_callbacks {
     void (*on_resumed)(struct bot_client *);
     void (*on_message)(struct bot_client *, struct discord_message *message);
     void (*on_message_edit)(struct bot_client *, struct discord_message *old, struct discord_message *new);
-    void (*on_message_delete)(struct bot_client *, struct discord_message *);
-    void (*on_error)(struct bot_client *, int code, char *message);
-    void (*on_guild_status)(struct bot_client *, struct discord_guild *old_guild, struct discord_guild *new_guild);
-    void (*on_guild_create)(struct bot_client *, struct discord_guild *);
-    void (*on_channel_create)(struct bot_client *, struct discord_channel *);
-    void (*on_voice_channel_select)(struct bot_client *, char *channel_id, char *guild_id);
+    /**
+     * @brief Function called if a message event is called. The message ID and channel ID are always given.
+     * If the message was sent in a guild, the guild ID is also included. If the message was in cache before being
+     * deleted, the message struct is also included.
+     *
+     */
+    void (*on_message_delete)(struct bot_client *, char *message_id, char *channel_id, char *guild_id, struct discord_message *);
 } disco_event_callbacks_t;
 
 typedef struct bot_client {

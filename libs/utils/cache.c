@@ -21,7 +21,7 @@ static struct hashmap_s messages_map;
 // queue with node pointers in the order they were received
 static struct buffer messages_queue;
 // message cache size
-static int message_cache_size = 10;
+static int message_cache_size = 1000;
 
 static struct hashmap_s channels_map;
 static struct hashmap_s guilds_map;
@@ -83,12 +83,7 @@ int disco_cache_set_message(struct discord_message *message) {
         int to_remove = messages_queue.size - message_cache_size;
         for (int i = 0; i < to_remove; i++) {
             struct node *first = TAILQ_FIRST(&messages_queue.head);
-            TAILQ_REMOVE(&messages_queue.head, first, pointers);
-            struct discord_message *msg = first->data;
-            hashmap_remove(&messages_map, msg->id, (unsigned int)strnlen(msg->id, 20));
-            disco_destroy_message(msg);
-            free(first);
-            messages_queue.size--;
+            disco_cache_delete_message(((struct discord_message *)first->data)->id);
         }
     }
     d_log_notice("Message cache size = %d\n", messages_queue.size);
@@ -105,4 +100,16 @@ struct discord_message *disco_cache_get_message(char *id) {
         return n->data;
     } else
         return NULL;
+}
+
+void disco_cache_delete_message(char *id) {
+    struct node *n = (struct node *)hashmap_get(&messages_map, id, (unsigned int)strnlen(id, 20));
+    if (n) {
+        TAILQ_REMOVE(&messages_queue.head, n, pointers);
+        struct discord_message *msg = n->data;
+        hashmap_remove(&messages_map, msg->id, (unsigned int)strnlen(msg->id, 20));
+        disco_destroy_message(msg);
+        free(n);
+        messages_queue.size--;
+    }
 }

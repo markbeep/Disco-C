@@ -47,3 +47,16 @@ void example_on_edit(bot_client_t *bot, struct discord_message *old, struct disc
     sprintf(content, "Message %s was edited. Message in cache: %s", new->id, old ? "Yes" : "No");
     disco_channel_send_message(bot, content, new->channel_id, NULL, 0);
 }
+
+void example_on_delete(struct bot_client *bot, char *message_id, char *channel_id, char *guild_id, struct discord_message *message) {
+    if (message) {
+        int message_size = message->content ? (int)strnlen(message->content, 4096) : 0;
+        char content[50];
+        sprintf(content, "Cache: Yes\nID: `%s`", message_id);
+        disco_channel_send_message(bot, content, channel_id, NULL, 0);
+    } else {
+        char content[100];
+        sprintf(content, "Cache: No\nID: %s, channel ID: %s, guild ID: %s", message_id, channel_id, guild_id);
+        disco_channel_send_message(bot, content, channel_id, NULL, 0);
+    }
+}
