@@ -55,6 +55,8 @@ void disco_cache_destroy() {
         messages_queue.size--;
     }
     hashmap_destroy(&messages_map);
+    hashmap_destroy(&channels_map);
+    hashmap_destroy(&guilds_map);
 }
 
 int disco_cache_set_message(struct discord_message *message) {
