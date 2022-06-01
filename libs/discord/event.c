@@ -9,9 +9,21 @@
 void event_handle_message_create(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct discord_message *message = (struct discord_message *)work->data;
-
     work->bot->callbacks->on_message(work->bot, message);
-    free(w);
+    free(work);
+}
+
+struct edit_message {
+    struct discord_message *old;
+    struct discord_message *new;
+};
+
+void event_handle_message_update(void *w) {
+    event_pool_workload_t *work = (event_pool_workload_t *)w;
+    struct edit_message *message = (struct edit_message *)work->data;
+    work->bot->callbacks->on_message_edit(work->bot, message->old, message->new);
+    free(work->data);
+    free(work);
 }
 
 void event_handle(bot_client_t *bot, cJSON *data, char *event) {
@@ -189,25 +201,42 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     }
 
     else if (strncmp(event, "MESSAGE_CREATE", 15) == 0) {
-        d_log_normal("Received a MESSAGE_CREATE event\n");
         if (bot->callbacks->on_message) {
             // the work struct is then freed inside the thread function
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the message struct when cleaning up the cache
             struct discord_message *message = disco_create_message_struct_json(data);
+            work->data = (void *)message;
             d_log_debug("Message ID = %s\n", message->id);
 
             // adds the message to cache
             disco_cache_set_message(message);
 
-            work->data = (void *)message;
             t_pool_add_work(bot->thread_pool, &event_handle_message_create, work);
         }
     }
 
     else if (strncmp(event, "MESSAGE_UPDATE", 15) == 0) {
+        if (bot->callbacks->on_message_edit) {
+            // the work struct is then freed inside the thread function
+            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
+            work->bot = bot;
+            // we free the message struct when cleaning up the cache
+            struct discord_message *message = disco_create_message_struct_json(data);
+            // to be freed inside the event handle function
+            struct edit_message *edt_msg = (struct edit_message *)malloc(sizeof(struct edit_message));
+            edt_msg->old = disco_cache_get_message(message->id);
+            edt_msg->new = message;
+            work->data = (void *)edt_msg;
 
+            d_log_debug("Message ID = %s\n", message->id);
+
+            // adds the message to cache
+            disco_cache_set_message(message);
+
+            t_pool_add_work(bot->thread_pool, &event_handle_message_update, work);
+        }
     }
 
     else if (strncmp(event, "MESSAGE_DELETE", 15) == 0) {

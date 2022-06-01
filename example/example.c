@@ -41,3 +41,9 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
         }
     }
 }
+
+void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
+    char content[80];
+    sprintf(content, "Message %s was edited. Message in cache: %s", new->id, old ? "Yes" : "No");
+    disco_channel_send_message(bot, content, new->channel_id, NULL, 0);
+}

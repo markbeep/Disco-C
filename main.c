@@ -14,6 +14,7 @@ int main() {
     disco_event_callbacks_t callbacks = {0};
     callbacks.on_ready = &example_on_ready;
     callbacks.on_message = &example_on_message;
+    callbacks.on_message_edit = &example_on_edit;
 
     // starts the bot. This function blocks
     disco_start_bot(&callbacks);
