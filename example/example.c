@@ -25,7 +25,8 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             struct discord_message *msg = disco_channel_send_message(bot, "Pinging...", message->channel_id, NULL, 1);
             gettimeofday(&stop, NULL);
             char time_passed[32];
-            sprintf(time_passed, "Ping: %lu ms", (stop.tv_sec - start.tv_sec) * 1000 + (stop.tv_usec - start.tv_usec) / 1000);
+            long delta = (stop.tv_sec - start.tv_sec) * 1000 + (stop.tv_usec - start.tv_usec) / 1000;
+            sprintf(time_passed, "Ping: %lu ms\nHeartbeat: %lu ms", delta, bot->heartbeat_latency);
             // edits the message right after the message has been sent to check the latency
             disco_channel_edit_message(bot, time_passed, msg->channel_id, msg->id, NULL);
             // don't forget to destroy the message in the end to avoid memory leaks
@@ -50,7 +51,6 @@ void example_on_edit(bot_client_t *bot, struct discord_message *old, struct disc
 
 void example_on_delete(struct bot_client *bot, char *message_id, char *channel_id, char *guild_id, struct discord_message *message) {
     if (message) {
-        int message_size = message->content ? (int)strnlen(message->content, 4096) : 0;
         char content[50];
         sprintf(content, "Cache: Yes\nID: `%s`", message_id);
         disco_channel_send_message(bot, content, channel_id, NULL, 0);

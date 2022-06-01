@@ -41,6 +41,7 @@ typedef struct bot_client {
     disco_event_callbacks_t *callbacks;
     struct discord_user *user;
     t_pool_t *thread_pool;
+    long heartbeat_latency;
 } bot_client_t;
 
 /**

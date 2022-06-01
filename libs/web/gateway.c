@@ -5,6 +5,7 @@
 #include "../utils/disco_logging.h"
 #include "websocket.h"
 #include <pthread.h>
+#include <time.h>
 #include <unistd.h>
 
 // sequence id
@@ -12,6 +13,7 @@ static int s = -1;
 // time to wait between heartbeats
 // gets set dynamically upon receiving the HELLO event
 static unsigned int HEARTBEAT_INTERVAL = 10000;
+static struct timeval last_hearbeat;
 
 static void gateway_handle_identify(websocket_client_t *client) {
     lwsl_user("TX: Sending gateway identify");
@@ -34,6 +36,7 @@ static void gateway_send_heartbeat(websocket_client_t *client) {
     else
         sprintf(response, "{\"op\":1, \"d\":%d}", s);
     websocket_send(client->wsi, response, strnlen(response, 128));
+    gettimeofday(&last_hearbeat, NULL);
 }
 
 static void gateway_handle_dispatch(bot_client_t *bot, cJSON *json) {
@@ -102,6 +105,9 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
 
         case DISCORD_HEARTBEAT_ACK:
             d_log_notice("Received HEARTBEAT ACK\n");
+            struct timeval heartbeat_recv;
+            gettimeofday(&heartbeat_recv, NULL);
+            bot->heartbeat_latency = (heartbeat_recv.tv_sec - last_hearbeat.tv_sec) * 1000 + (heartbeat_recv.tv_usec - last_hearbeat.tv_usec) / 1000;
             break;
 
         default:
