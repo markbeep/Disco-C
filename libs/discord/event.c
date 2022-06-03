@@ -6,6 +6,11 @@
 #include "../web/websocket.h"
 #include "structures/user.h"
 
+void event_handle_ready(void *b) {
+    bot_client_t *bot = (bot_client_t *)b;
+    bot->callbacks->on_ready(bot);
+}
+
 void event_handle_message_create(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct discord_message *message = (struct discord_message *)work->data;
@@ -72,7 +77,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
         bot->user = (struct discord_user *)disco_create_user_struct_json(user_data);
         // calls the on_ready callback
         if (bot->callbacks->on_ready)
-            t_pool_add_work(bot->thread_pool, bot->callbacks->on_ready, (void *)bot);
+            t_pool_add_work(bot->thread_pool, event_handle_ready, (void *)bot);
     }
 
     else if (strncmp(event, "RESUMED", 8) == 0) {
