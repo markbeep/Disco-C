@@ -23,5 +23,8 @@ On the other hand, everything starting with `disco_` is a public library method 
 
 ### Required Libaries:
 - https://libwebsockets.org/
+  - `sudo apt install libwebsockets15`
 - https://curl.se/libcurl/c/
+  - `sudo apt install libcurl4`
 - https://github.com/DaveGamble/cJSON/
+- https://github.com/sheredom/hashmap.h/
