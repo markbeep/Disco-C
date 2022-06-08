@@ -38,7 +38,7 @@ void test_websocket_create(void) {
     websocket_client_t client = {0};
     int c = websocket_create(&client, websocket_on_receive);
     TEST_ASSERT_EQUAL_INT(c, 0);
-    TEST_ASSERT_EQUAL_INT(client.active, 0);
+    TEST_ASSERT_EQUAL_INT(client.active, 1);
     TEST_ASSERT_EQUAL_INT(client.connected, 0);
     TEST_ASSERT_EQUAL_INT(client.heartbeat_active, 0);
     TEST_ASSERT_EQUAL_INT(client.reconnect, 0);
