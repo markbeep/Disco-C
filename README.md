@@ -5,11 +5,11 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
 
 ### File explanations
 
-- libs/web/**websocket**: Contains the required methods to abstract the background websocket connection.
-- libs/web/**gateway**: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.
-- libs/web/**request**: Helper file that abstracts the HTTP GET and POST requests.
-- libs/utils/**cJSON**: External library linked below that is used to parse JSON.
-- libs/discord/
+- src/web/**websocket**: Contains the required methods to abstract the background websocket connection.
+- src/web/**gateway**: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.
+- src/web/**request**: Helper file that abstracts the HTTP GET and POST requests.
+- src/utils/**cJSON**: External library linked below that is used to parse JSON.
+- src/discord/
   - **disco**: The main functions of Disco-C. It contains the highest level of abstraction for running the bot.
   - **event**: Handles received Discord events.
   - **structures/**: All of the Discord structure definitions
