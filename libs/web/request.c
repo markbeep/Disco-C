@@ -93,7 +93,7 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
         if (cJSON_IsString(res_msg) && strncmp(res_msg->valuestring, "You are being rate limited.", 28) == 0) {
             cJSON *wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
             if (cJSON_IsNumber(wait_ms)) {
-                lwsl_notice("We are being ratelimited, waiting %d ms.", wait_ms->valueint);
+                lwsl_notice("We are being ratelimited, waiting %d ms.\n", wait_ms->valueint);
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
         } else

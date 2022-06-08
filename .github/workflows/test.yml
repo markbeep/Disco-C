@@ -1,4 +1,4 @@
-name: Test Compilation CI
+name: Test CI
 
 on:
   push:

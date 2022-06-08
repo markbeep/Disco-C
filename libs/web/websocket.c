@@ -15,7 +15,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 
     switch (reason) {
     case LWS_CALLBACK_PROTOCOL_INIT:
-        lwsl_user("Callback protocol init");
+        lwsl_user("Callback protocol init\n");
         break;
 
     case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
@@ -51,7 +51,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
     case LWS_CALLBACK_CLIENT_RECEIVE:
         // we add a EOL at the end of the input data
         if (!client) {
-            lwsl_err("Client struct is unspecified in CLIENT RECEIVE callback");
+            lwsl_err("Client struct is unspecified in CLIENT RECEIVE callback\n");
             break;
         }
         client->content = (char *)realloc(client->content, client->size + len + 1);
@@ -82,9 +82,11 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
     return 0;
 }
 
+// basically the default and empty protocols
+// only important part here is the websocket_callback
 static const struct lws_protocols protocols[] = {
     {"discord-gateway", websocket_callback, 0, 0, 0, NULL, 0},
-    LWS_PROTOCOL_LIST_TERM};
+    {NULL, NULL, 0, 0, 0, NULL, 0}};
 
 int websocket_create(websocket_client_t *client, callback_receive_fn on_receive) {
     struct lws_context_creation_info info;
@@ -157,7 +159,7 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
 }
 
 void websocket_reconnect(bot_client_t *bot_client) {
-    lwsl_notice("Reconnecting");
+    lwsl_notice("Reconnecting\n");
     bot_client->websocket_client->reconnect = 1;
     websocket_close(bot_client);
 }
