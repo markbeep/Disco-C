@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
             sudo apt install libcurl4-gnutls-dev
-            sudo apt install libwebsockets15
+            sudo apt install libwebsockets-dev
       
     - name: Build main
       run: make main
