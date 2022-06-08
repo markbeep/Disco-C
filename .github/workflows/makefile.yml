@@ -18,7 +18,7 @@ jobs:
       
     - name: Install dependencies
       run: |
-            sudo apt install libcurl4
+            sudo apt install libcurl4-gnutls-dev
             sudo apt install libwebsockets15
       
     - name: Build main
