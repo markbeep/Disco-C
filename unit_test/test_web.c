@@ -1,3 +1,4 @@
+#include "../src/utils/disco_logging.h"
 #include "../src/web/request.h"
 #include "../src/web/websocket.h"
 #include <Unity/src/unity.h>
@@ -46,6 +47,8 @@ void test_websocket_create(void) {
 }
 
 int main(void) {
+    lws_set_log_level(0, NULL);
+    d_set_log_level(0);
     UNITY_BEGIN();
     RUN_TEST(test_requests);
     RUN_TEST(test_websocket_create);
