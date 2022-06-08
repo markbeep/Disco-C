@@ -2,7 +2,7 @@
 #define DISCO_CACHE
 
 #include "../discord/structures/message.h"
-#include "hashmap.h/hashmap.h"
+#include <hashmap.h/hashmap.h>
 
 /**
  * @brief Initializes all the caches. Should be called once when starting up the bot.

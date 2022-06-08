@@ -1,9 +1,9 @@
 #include "disco.h"
-#include "../utils/cJSON/cJSON.h"
 #include "../utils/cache.h"
 #include "../utils/disco_logging.h"
 #include "../web/gateway.h"
 #include "../web/request.h"
+#include <cJSON/cJSON.h>
 #include <curl/curl.h>
 #include <string.h>
 

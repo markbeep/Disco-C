@@ -1,9 +1,9 @@
 #ifndef DISCO_COMPONENT
 #define DISCO_COMPONENT
 
-#include "../../utils/cJSON/cJSON.h"
 #include "emoji.h"
 #include "user.h"
+#include <cJSON/cJSON.h>
 
 struct discord_component;
 

@@ -1,8 +1,8 @@
 #ifndef DISCO_STICKER
 #define DISCO_STICKER
 
-#include "../../utils/cJSON/cJSON.h"
 #include "user.h"
+#include <cJSON/cJSON.h>
 
 enum Discord_Sticker_Format { STICKER_FORMAT_PNG = 1,
                               STICKER_FORMAT_APNG = 2,

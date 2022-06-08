@@ -1,9 +1,9 @@
 #include "gateway.h"
 #include "../../config.h"
 #include "../discord/event.h"
-#include "../utils/cJSON/cJSON.h"
 #include "../utils/disco_logging.h"
 #include "websocket.h"
+#include <cJSON/cJSON.h>
 #include <pthread.h>
 #include <time.h>
 #include <unistd.h>

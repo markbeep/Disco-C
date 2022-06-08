@@ -1,7 +1,7 @@
 #ifndef DISCO_MESSAGE_ACTIVITY
 #define DISCO_MESSAGE_ACTIVITY
 
-#include "../../utils/cJSON/cJSON.h"
+#include <cJSON/cJSON.h>
 
 enum Discord_Message_Activity_Type { MESSAGE_ACTIVITY_JOIN = 1,
                                      MESSAGE_ACTIVITY_SPECTATE = 2,

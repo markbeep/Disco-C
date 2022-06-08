@@ -1,7 +1,6 @@
 #ifndef DISCO
 #define DISCO
 
-#include "../utils/cJSON/cJSON.h"
 #include "../utils/t_pool.h"
 #include "../web/websocket.h"
 #include "structures/application.h"
@@ -17,6 +16,7 @@
 #include "structures/sticker.h"
 #include "structures/thread.h"
 #include "structures/user.h"
+#include <cJSON/cJSON.h>
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;

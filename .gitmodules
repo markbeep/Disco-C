@@ -1,6 +1,9 @@
 [submodule "libs/utils/cJSON"]
-	path = libs/utils/cJSON
+	path = lib/cJSON
 	url = git@github.com:DaveGamble/cJSON.git
 [submodule "libs/utils/hashmap.h"]
-	path = libs/utils/hashmap.h
+	path = lib/hashmap.h
 	url = git@github.com:sheredom/hashmap.h.git
+[submodule "lib/Unity"]
+	path = lib/Unity
+	url = https://github.com/ThrowTheSwitch/Unity.git

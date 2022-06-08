@@ -1,7 +1,7 @@
 #ifndef DISCO_PERMISSION
 #define DISCO_PERMISSION
 
-#include "../../utils/cJSON/cJSON.h"
+#include <cJSON/cJSON.h>
 
 // https://discord.com/developers/docs/resources/channel#overwrite-object
 struct discord_overwrite {

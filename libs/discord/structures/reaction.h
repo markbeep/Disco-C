@@ -1,8 +1,8 @@
 #ifndef DISCO_REACTION
 #define DISCO_REACTION
 
-#include "../../utils/cJSON/cJSON.h"
 #include "emoji.h"
+#include <cJSON/cJSON.h>
 
 struct discord_reaction {
     int count;

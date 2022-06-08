@@ -1,7 +1,7 @@
 #ifndef DISCO_USER
 #define DISCO_USER
 
-#include "../../utils/cJSON/cJSON.h"
+#include <cJSON/cJSON.h>
 
 // https://discord.com/developers/docs/resources/user#user-object
 struct discord_user {

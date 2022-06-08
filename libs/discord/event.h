@@ -1,8 +1,8 @@
 #ifndef EVENT
 #define EVENT
 
-#include "../utils/cJSON/cJSON.h"
 #include "disco.h"
+#include <cJSON/cJSON.h>
 
 /**
  * @brief All event websocket responses call this function.

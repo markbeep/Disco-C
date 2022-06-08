@@ -4,7 +4,7 @@
 
 #define VERBOSE 0
 
-#include "../utils/cJSON/cJSON.h"
+#include <cJSON/cJSON.h>
 #include <curl/curl.h>
 #include <string.h>
 
