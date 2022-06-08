@@ -1,5 +1,5 @@
-#ifndef WEBSOCKET
-#define WEBSOCKET
+#ifndef DISCO_WEBSOCKET
+#define DISCO_WEBSOCKET
 
 #include "../discord/disco.h"
 #include <curl/curl.h>
@@ -26,7 +26,7 @@ typedef struct websocket_client {
     int connected;
     // if the client was able to successfully login with the Discord token
     int success_login;
-    // if the client is active
+    // if the client is ready to be used
     int active;
     // if a heartbeat thread has already been started
     int heartbeat_active;

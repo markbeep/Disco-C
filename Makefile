@@ -2,6 +2,7 @@ LIBS 	= -lcurl -lpthread -lwebsockets
 CC 		= gcc
 CFLAGS	= -Wall -Wextra -Wconversion -Wpedantic -std=gnu11 -g
 BUILD	= build
+TEST = unit_test
 INCLUDE = -Ilib
 COMPILE = $(CC) $(INCLUDE) $(CFLAGS) $(LIBS)
 
@@ -46,3 +47,6 @@ config.h:
 
 cJSON:
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) lib/cJSON/cJSON.c -o $(BUILD)/cJSON.o
+
+test: build $(TEST)/test_web.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) cJSON
+	$(CC) $(INCLUDE) $(TEST)/test_web.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(BUILD)/cJSON.o lib/Unity/src/unity.c $(LIBS) -o $(TEST)/test

@@ -1,5 +1,5 @@
-#ifndef GATEWAY
-#define GATEWAY
+#ifndef DISCO_GATEWAY
+#define DISCO_GATEWAY
 
 #include "../discord/disco.h"
 

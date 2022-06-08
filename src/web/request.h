@@ -1,6 +1,6 @@
 
-#ifndef REQUEST
-#define REQUEST
+#ifndef DISCO_REQUEST
+#define DISCO_REQUEST
 
 #define VERBOSE 0
 

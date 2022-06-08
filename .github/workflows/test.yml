@@ -23,3 +23,10 @@ jobs:
       
     - name: Build main
       run: make main
+    
+    - name: Build test
+      run: make test
+    
+    - name: Test
+      run: ./unit_test/test
+    
