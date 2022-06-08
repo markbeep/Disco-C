@@ -1,7 +1,7 @@
 #include "../src/web/request.h"
 #include "../src/web/websocket.h"
+#include <Unity/src/unity.h>
 #include <stdio.h>
-#include <unity/src/unity.h>
 
 void setUp(void) {}
 void tearDown(void) {}
