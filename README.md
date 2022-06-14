@@ -31,7 +31,7 @@ On the other hand, everything starting with `disco_` is a public library method 
 - https://github.com/sheredom/hashmap.h/
 
 ### Progress
-- Events ![](https://progress-bar.dev/5/?title=3/56)
+- Events ![](https://progress-bar.dev/7/?title=4/56)
   - [x] READY
   - [ ] RESUMED
   - [ ] RECONNECT
