@@ -55,7 +55,9 @@ int websocket_send(struct lws *wsi, char *data, size_t len);
 int websocket_create(websocket_client_t *client, callback_receive_fn on_receive);
 
 /**
- * @brief Connects to the Discord websocket
+ * @brief Sends the initial handshake to connect to the Discord websocket
+ * The client is only marked as "connected" once an answer from Discord
+ * is received.
  *
  * @param bot_client Bot client instance
  * @return int

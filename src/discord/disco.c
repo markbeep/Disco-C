@@ -22,7 +22,7 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     bot.thread_pool = t_pool_init(t_process_count());
 
     // inits the cache
-    if (0 != disco_cache_init()) {
+    if (0 != disco_cache_init(1000)) {
         d_log_err("Cache initialization failed\n");
         exit(1);
     }

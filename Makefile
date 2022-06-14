@@ -2,7 +2,7 @@ LIBS 	= -lcurl -lpthread -lwebsockets
 CC 		= gcc
 CFLAGS	= -Wall -Wextra -Wconversion -Wpedantic -std=gnu11 -g
 BUILD	= build
-TEST = unit_test
+TEST = tests
 INCLUDE = -Ilib
 COMPILE = $(CC) $(INCLUDE) $(CFLAGS) $(LIBS)
 

@@ -3,4 +3,4 @@ main
 config.json
 config.h
 build
-unit_test/test
+tests/test

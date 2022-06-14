@@ -34,6 +34,9 @@ typedef struct disco_event_callbacks {
      *
      */
     void (*on_message_delete)(struct bot_client *, char *message_id, char *channel_id, char *guild_id, struct discord_message *);
+    void (*on_channel_create)(struct bot_client *, struct discord_channel *channel);
+    void (*on_channel_update)(struct bot_client *, struct discord_channel *old, struct discord_channel *new);
+    void (*on_channel_delete)(struct bot_client *, char *channel_id, char *guild_id, struct discord_channel *);
 } disco_event_callbacks_t;
 
 typedef struct bot_client {
