@@ -74,6 +74,10 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
         d_log_normal("Received a READY event\n");
         // adds the user struct to the bot struct
         cJSON *user_data = cJSON_GetObjectItem(data, "user");
+        if (bot->user) {
+            d_log_debug("Received a second READY event, recreating the bot user...\n");
+            disco_destroy_user(bot->user);
+        }
         bot->user = (struct discord_user *)disco_create_user_struct_json(user_data);
         // calls the on_ready callback
         if (bot->callbacks->on_ready)

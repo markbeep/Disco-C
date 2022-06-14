@@ -65,7 +65,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
                 client->callbacks->on_receive(bot_client, client->content, client->size);
             client->size = 0;
             free(client->content);
-            client->content = (char *)malloc(1);
+            client->content = NULL;
         }
         lws_callback_on_writable(wsi);
         break;
