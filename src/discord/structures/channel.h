@@ -4,6 +4,7 @@
 #include "permission.h"
 #include "thread.h"
 #include "user.h"
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 enum Discord_Channel_Type { GUILD_TEXT,
@@ -28,7 +29,7 @@ struct discord_channel {
     int permission_overwrites_count;
     char *name;
     char *topic;
-    int nsfw;
+    bool nsfw;
     char *last_message_id;
     int bitrate;
     int user_limit;

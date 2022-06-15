@@ -3,10 +3,12 @@
 
 #include "emoji.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
+// https://discord.com/developers/docs/resources/channel#reaction-object
 struct discord_reaction {
     int count;
-    int me;
+    bool me;
     struct discord_emoji *emoji;
 };
 

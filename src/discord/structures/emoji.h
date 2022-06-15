@@ -3,6 +3,7 @@
 
 #include "user.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/emoji#emoji-object
 struct discord_emoji {
@@ -11,10 +12,10 @@ struct discord_emoji {
     char **roles;
     int roles_count;
     struct discord_user *user;
-    int require_colons;
-    int managed;
-    int animated;
-    int available;
+    bool require_colons;
+    bool managed;
+    bool animated;
+    bool available;
 };
 
 void *disco_create_emoji_struct_json(cJSON *data);

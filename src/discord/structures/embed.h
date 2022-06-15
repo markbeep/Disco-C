@@ -2,6 +2,7 @@
 #define DISCO_EMBED
 
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 struct discord_embed_footer {
     char *text;
@@ -88,7 +89,7 @@ void disco_destroy_embed_author(struct discord_embed_author *author);
 struct discord_embed_field {
     char *name;
     char *value;
-    int _inline; // called "inline" in the Discord docs
+    bool _inline; // called "inline" in the Discord docs
 };
 
 /**

@@ -2,6 +2,7 @@
 #define DISCO_USER
 
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/user#user-object
 struct discord_user {
@@ -9,13 +10,13 @@ struct discord_user {
     char *username;
     char *discriminator;
     char *avatar;
-    int bot;
-    int system;
-    int mfa_enabled;
+    bool bot;
+    bool system;
+    bool mfa_enabled;
     char *banner;
     int accent_color;
     char *locale;
-    int verified;
+    bool verified;
     char *email;
     int flags;
     int premium_type;
@@ -31,9 +32,9 @@ struct discord_member {
     int roles_count;
     char *joined_at;
     char *premium_since;
-    int deaf;
-    int mute;
-    int pending;
+    bool deaf;
+    bool mute;
+    bool pending;
     char *permissions;
     char *communication_disabled_until;
 };

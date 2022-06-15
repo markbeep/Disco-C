@@ -10,6 +10,7 @@
 #include "reaction.h"
 #include "sticker.h"
 #include "user.h"
+#include <stdbool.h>
 
 typedef struct bot_client bot_client_t;
 
@@ -22,7 +23,7 @@ struct discord_allowed_mentions {
     int roles_count;
     char **users;
     int users_count;
-    int replied_user;
+    bool replied_user;
 };
 
 // https://discord.com/developers/docs/resources/channel#message-reference-object
@@ -30,7 +31,7 @@ struct discord_message_reference {
     char *message_id;
     char *channel_id;
     char *guild_id;
-    int fail_if_not_exists;
+    bool fail_if_not_exists;
 };
 
 /**
@@ -49,7 +50,7 @@ void disco_destroy_message_reference(struct discord_message_reference *message);
 
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
-    int tts;
+    bool tts;
     struct discord_embed **embeds;
     int embeds_count;
     struct discord_allowed_mentions *allowed_mentions;
@@ -98,8 +99,8 @@ struct discord_message {
     char *content;
     char *timestamp;
     char *edited_timestamp;
-    int tts;
-    int mention_everyone;
+    bool tts;
+    bool mention_everyone;
     struct discord_member **mentions;
     int mentions_count;
     char **mention_roles;
@@ -113,7 +114,7 @@ struct discord_message {
     struct discord_reaction **reactions;
     int reactions_count;
     char *nonce;
-    int pinned;
+    bool pinned;
     char *webhook_id;
     enum discord_message_type type;
     struct discord_message_activity *activity;

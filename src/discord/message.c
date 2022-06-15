@@ -132,10 +132,7 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     return ref_obj;
 }
 
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
-    (void)bot;
-    cJSON *json = cJSON_CreateObject();
-
+static void create_message(cJSON *json, char *content, struct discord_create_message *message) {
     // content
     if (content && strnlen(content, 1) > 0) {
         cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
@@ -169,27 +166,34 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
         if (message->flags)
             cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
     }
+}
+
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
+    (void)bot;
+    cJSON *json = cJSON_CreateObject();
+    create_message(json, content, message);
 
     char uri[48];
     sprintf(uri, "/channels/%s/messages", channel_id);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_POST);
+    struct discord_message *sent_message = NULL;
     if (res != CURLE_OK) {
         d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
             d_log_err("Have no connection to host\n");
-        goto end;
-    }
-    d_log_debug("Message sent!\n");
-    d_log_debug("Response: char = %s\n", response);
+    } else {
+        d_log_debug("Message sent!\n");
+        d_log_debug("Response: char = %s\n", response);
 
-    struct discord_message *sent_message = NULL;
-    if (return_struct) { // only if a struct is requested to be returned
-        cJSON *res_json = cJSON_Parse(response);
-        sent_message = (struct discord_message *)disco_create_message_struct_json(res_json);
-        cJSON_Delete(res_json);
+        if (return_struct) { // only if a struct is requested to be returned
+            cJSON *res_json = cJSON_Parse(response);
+            sent_message = (struct discord_message *)disco_create_message_struct_json(res_json);
+            cJSON_Delete(res_json);
+        }
     }
-end: // free up allocated stuff
+
+    // free up allocated stuff
     cJSON_Delete(json);
     free(response);
     return sent_message;

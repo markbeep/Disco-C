@@ -2,14 +2,15 @@
 #define DISCO_THREAD
 
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {
-    int archived;
+    bool archived;
     int auto_archive_duration;
     char *archive_timestamp;
-    int locked;
-    int invitable;
+    bool locked;
+    bool invitable;
     char *create_timestamp;
 };
 

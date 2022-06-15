@@ -3,6 +3,7 @@
 
 #include "user.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 enum Discord_Sticker_Format { STICKER_FORMAT_PNG = 1,
                               STICKER_FORMAT_APNG = 2,
@@ -31,7 +32,7 @@ struct discord_sticker {
     char *tags;
     enum Discord_Sticker_Type type;
     enum Discord_Sticker_Format format_type;
-    int available;
+    bool available;
     char *guild_id;
     struct discord_user *user;
     int sort_value;

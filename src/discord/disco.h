@@ -17,6 +17,7 @@
 #include "structures/thread.h"
 #include "structures/user.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
@@ -68,19 +69,19 @@ char *get_string_from_json(cJSON *data, const char *name);
  *
  * @param data
  * @param name
- * @param def The default value incase the field doesn't exist
+ * @param default_ The default value incase the field doesn't exist
  * @return int
  */
-int get_bool_from_json(cJSON *data, const char *name, int def);
+bool get_bool_from_json(cJSON *data, const char *name, int default_);
 /**
  * @brief Get an int from json object
  *
  * @param data
  * @param name
- * @param def The default value incase the field doesn't exist
- * @return int
+ * @param default_ The default value incase the field doesn't exist
+ * @return bool
  */
-int get_int_from_json(cJSON *data, const char *name, int def);
+int get_int_from_json(cJSON *data, const char *name, int default_);
 
 typedef void *(*disco_struct_fn)(cJSON *);
 int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, disco_struct_fn func);

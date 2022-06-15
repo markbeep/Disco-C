@@ -2,6 +2,7 @@
 #define DISCO_ATTACHMENT
 
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/channel#attachment-object
 struct discord_attachment {
@@ -14,7 +15,7 @@ struct discord_attachment {
     char *proxy_url;
     int height;
     int width;
-    int ephemeral;
+    bool ephemeral;
 };
 
 /**

@@ -27,6 +27,8 @@ jobs:
     - name: Build test
       run: make test
     
-    - name: Test
-      run: ./tests/test
-    
+    - name: Test Web
+      run: ./tests/test_web
+
+    - name: Test Discord
+      run: ./tests/test_discord

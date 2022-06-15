@@ -4,6 +4,7 @@
 #include "emoji.h"
 #include "user.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 struct discord_component;
 
@@ -31,7 +32,7 @@ struct discord_button {
     struct discord_emoji *emoji;
     char *custom_id;
     char *url;
-    int disabled;
+    bool disabled;
 };
 
 // https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
@@ -40,7 +41,7 @@ struct discord_select_option {
     char *value;
     char *description;
     struct discord_emoji *emoji;
-    int _default; // "default"
+    bool _default; // "default"
 };
 
 /**
@@ -65,7 +66,7 @@ struct discord_select_menu {
     char *placeholder;
     int min_values;
     int max_values;
-    int disabled;
+    bool disabled;
 };
 
 enum Discord_Text_Input_Style { TEXT_INPUT_SHORT = 1,
@@ -78,7 +79,7 @@ struct discord_text_input {
     char *label;
     int min_length;
     int max_length;
-    int required;
+    bool required;
     char *value;
     char *placeholder;
 };
@@ -134,7 +135,7 @@ struct discord_application_command_interaction_data_option {
     } value;
     struct discord_application_command_interaction_data_option **options;
     int options_count;
-    int focused;
+    bool focused;
 };
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure

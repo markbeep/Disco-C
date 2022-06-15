@@ -4,6 +4,7 @@
 #include "emoji.h"
 #include "role.h"
 #include "sticker.h"
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/resources/guild#guild-object
 struct discord_guild {
@@ -13,13 +14,13 @@ struct discord_guild {
     char *icon_hash;
     char *splash;
     char *discovery_splash;
-    int owner;
+    bool owner;
     char *owner_id;
     char *permissions;
     char *region;
     char *afk_channel_id;
     int afk_timeout;
-    int widget_enabled;
+    bool widget_enabled;
     char *widget_channel_id;
     int verification_level;
     int default_message_notifications;
@@ -49,7 +50,7 @@ struct discord_guild {
     int nsfw_level;
     struct discord_sticker **stickers;
     int stickers_count;
-    int premium_progress_bar_enabled;
+    bool premium_progress_bar_enabled;
 };
 
 /**

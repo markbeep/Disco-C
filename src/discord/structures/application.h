@@ -3,6 +3,7 @@
 
 #include "user.h"
 #include <cJSON/cJSON.h>
+#include <stdbool.h>
 
 // https://discord.com/developers/docs/topics/teams#data-models-team-member-object
 struct discord_team_member {
@@ -37,8 +38,8 @@ struct discord_application {
     char *description;
     char **rpc_origins;
     int rpc_origins_count;
-    int bot_public;
-    int bot_require_code_grant;
+    bool bot_public;
+    bool bot_require_code_grant;
     char *terms_of_service_url;
     char *privacy_policy_url;
     struct discord_user *owner;

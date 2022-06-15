@@ -125,10 +125,10 @@ void *gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
     int64_t t = HEARTBEAT_INTERVAL;
     // every 100 ms the client checks if it's time to end the loop
-    useconds_t slp = 1e5; // 100ms
+    useconds_t slp = 1e4; // 10ms
     while (client->active && client->heartbeat_active) {
         t += 1;
-        if (t * 100 >= HEARTBEAT_INTERVAL) {
+        if (t * 10 >= HEARTBEAT_INTERVAL) {
             gateway_send_heartbeat(client);
             t = 0;
         }

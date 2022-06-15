@@ -3,4 +3,5 @@ main
 config.json
 config.h
 build
-tests/test
+tests/test_discord
+tests/test_web
