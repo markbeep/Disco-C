@@ -27,9 +27,9 @@ $(DISCORD_OBJECTS): $(BUILD)/%.o : src/discord/%.c
 TEST_SOURCES := $(wildcard $(TEST)/*.c)
 TEST_EXECUTABLES=$(patsubst $(TEST)/%.c, $(TEST)/%, $(TEST_SOURCES))
 $(TEST_EXECUTABLES): $(TEST)/% : $(TEST)/%.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
-	$(CC) -zmuldefs $(CFLAGS) $(INCLUDE) $(WEB_OBJECTS) \
+	$(CC) -zmuldefs $(CFLAGS) $(INCLUDE) $@.c $(WEB_OBJECTS) \
 	$(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(TEST_SOURCES) \
-	$(BUILD)/cJSON.o lib/Unity/src/unity.c $(LIBS) $< -o $@
+	$(BUILD)/cJSON.o lib/Unity/src/unity.c $(LIBS) -o $@
 
 # COMPILES THE EXAMPLE FILES
 EXAMPLE_SOURCES := $(wildcard example/*.c)
