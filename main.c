@@ -16,6 +16,9 @@ int main() {
     callbacks.on_message = &example_on_message;
     callbacks.on_message_edit = &example_on_edit;
     callbacks.on_message_delete = &example_on_delete;
+    callbacks.on_channel_create = &example_channel_create;
+    callbacks.on_channel_update = &example_channel_update;
+    callbacks.on_channel_delete = &example_channel_delete;
 
     // starts the bot. This function blocks
     disco_start_bot(&callbacks);
