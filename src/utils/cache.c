@@ -70,6 +70,11 @@ int disco_cache_init(int cache_size) {
     TAILQ_INIT(&guilds_queue.head);
     guilds_queue.size = 0;
 
+    d_log_notice("Estimated maximum cache sizes:\n\tMessage: \t%luB\n\tChannel: \t%luB\n\tGuild:  \t%luB\n",
+                 (sizeof(struct node) + sizeof(struct discord_message)) * (long unsigned int)max_message_cache_size,
+                 (sizeof(struct node) + sizeof(struct discord_channel)) * (long unsigned int)max_channel_cache_size,
+                 (sizeof(struct node) + sizeof(struct discord_guild)) * (long unsigned int)max_guild_cache_size);
+
     return 0;
 }
 
