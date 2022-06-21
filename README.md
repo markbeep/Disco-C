@@ -31,15 +31,15 @@ On the other hand, everything starting with `disco_` is a public library method 
 - https://github.com/sheredom/hashmap.h/
 
 ### Progress
-- Events ![](https://progress-bar.dev/7/?title=4/56)
+- Events ![](https://progress-bar.dev/13/?title=7/56)
   - [x] READY
   - [ ] RESUMED
   - [ ] RECONNECT
   - [ ] INVALID_SESSION
   - [ ] APPLICATION_COMMAND_PERMISSIONS_UPDATE
-  - [ ] CHANNEL_CREATE
-  - [ ] CHANNEL_UPDATE
-  - [ ] CHANNEL_DELETE
+  - [x] CHANNEL_CREATE
+  - [x] CHANNEL_UPDATE
+  - [x] CHANNEL_DELETE
   - [ ] CHANNEL_PINS_UPDATE
   - [ ] THREAD_CREATE
   - [ ] THREAD_UPDATE
