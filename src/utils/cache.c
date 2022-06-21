@@ -1,3 +1,18 @@
+/**
+ * @file cache.c
+ * @brief This file handles a cache for messages, guilds and channels. It will usually clean
+ * up the structures itself. Meaning if a message has to be taken out of cache for space reasons
+ * the cache will deallocate the message accordingly. The only exception to this is if an element
+ * is updated (a message is edited). Then the old message/channel/guild structure will NOT be cleaned up.
+ * It will have to be manually cleaned up by the user, since the hashmap now points to the new message
+ * struct.
+ * @version 0.1
+ * @date 2022-06-21
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
 #include "cache.h"
 #include "disco_logging.h"
 #include <sys/queue.h>
@@ -121,19 +136,9 @@ int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
     n->data = cont;
 
     struct node *old = (struct node *)hashmap_get(map, id, id_len);
-    if (old) { // frees the old entry if it exists
+    if (old) { // frees the old node if it exists
+        // NOTE: this doesn't free the struct, only the node in the queue and map
         d_log_debug("Freed older entry in %s cache\n", cache_name);
-        switch (type) {
-        case DISCO_MESSAGE_CACHE:
-            disco_destroy_message((struct discord_message *)old->data);
-            break;
-        case DISCO_CHANNEL_CACHE:
-            disco_destroy_channel((struct discord_channel *)old->data);
-            break;
-        case DISCO_GUILD_CACHE:
-            disco_destroy_guild((struct discord_guild *)old->data);
-            break;
-        }
         TAILQ_REMOVE(&queue->head, old, pointers);
         free(old);
     } else { // new entry, so increment size

@@ -158,7 +158,7 @@ void disco_destroy_message(struct discord_message *message);
  *                      it has to be destroyed with disco_destroy_message() after)
  * @return struct discord_message* NULL or the struct of the sent message
  */
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct);
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, bool return_struct);
 void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message);
 
 #endif

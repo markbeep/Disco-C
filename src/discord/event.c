@@ -27,6 +27,8 @@ void event_handle_message_update(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct edit_message *edit = (struct edit_message *)work->data;
     work->bot->callbacks->on_message_edit(work->bot, edit->old, edit->new);
+    if (edit->old)
+        disco_destroy_message(edit->old);
     free(edit);
     free(work);
 }
@@ -78,6 +80,8 @@ void event_handle_channel_update(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct edit_channel *edit = (struct edit_channel *)work->data;
     work->bot->callbacks->on_channel_update(work->bot, edit->old, edit->new);
+    if (edit->old)
+        disco_destroy_channel(edit->old);
     free(edit);
     free(work);
 }
@@ -170,7 +174,6 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_channel->new = channel;
             work->data = (void *)edt_channel;
 
-            d_log_notice("oid = %s, nid = %s\n", edt_channel->old ? edt_channel->old->id : NULL, channel->id);
             d_log_debug("Channel ID = %s\n", channel->id);
 
             // adds the new channel to the cache
