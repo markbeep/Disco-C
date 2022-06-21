@@ -27,8 +27,6 @@ void event_handle_message_update(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct edit_message *edit = (struct edit_message *)work->data;
     work->bot->callbacks->on_message_edit(work->bot, edit->old, edit->new);
-    if (edit->old)
-        disco_destroy_message(edit->old);
     free(edit);
     free(work);
 }
@@ -51,9 +49,6 @@ void event_handle_message_delete(void *w) {
         work->bot->callbacks->on_message_delete(work->bot, del->id, del->channel_id, del->guild_id, del->message);
     }
 
-    // deletes the message from the cache
-    if (del->message)
-        disco_cache_delete_message(del->id);
     if (del->id)
         free(del->id);
     if (del->channel_id)
@@ -80,8 +75,6 @@ void event_handle_channel_update(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct edit_channel *edit = (struct edit_channel *)work->data;
     work->bot->callbacks->on_channel_update(work->bot, edit->old, edit->new);
-    if (edit->old)
-        disco_destroy_channel(edit->old);
     free(edit);
     free(work);
 }
@@ -105,9 +98,6 @@ void event_handle_channel_delete(void *w) {
         work->bot->callbacks->on_channel_delete(work->bot, del->id, del->guild_id, del->parent_id, del->type, del->channel);
     }
 
-    // deletes the channel from the cache
-    if (del->channel)
-        disco_cache_delete_channel(del->channel->id);
     if (del->id)
         free(del->id);
     if (del->parent_id)
