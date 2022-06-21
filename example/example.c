@@ -1,6 +1,7 @@
 #include "example.h"
 #include "../src/utils/disco_logging.h"
 #include "sys/time.h"
+#include <stdbool.h>
 
 void example_on_ready(bot_client_t *bot) {
     printf("====================================\n");
@@ -23,7 +24,7 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             struct timeval stop, start;
             gettimeofday(&start, NULL);
             // sends the initial message to a channel
-            struct discord_message *msg = disco_channel_send_message(bot, "Pinging...", message->channel_id, NULL, 1);
+            struct discord_message *msg = disco_channel_send_message(bot, "Pinging...", message->channel_id, NULL, true);
             gettimeofday(&stop, NULL);
             char time_passed[32];
             long delta = (stop.tv_sec - start.tv_sec) * 1000 + (stop.tv_usec - start.tv_usec) / 1000;
@@ -45,20 +46,20 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 }
 
 void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
-    char content[80];
+    char content[120];
     sprintf(content, "Message %s was edited. Message in cache: %s. Old message ID = %s", new->id, old ? "Yes" : "No", old ? old->id : NULL);
-    disco_channel_send_message(bot, content, new->channel_id, NULL, 0);
+    disco_channel_send_message(bot, content, new->channel_id, NULL, false);
 }
 
 void example_on_delete(bot_client_t *bot, char *message_id, char *channel_id, char *guild_id, struct discord_message *message) {
     if (message) {
         char content[50];
         sprintf(content, "Cache: Yes\nID: `%s`", message_id);
-        disco_channel_send_message(bot, content, channel_id, NULL, 0);
+        disco_channel_send_message(bot, content, channel_id, NULL, false);
     } else {
         char content[100];
         sprintf(content, "Cache: No\nID: %s, channel ID: %s, guild ID: %s", message_id, channel_id, guild_id);
-        disco_channel_send_message(bot, content, channel_id, NULL, 0);
+        disco_channel_send_message(bot, content, channel_id, NULL, false);
     }
 }
 

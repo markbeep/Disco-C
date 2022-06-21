@@ -174,7 +174,6 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_channel->new = channel;
             work->data = (void *)edt_channel;
 
-            d_log_notice("oid = %s, nid = %s\n", edt_channel->old ? edt_channel->old->id : NULL, channel->id);
             d_log_debug("Channel ID = %s\n", channel->id);
 
             // adds the new channel to the cache

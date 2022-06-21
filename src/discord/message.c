@@ -168,7 +168,7 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
     }
 }
 
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, int return_struct) {
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, bool return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
     create_message(json, content, message);
