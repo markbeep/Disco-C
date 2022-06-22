@@ -3,10 +3,11 @@
 
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 // https://discord.com/developers/docs/resources/channel#attachment-object
 struct discord_attachment {
-    char *id;
+    int64_t id;
     char *filename;
     char *description;
     char *content_type;

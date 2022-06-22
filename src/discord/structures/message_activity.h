@@ -2,6 +2,7 @@
 #define DISCO_MESSAGE_ACTIVITY
 
 #include <cJSON/cJSON.h>
+#include <stdint.h>
 
 enum Discord_Message_Activity_Type { MESSAGE_ACTIVITY_JOIN = 1,
                                      MESSAGE_ACTIVITY_SPECTATE = 2,
@@ -10,7 +11,7 @@ enum Discord_Message_Activity_Type { MESSAGE_ACTIVITY_JOIN = 1,
 
 struct discord_message_activity {
     enum Discord_Message_Activity_Type type;
-    char *party_id;
+    int64_t party_id;
 };
 
 // TODO implement

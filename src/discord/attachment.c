@@ -3,7 +3,7 @@
 
 void *disco_create_attachment_struct_json(cJSON *data) {
     struct discord_attachment *attach = (struct discord_attachment *)calloc(1, sizeof(struct discord_attachment));
-    attach->id = get_string_from_json(data, "id");
+    attach->id = get_long_from_string_json(data, "id", 0);
     attach->filename = get_string_from_json(data, "filename");
     attach->description = get_string_from_json(data, "description");
     attach->content_type = get_string_from_json(data, "content_type");
@@ -17,8 +17,6 @@ void *disco_create_attachment_struct_json(cJSON *data) {
 }
 
 void disco_destroy_attachment(struct discord_attachment *attachment) {
-    if (attachment->id)
-        free(attachment->id);
     if (attachment->filename)
         free(attachment->filename);
     if (attachment->description)

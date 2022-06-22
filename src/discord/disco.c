@@ -5,6 +5,7 @@
 #include "../web/request.h"
 #include <cJSON/cJSON.h>
 #include <curl/curl.h>
+#include <stdlib.h>
 #include <string.h>
 
 void disco_start_bot(disco_event_callbacks_t *callbacks) {
@@ -81,4 +82,19 @@ int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, 
         (*array)[i++] = func(cur);
     }
     return size;
+}
+
+int64_t get_long_from_string_json(cJSON *data, const char *name, int default_) {
+    cJSON *tmp = cJSON_GetObjectItem(data, name);
+    if (cJSON_IsNumber(tmp))
+        return (int64_t)tmp->valueint;
+    if (!cJSON_IsString(tmp))
+        return default_;
+    return (int64_t)strtoll(tmp->valuestring, NULL, 10);
+}
+
+char *turn_long_into_char(int64_t n) {
+    char *tmp = (char *)alloca(20); // int64 can't be longer than 20 chars
+    sprintf(tmp, "%ld", n);
+    return tmp;
 }

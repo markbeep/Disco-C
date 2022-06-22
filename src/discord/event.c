@@ -32,29 +32,22 @@ void event_handle_message_update(void *w) {
 }
 
 struct delete_message {
-    char *id;
-    char *channel_id;
-    char *guild_id;
+    int64_t id;
+    int64_t channel_id;
+    int64_t guild_id;
     struct discord_message *message;
 };
 
 void event_handle_message_delete(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct delete_message *del = (struct delete_message *)work->data;
-    d_log_notice("id = %s, cid = %s, gid = %s\n", del->id, del->channel_id, del->guild_id);
+    d_log_notice("id = %ld, cid = %ld, gid = %ld\n", del->id, del->channel_id, del->guild_id);
 
     if (!del->id || !del->channel_id) {
         d_log_debug("Message or channel ID in event_handle_message_delete is NULL\n");
     } else {
         work->bot->callbacks->on_message_delete(work->bot, del->id, del->channel_id, del->guild_id, del->message);
     }
-
-    if (del->id)
-        free(del->id);
-    if (del->channel_id)
-        free(del->channel_id);
-    if (del->guild_id)
-        free(del->guild_id);
     free(del);
     free(work);
 }
@@ -80,9 +73,9 @@ void event_handle_channel_update(void *w) {
 }
 
 struct delete_channel {
-    char *id;
-    char *guild_id;
-    char *parent_id;
+    int64_t id;
+    int64_t guild_id;
+    int64_t parent_id;
     enum Discord_Channel_Type type;
     struct discord_channel *channel;
 };
@@ -90,20 +83,13 @@ struct delete_channel {
 void event_handle_channel_delete(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct delete_channel *del = (struct delete_channel *)work->data;
-    d_log_notice("id = %s, pid = %s, gid = %s\n", del->id, del->parent_id, del->guild_id);
+    d_log_notice("id = %ld, pid = %ld, gid = %ld\n", del->id, del->parent_id, del->guild_id);
 
     if (!del->id || !del->guild_id) {
         d_log_debug("Channel or guild ID in event_handle_channel_delete is NULL\n");
     } else {
         work->bot->callbacks->on_channel_delete(work->bot, del->id, del->guild_id, del->parent_id, del->type, del->channel);
     }
-
-    if (del->id)
-        free(del->id);
-    if (del->parent_id)
-        free(del->parent_id);
-    if (del->guild_id)
-        free(del->guild_id);
     free(del);
     free(work);
 }
@@ -143,7 +129,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             work->bot = bot;
             struct discord_channel *channel = disco_create_channel_struct_json(data);
             work->data = (void *)channel;
-            d_log_debug("Channel ID = %s\n", channel->id);
+            d_log_debug("Channel ID = %ld\n", channel->id);
 
             // adds the channel to cache
             disco_cache_set_channel(channel);
@@ -164,7 +150,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_channel->new = channel;
             work->data = (void *)edt_channel;
 
-            d_log_debug("Channel ID = %s\n", channel->id);
+            d_log_debug("Channel ID = %ld\n", channel->id);
 
             // adds the new channel to the cache
             disco_cache_set_channel(channel);
@@ -179,15 +165,15 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             work->bot = bot;
             struct delete_channel *del = (struct delete_channel *)malloc(sizeof(struct delete_channel));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
-            del->id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
+            char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
             if (del->id)
-                del->id = strndup(del->id, strnlen(del->id, 20));
-            del->parent_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
+                del->id = strtoll(del_id, NULL, 10);
+            char *del_parent_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
             if (del->parent_id)
-                del->parent_id = strndup(del->parent_id, strnlen(del->parent_id, 20));
-            del->guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
+                del->parent_id = strtoll(del_parent_id, NULL, 10);
+            char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
             if (del->guild_id)
-                del->guild_id = strndup(del->guild_id, strnlen(del->guild_id, 20));
+                del->guild_id = strtoll(del_guild_id, NULL, 10);
             cJSON *c = cJSON_GetObjectItem(data, "type");
             del->type = c->valueint;
             del->channel = del->id ? disco_cache_get_channel(del->id) : NULL;
@@ -267,7 +253,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // we free the message struct when cleaning up the cache
             struct discord_message *message = disco_create_message_struct_json(data);
             work->data = (void *)message;
-            d_log_debug("Message ID = %s\n", message->id);
+            d_log_debug("Message ID = %ld\n", message->id);
 
             // adds the message to cache
             disco_cache_set_message(message);
@@ -287,7 +273,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_msg->new = message;
             work->data = (void *)edt_msg;
 
-            d_log_debug("Message ID = %s\n", message->id);
+            d_log_debug("Message ID = %ld\n", message->id);
 
             // adds the message to cache
             disco_cache_set_message(message);
@@ -301,15 +287,15 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             work->bot = bot;
             struct delete_message *del = (struct delete_message *)malloc(sizeof(struct delete_message));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
-            del->id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
+            char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
             if (del->id)
-                del->id = strndup(del->id, strnlen(del->id, 20));
-            del->channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
+                del->id = strtoll(del_id, NULL, 10);
+            char *del_channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
             if (del->channel_id)
-                del->channel_id = strndup(del->channel_id, strnlen(del->channel_id, 20));
-            del->guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
+                del->channel_id = strtoll(del_channel_id, NULL, 10);
+            char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
             if (del->guild_id)
-                del->guild_id = strndup(del->guild_id, strnlen(del->guild_id, 20));
+                del->guild_id = strtoll(del_guild_id, NULL, 10);
             del->message = del->id ? disco_cache_get_message(del->id) : NULL;
             work->data = (void *)del;
             t_pool_add_work(bot->thread_pool, &event_handle_message_delete, work);
