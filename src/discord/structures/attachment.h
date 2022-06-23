@@ -7,7 +7,7 @@
 
 // https://discord.com/developers/docs/resources/channel#attachment-object
 struct discord_attachment {
-    int64_t id;
+    uint64_t id;
     char *filename;
     char *description;
     char *content_type;

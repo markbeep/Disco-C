@@ -123,7 +123,7 @@ json_cleanup:
 
 void *gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
-    int64_t t = HEARTBEAT_INTERVAL;
+    uint64_t t = HEARTBEAT_INTERVAL;
     // every 100 ms the client checks if it's time to end the loop
     useconds_t slp = 1e4; // 10ms
     while (client->active && client->heartbeat_active) {

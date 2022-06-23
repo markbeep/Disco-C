@@ -22,25 +22,25 @@ enum Discord_Channel_Type { GUILD_TEXT,
 
 // https://discord.com/developers/docs/resources/channel#channel-object
 struct discord_channel {
-    int64_t id;
+    uint64_t id;
     enum Discord_Channel_Type type;
-    int64_t guild_id;
+    uint64_t guild_id;
     int position;
     struct discord_overwrite **permission_overwrites;
     int permission_overwrites_count;
     char *name;
     char *topic;
     bool nsfw;
-    int64_t last_message_id;
+    uint64_t last_message_id;
     int bitrate;
     int user_limit;
     int rate_limit_per_user;
     struct discord_user **recipients;
     int recipients_count;
     char *icon;
-    int64_t owner_id;
-    int64_t application_id;
-    int64_t parent_id;
+    uint64_t owner_id;
+    uint64_t application_id;
+    uint64_t parent_id;
     char *last_pin_timestamp;
     char *rtc_region;
     int video_quality_mode;
@@ -55,8 +55,8 @@ struct discord_channel {
 
 // https://discord.com/developers/docs/resources/channel#channel-mention-object
 struct discord_channel_mention {
-    int64_t id;
-    int64_t guild_id;
+    uint64_t id;
+    uint64_t guild_id;
     int type;
     char *name;
 };

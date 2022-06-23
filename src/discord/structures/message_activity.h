@@ -11,7 +11,7 @@ enum Discord_Message_Activity_Type { MESSAGE_ACTIVITY_JOIN = 1,
 
 struct discord_message_activity {
     enum Discord_Message_Activity_Type type;
-    int64_t party_id;
+    uint64_t party_id;
 };
 
 // TODO implement

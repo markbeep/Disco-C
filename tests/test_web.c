@@ -51,7 +51,7 @@ void test_websocket_connect(void) {
     TEST_ASSERT_EQUAL_INT64(NULL, bot.callbacks);
     TEST_ASSERT_EQUAL_INT64(NULL, bot.thread_pool);
     TEST_ASSERT_EQUAL_INT64(NULL, bot.user);
-    TEST_ASSERT_EQUAL_INT64((int64_t)&client, bot.websocket_client);
+    TEST_ASSERT_EQUAL_INT64((uint64_t)&client, bot.websocket_client);
 }
 
 void setUp(void) {

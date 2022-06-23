@@ -11,18 +11,18 @@ struct discord_team_member {
     int membership_state;
     char **permissions;
     int permissions_count;
-    int64_t team_id;
+    uint64_t team_id;
     struct discord_user *user;
 };
 
 // https://discord.com/developers/docs/topics/teams#data-models-team-object
 struct discord_team {
     char *icon;
-    int64_t id;
+    uint64_t id;
     struct discord_team_member **members;
     int members_count;
     char *name;
-    int64_t owner_user_id;
+    uint64_t owner_user_id;
 };
 
 // https://discord.com/developers/docs/resources/application#install-params-object
@@ -34,7 +34,7 @@ struct discord_params {
 
 // https://discord.com/developers/docs/resources/application#application-object
 struct discord_application {
-    int64_t id;
+    uint64_t id;
     char *name;
     char *icon;
     char *description;
@@ -46,8 +46,8 @@ struct discord_application {
     char *privacy_policy_url;
     struct discord_user *owner;
     char *verify_key;
-    int64_t guild_id;
-    int64_t primary_sku_id;
+    uint64_t guild_id;
+    uint64_t primary_sku_id;
     char *slug;
     char *cover_image;
     int flags;

@@ -27,7 +27,7 @@ enum Discord_Sticker_Type { STICKER_TYPE_STANDARD = 1,
 // https://discord.com/developers/docs/resources/sticker#sticker-object
 struct discord_sticker {
     char *id;
-    int64_t pack_id;
+    uint64_t pack_id;
     char *name;
     char *description;
     char *tags;

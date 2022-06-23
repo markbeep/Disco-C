@@ -50,7 +50,7 @@ void example_on_edit(bot_client_t *bot, struct discord_message *old, struct disc
     disco_channel_send_message(bot, content, new->channel_id, NULL, false);
 }
 
-void example_on_delete(bot_client_t *bot, int64_t message_id, int64_t channel_id, int64_t guild_id, struct discord_message *message) {
+void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *message) {
     if (message) {
         char content[50];
         sprintf(content, "Cache: Yes\nID: `%ld`", message_id);
@@ -74,7 +74,7 @@ void example_channel_update(bot_client_t *bot, struct discord_channel *old, stru
         d_log_normal("Channel NOT in cache was updated: %ld\n", new->id);
     }
 }
-void example_channel_delete(bot_client_t *bot, int64_t channel_id, int64_t guild_id, int64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
+void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
     (void)bot;
     (void)guild_id;
     (void)parent_id;

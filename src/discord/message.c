@@ -184,7 +184,7 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
     }
 }
 
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, int64_t channel_id, struct discord_create_message *message, bool return_struct) {
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
     create_message(json, content, message);
@@ -215,7 +215,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     return sent_message;
 }
 
-void disco_channel_edit_message(bot_client_t *bot, char *content, int64_t channel_id, int64_t message_id, struct discord_create_message *message) {
+void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
 
@@ -304,10 +304,10 @@ void *disco_create_message_struct_json(cJSON *data) {
     msg->mention_roles_count = cJSON_GetArraySize(tmp_json);
     if (msg->mention_roles_count > 0) {
         cJSON *cur = NULL;
-        msg->mention_roles = (int64_t *)malloc((size_t)msg->mention_roles_count * sizeof(int64_t));
+        msg->mention_roles = (uint64_t *)malloc((size_t)msg->mention_roles_count * sizeof(uint64_t));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mention_roles[i++] = strtoll(cur->valuestring, NULL, 10);
+            msg->mention_roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
         }
     }
 

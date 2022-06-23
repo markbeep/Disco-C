@@ -21,8 +21,8 @@ void disco_destroy_thread_metadata(struct discord_thread_metadata *thread);
 
 // https://discord.com/developers/docs/resources/channel#thread-member-object
 struct discord_thread_member {
-    int64_t id;
-    int64_t user_id;
+    uint64_t id;
+    uint64_t user_id;
     char *join_timestamp;
     int flags;
 };
