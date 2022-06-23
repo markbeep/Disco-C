@@ -4,6 +4,7 @@
 #include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 enum Discord_Sticker_Format { STICKER_FORMAT_PNG = 1,
                               STICKER_FORMAT_APNG = 2,
@@ -26,7 +27,7 @@ enum Discord_Sticker_Type { STICKER_TYPE_STANDARD = 1,
 // https://discord.com/developers/docs/resources/sticker#sticker-object
 struct discord_sticker {
     char *id;
-    char *pack_id;
+    int64_t pack_id;
     char *name;
     char *description;
     char *tags;

@@ -5,6 +5,7 @@
 #include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 struct discord_component;
 
@@ -145,7 +146,7 @@ struct discord_interaction_data {
     enum Discord_Application_Command_Type type;
     struct discord_application_command_interaction_data_option **options;
     int options_count;
-    char *guild_id;
+    int64_t guild_id;
     char *custom_id;
     enum Discord_Component_Type component_type;
     struct discord_select_option **values;

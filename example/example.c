@@ -7,13 +7,12 @@ void example_on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
     printf("Username:\t%s\n", bot->user->username);
-    printf("User ID:\t%s\n", bot->user->id);
+    printf("User ID:\t%ld\n", bot->user->id);
     printf("====================================\n\n");
 }
 
 void example_on_message(bot_client_t *bot, struct discord_message *message) {
     (void)bot;
-    fprintf(stderr, "Received a message: %s\n", message ? message->content : "(null)");
     if (message->content) { // message content is NULL if there's none
         if (message->author && message->author->bot) {
             fprintf(stderr, "User is a bot. Ignoring\n");
@@ -47,42 +46,42 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 
 void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
     char content[120];
-    sprintf(content, "Message %s was edited. Message in cache: %s. Old message ID = %s", new->id, old ? "Yes" : "No", old ? old->id : NULL);
+    sprintf(content, "Message %ld was edited. Message in cache: %s. Old message ID = %ld", new->id, old ? "Yes" : "No", old ? old->id : 0);
     disco_channel_send_message(bot, content, new->channel_id, NULL, false);
 }
 
-void example_on_delete(bot_client_t *bot, char *message_id, char *channel_id, char *guild_id, struct discord_message *message) {
+void example_on_delete(bot_client_t *bot, int64_t message_id, int64_t channel_id, int64_t guild_id, struct discord_message *message) {
     if (message) {
         char content[50];
-        sprintf(content, "Cache: Yes\nID: `%s`", message_id);
+        sprintf(content, "Cache: Yes\nID: `%ld`", message_id);
         disco_channel_send_message(bot, content, channel_id, NULL, false);
     } else {
         char content[100];
-        sprintf(content, "Cache: No\nID: %s, channel ID: %s, guild ID: %s", message_id, channel_id, guild_id);
+        sprintf(content, "Cache: No\nID: %ld, channel ID: %ld, guild ID: %ld", message_id, channel_id, guild_id);
         disco_channel_send_message(bot, content, channel_id, NULL, false);
     }
 }
 
 void example_channel_create(bot_client_t *bot, struct discord_channel *channel) {
     (void)bot;
-    d_log_normal("Channel created with ID %s\n", channel->id);
+    d_log_normal("Channel created with ID %ld\n", channel->id);
 }
 void example_channel_update(bot_client_t *bot, struct discord_channel *old, struct discord_channel *new) {
     (void)bot;
     if (old) {
-        d_log_normal("Channel in cache was updated: %s\n", old->id);
+        d_log_normal("Channel in cache was updated: %ld\n", old->id);
     } else {
-        d_log_normal("Channel NOT in cache was updated: %s\n", new->id);
+        d_log_normal("Channel NOT in cache was updated: %ld\n", new->id);
     }
 }
-void example_channel_delete(bot_client_t *bot, char *channel_id, char *guild_id, char *parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
+void example_channel_delete(bot_client_t *bot, int64_t channel_id, int64_t guild_id, int64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
     (void)bot;
     (void)guild_id;
     (void)parent_id;
     (void)type;
     if (channel) {
-        d_log_normal("Channel in cache was deleted: %s\n", channel->id);
+        d_log_normal("Channel in cache was deleted: %ld\n", channel->id);
     } else {
-        d_log_normal("Channel NOT in cache was deleted: %s\n", channel_id);
+        d_log_normal("Channel NOT in cache was deleted: %ld\n", channel_id);
     }
 }

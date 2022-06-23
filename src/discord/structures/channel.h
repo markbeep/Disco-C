@@ -5,6 +5,7 @@
 #include "thread.h"
 #include "user.h"
 #include <stdbool.h>
+#include <stdint.h>
 
 // https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 enum Discord_Channel_Type { GUILD_TEXT,
@@ -21,25 +22,25 @@ enum Discord_Channel_Type { GUILD_TEXT,
 
 // https://discord.com/developers/docs/resources/channel#channel-object
 struct discord_channel {
-    char *id;
+    int64_t id;
     enum Discord_Channel_Type type;
-    char *guild_id;
+    int64_t guild_id;
     int position;
     struct discord_overwrite **permission_overwrites;
     int permission_overwrites_count;
     char *name;
     char *topic;
     bool nsfw;
-    char *last_message_id;
+    int64_t last_message_id;
     int bitrate;
     int user_limit;
     int rate_limit_per_user;
     struct discord_user **recipients;
     int recipients_count;
     char *icon;
-    char *owner_id;
-    char *application_id;
-    char *parent_id;
+    int64_t owner_id;
+    int64_t application_id;
+    int64_t parent_id;
     char *last_pin_timestamp;
     char *rtc_region;
     int video_quality_mode;
@@ -54,8 +55,8 @@ struct discord_channel {
 
 // https://discord.com/developers/docs/resources/channel#channel-mention-object
 struct discord_channel_mention {
-    char *id;
-    char *guild_id;
+    int64_t id;
+    int64_t guild_id;
     int type;
     char *name;
 };

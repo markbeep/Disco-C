@@ -7,7 +7,7 @@
 
 void *disco_create_user_struct_json(cJSON *data) {
     struct discord_user *user = (struct discord_user *)calloc(1, sizeof(struct discord_user));
-    user->id = get_string_from_json(data, "id");
+    user->id = get_long_from_string_json(data, "id", 0);
     user->username = get_string_from_json(data, "username");
     user->discriminator = get_string_from_json(data, "discriminator");
     user->avatar = get_string_from_json(data, "avatar");
@@ -26,8 +26,6 @@ void *disco_create_user_struct_json(cJSON *data) {
 }
 
 void disco_destroy_user(struct discord_user *user) {
-    if (user->id)
-        free(user->id);
     if (user->username)
         free(user->username);
     if (user->discriminator)

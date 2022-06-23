@@ -5,6 +5,7 @@
 #include "../web/request.h"
 #include <cJSON/cJSON.h>
 #include <curl/curl.h>
+#include <stdlib.h>
 #include <string.h>
 
 void disco_start_bot(disco_event_callbacks_t *callbacks) {
@@ -22,7 +23,7 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     bot.thread_pool = t_pool_init(t_process_count());
 
     // inits the cache
-    if (0 != disco_cache_init(1000)) {
+    if (0 != disco_cache_init(1000, 1000, 1000)) {
         d_log_err("Cache initialization failed\n");
         exit(1);
     }
@@ -81,4 +82,13 @@ int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, 
         (*array)[i++] = func(cur);
     }
     return size;
+}
+
+int64_t get_long_from_string_json(cJSON *data, const char *name, int default_) {
+    cJSON *tmp = cJSON_GetObjectItem(data, name);
+    if (cJSON_IsNumber(tmp))
+        return (int64_t)tmp->valueint;
+    if (!cJSON_IsString(tmp))
+        return default_;
+    return (int64_t)strtoll(tmp->valuestring, NULL, 10);
 }

@@ -3,6 +3,7 @@
 
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {
@@ -20,8 +21,8 @@ void disco_destroy_thread_metadata(struct discord_thread_metadata *thread);
 
 // https://discord.com/developers/docs/resources/channel#thread-member-object
 struct discord_thread_member {
-    char *id;
-    char *user_id;
+    int64_t id;
+    int64_t user_id;
     char *join_timestamp;
     int flags;
 };

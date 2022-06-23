@@ -102,13 +102,19 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
         cJSON_AddItemToArray(parse, cJSON_CreateString("everyone"));
     if (allowed_mentions->roles_count > 0) {
         cJSON *roles = cJSON_AddArrayToObject(allowed_mentions_obj, "roles");
-        for (int i = 0; i < allowed_mentions->roles_count; i++)
-            cJSON_AddItemToArray(roles, cJSON_CreateString(allowed_mentions->roles[i]));
+        for (int i = 0; i < allowed_mentions->roles_count; i++) {
+            char tmp[20];
+            sprintf(tmp, "%ld", allowed_mentions->roles[i]);
+            cJSON_AddItemToArray(roles, cJSON_CreateString(tmp));
+        }
     }
     if (allowed_mentions->users_count > 0) {
         cJSON *users = cJSON_AddArrayToObject(allowed_mentions_obj, "users");
-        for (int i = 0; i < allowed_mentions->users_count; i++)
-            cJSON_AddItemToArray(users, cJSON_CreateString(allowed_mentions->users[i]));
+        for (int i = 0; i < allowed_mentions->users_count; i++) {
+            char tmp[20];
+            sprintf(tmp, "%ld", allowed_mentions->users[i]);
+            cJSON_AddItemToArray(users, cJSON_CreateString(tmp));
+        }
     }
     if (allowed_mentions->replied_user)
         cJSON_AddItemToObject(allowed_mentions_obj, "replied_user", cJSON_CreateTrue());
@@ -119,12 +125,19 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
 
 static cJSON *create_message_reference(struct discord_message_reference *ref) {
     cJSON *ref_obj = cJSON_CreateObject();
-    if (ref->message_id)
-        cJSON_AddItemToObject(ref_obj, "message_id", cJSON_CreateString(ref->message_id));
-    if (ref->channel_id)
-        cJSON_AddItemToObject(ref_obj, "channel_id", cJSON_CreateString(ref->channel_id));
-    if (ref->guild_id)
-        cJSON_AddItemToObject(ref_obj, "guild_id", cJSON_CreateString(ref->guild_id));
+    char tmp[20];
+    if (ref->message_id) {
+        sprintf(tmp, "%ld", ref->message_id);
+        cJSON_AddItemToObject(ref_obj, "message_id", cJSON_CreateString(tmp));
+    }
+    if (ref->channel_id) {
+        sprintf(tmp, "%ld", ref->channel_id);
+        cJSON_AddItemToObject(ref_obj, "channel_id", cJSON_CreateString(tmp));
+    }
+    if (ref->guild_id) {
+        sprintf(tmp, "%ld", ref->guild_id);
+        cJSON_AddItemToObject(ref_obj, "guild_id", cJSON_CreateString(tmp));
+    }
     if (ref->fail_if_not_exists)
         cJSON_AddItemToObject(ref_obj, "fail_if_not_exists", cJSON_CreateTrue());
     else
@@ -154,8 +167,11 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
         // stickers
         if (message->sticker_ids_count > 0) {
             cJSON *stickers = cJSON_CreateArray();
-            for (int i = 0; i < message->sticker_ids_count; i++)
-                cJSON_AddItemToArray(stickers, cJSON_CreateString(message->sticker_ids[i]));
+            for (int i = 0; i < message->sticker_ids_count; i++) {
+                char tmp[20];
+                sprintf(tmp, "%ld", message->sticker_ids[i]);
+                cJSON_AddItemToArray(stickers, cJSON_CreateString(tmp));
+            }
             cJSON_AddItemToObject(json, "sticker_ids", stickers);
         }
         // TODO discord_component
@@ -168,13 +184,13 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
     }
 }
 
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, char *channel_id, struct discord_create_message *message, bool return_struct) {
+struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, int64_t channel_id, struct discord_create_message *message, bool return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
     create_message(json, content, message);
 
     char uri[48];
-    sprintf(uri, "/channels/%s/messages", channel_id);
+    sprintf(uri, "/channels/%ld/messages", channel_id);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_POST);
     struct discord_message *sent_message = NULL;
@@ -199,7 +215,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     return sent_message;
 }
 
-void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_id, char *message_id, struct discord_create_message *message) {
+void disco_channel_edit_message(bot_client_t *bot, char *content, int64_t channel_id, int64_t message_id, struct discord_create_message *message) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
 
@@ -228,7 +244,7 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, char *channel_
     }
 
     char uri[70];
-    sprintf(uri, "/channels/%s/messages/%s", channel_id, message_id);
+    sprintf(uri, "/channels/%ld/messages/%ld", channel_id, message_id);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_PATCH);
     if (res != CURLE_OK) {
@@ -248,10 +264,10 @@ void *disco_create_message_struct_json(cJSON *data) {
     struct discord_message *msg = (struct discord_message *)calloc(1, sizeof(struct discord_message));
     cJSON *tmp_json = NULL;
 
-    msg->id = get_string_from_json(data, "id");
-    msg->channel_id = get_string_from_json(data, "channel_id");
-    msg->guild_id = get_string_from_json(data, "guild_id");
-    msg->webhook_id = get_string_from_json(data, "webhook_id");
+    msg->id = get_long_from_string_json(data, "id", 0);
+    msg->channel_id = get_long_from_string_json(data, "channel_id", 0);
+    msg->guild_id = get_long_from_string_json(data, "guild_id", 0);
+    msg->webhook_id = get_long_from_string_json(data, "webhook_id", 0);
     if (!msg->webhook_id) {
         // only creates a user if its not a webhook
         cJSON *user = cJSON_GetObjectItem(data, "user");
@@ -288,10 +304,10 @@ void *disco_create_message_struct_json(cJSON *data) {
     msg->mention_roles_count = cJSON_GetArraySize(tmp_json);
     if (msg->mention_roles_count > 0) {
         cJSON *cur = NULL;
-        msg->mention_roles = (char **)malloc((size_t)msg->mention_roles_count * sizeof(char *));
+        msg->mention_roles = (int64_t *)malloc((size_t)msg->mention_roles_count * sizeof(int64_t));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mention_roles[i++] = strndup(cur->string, 32);
+            msg->mention_roles[i++] = strtoll(cur->valuestring, NULL, 10);
         }
     }
 
@@ -317,7 +333,7 @@ void *disco_create_message_struct_json(cJSON *data) {
     tmp_json = cJSON_GetObjectItem(data, "application");
     if (tmp_json)
         msg->application = (struct discord_application *)disco_create_application_struct_json(tmp_json);
-    msg->application_id = get_string_from_json(data, "application_id");
+    msg->application_id = get_long_from_string_json(data, "application_id", 0);
 
     // message_reference
     tmp_json = cJSON_GetObjectItem(data, "message_reference");
@@ -349,12 +365,6 @@ void *disco_create_message_struct_json(cJSON *data) {
 }
 
 void disco_destroy_message(struct discord_message *message) {
-    if (message->id)
-        free(message->id);
-    if (message->channel_id)
-        free(message->channel_id);
-    if (message->guild_id)
-        free(message->guild_id);
     if (message->author)
         disco_destroy_user(message->author);
     if (message->member)
@@ -369,8 +379,6 @@ void disco_destroy_message(struct discord_message *message) {
         disco_destroy_member(message->mentions[i]);
     if (message->mentions)
         free(message->mentions);
-    for (int i = 0; i < message->mention_roles_count; i++)
-        free(message->mention_roles[i]);
     if (message->mention_roles)
         free(message->mention_roles);
     for (int i = 0; i < message->mention_channels_count; i++)
@@ -391,14 +399,10 @@ void disco_destroy_message(struct discord_message *message) {
         free(message->reactions);
     if (message->nonce)
         free(message->nonce);
-    if (message->webhook_id)
-        free(message->webhook_id);
     if (message->activity)
         disco_destroy_message_activity(message->activity);
     if (message->application)
         disco_destroy_application(message->application);
-    if (message->application_id)
-        free(message->application_id);
     if (message->message_reference)
         disco_destroy_message_reference(message->message_reference);
     if (message->interaction)
@@ -422,17 +426,11 @@ void disco_destroy_message(struct discord_message *message) {
 
 void *disco_create_message_reference_struct_json(cJSON *data) {
     struct discord_message_reference *msg = (struct discord_message_reference *)calloc(1, sizeof(struct discord_message_reference));
-    msg->message_id = get_string_from_json(data, "message_id");
-    msg->channel_id = get_string_from_json(data, "channel_id");
-    msg->guild_id = get_string_from_json(data, "guild_id");
+    msg->message_id = get_long_from_string_json(data, "message_id", 0);
+    msg->channel_id = get_long_from_string_json(data, "channel_id", 0);
+    msg->guild_id = get_long_from_string_json(data, "guild_id", 0);
     return msg;
 }
 void disco_destroy_message_reference(struct discord_message_reference *message) {
-    if (message->message_id)
-        free(message->message_id);
-    if (message->channel_id)
-        free(message->channel_id);
-    if (message->guild_id)
-        free(message->guild_id);
     free(message);
 }

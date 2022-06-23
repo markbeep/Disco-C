@@ -11,14 +11,25 @@ enum Disco_Cache_Type { DISCO_CHANNEL_CACHE,
                         DISCO_GUILD_CACHE };
 
 /**
- * @brief Initializes all the caches. Should be called once when starting up the bot.
+ * @brief Initializes all the caches.
  *
+ * Should be called once when starting up the bot.
+ * Once the max cache size is reached, the oldest messages/channels/guilds will
+ * start to be cleaned up. Any time an object is edited on Discord, its "TTL" will be
+ * renewed in the cache.
+ *
+ * The minimum cache size is 2, because edits require both the old and new object
+ * in the cache. Any number lower than 2 will result in the cache being set to 2.
+ *
+ * @param message_cache_size Maximum amount of messages the cache can hold (> 1)
+ * @param channel_cach_size Maximum amount of channels the cache can hold (> 1)
+ * @param guild_cache_size Maximum amount of guilds the cache can hold (> 1)
  * @return int 0 if succeeded, 1 otherwise
  */
-int disco_cache_init();
+int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_cache_size);
 
 /**
- * @brief Cleans up the cache and frees all the structs it contains
+ * @brief Cleans up the cache and frees all the structs it contains.
  *
  */
 void disco_cache_destroy();
@@ -38,7 +49,7 @@ int disco_cache_set_message(struct discord_message *message);
  * @return struct discord_message* Pointer to the message struct.
  * NULL if the message is not in the cache.
  */
-struct discord_message *disco_cache_get_message(char *id);
+struct discord_message *disco_cache_get_message(int64_t id);
 
 /**
  * @brief Removes a message from the cache and
@@ -46,7 +57,7 @@ struct discord_message *disco_cache_get_message(char *id);
  *
  * @param id ID of the message to remove
  */
-void disco_cache_delete_message(char *id);
+void disco_cache_delete_message(int64_t id);
 
 /**
  * @brief Adds a channel to the cache by ID. If it already exists in cache,
@@ -63,7 +74,7 @@ int disco_cache_set_channel(struct discord_channel *channel);
  * @return struct discord_channel* Pointer to the channel struct.
  * NULL if the channel is not in the cache.
  */
-struct discord_channel *disco_cache_get_channel(char *id);
+struct discord_channel *disco_cache_get_channel(int64_t id);
 
 /**
  * @brief Removes a channel from the cache and
@@ -71,7 +82,7 @@ struct discord_channel *disco_cache_get_channel(char *id);
  *
  * @param id ID of the channel to remove
  */
-void disco_cache_delete_channel(char *id);
+void disco_cache_delete_channel(int64_t id);
 
 /**
  * @brief Adds a guild to the cache by ID. If it already exists in cache,
@@ -88,7 +99,7 @@ int disco_cache_set_guild(struct discord_guild *guild);
  * @return struct discord_guild* Pointer to the guild struct.
  * NULL if the guild is not in the cache.
  */
-struct discord_guild *disco_cache_get_guild(char *id);
+struct discord_guild *disco_cache_get_guild(int64_t id);
 
 /**
  * @brief Removes a guild from the cache and
@@ -96,6 +107,6 @@ struct discord_guild *disco_cache_get_guild(char *id);
  *
  * @param id ID of the guild to remove
  */
-void disco_cache_delete_guild(char *id);
+void disco_cache_delete_guild(int64_t id);
 
 #endif

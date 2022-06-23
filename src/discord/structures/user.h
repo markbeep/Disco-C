@@ -3,10 +3,11 @@
 
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 // https://discord.com/developers/docs/resources/user#user-object
 struct discord_user {
-    char *id;
+    int64_t id;
     char *username;
     char *discriminator;
     char *avatar;
