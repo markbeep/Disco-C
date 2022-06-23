@@ -89,13 +89,4 @@ int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, 
 
 int64_t get_long_from_string_json(cJSON *data, const char *name, int default_);
 
-/**
- * @brief Helper function that takes a 64 bit long and returns
- * a string which is placed on the stack
- *
- * @param n
- * @return char*
- */
-char *turn_long_into_char(int64_t n);
-
 #endif

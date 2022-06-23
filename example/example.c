@@ -13,7 +13,6 @@ void example_on_ready(bot_client_t *bot) {
 
 void example_on_message(bot_client_t *bot, struct discord_message *message) {
     (void)bot;
-    fprintf(stderr, "Received a message: %s\n", message ? message->content : "(null)");
     if (message->content) { // message content is NULL if there's none
         if (message->author && message->author->bot) {
             fprintf(stderr, "User is a bot. Ignoring\n");

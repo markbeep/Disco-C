@@ -14,28 +14,28 @@ int d_should_log_notice();
 int d_should_log_normal();
 int d_should_log_debug();
 
-#define d_log_err(str, ...)                                           \
-    {                                                                 \
-        if (d_should_log_err())                                       \
-            fprintf(stderr, "\033[91m" str "\033[0m", ##__VA_ARGS__); \
+#define d_log_err(str, ...)                                                                       \
+    {                                                                                             \
+        if (d_should_log_err())                                                                   \
+            fprintf(stderr, "[%s:%d] \033[91m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
     }
 
-#define d_log_notice(str, ...)                                        \
-    {                                                                 \
-        if (d_should_log_notice())                                    \
-            fprintf(stderr, "\033[95m" str "\033[0m", ##__VA_ARGS__); \
+#define d_log_notice(str, ...)                                                                    \
+    {                                                                                             \
+        if (d_should_log_notice())                                                                \
+            fprintf(stderr, "[%s:%d] \033[95m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
     }
 
-#define d_log_normal(str, ...)                   \
-    {                                            \
-        if (d_should_log_normal())               \
-            fprintf(stderr, str, ##__VA_ARGS__); \
+#define d_log_normal(str, ...)                                                  \
+    {                                                                           \
+        if (d_should_log_normal())                                              \
+            fprintf(stderr, "[%s:%d] " str, __FILE__, __LINE__, ##__VA_ARGS__); \
     }
 
-#define d_log_debug(str, ...)                                         \
-    {                                                                 \
-        if (d_should_log_debug())                                     \
-            fprintf(stderr, "\033[92m" str "\033[0m", ##__VA_ARGS__); \
+#define d_log_debug(str, ...)                                                                     \
+    {                                                                                             \
+        if (d_should_log_debug())                                                                 \
+            fprintf(stderr, "[%s:%d] \033[92m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
     }
 
 #endif

@@ -166,13 +166,13 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             struct delete_channel *del = (struct delete_channel *)malloc(sizeof(struct delete_channel));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
             char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
-            if (del->id)
+            if (del_id)
                 del->id = strtoll(del_id, NULL, 10);
             char *del_parent_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
-            if (del->parent_id)
+            if (del_parent_id)
                 del->parent_id = strtoll(del_parent_id, NULL, 10);
             char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
-            if (del->guild_id)
+            if (del_guild_id)
                 del->guild_id = strtoll(del_guild_id, NULL, 10);
             cJSON *c = cJSON_GetObjectItem(data, "type");
             del->type = c->valueint;
@@ -288,13 +288,13 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             struct delete_message *del = (struct delete_message *)malloc(sizeof(struct delete_message));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
             char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
-            if (del->id)
+            if (del_id)
                 del->id = strtoll(del_id, NULL, 10);
             char *del_channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
-            if (del->channel_id)
+            if (del_channel_id)
                 del->channel_id = strtoll(del_channel_id, NULL, 10);
             char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
-            if (del->guild_id)
+            if (del_guild_id)
                 del->guild_id = strtoll(del_guild_id, NULL, 10);
             del->message = del->id ? disco_cache_get_message(del->id) : NULL;
             work->data = (void *)del;

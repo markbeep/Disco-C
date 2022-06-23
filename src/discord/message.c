@@ -102,13 +102,19 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
         cJSON_AddItemToArray(parse, cJSON_CreateString("everyone"));
     if (allowed_mentions->roles_count > 0) {
         cJSON *roles = cJSON_AddArrayToObject(allowed_mentions_obj, "roles");
-        for (int i = 0; i < allowed_mentions->roles_count; i++)
-            cJSON_AddItemToArray(roles, cJSON_CreateString(turn_long_into_char(allowed_mentions->roles[i])));
+        for (int i = 0; i < allowed_mentions->roles_count; i++) {
+            char tmp[20];
+            sprintf(tmp, "%ld", allowed_mentions->roles[i]);
+            cJSON_AddItemToArray(roles, cJSON_CreateString(tmp));
+        }
     }
     if (allowed_mentions->users_count > 0) {
         cJSON *users = cJSON_AddArrayToObject(allowed_mentions_obj, "users");
-        for (int i = 0; i < allowed_mentions->users_count; i++)
-            cJSON_AddItemToArray(users, cJSON_CreateString(turn_long_into_char(allowed_mentions->users[i])));
+        for (int i = 0; i < allowed_mentions->users_count; i++) {
+            char tmp[20];
+            sprintf(tmp, "%ld", allowed_mentions->users[i]);
+            cJSON_AddItemToArray(users, cJSON_CreateString(tmp));
+        }
     }
     if (allowed_mentions->replied_user)
         cJSON_AddItemToObject(allowed_mentions_obj, "replied_user", cJSON_CreateTrue());
@@ -119,12 +125,19 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
 
 static cJSON *create_message_reference(struct discord_message_reference *ref) {
     cJSON *ref_obj = cJSON_CreateObject();
-    if (ref->message_id)
-        cJSON_AddItemToObject(ref_obj, "message_id", cJSON_CreateString(turn_long_into_char(ref->message_id)));
-    if (ref->channel_id)
-        cJSON_AddItemToObject(ref_obj, "channel_id", cJSON_CreateString(turn_long_into_char(ref->channel_id)));
-    if (ref->guild_id)
-        cJSON_AddItemToObject(ref_obj, "guild_id", cJSON_CreateString(turn_long_into_char(ref->guild_id)));
+    char tmp[20];
+    if (ref->message_id) {
+        sprintf(tmp, "%ld", ref->message_id);
+        cJSON_AddItemToObject(ref_obj, "message_id", cJSON_CreateString(tmp));
+    }
+    if (ref->channel_id) {
+        sprintf(tmp, "%ld", ref->channel_id);
+        cJSON_AddItemToObject(ref_obj, "channel_id", cJSON_CreateString(tmp));
+    }
+    if (ref->guild_id) {
+        sprintf(tmp, "%ld", ref->guild_id);
+        cJSON_AddItemToObject(ref_obj, "guild_id", cJSON_CreateString(tmp));
+    }
     if (ref->fail_if_not_exists)
         cJSON_AddItemToObject(ref_obj, "fail_if_not_exists", cJSON_CreateTrue());
     else
@@ -154,8 +167,11 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
         // stickers
         if (message->sticker_ids_count > 0) {
             cJSON *stickers = cJSON_CreateArray();
-            for (int i = 0; i < message->sticker_ids_count; i++)
-                cJSON_AddItemToArray(stickers, cJSON_CreateString(turn_long_into_char(message->sticker_ids[i])));
+            for (int i = 0; i < message->sticker_ids_count; i++) {
+                char tmp[20];
+                sprintf(tmp, "%ld", message->sticker_ids[i]);
+                cJSON_AddItemToArray(stickers, cJSON_CreateString(tmp));
+            }
             cJSON_AddItemToObject(json, "sticker_ids", stickers);
         }
         // TODO discord_component

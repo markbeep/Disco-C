@@ -11,14 +11,25 @@ enum Disco_Cache_Type { DISCO_CHANNEL_CACHE,
                         DISCO_GUILD_CACHE };
 
 /**
- * @brief Initializes all the caches. Should be called once when starting up the bot.
+ * @brief Initializes all the caches.
  *
+ * Should be called once when starting up the bot.
+ * Once the max cache size is reached, the oldest messages/channels/guilds will
+ * start to be cleaned up. Any time an object is edited on Discord, its "TTL" will be
+ * renewed in the cache.
+ *
+ * The minimum cache size is 2, because edits require both the old and new object
+ * in the cache. Any number lower than 2 will result in the cache being set to 2.
+ *
+ * @param message_cache_size Maximum amount of messages the cache can hold (> 1)
+ * @param channel_cach_size Maximum amount of channels the cache can hold (> 1)
+ * @param guild_cache_size Maximum amount of guilds the cache can hold (> 1)
  * @return int 0 if succeeded, 1 otherwise
  */
-int disco_cache_init();
+int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_cache_size);
 
 /**
- * @brief Cleans up the cache and frees all the structs it contains
+ * @brief Cleans up the cache and frees all the structs it contains.
  *
  */
 void disco_cache_destroy();
