@@ -89,3 +89,10 @@ On the other hand, everything starting with `disco_` is a public library method 
   - [ ] VOICE_STATE_UPDATE
   - [ ] VOICE_SERVER_UPDATE
   - [ ] WEBHOOKS_UPDATE
+- Interactions
+  - [x] Application Command Object
+  - [ ] Application Command Option Object
+  - [ ] Register Commands
+    - [ ] Global
+    - [ ] Guild
+  

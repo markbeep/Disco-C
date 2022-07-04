@@ -8,17 +8,18 @@
 #include <stdint.h>
 
 // https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-enum Discord_Channel_Type { GUILD_TEXT,
-                            GUILD_VOICE,
-                            GROUP_DM,
-                            GUILD_CATEGORY,
-                            GUILD_NEWS = 5,
-                            GUILD_NEWS_THREAD = 10,
-                            GUILD_PUBLIC_THREAD,
-                            GUILD_PRIVATE_THREADly,
-                            GUILD_STAGE_VOICE,
-                            GUILD_DIRECTORY,
-                            GUILD_FORUM };
+enum Discord_Channel_Type { CHANNEL_GUILD_TEXT = 0,
+                            CHANNEL_DM = 1,
+                            CHANNEL_GROUP_DM = 1,
+                            CHANNEL_GUILD_VOICE = 2,
+                            CHANNEL_GUILD_CATEGORY = 4,
+                            CHANNEL_GUILD_NEWS = 5,
+                            CHANNEL_GUILD_NEWS_THREAD = 10,
+                            CHANNEL_GUILD_PUBLIC_THREAD = 11,
+                            CHANNEL_GUILD_PRIVATE_THREAD = 12,
+                            CHANNEL_GUILD_STAGE_VOICE = 13,
+                            CHANNEL_GUILD_DIRECTORY = 14,
+                            CHANNEL_GUILD_FORUM = 15 };
 
 // https://discord.com/developers/docs/resources/channel#channel-object
 struct discord_channel {

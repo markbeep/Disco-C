@@ -17,7 +17,8 @@ enum Disco_Cache_Type { DISCO_CHANNEL_CACHE,
  * This allows the user to choose what do with the structure however they want.
  * The user can choose to simply destroy the structure or they can also add the
  * structure back into the cache based on a condition (Note this can result in an
- * infinite loop).
+ * infinite loop if one chooses to add the element back in the queue resulting in
+ * a new element being removed).
  *
  * @param type Type of structure
  * @param structure Pointer to the actual structure
