@@ -13,7 +13,38 @@ enum Application_Command_Type {
 };
 
 // https://discord.com/developers/docs/reference#locales
-struct discord_language_locales {};
+struct discord_language_locales {
+    char *da;
+    char *de;
+    char *en_GB;
+    char *en_US;
+    char *es_ES;
+    char *fr;
+    char *hr;
+    char *it;
+    char *lt;
+    char *hu;
+    char *nl;
+    char *no;
+    char *pl;
+    char *pt_BR;
+    char *ro;
+    char *fi;
+    char *sv_SE;
+    char *vi;
+    char *tr;
+    char *cs;
+    char *el;
+    char *bg;
+    char *ru;
+    char *uk;
+    char *hi;
+    char *th;
+    char *zh_CN;
+    char *ja;
+    char *zh_TW;
+    char *ko;
+};
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
 struct discord_application_command_option_choice {
@@ -22,7 +53,7 @@ struct discord_application_command_option_choice {
     union {
         char *str;
         double d;
-        int i;
+        int64_t i;
     } value; // type of value depends on the option type
 };
 
@@ -56,11 +87,11 @@ struct discord_application_command_option {
     enum Discord_Channel_Type *channel_types;
     int channel_types_count;
     union {
-        int i;
+        int64_t i;
         double d;
     } min_value;
     union {
-        int i;
+        int64_t i;
         double d;
     } max_value;
     bool autocomplete;
@@ -83,5 +114,12 @@ struct discord_application_command_structure {
     bool default_permission;
     int64_t version;
 };
+
+int discord_command_register_global(struct discord_application_command_structure *command);
+int discord_command_register_guild(struct discord_application_command_structure *command, int64_t guild_id);
+int discord_command_update_global(struct discord_application_command_structure *command, int64_t guild_id, int64_t command_id);
+int discord_command_update_guild(struct discord_application_command_structure *command, int64_t guild_id, int64_t command_id);
+int discord_command_delete_global(int64_t command_id);
+int discord_command_delete_guild(int64_t guild_id, int64_t command_id);
 
 #endif

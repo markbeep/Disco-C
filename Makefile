@@ -48,7 +48,7 @@ clean: clean_test
 	rm -f main
 
 config.h:
-	@echo '#define DISCORD_TOKEN "token_placeholder"' > $@
+	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@
 
 cJSON:
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) lib/cJSON/cJSON.c -o $(BUILD)/cJSON.o

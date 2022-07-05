@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @brief Example of what the main file of a bot
+ * using this library could look like.
+ * @version 0.1
+ * @date 2022-07-04
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
 #include "example/example.h"
 #include "src/discord/disco.h"
 #include "src/discord/structures/message.h"
