@@ -7,6 +7,7 @@
 #define D_LOG_NOTICE (1 << 1)
 #define D_LOG_NORMAL (1 << 2)
 #define D_LOG_DEBUG (1 << 3)
+#define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_NORMAL | D_LOG_DEBUG
 
 void d_set_log_level(int flags);
 int d_should_log_err();

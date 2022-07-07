@@ -14,7 +14,7 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
   - **structures/**: All of the Discord structure definitions.
   - Structure specific functions are all defined in their corresponding source files.
 - **example**/: Example implementations of how the bot sytax looks like.
-- **lib**/: External libraries not downloadable with the APT package manager (basically just Github libraries).
+- **lib**/: External libraries not downloadable with the APT package manager (basically just Github libraries). Will be renamed to `include` in the future to maintain the Pitchfork standard.
 
 ### Why are some things called `disco_...` while others are called `discord_...`?
 All of the structures that are taken straight from the [Discord documentation](https://discord.com/developers/docs/) are all named with a leading `discord_`. At the structure definition there should also be a link leading to the exact place in the documentation that the definition was taken from.
@@ -31,7 +31,7 @@ On the other hand, everything starting with `disco_` is a public library method 
 - https://github.com/sheredom/hashmap.h/
 
 ### Progress
-- Events ![](https://progress-bar.dev/13/?title=7/56)
+- Events ![](https://progress-bar.dev/14/?title=8/57)
   - [x] READY
   - [ ] RESUMED
   - [ ] RECONNECT
@@ -89,10 +89,11 @@ On the other hand, everything starting with `disco_` is a public library method 
   - [ ] VOICE_STATE_UPDATE
   - [ ] VOICE_SERVER_UPDATE
   - [ ] WEBHOOKS_UPDATE
+  - [x] INTERACTION_CREATE
 - Interactions
   - [x] Application Command Object
   - [x] Application Command Option Object
-  - [ ] Register Commands
-    - [ ] Global
-    - [ ] Guild
+  - [x] Register Commands
+    - [x] Global
+    - [x] Guild
   

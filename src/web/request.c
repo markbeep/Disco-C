@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static char *DISCORD_REQUEST_URL = "https://discord.com/api";
-
 /**
  * @brief Callback function to write receiving data into a memory buffer
  *
@@ -32,7 +30,7 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type) {
+CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type) {
     // we create a new handle each call because we can't use the same handle over multiple threads
     CURL *handle = curl_easy_init();
     struct curl_slist *list = curl_setup_discord_header(handle);
@@ -60,13 +58,6 @@ CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type r
     }
 
     struct MemoryChunk chunk;
-
-    // the plus one is because of the 0 char
-    size_t len = strnlen(DISCORD_REQUEST_URL, 64), uri_len = strnlen(uri, 64);
-    char url[len + uri_len + 1];
-    memcpy(url, DISCORD_REQUEST_URL, len);
-    memcpy(url + len, uri, uri_len);
-    url[len + uri_len] = '\0';
 
     d_log_normal("REQUEST '%s' URL: %s\n", request_str, url);
 

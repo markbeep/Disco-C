@@ -8,6 +8,7 @@
 #include "structures/channel.h"
 #include "structures/component.h"
 #include "structures/guild.h"
+#include "structures/interaction.h"
 #include "structures/message.h"
 #include "structures/message_activity.h"
 #include "structures/permission.h"
@@ -39,6 +40,7 @@ typedef struct disco_event_callbacks {
     void (*on_channel_create)(bot_client_t *, struct discord_channel *channel);
     void (*on_channel_update)(bot_client_t *, struct discord_channel *old, struct discord_channel *new);
     void (*on_channel_delete)(bot_client_t *, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *);
+    void (*on_interaction)(bot_client_t *, struct discord_interaction *);
 } disco_event_callbacks_t;
 
 typedef struct bot_client {
@@ -88,5 +90,7 @@ typedef void *(*disco_struct_fn)(cJSON *);
 int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, disco_struct_fn func);
 
 uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
+
+double get_double_from_string_json(cJSON *data, const char *name, double default_);
 
 #endif

@@ -85,3 +85,11 @@ void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t gui
         d_log_normal("Channel NOT in cache was deleted: %ld\n", channel_id);
     }
 }
+
+void example_interaction_create(bot_client_t *bot, struct discord_interaction *interaction) {
+    (void)bot;
+    struct discord_interaction_data *data = interaction->data;
+    d_log_notice("Interaction: id = %ld, type = %d, gid = %ld, cid = %ld\n", interaction->id, (int)interaction->type, interaction->guild_id, interaction->channel_id);
+    d_log_notice("Data: name = %s, custom_id = %s", data->name, data->custom_id);
+    disco_destroy_interaction(interaction); // cleanup once we don't need it anymore
+}

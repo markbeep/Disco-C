@@ -37,6 +37,13 @@ EXAMPLE_OBJECTS=$(patsubst example/%.c, $(BUILD)/%.o, $(EXAMPLE_SOURCES))
 $(EXAMPLE_OBJECTS): $(BUILD)/%.o : example/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
+# COMPILES THE EXAMPLE COMMAND FILES
+# COMPILES THE EXAMPLE FILES
+COMMAND_SOURCES := $(wildcard example/example_slash_commands/*.c)
+COMMAND_OBJECTS=$(patsubst example/example_slash_commands/%.c, $(BUILD)/%.o, $(COMMAND_SOURCES))
+$(COMMAND_OBJECTS): $(BUILD)/%.o : example/example_slash_commands/%.c
+	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
+
 main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) cJSON
 	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@
 
@@ -46,6 +53,7 @@ build:
 clean: clean_test
 	rm -rf $(BUILD)
 	rm -f main
+	rm -f example/register
 
 config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@
@@ -57,3 +65,8 @@ test: main $(TEST_EXECUTABLES)
 
 clean_test:
 	rm -f $(TEST_EXECUTABLES)
+
+register: main $(COMMAND_OBJECTS)
+	$(CC) $(CFLAGS) $(INCLUDE) register.c\
+	$(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS)\
+	$(COMMAND_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@

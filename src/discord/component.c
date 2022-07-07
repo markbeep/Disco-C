@@ -121,13 +121,3 @@ void disco_destroy_select_option(struct discord_select_option *option) {
         disco_destroy_emoji(option->emoji);
     free(option);
 }
-
-// TODO implement
-void *disco_create_interaction_struct_json(cJSON *data) {
-    (void)data;
-    return NULL;
-}
-
-void disco_destroy_interaction(struct discord_interaction *interaction) {
-    (void)interaction;
-}

@@ -189,8 +189,8 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     cJSON *json = cJSON_CreateObject();
     create_message(json, content, message);
 
-    char uri[48];
-    sprintf(uri, "/channels/%ld/messages", channel_id);
+    char uri[80];
+    sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_POST);
     struct discord_message *sent_message = NULL;
@@ -243,8 +243,8 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t chann
             cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
     }
 
-    char uri[70];
-    sprintf(uri, "/channels/%ld/messages/%ld", channel_id, message_id);
+    char uri[100];
+    sprintf(uri, "https://discord.com/api/channels/%ld/messages/%ld", channel_id, message_id);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_PATCH);
     if (res != CURLE_OK) {

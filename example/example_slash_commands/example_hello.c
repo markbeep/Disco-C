@@ -1,4 +1,5 @@
 #include "../../src/discord/structures/command.h"
+#include "../../src/utils/disco_logging.h"
 #include <string.h>
 
 void hello_callback() {

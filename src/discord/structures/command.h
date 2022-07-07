@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
-enum Application_Command_Type {
+enum Discord_Application_Command_Type {
     COMMAND_CHAT_INPUT = 1,
     COMMAND_USER = 2,
     COMMAND_MESSAGE = 3
@@ -57,7 +57,7 @@ struct discord_application_command_option_choice {
 };
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
-enum Application_Command_Option_Type {
+enum Discord_Application_Command_Option_Type {
     COMMAND_OPTION_SUB_COMMAND = 1,
     COMMAND_OPTION_SUB_COMMAND_GROUP = 2,
     COMMAND_OPTION_STRING = 3,
@@ -73,8 +73,8 @@ enum Application_Command_Option_Type {
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
 struct discord_application_command_option {
-    enum Application_Command_Option_Type type;
-    char *name[33];
+    enum Discord_Application_Command_Option_Type type;
+    char *name;
     struct discord_language_locales *name_localizations;
     char *description;
     struct discord_language_locales *description_localizations;
@@ -93,7 +93,7 @@ struct discord_application_command_option {
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure
 struct discord_application_command {
     int64_t *id;
-    enum Application_Command_Type type;
+    enum Discord_Application_Command_Type type;
     int64_t guild_id;
     char *name;
     struct discord_language_locales *name_localizations;

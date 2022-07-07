@@ -31,7 +31,7 @@ enum Request_Type { REQUEST_GET,
  * @param request_type The type of request to execute
  * @return CURLcode
  */
-CURLcode request(char *uri, char **response, cJSON *content, enum Request_Type request_type);
+CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type);
 
 /**
  * @brief Adds the correct Discord headers to a CURL handle

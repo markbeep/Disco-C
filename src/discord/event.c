@@ -94,6 +94,13 @@ void event_handle_channel_delete(void *w) {
     free(work);
 }
 
+void event_handle_interaction_create(void *w) {
+    event_pool_workload_t *work = (event_pool_workload_t *)w;
+    struct discord_interaction *interaction = (struct discord_interaction *)work->data;
+    work->bot->callbacks->on_interaction(work->bot, interaction);
+    free(work);
+}
+
 void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     lwsl_user("Event: %s\n", event);
 
@@ -239,7 +246,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
 
     } else if (strncmp(event, "INTEGRATION_UPDATE", 19) == 0) {
 
-    } else if (strncmp(event, "INTEGRATION_CREATE", 19) == 0) {
+    } else if (strncmp(event, "INTEGRATION_DELETE", 19) == 0) {
 
     } else if (strncmp(event, "INVITE_CREATE", 14) == 0) {
 
@@ -327,5 +334,14 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     } else if (strncmp(event, "VOICE_SERVER_UPDATE", 20) == 0) {
 
     } else if (strncmp(event, "WEBHOOKS_UPDATE", 16) == 0) {
+    } else if (strncmp(event, "INTERACTION_CREATE", 19) == 0) {
+        if (bot->callbacks->on_interaction) {
+            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
+            work->bot = bot;
+            struct discord_interaction *interaction = disco_create_interaction_struct_json(data);
+            work->data = (void *)interaction;
+
+            t_pool_add_work(bot->thread_pool, &event_handle_interaction_create, work);
+        }
     }
 }

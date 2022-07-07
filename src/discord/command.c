@@ -6,7 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void add_localization(cJSON *json, char *name, struct discord_language_locales *locales) {
+static void add_localization(cJSON *outer, char *name, struct discord_language_locales *locales) {
+    cJSON *json = cJSON_AddObjectToObject(outer, name);
     if (locales->da)
         cJSON_AddStringToObject(json, "da", locales->da);
     if (locales->de)
@@ -69,7 +70,7 @@ static void add_localization(cJSON *json, char *name, struct discord_language_lo
         cJSON_AddStringToObject(json, "ko", locales->ko);
 }
 
-static void add_choice(cJSON *json, struct discord_application_command_option_choice *choice, enum Application_Command_Option_Type type) {
+static void add_choice(cJSON *json, struct discord_application_command_option_choice *choice, enum Discord_Application_Command_Option_Type type) {
     cJSON_AddStringToObject(json, "name", choice->name);
     if (choice->name_localizations)
         add_localization(json, "name_localizations", choice->name_localizations);
@@ -184,6 +185,7 @@ int discord_command_register(struct discord_application_command *command) {
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands", APPLICATION_ID);
     CURLcode c = request(url, &response, json, REQUEST_POST);
     cJSON_Delete(json);
+    d_log_notice("Command Response: %s\n", response);
     free(response);
     if (c == CURLE_OK)
         return 1;
