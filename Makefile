@@ -44,8 +44,8 @@ COMMAND_OBJECTS=$(patsubst example/example_slash_commands/%.c, $(BUILD)/%.o, $(C
 $(COMMAND_OBJECTS): $(BUILD)/%.o : example/example_slash_commands/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
-main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) cJSON
-	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@
+main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(COMMAND_OBJECTS) cJSON
+	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(COMMAND_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@
 
 build:
 	mkdir -p $(BUILD)
@@ -66,7 +66,7 @@ test: main $(TEST_EXECUTABLES)
 clean_test:
 	rm -f $(TEST_EXECUTABLES)
 
-register: main $(COMMAND_OBJECTS)
+register: main
 	$(CC) $(CFLAGS) $(INCLUDE) register.c\
 	$(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS)\
 	$(COMMAND_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@

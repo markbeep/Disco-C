@@ -1,5 +1,6 @@
 #include "example.h"
 #include "../src/utils/disco_logging.h"
+#include "example_slash_commands/example_slash.h"
 #include "sys/time.h"
 #include <stdbool.h>
 
@@ -22,15 +23,31 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
         if (strncmp(message->content, "!ping", 6) == 0) {
             struct timeval stop, start;
             gettimeofday(&start, NULL);
+
+            // creates the embed
+            struct discord_embed embed = {
+                .description = "Pinging...",
+                .color = 0x8000,
+            };
+            struct discord_embed *embeds[1] = {&embed};
+            struct discord_create_message send_message = {
+                .embeds_count = 1,
+                .embeds = embeds,
+            };
             // sends the initial message to a channel
-            struct discord_message *msg = disco_channel_send_message(bot, "Pinging...", message->channel_id, NULL, true);
+            struct discord_message *msg = disco_channel_send_message(bot, NULL, message->channel_id, &send_message, true);
+
+            // gets the time passed
             gettimeofday(&stop, NULL);
             char time_passed[32];
             long delta = (stop.tv_sec - start.tv_sec) * 1000 + (stop.tv_usec - start.tv_usec) / 1000;
             sprintf(time_passed, "Ping: %lu ms\nHeartbeat: %lu ms", delta, bot->heartbeat_latency);
+
+            // we can reuse the create_message struct from before
+            embed.description = time_passed;
             // edits the message right after the message has been sent to check the latency
-            disco_channel_edit_message(bot, time_passed, msg->channel_id, msg->id, NULL);
-            // don't forget to destroy the message in the end to avoid memory leaks
+            disco_channel_edit_message(bot, NULL, msg->channel_id, msg->id, &send_message);
+            // don't forget to destroy the received message in the end to avoid memory leaks
             disco_destroy_message(msg);
 
         } else if (strncmp(message->content, "!exit", 6) == 0) {
@@ -91,5 +108,9 @@ void example_interaction_create(bot_client_t *bot, struct discord_interaction *i
     struct discord_interaction_data *data = interaction->data;
     d_log_notice("Interaction: id = %ld, type = %d, gid = %ld, cid = %ld\n", interaction->id, (int)interaction->type, interaction->guild_id, interaction->channel_id);
     d_log_notice("Data: name = %s, custom_id = %s", data->name, data->custom_id);
+    if (strcmp(data->name, "hello") == 0) {
+        hello_callback(interaction);
+    }
+
     disco_destroy_interaction(interaction); // cleanup once we don't need it anymore
 }
