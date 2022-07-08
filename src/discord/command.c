@@ -125,6 +125,10 @@ static void add_option(cJSON *json, struct discord_application_command_option *o
         cJSON_AddNumberToObject(json, "min_value", option->min_value);
         cJSON_AddNumberToObject(json, "max_value", option->max_value);
     }
+    if (option->type == COMMAND_OPTION_STRING) {
+        cJSON_AddNumberToObject(json, "min_length", option->min_length);
+        cJSON_AddNumberToObject(json, "max_length", option->max_length);
+    }
     cJSON_AddBoolToObject(json, "autocomplete", option->autocomplete);
 }
 

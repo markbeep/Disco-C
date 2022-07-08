@@ -87,6 +87,8 @@ struct discord_application_command_option {
     int channel_types_count;
     double min_value;
     double max_value;
+    int min_length;
+    int max_length;
     bool autocomplete;
 };
 
