@@ -1,6 +1,7 @@
 #include "structures/message.h"
 #include "../utils/disco_logging.h"
 #include "../web/request.h"
+#include "structures/interaction.h"
 #include <curl/curl.h>
 #include <string.h>
 
@@ -57,7 +58,7 @@ static cJSON *create_embed_json(struct discord_embed *embed) {
     if (embed->title)
         cJSON_AddItemToObject(embed_obj, "title", cJSON_CreateString(embed->title));
     if (embed->description)
-        cJSON_AddItemToObject(embed_obj, "description", cJSON_CreateString(embed->title));
+        cJSON_AddItemToObject(embed_obj, "description", cJSON_CreateString(embed->description));
     cJSON_AddItemToObject(embed_obj, "type", cJSON_CreateString(embed->type));
     if (embed->url)
         cJSON_AddItemToObject(embed_obj, "url", cJSON_CreateString(embed->url));
@@ -84,7 +85,7 @@ static cJSON *create_embed_json(struct discord_embed *embed) {
         embed_add_author(embed_obj, embed->author);
     if (embed->fields_count > 0) {
         cJSON *fields = cJSON_AddArrayToObject(embed_obj, "fields");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < embed->fields_count; i++) {
             embed_add_field(fields, embed->fields[i]);
         }
     }
@@ -145,15 +146,17 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     return ref_obj;
 }
 
-static void create_message(cJSON *json, char *content, struct discord_create_message *message) {
+void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message) {
     // content
     if (content && strnlen(content, 1) > 0) {
         cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
     }
     if (message) {
         // embeds
-        if (message->embeds_count > 0) {
+        if (message->embeds_count > 0 || message->embed) {
             cJSON *embeds = cJSON_AddArrayToObject(json, "embeds");
+            if (message->embed)
+                cJSON_AddItemToArray(embeds, create_embed_json(message->embed));
             for (int i = 0; i < message->embeds_count; i++) {
                 cJSON_AddItemToArray(embeds, create_embed_json(message->embeds[i]));
             }
@@ -187,7 +190,8 @@ static void create_message(cJSON *json, char *content, struct discord_create_mes
 struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
-    create_message(json, content, message);
+    discord_fill_json_with_message(json, content, message);
+    d_log_debug("Snd msg: %s\n", cJSON_Print(json));
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
@@ -225,8 +229,10 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t chann
     }
     if (message) {
         // embeds
-        if (message->embeds_count > 0) {
+        if (message->embeds_count > 0 || message->embed) {
             cJSON *embeds = cJSON_AddArrayToObject(json, "embeds");
+            if (message->embed)
+                cJSON_AddItemToArray(embeds, create_embed_json(message->embed));
             for (int i = 0; i < message->embeds_count; i++) {
                 cJSON_AddItemToArray(embeds, create_embed_json(message->embeds[i]));
             }

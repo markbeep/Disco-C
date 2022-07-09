@@ -110,4 +110,12 @@ void *disco_create_component_struct_json(cJSON *data);
  */
 void disco_destroy_component(struct discord_component *c);
 
+/**
+ * @brief Fills in a JSON with the attributes of the component structure.
+ *
+ * @param json JSON struct that should be filled in with the values.
+ * @param component The component that will be used to fill the JSON.
+ */
+void discord_fill_json_with_component(cJSON *json, struct discord_component *component);
+
 #endif

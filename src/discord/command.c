@@ -6,8 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void add_localization(cJSON *outer, char *name, struct discord_language_locales *locales) {
-    cJSON *json = cJSON_AddObjectToObject(outer, name);
+void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales) {
     if (locales->da)
         cJSON_AddStringToObject(json, "da", locales->da);
     if (locales->de)
@@ -72,8 +71,10 @@ static void add_localization(cJSON *outer, char *name, struct discord_language_l
 
 static void add_choice(cJSON *json, struct discord_application_command_option_choice *choice, enum Discord_Application_Command_Option_Type type) {
     cJSON_AddStringToObject(json, "name", choice->name);
-    if (choice->name_localizations)
-        add_localization(json, "name_localizations", choice->name_localizations);
+    if (choice->name_localizations) {
+        cJSON *locales = cJSON_AddObjectToObject(json, "name_localizations");
+        discord_fill_json_with_locales(locales, choice->name_localizations);
+    }
     if (type == COMMAND_OPTION_INTEGER || type == COMMAND_OPTION_NUMBER)
         cJSON_AddNumberToObject(json, "value", choice->value.number);
 }
@@ -81,10 +82,14 @@ static void add_choice(cJSON *json, struct discord_application_command_option_ch
 static void add_option(cJSON *json, struct discord_application_command_option *option) {
     cJSON_AddStringToObject(json, "name", option->name);
     cJSON_AddStringToObject(json, "description", option->description);
-    if (option->name_localizations)
-        add_localization(json, "name_localizations", option->name_localizations);
-    if (option->description_localizations)
-        add_localization(json, "description_localizations", option->description_localizations);
+    if (option->name_localizations) {
+        cJSON *locales = cJSON_AddObjectToObject(json, "name_localizations");
+        discord_fill_json_with_locales(locales, option->name_localizations);
+    }
+    if (option->description_localizations) {
+        cJSON *locales = cJSON_AddObjectToObject(json, "description_localizations");
+        discord_fill_json_with_locales(locales, option->description_localizations);
+    }
     cJSON_AddBoolToObject(json, "required", option->required);
     // choices
     cJSON *choices_array;
@@ -143,10 +148,14 @@ static int format_json(cJSON *json, struct discord_application_command *command)
     if (command->type)
         cJSON_AddNumberToObject(json, "type", command->type);
     cJSON_AddStringToObject(json, "description", command->description);
-    if (command->name_localizations)
-        add_localization(json, "name_localizations", command->name_localizations);
-    if (command->description_localizations)
-        add_localization(json, "description_localizations", command->description_localizations);
+    if (command->name_localizations) {
+        cJSON *locales = cJSON_AddObjectToObject(json, "name_localizations");
+        discord_fill_json_with_locales(locales, command->name_localizations);
+    }
+    if (command->description_localizations) {
+        cJSON *locales = cJSON_AddObjectToObject(json, "description_localizations");
+        discord_fill_json_with_locales(locales, command->description_localizations);
+    }
     // options
     cJSON *options_array;
     struct discord_application_command_option *ordered_options[command->options_count];

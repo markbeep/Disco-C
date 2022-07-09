@@ -121,3 +121,9 @@ void disco_destroy_select_option(struct discord_select_option *option) {
         disco_destroy_emoji(option->emoji);
     free(option);
 }
+
+// TODO implement
+void discord_fill_json_with_component(cJSON *json, struct discord_component *c) {
+    (void)json;
+    (void)c;
+}

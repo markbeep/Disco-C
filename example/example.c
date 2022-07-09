@@ -29,10 +29,8 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
                 .description = "Pinging...",
                 .color = 0x8000,
             };
-            struct discord_embed *embeds[1] = {&embed};
             struct discord_create_message send_message = {
-                .embeds_count = 1,
-                .embeds = embeds,
+                .embed = &embed,
             };
             // sends the initial message to a channel
             struct discord_message *msg = disco_channel_send_message(bot, NULL, message->channel_id, &send_message, true);

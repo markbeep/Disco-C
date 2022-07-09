@@ -3,6 +3,7 @@
 
 #include "command.h"
 #include "component.h"
+#include "message.h"
 #include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
@@ -79,5 +80,50 @@ struct discord_interaction {
 
 void *disco_create_interaction_struct_json(cJSON *data);
 void disco_destroy_interaction(struct discord_interaction *interaction);
+
+// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+enum Discord_Interaction_Callback_Type {
+    DISCORD_CALLBACK_PONG = 1,
+    DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE = 4,
+    DISCORD_CALLBACK_DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE = 5,
+    DISCORD_CALLBACK_DEFERRED_UPDATE_MESSAGE = 6,
+    DISCORD_CALLBACK_UPDATE_MESSAGE = 7,
+    DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT = 8,
+    DISCORD_CALLBACK_MODAL = 9
+};
+
+// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure
+struct discord_interaction_callback {
+    enum Discord_Interaction_Callback_Type type;
+    union {
+        struct {
+            bool tts;
+            char *content;
+            struct discord_embed **embeds;
+            int embeds_count;
+            struct discord_allowed_mentions *allowed_mentions;
+            int flags;
+            struct discord_component **components;
+            int components_count;
+            struct discord_attachment **attachments;
+            int attachments_count;
+        } message;
+        struct {
+            struct discord_application_command_option_choice **choices;
+            int choices_count;
+        } autocomplete;
+        struct {
+            char *custom_id;
+            char *title;
+            struct discord_component **components;
+            int components_count;
+        } modal;
+    } data;
+};
+
+// TODO make JSON fill functions public (for message, embeds, etc.)
+void disco_fill_json_interaction_callback(cJSON *json, struct discord_interaction_callback *callback);
+
+void disco_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *received_interaction);
 
 #endif

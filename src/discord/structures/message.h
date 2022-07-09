@@ -52,6 +52,7 @@ void disco_destroy_message_reference(struct discord_message_reference *message);
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
     bool tts;
+    struct discord_embed *embed; // for single embeds this can be used
     struct discord_embed **embeds;
     int embeds_count;
     struct discord_allowed_mentions *allowed_mentions;
@@ -149,7 +150,16 @@ void *disco_create_message_struct_json(cJSON *data);
 void disco_destroy_message(struct discord_message *message);
 
 /**
- * @brief Sends a message and if enabled also returns the sent message struct
+ * @brief Fills in a JSON with the attributes of the message structure.
+ *
+ * @param json JSON struct that should be filled in with the values.
+ * @param content Discord message content.
+ * @param message Create message struct.
+ */
+void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message);
+
+/**
+ * @brief Sends a message and if enabled also returns the sent message struct.
  *
  * @param bot Active bot instance
  * @param content Message content to send (if empty, embed or components need to exist)

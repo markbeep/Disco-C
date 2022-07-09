@@ -23,7 +23,11 @@
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
+
+// definitions so that the compiler stops complaining
+// that they don't exist
 struct discord_message;
+struct discord_interaction;
 
 typedef struct disco_event_callbacks {
     void (*on_ready)(bot_client_t *);

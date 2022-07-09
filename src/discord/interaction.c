@@ -1,4 +1,6 @@
 #include "structures/interaction.h"
+#include "../utils/disco_logging.h"
+#include "../web/request.h"
 #include "disco.h"
 #include <stdlib.h>
 
@@ -108,4 +110,92 @@ void disco_destroy_interaction(struct discord_interaction *interaction) {
     if (interaction->guild_locale)
         free(interaction->guild_locale);
     free(interaction);
+}
+
+void disco_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *recv) {
+    cJSON *json = cJSON_CreateObject();
+    cJSON_AddNumberToObject(json, "type", (double)cb->type);
+
+    cJSON *data = cJSON_AddObjectToObject(json, "data"), *array;
+    struct discord_create_message msg = {0};
+    switch (cb->type) {
+    case DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE:
+    case DISCORD_CALLBACK_DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE:
+    case DISCORD_CALLBACK_DEFERRED_UPDATE_MESSAGE:
+    case DISCORD_CALLBACK_UPDATE_MESSAGE:
+        // we turn the interaction data into a message to fill in the json
+        msg.tts = cb->data.message.tts;
+        msg.embeds = cb->data.message.embeds;
+        msg.embeds_count = cb->data.message.embeds_count;
+        msg.allowed_mentions = cb->data.message.allowed_mentions;
+        msg.flags = cb->data.message.flags;
+        msg.components = cb->data.message.components;
+        msg.components_count = cb->data.message.components_count;
+        msg.attachments = cb->data.message.attachments;
+        msg.attachments_count = cb->data.message.attachments_count;
+        discord_fill_json_with_message(data, cb->data.message.content, &msg);
+        break;
+
+    case DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT:
+        if (cb->data.autocomplete.choices_count > 0)
+            array = cJSON_AddArrayToObject(data, "choices");
+        for (int i = 0; i < cb->data.autocomplete.choices_count; i++) {
+            cJSON *choice = cJSON_CreateObject();
+            cJSON_AddItemToArray(array, choice);
+            cJSON_AddStringToObject(choice, "name", cb->data.autocomplete.choices[i]->name);
+            if (cb->data.autocomplete.choices[i]->name_localizations) {
+                cJSON *locales = cJSON_AddObjectToObject(choice, "name_localizations");
+                discord_fill_json_with_locales(locales, cb->data.autocomplete.choices[i]->name_localizations);
+            }
+            switch (recv->data->options[i]->type) {
+            case COMMAND_OPTION_INTEGER:
+            case COMMAND_OPTION_NUMBER:
+                cJSON_AddNumberToObject(choice, "value", cb->data.autocomplete.choices[i]->value.number);
+                break;
+            case COMMAND_OPTION_STRING:
+                cJSON_AddStringToObject(choice, "value", cb->data.autocomplete.choices[i]->value.str);
+                break;
+            default: // simply ignore
+                break;
+            }
+        }
+        break;
+
+    case DISCORD_CALLBACK_MODAL:
+        cJSON_AddStringToObject(data, "custom_id", cb->data.modal.custom_id);
+        cJSON_AddStringToObject(data, "title", cb->data.modal.title);
+        if (cb->data.modal.components_count > 0) {
+            cJSON *components = cJSON_AddArrayToObject(data, "components");
+            for (int i = 0; i < cb->data.modal.components_count; i++) {
+                cJSON *comp = cJSON_CreateObject();
+                cJSON_AddItemToArray(components, comp);
+                discord_fill_json_with_component(comp, cb->data.modal.components[i]);
+            }
+        }
+        break;
+
+    case DISCORD_CALLBACK_PONG: // ignore PONG
+        break;
+    }
+
+    // send the payload
+    // there's no documented max token length
+    size_t token_len = strnlen(recv->token, 500);
+    char *uri = (char *)malloc(80 + token_len);
+    sprintf(uri, "https://discord.com/api/v10/interactions/%ld/%s/callback", recv->id, recv->token);
+    char *response;
+    CURLcode res = request(uri, &response, json, REQUEST_POST);
+    if (res != CURLE_OK) {
+        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
+        if (res == CURLE_COULDNT_RESOLVE_HOST)
+            d_log_err("Have no connection to host\n");
+    } else {
+        d_log_debug("Interaction sent!\n");
+        d_log_debug("Response: char = %s\n", response);
+    }
+
+    // free up allocated stuff
+    cJSON_Delete(json);
+    free(uri);
+    free(response);
 }

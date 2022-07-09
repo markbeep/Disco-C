@@ -73,7 +73,7 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
     CURLcode res;
     int sent_message = 0;
     do {
-        chunk.memory = malloc(1);
+        chunk.memory = NULL;
         chunk.size = 0;
         res = curl_easy_perform(handle);
         *response = chunk.memory;
