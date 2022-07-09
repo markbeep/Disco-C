@@ -47,13 +47,13 @@ typedef struct disco_event_callbacks {
     void (*on_interaction)(bot_client_t *, struct discord_interaction *);
 } disco_event_callbacks_t;
 
-typedef struct bot_client {
+struct bot_client {
     websocket_client_t *websocket_client;
     disco_event_callbacks_t *callbacks;
     struct discord_user *user;
     t_pool_t *thread_pool;
     long heartbeat_latency;
-} bot_client_t;
+};
 
 /**
  * @brief High level abstraction which starts the bot.

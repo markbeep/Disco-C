@@ -46,6 +46,6 @@ struct curl_slist *curl_setup_discord_header(CURL *handle);
  *
  * @return int 1 if it works, 0 else
  */
-int request_test();
+int request_test(void);
 
 #endif

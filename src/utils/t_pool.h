@@ -6,11 +6,11 @@
 typedef void (*t_func)(void *);
 typedef struct t_work t_work_t;
 
-typedef struct t_work {
+struct t_work {
     t_func func;
     void *arg;
     t_work_t *next;
-} t_work_t;
+};
 
 typedef struct t_pool {
     t_work_t *first_work;
@@ -43,6 +43,6 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
 t_work_t *t_pool_pop_work(t_pool_t *tp);
 void t_pool_wait(t_pool_t *tp);
 void t_pool_destroy(t_pool_t *tp);
-int t_process_count();
+int t_process_count(void);
 
 #endif

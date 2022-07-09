@@ -55,6 +55,8 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
     case REQUEST_UPDATE:
         request_str = "UPDATE";
         break;
+    default:
+        break;
     }
 
     struct MemoryChunk chunk;
@@ -114,7 +116,7 @@ struct curl_slist *curl_setup_discord_header(CURL *handle) {
     return list;
 }
 
-int request_test() {
+int request_test(void) {
     d_log_normal("Testing HTTP requests...\n");
 
     char *url = "https://www.google.com/";

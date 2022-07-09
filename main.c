@@ -17,7 +17,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main() {
+int main(int argc, char **argv) {
+    (void)argc;
+    (void)argv;
     // Enable logging
     d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE);
 

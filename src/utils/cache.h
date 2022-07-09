@@ -50,7 +50,7 @@ int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_c
  * @brief Cleans up the cache and frees all the structs it contains.
  *
  */
-void disco_cache_destroy();
+void disco_cache_destroy(void);
 
 /**
  * @brief Adds a message to the cache by ID. If it already exists in cache,

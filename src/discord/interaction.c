@@ -176,6 +176,8 @@ void disco_send_interaction(struct discord_interaction_callback *cb, struct disc
 
     case DISCORD_CALLBACK_PONG: // ignore PONG
         break;
+    default:
+        break;
     }
 
     // send the payload

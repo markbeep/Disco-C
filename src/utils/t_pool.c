@@ -118,6 +118,6 @@ void t_pool_destroy(t_pool_t *tp) {
     free(tp);
 }
 
-int t_process_count() {
+int t_process_count(void) {
     return (int)sysconf(_SC_NPROCESSORS_ONLN);
 }

@@ -60,6 +60,8 @@ static void default_destroy_callback(enum Disco_Cache_Type type, void *structure
     case DISCO_GUILD_CACHE:
         disco_destroy_guild((struct discord_guild *)structure);
         break;
+    default:
+        break;
     }
 }
 
@@ -107,7 +109,7 @@ int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_c
     return 0;
 }
 
-void disco_cache_destroy() {
+void disco_cache_destroy(void) {
     while (!TAILQ_EMPTY(&messages_queue.head)) {
         struct node *first = TAILQ_FIRST(&messages_queue.head);
         TAILQ_REMOVE(&messages_queue.head, first, pointers);
@@ -166,6 +168,8 @@ int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
         id = ((struct discord_guild *)cont)->id;
         max_cache_size = max_guild_cache_size;
         break;
+    default:
+        break;
     }
 
     struct node *old = (struct node *)hashmap_get(map, (char *)&id, sizeof(uint64_t));
@@ -204,6 +208,8 @@ int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
             case DISCO_GUILD_CACHE:
                 disco_cache_delete_guild(((struct discord_guild *)first->data)->id);
                 break;
+            default:
+                break;
             }
         }
     }
@@ -227,6 +233,8 @@ void *disco_cache_get(enum Disco_Cache_Type type, uint64_t id) {
     case DISCO_GUILD_CACHE:
         map = &guilds_map;
         queue = &guilds_queue;
+        break;
+    default:
         break;
     }
     struct node *n = (struct node *)hashmap_get(map, (char *)&id, sizeof(uint64_t));
@@ -255,6 +263,8 @@ void disco_cache_delete(enum Disco_Cache_Type type, uint64_t id) {
         map = &guilds_map;
         queue = &guilds_queue;
         break;
+    default:
+        break;
     }
     struct node *n = (struct node *)hashmap_get(map, (char *)&id, sizeof(uint64_t));
     if (n) {
@@ -269,6 +279,8 @@ void disco_cache_delete(enum Disco_Cache_Type type, uint64_t id) {
             break;
         case DISCO_GUILD_CACHE:
             destroy_item_callback_fn(DISCO_GUILD_CACHE, n->data);
+            break;
+        default:
             break;
         }
         free(n->alloc_id);

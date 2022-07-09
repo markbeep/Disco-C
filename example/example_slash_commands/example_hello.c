@@ -11,7 +11,7 @@ void hello_callback(struct discord_interaction *interaction) {
     disco_send_interaction(&callback, interaction);
 }
 
-int register_hello_command() {
+int register_hello_command(void) {
     struct discord_application_command command = {0};
     command.name = "hello";
     command.description = "Replies with \"Hello\"";

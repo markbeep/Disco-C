@@ -6,15 +6,15 @@ void d_set_log_level(int flags) {
     log_level = flags;
 }
 
-int d_should_log_err() {
+int d_should_log_err(void) {
     return log_level & D_LOG_ERR;
 }
-int d_should_log_notice() {
+int d_should_log_notice(void) {
     return log_level & D_LOG_NOTICE;
 }
-int d_should_log_normal() {
+int d_should_log_normal(void) {
     return log_level & D_LOG_NORMAL;
 }
-int d_should_log_debug() {
+int d_should_log_debug(void) {
     return log_level & D_LOG_DEBUG;
 }

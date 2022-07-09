@@ -6,7 +6,6 @@
 #include <libwebsockets.h>
 
 typedef struct bot_client bot_client_t;
-
 typedef void (*callback_receive_fn)(struct bot_client *, char *, size_t);
 
 struct websocket_callbacks {
@@ -86,6 +85,6 @@ void websocket_reconnect(bot_client_t *bot_client);
  */
 void websocket_destroy_client(websocket_client_t *client);
 
-int websocket_test();
+int websocket_test(void);
 
 #endif

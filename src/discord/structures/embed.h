@@ -131,7 +131,6 @@ struct discord_embed {
  * @return void* discord_embed struct
  */
 void *disco_create_embed_struct_json(cJSON *data);
-void *disco_create_message_reference_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *

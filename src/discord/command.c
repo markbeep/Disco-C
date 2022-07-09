@@ -115,9 +115,9 @@ static void add_option(cJSON *json, struct discord_application_command_option *o
                 ordered_options[cur++] = option->options[i];
     }
     for (int i = 0; i < option->options_count; i++) {
-        cJSON *option = cJSON_CreateObject();
-        cJSON_AddItemToArray(options_array, option);
-        add_option(option, ordered_options[i]);
+        cJSON *opt = cJSON_CreateObject();
+        cJSON_AddItemToArray(options_array, opt);
+        add_option(opt, ordered_options[i]);
     }
     if (option->channel_types_count > 0) {
         int channel_types_array[option->channel_types_count];

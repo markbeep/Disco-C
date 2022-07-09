@@ -10,10 +10,10 @@
 #define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_NORMAL | D_LOG_DEBUG
 
 void d_set_log_level(int flags);
-int d_should_log_err();
-int d_should_log_notice();
-int d_should_log_normal();
-int d_should_log_debug();
+int d_should_log_err(void);
+int d_should_log_notice(void);
+int d_should_log_normal(void);
+int d_should_log_debug(void);
 
 #define d_log_err(str, ...)                                                                       \
     {                                                                                             \

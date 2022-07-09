@@ -178,7 +178,7 @@ static void sigint_handler(int sig) {
     (void)sig;
 }
 
-int websocket_test() {
+int websocket_test(void) {
     int n = 0, logs = LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE;
 
     signal(SIGINT, sigint_handler);
