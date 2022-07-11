@@ -54,3 +54,9 @@ Inherited Members
 		def :ref:`__init__<doxid-classcpplexer_1_1_c_family_lexer_1a03c8e8614345141d4a6e7dd78a3c2e92>`(self self, ** options);
 		def :ref:`get_tokens_unprocessed<doxid-classcpplexer_1_1_c_family_lexer_1a906c1e003d161a9d28bfe3bd6198a37a>`(self self, text text);
 
+	private:
+		// fields
+	
+		static string :ref:`_ws<doxid-classcpplexer_1_1_c_family_lexer_1a481b6c2d5c681ccbed0486e3cb66256c>` =  r'(?:\:ref:`s<doxid-gateway_8c_1a339d22b3e442946380f98ed19e320db2>`|//.*?\n|/[*].*?[*]/)+';
+		static string :ref:`_ws1<doxid-classcpplexer_1_1_c_family_lexer_1abfd07b0cab300c64503b8299e960d763>` =  r'\:ref:`s<doxid-gateway_8c_1a339d22b3e442946380f98ed19e320db2>`*(?:/[*].*?[*]/\:ref:`s<doxid-gateway_8c_1a339d22b3e442946380f98ed19e320db2>`*)?';
+
