@@ -32,7 +32,8 @@
 
 FRAME_DIR_LIST = {
 	"doxyrest-2.1.3-linux-amd64/share/doxyrest/cfamily",
-	"doxyrest-2.1.3-linux-amd64/share/doxyrest/common"
+	"doxyrest-2.1.3-linux-amd64/share/doxyrest/common",
+	"doxyrest-2.1.3-linux-amd64/share/doxyrest/lua"
 }
 
 --!
