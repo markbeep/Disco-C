@@ -1,0 +1,24 @@
+.. index:: pair: struct; t_work
+.. _doxid-structt__work:
+
+struct t_work
+=============
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <t_pool.h>
+	
+	struct t_work {
+		// fields
+	
+		:ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` :target:`func<doxid-structt__work_1a98a08832f4e139a35526cd6539ede04f>`;
+		void* :target:`arg<doxid-structt__work_1a5f29a2d7d4ef51b1c6dd1eb6067f8f56>`;
+		:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* :target:`next<doxid-structt__work_1ab699869758c5449446c58b47a754b84c>`;
+	};

@@ -1,0 +1,18 @@
+.. index:: pair: enum; Discord_Sticker_Type
+.. _doxid-sticker_8h_1a9a1278538e376dc685fbe43072af8a25:
+
+enum Discord_Sticker_Type
+=========================
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <sticker.h>
+
+	enum Discord_Sticker_Type {
+	    :target:`STICKER_TYPE_STANDARD<doxid-sticker_8h_1a9a1278538e376dc685fbe43072af8a25a423c915a969cb2f21d483d7ab323eff0>` = 1,
+	    :target:`STICKER_TYPE_GUILD<doxid-sticker_8h_1a9a1278538e376dc685fbe43072af8a25afc0bd86ec2de0a9472ab277417ebb565>`    = 2,
+	};
+

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>struct discord_interaction</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="_static/doxyrest-pygments.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/target-highlight.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="struct discord_interaction_callback" href="struct_discord_interaction_callback.html" />
+  <link rel="prev" title="struct discord_guild" href="struct_discord_guild.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">Disco-C</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="global.html#global-namespace">global namespace</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="namespace_conf.html" class="reference internal ">namespace conf</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="namespace_cpplexer.html" class="reference internal ">namespace cpplexer</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="namespace_doxyrest.html" class="reference internal ">namespace doxyrest</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Disco_Cache_Type.html" class="reference internal ">enum Disco_Cache_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Application_Command_Option_Type.html" class="reference internal ">enum Discord_Application_Command_Option_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Application_Command_Type.html" class="reference internal ">enum Discord_Application_Command_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Button_Style.html" class="reference internal ">enum Discord_Button_Style</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Channel_Type.html" class="reference internal ">enum Discord_Channel_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Component_Type.html" class="reference internal ">enum Discord_Component_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Interaction_Callback_Type.html" class="reference internal ">enum Discord_Interaction_Callback_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Interaction_Type.html" class="reference internal ">enum Discord_Interaction_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Message_Activity_Type.html" class="reference internal ">enum Discord_Message_Activity_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Sticker_Format.html" class="reference internal ">enum Discord_Sticker_Format</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Sticker_Type.html" class="reference internal ">enum Discord_Sticker_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Discord_Text_Input_Style.html" class="reference internal ">enum Discord_Text_Input_Style</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Request_Type.html" class="reference internal ">enum Request_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Value_Type.html" class="reference internal ">enum Value_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_discord_message_type.html" class="reference internal ">enum discord_message_type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_MemoryChunk.html" class="reference internal ">struct MemoryChunk</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_bot_client.html" class="reference internal ">struct bot_client</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_buffer.html" class="reference internal ">struct buffer</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_delete_channel.html" class="reference internal ">struct delete_channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_delete_message.html" class="reference internal ">struct delete_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_disco_event_callbacks.html" class="reference internal ">struct disco_event_callbacks</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_action_row.html" class="reference internal ">struct discord_action_row</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_allowed_mentions.html" class="reference internal ">struct discord_allowed_mentions</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_application.html" class="reference internal ">struct discord_application</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_application_command.html" class="reference internal ">struct discord_application_command</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_application_command_option.html" class="reference internal ">struct discord_application_command_option</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_application_command_option_choice.html" class="reference internal ">struct discord_application_command_option_choice</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_attachment.html" class="reference internal ">struct discord_attachment</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_button.html" class="reference internal ">struct discord_button</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_channel.html" class="reference internal ">struct discord_channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_channel_mention.html" class="reference internal ">struct discord_channel_mention</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_component.html" class="reference internal ">struct discord_component</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_create_message.html" class="reference internal ">struct discord_create_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed.html" class="reference internal ">struct discord_embed</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed_author.html" class="reference internal ">struct discord_embed_author</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed_field.html" class="reference internal ">struct discord_embed_field</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed_footer.html" class="reference internal ">struct discord_embed_footer</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed_media.html" class="reference internal ">struct discord_embed_media</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_embed_provider.html" class="reference internal ">struct discord_embed_provider</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_emoji.html" class="reference internal ">struct discord_emoji</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_guild.html" class="reference internal ">struct discord_guild</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">struct discord_interaction</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#struct-discord-interaction" class="reference internal">struct discord_interaction</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_interaction_callback.html" class="reference internal ">struct discord_interaction_callback</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_interaction_data.html" class="reference internal ">struct discord_interaction_data</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_interaction_data_option.html" class="reference internal ">struct discord_interaction_data_option</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_language_locales.html" class="reference internal ">struct discord_language_locales</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_member.html" class="reference internal ">struct discord_member</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_message.html" class="reference internal ">struct discord_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_message_activity.html" class="reference internal ">struct discord_message_activity</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_message_reference.html" class="reference internal ">struct discord_message_reference</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_message_sticker_item.html" class="reference internal ">struct discord_message_sticker_item</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_overwrite.html" class="reference internal ">struct discord_overwrite</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_params.html" class="reference internal ">struct discord_params</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_prio_packet.html" class="reference internal ">struct discord_prio_packet</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_reaction.html" class="reference internal ">struct discord_reaction</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_role.html" class="reference internal ">struct discord_role</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_role_tags.html" class="reference internal ">struct discord_role_tags</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_select_menu.html" class="reference internal ">struct discord_select_menu</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_select_option.html" class="reference internal ">struct discord_select_option</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_sticker.html" class="reference internal ">struct discord_sticker</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_team.html" class="reference internal ">struct discord_team</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_team_member.html" class="reference internal ">struct discord_team_member</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_text_input.html" class="reference internal ">struct discord_text_input</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_thread_member.html" class="reference internal ">struct discord_thread_member</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_thread_metadata.html" class="reference internal ">struct discord_thread_metadata</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_user.html" class="reference internal ">struct discord_user</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_edit_channel.html" class="reference internal ">struct edit_channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_edit_message.html" class="reference internal ">struct edit_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_event_pool_workload.html" class="reference internal ">struct event_pool_workload</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_node.html" class="reference internal ">struct node</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_prio_node.html" class="reference internal ">struct prio_node</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_prio_queue.html" class="reference internal ">struct prio_queue</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_t_pool.html" class="reference internal ">struct t_pool</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_t_work.html" class="reference internal ">struct t_work</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_websocket_callbacks.html" class="reference internal ">struct websocket_callbacks</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_websocket_client.html" class="reference internal ">struct websocket_client</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="global.html">Global Namespace</a> &raquo;</li>
+    
+    <li>struct discord_interaction</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="struct_discord_guild.html"
+       title="previous chapter">← struct discord_guild</a>
+  </li>
+  <li class="next">
+    <a href="struct_discord_interaction_callback.html"
+       title="next chapter">struct discord_interaction_callback →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <div class="section" id="struct-discord-interaction">
+<span id="doxid-structdiscord-interaction"></span><span id="index-0"></span><h1>struct discord_interaction<a class="headerlink" href="#struct-discord-interaction" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<pre class="highlight doxyrest-overview-code-block literal-block"><span></span><span class="cp">#include</span> <span class="cpf">&lt;interaction.h&gt;</span><span class="cp"></span>
+
+<span class="k">struct</span> <span class="n">discord_interaction</span> <span class="p">{</span>
+    <span class="c1">// fields</span>
+
+    <span class="kt">uint64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a6612e5adf0e23203766d49e9e30287a3"><span></span><span class="n">id</span></span><span></span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1afc6a196f567263632002f0643ce50f14"><span></span><span class="n">application_id</span></span><span></span><span class="p">;</span>
+    <span class="k">enum</span> <a class="reference internal" href="enum_Discord_Interaction_Type.html#doxid-interaction-8h-1a9cd73e7691786ef8a2c4192f0316067b"><span class="std std-ref">Discord_Interaction_Type</span></a><span></span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a6ec86b518fde64705f41141eb9d0147e"><span></span><span class="n">type</span></span><span></span><span class="p">;</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_interaction_data.html#doxid-structdiscord-interaction-data"><span class="std std-ref">discord_interaction_data</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1aa51ca032313f3d65f2c6d641e569b0db"><span></span><span class="n">data</span></span><span></span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a5b500a89a711822cc09b0aa71afe0c41"><span></span><span class="n">guild_id</span></span><span></span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1aa095d53507f6ce061c83938ba6e8d8bd"><span></span><span class="n">channel_id</span></span><span></span><span class="p">;</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_member.html#doxid-structdiscord-member"><span class="std std-ref">discord_member</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1ae5b48345a0a4df9401ba3f74a2fe80a7"><span></span><span class="n">member</span></span><span></span><span class="p">;</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_user.html#doxid-structdiscord-user"><span class="std std-ref">discord_user</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1abe3d2fff6306f568e39e1b7ee9cdc8ff"><span></span><span class="n">user</span></span><span></span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1ac1e97e032eec047868dce94121a7d234"><span></span><span class="n">token</span></span><span></span><span class="p">;</span>
+    <span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1aae4c8f8b39ad93af1ce9e3d40ce7402b"><span></span><span class="n">version</span></span><span></span><span class="p">;</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a4fce044c325fa6452aaa1e8dd89b8d8c"><span></span><span class="n">message</span></span><span></span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1ac821a5f374017669d350c11b82883b9e"><span></span><span class="n">app_permissions</span></span><span></span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a94c16c3aef8c827081c61c6e94daf946"><span></span><span class="n">locale</span></span><span></span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-interaction-1a9e9cd523322eddfe92d26bb4b55533b6"><span></span><span class="n">guild_locale</span></span><span></span><span class="p">;</span>
+<span class="p">};</span></pre>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="struct_discord_guild.html"
+       title="previous chapter">← struct discord_guild</a>
+  </li>
+  <li class="next">
+    <a href="struct_discord_interaction_callback.html"
+       title="next chapter">struct discord_interaction_callback →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, markbeep.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

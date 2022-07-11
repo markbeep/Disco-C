@@ -1,0 +1,21 @@
+.. index:: pair: enum; Discord_Button_Style
+.. _doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42:
+
+enum Discord_Button_Style
+=========================
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <component.h>
+
+	enum Discord_Button_Style {
+	    :target:`BUTTON_PRIMARY<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42a3a23edad4ec1e37e7dccd883e1b3cfa7>`   = 1,
+	    :target:`BUTTON_SECONDARY<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42aa2e9db3389a3df6ff8c124b3ce83324e>` = 2,
+	    :target:`BUTTON_SUCCESS<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42af8d2e49443210c1533569f178885fdac>`   = 3,
+	    :target:`BUTTON_DANGER<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42abd5d46ff59ff51a51bf764ee3cb01e69>`    = 4,
+	    :target:`BUTTON_LINK<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42a90b6fea5427a8fa29e7829b98903f946>`      = 5,
+	};
+

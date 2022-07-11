@@ -1,0 +1,30 @@
+.. index:: pair: class; doxyrest::RefTransform
+.. _doxid-classdoxyrest_1_1_ref_transform:
+
+class doxyrest::RefTransform
+============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class RefTransform: public Transform {
+	public:
+		// fields
+	
+		static int :target:`default_priority<doxid-classdoxyrest_1_1_ref_transform_1adcc60c34d0cc4d74003fdce77c51a41b>` =  100;
+		static dictionary :target:`node_classes<doxid-classdoxyrest_1_1_ref_transform_1a1c5a559f67562ae138cc210e15f66fa9>` =  {         nodes.literal,         nodes.strong,         nodes.emphasis     };
+		 :target:`re_prog<doxid-classdoxyrest_1_1_ref_transform_1a552edca28050441d1f6897bd33203f20>`;
+
+		// methods
+	
+		def :target:`__init__<doxid-classdoxyrest_1_1_ref_transform_1aeab25ef7e34578542fd50497f5134b72>`(self self, document document, startnode startnode = None);
+		def :target:`apply<doxid-classdoxyrest_1_1_ref_transform_1ab085aae64cb0c435480fc94e5c79c041>`(self self);
+		static def :target:`node_filter<doxid-classdoxyrest_1_1_ref_transform_1a3444d535b215cbace5625da87ccb61ef>`(:ref:`node<doxid-structnode>` node);
+	};

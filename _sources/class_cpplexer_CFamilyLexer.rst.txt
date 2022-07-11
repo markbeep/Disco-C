@@ -1,0 +1,41 @@
+.. index:: pair: class; cpplexer::CFamilyLexer
+.. _doxid-classcpplexer_1_1_c_family_lexer:
+
+class cpplexer::CFamilyLexer
+============================
+
+.. toctree::
+	:hidden:
+
+.. code-block:: none
+
+	For C family source code.  This is used as a base class to avoid repetitious
+	definitions.
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class CFamilyLexer: public RegexLexer {
+	public:
+		// fields
+	
+		static dictionary :target:`tokens<doxid-classcpplexer_1_1_c_family_lexer_1adf0cc56d9b2465257a6dc5461f656eab>`;
+		static  :target:`stdlib_types<doxid-classcpplexer_1_1_c_family_lexer_1a5e0602dd796b8b5a5238866c2af2f5ae>` =  set(('size_t', 'ssize_t', 'off_t', 'wchar_t', 'ptrdiff_t', 'sig_atomic_t', 'fpos_t',         'clock_t', 'time_t', 'va_list', 'jmp_buf', 'FILE', 'DIR', 'div_t', 'ldiv_t',         'mbstate_t', 'wctrans_t', 'wint_t', 'wctype_t'));
+		static  :target:`c99_types<doxid-classcpplexer_1_1_c_family_lexer_1acd3735ca12227379c2482e8f9012daf9>` =  set(('_Bool', '_Complex', 'int8_t', 'int16_t', 'int32_t', 'int64_t', 'uint8_t',         'uint16_t', 'uint32_t', 'uint64_t', 'int_least8_t', 'int_least16_t',         'int_least32_t', 'int_least64_t', 'uint_least8_t', 'uint_least16_t',         'uint_least32_t', 'uint_least64_t', 'int_fast8_t', 'int_fast16_t', 'int_fast32_t',         'int_fast64_t', 'uint_fast8_t', 'uint_fast16_t', 'uint_fast32_t', 'uint_fast64_t',         'intptr_t', 'uintptr_t', 'intmax_t', 'uintmax_t'));
+		static  :target:`linux_types<doxid-classcpplexer_1_1_c_family_lexer_1a0f5edc94023813659d86daebeeaa710f>` =  set(('clockid_t', 'cpu_set_t', 'cpumask_t', 'dev_t', 'gid_t', 'id_t', 'ino_t', 'key_t',         'mode_t', 'nfds_t', 'pid_t', 'rlim_t', 'sig_t', 'sighandler_t', 'siginfo_t',         'sigset_t', 'sigval_t', 'socklen_t', 'timer_t', 'uid_t'));
+		 :target:`stdlibhighlighting<doxid-classcpplexer_1_1_c_family_lexer_1a1dc0b5d87a1c812026bf930d4222187f>`;
+		 :target:`c99highlighting<doxid-classcpplexer_1_1_c_family_lexer_1ae5a239bd4831eaa43f2d0669eb200945>`;
+		 :target:`platformhighlighting<doxid-classcpplexer_1_1_c_family_lexer_1a4ac71fbf8a8e82be32d9d3508a270ba2>`;
+
+		// methods
+	
+		def :target:`__init__<doxid-classcpplexer_1_1_c_family_lexer_1a03c8e8614345141d4a6e7dd78a3c2e92>`(self self, ** options);
+		def :target:`get_tokens_unprocessed<doxid-classcpplexer_1_1_c_family_lexer_1a906c1e003d161a9d28bfe3bd6198a37a>`(self self, text text);
+	};
+
+	// direct descendants
+
+	class :ref:`CLexer<doxid-classcpplexer_1_1_c_lexer>`;
+	class :ref:`CppLexer<doxid-classcpplexer_1_1_cpp_lexer>`;

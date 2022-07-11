@@ -1,0 +1,34 @@
+.. index:: pair: struct; discord_application_command
+.. _doxid-structdiscord__application__command:
+
+struct discord_application_command
+==================================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <command.h>
+	
+	struct discord_application_command {
+		// fields
+	
+		int64_t* :target:`id<doxid-structdiscord__application__command_1aa53c912b5f28d2fb3cc636ce0d31708b>`;
+		enum :ref:`Discord_Application_Command_Type<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05>` :target:`type<doxid-structdiscord__application__command_1a13a1c9c90d7cf7ce5d4adf996a2c6bca>`;
+		int64_t :target:`guild_id<doxid-structdiscord__application__command_1a561efc11eb0af796f610133f77350ef8>`;
+		char* :target:`name<doxid-structdiscord__application__command_1a9e3bd59f3d5125d4d515363b7a07e489>`;
+		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`name_localizations<doxid-structdiscord__application__command_1a708e42698e317f049126c4d124d71bf4>`;
+		char* :target:`description<doxid-structdiscord__application__command_1a67570a00e66b50ce7fffeba12ab2ba02>`;
+		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`description_localizations<doxid-structdiscord__application__command_1a9292041e2dcc22e3a411d4f28fa125cd>`;
+		struct :ref:`discord_application_command_option<doxid-structdiscord__application__command__option>`** :target:`options<doxid-structdiscord__application__command_1a20a43a9e87397276a8430cd8ebb937a5>`;
+		int :target:`options_count<doxid-structdiscord__application__command_1ae5ad1ecba6075d7256befef6aa1b052e>`;
+		char* :target:`default_member_permissions<doxid-structdiscord__application__command_1ac37a95a63406eec44625bb94f52b9807>`;
+		bool :target:`dm_permission<doxid-structdiscord__application__command_1a7d1f0983feda34352e99d73396ef99f0>`;
+		bool :target:`default_permission<doxid-structdiscord__application__command_1a66e1330b69bfe72b45b8922054ebaba8>`;
+		int64_t :target:`version<doxid-structdiscord__application__command_1af7db0ca88834caa32693fe18e5817871>`;
+	};

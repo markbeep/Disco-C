@@ -1,0 +1,22 @@
+.. index:: pair: struct; edit_channel
+.. _doxid-structedit__channel:
+
+struct edit_channel
+===================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct edit_channel {
+		// fields
+	
+		struct :ref:`discord_channel<doxid-structdiscord__channel>`* :target:`old<doxid-structedit__channel_1a7a4329ab18da71d369b5238e00b74bb3>`;
+		struct :ref:`discord_channel<doxid-structdiscord__channel>`* :target:`new<doxid-structedit__channel_1a1a226d659791a40ea2475574477f966d>`;
+	};

@@ -1,0 +1,33 @@
+.. index:: pair: class; doxyrest::RefCodeBlock
+.. _doxid-classdoxyrest_1_1_ref_code_block:
+
+class doxyrest::RefCodeBlock
+============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class RefCodeBlock: public Directive {
+	public:
+		// fields
+	
+		static bool :target:`has_content<doxid-classdoxyrest_1_1_ref_code_block_1ab2a653c02d0f22e7109ec7b174b5a809>` =  True;
+		static int :target:`required_arguments<doxid-classdoxyrest_1_1_ref_code_block_1ad9f88ae215a665e9f48f632e44c63a0d>` =  0;
+		static int :target:`optional_arguments<doxid-classdoxyrest_1_1_ref_code_block_1a31bc843e677c67c2da8e834c8ff9abcd>` =  1;
+		static bool :target:`final_argument_whitespace<doxid-classdoxyrest_1_1_ref_code_block_1a353fa9364ee3dfe84886c132360d25c0>` =  False;
+		static dictionary :target:`option_spec<doxid-classdoxyrest_1_1_ref_code_block_1a5a7a87c016ed10eaedb1c87cc0725c8e>` =  {         'linenos': directives.flag,         'dedent': int,         'lineno-start': int,         'emphasize-lines': directives.unchanged_required,         'caption': directives.unchanged_required,         'class': directives.class_option,         'name': directives.unchanged,     };
+		 :target:`role_re_prog<doxid-classdoxyrest_1_1_ref_code_block_1ab39d87b173a2a74d5dcf1d9e8ec190fd>`;
+		 :target:`ws_re_prog<doxid-classdoxyrest_1_1_ref_code_block_1ab03a9f29a2e27b9d04eeddf2a07f0eaf>`;
+
+		// methods
+	
+		def :target:`__init__<doxid-classdoxyrest_1_1_ref_code_block_1a000847ff957b0be8a235048853173279>`(self self, * args, ** kwargs);
+		def :target:`run<doxid-classdoxyrest_1_1_ref_code_block_1a48950a41720a0b35de4e7f59324fa8a1>`(self self);
+	};

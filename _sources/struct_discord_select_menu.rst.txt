@@ -1,0 +1,28 @@
+.. index:: pair: struct; discord_select_menu
+.. _doxid-structdiscord__select__menu:
+
+struct discord_select_menu
+==========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <component.h>
+	
+	struct discord_select_menu {
+		// fields
+	
+		char* :target:`custom_id<doxid-structdiscord__select__menu_1a693629adb18f3448cfff62058e8f8132>`;
+		struct :ref:`discord_select_option<doxid-structdiscord__select__option>`** :target:`options<doxid-structdiscord__select__menu_1a6d5a0a7c25f592cde28428c152ec9625>`;
+		int :target:`options_count<doxid-structdiscord__select__menu_1ae5db604bf609e4fe0242d2f8ee253200>`;
+		char* :target:`placeholder<doxid-structdiscord__select__menu_1afd5b5a1367f4c440a9faa0dae5bf941d>`;
+		int :target:`min_values<doxid-structdiscord__select__menu_1a759497142a47dfa17df16092b524ec10>`;
+		int :target:`max_values<doxid-structdiscord__select__menu_1a2482d13c77cfed8fb93de51dcb5ebe78>`;
+		bool :target:`disabled<doxid-structdiscord__select__menu_1a728b17adcc128ab3eb2aae72d4fb0dda>`;
+	};

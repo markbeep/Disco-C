@@ -1,0 +1,24 @@
+.. index:: pair: struct; discord_message_sticker_item
+.. _doxid-structdiscord__message__sticker__item:
+
+struct discord_message_sticker_item
+===================================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <sticker.h>
+	
+	struct discord_message_sticker_item {
+		// fields
+	
+		char* :target:`id<doxid-structdiscord__message__sticker__item_1a48fb265896f254cc23e8771e25179d22>`;
+		char* :target:`name<doxid-structdiscord__message__sticker__item_1a0112528fb6f9893ef8c471dabe78a847>`;
+		enum :ref:`Discord_Sticker_Format<doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1a>` :target:`format_type<doxid-structdiscord__message__sticker__item_1a985936042a5d7f7b5c9e650a6fa1bfd0>`;
+	};

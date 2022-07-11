@@ -1,0 +1,19 @@
+.. index:: pair: enum; Disco_Cache_Type
+.. _doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f:
+
+enum Disco_Cache_Type
+=====================
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <cache.h>
+
+	enum Disco_Cache_Type {
+	    :target:`DISCO_CHANNEL_CACHE<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111fa3a2f910ba186e0dabbd5f1cb3f407596>`,
+	    :target:`DISCO_MESSAGE_CACHE<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111fa6af48f8fcedaa55454ebb742bb48396e>`,
+	    :target:`DISCO_GUILD_CACHE<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111fa41bf87ec949bbcf37d261b6d5c339b98>`,
+	};
+

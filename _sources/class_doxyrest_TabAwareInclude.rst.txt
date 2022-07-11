@@ -1,0 +1,22 @@
+.. index:: pair: class; doxyrest::TabAwareInclude
+.. _doxid-classdoxyrest_1_1_tab_aware_include:
+
+class doxyrest::TabAwareInclude
+===============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class TabAwareInclude: public Include {
+	public:
+		// methods
+	
+		def :target:`run<doxid-classdoxyrest_1_1_tab_aware_include_1a77ac5153ec549d0f55027f031890978e>`(self self);
+	};

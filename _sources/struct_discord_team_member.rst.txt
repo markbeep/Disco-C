@@ -1,0 +1,26 @@
+.. index:: pair: struct; discord_team_member
+.. _doxid-structdiscord__team__member:
+
+struct discord_team_member
+==========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <application.h>
+	
+	struct discord_team_member {
+		// fields
+	
+		int :target:`membership_state<doxid-structdiscord__team__member_1a77baa444a7559acd048f89ca00f196bf>`;
+		char** :target:`permissions<doxid-structdiscord__team__member_1a19168c14d7049fde1a86a3f046c2c927>`;
+		int :target:`permissions_count<doxid-structdiscord__team__member_1a53a01c5164a255f8d4389975d5ca67e7>`;
+		uint64_t :target:`team_id<doxid-structdiscord__team__member_1ad002e5c3582af19275b36e04f8a1082b>`;
+		struct :ref:`discord_user<doxid-structdiscord__user>`* :target:`user<doxid-structdiscord__team__member_1a98a4af765381e1d04095ac529133ffee>`;
+	};

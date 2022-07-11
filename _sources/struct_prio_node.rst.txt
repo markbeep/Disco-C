@@ -1,0 +1,23 @@
+.. index:: pair: struct; prio_node
+.. _doxid-structprio__node:
+
+struct prio_node
+================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <prio_queue.h>
+	
+	struct prio_node {
+		// fields
+	
+		struct :ref:`discord_prio_packet<doxid-structdiscord__prio__packet>`* :target:`data<doxid-structprio__node_1a22cd6d2739ef01cf3bf81e3994720cad>`;
+		:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`next<doxid-structprio__node_1aa10a569281685b7ab8b40ffc2acdbb97>`;
+	};

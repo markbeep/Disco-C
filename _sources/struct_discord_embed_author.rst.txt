@@ -1,0 +1,25 @@
+.. index:: pair: struct; discord_embed_author
+.. _doxid-structdiscord__embed__author:
+
+struct discord_embed_author
+===========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <embed.h>
+	
+	struct discord_embed_author {
+		// fields
+	
+		char* :target:`name<doxid-structdiscord__embed__author_1a7a212bf3dcda2ee5010c6f0f5c3ec783>`;
+		char* :target:`url<doxid-structdiscord__embed__author_1a156c00cb09a6197093735b3f158ac14e>`;
+		char* :target:`icon_url<doxid-structdiscord__embed__author_1a73730059d65b885a2c4d9f5d581d06d8>`;
+		char* :target:`proxy_icon_url<doxid-structdiscord__embed__author_1ae7ac5a62c6a3a03996d71a0ca5aed2cd>`;
+	};

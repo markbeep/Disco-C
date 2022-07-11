@@ -1,0 +1,37 @@
+.. index:: pair: class; doxyrest::DoxyrestDomain
+.. _doxid-classdoxyrest_1_1_doxyrest_domain:
+
+class doxyrest::DoxyrestDomain
+==============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class DoxyrestDomain: public Domain {
+	public:
+		// fields
+	
+		static string :target:`name<doxid-classdoxyrest_1_1_doxyrest_domain_1a0ca6a1defcefff8f88fc02be71ccd3f6>` =  'doxyrest';
+		static string :target:`label<doxid-classdoxyrest_1_1_doxyrest_domain_1a75d7adffd60e5bac44ce09f59ce885ac>` =  'Doxyrest';
+
+		// methods
+	
+		def :target:`merge_domaindata<doxid-classdoxyrest_1_1_doxyrest_domain_1a2fa8279446f76fbe4b5cc8ed05993b5d>`(self self, docnames docnames, otherdata otherdata);
+	
+		def :target:`resolve_any_xref<doxid-classdoxyrest_1_1_doxyrest_domain_1af0145834368fede4ed08fd983b4579a0>`(
+			self self,
+			env env,
+			fromdocname fromdocname,
+			builder builder,
+			target target,
+			:ref:`node<doxid-structnode>` node,
+			contnode contnode
+		);
+	};

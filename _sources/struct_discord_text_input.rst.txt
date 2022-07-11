@@ -1,0 +1,29 @@
+.. index:: pair: struct; discord_text_input
+.. _doxid-structdiscord__text__input:
+
+struct discord_text_input
+=========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <component.h>
+	
+	struct discord_text_input {
+		// fields
+	
+		char* :target:`custom_id<doxid-structdiscord__text__input_1a36bf63fb83a3c3556a66889fe308367f>`;
+		enum :ref:`Discord_Text_Input_Style<doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0e>` :target:`style<doxid-structdiscord__text__input_1a2a75faad865929bee6aa458e54d71793>`;
+		char* :target:`label<doxid-structdiscord__text__input_1aeb25cef9dc31d7850c66970795690f28>`;
+		int :target:`min_length<doxid-structdiscord__text__input_1aa785cd416f1252d1a096864416322b14>`;
+		int :target:`max_length<doxid-structdiscord__text__input_1acbd3fc82d2708f66f3626428ed27f68f>`;
+		bool :target:`required<doxid-structdiscord__text__input_1ad43496ff73e75628498c6c228776f0c4>`;
+		char* :target:`value<doxid-structdiscord__text__input_1a093c7c685057da3b42e93fd0f2661604>`;
+		char* :target:`placeholder<doxid-structdiscord__text__input_1aaae8d611e576e1a549d0620e7c750fcf>`;
+	};

@@ -1,0 +1,23 @@
+.. index:: pair: enum; Discord_Interaction_Callback_Type
+.. _doxid-interaction_8h_1a44639091014a7389213a89e4711df05e:
+
+enum Discord_Interaction_Callback_Type
+======================================
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <interaction.h>
+
+	enum Discord_Interaction_Callback_Type {
+	    :target:`DISCORD_CALLBACK_PONG<doxid-interaction_8h_1a44639091014a7389213a89e4711df05ea53236e55e9d3c921142b079ba3f26d5a>`                                    = 1,
+	    :target:`DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE<doxid-interaction_8h_1a44639091014a7389213a89e4711df05eaab5df0a5340dbce3493a400a0f6e5ee0>`             = 4,
+	    :target:`DISCORD_CALLBACK_DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE<doxid-interaction_8h_1a44639091014a7389213a89e4711df05ea1e5c440f5945f2bfea12668cea0eb4fb>`    = 5,
+	    :target:`DISCORD_CALLBACK_DEFERRED_UPDATE_MESSAGE<doxid-interaction_8h_1a44639091014a7389213a89e4711df05ea7aa1ef816ecdf582c125ba5740ebc743>`                 = 6,
+	    :target:`DISCORD_CALLBACK_UPDATE_MESSAGE<doxid-interaction_8h_1a44639091014a7389213a89e4711df05ea7268b907babc8755b130cbf0b2d6a01c>`                          = 7,
+	    :target:`DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT<doxid-interaction_8h_1a44639091014a7389213a89e4711df05ead88add4b6f0d2128a662aee02f9d48b9>` = 8,
+	    :target:`DISCORD_CALLBACK_MODAL<doxid-interaction_8h_1a44639091014a7389213a89e4711df05eab217b6c02bb0a2992c1efd3b9d5eeb54>`                                   = 9,
+	};
+

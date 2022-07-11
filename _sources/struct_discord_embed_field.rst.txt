@@ -1,0 +1,24 @@
+.. index:: pair: struct; discord_embed_field
+.. _doxid-structdiscord__embed__field:
+
+struct discord_embed_field
+==========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <embed.h>
+	
+	struct discord_embed_field {
+		// fields
+	
+		char* :target:`name<doxid-structdiscord__embed__field_1a5a31af47e8a0e72fef25ca42bd6d8514>`;
+		char* :target:`value<doxid-structdiscord__embed__field_1a3d86d857fc2eef075929de9ab67d8a30>`;
+		bool :target:`_inline<doxid-structdiscord__embed__field_1a540203f9fbd0ab3a2387b7d42efe1385>`;
+	};

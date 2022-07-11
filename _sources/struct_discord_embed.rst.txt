@@ -1,0 +1,35 @@
+.. index:: pair: struct; discord_embed
+.. _doxid-structdiscord__embed:
+
+struct discord_embed
+====================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <embed.h>
+	
+	struct discord_embed {
+		// fields
+	
+		char* :target:`title<doxid-structdiscord__embed_1a1ed7b7843d77aca64e5e14abb52abc7f>`;
+		char* :target:`type<doxid-structdiscord__embed_1aaf74642f504fd205d598e1216b78b2a5>`;
+		char* :target:`description<doxid-structdiscord__embed_1a0696fb57ceb0158278cb38b693347fb7>`;
+		char* :target:`url<doxid-structdiscord__embed_1ae5fed021fd2c671b3a25fb775febb7db>`;
+		char* :target:`timestamp<doxid-structdiscord__embed_1a884c046480b9973b33e7e8b26bf522ac>`;
+		int :target:`color<doxid-structdiscord__embed_1a4b85f46dd7b4969cb57cf6d1788cf27f>`;
+		struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* :target:`footer<doxid-structdiscord__embed_1a0abc90561f47fbb15b195ef45a5c6573>`;
+		struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* :target:`image<doxid-structdiscord__embed_1a9dbec7e126d1fa3ef20e51a7b0b668ba>`;
+		struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* :target:`thumbnail<doxid-structdiscord__embed_1a646fd618532372704906428f63a83bc2>`;
+		struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* :target:`video<doxid-structdiscord__embed_1a389a9cf6c90b33a86a5d302ee9b66c78>`;
+		struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* :target:`provider<doxid-structdiscord__embed_1a835dd79806720eb1f371d3c3f84a64cd>`;
+		struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* :target:`author<doxid-structdiscord__embed_1ac1c07144b0ff602ac136886c4e43b639>`;
+		struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`** :target:`fields<doxid-structdiscord__embed_1a3eb5e04652c74e6b61e8dad119694ded>`;
+		int :target:`fields_count<doxid-structdiscord__embed_1a087d4d736c285a99baf99f42401108f1>`;
+	};

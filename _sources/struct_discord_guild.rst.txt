@@ -1,0 +1,63 @@
+.. index:: pair: struct; discord_guild
+.. _doxid-structdiscord__guild:
+
+struct discord_guild
+====================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <guild.h>
+	
+	struct discord_guild {
+		// fields
+	
+		uint64_t :target:`id<doxid-structdiscord__guild_1ad20a5f6ac4a8e321bb736517a233b36a>`;
+		char* :target:`name<doxid-structdiscord__guild_1a206e938ca74fc8b283b8e10bf8a1c57b>`;
+		char* :target:`icon<doxid-structdiscord__guild_1a772572f21613a0706830cef599defa6a>`;
+		char* :target:`icon_hash<doxid-structdiscord__guild_1a26c52e53020c8ad2cb1790a3ae14e759>`;
+		char* :target:`splash<doxid-structdiscord__guild_1a87acb755605972c5f9b56c5d78396751>`;
+		char* :target:`discovery_splash<doxid-structdiscord__guild_1a475ba81c3f6600402e68d456db8553eb>`;
+		bool :target:`owner<doxid-structdiscord__guild_1a8d1f0d33eefeb590e322e7125dfbfbe3>`;
+		uint64_t :target:`owner_id<doxid-structdiscord__guild_1a0242ac662709d79d6239cf79fd068dbe>`;
+		char* :target:`permissions<doxid-structdiscord__guild_1af6891a92f31196563f2d234ff831d6b3>`;
+		char* :target:`region<doxid-structdiscord__guild_1aae84da278134fb2a9a794472ba5e2f7e>`;
+		uint64_t :target:`afk_channel_id<doxid-structdiscord__guild_1a09b259aeed544179c57edbcd64620618>`;
+		int :target:`afk_timeout<doxid-structdiscord__guild_1ae334bae8ee1d7c786af5d599935084bd>`;
+		bool :target:`widget_enabled<doxid-structdiscord__guild_1a4ac238d11643161ca0e2141ae3428f28>`;
+		uint64_t :target:`widget_channel_id<doxid-structdiscord__guild_1a75d38dcf49362e4612e7b2448813b6df>`;
+		int :target:`verification_level<doxid-structdiscord__guild_1a0dc1f87817c2acdf421d170e3a6275f5>`;
+		int :target:`default_message_notifications<doxid-structdiscord__guild_1a0f50ea8bcc2492856ecc6caf34ef7f37>`;
+		int :target:`explicit_content_filter<doxid-structdiscord__guild_1a7c61c9d2f43168181d05ab7785fc1d5a>`;
+		struct :ref:`discord_role<doxid-structdiscord__role>`** :target:`roles<doxid-structdiscord__guild_1a581d91ae529a29285a9e315215552daf>`;
+		int :target:`roles_count<doxid-structdiscord__guild_1a79288026c9e4e42fbf8ad21ff47e0b91>`;
+		struct :ref:`discord_emoji<doxid-structdiscord__emoji>`** :target:`emojis<doxid-structdiscord__guild_1a06b154313aa74e10b1d1fd9ccf9b798f>`;
+		int :target:`emojis_count<doxid-structdiscord__guild_1ac86bf9db3a8d327654d58678cc1a7752>`;
+		int :target:`mfa_level<doxid-structdiscord__guild_1a45fc7ea50ea9563dd0f24916eb2523f8>`;
+		uint64_t :target:`application_id<doxid-structdiscord__guild_1abb9a24b5d67de9eac3f704ff75b2c699>`;
+		uint64_t :target:`system_channel_id<doxid-structdiscord__guild_1a2eb492fb105739cc58b0369d164c1821>`;
+		int :target:`system_channel_flags<doxid-structdiscord__guild_1a778910db5fd5f889e345d67df4247391>`;
+		uint64_t :target:`rules_channel_id<doxid-structdiscord__guild_1a5d7e4861320f2b567cb2d0e53290e1cb>`;
+		int :target:`max_presences<doxid-structdiscord__guild_1a7cdccad067827d24ec90b8aeb514993a>`;
+		int :target:`max_members<doxid-structdiscord__guild_1a31942f131e8007185879c3008bbd6274>`;
+		char* :target:`vanity_url_code<doxid-structdiscord__guild_1a5e5b650011255b7eed0430ce443363ec>`;
+		char* :target:`description<doxid-structdiscord__guild_1aa561691727592311e089d1262f51f507>`;
+		char* :target:`banner<doxid-structdiscord__guild_1a29665f8892f36a10edf67b25ff77150c>`;
+		int :target:`premium_tier<doxid-structdiscord__guild_1ad14bdde8299360527a79da7739ef505d>`;
+		int :target:`premium_subscription_count<doxid-structdiscord__guild_1a0f115a9d4d1da0ca75007d9cc893568f>`;
+		char* :target:`preferred_locale<doxid-structdiscord__guild_1a4d387fd27c44a56c78a23771cb9f3f9f>`;
+		uint64_t :target:`public_updates_channel_id<doxid-structdiscord__guild_1a7f43c1fdf93ec10548c67d7569254196>`;
+		int :target:`max_video_channel_users<doxid-structdiscord__guild_1a42b55d4e4d21ae3239af1e8348c23b5e>`;
+		int :target:`approximate_member_count<doxid-structdiscord__guild_1af65b45891870491fe92b8727e322762b>`;
+		int :target:`approximate_presence_count<doxid-structdiscord__guild_1a180333f76bc1af71303cca29d7cc0732>`;
+		int :target:`nsfw_level<doxid-structdiscord__guild_1adb154bdb10a0cc495de701a07e724630>`;
+		struct :ref:`discord_sticker<doxid-structdiscord__sticker>`** :target:`stickers<doxid-structdiscord__guild_1a8241fe50a0c857298a43422461fc8050>`;
+		int :target:`stickers_count<doxid-structdiscord__guild_1a7d24ddf813884c42581e5863bd026f17>`;
+		bool :target:`premium_progress_bar_enabled<doxid-structdiscord__guild_1af2692808208466dd2fd9fac537910b7c>`;
+	};

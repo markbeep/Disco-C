@@ -1,0 +1,25 @@
+.. index:: pair: struct; discord_message_reference
+.. _doxid-structdiscord__message__reference:
+
+struct discord_message_reference
+================================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <message.h>
+	
+	struct discord_message_reference {
+		// fields
+	
+		uint64_t :target:`message_id<doxid-structdiscord__message__reference_1acb55ea9328287fca1e0253c006d2f741>`;
+		uint64_t :target:`channel_id<doxid-structdiscord__message__reference_1adfd3b4f8e5707faf31eab374767b08fb>`;
+		uint64_t :target:`guild_id<doxid-structdiscord__message__reference_1aae807fc732181cce24b1eda7b37402bb>`;
+		bool :target:`fail_if_not_exists<doxid-structdiscord__message__reference_1a922052136d433c780a3f2bb307ed0589>`;
+	};

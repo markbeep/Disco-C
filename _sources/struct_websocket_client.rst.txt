@@ -1,0 +1,32 @@
+.. index:: pair: struct; websocket_client
+.. _doxid-structwebsocket__client:
+
+struct websocket_client
+=======================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <websocket.h>
+	
+	struct websocket_client {
+		// fields
+	
+		struct :ref:`websocket_callbacks<doxid-structwebsocket__callbacks>`* :target:`callbacks<doxid-structwebsocket__client_1a6b06e783362e3ea15a3b24550df86c24>`;
+		struct lws_context* :target:`context<doxid-structwebsocket__client_1ac2e9e4c7487033b2272e3e3ec5c979ba>`;
+		struct lws* :target:`wsi<doxid-structwebsocket__client_1abb30c6cbcb6fd9d9eab05d83c666cbae>`;
+		char* :target:`content<doxid-structwebsocket__client_1a4056e6a9c255e07fb5e62822a3b3be7c>`;
+		size_t :target:`size<doxid-structwebsocket__client_1a4729577b3921b053f74f33c0cce99e3d>`;
+		int :target:`connected<doxid-structwebsocket__client_1a193a376bef46d643f3479b92d5148d91>`;
+		int :target:`success_login<doxid-structwebsocket__client_1a52a870d38ca87d2a6ac13f08758fd37a>`;
+		int :target:`active<doxid-structwebsocket__client_1a964ba3c0de77d4920a8312b16a1a0bf0>`;
+		int :target:`heartbeat_active<doxid-structwebsocket__client_1aeb5d2b27e174289fdf313c8dedf7d749>`;
+		int :target:`reconnect<doxid-structwebsocket__client_1afed6b9db53c8a361bdee200fe10fcadb>`;
+		pthread_t :target:`heartbeat_thread<doxid-structwebsocket__client_1a7577dcd5f111b99a1cfb09ac14d51e5e>`;
+	};

@@ -1,0 +1,33 @@
+.. index:: pair: struct; discord_member
+.. _doxid-structdiscord__member:
+
+struct discord_member
+=====================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <user.h>
+	
+	struct discord_member {
+		// fields
+	
+		struct :ref:`discord_user<doxid-structdiscord__user>`* :target:`user<doxid-structdiscord__member_1ab5d96a6f6968a917943f4bd4c35dbfab>`;
+		char* :target:`nick<doxid-structdiscord__member_1a2796f66f6b7bc86ad024785d6d8ba0ce>`;
+		char* :target:`avatar<doxid-structdiscord__member_1a4775fea7f718eddee3ec98f1c450a8a5>`;
+		char** :target:`roles<doxid-structdiscord__member_1a7dd77a0592e4936ccc17f1bdd4635fce>`;
+		int :target:`roles_count<doxid-structdiscord__member_1a7a62eae2d7ddf73a2efeac4dc7bc4f30>`;
+		char* :target:`joined_at<doxid-structdiscord__member_1a7638bf19c7353fdf7065bc1f0a830b60>`;
+		char* :target:`premium_since<doxid-structdiscord__member_1aa15b7eec5bcba97a819089785701326a>`;
+		bool :target:`deaf<doxid-structdiscord__member_1a0a1e57af2d289c0f031c23e0bc422bbb>`;
+		bool :target:`mute<doxid-structdiscord__member_1a1181297d55c169da5c927d65523e24b8>`;
+		bool :target:`pending<doxid-structdiscord__member_1a6b16e6c0d79b4a613cc524d9183058af>`;
+		char* :target:`permissions<doxid-structdiscord__member_1a764466a9258ba8fdfce62073c4e456cf>`;
+		char* :target:`communication_disabled_until<doxid-structdiscord__member_1abdbca82d8f6e9dc19bb5b174b86c3de1>`;
+	};

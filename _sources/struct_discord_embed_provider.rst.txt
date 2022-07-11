@@ -1,0 +1,23 @@
+.. index:: pair: struct; discord_embed_provider
+.. _doxid-structdiscord__embed__provider:
+
+struct discord_embed_provider
+=============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <embed.h>
+	
+	struct discord_embed_provider {
+		// fields
+	
+		char* :target:`name<doxid-structdiscord__embed__provider_1aa920daff20665a084c8ae04162f76441>`;
+		char* :target:`url<doxid-structdiscord__embed__provider_1a0ea5543fce4b7898be853511dc507941>`;
+	};

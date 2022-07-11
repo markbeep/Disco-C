@@ -1,0 +1,22 @@
+.. index:: pair: struct; websocket_callbacks
+.. _doxid-structwebsocket__callbacks:
+
+struct websocket_callbacks
+==========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <websocket.h>
+	
+	struct websocket_callbacks {
+		// fields
+	
+		:ref:`callback_receive_fn<doxid-websocket_8h_1a75e027723976e4a1325be64cb272d01e>` :target:`on_receive<doxid-structwebsocket__callbacks_1abb983049462ca7be2a863969772b6d3c>`;
+	};

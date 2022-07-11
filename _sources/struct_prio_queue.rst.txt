@@ -1,0 +1,22 @@
+.. index:: pair: struct; prio_queue
+.. _doxid-structprio__queue:
+
+struct prio_queue
+=================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <prio_queue.h>
+	
+	struct prio_queue {
+		// fields
+	
+		:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`head<doxid-structprio__queue_1a9caf7117dc35b18acc14a3009b4bdaa5>`;
+	};

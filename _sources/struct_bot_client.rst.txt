@@ -1,0 +1,26 @@
+.. index:: pair: struct; bot_client
+.. _doxid-structbot__client:
+
+struct bot_client
+=================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <disco.h>
+	
+	struct bot_client {
+		// fields
+	
+		:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* :target:`websocket_client<doxid-structbot__client_1aa44aa6c8d8a2f1656c6bcc8ee0869875>`;
+		:ref:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`* :target:`callbacks<doxid-structbot__client_1afa5c7bb7aeaf1cb6e35e9b157e102ca9>`;
+		struct :ref:`discord_user<doxid-structdiscord__user>`* :target:`user<doxid-structbot__client_1a55e2a3821d0f13e0919ffa971702accf>`;
+		:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* :target:`thread_pool<doxid-structbot__client_1a6abb620b458000fdc3b3dc53d47f4b0d>`;
+		long :target:`heartbeat_latency<doxid-structbot__client_1a5928fad9bb28b6f9a0aba9ce56d7db71>`;
+	};
