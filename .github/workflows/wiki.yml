@@ -27,7 +27,7 @@ jobs:
         run: ./doxyrest-2.1.3-linux-amd64/bin/doxyrest -c Doxygen/doxyrest-config.lua
       
       - name: Sphinx
-        run: sphinx-build -b html rst-dir html-dir
+        run: sphinx-build -b html rst-dir html-dir -c Doxygen
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
