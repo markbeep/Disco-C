@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['main_1022',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c'],['../register_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;register.c'],['../test__discord_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;test_discord.c'],['../test__web_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;test_web.c']]]
+  ['prio_5fdestroy_5fnode_992',['prio_destroy_node',['../prio__queue_8c.html#a0049238d9ae8be0678d639267247d923',1,'prio_destroy_node(prio_node_t *node):&#160;prio_queue.c'],['../prio__queue_8h.html#a0049238d9ae8be0678d639267247d923',1,'prio_destroy_node(prio_node_t *node):&#160;prio_queue.c']]],
+  ['prio_5fdestroy_5fqueue_993',['prio_destroy_queue',['../prio__queue_8c.html#a6f714d888ada5be92c7bacb61ff34109',1,'prio_destroy_queue(struct prio_queue *queue):&#160;prio_queue.c'],['../prio__queue_8h.html#a6f714d888ada5be92c7bacb61ff34109',1,'prio_destroy_queue(struct prio_queue *queue):&#160;prio_queue.c']]],
+  ['prio_5fpop_994',['prio_pop',['../prio__queue_8c.html#a92eb054ee93b52ef0384fd98c6db6658',1,'prio_pop(struct prio_queue *queue):&#160;prio_queue.c'],['../prio__queue_8h.html#a92eb054ee93b52ef0384fd98c6db6658',1,'prio_pop(struct prio_queue *queue):&#160;prio_queue.c']]],
+  ['prio_5fpush_995',['prio_push',['../prio__queue_8c.html#a8039ef640c19907629907eb6558c7a30',1,'prio_push(struct prio_queue *queue, enum Request_Type request_type, cJSON *data, int retry_after):&#160;prio_queue.c'],['../prio__queue_8h.html#a8039ef640c19907629907eb6558c7a30',1,'prio_push(struct prio_queue *queue, enum Request_Type request_type, cJSON *data, int retry_after):&#160;prio_queue.c']]]
 ];

@@ -1,14 +1,11 @@
 <map id="disco_create_message_reference_struct_json" name="disco_create_message_reference_struct_json">
-<area shape="rect" id="node1" title="Creates a message_reference structure from a given JSON." alt="" coords="1373,107,1544,149"/>
-<area shape="rect" id="node2" href="$message_8h.html#ac6295f7b779d42c57612ef1c1a705208" title="Creates a message structure from a given JSON." alt="" coords="1155,107,1325,149"/>
-<area shape="rect" id="node3" href="$message_8h.html#aee5633360f52065f9d778cf0cb9eb70c" title="Sends a message and if enabled also returns the sent message struct." alt="" coords="326,49,478,90"/>
-<area shape="rect" id="node8" href="$interaction_8h.html#a04440337527c3b89828be37f5bb8c8db" title=" " alt="" coords="925,107,1107,149"/>
-<area shape="rect" id="node9" href="$event_8h.html#a0a0e68819bd46857f175b4ef0345767e" title="All event websocket responses call this function." alt="" coords="767,157,877,184"/>
-<area shape="rect" id="node4" href="$example_8h.html#a5a500fd022cf174521082c962ee90982" title=" " alt="" coords="117,5,267,32"/>
-<area shape="rect" id="node6" href="$example_8h.html#aa18040c70bf8660833448e81552ef59b" title=" " alt="" coords="125,56,259,83"/>
-<area shape="rect" id="node7" href="$example_8h.html#a2926b3d8b34a8bd8e6df0895bbf5bc4b" title=" " alt="" coords="108,107,276,133"/>
-<area shape="rect" id="node5" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,81,60,108"/>
-<area shape="rect" id="node10" href="$gateway_8c.html#a0ae5ed06471447e38fa5edf7780989c3" title=" " alt="" coords="528,157,719,184"/>
-<area shape="rect" id="node11" href="$gateway_8h.html#a8dd303796c502667dc80381a12150f96" title="Callback function for when a websocket package is received." alt="" coords="324,157,480,184"/>
-<area shape="rect" id="node12" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="131,157,253,184"/>
+<area shape="rect" id="node1" title="Creates a message_reference structure from a given JSON." alt="" coords="1327,71,1497,112"/>
+<area shape="rect" id="node2" href="$message_8h.html#ac6295f7b779d42c57612ef1c1a705208" title="Creates a message structure from a given JSON." alt="" coords="1108,71,1279,112"/>
+<area shape="rect" id="node3" href="$message_8h.html#aee5633360f52065f9d778cf0cb9eb70c" title="Sends a message and if enabled also returns the sent message struct." alt="" coords="893,5,1045,47"/>
+<area shape="rect" id="node4" href="$interaction_8h.html#a04440337527c3b89828be37f5bb8c8db" title=" " alt="" coords="879,71,1060,112"/>
+<area shape="rect" id="node5" href="$event_8h.html#a0a0e68819bd46857f175b4ef0345767e" title="All event websocket responses call this function." alt="" coords="720,107,831,134"/>
+<area shape="rect" id="node6" href="$gateway_8c.html#a0ae5ed06471447e38fa5edf7780989c3" title=" " alt="" coords="481,107,672,134"/>
+<area shape="rect" id="node7" href="$gateway_8h.html#a8dd303796c502667dc80381a12150f96" title="Callback function for when a websocket package is received." alt="" coords="277,107,433,134"/>
+<area shape="rect" id="node8" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,107,229,134"/>
+<area shape="rect" id="node9" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,107,60,134"/>
 </map>
