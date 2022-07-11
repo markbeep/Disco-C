@@ -37,7 +37,7 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
   - **event**: Handles received Discord events.
   - **structures/**: All of the Discord structure definitions.
   - Structure specific functions are all defined in their corresponding source files.
-- **example**/: Example implementations of how the bot sytax looks like.
+- **example**/: Example implementations of how the bot syntax looks like.
 - **lib**/: External libraries not downloadable with the APT package manager (basically just Github libraries). Will be renamed to `include` in the future to maintain the Pitchfork standard.
 
 ## Why are some things called `disco_...` while others are called `discord_...`?
