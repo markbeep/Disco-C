@@ -30,7 +30,10 @@
 --! searched in directories -- and in the sequence -- specified here.
 --!
 
-FRAME_DIR_LIST = {}
+FRAME_DIR_LIST = {
+	"doxyrest-2.1.3-linux-x86/share/doxyrest/cfamily",
+	"doxyrest-2.1.3-linux-x86/share/doxyrest/common"
+}
 
 --!
 --! The output master (index) reStructuredText file. Usually, the index frame
