@@ -19,6 +19,8 @@
 
 # -- Project information -----------------------------------------------------
 
+import os
+import sys
 project = 'Disco-C'
 copyright = '2022, markbeep'
 author = 'markbeep'
@@ -39,13 +41,12 @@ release = ''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-        "doxyrest",
-        "cpplexer"
+    "doxyrest",
+    "cpplexer"
 ]
 
-import sys
-import os
-sys.path.insert(1, os.path.abspath('doxyrest-2.1.3-linux-x86/share/doxyrest/sphinx'))
+sys.path.insert(1, os.path.abspath(
+    'doxyrest-2.1.3-linux-x86/share/doxyrest/sphinx'))
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

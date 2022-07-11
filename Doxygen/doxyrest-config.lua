@@ -63,7 +63,7 @@ INPUT_FILE = "generated-docs/xml/index.xml"
 --! the default output master file.
 --!
 
-OUTPUT_FILE = "generated-docs/rst-dir/index.rst"
+OUTPUT_FILE = "rst-dir/index.rst"
 
 --!
 --! File with project-specific reStructuredText definitions. When non``nil``,
