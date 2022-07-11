@@ -43,7 +43,7 @@ FRAME_DIR_LIST = {
 --! used as the default frame file.
 --!
 
-FRAME_FILE = "index_main.rst.in"
+FRAME_FILE = "index.rst.in"
 
 --!
 --! The input master (index) XML file. Specifying it here allows calling
