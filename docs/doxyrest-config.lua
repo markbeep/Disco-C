@@ -148,7 +148,7 @@ FOOTNOTE_MEMBER_PREFIX = nil
 --! formatting of module item declarations.
 --!
 
-LANGUAGE = cpp
+LANGUAGE = c
 
 --!
 --! Convert ``\verbatim`` sections in doxy-comments to ``.. code-block::``
@@ -250,7 +250,7 @@ CREF_DB = false
 	By default, only public items are included into documentation.
 ]]
 
-PROTECTION_FILTER = "public"
+PROTECTION_FILTER = "package"
 
 --!
 --! In many projects empty defines are *only* used as include-guards (and as

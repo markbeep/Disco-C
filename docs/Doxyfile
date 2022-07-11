@@ -275,7 +275,7 @@ TCL_SUBST              =
 # members will be omitted, etc.
 # The default value is: NO.
 
-OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_FOR_C  = YES
 
 # Set the OPTIMIZE_OUTPUT_JAVA tag to YES if your project consists of Java or
 # Python sources only. Doxygen will then generate output that is more tailored
@@ -2056,7 +2056,7 @@ XML_OUTPUT             = xml
 # The default value is: YES.
 # This tag requires that the tag GENERATE_XML is set to YES.
 
-XML_PROGRAMLISTING     = NO
+XML_PROGRAMLISTING     = YES
 
 # If the XML_NS_MEMB_FILE_SCOPE tag is set to YES, doxygen will include
 # namespace members in file scope as well, matching the HTML output.
@@ -2428,7 +2428,7 @@ CALL_GRAPH             = NO
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-CALLER_GRAPH           = YES
+CALLER_GRAPH           = NO
 
 # If the GRAPHICAL_HIERARCHY tag is set to YES then doxygen will graphical
 # hierarchy of all classes instead of a textual one.
