@@ -7,7 +7,6 @@ Global Namespace
 .. toctree::
 	:hidden:
 
-	namespace_conf.rst
 	namespace_cpplexer.rst
 	namespace_doxyrest.rst
 	enum_Disco_Cache_Type.rst
@@ -99,7 +98,6 @@ Overview
 	
 	// namespaces
 
-	namespace :ref:`conf<doxid-namespaceconf>`;
 	namespace :ref:`cpplexer<doxid-namespacecpplexer>`;
 	namespace :ref:`doxyrest<doxid-namespacedoxyrest>`;
 
