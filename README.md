@@ -1,13 +1,37 @@
-# Disco.c, a Discord C bot library
+# Disco.c, an Async Discord C bot library
+Disco-C is a part-time project to practice writing bigger projects in C and getting more experience in multiple directions (requests, websockets, APIs, etc.). It is also a nice way to learn about how Discord really works.
 
-### Installing
+The library is built to work async, which means that every received event is handled in its own thread. The idea behind this is, that in a single function you want to work sequentially, but you also don't want functions like sending a message (which does a HTTP request that takes around ~200ms) block the whole bot from receiving anything anymore in that time. Another option would have been to make the HTTP request itself be async, but this then doesn't give you the guarantee that a message has been sent once the message-send function is done.
+
+## Table of Contents
+1. [Installing](#installing)
+    1. [Copy Paste Command](#copy-paste-command)
+    2. [Required Libraries](#required-libraries)
+2. [File Explanations](#file-explanations)
+3. [`Disco` vs `Discord`](#why-are-some-things-called-disco_-while-others-are-called-discord_)
+5. [Progress](#progress)
+
+## Installing
+### Copy Paste Command
 Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clone the submodules as well.
 
-### File explanations
+### Required Libraries:
+- https://libwebsockets.org/
+  - `sudo apt install libwebsockets-dev`
+- https://curl.se/libcurl/c/
+  - `sudo apt install libcurl4-gnutls-dev`
+- https://github.com/DaveGamble/cJSON/
+- https://github.com/sheredom/hashmap.h/
 
+## File Explanations
 - src/web/**websocket**: Contains the required methods to abstract the background websocket connection.
 - src/web/**gateway**: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.
 - src/web/**request**: Helper file that abstracts the HTTP GET/POST/PATCH/etc. requests.
+- src/utils
+  - **cache**: The cache uses the `hashmap.h` library to create a linked hashmap for messages, channels and guilds.
+  - **disco_logging**: Personalized logging library which can be used to log messages to the console. The file path is additionally added to each message.
+  - **prio_queue**: O(n) lazy priority queue implementation. Currently there's no use for this anymore.
+  - **t_pool**: Thread pool library to manage the multiple threads which will then be distributed for each fired event.
 - src/discord/
   - **disco**: The main functions of Disco-C. It contains the highest level of abstraction for running the bot.
   - **event**: Handles received Discord events.
@@ -16,21 +40,26 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
 - **example**/: Example implementations of how the bot sytax looks like.
 - **lib**/: External libraries not downloadable with the APT package manager (basically just Github libraries). Will be renamed to `include` in the future to maintain the Pitchfork standard.
 
-### Why are some things called `disco_...` while others are called `discord_...`?
+## Why are some things called `disco_...` while others are called `discord_...`?
+*(In the future everything will be called `discord_` for consistency)*
+
 All of the structures that are taken straight from the [Discord documentation](https://discord.com/developers/docs/) are all named with a leading `discord_`. At the structure definition there should also be a link leading to the exact place in the documentation that the definition was taken from.
 
 On the other hand, everything starting with `disco_` is a public library method that can be used at the top level to control the bot.
 
-
-### Required Libaries:
-- https://libwebsockets.org/
-  - `sudo apt install libwebsockets-dev`
-- https://curl.se/libcurl/c/
-  - `sudo apt install libcurl4-gnutls-dev`
-- https://github.com/DaveGamble/cJSON/
-- https://github.com/sheredom/hashmap.h/
-
-### Progress
+## Progress
+- Interactions
+  - [x] Application Command Object
+  - [x] Application Command Option Object
+  - [x] Register Commands
+    - [x] Global
+    - [x] Guild
+- API Calls
+  - [x] Send messages
+    - [x] Content
+    - [x] Embeds
+    - [ ] Components (untested)
+  - ... (no complete list of methods yet)
 - Events ![](https://progress-bar.dev/14/?title=8/57)
   - [x] READY
   - [ ] RESUMED
@@ -90,10 +119,4 @@ On the other hand, everything starting with `disco_` is a public library method 
   - [ ] VOICE_SERVER_UPDATE
   - [ ] WEBHOOKS_UPDATE
   - [x] INTERACTION_CREATE
-- Interactions
-  - [x] Application Command Object
-  - [x] Application Command Option Object
-  - [x] Register Commands
-    - [x] Global
-    - [x] Guild
   
