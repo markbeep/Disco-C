@@ -4,7 +4,7 @@
 #include "../src/web/websocket.h"
 #include <Unity/src/unity.h>
 
-static bot_client_t bot = {0};
+static bot_client_t bot_static = {0};
 static websocket_client_t client = {0};
 
 void test_requests(void) {
@@ -41,21 +41,21 @@ void test_websocket_create(void) {
 }
 
 void test_websocket_connect(void) {
-    int c = websocket_connect(&bot);
+    int c = websocket_connect(&bot_static);
     TEST_ASSERT_EQUAL_INT(0, c);
     TEST_ASSERT_EQUAL_INT(1, client.active);
     TEST_ASSERT_EQUAL_INT(0, client.connected);
     TEST_ASSERT_EQUAL_INT(0, client.heartbeat_active);
     TEST_ASSERT_EQUAL_INT(0, client.reconnect);
     TEST_ASSERT_EQUAL_INT(0, client.success_login);
-    TEST_ASSERT_EQUAL_INT64(NULL, bot.callbacks);
-    TEST_ASSERT_EQUAL_INT64(NULL, bot.thread_pool);
-    TEST_ASSERT_EQUAL_INT64(NULL, bot.user);
-    TEST_ASSERT_EQUAL_INT64((uint64_t)&client, bot.websocket_client);
+    TEST_ASSERT_EQUAL_INT64(NULL, bot_static.callbacks);
+    TEST_ASSERT_EQUAL_INT64(NULL, bot_static.thread_pool);
+    TEST_ASSERT_EQUAL_INT64(NULL, bot_static.user);
+    TEST_ASSERT_EQUAL_INT64((uint64_t)&client, bot_static.websocket_client);
 }
 
 void setUp(void) {
-    bot.websocket_client = &client;
+    bot_static.websocket_client = &client;
     curl_global_init(CURL_GLOBAL_ALL);
 }
 void tearDown(void) {
