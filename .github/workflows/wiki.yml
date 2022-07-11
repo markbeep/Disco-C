@@ -1,2 +1,26 @@
-- name: Doxygen Action
-  uses: mattnotmitt/doxygen-action@1.9.4
+name: Wiki Setup
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install
+        run: |
+          sudo apt update
+          sudo apt install doxygen graphviz
+      
+      - name: Generate Doxygen
+        run: doxygen Doxyfile
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: wiki
+          publish_dir: ./generated-docs/html
