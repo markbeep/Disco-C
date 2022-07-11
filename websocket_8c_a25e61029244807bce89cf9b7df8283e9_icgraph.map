@@ -1,0 +1,8 @@
+<map id="websocket_create" name="websocket_create">
+<area shape="rect" id="node1" title="Sets up the websocket client." alt="" coords="327,56,465,83"/>
+<area shape="rect" id="node2" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="133,5,254,32"/>
+<area shape="rect" id="node4" href="$test__web_8c.html#aab915172720ef6c59717d7307db98940" title=" " alt="" coords="108,56,279,83"/>
+<area shape="rect" id="node6" href="$websocket_8h.html#ad7b1e0aedab3d4111d5ddb66a6e78dab" title=" " alt="" coords="132,107,255,133"/>
+<area shape="rect" id="node3" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node5" href="$test__web_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,56,60,83"/>
+</map>

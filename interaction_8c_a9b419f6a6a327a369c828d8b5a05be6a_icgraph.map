@@ -1,0 +1,11 @@
+<map id="disco_destroy_interaction" name="disco_destroy_interaction">
+<area shape="rect" id="node1" title=" " alt="" coords="992,132,1181,159"/>
+<area shape="rect" id="node2" href="$message_8h.html#af8c130cb715240bb658ac80f52d3fed2" title="Destroys the given structure and frees the pointer." alt="" coords="765,107,944,133"/>
+<area shape="rect" id="node8" href="$example_8h.html#a96f6ac346fee647985ca8a0abe8c94a6" title=" " alt="" coords="324,107,480,149"/>
+<area shape="rect" id="node3" href="$cache_8c.html#a1dbbf43aa4a7a4e8073bc72c8d08986a" title=" " alt="" coords="530,56,715,83"/>
+<area shape="rect" id="node7" href="$interaction_8h.html#a9b419f6a6a327a369c828d8b5a05be6a" title=" " alt="" coords="528,107,717,133"/>
+<area shape="rect" id="node9" href="$example_8h.html#a2926b3d8b34a8bd8e6df0895bbf5bc4b" title=" " alt="" coords="108,5,276,32"/>
+<area shape="rect" id="node4" href="$cache_8h.html#a98b5c2129a67d394da3830526d1ae247" title="Initializes all the caches." alt="" coords="337,56,467,83"/>
+<area shape="rect" id="node5" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="131,56,253,83"/>
+<area shape="rect" id="node6" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,56,60,83"/>
+</map>

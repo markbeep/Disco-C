@@ -1,0 +1,7 @@
+<map id="disco_channel_send_message" name="disco_channel_send_message">
+<area shape="rect" id="node1" title="Sends a message and if enabled also returns the sent message struct." alt="" coords="324,49,476,90"/>
+<area shape="rect" id="node2" href="$example_8h.html#a5a500fd022cf174521082c962ee90982" title=" " alt="" coords="117,5,267,32"/>
+<area shape="rect" id="node4" href="$example_8h.html#aa18040c70bf8660833448e81552ef59b" title=" " alt="" coords="125,56,259,83"/>
+<area shape="rect" id="node5" href="$example_8h.html#a2926b3d8b34a8bd8e6df0895bbf5bc4b" title=" " alt="" coords="108,107,276,133"/>
+<area shape="rect" id="node3" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,56,60,83"/>
+</map>

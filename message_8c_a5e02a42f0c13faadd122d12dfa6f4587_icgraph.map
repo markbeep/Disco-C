@@ -1,0 +1,15 @@
+<map id="create_embed_json" name="create_embed_json">
+<area shape="rect" id="node1" title=" " alt="" coords="955,64,1104,91"/>
+<area shape="rect" id="node2" href="$message_8h.html#a6204fbe77e397487fcc32a6637df4d90" title=" " alt="" coords="753,10,899,51"/>
+<area shape="rect" id="node5" href="$message_8h.html#a75bcd95cf036bba85d07daa7528600bb" title="Fills in a JSON with the attributes of the message structure." alt="" coords="745,89,907,130"/>
+<area shape="rect" id="node3" href="$example_8h.html#a2926b3d8b34a8bd8e6df0895bbf5bc4b" title=" " alt="" coords="108,5,276,32"/>
+<area shape="rect" id="node4" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,81,60,108"/>
+<area shape="rect" id="node6" href="$message_8h.html#aee5633360f52065f9d778cf0cb9eb70c" title="Sends a message and if enabled also returns the sent message struct." alt="" coords="324,57,476,98"/>
+<area shape="rect" id="node9" href="$interaction_8h.html#aa4247bdcb64da7ad994db2b67480ab56" title=" " alt="" coords="525,121,696,148"/>
+<area shape="rect" id="node12" href="$test__discord_8c.html#ab6e24e0276651581fbc2889a37282925" title=" " alt="" coords="524,172,697,199"/>
+<area shape="rect" id="node7" href="$example_8h.html#a5a500fd022cf174521082c962ee90982" title=" " alt="" coords="117,56,267,83"/>
+<area shape="rect" id="node8" href="$example_8h.html#aa18040c70bf8660833448e81552ef59b" title=" " alt="" coords="125,107,259,133"/>
+<area shape="rect" id="node10" href="$example__slash_8h.html#a2facf7fc1842a051f969fd475ebb39da" title=" " alt="" coords="343,123,457,149"/>
+<area shape="rect" id="node11" href="$example_8h.html#a96f6ac346fee647985ca8a0abe8c94a6" title=" " alt="" coords="114,158,270,199"/>
+<area shape="rect" id="node13" href="$test__discord_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="373,173,427,200"/>
+</map>

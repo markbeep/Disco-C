@@ -1,0 +1,10 @@
+<map id="discord_component" name="discord_component">
+<area shape="rect" id="node1" title=" " alt="" coords="138,375,287,401"/>
+<area shape="rect" id="node2" href="$structdiscord__action__row.html" title=" " alt="" coords="139,464,286,491"/>
+<area shape="rect" id="node3" href="$structdiscord__select__menu.html" title=" " alt="" coords="5,285,164,312"/>
+<area shape="rect" id="node4" href="$structdiscord__select__option.html" title=" " alt="" coords="7,184,170,211"/>
+<area shape="rect" id="node5" href="$structdiscord__emoji.html" title=" " alt="" coords="92,95,205,121"/>
+<area shape="rect" id="node8" href="$structdiscord__button.html" title=" " alt="" coords="151,235,269,261"/>
+<area shape="rect" id="node6" href="$structdiscord__user.html" title=" " alt="" coords="97,5,201,32"/>
+<area shape="rect" id="node7" href="$structdiscord__text__input.html" title=" " alt="" coords="284,285,427,312"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="register.c" name="register.c">
+<area shape="rect" id="node1" title="Example on how to register application commands on Discord. For demonstration purposes the slash comm..." alt="" coords="283,5,366,32"/>
+<area shape="rect" id="node2" href="$example__slash_8h.html" title=" " alt="" coords="5,80,220,121"/>
+<area shape="rect" id="node3" href="$command_8h.html" title=" " alt="" coords="244,80,405,121"/>
+<area shape="rect" id="node11" href="$disco__logging_8h.html" title=" " alt="" coords="446,87,625,114"/>
+<area shape="rect" id="node4" href="$channel_8h.html" title=" " alt="" coords="253,169,338,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="90,319,173,345"/>
+<area shape="rect" id="node9" title=" " alt="" coords="400,319,471,345"/>
+<area shape="rect" id="node5" href="$permission_8h.html" title=" " alt="" coords="227,244,334,271"/>
+<area shape="rect" id="node7" href="$thread_8h.html" title=" " alt="" coords="359,244,435,271"/>
+<area shape="rect" id="node10" href="$user_8h.html" title=" " alt="" coords="142,244,203,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="223,319,339,345"/>
+<area shape="rect" id="node12" title=" " alt="" coords="561,169,627,196"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="disco_destroy_guild" name="disco_destroy_guild">
+<area shape="rect" id="node1" title="Destroys the given structure and frees the pointer." alt="" coords="688,5,839,32"/>
+<area shape="rect" id="node2" href="$cache_8c.html#a1dbbf43aa4a7a4e8073bc72c8d08986a" title=" " alt="" coords="455,5,640,32"/>
+<area shape="rect" id="node3" href="$cache_8h.html#a98b5c2129a67d394da3830526d1ae247" title="Initializes all the caches." alt="" coords="277,5,407,32"/>
+<area shape="rect" id="node4" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,5,229,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,32"/>
+</map>

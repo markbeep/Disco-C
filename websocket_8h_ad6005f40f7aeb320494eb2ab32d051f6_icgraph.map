@@ -1,0 +1,8 @@
+<map id="websocket_connect" name="websocket_connect">
+<area shape="rect" id="node1" title="Sends the initial handshake to connect to the Discord websocket The client is only marked as &quot;connect..." alt="" coords="337,56,487,83"/>
+<area shape="rect" id="node2" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="138,5,259,32"/>
+<area shape="rect" id="node4" href="$test__web_8c.html#a072ecbe023e38ff7398e7d705dde56b0" title=" " alt="" coords="108,56,289,83"/>
+<area shape="rect" id="node6" href="$websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931" title=" " alt="" coords="123,107,275,133"/>
+<area shape="rect" id="node3" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node5" href="$test__web_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,56,60,83"/>
+</map>

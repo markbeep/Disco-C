@@ -1,0 +1,9 @@
+<map id="websocket_close" name="websocket_close">
+<area shape="rect" id="node1" title="Closes the websocket connection and sends a normal close reason to the websocket server reason." alt="" coords="704,23,836,50"/>
+<area shape="rect" id="node2" href="$example_8h.html#a2926b3d8b34a8bd8e6df0895bbf5bc4b" title=" " alt="" coords="277,23,445,50"/>
+<area shape="rect" id="node4" href="$websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931" title=" " alt="" coords="499,23,651,50"/>
+<area shape="rect" id="node5" href="$websocket_8h.html#af32439469ba35f20294d4a9a516b6e2d" title="Reconnects to the websocket." alt="" coords="493,74,656,100"/>
+<area shape="rect" id="node3" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,48,60,75"/>
+<area shape="rect" id="node6" href="$gateway_8h.html#a8dd303796c502667dc80381a12150f96" title="Callback function for when a websocket package is received." alt="" coords="283,74,439,100"/>
+<area shape="rect" id="node7" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,74,229,100"/>
+</map>

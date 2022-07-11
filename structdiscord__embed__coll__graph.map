@@ -1,0 +1,8 @@
+<map id="discord_embed" name="discord_embed">
+<area shape="rect" id="node1" title=" " alt="" coords="303,128,424,155"/>
+<area shape="rect" id="node2" href="$structdiscord__embed__provider.html" title=" " alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node3" href="$structdiscord__embed__media.html" title=" " alt="" coords="12,77,181,104"/>
+<area shape="rect" id="node4" href="$structdiscord__embed__field.html" title=" " alt="" coords="19,128,175,155"/>
+<area shape="rect" id="node5" href="$structdiscord__embed__author.html" title=" " alt="" coords="11,179,182,205"/>
+<area shape="rect" id="node6" href="$structdiscord__embed__footer.html" title=" " alt="" coords="13,229,180,256"/>
+</map>

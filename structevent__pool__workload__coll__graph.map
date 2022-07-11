@@ -1,0 +1,10 @@
+<map id="event_pool_workload" name="event_pool_workload">
+<area shape="rect" id="node1" title=" " alt="" coords="5,288,167,315"/>
+<area shape="rect" id="node2" href="$structbot__client.html" title=" " alt="" coords="227,199,313,225"/>
+<area shape="rect" id="node6" href="$structwebsocket__callbacks.html" title=" " alt="" coords="191,288,349,315"/>
+<area shape="rect" id="node3" href="$structdiscord__user.html" title=" " alt="" coords="58,109,162,136"/>
+<area shape="rect" id="node4" href="$structdisco__event__callbacks.html" title=" " alt="" coords="186,109,354,136"/>
+<area shape="rect" id="node5" href="$structwebsocket__client.html" title=" " alt="" coords="267,377,401,404"/>
+<area shape="rect" id="node7" href="$structt__pool.html" title=" " alt="" coords="379,109,441,136"/>
+<area shape="rect" id="node8" href="$structt__work.html" title=" " alt="" coords="377,5,443,32"/>
+</map>

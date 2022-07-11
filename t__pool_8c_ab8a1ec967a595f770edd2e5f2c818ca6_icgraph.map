@@ -1,0 +1,7 @@
+<map id="t_pool_pop_work" name="t_pool_pop_work">
+<area shape="rect" id="node1" title="Pops the head of the pool and returns the pointer to the head. IMPORTANT: The received work needs to ..." alt="" coords="603,5,735,32"/>
+<area shape="rect" id="node2" href="$t__pool_8c.html#a476441050a0e3af21723d451258c5436" title=" " alt="" coords="416,5,555,32"/>
+<area shape="rect" id="node3" href="$t__pool_8h.html#af6906d6d879e426ca11341073e00e692" title=" " alt="" coords="277,5,368,32"/>
+<area shape="rect" id="node4" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,5,229,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,32"/>
+</map>

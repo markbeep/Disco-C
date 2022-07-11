@@ -1,0 +1,5 @@
+<map id="example/example.h" name="example/example.h">
+<area shape="rect" id="node1" title=" " alt="" coords="71,5,223,32"/>
+<area shape="rect" id="node2" href="$example_8c.html" title=" " alt="" coords="5,80,156,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Example of what the main file of a bot using this library could look like." alt="" coords="181,80,247,107"/>
+</map>
