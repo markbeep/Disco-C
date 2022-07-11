@@ -30,6 +30,11 @@ jobs:
       
       - name: Sphinx
         run: sphinx-build -b html rst-dir html-dir -c docs
+      
+      - name: Pro Move
+        run: |
+          ls
+          ls html-dir
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
