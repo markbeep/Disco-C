@@ -46,7 +46,7 @@ extensions = [
 ]
 
 sys.path.insert(1, os.path.abspath(
-    'doxyrest/share/doxyrest/sphinx'))
+    '../doxyrest/share/doxyrest/sphinx'))
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
