@@ -10,7 +10,7 @@
  *
  */
 
-#include "example/example_slash_commands/example_slash.h"
+#include "examples/example_slash_commands/example_slash.h"
 #include "src/discord/structures/command.h"
 #include "src/utils/disco_logging.h"
 

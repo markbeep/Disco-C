@@ -42,16 +42,15 @@ $(TEST_EXECUTABLES): $(TEST)/% : $(TEST)/%.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(D
 	$(BUILD)/cJSON.o lib/Unity/src/unity.c $(LIBS) -o $@
 
 # COMPILES THE EXAMPLE FILES
-EXAMPLE_SOURCES := $(wildcard example/*.c)
-EXAMPLE_OBJECTS=$(patsubst example/%.c, $(BUILD)/%.o, $(EXAMPLE_SOURCES))
-$(EXAMPLE_OBJECTS): $(BUILD)/%.o : example/%.c
+EXAMPLE_SOURCES := $(wildcard examples/*.c)
+EXAMPLE_OBJECTS=$(patsubst examples/%.c, $(BUILD)/%.o, $(EXAMPLE_SOURCES))
+$(EXAMPLE_OBJECTS): $(BUILD)/%.o : examples/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 # COMPILES THE EXAMPLE COMMAND FILES
-# COMPILES THE EXAMPLE FILES
-COMMAND_SOURCES := $(wildcard example/example_slash_commands/*.c)
-COMMAND_OBJECTS=$(patsubst example/example_slash_commands/%.c, $(BUILD)/%.o, $(COMMAND_SOURCES))
-$(COMMAND_OBJECTS): $(BUILD)/%.o : example/example_slash_commands/%.c
+COMMAND_SOURCES := $(wildcard examples/example_slash_commands/*.c)
+COMMAND_OBJECTS=$(patsubst examples/example_slash_commands/%.c, $(BUILD)/%.o, $(COMMAND_SOURCES))
+$(COMMAND_OBJECTS): $(BUILD)/%.o : examples/example_slash_commands/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(COMMAND_OBJECTS) cJSON
@@ -63,7 +62,7 @@ build:
 clean: clean_test
 	rm -rf $(BUILD)
 	rm -f main
-	rm -f example/register
+	rm -f examples/register
 
 config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@

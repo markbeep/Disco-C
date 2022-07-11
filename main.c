@@ -9,7 +9,7 @@
  *
  */
 
-#include "example/example.h"
+#include "examples/example.h"
 #include "src/discord/disco.h"
 #include "src/discord/structures/message.h"
 #include "src/utils/disco_logging.h"
