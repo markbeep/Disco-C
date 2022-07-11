@@ -24,7 +24,7 @@ jobs:
         run: doxygen Doxygen/Doxyfile
       
       - name: Doxyrest
-        run: doxyrest-2.1.3-linux-x86/bin/doxyrest -c Doxygen/doxyrest-config.lua
+        run: ./doxyrest-2.1.3-linux-x86/bin/doxyrest -c Doxygen/doxyrest-config.lua
       
       - name: Sphinx
         run: sphinx-build -b html rst-dir html-dir
