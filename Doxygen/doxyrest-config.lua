@@ -31,8 +31,8 @@
 --!
 
 FRAME_DIR_LIST = {
-	"doxyrest-2.1.3-linux-x86/share/doxyrest/cfamily",
-	"doxyrest-2.1.3-linux-x86/share/doxyrest/common"
+	"doxyrest-2.1.3-linux-amd64/share/doxyrest/cfamily",
+	"doxyrest-2.1.3-linux-amd64/share/doxyrest/common"
 }
 
 --!
@@ -43,7 +43,7 @@ FRAME_DIR_LIST = {
 --! used as the default frame file.
 --!
 
-FRAME_FILE = "index.rst.in"
+FRAME_FILE = "index_main.rst.in"
 
 --!
 --! The input master (index) XML file. Specifying it here allows calling
