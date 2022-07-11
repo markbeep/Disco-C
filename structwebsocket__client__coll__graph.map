@@ -1,9 +1,0 @@
-<map id="websocket_client" name="websocket_client">
-<area shape="rect" id="node1" title=" " alt="" coords="17,109,152,136"/>
-<area shape="rect" id="node3" href="$structbot__client.html" title=" " alt="" coords="212,199,299,225"/>
-<area shape="rect" id="node2" href="$structwebsocket__callbacks.html" title=" " alt="" coords="5,288,164,315"/>
-<area shape="rect" id="node4" href="$structdiscord__user.html" title=" " alt="" coords="190,109,294,136"/>
-<area shape="rect" id="node5" href="$structdisco__event__callbacks.html" title=" " alt="" coords="318,109,486,136"/>
-<area shape="rect" id="node6" href="$structt__pool.html" title=" " alt="" coords="511,109,573,136"/>
-<area shape="rect" id="node7" href="$structt__work.html" title=" " alt="" coords="509,5,575,32"/>
-</map>

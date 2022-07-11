@@ -1,7 +1,0 @@
-<map id="event_handle" name="event_handle">
-<area shape="rect" id="node1" title="All event websocket responses call this function." alt="" coords="720,5,831,32"/>
-<area shape="rect" id="node2" href="$gateway_8c.html#a0ae5ed06471447e38fa5edf7780989c3" title=" " alt="" coords="481,5,672,32"/>
-<area shape="rect" id="node3" href="$gateway_8h.html#a8dd303796c502667dc80381a12150f96" title="Callback function for when a websocket package is received." alt="" coords="277,5,433,32"/>
-<area shape="rect" id="node4" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,5,229,32"/>
-<area shape="rect" id="node5" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,32"/>
-</map>

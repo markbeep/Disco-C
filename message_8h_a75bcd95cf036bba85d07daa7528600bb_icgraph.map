@@ -1,7 +1,0 @@
-<map id="discord_fill_json_with_message" name="discord_fill_json_with_message">
-<area shape="rect" id="node1" title="Fills in a JSON with the attributes of the message structure." alt="" coords="329,64,491,105"/>
-<area shape="rect" id="node2" href="$message_8h.html#aee5633360f52065f9d778cf0cb9eb70c" title="Sends a message and if enabled also returns the sent message struct." alt="" coords="119,5,271,47"/>
-<area shape="rect" id="node3" href="$interaction_8h.html#aa4247bdcb64da7ad994db2b67480ab56" title=" " alt="" coords="109,71,280,98"/>
-<area shape="rect" id="node4" href="$test__discord_8c.html#ab6e24e0276651581fbc2889a37282925" title=" " alt="" coords="108,122,281,149"/>
-<area shape="rect" id="node5" href="$test__discord_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,122,60,149"/>
-</map>

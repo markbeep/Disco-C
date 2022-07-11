@@ -1,8 +1,0 @@
-<map id="gateway_send_heartbeat" name="gateway_send_heartbeat">
-<area shape="rect" id="node1" title=" " alt="" coords="945,31,1132,57"/>
-<area shape="rect" id="node2" href="$gateway_8h.html#ae196cc6926770e97cbb48322d028bef6" title="Initiates the heartbeat loop. Intended to be run on a seperate thread." alt="" coords="715,5,897,32"/>
-<area shape="rect" id="node4" href="$gateway_8h.html#a8dd303796c502667dc80381a12150f96" title="Callback function for when a websocket package is received." alt="" coords="277,31,433,57"/>
-<area shape="rect" id="node3" href="$gateway_8c.html#a75199724e0c3c35cb585a4306c3a8744" title=" " alt="" coords="481,5,667,32"/>
-<area shape="rect" id="node5" href="$disco_8h.html#a18aaf89bf302e2e7a16188c6b7f45a76" title="High level abstraction which starts the bot." alt="" coords="108,31,229,57"/>
-<area shape="rect" id="node6" href="$main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,60,57"/>
-</map>
