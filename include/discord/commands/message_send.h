@@ -4,7 +4,9 @@
 #include <discord/disco.h>
 #include <discord/message.h>
 
-/** \addtogroup Message @{ */
+/** \addtogroup Message
+ *  @{
+ */
 
 /**
  * @brief Sends a message and if enabled also returns the sent message struct.
