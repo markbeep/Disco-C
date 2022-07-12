@@ -235,20 +235,12 @@ Overview
 		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* locales
 	);
 
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_channel_send_message<doxid-message__send_8h_1a556b7ad86b470b33662c6363f0962473>`(
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_channel_send_message<doxid-group___message_1ga556b7ad86b470b33662c6363f0962473>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
 		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
 		bool return_struct
-	);
-
-	void :target:`discord_channel_edit_message<doxid-message__send_8h_1a8413655b1c5cb3b8f113bc4175d43736>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		uint64_t message_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
 	);
 
 	void* :ref:`discord_create_select_option_struct<doxid-group___component_1ga420b43ab6dbef093f78e8c10fafd66a2>`(cJSON* data);
@@ -473,15 +465,7 @@ Overview
 	static cJSON* :target:`create_allowed_mentions<doxid-message_8c_1a17a0d8e1812a438804ba2be0c0929446>`(struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`* allowed_mentions);
 	static cJSON* :target:`create_message_reference<doxid-message_8c_1a1d4cc82e9ca1e888946c4394d98a6010>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* ref);
 
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_channel_send_message<doxid-message_8c_1a556b7ad86b470b33662c6363f0962473>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	);
-
-	void :target:`discord_channel_edit_message<doxid-message_8c_1a8413655b1c5cb3b8f113bc4175d43736>`(
+	void :target:`discord_channel_edit_message<doxid-group___message_1ga8413655b1c5cb3b8f113bc4175d43736>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
@@ -672,60 +656,6 @@ This allows the user to choose what do with the structure however they want. The
 
 Global Functions
 ----------------
-
-.. index:: pair: function; discord_channel_send_message
-.. _doxid-message__send_8h_1a556b7ad86b470b33662c6363f0962473:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_channel_send_message(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	)
-
-Sends a message and if enabled also returns the sent message struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-	*
-		- content
-
-		- Message content to send (if empty, embed or components need to exist)
-
-	*
-		- channel_id
-
-		- ID of the channel the message should be sent in
-
-	*
-		- message
-
-		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
-
-	*
-		- return_struct
-
-		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`discord_destroy_message() <doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>` after)
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* NULL or the struct of the sent message
 
 .. index:: pair: function; discord_start_bot
 .. _doxid-disco_8h_1a4f20272fb9c9721c9bea30eb4fbd091e:
@@ -1721,60 +1651,6 @@ All event websocket responses call this function.
 		- event
 
 		- The event that was called as a string
-
-.. index:: pair: function; discord_channel_send_message
-.. _doxid-message_8c_1a556b7ad86b470b33662c6363f0962473:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_channel_send_message(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	)
-
-Sends a message and if enabled also returns the sent message struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-	*
-		- content
-
-		- Message content to send (if empty, embed or components need to exist)
-
-	*
-		- channel_id
-
-		- ID of the channel the message should be sent in
-
-	*
-		- message
-
-		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
-
-	*
-		- return_struct
-
-		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`discord_destroy_message() <doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>` after)
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* NULL or the struct of the sent message
 
 .. index:: pair: function; discord_cache_init
 .. _doxid-cache_8c_1a4d8331ae5a2c94953a5e668299668011:

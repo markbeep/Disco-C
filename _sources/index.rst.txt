@@ -4,7 +4,6 @@ My Project Documentation
 .. toctree::
 	:hidden:
 
-	group_Message.rst
 	group_Application.rst
 	group_Attachment.rst
 	group_Channel.rst
@@ -15,6 +14,7 @@ My Project Documentation
 	group_Guild.rst
 	group_Interaction.rst
 	group_Member.rst
+	group_Message.rst
 	group_Message_Activity.rst
 	group_Permission.rst
 	group_Reaction.rst
@@ -25,7 +25,6 @@ My Project Documentation
 
 .. rubric:: Further Reading:
 
-|	:ref:`@{<doxid-group___message>`
 |	:ref:`Application<doxid-group___application>`
 |	:ref:`Attachment<doxid-group___attachment>`
 |	:ref:`Channel<doxid-group___channel>`
@@ -36,6 +35,7 @@ My Project Documentation
 |	:ref:`Guild<doxid-group___guild>`
 |	:ref:`Interaction<doxid-group___interaction>`
 |	:ref:`Member<doxid-group___member>`
+|	:ref:`Message<doxid-group___message>`
 |	:ref:`Message_Activity<doxid-group___message___activity>`
 |	:ref:`Permission<doxid-group___permission>`
 |	:ref:`Reaction<doxid-group___reaction>`

@@ -110,15 +110,6 @@
         
           <li class="toctree-l1 ">
             
-              <a href="group_Message.html" class="reference internal ">@{</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
               <a href="group_Application.html" class="reference internal ">Application</a>
             
 
@@ -201,6 +192,15 @@
           <li class="toctree-l1 ">
             
               <a href="group_Member.html" class="reference internal ">Member</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Message.html" class="reference internal ">Message</a>
             
 
             
@@ -701,20 +701,12 @@
     <span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="o">*</span> <span class="n">locales</span>
 <span class="p">);</span>
 
-<span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <a class="reference internal" href="#doxid-message-send-8h-1a556b7ad86b470b33662c6363f0962473"><span class="std std-ref">discord_channel_send_message</span></a><span></span><span class="p">(</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <a class="reference internal" href="group_Message.html#doxid-group-message-1ga556b7ad86b470b33662c6363f0962473"><span class="std std-ref">discord_channel_send_message</span></a><span></span><span class="p">(</span>
     <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
     <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
     <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
     <span class="kt">bool</span> <span class="n">return_struct</span>
-<span class="p">);</span>
-
-<span class="kt">void</span> <span class="doxyrest-code-target target" id="doxid-message-send-8h-1a8413655b1c5cb3b8f113bc4175d43736"><span></span><span class="n">discord_channel_edit_message</span></span><span></span><span class="p">(</span>
-    <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
-    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
-    <span class="kt">uint64_t</span> <span class="n">message_id</span><span class="p">,</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span>
 <span class="p">);</span>
 
 <span class="kt">void</span><span class="o">*</span> <a class="reference internal" href="group_Component.html#doxid-group-component-1ga420b43ab6dbef093f78e8c10fafd66a2"><span class="std std-ref">discord_create_select_option_struct</span></a><span></span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">);</span>
@@ -939,15 +931,7 @@
 <span class="k">static</span> <span class="n">cJSON</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-message-8c-1a17a0d8e1812a438804ba2be0c0929446"><span></span><span class="n">create_allowed_mentions</span></span><span></span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_allowed_mentions.html#doxid-structdiscord-allowed-mentions"><span class="std std-ref">discord_allowed_mentions</span></a><span></span><span class="o">*</span> <span class="n">allowed_mentions</span><span class="p">);</span>
 <span class="k">static</span> <span class="n">cJSON</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-message-8c-1a1d4cc82e9ca1e888946c4394d98a6010"><span></span><span class="n">create_message_reference</span></span><span></span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message_reference.html#doxid-structdiscord-message-reference"><span class="std std-ref">discord_message_reference</span></a><span></span><span class="o">*</span> <span class="n">ref</span><span class="p">);</span>
 
-<span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <a class="reference internal" href="#doxid-message-8c-1a556b7ad86b470b33662c6363f0962473"><span class="std std-ref">discord_channel_send_message</span></a><span></span><span class="p">(</span>
-    <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
-    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">return_struct</span>
-<span class="p">);</span>
-
-<span class="kt">void</span> <span class="doxyrest-code-target target" id="doxid-message-8c-1a8413655b1c5cb3b8f113bc4175d43736"><span></span><span class="n">discord_channel_edit_message</span></span><span></span><span class="p">(</span>
+<span class="kt">void</span> <span class="doxyrest-code-target target" id="doxid-group-message-1ga8413655b1c5cb3b8f113bc4175d43736"><span></span><span class="n">discord_channel_edit_message</span></span><span></span><span class="p">(</span>
     <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
     <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
@@ -1122,41 +1106,7 @@
 </div>
 <div class="section" id="global-functions">
 <h3>Global Functions<a class="headerlink" href="#global-functions" title="Permalink to this heading">¶</a></h3>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-message-send-8h-1a556b7ad86b470b33662c6363f0962473"><span id="index-2"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_channel_send_message</span><span class="p">(</span>
-    <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
-    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">return_struct</span>
-<span class="p">)</span></pre>
-<p>Sends a message and if enabled also returns the sent message struct.</p>
-<p class="rubric">Parameters:</p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>bot</p></td>
-<td><p>Active bot instance</p></td>
-</tr>
-<tr class="row-even"><td><p>content</p></td>
-<td><p>Message content to send (if empty, embed or components need to exist)</p></td>
-</tr>
-<tr class="row-odd"><td><p>channel_id</p></td>
-<td><p>ID of the channel the message should be sent in</p></td>
-</tr>
-<tr class="row-even"><td><p>message</p></td>
-<td><p>A <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a> struct. Can be NULL</p></td>
-</tr>
-<tr class="row-odd"><td><p>return_struct</p></td>
-<td><p>Bool if the sent message should be returned or not (if yes, it has to be destroyed with <a class="reference internal" href="group_Message.html#doxid-group-message-1ga872f106303b2b802946a43f9c44a4aa6"><span class="std std-ref">discord_destroy_message()</span></a> after)</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Returns:</p>
-<p>struct discord_message* NULL or the struct of the sent message</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a4f20272fb9c9721c9bea30eb4fbd091e"><span id="index-3"></span><span></span><span class="kt">void</span> <span class="n">discord_start_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1af84e259f898478bd152e30311a2e177d"><span class="std std-ref">discord_event_callbacks_t</span></a><span></span><span class="o">*</span> <span class="n">callbacks</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a4f20272fb9c9721c9bea30eb4fbd091e"><span id="index-2"></span><span></span><span class="kt">void</span> <span class="n">discord_start_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1af84e259f898478bd152e30311a2e177d"><span class="std std-ref">discord_event_callbacks_t</span></a><span></span><span class="o">*</span> <span class="n">callbacks</span><span class="p">)</span></pre>
 <p>High level abstraction which starts the bot.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1170,7 +1120,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a80e1160f6820069af67ff4ed4b5871d9"><span id="index-4"></span><span></span><span class="kt">void</span> <span class="n">discord_free_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a80e1160f6820069af67ff4ed4b5871d9"><span id="index-3"></span><span></span><span class="kt">void</span> <span class="n">discord_free_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
 <p>Frees up memory for a bot instance.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1184,7 +1134,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a8793f41af7b3cc35217311c6bb439c7c"><span id="index-5"></span><span></span><span class="kt">bool</span> <span class="n">get_bool_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a8793f41af7b3cc35217311c6bb439c7c"><span id="index-4"></span><span></span><span class="kt">bool</span> <span class="n">get_bool_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
 <p>Get a bool from json object.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1206,7 +1156,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a32b66596edf0d38a4be3bb491a5f60f3"><span id="index-6"></span><span></span><span class="kt">int</span> <span class="n">get_int_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8h-1a32b66596edf0d38a4be3bb491a5f60f3"><span id="index-5"></span><span></span><span class="kt">int</span> <span class="n">get_int_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
 <p>Get an int from json object.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1228,7 +1178,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>bool</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-event-8h-1a0a0e68819bd46857f175b4ef0345767e"><span id="index-7"></span><span></span><span class="kt">void</span> <span class="n">event_handle</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">event</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-event-8h-1a0a0e68819bd46857f175b4ef0345767e"><span id="index-6"></span><span></span><span class="kt">void</span> <span class="n">event_handle</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">event</span><span class="p">)</span></pre>
 <p>All event websocket responses call this function.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1248,7 +1198,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a4d8331ae5a2c94953a5e668299668011"><span id="index-8"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_init</span><span class="p">(</span>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a4d8331ae5a2c94953a5e668299668011"><span id="index-7"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_init</span><span class="p">(</span>
     <span class="kt">int</span> <span class="n">message_cache_size</span><span class="p">,</span>
     <span class="kt">int</span> <span class="n">channel_cache_size</span><span class="p">,</span>
     <span class="kt">int</span> <span class="n">guild_cache_size</span><span class="p">,</span>
@@ -1280,9 +1230,9 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int 0 if succeeded, 1 otherwise</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a81a1c1e1b3972c8e9dcbc90cca2ec195"><span id="index-9"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_destroy</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a81a1c1e1b3972c8e9dcbc90cca2ec195"><span id="index-8"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_destroy</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
 <p>Cleans up the cache and frees all the structs it contains.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a0d885224d57ff6aa08ece206a1e44586"><span id="index-10"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_message</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a0d885224d57ff6aa08ece206a1e44586"><span id="index-9"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_message</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
 <p>Adds a message to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1299,7 +1249,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a296a64475d6debc510dace71c0291c76"><span id="index-11"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a296a64475d6debc510dace71c0291c76"><span id="index-10"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a message by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1315,7 +1265,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_message* Pointer to the message struct. NULL if the message is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad99724bf217d9eab3de06d27142e4699"><span id="index-12"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad99724bf217d9eab3de06d27142e4699"><span id="index-11"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a message from the cache and deallocates the message from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1329,7 +1279,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a215176bc3913ce064686502970de2a30"><span id="index-13"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_channel</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">channel</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a215176bc3913ce064686502970de2a30"><span id="index-12"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_channel</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">channel</span><span class="p">)</span></pre>
 <p>Adds a channel to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1346,7 +1296,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1acb6845fdf41a71ceb0310278b4fd81f8"><span id="index-14"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1acb6845fdf41a71ceb0310278b4fd81f8"><span id="index-13"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a channel by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1362,7 +1312,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_channel* Pointer to the channel struct. NULL if the channel is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a11df7744ff41f0fec695a2ef3893f879"><span id="index-15"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a11df7744ff41f0fec695a2ef3893f879"><span id="index-14"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a channel from the cache and deallocates the channel from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1376,7 +1326,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad143b7c2d82fce0dc2cd2cabce1f1d3e"><span id="index-16"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_guild</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">guild</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad143b7c2d82fce0dc2cd2cabce1f1d3e"><span id="index-15"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_guild</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">guild</span><span class="p">)</span></pre>
 <p>Adds a guild to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1393,7 +1343,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a0de846d3068f6e1c2bb78104209e7cc5"><span id="index-17"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1a0de846d3068f6e1c2bb78104209e7cc5"><span id="index-16"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a guild by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1409,7 +1359,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_guild* Pointer to the guild struct. NULL if the guild is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad0559549aa01d2930e7a798654b57e0b"><span id="index-18"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8h-1ad0559549aa01d2930e7a798654b57e0b"><span id="index-17"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a guild from the cache and deallocates the guild from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1423,7 +1373,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8h-1aa3e070b85293e5d6fdd860aba065eac2"><span id="index-19"></span><span></span><span class="kt">int</span> <span class="n">t_pool_add_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">,</span> <a class="reference internal" href="#doxid-t-pool-8h-1ae4decbb2fbff2be5c486e86cbb811398"><span class="std std-ref">t_func</span></a><span></span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">work</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8h-1aa3e070b85293e5d6fdd860aba065eac2"><span id="index-18"></span><span></span><span class="kt">int</span> <span class="n">t_pool_add_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">,</span> <a class="reference internal" href="#doxid-t-pool-8h-1ae4decbb2fbff2be5c486e86cbb811398"><span class="std std-ref">t_func</span></a><span></span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">work</span><span class="p">)</span></pre>
 <p>Adds work to the thread pool.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1445,7 +1395,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8h-1ab8a1ec967a595f770edd2e5f2c818ca6"><span id="index-20"></span><a class="reference internal" href="#doxid-t-pool-8h-1a0477412c87965e74998842734661503f"><span class="std std-ref">t_work_t</span></a><span></span><span class="o">*</span> <span class="n">t_pool_pop_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8h-1ab8a1ec967a595f770edd2e5f2c818ca6"><span id="index-19"></span><a class="reference internal" href="#doxid-t-pool-8h-1a0477412c87965e74998842734661503f"><span class="std std-ref">t_work_t</span></a><span></span><span class="o">*</span> <span class="n">t_pool_pop_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">)</span></pre>
 <p>Pops the head of the pool and returns the pointer to the head.</p>
 <p>IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)</p>
 <p class="rubric">Parameters:</p>
@@ -1462,7 +1412,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>t_work_t*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1a8dd303796c502667dc80381a12150f96"><span id="index-21"></span><span></span><span class="kt">void</span> <span class="n">gateway_on_receive</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1a8dd303796c502667dc80381a12150f96"><span id="index-20"></span><span></span><span class="kt">void</span> <span class="n">gateway_on_receive</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
 <p>Callback function for when a websocket package is received.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1482,7 +1432,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1ae196cc6926770e97cbb48322d028bef6"><span id="index-22"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">gateway_heartbeat_loop</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">vargp</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1ae196cc6926770e97cbb48322d028bef6"><span id="index-21"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">gateway_heartbeat_loop</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">vargp</span><span class="p">)</span></pre>
 <p>Initiates the heartbeat loop.</p>
 <p>Intended to be run on a seperate thread.</p>
 <p class="rubric">Parameters:</p>
@@ -1499,7 +1449,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>void*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1af1d985c40864d2d78d43b3adf4bc62dd"><span id="index-23"></span><span></span><span class="kt">void</span> <span class="n">gateway_event_loop</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8h-1af1d985c40864d2d78d43b3adf4bc62dd"><span id="index-22"></span><span></span><span class="kt">void</span> <span class="n">gateway_event_loop</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
 <p>Initiates the event loop.</p>
 <p>This is the main loop that needs to be run for the bot to work.</p>
 <p class="rubric">Parameters:</p>
@@ -1514,7 +1464,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1ac087d90f7a10cb67b7d7b381cbbea52c"><span id="index-24"></span><span></span><span class="n">CURLcode</span> <span class="n">request</span><span class="p">(</span>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1ac087d90f7a10cb67b7d7b381cbbea52c"><span id="index-23"></span><span></span><span class="n">CURLcode</span> <span class="n">request</span><span class="p">(</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">url</span><span class="p">,</span>
     <span class="kt">char</span><span class="o">**</span> <span class="n">response</span><span class="p">,</span>
     <span class="n">cJSON</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
@@ -1544,7 +1494,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>CURLcode</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1a9ce91e36169b27f6c89939cf6cdc0236"><span id="index-25"></span><span></span><span class="k">struct</span> <span class="n">curl_slist</span><span class="o">*</span> <span class="n">curl_setup_discord_header</span><span class="p">(</span><span class="n">CURL</span><span class="o">*</span> <span class="n">handle</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1a9ce91e36169b27f6c89939cf6cdc0236"><span id="index-24"></span><span></span><span class="k">struct</span> <span class="n">curl_slist</span><span class="o">*</span> <span class="n">curl_setup_discord_header</span><span class="p">(</span><span class="n">CURL</span><span class="o">*</span> <span class="n">handle</span><span class="p">)</span></pre>
 <p>Adds the correct Discord headers to a CURL handle.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1560,11 +1510,11 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct curl_slist*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1a8b26b274786bb9e5eb1d9b28113f9c9d"><span id="index-26"></span><span></span><span class="kt">int</span> <span class="n">request_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8h-1a8b26b274786bb9e5eb1d9b28113f9c9d"><span id="index-25"></span><span></span><span class="kt">int</span> <span class="n">request_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
 <p>Tests if request POST and GET work.</p>
 <p class="rubric">Returns:</p>
 <p>int 1 if it works, 0 else</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a4441bdd6264675d37ad41f203f73d20f"><span id="index-27"></span><span></span><span class="kt">int</span> <span class="n">websocket_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">lws</span><span class="o">*</span> <span class="n">wsi</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a4441bdd6264675d37ad41f203f73d20f"><span id="index-26"></span><span></span><span class="kt">int</span> <span class="n">websocket_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">lws</span><span class="o">*</span> <span class="n">wsi</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
 <p>Sends data through the websocket connection.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1586,7 +1536,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a25e61029244807bce89cf9b7df8283e9"><span id="index-28"></span><span></span><span class="kt">int</span> <span class="n">websocket_create</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">,</span> <a class="reference internal" href="#doxid-websocket-8h-1a75e027723976e4a1325be64cb272d01e"><span class="std std-ref">callback_receive_fn</span></a><span></span> <span class="n">on_receive</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a25e61029244807bce89cf9b7df8283e9"><span id="index-27"></span><span></span><span class="kt">int</span> <span class="n">websocket_create</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">,</span> <a class="reference internal" href="#doxid-websocket-8h-1a75e027723976e4a1325be64cb272d01e"><span class="std std-ref">callback_receive_fn</span></a><span></span> <span class="n">on_receive</span><span class="p">)</span></pre>
 <p>Sets up the websocket client.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1605,7 +1555,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1ad6005f40f7aeb320494eb2ab32d051f6"><span id="index-29"></span><span></span><span class="kt">int</span> <span class="n">websocket_connect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1ad6005f40f7aeb320494eb2ab32d051f6"><span id="index-28"></span><span></span><span class="kt">int</span> <span class="n">websocket_connect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Sends the initial handshake to connect to the Discord websocket The client is only marked as “connected” once an answer from Discord is received.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1621,7 +1571,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a3af18f27c14cdea777c48fb383100f57"><span id="index-30"></span><span></span><span class="kt">void</span> <span class="n">websocket_close</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a3af18f27c14cdea777c48fb383100f57"><span id="index-29"></span><span></span><span class="kt">void</span> <span class="n">websocket_close</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Closes the websocket connection and sends a normal close reason to the websocket server reason.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1635,7 +1585,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1af32439469ba35f20294d4a9a516b6e2d"><span id="index-31"></span><span></span><span class="kt">void</span> <span class="n">websocket_reconnect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1af32439469ba35f20294d4a9a516b6e2d"><span id="index-30"></span><span></span><span class="kt">void</span> <span class="n">websocket_reconnect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Reconnects to the websocket.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1649,7 +1599,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a371f513f4875190cbfd6681d08ff09ca"><span id="index-32"></span><span></span><span class="kt">void</span> <span class="n">websocket_destroy_client</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8h-1a371f513f4875190cbfd6681d08ff09ca"><span id="index-31"></span><span></span><span class="kt">void</span> <span class="n">websocket_destroy_client</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">)</span></pre>
 <p>Frees up all memory allocated with the <a class="reference internal" href="struct_bot_client.html#doxid-structbot-client"><span class="std std-ref">bot_client</span></a> struct.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1663,7 +1613,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a4f20272fb9c9721c9bea30eb4fbd091e"><span id="index-33"></span><span></span><span class="kt">void</span> <span class="n">discord_start_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1af84e259f898478bd152e30311a2e177d"><span class="std std-ref">discord_event_callbacks_t</span></a><span></span><span class="o">*</span> <span class="n">callbacks</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a4f20272fb9c9721c9bea30eb4fbd091e"><span id="index-32"></span><span></span><span class="kt">void</span> <span class="n">discord_start_bot</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1af84e259f898478bd152e30311a2e177d"><span class="std std-ref">discord_event_callbacks_t</span></a><span></span><span class="o">*</span> <span class="n">callbacks</span><span class="p">)</span></pre>
 <p>High level abstraction which starts the bot.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1677,7 +1627,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a8793f41af7b3cc35217311c6bb439c7c"><span id="index-34"></span><span></span><span class="kt">bool</span> <span class="n">get_bool_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a8793f41af7b3cc35217311c6bb439c7c"><span id="index-33"></span><span></span><span class="kt">bool</span> <span class="n">get_bool_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
 <p>Get a bool from json object.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1699,7 +1649,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a32b66596edf0d38a4be3bb491a5f60f3"><span id="index-35"></span><span></span><span class="kt">int</span> <span class="n">get_int_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-disco-8c-1a32b66596edf0d38a4be3bb491a5f60f3"><span id="index-34"></span><span></span><span class="kt">int</span> <span class="n">get_int_from_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">default_</span><span class="p">)</span></pre>
 <p>Get an int from json object.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1721,7 +1671,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>bool</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-event-8c-1ac3984c74b045e0afadbf2f69ed76f597"><span id="index-36"></span><span></span><span class="kt">void</span> <span class="n">event_handle</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">event</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-event-8c-1ac3984c74b045e0afadbf2f69ed76f597"><span id="index-35"></span><span></span><span class="kt">void</span> <span class="n">event_handle</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">event</span><span class="p">)</span></pre>
 <p>All event websocket responses call this function.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1741,41 +1691,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-message-8c-1a556b7ad86b470b33662c6363f0962473"><span id="index-37"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_channel_send_message</span><span class="p">(</span>
-    <a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
-    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">return_struct</span>
-<span class="p">)</span></pre>
-<p>Sends a message and if enabled also returns the sent message struct.</p>
-<p class="rubric">Parameters:</p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>bot</p></td>
-<td><p>Active bot instance</p></td>
-</tr>
-<tr class="row-even"><td><p>content</p></td>
-<td><p>Message content to send (if empty, embed or components need to exist)</p></td>
-</tr>
-<tr class="row-odd"><td><p>channel_id</p></td>
-<td><p>ID of the channel the message should be sent in</p></td>
-</tr>
-<tr class="row-even"><td><p>message</p></td>
-<td><p>A <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a> struct. Can be NULL</p></td>
-</tr>
-<tr class="row-odd"><td><p>return_struct</p></td>
-<td><p>Bool if the sent message should be returned or not (if yes, it has to be destroyed with <a class="reference internal" href="group_Message.html#doxid-group-message-1ga872f106303b2b802946a43f9c44a4aa6"><span class="std std-ref">discord_destroy_message()</span></a> after)</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Returns:</p>
-<p>struct discord_message* NULL or the struct of the sent message</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a4d8331ae5a2c94953a5e668299668011"><span id="index-38"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_init</span><span class="p">(</span>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a4d8331ae5a2c94953a5e668299668011"><span id="index-36"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_init</span><span class="p">(</span>
     <span class="kt">int</span> <span class="n">message_cache_size</span><span class="p">,</span>
     <span class="kt">int</span> <span class="n">channel_cache_size</span><span class="p">,</span>
     <span class="kt">int</span> <span class="n">guild_cache_size</span><span class="p">,</span>
@@ -1807,9 +1723,9 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int 0 if succeeded, 1 otherwise</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a81a1c1e1b3972c8e9dcbc90cca2ec195"><span id="index-39"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_destroy</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a81a1c1e1b3972c8e9dcbc90cca2ec195"><span id="index-37"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_destroy</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
 <p>Cleans up the cache and frees all the structs it contains.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a0d885224d57ff6aa08ece206a1e44586"><span id="index-40"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_message</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a0d885224d57ff6aa08ece206a1e44586"><span id="index-38"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_message</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
 <p>Adds a message to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1826,7 +1742,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a296a64475d6debc510dace71c0291c76"><span id="index-41"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a296a64475d6debc510dace71c0291c76"><span id="index-39"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a message by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1842,7 +1758,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_message* Pointer to the message struct. NULL if the message is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad99724bf217d9eab3de06d27142e4699"><span id="index-42"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad99724bf217d9eab3de06d27142e4699"><span id="index-40"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_message</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a message from the cache and deallocates the message from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1856,7 +1772,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a215176bc3913ce064686502970de2a30"><span id="index-43"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_channel</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">channel</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a215176bc3913ce064686502970de2a30"><span id="index-41"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_channel</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">channel</span><span class="p">)</span></pre>
 <p>Adds a channel to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1873,7 +1789,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1acb6845fdf41a71ceb0310278b4fd81f8"><span id="index-44"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1acb6845fdf41a71ceb0310278b4fd81f8"><span id="index-42"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_channel.html#doxid-structdiscord-channel"><span class="std std-ref">discord_channel</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a channel by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1889,7 +1805,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_channel* Pointer to the channel struct. NULL if the channel is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a11df7744ff41f0fec695a2ef3893f879"><span id="index-45"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a11df7744ff41f0fec695a2ef3893f879"><span id="index-43"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_channel</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a channel from the cache and deallocates the channel from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1903,7 +1819,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad143b7c2d82fce0dc2cd2cabce1f1d3e"><span id="index-46"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_guild</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">guild</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad143b7c2d82fce0dc2cd2cabce1f1d3e"><span id="index-44"></span><span></span><span class="kt">int</span> <span class="n">discord_cache_set_guild</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">guild</span><span class="p">)</span></pre>
 <p>Adds a guild to the cache by ID.</p>
 <p>If it already exists in cache, it frees and overwrites the previous entry.</p>
 <p class="rubric">Parameters:</p>
@@ -1920,7 +1836,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a0de846d3068f6e1c2bb78104209e7cc5"><span id="index-47"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1a0de846d3068f6e1c2bb78104209e7cc5"><span id="index-45"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_guild.html#doxid-structdiscord-guild"><span class="std std-ref">discord_guild</span></a><span></span><span class="o">*</span> <span class="n">discord_cache_get_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Retreives a guild by ID in the cache.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1936,7 +1852,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct discord_guild* Pointer to the guild struct. NULL if the guild is not in the cache.</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad0559549aa01d2930e7a798654b57e0b"><span id="index-48"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-cache-8c-1ad0559549aa01d2930e7a798654b57e0b"><span id="index-46"></span><span></span><span class="kt">void</span> <span class="n">discord_cache_delete_guild</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">id</span><span class="p">)</span></pre>
 <p>Removes a guild from the cache and deallocates the guild from memory.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1950,7 +1866,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8c-1a0b1df3eff73aa56a3af8e406647dbed0"><span id="index-49"></span><span></span><span class="kt">int</span> <span class="n">t_pool_add_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">,</span> <a class="reference internal" href="#doxid-t-pool-8h-1ae4decbb2fbff2be5c486e86cbb811398"><span class="std std-ref">t_func</span></a><span></span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">work</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8c-1a0b1df3eff73aa56a3af8e406647dbed0"><span id="index-47"></span><span></span><span class="kt">int</span> <span class="n">t_pool_add_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">,</span> <a class="reference internal" href="#doxid-t-pool-8h-1ae4decbb2fbff2be5c486e86cbb811398"><span class="std std-ref">t_func</span></a><span></span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">work</span><span class="p">)</span></pre>
 <p>Adds work to the thread pool.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -1972,7 +1888,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8c-1ab8a1ec967a595f770edd2e5f2c818ca6"><span id="index-50"></span><a class="reference internal" href="#doxid-t-pool-8h-1a0477412c87965e74998842734661503f"><span class="std std-ref">t_work_t</span></a><span></span><span class="o">*</span> <span class="n">t_pool_pop_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-t-pool-8c-1ab8a1ec967a595f770edd2e5f2c818ca6"><span id="index-48"></span><a class="reference internal" href="#doxid-t-pool-8h-1a0477412c87965e74998842734661503f"><span class="std std-ref">t_work_t</span></a><span></span><span class="o">*</span> <span class="n">t_pool_pop_work</span><span class="p">(</span><a class="reference internal" href="#doxid-t-pool-8h-1ab68dfb215d81bd4c578dc2e6013bb6f2"><span class="std std-ref">t_pool_t</span></a><span></span><span class="o">*</span> <span class="n">tp</span><span class="p">)</span></pre>
 <p>Pops the head of the pool and returns the pointer to the head.</p>
 <p>IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)</p>
 <p class="rubric">Parameters:</p>
@@ -1989,7 +1905,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>t_work_t*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1abc6b6d909501ade6a804502c70c40d57"><span id="index-51"></span><span></span><span class="kt">void</span> <span class="n">gateway_on_receive</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1abc6b6d909501ade6a804502c70c40d57"><span id="index-49"></span><span></span><span class="kt">void</span> <span class="n">gateway_on_receive</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
 <p>Callback function for when a websocket package is received.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2009,7 +1925,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1ae196cc6926770e97cbb48322d028bef6"><span id="index-52"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">gateway_heartbeat_loop</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">vargp</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1ae196cc6926770e97cbb48322d028bef6"><span id="index-50"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">gateway_heartbeat_loop</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">vargp</span><span class="p">)</span></pre>
 <p>Initiates the heartbeat loop.</p>
 <p>Intended to be run on a seperate thread.</p>
 <p class="rubric">Parameters:</p>
@@ -2026,7 +1942,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>void*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1af1d985c40864d2d78d43b3adf4bc62dd"><span id="index-53"></span><span></span><span class="kt">void</span> <span class="n">gateway_event_loop</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-gateway-8c-1af1d985c40864d2d78d43b3adf4bc62dd"><span id="index-51"></span><span></span><span class="kt">void</span> <span class="n">gateway_event_loop</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">)</span></pre>
 <p>Initiates the event loop.</p>
 <p>This is the main loop that needs to be run for the bot to work.</p>
 <p class="rubric">Parameters:</p>
@@ -2041,7 +1957,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1ad1262acfd44e35f04459e159201eecd5"><span id="index-54"></span><span></span><span class="k">static</span> <span class="kt">size_t</span> <span class="n">write_data</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">l</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">userp</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1ad1262acfd44e35f04459e159201eecd5"><span id="index-52"></span><span></span><span class="k">static</span> <span class="kt">size_t</span> <span class="n">write_data</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">l</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">userp</span><span class="p">)</span></pre>
 <p>Callback function to write receiving data into a memory buffer.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2066,7 +1982,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>size_t Amount written</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1ac087d90f7a10cb67b7d7b381cbbea52c"><span id="index-55"></span><span></span><span class="n">CURLcode</span> <span class="n">request</span><span class="p">(</span>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1ac087d90f7a10cb67b7d7b381cbbea52c"><span id="index-53"></span><span></span><span class="n">CURLcode</span> <span class="n">request</span><span class="p">(</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">url</span><span class="p">,</span>
     <span class="kt">char</span><span class="o">**</span> <span class="n">response</span><span class="p">,</span>
     <span class="n">cJSON</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
@@ -2096,7 +2012,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>CURLcode</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1a9ce91e36169b27f6c89939cf6cdc0236"><span id="index-56"></span><span></span><span class="k">struct</span> <span class="n">curl_slist</span><span class="o">*</span> <span class="n">curl_setup_discord_header</span><span class="p">(</span><span class="n">CURL</span><span class="o">*</span> <span class="n">handle</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1a9ce91e36169b27f6c89939cf6cdc0236"><span id="index-54"></span><span></span><span class="k">struct</span> <span class="n">curl_slist</span><span class="o">*</span> <span class="n">curl_setup_discord_header</span><span class="p">(</span><span class="n">CURL</span><span class="o">*</span> <span class="n">handle</span><span class="p">)</span></pre>
 <p>Adds the correct Discord headers to a CURL handle.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2112,11 +2028,11 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>struct curl_slist*</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1a8b26b274786bb9e5eb1d9b28113f9c9d"><span id="index-57"></span><span></span><span class="kt">int</span> <span class="n">request_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-request-8c-1a8b26b274786bb9e5eb1d9b28113f9c9d"><span id="index-55"></span><span></span><span class="kt">int</span> <span class="n">request_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></pre>
 <p>Tests if request POST and GET work.</p>
 <p class="rubric">Returns:</p>
 <p>int 1 if it works, 0 else</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a25e61029244807bce89cf9b7df8283e9"><span id="index-58"></span><span></span><span class="kt">int</span> <span class="n">websocket_create</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">,</span> <a class="reference internal" href="#doxid-websocket-8h-1a75e027723976e4a1325be64cb272d01e"><span class="std std-ref">callback_receive_fn</span></a><span></span> <span class="n">on_receive</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a25e61029244807bce89cf9b7df8283e9"><span id="index-56"></span><span></span><span class="kt">int</span> <span class="n">websocket_create</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">,</span> <a class="reference internal" href="#doxid-websocket-8h-1a75e027723976e4a1325be64cb272d01e"><span class="std std-ref">callback_receive_fn</span></a><span></span> <span class="n">on_receive</span><span class="p">)</span></pre>
 <p>Sets up the websocket client.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2135,7 +2051,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1ad6005f40f7aeb320494eb2ab32d051f6"><span id="index-59"></span><span></span><span class="kt">int</span> <span class="n">websocket_connect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1ad6005f40f7aeb320494eb2ab32d051f6"><span id="index-57"></span><span></span><span class="kt">int</span> <span class="n">websocket_connect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Sends the initial handshake to connect to the Discord websocket The client is only marked as “connected” once an answer from Discord is received.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2151,7 +2067,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a371f513f4875190cbfd6681d08ff09ca"><span id="index-60"></span><span></span><span class="kt">void</span> <span class="n">websocket_destroy_client</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a371f513f4875190cbfd6681d08ff09ca"><span id="index-58"></span><span></span><span class="kt">void</span> <span class="n">websocket_destroy_client</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1a8faf897fafd3ec64e49756d0fe9c5fe6"><span class="std std-ref">websocket_client_t</span></a><span></span><span class="o">*</span> <span class="n">client</span><span class="p">)</span></pre>
 <p>Frees up all memory allocated with the <a class="reference internal" href="struct_bot_client.html#doxid-structbot-client"><span class="std std-ref">bot_client</span></a> struct.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2165,7 +2081,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a4441bdd6264675d37ad41f203f73d20f"><span id="index-61"></span><span></span><span class="kt">int</span> <span class="n">websocket_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">lws</span><span class="o">*</span> <span class="n">wsi</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a4441bdd6264675d37ad41f203f73d20f"><span id="index-59"></span><span></span><span class="kt">int</span> <span class="n">websocket_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">lws</span><span class="o">*</span> <span class="n">wsi</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span></pre>
 <p>Sends data through the websocket connection.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2187,7 +2103,7 @@
 </table>
 <p class="rubric">Returns:</p>
 <p>int</p>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1af32439469ba35f20294d4a9a516b6e2d"><span id="index-62"></span><span></span><span class="kt">void</span> <span class="n">websocket_reconnect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1af32439469ba35f20294d4a9a516b6e2d"><span id="index-60"></span><span></span><span class="kt">void</span> <span class="n">websocket_reconnect</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Reconnects to the websocket.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
@@ -2201,7 +2117,7 @@
 </tr>
 </tbody>
 </table>
-<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a3af18f27c14cdea777c48fb383100f57"><span id="index-63"></span><span></span><span class="kt">void</span> <span class="n">websocket_close</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-websocket-8c-1a3af18f27c14cdea777c48fb383100f57"><span id="index-61"></span><span></span><span class="kt">void</span> <span class="n">websocket_close</span><span class="p">(</span><a class="reference internal" href="#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot_client</span><span class="p">)</span></pre>
 <p>Closes the websocket connection and sends a normal close reason to the websocket server reason.</p>
 <p class="rubric">Parameters:</p>
 <table class="colwidths-given docutils align-default">
