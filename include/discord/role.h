@@ -4,7 +4,9 @@
 #include <stdbool.h>
 
 /**
- * \addtogroup Role
+ * @addtogroup Models
+ * @{
+ * @addtogroup Role
  * Role functions and structures
  * @{
  *
@@ -41,5 +43,5 @@ struct discord_role {
 void *discord_create_role_struct_json(cJSON *data);
 void discord_destroy_role(struct discord_role *role);
 
-/** @}*/
+/** @} @} */
 #endif

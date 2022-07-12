@@ -48,17 +48,78 @@ The file layout is intended to follow the Pitchfork standard. Some things aren't
 - **tests**: Basic tests which don't really test a lot.
 
 ## Progress
-- Interactions
+- Interactions ![](https://progress-bar.dev/100/?title=4/4)
   - [x] Application Command Object
   - [x] Application Command Option Object
   - [x] Register Commands
     - [x] Global
     - [x] Guild
-- Commands
-  - [x] Send messages
-    - [x] Content
-    - [x] Embeds
-    - [ ] Components (untested)
+  - [x] Send interaction response
+  - [ ] Components (untested, but implementation exists)
+- Commands (API Calls)
+  - Channel ![](https://progress-bar.dev/11/?title=2/18)
+    - [ ] Get channel
+    - [ ] Edit channel
+      - [ ] Basic stuff (name, desc)
+      - [ ] Add permissions
+      - [ ] Remove permissions
+    - [ ] Delete channel
+    - [ ] Get channel message
+    - [x] Send message
+      - [x] Content
+      - [x] Embeds
+      - [ ] Components
+      - [ ] Attachments
+    - [x] Edit message
+    - [ ] Delete message
+    - [ ] Bulk delete messages
+    - [ ] Add reaction
+    - [ ] View reactions
+    - [ ] Delete reactions
+      - [ ] Own
+      - [ ] User
+      - [ ] All
+    - [ ] Create channel invite
+    - [ ] Get channel invites
+    - [ ] Trigger typing indicator
+    - [ ] Get pinned messages
+    - [ ] Pin message
+    - [ ] Unpin message
+    - [ ] Group DM add/remove recipient
+    - Thread ![](https://progress-bar.dev/0/?title=0/12)
+      - [ ] Start thread from message
+      - [ ] Start thread without message
+      - [ ] Start thread in forum channel
+      - [ ] Join thread
+      - [ ] Leave thread
+      - [ ] Add thread member
+      - [ ] Remove thread member
+      - [ ] Get thread member
+      - [ ] List thread members
+      - [ ] List public threads
+      - [ ] List private threads
+      - [ ] List joined private threads
+  - Emoji ![](https://progress-bar.dev/0/?title=0/5)
+    - [ ] List guild emojis
+    - [ ] Get guild emoji
+    - [ ] Create guild emoji
+    - [ ] Modify guild emoji
+    - [ ] Delete guild emoji
+  - Guild (way too many functions to list)
+  - Guild Scheduled Event ![](https://progress-bar.dev/0/?title=0/5)
+    - [ ] Create guild event
+    - [ ] Get guild event
+    - [ ] Edit guild event
+    - [ ] Delete guild event
+    - [ ] Get event users
+  - User ![](https://progress-bar.dev/0/?title=0/7)
+    - [ ] Get (current) user 
+    - [ ] Modify current user
+    - [ ] Get current guilds
+    - [ ] Get current guild member
+    - [ ] Leave guild
+    - [ ] Create DM
+    - [ ] Create group DM
   - ... (no complete list of methods yet)
 - Events ![](https://progress-bar.dev/14/?title=8/57)
   - [x] READY

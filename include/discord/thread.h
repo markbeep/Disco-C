@@ -6,7 +6,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Thread
+ * @addtogroup Models
+ * @{
+ * @addtogroup Thread
  * Thread functions and structures
  * @{
  *
@@ -38,5 +40,5 @@ struct discord_thread_member {
 void *discord_create_thread_member_struct_json(cJSON *data);
 void discord_destroy_thread_member(struct discord_thread_member *member);
 
-/** @}*/
+/** @} @} */
 #endif

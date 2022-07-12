@@ -7,10 +7,11 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Application
+ * @addtogroup Models
+ * @{
+ * @addtogroup Application
  * Application functions and structures
  * @{
- *
  */
 
 // https://discord.com/developers/docs/topics/teams#data-models-team-member-object
@@ -67,5 +68,5 @@ struct discord_application {
 void *discord_create_application_struct_json(cJSON *data);
 void discord_destroy_application(struct discord_application *application);
 
-/** @}*/
+/** @} @} */
 #endif

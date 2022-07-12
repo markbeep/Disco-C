@@ -4,7 +4,9 @@
 #include <cJSON/cJSON.h>
 
 /**
- * \addtogroup Permission
+ * @addtogroup Models
+ * @{
+ * @addtogroup Permission
  * Permission functions and structures
  * @{
  *
@@ -22,5 +24,5 @@ struct discord_overwrite {
 void *discord_create_overwrite_struct_json(cJSON *data);
 void discord_destroy_overwrite(struct discord_overwrite *overwrite);
 
-/** @}*/
+/** @} @} */
 #endif

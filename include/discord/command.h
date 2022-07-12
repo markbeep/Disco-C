@@ -6,7 +6,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Command
+ * @addtogroup Models
+ * @{
+ * @addtogroup Command
  * Command functions and structures
  * @{
  *
@@ -129,5 +131,5 @@ int discord_command_update(struct discord_application_command *command, int64_t 
 int discord_command_delete_global(int64_t command_id);
 int discord_command_delete_guild(int64_t guild_id, int64_t command_id);
 
-/** @}*/
+/** @} @} */
 #endif

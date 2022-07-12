@@ -29,6 +29,12 @@ typedef struct bot_client bot_client_t;
 struct discord_message;
 struct discord_interaction;
 
+/**
+ * @addtogroup Client
+ * The main Discord client that will be used everywhere.
+ * @{
+ */
+
 typedef struct discord_event_callbacks {
     void (*on_ready)(bot_client_t *);
     void (*on_resumed)(bot_client_t *);
@@ -69,6 +75,8 @@ void discord_start_bot(discord_event_callbacks_t *callbacks);
  * @param bot Bot instance
  */
 void discord_free_bot(bot_client_t *bot);
+
+/** @} */ // closes the client group
 
 char *get_string_from_json(cJSON *data, const char *name);
 /**

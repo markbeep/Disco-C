@@ -10,7 +10,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Interaction
+ * @addtogroup Models
+ * @{
+ * @addtogroup Interaction
  * Interaction functions and structures
  * @{
  *
@@ -133,5 +135,5 @@ void discord_fill_json_interaction_callback(cJSON *json, struct discord_interact
 
 void discord_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *received_interaction);
 
-/** @}*/
+/** @} @} */
 #endif

@@ -6,7 +6,9 @@
 #include <stdbool.h>
 
 /**
- * \addtogroup Emoji
+ * @addtogroup Models
+ * @{
+ * @addtogroup Emoji
  * Emoji functions and structures
  * @{
  *
@@ -28,5 +30,5 @@ struct discord_emoji {
 void *discord_create_emoji_struct_json(cJSON *data);
 void discord_destroy_emoji(struct discord_emoji *emoji);
 
-/** @}*/
+/** @} @} */
 #endif

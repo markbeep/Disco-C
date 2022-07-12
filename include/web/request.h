@@ -23,7 +23,7 @@ enum Request_Type { REQUEST_GET,
 /**
  * @brief Performs a HTTP request to the specified URL
  *
- * @param uri URI to append to Discord Gateway
+ * @param url URL to append to Discord Gateway
  * @param response Pointer to a pointer that will be
  *                 modified to point to point to the data
  * @param content Pointer to JSON that should be sent. If there's

@@ -8,7 +8,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Guild
+ * @addtogroup Models
+ * @{
+ * @addtogroup Guild
  * Guild functions and structures
  * @{
  *
@@ -72,9 +74,9 @@ void *discord_create_guild_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
- * @param ch guild struct
+ * @param guild guild struct
  */
 void discord_destroy_guild(struct discord_guild *guild);
 
-/** @}*/
+/** @} @} */
 #endif

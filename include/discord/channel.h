@@ -8,7 +8,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Channel
+ * @addtogroup Models
+ * @{
+ * @addtogroup Channel
  * Channel functions and structures
  * @{
  *
@@ -97,5 +99,5 @@ void *discord_create_channel_mention_struct_json(cJSON *data);
  */
 void discord_destroy_channel_mention(struct discord_channel_mention *ch);
 
-/** @}*/
+/** @} @} */
 #endif

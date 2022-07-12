@@ -15,7 +15,9 @@
 typedef struct bot_client bot_client_t;
 
 /**
- * \addtogroup Message
+ * @addtogroup Models
+ * @{
+ * @addtogroup Message
  * Message functions and structures
  * @{
  *
@@ -164,5 +166,5 @@ void discord_destroy_message(struct discord_message *message);
  */
 void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message);
 
-/** @}*/
+/** @} @} */
 #endif

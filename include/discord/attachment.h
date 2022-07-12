@@ -6,7 +6,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Attachment
+ * @addtogroup Models
+ * @{
+ * @addtogroup Attachment
  * Attachment functions and structures
  * @{
  *
@@ -40,5 +42,5 @@ void *discord_create_attachment_struct_json(cJSON *data);
  */
 void discord_destroy_attachment(struct discord_attachment *attachment);
 
-/** @}*/
+/** @} @} */
 #endif

@@ -5,7 +5,9 @@
 #include <stdbool.h>
 
 /**
- * \addtogroup Embed
+ * @addtogroup Models
+ * @{
+ * @addtogroup Embed
  * Embed functions and structures
  * @{
  *
@@ -145,5 +147,5 @@ void *discord_create_embed_struct_json(cJSON *data);
  */
 void discord_destroy_embed(struct discord_embed *embed);
 
-/** @}*/
+/** @} @} */
 #endif

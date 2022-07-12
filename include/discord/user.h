@@ -6,7 +6,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup User
+ * @addtogroup Models
+ * @{
+ * @addtogroup User
  * User functions and structures
  * @{
  *
@@ -47,7 +49,7 @@ void *discord_create_user_struct_json(cJSON *data);
 void discord_destroy_user(struct discord_user *user);
 
 /** @}
- * \addtogroup Member
+ * @addtogroup Member
  * Member functions and structures
  * @{
  */
@@ -72,5 +74,5 @@ struct discord_member {
 void *discord_create_member_struct_json(cJSON *data, struct discord_user *user);
 void discord_destroy_member(struct discord_member *member);
 
-/** @}*/
+/** @} @} */
 #endif

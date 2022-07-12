@@ -7,7 +7,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Sticker
+ * @addtogroup Models
+ * @{
+ * @addtogroup Sticker
  * Sticker functions and structures
  * @{
  *
@@ -50,5 +52,5 @@ struct discord_sticker {
 void *discord_create_sticker_struct_json(cJSON *data);
 void discord_destroy_sticker(struct discord_sticker *sticker);
 
-/** @}*/
+/** @} @} */
 #endif

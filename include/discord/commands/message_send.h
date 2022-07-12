@@ -4,7 +4,7 @@
 #include <discord/disco.h>
 #include <discord/message.h>
 
-/** \addtogroup Message
+/** @addtogroup Message
  *  @{
  */
 

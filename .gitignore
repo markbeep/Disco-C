@@ -6,3 +6,4 @@ build
 tests/test_discord
 tests/test_web
 register
+generated-docs

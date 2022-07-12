@@ -5,7 +5,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Message_Activity
+ * @addtogroup Models
+ * @{
+ * @addtogroup Message_Activity
  * Message Activity functions and structures
  * @{
  *
@@ -25,5 +27,5 @@ struct discord_message_activity {
 void *discord_create_message_activity_struct_json(cJSON *data);
 void discord_destroy_message_activity(struct discord_message_activity *activity);
 
-/** @}*/
+/** @} @} */
 #endif

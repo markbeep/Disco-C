@@ -6,7 +6,9 @@
 #include <stdbool.h>
 
 /**
- * \addtogroup Reaction
+ * @addtogroup Models
+ * @{
+ * @addtogroup Reaction
  * Reaction functions and structures
  * @{
  *
@@ -23,5 +25,5 @@ struct discord_reaction {
 void *discord_create_reaction_struct_json(cJSON *data);
 void discord_destroy_reaction(struct discord_reaction *reaction);
 
-/** @}*/
+/** @} @} */
 #endif

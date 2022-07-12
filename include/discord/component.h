@@ -8,7 +8,9 @@
 #include <stdint.h>
 
 /**
- * \addtogroup Component
+ * @addtogroup Models
+ * @{
+ * @addtogroup Component
  * Component functions and structures
  * @{
  *
@@ -125,5 +127,5 @@ void discord_destroy_component(struct discord_component *c);
  */
 void discord_fill_json_with_component(cJSON *json, struct discord_component *component);
 
-/** @}*/
+/** @} @} */
 #endif

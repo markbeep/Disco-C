@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install doxygen graphviz python3-sphinx expat liblua5.2-0
-          pip3 install sphinx-press-theme
+          pip3 install furo
           wget https://github.com/vovkos/doxyrest/releases/download/doxyrest-2.1.3/doxyrest-2.1.3-linux-amd64.tar.xz -O doxyrest.tar.xz
           tar -xf doxyrest.tar.xz
           # This renames the unzipped doxyrest folder to simply doxyrest

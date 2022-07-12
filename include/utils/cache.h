@@ -37,7 +37,7 @@ typedef void (*cache_destroy_callback_fn)(enum Disco_Cache_Type type, void *stru
  * in the cache. Any number lower than 2 will result in the cache being set to 2.
  *
  * @param message_cache_size Maximum amount of messages the cache can hold (> 1)
- * @param channel_cach_size Maximum amount of channels the cache can hold (> 1)
+ * @param channel_cache_size Maximum amount of channels the cache can hold (> 1)
  * @param guild_cache_size Maximum amount of guilds the cache can hold (> 1)
  * @param callback Callback that is called whenever a structure is taken out of the cache.
  * It is up to the user if the structure should be freed or what happens to it. Keep it NULL to

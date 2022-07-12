@@ -81,7 +81,7 @@ void websocket_reconnect(bot_client_t *bot_client);
 /**
  * @brief Frees up all memory allocated with the bot_client struct
  *
- * @param bot_client
+ * @param client Websocket client that should be destroyed
  */
 void websocket_destroy_client(websocket_client_t *client);
 
