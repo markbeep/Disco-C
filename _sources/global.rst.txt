@@ -23,7 +23,6 @@ Global Namespace
 	enum_Discord_Text_Input_Style.rst
 	enum_Request_Type.rst
 	enum_Value_Type.rst
-	enum_discord_message_type.rst
 	struct_MemoryChunk.rst
 	struct_bot_client.rst
 	struct_buffer.rst
@@ -31,7 +30,6 @@ Global Namespace
 	struct_delete_message.rst
 	struct_disco_event_callbacks.rst
 	struct_discord_action_row.rst
-	struct_discord_allowed_mentions.rst
 	struct_discord_application.rst
 	struct_discord_application_command.rst
 	struct_discord_application_command_option.rst
@@ -41,7 +39,6 @@ Global Namespace
 	struct_discord_channel.rst
 	struct_discord_channel_mention.rst
 	struct_discord_component.rst
-	struct_discord_create_message.rst
 	struct_discord_embed.rst
 	struct_discord_embed_author.rst
 	struct_discord_embed_field.rst
@@ -56,9 +53,7 @@ Global Namespace
 	struct_discord_interaction_data_option.rst
 	struct_discord_language_locales.rst
 	struct_discord_member.rst
-	struct_discord_message.rst
 	struct_discord_message_activity.rst
-	struct_discord_message_reference.rst
 	struct_discord_message_sticker_item.rst
 	struct_discord_overwrite.rst
 	struct_discord_params.rst
@@ -145,7 +140,7 @@ Overview
 	enum :ref:`Discord_Text_Input_Style<doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0e>`;
 	enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>`;
 	enum :ref:`Value_Type<doxid-interaction_8h_1a20d4902e57aa9edc7abd91611c0ed49b>`;
-	enum :ref:`discord_message_type<doxid-message_8h_1a4cbf1d7273a59d1e86cc8e947f29875a>`;
+	enum :ref:`discord_message_type<doxid-group___message_1ga4cbf1d7273a59d1e86cc8e947f29875a>`;
 
 	// structs
 
@@ -430,13 +425,13 @@ Overview
 	static cJSON* :target:`create_allowed_mentions<doxid-message_8c_1a17a0d8e1812a438804ba2be0c0929446>`(struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`* allowed_mentions);
 	static cJSON* :target:`create_message_reference<doxid-message_8c_1a1d4cc82e9ca1e888946c4394d98a6010>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* ref);
 
-	void :ref:`discord_fill_json_with_message<doxid-message_8c_1a75bcd95cf036bba85d07daa7528600bb>`(
+	void :ref:`discord_fill_json_with_message<doxid-group___message_1ga75bcd95cf036bba85d07daa7528600bb>`(
 		cJSON* json,
 		char* content,
 		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
 	);
 
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_channel_send_message<doxid-message_8c_1aee5633360f52065f9d778cf0cb9eb70c>`(
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_channel_send_message<doxid-group___message_1gaee5633360f52065f9d778cf0cb9eb70c>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
@@ -444,18 +439,10 @@ Overview
 		bool return_struct
 	);
 
-	void :target:`disco_channel_edit_message<doxid-message_8c_1a6204fbe77e397487fcc32a6637df4d90>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		uint64_t message_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	);
-
-	void* :ref:`disco_create_message_struct_json<doxid-message_8c_1ac6295f7b779d42c57612ef1c1a705208>`(cJSON* data);
-	void :ref:`disco_destroy_message<doxid-message_8c_1af8c130cb715240bb658ac80f52d3fed2>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-	void* :ref:`disco_create_message_reference_struct_json<doxid-message_8c_1aec2e33d8f4e1a565a9d9ded8832670ef>`(cJSON* data);
-	void :ref:`disco_destroy_message_reference<doxid-message_8c_1a0578c6d6515cc1fa4651abc5d9db75a1>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
+	void* :ref:`disco_create_message_struct_json<doxid-group___message_1gac6295f7b779d42c57612ef1c1a705208>`(cJSON* data);
+	void :ref:`disco_destroy_message<doxid-group___message_1gaf8c130cb715240bb658ac80f52d3fed2>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
+	void* :ref:`disco_create_message_reference_struct_json<doxid-group___message_1gaec2e33d8f4e1a565a9d9ded8832670ef>`(cJSON* data);
+	void :ref:`disco_destroy_message_reference<doxid-group___message_1ga0578c6d6515cc1fa4651abc5d9db75a1>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
 	void* :target:`disco_create_message_activity_struct_json<doxid-message__activity_8c_1ab78747a9838dc3e9d4e9c12294f3525b>`(cJSON* data);
 	void :target:`disco_destroy_message_activity<doxid-message__activity_8c_1a7c96cfd1f2ee41b10a7ac2147c42eb40>`(struct :ref:`discord_message_activity<doxid-structdiscord__message__activity>`* message);
 	void* :target:`disco_create_overwrite_struct_json<doxid-permission_8c_1a43b24841ae5198751d96a70b695dc285>`(cJSON* data);
@@ -532,26 +519,7 @@ Overview
 		struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* received_interaction
 	);
 
-	void* :ref:`disco_create_message_reference_struct_json<doxid-message_8h_1aec2e33d8f4e1a565a9d9ded8832670ef>`(cJSON* data);
-	void :ref:`disco_destroy_message_reference<doxid-message_8h_1a0578c6d6515cc1fa4651abc5d9db75a1>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
-	void* :ref:`disco_create_message_struct_json<doxid-message_8h_1ac6295f7b779d42c57612ef1c1a705208>`(cJSON* data);
-	void :ref:`disco_destroy_message<doxid-message_8h_1af8c130cb715240bb658ac80f52d3fed2>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-
-	void :ref:`discord_fill_json_with_message<doxid-message_8h_1a75bcd95cf036bba85d07daa7528600bb>`(
-		cJSON* json,
-		char* content,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	);
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_channel_send_message<doxid-message_8h_1aee5633360f52065f9d778cf0cb9eb70c>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	);
-
-	void :target:`disco_channel_edit_message<doxid-message_8h_1a6204fbe77e397487fcc32a6637df4d90>`(
+	void :target:`disco_channel_edit_message<doxid-group___message_1ga6204fbe77e397487fcc32a6637df4d90>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
@@ -1759,196 +1727,6 @@ Destroys the given structure and frees the pointer.
 
 		- guild struct
 
-.. index:: pair: function; discord_fill_json_with_message
-.. _doxid-message_8c_1a75bcd95cf036bba85d07daa7528600bb:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_message(
-		cJSON* json,
-		char* content,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	)
-
-Fills in a JSON with the attributes of the message structure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- json
-
-		- JSON struct that should be filled in with the values.
-
-	*
-		- content
-
-		- Discord message content.
-
-	*
-		- message
-
-		- Create message struct.
-
-.. index:: pair: function; disco_channel_send_message
-.. _doxid-message_8c_1aee5633360f52065f9d778cf0cb9eb70c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* disco_channel_send_message(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	)
-
-Sends a message and if enabled also returns the sent message struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-	*
-		- content
-
-		- Message content to send (if empty, embed or components need to exist)
-
-	*
-		- channel_id
-
-		- ID of the channel the message should be sent in
-
-	*
-		- message
-
-		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
-
-	*
-		- return_struct
-
-		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`disco_destroy_message() <doxid-message_8h_1af8c130cb715240bb658ac80f52d3fed2>` after)
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* NULL or the struct of the sent message
-
-.. index:: pair: function; disco_create_message_struct_json
-.. _doxid-message_8c_1ac6295f7b779d42c57612ef1c1a705208:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_struct_json(cJSON* data)
-
-Creates a message structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message <doxid-structdiscord__message>` struct
-
-.. index:: pair: function; disco_destroy_message
-.. _doxid-message_8c_1af8c130cb715240bb658ac80f52d3fed2:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
-
-.. index:: pair: function; disco_create_message_reference_struct_json
-.. _doxid-message_8c_1aec2e33d8f4e1a565a9d9ded8832670ef:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_reference_struct_json(cJSON* data)
-
-Creates a message_reference structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message_reference <doxid-structdiscord__message__reference>` struct
-
-.. index:: pair: function; disco_destroy_message_reference
-.. _doxid-message_8c_1a0578c6d6515cc1fa4651abc5d9db75a1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message_reference(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
-
 .. index:: pair: function; disco_create_attachment_struct_json
 .. _doxid-attachment_8h_1af59f1ce741cfbb4421795741693874c7:
 
@@ -2609,196 +2387,6 @@ Destroys the given structure and frees the pointer.
 
 		- guild struct
 
-.. index:: pair: function; disco_create_message_reference_struct_json
-.. _doxid-message_8h_1aec2e33d8f4e1a565a9d9ded8832670ef:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_reference_struct_json(cJSON* data)
-
-Creates a message_reference structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message_reference <doxid-structdiscord__message__reference>` struct
-
-.. index:: pair: function; disco_destroy_message_reference
-.. _doxid-message_8h_1a0578c6d6515cc1fa4651abc5d9db75a1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message_reference(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
-
-.. index:: pair: function; disco_create_message_struct_json
-.. _doxid-message_8h_1ac6295f7b779d42c57612ef1c1a705208:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_struct_json(cJSON* data)
-
-Creates a message structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message <doxid-structdiscord__message>` struct
-
-.. index:: pair: function; disco_destroy_message
-.. _doxid-message_8h_1af8c130cb715240bb658ac80f52d3fed2:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
-
-.. index:: pair: function; discord_fill_json_with_message
-.. _doxid-message_8h_1a75bcd95cf036bba85d07daa7528600bb:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_message(
-		cJSON* json,
-		char* content,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	)
-
-Fills in a JSON with the attributes of the message structure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- json
-
-		- JSON struct that should be filled in with the values.
-
-	*
-		- content
-
-		- Discord message content.
-
-	*
-		- message
-
-		- Create message struct.
-
-.. index:: pair: function; disco_channel_send_message
-.. _doxid-message_8h_1aee5633360f52065f9d778cf0cb9eb70c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* disco_channel_send_message(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	)
-
-Sends a message and if enabled also returns the sent message struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-	*
-		- content
-
-		- Message content to send (if empty, embed or components need to exist)
-
-	*
-		- channel_id
-
-		- ID of the channel the message should be sent in
-
-	*
-		- message
-
-		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
-
-	*
-		- return_struct
-
-		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`disco_destroy_message() <doxid-message_8h_1af8c130cb715240bb658ac80f52d3fed2>` after)
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* NULL or the struct of the sent message
-
 .. index:: pair: function; disco_create_user_struct_json
 .. _doxid-user_8h_1af94f5c598b83cff67e8bfa7b59547b4a:
 
@@ -2969,7 +2557,9 @@ Cleans up the cache and frees all the structs it contains.
 
 	int disco_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
 
-Adds a message to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a message to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3047,7 +2637,9 @@ Removes a message from the cache and deallocates the message from memory.
 
 	int disco_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
 
-Adds a channel to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a channel to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3125,7 +2717,9 @@ Removes a channel from the cache and deallocates the channel from memory.
 
 	int disco_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
 
-Adds a guild to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a guild to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3265,7 +2859,9 @@ Cleans up the cache and frees all the structs it contains.
 
 	int disco_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
 
-Adds a message to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a message to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3343,7 +2939,9 @@ Removes a message from the cache and deallocates the message from memory.
 
 	int disco_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
 
-Adds a channel to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a channel to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3421,7 +3019,9 @@ Removes a channel from the cache and deallocates the channel from memory.
 
 	int disco_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
 
-Adds a guild to the cache by ID. If it already exists in cache, it frees and overwrites the previous entry.
+Adds a guild to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
 
 
 
@@ -3537,7 +3137,9 @@ int
 
 	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* t_pool_pop_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp)
 
-Pops the head of the pool and returns the pointer to the head. IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
+Pops the head of the pool and returns the pointer to the head.
+
+IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
 
 
 
@@ -3603,7 +3205,9 @@ int
 
 	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* t_pool_pop_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp)
 
-Pops the head of the pool and returns the pointer to the head. IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
+Pops the head of the pool and returns the pointer to the head.
+
+IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
 
 
 
@@ -3663,7 +3267,9 @@ Callback function for when a websocket package is received.
 
 	void* gateway_heartbeat_loop(void* vargp)
 
-Initiates the heartbeat loop. Intended to be run on a seperate thread.
+Initiates the heartbeat loop.
+
+Intended to be run on a seperate thread.
 
 
 
@@ -3691,7 +3297,9 @@ void\*
 
 	void gateway_event_loop(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
 
-Initiates the event loop. This is the main loop that needs to be run for the bot to work.
+Initiates the event loop.
+
+This is the main loop that needs to be run for the bot to work.
 
 
 
@@ -3745,7 +3353,9 @@ Callback function for when a websocket package is received.
 
 	void* gateway_heartbeat_loop(void* vargp)
 
-Initiates the heartbeat loop. Intended to be run on a seperate thread.
+Initiates the heartbeat loop.
+
+Intended to be run on a seperate thread.
 
 
 
@@ -3773,7 +3383,9 @@ void\*
 
 	void gateway_event_loop(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
 
-Initiates the event loop. This is the main loop that needs to be run for the bot to work.
+Initiates the event loop.
+
+This is the main loop that needs to be run for the bot to work.
 
 
 

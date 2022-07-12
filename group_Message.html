@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>struct discord_application_command</title>
+      <title>Message</title>
     
           <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="_static/theme.css " type="text/css" />
@@ -24,8 +24,8 @@
     
   <link rel="index" title="Index" href="genindex.html" />
   <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="struct discord_application_command_option" href="struct_discord_application_command_option.html" />
-  <link rel="prev" title="struct discord_application" href="struct_discord_application.html" /> 
+  <link rel="next" title="enum discord_message_type" href="enum_discord_message_type.html" />
+  <link rel="prev" title="My Project Documentation" href="index.html" /> 
   </head>
 
   <body>
@@ -42,7 +42,7 @@
 
   
     <div class="nav-item">
-      <a href="group_Message.html#message"
+      <a href="#message"
          class="nav-link ">
          message
       </a>
@@ -50,7 +50,7 @@
   
     <div class="nav-item">
       <a href="global.html#global-namespace"
-         class="nav-link  router-link-active">
+         class="nav-link ">
          global namespace
       </a>
     </div>
@@ -72,7 +72,7 @@
 
   
     <div class="nav-item">
-      <a href="group_Message.html#message"
+      <a href="#message"
          class="nav-link ">
          message
       </a>
@@ -80,7 +80,7 @@
   
     <div class="nav-item">
       <a href="global.html#global-namespace"
-         class="nav-link  router-link-active">
+         class="nav-link ">
          global namespace
       </a>
     </div>
@@ -104,7 +104,7 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="group_Message.html#message">message</a></span>
+        <span class="caption-text"><a href="#message">message</a></span>
       </p>
       <ul class="">
         
@@ -160,7 +160,7 @@
       <p class="caption">
         <span class="caption-text"><a href="global.html#global-namespace">global namespace</a></span>
       </p>
-      <ul class="current">
+      <ul class="">
         
           <li class="toctree-l1 ">
             
@@ -378,17 +378,11 @@
           </li>
 
         
-          <li class="toctree-l1 current">
+          <li class="toctree-l1 ">
             
-              <a href="#" class="reference internal current">struct discord_application_command</a>
+              <a href="struct_discord_application_command.html" class="reference internal ">struct discord_application_command</a>
             
 
-            
-              <ul>
-                
-                  <li class="toctree-l2"><a href="#struct-discord-application-command" class="reference internal">struct discord_application_command</a></li>
-                
-              </ul>
             
           </li>
 
@@ -837,20 +831,18 @@
   <ul class="breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
     
-      <li><a href="global.html">Global Namespace</a> &raquo;</li>
-    
-    <li>struct discord_application_command</li>
+    <li>Message</li>
   </ul>
   
 
   <ul class="page-nav">
   <li class="prev">
-    <a href="struct_discord_application.html"
-       title="previous chapter">← struct discord_application</a>
+    <a href="index.html"
+       title="previous chapter">← My Project Documentation</a>
   </li>
   <li class="next">
-    <a href="struct_discord_application_command_option.html"
-       title="next chapter">struct discord_application_command_option →</a>
+    <a href="enum_discord_message_type.html"
+       title="next chapter">enum discord_message_type →</a>
   </li>
 </ul>
   
@@ -858,29 +850,178 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="struct-discord-application-command">
-<span id="doxid-structdiscord-application-command"></span><span id="index-0"></span><h1>struct discord_application_command<a class="headerlink" href="#struct-discord-application-command" title="Permalink to this heading">¶</a></h1>
+  <div class="section" id="message">
+<span id="doxid-group-message"></span><span id="index-0"></span><h1>Message<a class="headerlink" href="#message" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<pre class="highlight doxyrest-overview-code-block literal-block"><span></span><span class="cp">#include</span> <span class="cpf">&lt;command.h&gt;</span><span class="cp"></span>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>Message Functions and Structures <a class="reference internal" href="#details-group-message"><span class="std std-ref">More…</span></a></p>
+<pre class="highlight doxyrest-overview-code-block literal-block"><span></span><span class="c1">// enums</span>
 
-<span class="k">struct</span> <span class="n">discord_application_command</span> <span class="p">{</span>
-    <span class="c1">// fields</span>
+<span class="k">enum</span> <a class="reference internal" href="enum_discord_message_type.html#doxid-group-message-1ga4cbf1d7273a59d1e86cc8e947f29875a"><span class="std std-ref">discord_message_type</span></a><span></span><span class="p">;</span>
 
-    <span class="kt">int64_t</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1aa53c912b5f28d2fb3cc636ce0d31708b"><span></span><span class="n">id</span></span><span></span><span class="p">;</span>
-    <span class="k">enum</span> <a class="reference internal" href="enum_Discord_Application_Command_Type.html#doxid-command-8h-1afaab89847119cdbc55d73bbe1dd99d05"><span class="std std-ref">Discord_Application_Command_Type</span></a><span></span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a13a1c9c90d7cf7ce5d4adf996a2c6bca"><span></span><span class="n">type</span></span><span></span><span class="p">;</span>
-    <span class="kt">int64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a561efc11eb0af796f610133f77350ef8"><span></span><span class="n">guild_id</span></span><span></span><span class="p">;</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a9e3bd59f3d5125d4d515363b7a07e489"><span></span><span class="n">name</span></span><span></span><span class="p">;</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a708e42698e317f049126c4d124d71bf4"><span></span><span class="n">name_localizations</span></span><span></span><span class="p">;</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a67570a00e66b50ce7fffeba12ab2ba02"><span></span><span class="n">description</span></span><span></span><span class="p">;</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a9292041e2dcc22e3a411d4f28fa125cd"><span></span><span class="n">description_localizations</span></span><span></span><span class="p">;</span>
-    <span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command_option.html#doxid-structdiscord-application-command-option"><span class="std std-ref">discord_application_command_option</span></a><span></span><span class="o">**</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a20a43a9e87397276a8430cd8ebb937a5"><span></span><span class="n">options</span></span><span></span><span class="p">;</span>
-    <span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1ae5ad1ecba6075d7256befef6aa1b052e"><span></span><span class="n">options_count</span></span><span></span><span class="p">;</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1ac37a95a63406eec44625bb94f52b9807"><span></span><span class="n">default_member_permissions</span></span><span></span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a7d1f0983feda34352e99d73396ef99f0"><span></span><span class="n">dm_permission</span></span><span></span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1a66e1330b69bfe72b45b8922054ebaba8"><span></span><span class="n">default_permission</span></span><span></span><span class="p">;</span>
-    <span class="kt">int64_t</span> <span class="doxyrest-code-target target" id="doxid-structdiscord-application-command-1af7db0ca88834caa32693fe18e5817871"><span></span><span class="n">version</span></span><span></span><span class="p">;</span>
-<span class="p">};</span></pre>
+<span class="c1">// structs</span>
+
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_allowed_mentions.html#doxid-structdiscord-allowed-mentions"><span class="std std-ref">discord_allowed_mentions</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_message_reference.html#doxid-structdiscord-message-reference"><span class="std std-ref">discord_message_reference</span></a><span></span><span class="p">;</span>
+
+<span class="c1">// global functions</span>
+
+<span class="kt">void</span> <a class="reference internal" href="#doxid-group-message-1ga75bcd95cf036bba85d07daa7528600bb"><span class="std std-ref">discord_fill_json_with_message</span></a><span></span><span class="p">(</span>
+    <span class="n">cJSON</span><span class="o">*</span> <span class="n">json</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span>
+<span class="p">);</span>
+
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <a class="reference internal" href="#doxid-group-message-1gaee5633360f52065f9d778cf0cb9eb70c"><span class="std std-ref">disco_channel_send_message</span></a><span></span><span class="p">(</span>
+    <a class="reference internal" href="global.html#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
+    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">return_struct</span>
+<span class="p">);</span>
+
+<span class="kt">void</span><span class="o">*</span> <a class="reference internal" href="#doxid-group-message-1gac6295f7b779d42c57612ef1c1a705208"><span class="std std-ref">disco_create_message_struct_json</span></a><span></span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">);</span>
+<span class="kt">void</span> <a class="reference internal" href="#doxid-group-message-1gaf8c130cb715240bb658ac80f52d3fed2"><span class="std std-ref">disco_destroy_message</span></a><span></span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+<span class="kt">void</span><span class="o">*</span> <a class="reference internal" href="#doxid-group-message-1gaec2e33d8f4e1a565a9d9ded8832670ef"><span class="std std-ref">disco_create_message_reference_struct_json</span></a><span></span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">);</span>
+<span class="kt">void</span> <a class="reference internal" href="#doxid-group-message-1ga0578c6d6515cc1fa4651abc5d9db75a1"><span class="std std-ref">disco_destroy_message_reference</span></a><span></span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message_reference.html#doxid-structdiscord-message-reference"><span class="std std-ref">discord_message_reference</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="doxyrest-code-target target" id="doxid-group-message-1ga6204fbe77e397487fcc32a6637df4d90"><span></span><span class="n">disco_channel_edit_message</span></span><span></span><span class="p">(</span>
+    <a class="reference internal" href="global.html#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
+    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
+    <span class="kt">uint64_t</span> <span class="n">message_id</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span>
+<span class="p">);</span></pre>
+</div>
+<div class="section" id="detailed-documentation">
+<span id="details-group-message"></span><h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this heading">¶</a></h2>
+<p>Message Functions and Structures</p>
+<div class="section" id="global-functions">
+<h3>Global Functions<a class="headerlink" href="#global-functions" title="Permalink to this heading">¶</a></h3>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1ga75bcd95cf036bba85d07daa7528600bb"><span id="index-1"></span><span></span><span class="kt">void</span> <span class="n">discord_fill_json_with_message</span><span class="p">(</span>
+    <span class="n">cJSON</span><span class="o">*</span> <span class="n">json</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span>
+<span class="p">)</span></pre>
+<p>Fills in a JSON with the attributes of the message structure.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>json</p></td>
+<td><p>JSON struct that should be filled in with the values.</p></td>
+</tr>
+<tr class="row-even"><td><p>content</p></td>
+<td><p>Discord message content.</p></td>
+</tr>
+<tr class="row-odd"><td><p>message</p></td>
+<td><p>Create message struct.</p></td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1gaee5633360f52065f9d778cf0cb9eb70c"><span id="index-2"></span><span></span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">disco_channel_send_message</span><span class="p">(</span>
+    <a class="reference internal" href="global.html#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="n">bot</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">content</span><span class="p">,</span>
+    <span class="kt">uint64_t</span> <span class="n">channel_id</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">return_struct</span>
+<span class="p">)</span></pre>
+<p>Sends a message and if enabled also returns the sent message struct.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>bot</p></td>
+<td><p>Active bot instance</p></td>
+</tr>
+<tr class="row-even"><td><p>content</p></td>
+<td><p>Message content to send (if empty, embed or components need to exist)</p></td>
+</tr>
+<tr class="row-odd"><td><p>channel_id</p></td>
+<td><p>ID of the channel the message should be sent in</p></td>
+</tr>
+<tr class="row-even"><td><p>message</p></td>
+<td><p>A <a class="reference internal" href="struct_discord_create_message.html#doxid-structdiscord-create-message"><span class="std std-ref">discord_create_message</span></a> struct. Can be NULL</p></td>
+</tr>
+<tr class="row-odd"><td><p>return_struct</p></td>
+<td><p>Bool if the sent message should be returned or not (if yes, it has to be destroyed with <a class="reference internal" href="#doxid-group-message-1gaf8c130cb715240bb658ac80f52d3fed2"><span class="std std-ref">disco_destroy_message()</span></a> after)</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Returns:</p>
+<p>struct discord_message* NULL or the struct of the sent message</p>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1gac6295f7b779d42c57612ef1c1a705208"><span id="index-3"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">disco_create_message_struct_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span></pre>
+<p>Creates a message structure from a given JSON.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>data</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Returns:</p>
+<p>void* <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a> struct</p>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1gaf8c130cb715240bb658ac80f52d3fed2"><span id="index-4"></span><span></span><span class="kt">void</span> <span class="n">disco_destroy_message</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message.html#doxid-structdiscord-message"><span class="std std-ref">discord_message</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
+<p>Destroys the given structure and frees the pointer.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>message</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1gaec2e33d8f4e1a565a9d9ded8832670ef"><span id="index-5"></span><span></span><span class="kt">void</span><span class="o">*</span> <span class="n">disco_create_message_reference_struct_json</span><span class="p">(</span><span class="n">cJSON</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span></pre>
+<p>Creates a message_reference structure from a given JSON.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>data</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Returns:</p>
+<p>void* <a class="reference internal" href="struct_discord_message_reference.html#doxid-structdiscord-message-reference"><span class="std std-ref">discord_message_reference</span></a> struct</p>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-message-1ga0578c6d6515cc1fa4651abc5d9db75a1"><span id="index-6"></span><span></span><span class="kt">void</span> <span class="n">disco_destroy_message_reference</span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_message_reference.html#doxid-structdiscord-message-reference"><span class="std std-ref">discord_message_reference</span></a><span></span><span class="o">*</span> <span class="n">message</span><span class="p">)</span></pre>
+<p>Destroys the given structure and frees the pointer.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>message</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 
@@ -888,12 +1029,12 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
   <li class="prev">
-    <a href="struct_discord_application.html"
-       title="previous chapter">← struct discord_application</a>
+    <a href="index.html"
+       title="previous chapter">← My Project Documentation</a>
   </li>
   <li class="next">
-    <a href="struct_discord_application_command_option.html"
-       title="next chapter">struct discord_application_command_option →</a>
+    <a href="enum_discord_message_type.html"
+       title="next chapter">enum discord_message_type →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2022, markbeep.

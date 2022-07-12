@@ -43,7 +43,7 @@ struct discord_message
 		char* :target:`nonce<doxid-structdiscord__message_1a9ce7b073536c5dda9c6f2d5cbed165f6>`;
 		bool :target:`pinned<doxid-structdiscord__message_1aed931e5f75fbfa5f0216b301f9aab662>`;
 		uint64_t :target:`webhook_id<doxid-structdiscord__message_1abd3abfd799743b1b583cf572f63b7861>`;
-		enum :ref:`discord_message_type<doxid-message_8h_1a4cbf1d7273a59d1e86cc8e947f29875a>` :target:`type<doxid-structdiscord__message_1a38b82e45baa524bd1a5cbaf1b61e55d6>`;
+		enum :ref:`discord_message_type<doxid-group___message_1ga4cbf1d7273a59d1e86cc8e947f29875a>` :target:`type<doxid-structdiscord__message_1a38b82e45baa524bd1a5cbaf1b61e55d6>`;
 		struct :ref:`discord_message_activity<doxid-structdiscord__message__activity>`* :target:`activity<doxid-structdiscord__message_1a7135fe08ea0f33dcf478be9647cbe47f>`;
 		struct :ref:`discord_application<doxid-structdiscord__application>`* :target:`application<doxid-structdiscord__message_1a13bdb550f4ae41acbeabf68360032d9d>`;
 		uint64_t :target:`application_id<doxid-structdiscord__message_1a5f70d05a2a84a3aaaee2f614f7e88fc2>`;

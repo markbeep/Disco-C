@@ -49,5 +49,7 @@ Fields
 
 	void(* on_message_delete)(bot_client_t *, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *)
 
-Function called if a message event is called. The message ID and channel ID are always given. If the message was sent in a guild, the guild ID is also included. If the message was in cache before being deleted, the message struct is also included.
+Function called if a message event is called.
+
+The message ID and channel ID are always given. If the message was sent in a guild, the guild ID is also included. If the message was in cache before being deleted, the message struct is also included.
 
