@@ -1,9 +1,9 @@
-[submodule "lib/hashmap.h"]
-	path = lib/hashmap.h
+[submodule "external/hashmap.h"]
+	path = external/hashmap.h
 	url = git@github.com:sheredom/hashmap.h.git
-[submodule "lib/cJSON"]
-	path = lib/cJSON
+[submodule "external/cJSON"]
+	path = external/cJSON
 	url = git@github.com:DaveGamble/cJSON.git
-[submodule "lib/Unity"]
-	path = lib/Unity
+[submodule "external/Unity"]
+	path = external/Unity
 	url = git@github.com:ThrowTheSwitch/Unity.git

@@ -5,6 +5,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Attachment
+ * Attachment functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/channel#attachment-object
 struct discord_attachment {
     uint64_t id;
@@ -25,12 +32,13 @@ struct discord_attachment {
  * @param data
  * @return void* discord_attachment struct
  */
-void *disco_create_attachment_struct_json(cJSON *data);
+void *discord_create_attachment_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param attachment
  */
-void disco_destroy_attachment(struct discord_attachment *attachment);
+void discord_destroy_attachment(struct discord_attachment *attachment);
 
+/** @}*/
 #endif

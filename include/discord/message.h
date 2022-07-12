@@ -1,7 +1,6 @@
 #ifndef DISCO_MESSAGE
 #define DISCO_MESSAGE
 
-#include "../disco.h"
 #include "attachment.h"
 #include "channel.h"
 #include "component.h"
@@ -17,7 +16,7 @@ typedef struct bot_client bot_client_t;
 
 /**
  * \addtogroup Message
- * Message Functions and Structures
+ * Message functions and structures
  * @{
  *
  */
@@ -48,13 +47,13 @@ struct discord_message_reference {
  * @param data
  * @return void* discord_message_reference struct
  */
-void *disco_create_message_reference_struct_json(cJSON *data);
+void *discord_create_message_reference_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param message
  */
-void disco_destroy_message_reference(struct discord_message_reference *message);
+void discord_destroy_message_reference(struct discord_message_reference *message);
 
 // https://discord.com/developers/docs/resources/channel#create-message
 struct discord_create_message {
@@ -148,13 +147,13 @@ struct discord_message {
  * @param data
  * @return void* discord_message struct
  */
-void *disco_create_message_struct_json(cJSON *data);
+void *discord_create_message_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param message
  */
-void disco_destroy_message(struct discord_message *message);
+void discord_destroy_message(struct discord_message *message);
 
 /**
  * @brief Fills in a JSON with the attributes of the message structure.
@@ -165,19 +164,5 @@ void disco_destroy_message(struct discord_message *message);
  */
 void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message);
 
-/**
- * @brief Sends a message and if enabled also returns the sent message struct.
- *
- * @param bot Active bot instance
- * @param content Message content to send (if empty, embed or components need to exist)
- * @param channel_id ID of the channel the message should be sent in
- * @param message A discord_create_message struct. Can be NULL
- * @param return_struct Bool if the sent message should be returned or not (if yes,
- *                      it has to be destroyed with disco_destroy_message() after)
- * @return struct discord_message* NULL or the struct of the sent message
- */
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct);
-void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message);
-
-/** @} (Closes the Doxygen group) */
+/** @}*/
 #endif

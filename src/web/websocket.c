@@ -1,8 +1,8 @@
-#include "websocket.h"
 #include <curl/curl.h>
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>
+#include <web/websocket.h>
 
 static int port = 443, ssl_connection = 1;
 

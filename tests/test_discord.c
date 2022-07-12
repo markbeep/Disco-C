@@ -1,8 +1,9 @@
-#include "../src/discord/structures/component.h"
-#include "../src/discord/structures/message.h"
-#include "../src/utils/disco_logging.h"
 #include <Unity/src/unity.h>
+#include <discord/component.h>
+#include <discord/disco.h>
+#include <discord/message.h>
 #include <stdbool.h>
+#include <utils/disco_logging.h>
 
 void test_message_creation(void) {
     struct discord_create_message msg = {0}, unmod = {0};

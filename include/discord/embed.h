@@ -4,6 +4,13 @@
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 
+/**
+ * \addtogroup Embed
+ * Embed functions and structures
+ * @{
+ *
+ */
+
 struct discord_embed_footer {
     char *text;
     char *icon_url;
@@ -16,13 +23,13 @@ struct discord_embed_footer {
  * @param data
  * @return void* discord_embed_footer struct
  */
-void *disco_create_embed_footer_struct_json(cJSON *data);
+void *discord_create_embed_footer_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param footer
  */
-void disco_destroy_embed_footer(struct discord_embed_footer *footer);
+void discord_destroy_embed_footer(struct discord_embed_footer *footer);
 
 // video, image and thumbnail are all the same format
 struct discord_embed_media {
@@ -38,13 +45,13 @@ struct discord_embed_media {
  * @param data
  * @return void* discord_embed_media struct
  */
-void *disco_create_embed_media_struct_json(cJSON *data);
+void *discord_create_embed_media_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param media
  */
-void disco_destroy_embed_media(struct discord_embed_media *media);
+void discord_destroy_embed_media(struct discord_embed_media *media);
 
 struct discord_embed_provider {
     char *name;
@@ -57,13 +64,13 @@ struct discord_embed_provider {
  * @param data
  * @return void* discord_embed_provider struct
  */
-void *disco_create_embed_provider_struct_json(cJSON *data);
+void *discord_create_embed_provider_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param provider
  */
-void disco_destroy_embed_provider(struct discord_embed_provider *provider);
+void discord_destroy_embed_provider(struct discord_embed_provider *provider);
 
 struct discord_embed_author {
     char *name;
@@ -78,13 +85,13 @@ struct discord_embed_author {
  * @param data
  * @return void* discord_embed_author struct
  */
-void *disco_create_embed_author_struct_json(cJSON *data);
+void *discord_create_embed_author_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param author
  */
-void disco_destroy_embed_author(struct discord_embed_author *author);
+void discord_destroy_embed_author(struct discord_embed_author *author);
 
 struct discord_embed_field {
     char *name;
@@ -98,13 +105,13 @@ struct discord_embed_field {
  * @param data
  * @return void* discord_embed_field struct
  */
-void *disco_create_embed_field_struct_json(cJSON *data);
+void *discord_create_embed_field_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param field
  */
-void disco_destroy_embed_field(struct discord_embed_field *field);
+void discord_destroy_embed_field(struct discord_embed_field *field);
 
 // https://discord.com/developers/docs/resources/channel#embed-object
 struct discord_embed {
@@ -130,12 +137,13 @@ struct discord_embed {
  * @param data
  * @return void* discord_embed struct
  */
-void *disco_create_embed_struct_json(cJSON *data);
+void *discord_create_embed_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param embed
  */
-void disco_destroy_embed(struct discord_embed *embed);
+void discord_destroy_embed(struct discord_embed *embed);
 
+/** @}*/
 #endif

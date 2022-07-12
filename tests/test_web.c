@@ -1,8 +1,8 @@
-#include "../src/discord/disco.h"
-#include "../src/utils/disco_logging.h"
-#include "../src/web/request.h"
-#include "../src/web/websocket.h"
 #include <Unity/src/unity.h>
+#include <discord/disco.h>
+#include <utils/disco_logging.h>
+#include <web/request.h>
+#include <web/websocket.h>
 
 static bot_client_t bot_static = {0};
 static websocket_client_t client = {0};

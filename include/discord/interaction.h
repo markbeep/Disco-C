@@ -9,6 +9,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Interaction
+ * Interaction functions and structures
+ * @{
+ *
+ */
+
 enum Discord_Interaction_Type { INTERACTION_PING = 1,
                                 INTERACTION_APPLICATION_COMMAND = 2,
                                 INTERACTION_MESSAGE_COMPONENT = 3,
@@ -34,8 +41,8 @@ struct discord_interaction_data_option {
     bool focused;
 };
 
-void *disco_create_interaction_data_option_struct_json(cJSON *data);
-void disco_destroy_interaction_data_option(struct discord_interaction_data_option *interaction);
+void *discord_create_interaction_data_option_struct_json(cJSON *data);
+void discord_destroy_interaction_data_option(struct discord_interaction_data_option *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
 struct discord_interaction_data {
@@ -57,8 +64,8 @@ struct discord_interaction_data {
     int components_count;                            // modal
 };
 
-void *disco_create_interaction_data_struct_json(cJSON *data);
-void disco_destroy_interaction_data(struct discord_interaction_data *interaction);
+void *discord_create_interaction_data_struct_json(cJSON *data);
+void discord_destroy_interaction_data(struct discord_interaction_data *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
 struct discord_interaction {
@@ -78,8 +85,8 @@ struct discord_interaction {
     char *guild_locale;
 };
 
-void *disco_create_interaction_struct_json(cJSON *data);
-void disco_destroy_interaction(struct discord_interaction *interaction);
+void *discord_create_interaction_struct_json(cJSON *data);
+void discord_destroy_interaction(struct discord_interaction *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
 enum Discord_Interaction_Callback_Type {
@@ -122,8 +129,9 @@ struct discord_interaction_callback {
 };
 
 // TODO make JSON fill functions public (for message, embeds, etc.)
-void disco_fill_json_interaction_callback(cJSON *json, struct discord_interaction_callback *callback);
+void discord_fill_json_interaction_callback(cJSON *json, struct discord_interaction_callback *callback);
 
-void disco_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *received_interaction);
+void discord_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *received_interaction);
 
+/** @}*/
 #endif

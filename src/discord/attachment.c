@@ -1,7 +1,7 @@
-#include "structures/attachment.h"
-#include "disco.h"
+#include <discord/attachment.h>
+#include <discord/disco.h>
 
-void *disco_create_attachment_struct_json(cJSON *data) {
+void *discord_create_attachment_struct_json(cJSON *data) {
     struct discord_attachment *attach = (struct discord_attachment *)calloc(1, sizeof(struct discord_attachment));
     attach->id = get_long_from_string_json(data, "id", 0);
     attach->filename = get_string_from_json(data, "filename");
@@ -16,7 +16,7 @@ void *disco_create_attachment_struct_json(cJSON *data) {
     return attach;
 }
 
-void disco_destroy_attachment(struct discord_attachment *attachment) {
+void discord_destroy_attachment(struct discord_attachment *attachment) {
     if (attachment->filename)
         free(attachment->filename);
     if (attachment->description)

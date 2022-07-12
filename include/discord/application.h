@@ -6,6 +6,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Application
+ * Application functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/topics/teams#data-models-team-member-object
 struct discord_team_member {
     int membership_state;
@@ -57,7 +64,8 @@ struct discord_application {
     char *custom_install_url;
 };
 
-void *disco_create_application_struct_json(cJSON *data);
-void disco_destroy_application(struct discord_application *application);
+void *discord_create_application_struct_json(cJSON *data);
+void discord_destroy_application(struct discord_application *application);
 
+/** @}*/
 #endif

@@ -1,8 +1,8 @@
 #ifndef DISCO_WEBSOCKET
 #define DISCO_WEBSOCKET
 
-#include "../discord/disco.h"
 #include <curl/curl.h>
+#include <discord/disco.h>
 #include <libwebsockets.h>
 
 typedef struct bot_client bot_client_t;

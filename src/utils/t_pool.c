@@ -1,8 +1,8 @@
-#include "t_pool.h"
-#include "disco_logging.h"
 #include <stdlib.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+#include <utils/disco_logging.h>
+#include <utils/t_pool.h>
 
 static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;

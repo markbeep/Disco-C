@@ -13,9 +13,9 @@
  *
  */
 
-#include "cache.h"
-#include "disco_logging.h"
 #include <sys/queue.h>
+#include <utils/cache.h>
+#include <utils/disco_logging.h>
 
 struct node {
     uint64_t *alloc_id; // we need to allocate the ID and save the pointer somewhere
@@ -52,20 +52,20 @@ static cache_destroy_callback_fn destroy_item_callback_fn;
 static void default_destroy_callback(enum Disco_Cache_Type type, void *structure) {
     switch (type) {
     case DISCO_MESSAGE_CACHE:
-        disco_destroy_message((struct discord_message *)structure);
+        discord_destroy_message((struct discord_message *)structure);
         break;
     case DISCO_CHANNEL_CACHE:
-        disco_destroy_channel((struct discord_channel *)structure);
+        discord_destroy_channel((struct discord_channel *)structure);
         break;
     case DISCO_GUILD_CACHE:
-        disco_destroy_guild((struct discord_guild *)structure);
+        discord_destroy_guild((struct discord_guild *)structure);
         break;
     default:
         break;
     }
 }
 
-int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_cache_size, cache_destroy_callback_fn callback) {
+int discord_cache_init(int message_cache_size, int channel_cache_size, int guild_cache_size, cache_destroy_callback_fn callback) {
     max_message_cache_size = message_cache_size;
     if (max_message_cache_size < 2)
         max_message_cache_size = 2;
@@ -109,7 +109,7 @@ int disco_cache_init(int message_cache_size, int channel_cache_size, int guild_c
     return 0;
 }
 
-void disco_cache_destroy(void) {
+void discord_cache_destroy(void) {
     while (!TAILQ_EMPTY(&messages_queue.head)) {
         struct node *first = TAILQ_FIRST(&messages_queue.head);
         TAILQ_REMOVE(&messages_queue.head, first, pointers);
@@ -139,7 +139,7 @@ void disco_cache_destroy(void) {
     hashmap_destroy(&guilds_map);
 }
 
-int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
+int discord_cache_set(enum Disco_Cache_Type type, void *cont) {
     static struct hashmap_s *map;
     static struct buffer *queue;
     uint64_t id;
@@ -200,13 +200,13 @@ int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
             struct node *first = TAILQ_FIRST(&queue->head);
             switch (type) {
             case DISCO_MESSAGE_CACHE:
-                disco_cache_delete_message(((struct discord_message *)first->data)->id);
+                discord_cache_delete_message(((struct discord_message *)first->data)->id);
                 break;
             case DISCO_CHANNEL_CACHE:
-                disco_cache_delete_channel(((struct discord_channel *)first->data)->id);
+                discord_cache_delete_channel(((struct discord_channel *)first->data)->id);
                 break;
             case DISCO_GUILD_CACHE:
-                disco_cache_delete_guild(((struct discord_guild *)first->data)->id);
+                discord_cache_delete_guild(((struct discord_guild *)first->data)->id);
                 break;
             default:
                 break;
@@ -218,7 +218,7 @@ int disco_cache_set(enum Disco_Cache_Type type, void *cont) {
     return 0;
 }
 
-void *disco_cache_get(enum Disco_Cache_Type type, uint64_t id) {
+void *discord_cache_get(enum Disco_Cache_Type type, uint64_t id) {
     static struct hashmap_s *map;
     static struct buffer *queue;
     switch (type) {
@@ -247,7 +247,7 @@ void *disco_cache_get(enum Disco_Cache_Type type, uint64_t id) {
         return NULL;
 }
 
-void disco_cache_delete(enum Disco_Cache_Type type, uint64_t id) {
+void discord_cache_delete(enum Disco_Cache_Type type, uint64_t id) {
     static struct hashmap_s *map;
     static struct buffer *queue;
     switch (type) {
@@ -289,32 +289,32 @@ void disco_cache_delete(enum Disco_Cache_Type type, uint64_t id) {
     }
 }
 
-int disco_cache_set_message(struct discord_message *message) {
-    return disco_cache_set(DISCO_MESSAGE_CACHE, (void *)message);
+int discord_cache_set_message(struct discord_message *message) {
+    return discord_cache_set(DISCO_MESSAGE_CACHE, (void *)message);
 }
-struct discord_message *disco_cache_get_message(uint64_t id) {
-    return disco_cache_get(DISCO_MESSAGE_CACHE, id);
+struct discord_message *discord_cache_get_message(uint64_t id) {
+    return discord_cache_get(DISCO_MESSAGE_CACHE, id);
 }
-void disco_cache_delete_message(uint64_t id) {
-    disco_cache_delete(DISCO_MESSAGE_CACHE, id);
-}
-
-int disco_cache_set_channel(struct discord_channel *channel) {
-    return disco_cache_set(DISCO_CHANNEL_CACHE, (void *)channel);
-}
-struct discord_channel *disco_cache_get_channel(uint64_t id) {
-    return disco_cache_get(DISCO_CHANNEL_CACHE, id);
-}
-void disco_cache_delete_channel(uint64_t id) {
-    disco_cache_delete(DISCO_CHANNEL_CACHE, id);
+void discord_cache_delete_message(uint64_t id) {
+    discord_cache_delete(DISCO_MESSAGE_CACHE, id);
 }
 
-int disco_cache_set_guild(struct discord_guild *guild) {
-    return disco_cache_set(DISCO_GUILD_CACHE, (void *)guild);
+int discord_cache_set_channel(struct discord_channel *channel) {
+    return discord_cache_set(DISCO_CHANNEL_CACHE, (void *)channel);
 }
-struct discord_guild *disco_cache_get_guild(uint64_t id) {
-    return disco_cache_get(DISCO_GUILD_CACHE, id);
+struct discord_channel *discord_cache_get_channel(uint64_t id) {
+    return discord_cache_get(DISCO_CHANNEL_CACHE, id);
 }
-void disco_cache_delete_guild(uint64_t id) {
-    disco_cache_delete(DISCO_GUILD_CACHE, id);
+void discord_cache_delete_channel(uint64_t id) {
+    discord_cache_delete(DISCO_CHANNEL_CACHE, id);
+}
+
+int discord_cache_set_guild(struct discord_guild *guild) {
+    return discord_cache_set(DISCO_GUILD_CACHE, (void *)guild);
+}
+struct discord_guild *discord_cache_get_guild(uint64_t id) {
+    return discord_cache_get(DISCO_GUILD_CACHE, id);
+}
+void discord_cache_delete_guild(uint64_t id) {
+    discord_cache_delete(DISCO_GUILD_CACHE, id);
 }

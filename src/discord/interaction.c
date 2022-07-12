@@ -1,10 +1,10 @@
-#include "structures/interaction.h"
-#include "../utils/disco_logging.h"
-#include "../web/request.h"
-#include "disco.h"
+#include <discord/disco.h>
+#include <discord/interaction.h>
 #include <stdlib.h>
+#include <utils/disco_logging.h>
+#include <web/request.h>
 
-void *disco_create_interaction_data_option_struct_json(cJSON *data) {
+void *discord_create_interaction_data_option_struct_json(cJSON *data) {
     struct discord_interaction_data_option *opt = (struct discord_interaction_data_option *)calloc(1, sizeof(struct discord_interaction_data_option));
     opt->name = get_string_from_json(data, "name");
     opt->type = (enum Discord_Application_Command_Option_Type)get_int_from_json(data, "type", 0);
@@ -14,56 +14,56 @@ void *disco_create_interaction_data_option_struct_json(cJSON *data) {
         opt->value.int_ = get_int_from_json(data, "value", 0);
     else if (opt->type == COMMAND_OPTION_NUMBER)
         opt->value.double_ = get_double_from_string_json(data, "value", 0.);
-    opt->options_count = get_array_from_json(data, "options", (void ***)&opt->options, sizeof(struct discord_interaction_data_option), &disco_create_interaction_data_option_struct_json);
+    opt->options_count = get_array_from_json(data, "options", (void ***)&opt->options, sizeof(struct discord_interaction_data_option), &discord_create_interaction_data_option_struct_json);
     opt->focused = get_bool_from_json(data, "focused", 0);
     return opt;
 }
 
-void disco_destroy_interaction_data_option(struct discord_interaction_data_option *o) {
+void discord_destroy_interaction_data_option(struct discord_interaction_data_option *o) {
     if (o->name)
         free(o->name);
     if (o->type == COMMAND_OPTION_STRING && o->value.string_)
         free(o->value.string_);
     for (int i = 0; i < o->options_count; i++)
-        disco_destroy_interaction_data_option(o->options[i]);
+        discord_destroy_interaction_data_option(o->options[i]);
     free(o->options);
     free(o);
 }
 
-void *disco_create_interaction_data_struct_json(cJSON *data) {
+void *discord_create_interaction_data_struct_json(cJSON *data) {
     struct discord_interaction_data *d = (struct discord_interaction_data *)calloc(1, sizeof(struct discord_interaction_data));
     d->id = get_long_from_string_json(data, "id", 0);
     d->name = get_string_from_json(data, "name");
     d->type = (enum Discord_Application_Command_Type)get_int_from_json(data, "type", 1);
-    d->options_count = get_array_from_json(data, "options", (void ***)&d->options, sizeof(struct discord_interaction_data_option), &disco_create_interaction_data_option_struct_json);
+    d->options_count = get_array_from_json(data, "options", (void ***)&d->options, sizeof(struct discord_interaction_data_option), &discord_create_interaction_data_option_struct_json);
     d->guild_id = get_long_from_string_json(data, "guild_id", 0);
     d->target_id = get_long_from_string_json(data, "target_id", 0);
 
-    d->custom_id = get_string_from_json(data, "custom_id");                                                                                                         // message/modal
-    d->values_count = get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &disco_create_select_option_struct);          // message
-    d->components_count = get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &disco_create_component_struct_json); // modal
+    d->custom_id = get_string_from_json(data, "custom_id");                                                                                                           // message/modal
+    d->values_count = get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct);          // message
+    d->components_count = get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &discord_create_component_struct_json); // modal
     return d;
 }
 
-void disco_destroy_interaction_data(struct discord_interaction_data *interaction) {
+void discord_destroy_interaction_data(struct discord_interaction_data *interaction) {
     if (interaction->name)
         free(interaction->name);
     for (int i = 0; i < interaction->options_count; i++)
-        disco_destroy_interaction_data_option(interaction->options[i]);
+        discord_destroy_interaction_data_option(interaction->options[i]);
     free(interaction->options);
 
     if (interaction->custom_id)
-        free(interaction->custom_id);                                  // message/modal
-    for (int i = 0; i < interaction->values_count; i++)                // message
-        disco_destroy_interaction_data_option(interaction->values[i]); // message
-    free(interaction->values);                                         // message
-    for (int i = 0; i < interaction->components_count; i++)            // modal
-        disco_destroy_component(interaction->components[i]);           // modal
-    free(interaction->components);                                     // modal
+        free(interaction->custom_id);                                    // message/modal
+    for (int i = 0; i < interaction->values_count; i++)                  // message
+        discord_destroy_interaction_data_option(interaction->values[i]); // message
+    free(interaction->values);                                           // message
+    for (int i = 0; i < interaction->components_count; i++)              // modal
+        discord_destroy_component(interaction->components[i]);           // modal
+    free(interaction->components);                                       // modal
     free(interaction);
 }
 
-void *disco_create_interaction_struct_json(cJSON *data) {
+void *discord_create_interaction_struct_json(cJSON *data) {
     cJSON *tmp;
     struct discord_interaction *inter = (struct discord_interaction *)calloc(1, sizeof(struct discord_interaction));
     inter->id = get_long_from_string_json(data, "id", 0);
@@ -71,20 +71,20 @@ void *disco_create_interaction_struct_json(cJSON *data) {
     inter->type = (enum Discord_Interaction_Type)get_int_from_json(data, "type", 1);
     tmp = cJSON_GetObjectItem(data, "data");
     if (tmp)
-        inter->data = disco_create_interaction_data_struct_json(tmp);
+        inter->data = discord_create_interaction_data_struct_json(tmp);
     inter->guild_id = get_long_from_string_json(data, "guild_id", 0);
     inter->channel_id = get_long_from_string_json(data, "channel_id", 0);
     tmp = cJSON_GetObjectItem(data, "user");
     if (tmp)
-        inter->user = disco_create_user_struct_json(tmp);
+        inter->user = discord_create_user_struct_json(tmp);
     tmp = cJSON_GetObjectItem(data, "member");
     if (tmp)
-        inter->member = disco_create_member_struct_json(tmp, inter->user);
+        inter->member = discord_create_member_struct_json(tmp, inter->user);
     inter->token = get_string_from_json(data, "token");
     inter->version = get_int_from_json(data, "version", 0);
     tmp = cJSON_GetObjectItem(data, "message");
     if (tmp)
-        inter->message = disco_create_message_struct_json(tmp);
+        inter->message = discord_create_message_struct_json(tmp);
     inter->app_permissions = get_string_from_json(data, "app_permissions");
     inter->locale = get_string_from_json(data, "locale");
     inter->guild_locale = get_string_from_json(data, "guild_locale");
@@ -92,17 +92,17 @@ void *disco_create_interaction_struct_json(cJSON *data) {
     return inter;
 }
 
-void disco_destroy_interaction(struct discord_interaction *interaction) {
+void discord_destroy_interaction(struct discord_interaction *interaction) {
     if (interaction->data)
-        disco_destroy_interaction_data(interaction->data);
+        discord_destroy_interaction_data(interaction->data);
     if (interaction->user)
-        disco_destroy_user(interaction->user);
+        discord_destroy_user(interaction->user);
     if (interaction->member)
-        disco_destroy_member(interaction->member);
+        discord_destroy_member(interaction->member);
     if (interaction->token)
         free(interaction->token);
     if (interaction->message)
-        disco_destroy_message(interaction->message);
+        discord_destroy_message(interaction->message);
     if (interaction->app_permissions)
         free(interaction->app_permissions);
     if (interaction->locale)
@@ -112,7 +112,7 @@ void disco_destroy_interaction(struct discord_interaction *interaction) {
     free(interaction);
 }
 
-void disco_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *recv) {
+void discord_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *recv) {
     cJSON *json = cJSON_CreateObject();
     cJSON_AddNumberToObject(json, "type", (double)cb->type);
 

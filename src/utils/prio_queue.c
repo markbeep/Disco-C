@@ -1,5 +1,5 @@
-#include "prio_queue.h"
 #include <stdlib.h>
+#include <utils/prio_queue.h>
 
 prio_node_t *prio_push(struct prio_queue *queue, enum Request_Type request_type, cJSON *data, int retry_after) {
     prio_node_t *node = (prio_node_t *)malloc(sizeof(struct prio_node));

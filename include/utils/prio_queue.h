@@ -1,5 +1,5 @@
-#include "../web/request.h"
 #include "cJSON/cJSON.h"
+#include <web/request.h>
 
 struct discord_prio_packet {
     int retry_after;

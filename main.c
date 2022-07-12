@@ -10,12 +10,12 @@
  */
 
 #include "examples/example.h"
-#include "src/discord/disco.h"
-#include "src/discord/structures/message.h"
-#include "src/utils/disco_logging.h"
+#include <discord/disco.h>
+#include <discord/message.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <utils/disco_logging.h>
 
 int main(int argc, char **argv) {
     (void)argc;
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE);
 
     // init to 0. Without this some errors could show up
-    disco_event_callbacks_t callbacks = {0};
+    discord_event_callbacks_t callbacks = {0};
     callbacks.on_ready = &example_on_ready;
     callbacks.on_message = &example_on_message;
     callbacks.on_message_edit = &example_on_edit;
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     callbacks.on_interaction = &example_interaction_create;
 
     // starts the bot. This function blocks
-    disco_start_bot(&callbacks);
+    discord_start_bot(&callbacks);
 
     return 0;
 }

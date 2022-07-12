@@ -1,14 +1,14 @@
-#include "disco.h"
-#include "../utils/cache.h"
-#include "../utils/disco_logging.h"
-#include "../web/gateway.h"
-#include "../web/request.h"
 #include <cJSON/cJSON.h>
 #include <curl/curl.h>
+#include <discord/disco.h>
 #include <stdlib.h>
 #include <string.h>
+#include <utils/cache.h>
+#include <utils/disco_logging.h>
+#include <web/gateway.h>
+#include <web/request.h>
 
-void disco_start_bot(disco_event_callbacks_t *callbacks) {
+void discord_start_bot(discord_event_callbacks_t *callbacks) {
     // LOG LEVEL
     int logs = LLL_USER | LLL_ERR | LLL_WARN;
     lws_set_log_level(logs, NULL);
@@ -23,7 +23,7 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     bot.thread_pool = t_pool_init(t_process_count());
 
     // inits the cache
-    if (0 != disco_cache_init(1000, 1000, 1000, NULL)) {
+    if (0 != discord_cache_init(1000, 1000, 1000, NULL)) {
         d_log_err("Cache initialization failed\n");
         exit(1);
     }
@@ -42,9 +42,9 @@ void disco_start_bot(disco_event_callbacks_t *callbacks) {
     websocket_destroy_client(&client);
     // if there is a bot user, destroy it
     if (bot.user)
-        disco_destroy_user(bot.user);
+        discord_destroy_user(bot.user);
     curl_global_cleanup();
-    disco_cache_destroy();
+    discord_cache_destroy();
 }
 
 char *get_string_from_json(cJSON *data, const char *name) {
@@ -70,7 +70,7 @@ int get_int_from_json(cJSON *data, const char *name, int default_) {
     return field->valueint;
 }
 
-int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, disco_struct_fn func) {
+int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func) {
     cJSON *tmp = cJSON_GetObjectItem(data, name);
     int size = cJSON_GetArraySize(tmp);
     if (size <= 0)

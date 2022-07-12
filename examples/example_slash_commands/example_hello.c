@@ -1,14 +1,14 @@
-#include "../../src/discord/structures/command.h"
-#include "../../src/discord/structures/interaction.h"
-#include "../../src/utils/disco_logging.h"
+#include <discord/command.h>
+#include <discord/interaction.h>
 #include <string.h>
+#include <utils/disco_logging.h>
 
 void hello_callback(struct discord_interaction *interaction) {
     struct discord_interaction_callback callback = {
         .type = DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE,
         .data.message.content = "Hello there",
     };
-    disco_send_interaction(&callback, interaction);
+    discord_send_interaction(&callback, interaction);
 }
 
 int register_hello_command(void) {

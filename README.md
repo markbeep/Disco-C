@@ -8,8 +8,7 @@ The library is built to work async, which means that every received event is han
     1. [Copy Paste Command](#copy-paste-command)
     2. [Required Libraries](#required-libraries)
 2. [File Explanations](#file-explanations)
-3. [`Disco` vs `Discord`](#why-are-some-things-called-disco_-while-others-are-called-discord_)
-5. [Progress](#progress)
+3. [Progress](#progress)
 
 ## Installing
 ### Copy Paste Command
@@ -22,11 +21,16 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
   - `sudo apt install libcurl4-gnutls-dev`
 - https://github.com/DaveGamble/cJSON/
 - https://github.com/sheredom/hashmap.h/
+- https://github.com/ThrowTheSwitch/Unity (optional for testing)
+
+*Note:* When building the project yourself, make sure to add `-Iinclude -Iexternal -I.` to add those three include directories. The local include path is because the `config.h` with the bot token will be in the local directory. Additionally you'll find the `cJSON.c` and `unity.c` files in the `external` directory. 
 
 ## File Explanations
-- src/web/**websocket**: Contains the required methods to abstract the background websocket connection.
-- src/web/**gateway**: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.
-- src/web/**request**: Helper file that abstracts the HTTP GET/POST/PATCH/etc. requests.
+The file layout is intended to follow the Pitchfork standard. Some things aren't yet done (like the main.c file being out in the open), but it's in the making.
+- src/web/
+  - **websocket**: Contains the required methods to abstract the background websocket connection.
+  - **gateway**: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.
+  - **request**: Helper file that abstracts the HTTP GET/POST/PATCH/etc. requests.
 - src/utils
   - **cache**: The cache uses the `hashmap.h` library to create a linked hashmap for messages, channels and guilds.
   - **disco_logging**: Personalized logging library which can be used to log messages to the console. The file path is additionally added to each message.
@@ -35,17 +39,13 @@ Use `git clone --recurse-submodules git@github.com:markbeep/Disco-C.git` to clon
 - src/discord/
   - **disco**: The main functions of Disco-C. It contains the highest level of abstraction for running the bot.
   - **event**: Handles received Discord events.
-  - **structures/**: All of the Discord structure definitions.
+  - **structures**: All of the Discord structure definitions.
   - Structure specific functions are all defined in their corresponding source files.
-- **example**/: Example implementations of how the bot syntax looks like.
-- **lib**/: External libraries not downloadable with the APT package manager (basically just Github libraries). Will be renamed to `include` in the future to maintain the Pitchfork standard.
-
-## Why are some things called `disco_...` while others are called `discord_...`?
-*(In the future everything will be called `discord_` for consistency)*
-
-All of the structures that are taken straight from the [Discord documentation](https://discord.com/developers/docs/) are all named with a leading `discord_`. At the structure definition there should also be a link leading to the exact place in the documentation that the definition was taken from.
-
-On the other hand, everything starting with `disco_` is a public library method that can be used at the top level to control the bot.
+- **examples**: Example implementations of how the bot syntax looks like.
+- **include**: All of the header definitions are in this folder.
+- **external**: External libraries that are required.
+- **docs**: Configuration files to automatically generate the wiki.
+- **tests**: Basic tests which don't really test a lot.
 
 ## Progress
 - Interactions
@@ -54,7 +54,7 @@ On the other hand, everything starting with `disco_` is a public library method 
   - [x] Register Commands
     - [x] Global
     - [x] Guild
-- API Calls
+- Commands
   - [x] Send messages
     - [x] Content
     - [x] Embeds

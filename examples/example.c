@@ -1,8 +1,9 @@
 #include "example.h"
-#include "../src/utils/disco_logging.h"
 #include "example_slash_commands/example_slash.h"
 #include "sys/time.h"
+#include <discord/commands/message_send.h>
 #include <stdbool.h>
+#include <utils/disco_logging.h>
 
 void example_on_ready(bot_client_t *bot) {
     printf("====================================\n");
@@ -33,7 +34,7 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
                 .embed = &embed,
             };
             // sends the initial message to a channel
-            struct discord_message *msg = disco_channel_send_message(bot, NULL, message->channel_id, &send_message, true);
+            struct discord_message *msg = discord_channel_send_message(bot, NULL, message->channel_id, &send_message, true);
 
             // gets the time passed
             gettimeofday(&stop, NULL);
@@ -44,9 +45,9 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             // we can reuse the create_message struct from before
             embed.description = time_passed;
             // edits the message right after the message has been sent to check the latency
-            disco_channel_edit_message(bot, NULL, msg->channel_id, msg->id, &send_message);
+            discord_channel_edit_message(bot, NULL, msg->channel_id, msg->id, &send_message);
             // don't forget to destroy the received message in the end to avoid memory leaks
-            disco_destroy_message(msg);
+            discord_destroy_message(msg);
 
         } else if (strncmp(message->content, "!exit", 6) == 0) {
             // softly ends the bot
@@ -62,18 +63,18 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
     char content[120];
     sprintf(content, "Message %ld was edited. Message in cache: %s. Old message ID = %ld", new->id, old ? "Yes" : "No", old ? old->id : 0);
-    disco_channel_send_message(bot, content, new->channel_id, NULL, false);
+    discord_channel_send_message(bot, content, new->channel_id, NULL, false);
 }
 
 void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *message) {
     if (message) {
         char content[50];
         sprintf(content, "Cache: Yes\nID: `%ld`", message_id);
-        disco_channel_send_message(bot, content, channel_id, NULL, false);
+        discord_channel_send_message(bot, content, channel_id, NULL, false);
     } else {
         char content[100];
         sprintf(content, "Cache: No\nID: %ld, channel ID: %ld, guild ID: %ld", message_id, channel_id, guild_id);
-        disco_channel_send_message(bot, content, channel_id, NULL, false);
+        discord_channel_send_message(bot, content, channel_id, NULL, false);
     }
 }
 
@@ -110,5 +111,5 @@ void example_interaction_create(bot_client_t *bot, struct discord_interaction *i
         hello_callback(interaction);
     }
 
-    disco_destroy_interaction(interaction); // cleanup once we don't need it anymore
+    discord_destroy_interaction(interaction); // cleanup once we don't need it anymore
 }

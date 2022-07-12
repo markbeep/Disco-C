@@ -1,12 +1,12 @@
-#include "gateway.h"
-#include "../../config.h"
-#include "../discord/event.h"
-#include "../utils/disco_logging.h"
-#include "websocket.h"
 #include <cJSON/cJSON.h>
+#include <config.h>
+#include <discord/event.h>
 #include <pthread.h>
 #include <time.h>
 #include <unistd.h>
+#include <utils/disco_logging.h>
+#include <web/gateway.h>
+#include <web/websocket.h>
 
 // sequence id
 static int s = -1;

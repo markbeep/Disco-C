@@ -7,6 +7,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Guild
+ * Guild functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/guild#guild-object
 struct discord_guild {
     uint64_t id;
@@ -60,13 +67,14 @@ struct discord_guild {
  * @param data
  * @return void* discord_guild struct
  */
-void *disco_create_guild_struct_json(cJSON *data);
+void *discord_create_guild_struct_json(cJSON *data);
 
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param ch guild struct
  */
-void disco_destroy_guild(struct discord_guild *guild);
+void discord_destroy_guild(struct discord_guild *guild);
 
+/** @}*/
 #endif

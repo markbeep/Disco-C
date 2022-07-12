@@ -1,11 +1,11 @@
-#include "request.h"
-#include "../../config.h"
-#include "../utils/disco_logging.h"
-#include "../utils/timer.h"
+#include <config.h>
 #include <libwebsockets.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <utils/disco_logging.h>
+#include <utils/timer.h>
+#include <web/request.h>
 
 /**
  * @brief Callback function to write receiving data into a memory buffer

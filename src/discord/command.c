@@ -1,10 +1,10 @@
-#include "structures/command.h"
-#include "../../config.h"
-#include "../utils/disco_logging.h"
-#include "../web/request.h"
 #include <cJSON/cJSON.h>
+#include <config.h>
+#include <discord/command.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <utils/disco_logging.h>
+#include <web/request.h>
 
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales) {
     if (locales->da)

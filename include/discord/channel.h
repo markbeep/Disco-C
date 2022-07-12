@@ -7,6 +7,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Channel
+ * Channel functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 enum Discord_Channel_Type { CHANNEL_GUILD_TEXT = 0,
                             CHANNEL_DM = 1,
@@ -68,13 +75,13 @@ struct discord_channel_mention {
  * @param data
  * @return void* discord_channel struct
  */
-void *disco_create_channel_struct_json(cJSON *data);
+void *discord_create_channel_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param ch channel struct
  */
-void disco_destroy_channel(struct discord_channel *ch);
+void discord_destroy_channel(struct discord_channel *ch);
 
 /**
  * @brief Creates a channel_mention structure from a given JSON
@@ -82,12 +89,13 @@ void disco_destroy_channel(struct discord_channel *ch);
  * @param data
  * @return void* discord_channel_mention struct
  */
-void *disco_create_channel_mention_struct_json(cJSON *data);
+void *discord_create_channel_mention_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param ch channel_mention struct
  */
-void disco_destroy_channel_mention(struct discord_channel_mention *ch);
+void discord_destroy_channel_mention(struct discord_channel_mention *ch);
 
+/** @}*/
 #endif

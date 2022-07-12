@@ -7,6 +7,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Component
+ * Component functions and structures
+ * @{
+ *
+ */
+
 struct discord_component;
 
 enum Discord_Component_Type { COMPONENT_ACTION_ROW = 1,
@@ -51,13 +58,13 @@ struct discord_select_option {
  * @param data
  * @return void* discord_select_option struct
  */
-void *disco_create_select_option_struct(cJSON *data);
+void *discord_create_select_option_struct(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param option
  */
-void disco_destroy_select_option(struct discord_select_option *option);
+void discord_destroy_select_option(struct discord_select_option *option);
 
 // https://discord.com/developers/docs/interactions/message-components#select-menu-object
 struct discord_select_menu {
@@ -102,13 +109,13 @@ struct discord_component {
  * @param data
  * @return void* discord_component struct
  */
-void *disco_create_component_struct_json(cJSON *data);
+void *discord_create_component_struct_json(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
  * @param c discord_component struct
  */
-void disco_destroy_component(struct discord_component *c);
+void discord_destroy_component(struct discord_component *c);
 
 /**
  * @brief Fills in a JSON with the attributes of the component structure.
@@ -118,4 +125,5 @@ void disco_destroy_component(struct discord_component *c);
  */
 void discord_fill_json_with_component(cJSON *json, struct discord_component *component);
 
+/** @}*/
 #endif

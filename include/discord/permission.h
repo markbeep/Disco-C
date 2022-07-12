@@ -3,6 +3,13 @@
 
 #include <cJSON/cJSON.h>
 
+/**
+ * \addtogroup Permission
+ * Permission functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/channel#overwrite-object
 struct discord_overwrite {
     char *id;
@@ -12,7 +19,8 @@ struct discord_overwrite {
 };
 
 // TODO implement
-void *disco_create_overwrite_struct_json(cJSON *data);
-void disco_destroy_overwrite(struct discord_overwrite *overwrite);
+void *discord_create_overwrite_struct_json(cJSON *data);
+void discord_destroy_overwrite(struct discord_overwrite *overwrite);
 
+/** @}*/
 #endif

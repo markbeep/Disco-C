@@ -1,4 +1,4 @@
-#include "disco_logging.h"
+#include <utils/disco_logging.h>
 
 static int log_level = 0;
 

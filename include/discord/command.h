@@ -5,6 +5,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Command
+ * Command functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
 enum Discord_Application_Command_Type {
     COMMAND_CHAT_INPUT = 1,
@@ -115,10 +122,12 @@ struct discord_application_command {
  * @param json JSON struct to fill the values in.
  * @param locales struct to be used to fill in the JSON.
  */
+
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
 int discord_command_register(struct discord_application_command *command);
 int discord_command_update(struct discord_application_command *command, int64_t command_id);
 int discord_command_delete_global(int64_t command_id);
 int discord_command_delete_guild(int64_t guild_id, int64_t command_id);
 
+/** @}*/
 #endif

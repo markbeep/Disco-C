@@ -5,6 +5,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Thread
+ * Thread functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/channel#thread-metadata-object
 struct discord_thread_metadata {
     bool archived;
@@ -16,8 +23,8 @@ struct discord_thread_metadata {
 };
 
 // TODO implement
-void *disco_create_thread_metadata_struct_json(cJSON *data);
-void disco_destroy_thread_metadata(struct discord_thread_metadata *thread);
+void *discord_create_thread_metadata_struct_json(cJSON *data);
+void discord_destroy_thread_metadata(struct discord_thread_metadata *thread);
 
 // https://discord.com/developers/docs/resources/channel#thread-member-object
 struct discord_thread_member {
@@ -28,7 +35,8 @@ struct discord_thread_member {
 };
 
 // TODO implement
-void *disco_create_thread_member_struct_json(cJSON *data);
-void disco_destroy_thread_member(struct discord_thread_member *member);
+void *discord_create_thread_member_struct_json(cJSON *data);
+void discord_destroy_thread_member(struct discord_thread_member *member);
 
+/** @}*/
 #endif

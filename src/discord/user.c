@@ -1,11 +1,11 @@
-#include "structures/user.h"
-#include "disco.h"
 #include <cJSON/cJSON.h>
+#include <discord/disco.h>
+#include <discord/user.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void *disco_create_user_struct_json(cJSON *data) {
+void *discord_create_user_struct_json(cJSON *data) {
     struct discord_user *user = (struct discord_user *)calloc(1, sizeof(struct discord_user));
     user->id = get_long_from_string_json(data, "id", 0);
     user->username = get_string_from_json(data, "username");
@@ -25,7 +25,7 @@ void *disco_create_user_struct_json(cJSON *data) {
     return user;
 }
 
-void disco_destroy_user(struct discord_user *user) {
+void discord_destroy_user(struct discord_user *user) {
     if (user->username)
         free(user->username);
     if (user->discriminator)
@@ -42,12 +42,12 @@ void disco_destroy_user(struct discord_user *user) {
 }
 
 // TODO implement
-void *disco_create_member_struct_json(cJSON *data, struct discord_user *user) {
+void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) {
     (void)data;
     (void)user;
     return NULL;
 }
 
-void disco_destroy_member(struct discord_member *member) {
+void discord_destroy_member(struct discord_member *member) {
     (void)member;
 }

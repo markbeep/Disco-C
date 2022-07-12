@@ -15,7 +15,7 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
     -lm
 BUILD	= build
 TEST = tests
-INCLUDE = -Ilib
+INCLUDE = -Iinclude -Iexternal -I.
 COMPILE = $(CC) $(INCLUDE) $(CFLAGS) $(LIBS)
 
 WEB_SOURCES := $(wildcard src/web/*.c)
@@ -39,7 +39,7 @@ TEST_EXECUTABLES=$(patsubst $(TEST)/%.c, $(TEST)/%, $(TEST_SOURCES))
 $(TEST_EXECUTABLES): $(TEST)/% : $(TEST)/%.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
 	$(CC) -zmuldefs $(CFLAGS) $(INCLUDE) $@.c $(WEB_OBJECTS) \
 	$(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(TEST_SOURCES) \
-	$(BUILD)/cJSON.o lib/Unity/src/unity.c $(LIBS) -o $@
+	$(BUILD)/cJSON.o external/Unity/src/unity.c $(LIBS) -o $@
 
 # COMPILES THE EXAMPLE FILES
 EXAMPLE_SOURCES := $(wildcard examples/*.c)
@@ -68,7 +68,7 @@ config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@
 
 cJSON:
-	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) lib/cJSON/cJSON.c -o $(BUILD)/cJSON.o
+	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o
 
 test: main $(TEST_EXECUTABLES)
 

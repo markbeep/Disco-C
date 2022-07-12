@@ -1,9 +1,9 @@
-#include "structures/message.h"
-#include "../utils/disco_logging.h"
-#include "../web/request.h"
-#include "structures/interaction.h"
-#include <curl/curl.h>
+#include <discord/commands/message_send.h>
+#include <discord/interaction.h>
+#include <discord/message.h>
 #include <string.h>
+#include <utils/disco_logging.h>
+#include <web/request.h>
 
 static void embed_add_footer(cJSON *embed, struct discord_embed_footer *footer) {
     cJSON *footer_obj = cJSON_CreateObject();
@@ -187,7 +187,7 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
     }
 }
 
-struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
+struct discord_message *discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
     discord_fill_json_with_message(json, content, message);
@@ -208,7 +208,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
 
         if (return_struct) { // only if a struct is requested to be returned
             cJSON *res_json = cJSON_Parse(response);
-            sent_message = (struct discord_message *)disco_create_message_struct_json(res_json);
+            sent_message = (struct discord_message *)discord_create_message_struct_json(res_json);
             cJSON_Delete(res_json);
         }
     }
@@ -219,7 +219,7 @@ struct discord_message *disco_channel_send_message(bot_client_t *bot, char *cont
     return sent_message;
 }
 
-void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {
+void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {
     (void)bot;
     cJSON *json = cJSON_CreateObject();
 
@@ -266,7 +266,7 @@ void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t chann
     free(response);
 }
 
-void *disco_create_message_struct_json(cJSON *data) {
+void *discord_create_message_struct_json(cJSON *data) {
     struct discord_message *msg = (struct discord_message *)calloc(1, sizeof(struct discord_message));
     cJSON *tmp_json = NULL;
 
@@ -278,11 +278,11 @@ void *disco_create_message_struct_json(cJSON *data) {
         // only creates a user if its not a webhook
         cJSON *user = cJSON_GetObjectItem(data, "user");
         if (user)
-            msg->author = (struct discord_user *)disco_create_user_struct_json(user);
+            msg->author = (struct discord_user *)discord_create_user_struct_json(user);
         // if theres additionally a member, it creates that as well
         cJSON *member = cJSON_GetObjectItem(data, "member");
         if (member)
-            msg->member = (struct discord_member *)disco_create_member_struct_json(member, msg->author);
+            msg->member = (struct discord_member *)discord_create_member_struct_json(member, msg->author);
     }
     msg->content = get_string_from_json(data, "content");
     // gives us the guarantee that if the message content is empty,
@@ -301,7 +301,7 @@ void *disco_create_message_struct_json(cJSON *data) {
         msg->mentions = (struct discord_member **)malloc((size_t)msg->mentions_count * sizeof(struct discord_members *));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mentions[i++] = (struct discord_member *)disco_create_member_struct_json(cur, NULL);
+            msg->mentions[i++] = (struct discord_member *)discord_create_member_struct_json(cur, NULL);
         }
     }
 
@@ -318,13 +318,13 @@ void *disco_create_message_struct_json(cJSON *data) {
     }
 
     // mention channels
-    msg->mention_channels_count = get_array_from_json(data, "mention_channels", (void ***)&msg->mention_channels, sizeof(struct discord_channel_mention), &disco_create_channel_mention_struct_json);
+    msg->mention_channels_count = get_array_from_json(data, "mention_channels", (void ***)&msg->mention_channels, sizeof(struct discord_channel_mention), &discord_create_channel_mention_struct_json);
 
     // attachments
-    msg->attachments_count = get_array_from_json(data, "attachments", (void ***)&msg->attachments, sizeof(struct discord_attachment), &disco_create_attachment_struct_json);
+    msg->attachments_count = get_array_from_json(data, "attachments", (void ***)&msg->attachments, sizeof(struct discord_attachment), &discord_create_attachment_struct_json);
 
     // reactions
-    msg->reactions_count = get_array_from_json(data, "reactions", (void ***)&msg->reactions, sizeof(struct discord_reaction), &disco_create_reaction_struct_json);
+    msg->reactions_count = get_array_from_json(data, "reactions", (void ***)&msg->reactions, sizeof(struct discord_reaction), &discord_create_reaction_struct_json);
 
     msg->nonce = get_string_from_json(data, "nonce");
     msg->pinned = get_bool_from_json(data, "pinned", 0);
@@ -333,48 +333,48 @@ void *disco_create_message_struct_json(cJSON *data) {
     // activity
     tmp_json = cJSON_GetObjectItem(data, "activity");
     if (tmp_json)
-        msg->activity = (struct discord_message_activity *)disco_create_message_activity_struct_json(tmp_json);
+        msg->activity = (struct discord_message_activity *)discord_create_message_activity_struct_json(tmp_json);
 
     // application
     tmp_json = cJSON_GetObjectItem(data, "application");
     if (tmp_json)
-        msg->application = (struct discord_application *)disco_create_application_struct_json(tmp_json);
+        msg->application = (struct discord_application *)discord_create_application_struct_json(tmp_json);
     msg->application_id = get_long_from_string_json(data, "application_id", 0);
 
     // message_reference
     tmp_json = cJSON_GetObjectItem(data, "message_reference");
     if (tmp_json)
-        msg->message_reference = (struct discord_message_reference *)disco_create_message_reference_struct_json(tmp_json);
+        msg->message_reference = (struct discord_message_reference *)discord_create_message_reference_struct_json(tmp_json);
 
     msg->flags = get_int_from_json(data, "flags", 0);
 
     // referenced_message
     tmp_json = cJSON_GetObjectItem(data, "referenced_message");
     if (tmp_json && !cJSON_IsNull(tmp_json))
-        msg->referenced_message = (struct discord_message *)disco_create_message_struct_json(tmp_json);
+        msg->referenced_message = (struct discord_message *)discord_create_message_struct_json(tmp_json);
 
     // interaction
     tmp_json = cJSON_GetObjectItem(data, "interaction");
     if (tmp_json)
-        msg->interaction = (struct discord_interaction *)disco_create_interaction_struct_json(tmp_json);
+        msg->interaction = (struct discord_interaction *)discord_create_interaction_struct_json(tmp_json);
 
     // components
-    msg->components_count = get_array_from_json(data, "components", (void ***)&msg->components, sizeof(struct discord_component), &disco_create_component_struct_json);
+    msg->components_count = get_array_from_json(data, "components", (void ***)&msg->components, sizeof(struct discord_component), &discord_create_component_struct_json);
 
     // sticker_items
-    msg->sticker_items_count = get_array_from_json(data, "sticker_items", (void ***)&msg->sticker_items, sizeof(struct discord_message_sticker_item), &disco_create_message_sticker_item_struct_json);
+    msg->sticker_items_count = get_array_from_json(data, "sticker_items", (void ***)&msg->sticker_items, sizeof(struct discord_message_sticker_item), &discord_create_message_sticker_item_struct_json);
 
     // stickers
-    msg->stickers_count = get_array_from_json(data, "stickers", (void ***)&msg->stickers, sizeof(struct discord_sticker), &disco_create_sticker_struct_json);
+    msg->stickers_count = get_array_from_json(data, "stickers", (void ***)&msg->stickers, sizeof(struct discord_sticker), &discord_create_sticker_struct_json);
 
     return msg;
 }
 
-void disco_destroy_message(struct discord_message *message) {
+void discord_destroy_message(struct discord_message *message) {
     if (message->author)
-        disco_destroy_user(message->author);
+        discord_destroy_user(message->author);
     if (message->member)
-        disco_destroy_member(message->member);
+        discord_destroy_member(message->member);
     if (message->content)
         free(message->content);
     if (message->timestamp)
@@ -382,61 +382,61 @@ void disco_destroy_message(struct discord_message *message) {
     if (message->edited_timestamp)
         free(message->edited_timestamp);
     for (int i = 0; i < message->mentions_count; i++)
-        disco_destroy_member(message->mentions[i]);
+        discord_destroy_member(message->mentions[i]);
     if (message->mentions)
         free(message->mentions);
     if (message->mention_roles)
         free(message->mention_roles);
     for (int i = 0; i < message->mention_channels_count; i++)
-        disco_destroy_channel(message->mention_channels[i]);
+        discord_destroy_channel(message->mention_channels[i]);
     if (message->mention_channels)
         free(message->mention_channels);
     for (int i = 0; i < message->attachments_count; i++)
-        disco_destroy_attachment(message->attachments[i]);
+        discord_destroy_attachment(message->attachments[i]);
     if (message->attachments)
         free(message->attachments);
     for (int i = 0; i < message->embeds_count; i++)
-        disco_destroy_embed(message->embeds[i]);
+        discord_destroy_embed(message->embeds[i]);
     if (message->embeds)
         free(message->embeds);
     for (int i = 0; i < message->reactions_count; i++)
-        disco_destroy_reaction(message->reactions[i]);
+        discord_destroy_reaction(message->reactions[i]);
     if (message->reactions)
         free(message->reactions);
     if (message->nonce)
         free(message->nonce);
     if (message->activity)
-        disco_destroy_message_activity(message->activity);
+        discord_destroy_message_activity(message->activity);
     if (message->application)
-        disco_destroy_application(message->application);
+        discord_destroy_application(message->application);
     if (message->message_reference)
-        disco_destroy_message_reference(message->message_reference);
+        discord_destroy_message_reference(message->message_reference);
     if (message->interaction)
-        disco_destroy_interaction(message->interaction);
+        discord_destroy_interaction(message->interaction);
     if (message->thread)
-        disco_destroy_channel(message->thread);
+        discord_destroy_channel(message->thread);
     for (int i = 0; i < message->components_count; i++)
-        disco_destroy_component(message->components[i]);
+        discord_destroy_component(message->components[i]);
     if (message->components)
         free(message->components);
     for (int i = 0; i < message->sticker_items_count; i++)
-        disco_destroy_message_sticker(message->sticker_items[i]);
+        discord_destroy_message_sticker(message->sticker_items[i]);
     if (message->sticker_items)
         free(message->sticker_items);
     for (int i = 0; i < message->stickers_count; i++)
-        disco_destroy_sticker(message->stickers[i]);
+        discord_destroy_sticker(message->stickers[i]);
     if (message->stickers)
         free(message->stickers);
     free(message);
 }
 
-void *disco_create_message_reference_struct_json(cJSON *data) {
+void *discord_create_message_reference_struct_json(cJSON *data) {
     struct discord_message_reference *msg = (struct discord_message_reference *)calloc(1, sizeof(struct discord_message_reference));
     msg->message_id = get_long_from_string_json(data, "message_id", 0);
     msg->channel_id = get_long_from_string_json(data, "channel_id", 0);
     msg->guild_id = get_long_from_string_json(data, "guild_id", 0);
     return msg;
 }
-void disco_destroy_message_reference(struct discord_message_reference *message) {
+void discord_destroy_message_reference(struct discord_message_reference *message) {
     free(message);
 }

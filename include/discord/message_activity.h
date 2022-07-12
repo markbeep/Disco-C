@@ -4,6 +4,13 @@
 #include <cJSON/cJSON.h>
 #include <stdint.h>
 
+/**
+ * \addtogroup Message_Activity
+ * Message Activity functions and structures
+ * @{
+ *
+ */
+
 enum Discord_Message_Activity_Type { MESSAGE_ACTIVITY_JOIN = 1,
                                      MESSAGE_ACTIVITY_SPECTATE = 2,
                                      MESSAGE_ACTIVITY_LISTEN = 3,
@@ -15,7 +22,8 @@ struct discord_message_activity {
 };
 
 // TODO implement
-void *disco_create_message_activity_struct_json(cJSON *data);
-void disco_destroy_message_activity(struct discord_message_activity *activity);
+void *discord_create_message_activity_struct_json(cJSON *data);
+void discord_destroy_message_activity(struct discord_message_activity *activity);
 
+/** @}*/
 #endif

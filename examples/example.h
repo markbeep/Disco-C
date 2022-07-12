@@ -1,5 +1,5 @@
-#include "../src/discord/disco.h"
-#include "../src/discord/structures/message.h"
+#include <discord/disco.h>
+#include <discord/message.h>
 
 void example_on_ready(bot_client_t *bot);
 void example_on_message(bot_client_t *bot, struct discord_message *message);

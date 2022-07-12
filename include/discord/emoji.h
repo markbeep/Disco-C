@@ -5,6 +5,13 @@
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 
+/**
+ * \addtogroup Emoji
+ * Emoji functions and structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/emoji#emoji-object
 struct discord_emoji {
     char *id;
@@ -18,7 +25,8 @@ struct discord_emoji {
     bool available;
 };
 
-void *disco_create_emoji_struct_json(cJSON *data);
-void disco_destroy_emoji(struct discord_emoji *emoji);
+void *discord_create_emoji_struct_json(cJSON *data);
+void discord_destroy_emoji(struct discord_emoji *emoji);
 
+/** @}*/
 #endif

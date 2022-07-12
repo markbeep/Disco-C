@@ -1,7 +1,7 @@
 #ifndef DISCO_GATEWAY
 #define DISCO_GATEWAY
 
-#include "../discord/disco.h"
+#include <discord/disco.h>
 
 #define DISCORD_DISPATCH 0
 #define DISCORD_HEARTBEAT 1

@@ -1,25 +1,25 @@
 #ifndef DISCO
 #define DISCO
 
-#include "../utils/t_pool.h"
-#include "../web/websocket.h"
-#include "structures/application.h"
-#include "structures/attachment.h"
-#include "structures/channel.h"
-#include "structures/component.h"
-#include "structures/guild.h"
-#include "structures/interaction.h"
-#include "structures/message.h"
-#include "structures/message_activity.h"
-#include "structures/permission.h"
-#include "structures/reaction.h"
-#include "structures/role.h"
-#include "structures/sticker.h"
-#include "structures/thread.h"
-#include "structures/user.h"
 #include <cJSON/cJSON.h>
+#include <discord/application.h>
+#include <discord/attachment.h>
+#include <discord/channel.h>
+#include <discord/component.h>
+#include <discord/guild.h>
+#include <discord/interaction.h>
+#include <discord/message.h>
+#include <discord/message_activity.h>
+#include <discord/permission.h>
+#include <discord/reaction.h>
+#include <discord/role.h>
+#include <discord/sticker.h>
+#include <discord/thread.h>
+#include <discord/user.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <utils/t_pool.h>
+#include <web/websocket.h>
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
@@ -29,7 +29,7 @@ typedef struct bot_client bot_client_t;
 struct discord_message;
 struct discord_interaction;
 
-typedef struct disco_event_callbacks {
+typedef struct discord_event_callbacks {
     void (*on_ready)(bot_client_t *);
     void (*on_resumed)(bot_client_t *);
     void (*on_message)(bot_client_t *, struct discord_message *message);
@@ -45,11 +45,11 @@ typedef struct disco_event_callbacks {
     void (*on_channel_update)(bot_client_t *, struct discord_channel *old, struct discord_channel *new);
     void (*on_channel_delete)(bot_client_t *, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *);
     void (*on_interaction)(bot_client_t *, struct discord_interaction *);
-} disco_event_callbacks_t;
+} discord_event_callbacks_t;
 
 struct bot_client {
     websocket_client_t *websocket_client;
-    disco_event_callbacks_t *callbacks;
+    discord_event_callbacks_t *callbacks;
     struct discord_user *user;
     t_pool_t *thread_pool;
     long heartbeat_latency;
@@ -61,14 +61,14 @@ struct bot_client {
  * @param callbacks A callbacks object containing the callbacks to
  * the event functions.
  */
-void disco_start_bot(disco_event_callbacks_t *callbacks);
+void discord_start_bot(discord_event_callbacks_t *callbacks);
 
 /**
  * @brief Frees up memory for a bot instance.
  *
  * @param bot Bot instance
  */
-void disco_free_bot(bot_client_t *bot);
+void discord_free_bot(bot_client_t *bot);
 
 char *get_string_from_json(cJSON *data, const char *name);
 /**
@@ -90,8 +90,8 @@ bool get_bool_from_json(cJSON *data, const char *name, int default_);
  */
 int get_int_from_json(cJSON *data, const char *name, int default_);
 
-typedef void *(*disco_struct_fn)(cJSON *);
-int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, disco_struct_fn func);
+typedef void *(*discord_struct_fn)(cJSON *);
+int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func);
 
 uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
 
