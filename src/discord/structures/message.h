@@ -15,6 +15,13 @@
 
 typedef struct bot_client bot_client_t;
 
+/**
+ * \addtogroup Message
+ * Message Functions and Structures
+ * @{
+ *
+ */
+
 // https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
 struct discord_allowed_mentions {
     int parse_role_mentions;     // if roles should be mentioned
@@ -172,4 +179,5 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
 struct discord_message *disco_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct);
 void disco_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message);
 
+/** @} (Closes the Doxygen group) */
 #endif
