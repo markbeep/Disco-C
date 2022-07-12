@@ -1,530 +1,119 @@
-<!DOCTYPE html>
-<html  lang="en">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>struct event_pool_workload</title>
-    
-          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
-          <link rel="stylesheet" href="_static/doxyrest-pygments.css" type="text/css" />
-      
-      <!-- sphinx script_files -->
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/target-highlight.js"></script>
-
-      
-      <!-- bundled in js (rollup iife) -->
-      <!-- <script src="_static/theme-vendors.js"></script> -->
-      <script src="_static/theme.js" defer></script>
-    
-  <link rel="index" title="Index" href="genindex.html" />
-  <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="struct node" href="struct_node.html" />
-  <link rel="prev" title="struct edit_message" href="struct_edit_message.html" /> 
-  </head>
-
-  <body>
-    <div id="app">
-    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
-  <router-link to="index.html" class="home-link">
-    
-      <span class="site-name">Disco-C</span>
-    
-  </router-link>
-
-  <div class="links">
-    <navlinks class="can-hide">
-
-  
-    <div class="nav-item">
-      <a href="index.html#disco-c-documentation"
-         class="nav-link ">
-         disco-c documentation
-      </a>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>struct event_pool_workload &#8212; Disco-C  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/doxyrest-pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/doxyrest-sphinxdoc.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/target-highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="struct node" href="struct_node.html" />
+    <link rel="prev" title="struct edit_message" href="struct_edit_message.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="struct_node.html" title="struct node"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="struct_edit_message.html" title="struct edit_message"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Disco-C  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="global.html" accesskey="U">Global Namespace</a> &#187;</li> 
+      </ul>
     </div>
-  
-    <div class="nav-item">
-      <a href="global.html#global-namespace"
-         class="nav-link  router-link-active">
-         global namespace
-      </a>
-    </div>
-  
-
-
-
-    </navlinks>
-  </div>
-</navbar>
-
-      
-      <div class="sidebar-mask" @click="toggleSidebar(false)">
-      </div>
-        <sidebar @toggle-sidebar="toggleSidebar">
-          
-          <navlinks>
-            
-
-  
-    <div class="nav-item">
-      <a href="index.html#disco-c-documentation"
-         class="nav-link ">
-         disco-c documentation
-      </a>
-    </div>
-  
-    <div class="nav-item">
-      <a href="global.html#global-namespace"
-         class="nav-link  router-link-active">
-         global namespace
-      </a>
-    </div>
-  
-
-
-
-            
-          </navlinks><div id="searchbox" class="searchbox" role="search">
-  <div class="caption"><span class="caption-text">Quick search</span>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="struct_edit_message.html"
+                        title="previous chapter">struct edit_message</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="struct_node.html"
+                        title="next chapter">struct node</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/struct_event_pool_workload.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
-      <form class="search" action="search.html" method="get">
-        <input type="text" name="q" />
-        <input type="submit" value="Search" />
-        <input type="hidden" name="check_keywords" value="yes" />
-        <input type="hidden" name="area" value="default" />
-      </form>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
     </div>
-  </div>
-</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
-  
-    <div class="sidebar-group">
-      <p class="caption">
-        <span class="caption-text"><a href="index.html#disco-c-documentation">disco-c documentation</a></span>
-      </p>
-      <ul class="">
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Application.html" class="reference internal ">Application</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Attachment.html" class="reference internal ">Attachment</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Channel.html" class="reference internal ">Channel</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Command.html" class="reference internal ">Command</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Component.html" class="reference internal ">Component</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Embed.html" class="reference internal ">Embed</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Emoji.html" class="reference internal ">Emoji</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Guild.html" class="reference internal ">Guild</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Interaction.html" class="reference internal ">Interaction</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Member.html" class="reference internal ">Member</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Message.html" class="reference internal ">Message</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Message_Activity.html" class="reference internal ">Message_Activity</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Permission.html" class="reference internal ">Permission</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Reaction.html" class="reference internal ">Reaction</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Role.html" class="reference internal ">Role</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Sticker.html" class="reference internal ">Sticker</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_Thread.html" class="reference internal ">Thread</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="group_User.html" class="reference internal ">User</a>
-            
-
-            
-          </li>
-
-        
-      </ul>
-    </div>
-  
-    <div class="sidebar-group">
-      <p class="caption">
-        <span class="caption-text"><a href="global.html#global-namespace">global namespace</a></span>
-      </p>
-      <ul class="current">
-        
-          <li class="toctree-l1 ">
-            
-              <a href="enum_Disco_Cache_Type.html" class="reference internal ">enum Disco_Cache_Type</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="enum_Request_Type.html" class="reference internal ">enum Request_Type</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_MemoryChunk.html" class="reference internal ">struct MemoryChunk</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_bot_client.html" class="reference internal ">struct bot_client</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_buffer.html" class="reference internal ">struct buffer</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_delete_channel.html" class="reference internal ">struct delete_channel</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_delete_message.html" class="reference internal ">struct delete_message</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_discord_event_callbacks.html" class="reference internal ">struct discord_event_callbacks</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_discord_prio_packet.html" class="reference internal ">struct discord_prio_packet</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_edit_channel.html" class="reference internal ">struct edit_channel</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_edit_message.html" class="reference internal ">struct edit_message</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 current">
-            
-              <a href="#" class="reference internal current">struct event_pool_workload</a>
-            
-
-            
-              <ul>
-                
-                  <li class="toctree-l2"><a href="#struct-event-pool-workload" class="reference internal">struct event_pool_workload</a></li>
-                
-              </ul>
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_node.html" class="reference internal ">struct node</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_prio_node.html" class="reference internal ">struct prio_node</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_prio_queue.html" class="reference internal ">struct prio_queue</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_t_pool.html" class="reference internal ">struct t_pool</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_t_work.html" class="reference internal ">struct t_work</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_websocket_callbacks.html" class="reference internal ">struct websocket_callbacks</a>
-            
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 ">
-            
-              <a href="struct_websocket_client.html" class="reference internal ">struct websocket_client</a>
-            
-
-            
-          </li>
-
-        
-      </ul>
-    </div>
-  
 </div>
-        </sidebar>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
-      <page>
-          <div class="body-header" role="navigation" aria-label="navigation">
-  
-  <ul class="breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-    
-      <li><a href="global.html">Global Namespace</a> &raquo;</li>
-    
-    <li>struct event_pool_workload</li>
-  </ul>
-  
-
-  <ul class="page-nav">
-  <li class="prev">
-    <a href="struct_edit_message.html"
-       title="previous chapter">← struct edit_message</a>
-  </li>
-  <li class="next">
-    <a href="struct_node.html"
-       title="next chapter">struct node →</a>
-  </li>
-</ul>
-  
-</div>
-<hr>
-          <div class="content" role="main" v-pre>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="section" id="struct-event-pool-workload">
-<span id="doxid-structevent-pool-workload"></span><span id="index-0"></span><h1>struct event_pool_workload<a class="headerlink" href="#struct-event-pool-workload" title="Permalink to this heading">¶</a></h1>
+<span id="doxid-structevent-pool-workload"></span><span id="index-0"></span><h1>struct event_pool_workload<a class="headerlink" href="#struct-event-pool-workload" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<pre class="highlight doxyrest-overview-code-block literal-block"><span></span><span class="cp">#include</span> <span class="cpf">&lt;event.h&gt;</span><span class="cp"></span>
+<pre class="highlight doxyrest-overview-code-block literal-block">
+<span></span><span class="cp">#include</span> <span class="cpf">&lt;event.h&gt;</span><span class="cp"></span>
 
 <span class="k">struct</span> <span class="n">event_pool_workload</span> <span class="p">{</span>
     <span class="c1">// fields</span>
 
     <a class="reference internal" href="global.html#doxid-disco-8h-1ab503de679841020121923d5f2daaca09"><span class="std std-ref">bot_client_t</span></a><span></span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structevent-pool-workload-1a6c6e05e400907829afeb61bf5f5ac3da"><span></span><span class="n">bot</span></span><span></span><span class="p">;</span>
     <span class="n">cJSON</span><span class="o">*</span> <span class="doxyrest-code-target target" id="doxid-structevent-pool-workload-1a0a3e9895422b3b5a1157630052ba54e0"><span></span><span class="n">data</span></span><span></span><span class="p">;</span>
-<span class="p">};</span></pre>
+<span class="p">};</span>
+</pre>
 </div>
 
 
           </div>
-          <div class="page-nav">
-            <div class="inner"><ul class="page-nav">
-  <li class="prev">
-    <a href="struct_edit_message.html"
-       title="previous chapter">← struct edit_message</a>
-  </li>
-  <li class="next">
-    <a href="struct_node.html"
-       title="next chapter">struct node →</a>
-  </li>
-</ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2022, markbeep.
-    <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
-</div>
-            </div>
-          </div>
-      </page>
-    </div></div>
-    
-    
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="struct_node.html" title="struct node"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="struct_edit_message.html" title="struct edit_message"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Disco-C  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="global.html" >Global Namespace</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, markbeep.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
   </body>
 </html>

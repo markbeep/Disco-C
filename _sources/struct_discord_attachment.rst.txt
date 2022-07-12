@@ -18,14 +18,14 @@ struct discord_attachment
 	struct discord_attachment {
 		// fields
 	
-		uint64_t :target:`id<doxid-structdiscord__attachment_1a7df8a16b3b939dc7692baeb9a4cf78c3>`;
-		char* :target:`filename<doxid-structdiscord__attachment_1ae1bae05911ceef996e0d7871fe5575a4>`;
-		char* :target:`description<doxid-structdiscord__attachment_1af2f9de343a69695acbd16b605ec7ddc2>`;
-		char* :target:`content_type<doxid-structdiscord__attachment_1a8e98509107ff142b3bf1fbc82346e96a>`;
-		int :target:`size<doxid-structdiscord__attachment_1a6980c12836eff4a0afa1958e0ac7db6e>`;
-		char* :target:`url<doxid-structdiscord__attachment_1a43df4bd77de38da3cf20638aa77ed4d4>`;
-		char* :target:`proxy_url<doxid-structdiscord__attachment_1a867533948e8935208eaa684e27be76d7>`;
-		int :target:`height<doxid-structdiscord__attachment_1ae5e6a0ef0ba141619cd98530ce238d65>`;
-		int :target:`width<doxid-structdiscord__attachment_1a660081fc4e27f558f0052c644a9f0615>`;
-		bool :target:`ephemeral<doxid-structdiscord__attachment_1abc4c8cfae775278db3bcf3c7f7586df7>`;
+		uint64_t :target:`id<doxid-group___models_1ga7df8a16b3b939dc7692baeb9a4cf78c3>`;
+		char* :target:`filename<doxid-group___models_1gae1bae05911ceef996e0d7871fe5575a4>`;
+		char* :target:`description<doxid-group___models_1gaf2f9de343a69695acbd16b605ec7ddc2>`;
+		char* :target:`content_type<doxid-group___models_1ga8e98509107ff142b3bf1fbc82346e96a>`;
+		int :target:`size<doxid-group___models_1ga6980c12836eff4a0afa1958e0ac7db6e>`;
+		char* :target:`url<doxid-group___models_1ga43df4bd77de38da3cf20638aa77ed4d4>`;
+		char* :target:`proxy_url<doxid-group___models_1ga867533948e8935208eaa684e27be76d7>`;
+		int :target:`height<doxid-group___models_1gae5e6a0ef0ba141619cd98530ce238d65>`;
+		int :target:`width<doxid-group___models_1ga660081fc4e27f558f0052c644a9f0615>`;
+		bool :target:`ephemeral<doxid-group___models_1gabc4c8cfae775278db3bcf3c7f7586df7>`;
 	};

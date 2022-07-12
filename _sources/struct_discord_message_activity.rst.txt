@@ -18,6 +18,6 @@ struct discord_message_activity
 	struct discord_message_activity {
 		// fields
 	
-		enum :ref:`Discord_Message_Activity_Type<doxid-group___message___activity_1ga86ad05fa9d113fff81d22ecdef88253e>` :target:`type<doxid-structdiscord__message__activity_1a2eed99854812651e26ee7d6e4cca1ab3>`;
-		uint64_t :target:`party_id<doxid-structdiscord__message__activity_1a69e76b45c1947df0bf2fe5f3253e7422>`;
+		enum :ref:`Discord_Message_Activity_Type<doxid-group___message___activity_1ga86ad05fa9d113fff81d22ecdef88253e>` :target:`type<doxid-group___models_1ga2eed99854812651e26ee7d6e4cca1ab3>`;
+		uint64_t :target:`party_id<doxid-group___models_1ga69e76b45c1947df0bf2fe5f3253e7422>`;
 	};

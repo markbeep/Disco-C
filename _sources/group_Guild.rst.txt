@@ -84,7 +84,7 @@ Destroys the given structure and frees the pointer.
 	:widths: 20 80
 
 	*
-		- ch
+		- guild
 
 		- guild struct
 

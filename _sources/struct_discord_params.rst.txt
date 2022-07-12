@@ -18,7 +18,7 @@ struct discord_params
 	struct discord_params {
 		// fields
 	
-		char** :target:`scopes<doxid-structdiscord__params_1aff917b996e27889cf13a73a90ee8c2b0>`;
-		int :target:`scopes_count<doxid-structdiscord__params_1a25409b5b08a724d21b281dee35d6f1f5>`;
-		char* :target:`permissions<doxid-structdiscord__params_1a2ea3e398541fbda32efaf338d00fb8b0>`;
+		char** :target:`scopes<doxid-group___models_1gaff917b996e27889cf13a73a90ee8c2b0>`;
+		int :target:`scopes_count<doxid-group___models_1ga25409b5b08a724d21b281dee35d6f1f5>`;
+		char* :target:`permissions<doxid-group___models_1ga2ea3e398541fbda32efaf338d00fb8b0>`;
 	};

@@ -18,12 +18,12 @@ struct discord_allowed_mentions
 	struct discord_allowed_mentions {
 		// fields
 	
-		int :target:`parse_role_mentions<doxid-structdiscord__allowed__mentions_1a32297fa3afaa7b675783edaad0074aeb>`;
-		int :target:`parse_user_mentions<doxid-structdiscord__allowed__mentions_1ac6397e539ef2d8253fb0ac9e7b582f12>`;
-		int :target:`parse_everyone_mentions<doxid-structdiscord__allowed__mentions_1ac7abd366fbe45d1bedfe313fb40620d3>`;
-		uint64_t* :target:`roles<doxid-structdiscord__allowed__mentions_1adbb31a0eeeb541f5551791404fff9d43>`;
-		int :target:`roles_count<doxid-structdiscord__allowed__mentions_1a7dde27d54ed885cabe0b6df87a2319cf>`;
-		uint64_t* :target:`users<doxid-structdiscord__allowed__mentions_1aceab6053048c0d9e29e4ba2972de78ab>`;
-		int :target:`users_count<doxid-structdiscord__allowed__mentions_1a15630d20b08f15ad037173628b01df7b>`;
-		bool :target:`replied_user<doxid-structdiscord__allowed__mentions_1afdcd5a818343c6421cbd82f6316cc1d8>`;
+		int :target:`parse_role_mentions<doxid-group___models_1ga32297fa3afaa7b675783edaad0074aeb>`;
+		int :target:`parse_user_mentions<doxid-group___models_1gac6397e539ef2d8253fb0ac9e7b582f12>`;
+		int :target:`parse_everyone_mentions<doxid-group___models_1gac7abd366fbe45d1bedfe313fb40620d3>`;
+		uint64_t* :target:`roles<doxid-group___models_1gadbb31a0eeeb541f5551791404fff9d43>`;
+		int :target:`roles_count<doxid-group___models_1ga7dde27d54ed885cabe0b6df87a2319cf>`;
+		uint64_t* :target:`users<doxid-group___models_1gaceab6053048c0d9e29e4ba2972de78ab>`;
+		int :target:`users_count<doxid-group___models_1ga15630d20b08f15ad037173628b01df7b>`;
+		bool :target:`replied_user<doxid-group___models_1gafdcd5a818343c6421cbd82f6316cc1d8>`;
 	};

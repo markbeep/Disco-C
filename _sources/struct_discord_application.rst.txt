@@ -18,25 +18,25 @@ struct discord_application
 	struct discord_application {
 		// fields
 	
-		uint64_t :target:`id<doxid-structdiscord__application_1a7506cbe7098d946f455c60c3717a5bf4>`;
-		char* :target:`name<doxid-structdiscord__application_1afec86dd347d026a98250768e168e565c>`;
-		char* :target:`icon<doxid-structdiscord__application_1ab4df7149ba054654ac030dd30ef578ae>`;
-		char* :target:`description<doxid-structdiscord__application_1a514b86af56b576f8cec4c73ab1d22eeb>`;
-		char** :target:`rpc_origins<doxid-structdiscord__application_1ae749f78ec1a18e4152da8715b41aa179>`;
-		int :target:`rpc_origins_count<doxid-structdiscord__application_1aaa3331c273aca8b9153fdd23d0a07dba>`;
-		bool :target:`bot_public<doxid-structdiscord__application_1a6d121ef2bb376448631db2b2f4c38bc6>`;
-		bool :target:`bot_require_code_grant<doxid-structdiscord__application_1acf132a3db4ae1727ee9882e359dd2f71>`;
-		char* :target:`terms_of_service_url<doxid-structdiscord__application_1a9f65552a57140d5cdc48a656da4af168>`;
-		char* :target:`privacy_policy_url<doxid-structdiscord__application_1a87a2c23954fb5ac9cf178e071fd984b7>`;
-		struct :ref:`discord_user<doxid-structdiscord__user>`* :target:`owner<doxid-structdiscord__application_1aee767755de6e7543e5d2a494b99689ab>`;
-		char* :target:`verify_key<doxid-structdiscord__application_1aef94357e5d612a8a36b58e8e1ff716d2>`;
-		uint64_t :target:`guild_id<doxid-structdiscord__application_1a06b1b5833800949d84dcda44868d4230>`;
-		uint64_t :target:`primary_sku_id<doxid-structdiscord__application_1a153e746757876456725ca6faafee1868>`;
-		char* :target:`slug<doxid-structdiscord__application_1ae3924d38c1a46f553d064e171cd3e751>`;
-		char* :target:`cover_image<doxid-structdiscord__application_1a6a1980d7025aa672ab9b582f1cb02cfe>`;
-		int :target:`flags<doxid-structdiscord__application_1a09c47a36ba122a30bd23bf3083b8d0d3>`;
-		char** :target:`tags<doxid-structdiscord__application_1abaccf011cfa818d56606a196f4a3bb64>`;
-		int :target:`tags_count<doxid-structdiscord__application_1a7fdc6aecf725654b415d26d09c48edfe>`;
-		struct :ref:`discord_params<doxid-structdiscord__params>`* :target:`install_params<doxid-structdiscord__application_1a5bd1148e1c906ca0b552706c0e4f2b7b>`;
-		char* :target:`custom_install_url<doxid-structdiscord__application_1aed45353a2bf73c3977af0093e263ef69>`;
+		uint64_t :target:`id<doxid-group___models_1ga7506cbe7098d946f455c60c3717a5bf4>`;
+		char* :target:`name<doxid-group___models_1gafec86dd347d026a98250768e168e565c>`;
+		char* :target:`icon<doxid-group___models_1gab4df7149ba054654ac030dd30ef578ae>`;
+		char* :target:`description<doxid-group___models_1ga514b86af56b576f8cec4c73ab1d22eeb>`;
+		char** :target:`rpc_origins<doxid-group___models_1gae749f78ec1a18e4152da8715b41aa179>`;
+		int :target:`rpc_origins_count<doxid-group___models_1gaaa3331c273aca8b9153fdd23d0a07dba>`;
+		bool :target:`bot_public<doxid-group___models_1ga6d121ef2bb376448631db2b2f4c38bc6>`;
+		bool :target:`bot_require_code_grant<doxid-group___models_1gacf132a3db4ae1727ee9882e359dd2f71>`;
+		char* :target:`terms_of_service_url<doxid-group___models_1ga9f65552a57140d5cdc48a656da4af168>`;
+		char* :target:`privacy_policy_url<doxid-group___models_1ga87a2c23954fb5ac9cf178e071fd984b7>`;
+		struct :ref:`discord_user<doxid-structdiscord__user>`* :target:`owner<doxid-group___models_1gaee767755de6e7543e5d2a494b99689ab>`;
+		char* :target:`verify_key<doxid-group___models_1gaef94357e5d612a8a36b58e8e1ff716d2>`;
+		uint64_t :target:`guild_id<doxid-group___models_1ga06b1b5833800949d84dcda44868d4230>`;
+		uint64_t :target:`primary_sku_id<doxid-group___models_1ga153e746757876456725ca6faafee1868>`;
+		char* :target:`slug<doxid-group___models_1gae3924d38c1a46f553d064e171cd3e751>`;
+		char* :target:`cover_image<doxid-group___models_1ga6a1980d7025aa672ab9b582f1cb02cfe>`;
+		int :target:`flags<doxid-group___models_1ga09c47a36ba122a30bd23bf3083b8d0d3>`;
+		char** :target:`tags<doxid-group___models_1gabaccf011cfa818d56606a196f4a3bb64>`;
+		int :target:`tags_count<doxid-group___models_1ga7fdc6aecf725654b415d26d09c48edfe>`;
+		struct :ref:`discord_params<doxid-structdiscord__params>`* :target:`install_params<doxid-group___models_1ga5bd1148e1c906ca0b552706c0e4f2b7b>`;
+		char* :target:`custom_install_url<doxid-group___models_1gaed45353a2bf73c3977af0093e263ef69>`;
 	};

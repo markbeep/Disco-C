@@ -18,9 +18,9 @@ struct discord_select_option
 	struct discord_select_option {
 		// fields
 	
-		char* :target:`label<doxid-structdiscord__select__option_1a91880945dbdd5e3f2bce3e77dfc5445b>`;
-		char* :target:`value<doxid-structdiscord__select__option_1ae870ce85bd283e415e791756f4cee915>`;
-		char* :target:`description<doxid-structdiscord__select__option_1a0fb35e9cb2309b327ea17fffe65909d2>`;
-		struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* :target:`emoji<doxid-structdiscord__select__option_1ac7c86cde01705e0a0aede26122e76a01>`;
-		bool :target:`_default<doxid-structdiscord__select__option_1aa105179662fe968f1a5213096f00cb4d>`;
+		char* :target:`label<doxid-group___models_1ga91880945dbdd5e3f2bce3e77dfc5445b>`;
+		char* :target:`value<doxid-group___models_1gae870ce85bd283e415e791756f4cee915>`;
+		char* :target:`description<doxid-group___models_1ga0fb35e9cb2309b327ea17fffe65909d2>`;
+		struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* :target:`emoji<doxid-group___models_1gac7c86cde01705e0a0aede26122e76a01>`;
+		bool :target:`_default<doxid-group___models_1gaa105179662fe968f1a5213096f00cb4d>`;
 	};

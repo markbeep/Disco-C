@@ -18,10 +18,10 @@ struct discord_team
 	struct discord_team {
 		// fields
 	
-		char* :target:`icon<doxid-structdiscord__team_1ab17574b84b4bc464288a39a3f407cde4>`;
-		uint64_t :target:`id<doxid-structdiscord__team_1a676453578162f745e5cc33727f22a586>`;
-		struct :ref:`discord_team_member<doxid-structdiscord__team__member>`** :target:`members<doxid-structdiscord__team_1ad064db8a436badd9fd282f255f485883>`;
-		int :target:`members_count<doxid-structdiscord__team_1a096f19807f8f7fa92e03d47cbb432c14>`;
-		char* :target:`name<doxid-structdiscord__team_1a5f194abf2b4b8bf74430f9eb1a830c7f>`;
-		uint64_t :target:`owner_user_id<doxid-structdiscord__team_1ad51f2a146f3220abca3556d775bf1145>`;
+		char* :target:`icon<doxid-group___models_1gab17574b84b4bc464288a39a3f407cde4>`;
+		uint64_t :target:`id<doxid-group___models_1ga676453578162f745e5cc33727f22a586>`;
+		struct :ref:`discord_team_member<doxid-structdiscord__team__member>`** :target:`members<doxid-group___models_1gad064db8a436badd9fd282f255f485883>`;
+		int :target:`members_count<doxid-group___models_1ga096f19807f8f7fa92e03d47cbb432c14>`;
+		char* :target:`name<doxid-group___models_1ga5f194abf2b4b8bf74430f9eb1a830c7f>`;
+		uint64_t :target:`owner_user_id<doxid-group___models_1gad51f2a146f3220abca3556d775bf1145>`;
 	};

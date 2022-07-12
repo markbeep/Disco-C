@@ -18,16 +18,16 @@ struct discord_role
 	struct discord_role {
 		// fields
 	
-		char* :target:`id<doxid-structdiscord__role_1a35e5f542cffeac3f2811576bfe2bf995>`;
-		char* :target:`name<doxid-structdiscord__role_1a739fc9dc62cab1919f8bfcdf8daaf1a0>`;
-		int :target:`color<doxid-structdiscord__role_1aafd3dfbe3bfb0c1093cf6defe232ddcb>`;
-		bool :target:`hoist<doxid-structdiscord__role_1af9e7c2df359a58ac4c590476afd06de5>`;
-		char* :target:`icon<doxid-structdiscord__role_1a90b4589517a40d6719018c9cef365555>`;
-		char* :target:`unicode_emoji<doxid-structdiscord__role_1a5d642976136fa66598b37155a0046051>`;
-		int :target:`position<doxid-structdiscord__role_1af73a57765f2ba8bf48a99f2a1143cf4e>`;
-		char* :target:`permissions<doxid-structdiscord__role_1a3f39b0c7f068e33a4ec5770afcef9811>`;
-		bool :target:`managed<doxid-structdiscord__role_1ac2b261d0b151e97f6bcbdf7674405a0c>`;
-		bool :target:`mentionable<doxid-structdiscord__role_1ae328403b762539b940f3593cc96b78e3>`;
-		struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>` :target:`tags<doxid-structdiscord__role_1ad4ff9e8e954d7599c2bb355522d8913e>`;
-		int :target:`tags_count<doxid-structdiscord__role_1a85c8373ea7d023e4beea2a7dc70851d6>`;
+		char* :target:`id<doxid-group___models_1ga35e5f542cffeac3f2811576bfe2bf995>`;
+		char* :target:`name<doxid-group___models_1ga739fc9dc62cab1919f8bfcdf8daaf1a0>`;
+		int :target:`color<doxid-group___models_1gaafd3dfbe3bfb0c1093cf6defe232ddcb>`;
+		bool :target:`hoist<doxid-group___models_1gaf9e7c2df359a58ac4c590476afd06de5>`;
+		char* :target:`icon<doxid-group___models_1ga90b4589517a40d6719018c9cef365555>`;
+		char* :target:`unicode_emoji<doxid-group___models_1ga5d642976136fa66598b37155a0046051>`;
+		int :target:`position<doxid-group___models_1gaf73a57765f2ba8bf48a99f2a1143cf4e>`;
+		char* :target:`permissions<doxid-group___models_1ga3f39b0c7f068e33a4ec5770afcef9811>`;
+		bool :target:`managed<doxid-group___models_1gac2b261d0b151e97f6bcbdf7674405a0c>`;
+		bool :target:`mentionable<doxid-group___models_1gae328403b762539b940f3593cc96b78e3>`;
+		struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>` :target:`tags<doxid-group___models_1gad4ff9e8e954d7599c2bb355522d8913e>`;
+		int :target:`tags_count<doxid-group___models_1ga85c8373ea7d023e4beea2a7dc70851d6>`;
 	};

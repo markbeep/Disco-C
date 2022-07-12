@@ -18,23 +18,23 @@ struct discord_interaction_callback
 	struct discord_interaction_callback {
 		// fields
 	
-		enum :ref:`Discord_Interaction_Callback_Type<doxid-group___interaction_1ga44639091014a7389213a89e4711df05e>` :target:`type<doxid-structdiscord__interaction__callback_1a081d4fd5fef99b2355095ccc74023c3b>`;
-		bool :target:`tts<doxid-structdiscord__interaction__callback_1a554de4802e6e2c69b7043f55f405c544>`;
-		char* :target:`content<doxid-structdiscord__interaction__callback_1a10d34a5e18dd604b5ab41bd252d42007>`;
-		struct :ref:`discord_embed<doxid-structdiscord__embed>`** :target:`embeds<doxid-structdiscord__interaction__callback_1a3b5de49cea3e2980a9dd2c6a6dea8dec>`;
-		int :target:`embeds_count<doxid-structdiscord__interaction__callback_1a627be59c54b0df7064ef43d4cfbd4cc4>`;
-		struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`* :target:`allowed_mentions<doxid-structdiscord__interaction__callback_1ad532e6941685dd36851252cc78cc57d6>`;
-		int :target:`flags<doxid-structdiscord__interaction__callback_1af5abbb28619b523c6922e97cdff05779>`;
-		struct :ref:`discord_component<doxid-structdiscord__component>`** :target:`components<doxid-structdiscord__interaction__callback_1af6ab552ff9ee5fe6d870e16fd42a9baa>`;
-		int :target:`components_count<doxid-structdiscord__interaction__callback_1a381e80e98e84fc216c184438494ce76a>`;
-		struct :ref:`discord_attachment<doxid-structdiscord__attachment>`** :target:`attachments<doxid-structdiscord__interaction__callback_1ac0c9fd0ddf9c5a41f9d126add09b28f5>`;
-		int :target:`attachments_count<doxid-structdiscord__interaction__callback_1ab60cec85254a2b4404e4860fabcd43d8>`;
-		struct discord_interaction_callback::@3::@4 :target:`message<doxid-structdiscord__interaction__callback_1a1af98a800792b8a0c8979ff155e8b26e>`;
-		struct :ref:`discord_application_command_option_choice<doxid-structdiscord__application__command__option__choice>`** :target:`choices<doxid-structdiscord__interaction__callback_1aa63cfe56b42c13401c32b969f88c915c>`;
-		int :target:`choices_count<doxid-structdiscord__interaction__callback_1a345fffe2bc23d0ee0e31907ca05334b1>`;
-		struct discord_interaction_callback::@3::@5 :target:`autocomplete<doxid-structdiscord__interaction__callback_1abfdcd0f21adf217a63ce0434b234931c>`;
-		char* :target:`custom_id<doxid-structdiscord__interaction__callback_1a41bef4946053790d33da7fffd7a348d8>`;
-		char* :target:`title<doxid-structdiscord__interaction__callback_1a6e1155a24a9f76b78f84bd683c7dc5d1>`;
-		struct discord_interaction_callback::@3::@6 :target:`modal<doxid-structdiscord__interaction__callback_1aea9251253db24dd822addb48c6151445>`;
-		union discord_interaction_callback::@3 :target:`data<doxid-structdiscord__interaction__callback_1a0a800bed77967623fc29e5d7b63aeb23>`;
+		enum :ref:`Discord_Interaction_Callback_Type<doxid-group___interaction_1ga44639091014a7389213a89e4711df05e>` :target:`type<doxid-group___models_1ga081d4fd5fef99b2355095ccc74023c3b>`;
+		bool :target:`tts<doxid-group___models_1ga554de4802e6e2c69b7043f55f405c544>`;
+		char* :target:`content<doxid-group___models_1ga10d34a5e18dd604b5ab41bd252d42007>`;
+		struct :ref:`discord_embed<doxid-structdiscord__embed>`** :target:`embeds<doxid-group___models_1ga3b5de49cea3e2980a9dd2c6a6dea8dec>`;
+		int :target:`embeds_count<doxid-group___models_1ga627be59c54b0df7064ef43d4cfbd4cc4>`;
+		struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`* :target:`allowed_mentions<doxid-group___models_1gad532e6941685dd36851252cc78cc57d6>`;
+		int :target:`flags<doxid-group___models_1gaf5abbb28619b523c6922e97cdff05779>`;
+		struct :ref:`discord_component<doxid-structdiscord__component>`** :target:`components<doxid-group___models_1gaf6ab552ff9ee5fe6d870e16fd42a9baa>`;
+		int :target:`components_count<doxid-group___models_1ga381e80e98e84fc216c184438494ce76a>`;
+		struct :ref:`discord_attachment<doxid-structdiscord__attachment>`** :target:`attachments<doxid-group___models_1gac0c9fd0ddf9c5a41f9d126add09b28f5>`;
+		int :target:`attachments_count<doxid-group___models_1gab60cec85254a2b4404e4860fabcd43d8>`;
+		struct discord_interaction_callback::@3::@4 :target:`message<doxid-group___models_1ga1af98a800792b8a0c8979ff155e8b26e>`;
+		struct :ref:`discord_application_command_option_choice<doxid-structdiscord__application__command__option__choice>`** :target:`choices<doxid-group___models_1gaa63cfe56b42c13401c32b969f88c915c>`;
+		int :target:`choices_count<doxid-group___models_1ga345fffe2bc23d0ee0e31907ca05334b1>`;
+		struct discord_interaction_callback::@3::@5 :target:`autocomplete<doxid-group___models_1gabfdcd0f21adf217a63ce0434b234931c>`;
+		char* :target:`custom_id<doxid-group___models_1ga41bef4946053790d33da7fffd7a348d8>`;
+		char* :target:`title<doxid-group___models_1ga6e1155a24a9f76b78f84bd683c7dc5d1>`;
+		struct discord_interaction_callback::@3::@6 :target:`modal<doxid-group___models_1gaea9251253db24dd822addb48c6151445>`;
+		union discord_interaction_callback::@3 :target:`data<doxid-group___models_1ga0a800bed77967623fc29e5d7b63aeb23>`;
 	};

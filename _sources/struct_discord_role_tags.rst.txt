@@ -18,7 +18,7 @@ struct discord_role_tags
 	struct discord_role_tags {
 		// fields
 	
-		char* :target:`bot_id<doxid-structdiscord__role__tags_1ae3469976b344d4f6de3721e0796f9b19>`;
-		char* :target:`integration_id<doxid-structdiscord__role__tags_1ab85a1c5a9e705960d2302f53e03cbf12>`;
-		bool :target:`premium_subscriber<doxid-structdiscord__role__tags_1a8f4a7822336a79ac3094362d9a12338f>`;
+		char* :target:`bot_id<doxid-group___models_1gae3469976b344d4f6de3721e0796f9b19>`;
+		char* :target:`integration_id<doxid-group___models_1gab85a1c5a9e705960d2302f53e03cbf12>`;
+		bool :target:`premium_subscriber<doxid-group___models_1ga8f4a7822336a79ac3094362d9a12338f>`;
 	};

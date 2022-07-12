@@ -1,0 +1,90 @@
+.. index:: pair: group; Client
+.. _doxid-group___client:
+
+Client
+======
+
+.. toctree::
+	:hidden:
+
+	struct_bot_client.rst
+	struct_discord_event_callbacks.rst
+
+Overview
+~~~~~~~~
+
+The main Discord client that will be used everywhere. :ref:`More...<details-group___client>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// typedefs
+
+	typedef struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>` :target:`discord_event_callbacks_t<doxid-group___client_1gaf84e259f898478bd152e30311a2e177d>`;
+
+	// structs
+
+	struct :ref:`bot_client<doxid-structbot__client>`;
+	struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>`;
+
+	// global functions
+
+	void :ref:`discord_start_bot<doxid-group___client_1ga4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-group___client_1gaf84e259f898478bd152e30311a2e177d>`* callbacks);
+	void :ref:`discord_free_bot<doxid-group___client_1ga80e1160f6820069af67ff4ed4b5871d9>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
+
+.. _details-group___client:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+The main Discord client that will be used everywhere.
+
+Global Functions
+----------------
+
+.. index:: pair: function; discord_start_bot
+.. _doxid-group___client_1ga4f20272fb9c9721c9bea30eb4fbd091e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_start_bot(:ref:`discord_event_callbacks_t<doxid-group___client_1gaf84e259f898478bd152e30311a2e177d>`* callbacks)
+
+High level abstraction which starts the bot.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- callbacks
+
+		- A callbacks object containing the callbacks to the event functions.
+
+.. index:: pair: function; discord_free_bot
+.. _doxid-group___client_1ga80e1160f6820069af67ff4ed4b5871d9:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_free_bot(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
+
+Frees up memory for a bot instance.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- bot
+
+		- Bot instance
+

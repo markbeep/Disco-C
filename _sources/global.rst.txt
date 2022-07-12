@@ -10,11 +10,9 @@ Global Namespace
 	enum_Disco_Cache_Type.rst
 	enum_Request_Type.rst
 	struct_MemoryChunk.rst
-	struct_bot_client.rst
 	struct_buffer.rst
 	struct_delete_channel.rst
 	struct_delete_message.rst
-	struct_discord_event_callbacks.rst
 	struct_discord_prio_packet.rst
 	struct_edit_channel.rst
 	struct_edit_message.rst
@@ -41,7 +39,7 @@ Overview
 
 	typedef struct :ref:`websocket_client<doxid-structwebsocket__client>` :target:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`;
 	typedef struct :ref:`bot_client<doxid-structbot__client>` :target:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`;
-	typedef struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>` :target:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`;
+	typedef struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>` :target:`discord_event_callbacks_t<doxid-group___client_1gaf84e259f898478bd152e30311a2e177d>`;
 	typedef void* (*:target:`discord_struct_fn<doxid-disco_8h_1a8a25f93386668617d0992c9c6cd7a5e9>`)(cJSON *);
 	typedef struct :ref:`event_pool_workload<doxid-structevent__pool__workload>` :target:`event_pool_workload_t<doxid-event_8h_1ac08afc125a8a5dae2125d0dbc6040783>`;
 	typedef struct :ref:`bot_client<doxid-structbot__client>` :target:`bot_client_t<doxid-message_8h_1ab503de679841020121923d5f2daaca09>`;
@@ -201,8 +199,8 @@ Overview
 		struct :ref:`discord_component<doxid-structdiscord__component>`* component
 	);
 
-	void :ref:`discord_start_bot<doxid-disco_8h_1a4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks);
-	void :ref:`discord_free_bot<doxid-disco_8h_1a80e1160f6820069af67ff4ed4b5871d9>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
+	void :ref:`discord_start_bot<doxid-group___client_1ga4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-group___client_1gaf84e259f898478bd152e30311a2e177d>`* callbacks);
+	void :ref:`discord_free_bot<doxid-group___client_1ga80e1160f6820069af67ff4ed4b5871d9>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
 	char* :target:`get_string_from_json<doxid-disco_8h_1a3d048182694329d15b4534169becf944>`(cJSON* data, const char* name);
 	bool :ref:`get_bool_from_json<doxid-disco_8h_1a8793f41af7b3cc35217311c6bb439c7c>`(cJSON* data, const char* name, int default_);
 	int :ref:`get_int_from_json<doxid-disco_8h_1a32b66596edf0d38a4be3bb491a5f60f3>`(cJSON* data, const char* name, int default_);
@@ -351,7 +349,6 @@ Overview
 
 	int :target:`discord_command_delete_global<doxid-group___command_1gae92007769ade8ee360fd5a0f080dc380>`(int64_t command_id);
 	int :target:`discord_command_delete_guild<doxid-group___command_1gaea17fb803f00cc7d3c8916cf3e74af43>`(int64_t guild_id, int64_t command_id);
-	void :ref:`discord_start_bot<doxid-disco_8c_1a4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks);
 	char* :target:`get_string_from_json<doxid-disco_8c_1a3d048182694329d15b4534169becf944>`(cJSON* data, const char* name);
 	bool :ref:`get_bool_from_json<doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c>`(cJSON* data, const char* name, int default_);
 	int :ref:`get_int_from_json<doxid-disco_8c_1a32b66596edf0d38a4be3bb491a5f60f3>`(cJSON* data, const char* name, int default_);
@@ -605,50 +602,6 @@ This allows the user to choose what do with the structure however they want. The
 Global Functions
 ----------------
 
-.. index:: pair: function; discord_start_bot
-.. _doxid-disco_8h_1a4f20272fb9c9721c9bea30eb4fbd091e:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_start_bot(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks)
-
-High level abstraction which starts the bot.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- callbacks
-
-		- A callbacks object containing the callbacks to the event functions.
-
-.. index:: pair: function; discord_free_bot
-.. _doxid-disco_8h_1a80e1160f6820069af67ff4ed4b5871d9:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_free_bot(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
-
-Frees up memory for a bot instance.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Bot instance
-
 .. index:: pair: function; get_bool_from_json
 .. _doxid-disco_8h_1a8793f41af7b3cc35217311c6bb439c7c:
 
@@ -789,7 +742,7 @@ The minimum cache size is 2, because edits require both the old and new object i
 		- Maximum amount of messages the cache can hold (> 1)
 
 	*
-		- channel_cach_size
+		- channel_cache_size
 
 		- Maximum amount of channels the cache can hold (> 1)
 
@@ -1236,9 +1189,9 @@ Performs a HTTP request to the specified URL.
 	:widths: 20 80
 
 	*
-		- uri
+		- url
 
-		- URI to append to Discord Gateway
+		- URL to append to Discord Gateway
 
 	*
 		- response
@@ -1466,31 +1419,9 @@ Frees up all memory allocated with the :ref:`bot_client <doxid-structbot__client
 	:widths: 20 80
 
 	*
-		- :ref:`bot_client <doxid-structbot__client>`
+		- client
 
-		-
-
-.. index:: pair: function; discord_start_bot
-.. _doxid-disco_8c_1a4f20272fb9c9721c9bea30eb4fbd091e:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_start_bot(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks)
-
-High level abstraction which starts the bot.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- callbacks
-
-		- A callbacks object containing the callbacks to the event functions.
+		- Websocket client that should be destroyed
 
 .. index:: pair: function; get_bool_from_json
 .. _doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c:
@@ -1632,7 +1563,7 @@ The minimum cache size is 2, because edits require both the old and new object i
 		- Maximum amount of messages the cache can hold (> 1)
 
 	*
-		- channel_cach_size
+		- channel_cache_size
 
 		- Maximum amount of channels the cache can hold (> 1)
 
@@ -2122,9 +2053,9 @@ Performs a HTTP request to the specified URL.
 	:widths: 20 80
 
 	*
-		- uri
+		- url
 
-		- URI to append to Discord Gateway
+		- URL to append to Discord Gateway
 
 	*
 		- response
@@ -2270,9 +2201,9 @@ Frees up all memory allocated with the :ref:`bot_client <doxid-structbot__client
 	:widths: 20 80
 
 	*
-		- :ref:`bot_client <doxid-structbot__client>`
+		- client
 
-		-
+		- Websocket client that should be destroyed
 
 .. index:: pair: function; websocket_send
 .. _doxid-websocket_8c_1a4441bdd6264675d37ad41f203f73d20f:

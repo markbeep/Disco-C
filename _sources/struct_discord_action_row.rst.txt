@@ -18,6 +18,6 @@ struct discord_action_row
 	struct discord_action_row {
 		// fields
 	
-		struct :ref:`discord_component<doxid-structdiscord__component>`** :target:`components<doxid-structdiscord__action__row_1a6062d0713e0e3072a77e2b200853a942>`;
-		int :target:`components_count<doxid-structdiscord__action__row_1a2f5c1c88cc8b5b28b1264af0265f0945>`;
+		struct :ref:`discord_component<doxid-structdiscord__component>`** :target:`components<doxid-group___models_1ga6062d0713e0e3072a77e2b200853a942>`;
+		int :target:`components_count<doxid-group___models_1ga2f5c1c88cc8b5b28b1264af0265f0945>`;
 	};

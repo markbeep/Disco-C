@@ -18,9 +18,9 @@ struct discord_application_command_option_choice
 	struct discord_application_command_option_choice {
 		// fields
 	
-		char* :target:`name<doxid-structdiscord__application__command__option__choice_1a16d11f5b3c62443b263bff86b08ccea3>`;
-		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`name_localizations<doxid-structdiscord__application__command__option__choice_1af0a7c93c98f770ff3c9479d053a44670>`;
-		char* :target:`str<doxid-structdiscord__application__command__option__choice_1a60b06a54d64db1f001a64d7904f0e3ea>`;
-		double :target:`number<doxid-structdiscord__application__command__option__choice_1a7623c03a3802ad46fafaaf691633456b>`;
-		union discord_application_command_option_choice::@0 :target:`value<doxid-structdiscord__application__command__option__choice_1a3f0b9fc4e67cdc04674fc7db32bff636>`;
+		char* :target:`name<doxid-group___models_1ga16d11f5b3c62443b263bff86b08ccea3>`;
+		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`name_localizations<doxid-group___models_1gaf0a7c93c98f770ff3c9479d053a44670>`;
+		char* :target:`str<doxid-group___models_1ga60b06a54d64db1f001a64d7904f0e3ea>`;
+		double :target:`number<doxid-group___models_1ga7623c03a3802ad46fafaaf691633456b>`;
+		union discord_application_command_option_choice::@0 :target:`value<doxid-group___models_1ga3f0b9fc4e67cdc04674fc7db32bff636>`;
 	};

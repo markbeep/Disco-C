@@ -18,6 +18,6 @@ struct discord_embed_provider
 	struct discord_embed_provider {
 		// fields
 	
-		char* :target:`name<doxid-structdiscord__embed__provider_1aa920daff20665a084c8ae04162f76441>`;
-		char* :target:`url<doxid-structdiscord__embed__provider_1a0ea5543fce4b7898be853511dc507941>`;
+		char* :target:`name<doxid-group___models_1gaa920daff20665a084c8ae04162f76441>`;
+		char* :target:`url<doxid-group___models_1ga0ea5543fce4b7898be853511dc507941>`;
 	};
