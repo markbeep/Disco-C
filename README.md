@@ -3,6 +3,9 @@ Disco-C is a part-time project to practice writing bigger projects in C and gett
 
 The library is built to work async, which means that every received event is handled in its own thread. The idea behind this is, that in a single function you want to work sequentially, but you also don't want functions like sending a message (which does a HTTP request that takes around ~200ms) block the whole bot from receiving anything anymore in that time. Another option would have been to make the HTTP request itself be async, but this then doesn't give you the guarantee that a message has been sent once the message-send function is done.
 
+## Wiki
+The wiki is still under developement, but it is available here: https://markc.su/Disco-C/
+
 ## Table of Contents
 1. [Installing](#installing)
     1. [Copy Paste Command](#copy-paste-command)
