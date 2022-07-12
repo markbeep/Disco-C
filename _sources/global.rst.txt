@@ -10,66 +10,14 @@ Global Namespace
 	namespace_cpplexer.rst
 	namespace_doxyrest.rst
 	enum_Disco_Cache_Type.rst
-	enum_Discord_Application_Command_Option_Type.rst
-	enum_Discord_Application_Command_Type.rst
-	enum_Discord_Button_Style.rst
-	enum_Discord_Channel_Type.rst
-	enum_Discord_Component_Type.rst
-	enum_Discord_Interaction_Callback_Type.rst
-	enum_Discord_Interaction_Type.rst
-	enum_Discord_Message_Activity_Type.rst
-	enum_Discord_Sticker_Format.rst
-	enum_Discord_Sticker_Type.rst
-	enum_Discord_Text_Input_Style.rst
 	enum_Request_Type.rst
-	enum_Value_Type.rst
 	struct_MemoryChunk.rst
 	struct_bot_client.rst
 	struct_buffer.rst
 	struct_delete_channel.rst
 	struct_delete_message.rst
-	struct_disco_event_callbacks.rst
-	struct_discord_action_row.rst
-	struct_discord_application.rst
-	struct_discord_application_command.rst
-	struct_discord_application_command_option.rst
-	struct_discord_application_command_option_choice.rst
-	struct_discord_attachment.rst
-	struct_discord_button.rst
-	struct_discord_channel.rst
-	struct_discord_channel_mention.rst
-	struct_discord_component.rst
-	struct_discord_embed.rst
-	struct_discord_embed_author.rst
-	struct_discord_embed_field.rst
-	struct_discord_embed_footer.rst
-	struct_discord_embed_media.rst
-	struct_discord_embed_provider.rst
-	struct_discord_emoji.rst
-	struct_discord_guild.rst
-	struct_discord_interaction.rst
-	struct_discord_interaction_callback.rst
-	struct_discord_interaction_data.rst
-	struct_discord_interaction_data_option.rst
-	struct_discord_language_locales.rst
-	struct_discord_member.rst
-	struct_discord_message_activity.rst
-	struct_discord_message_sticker_item.rst
-	struct_discord_overwrite.rst
-	struct_discord_params.rst
+	struct_discord_event_callbacks.rst
 	struct_discord_prio_packet.rst
-	struct_discord_reaction.rst
-	struct_discord_role.rst
-	struct_discord_role_tags.rst
-	struct_discord_select_menu.rst
-	struct_discord_select_option.rst
-	struct_discord_sticker.rst
-	struct_discord_team.rst
-	struct_discord_team_member.rst
-	struct_discord_text_input.rst
-	struct_discord_thread_member.rst
-	struct_discord_thread_metadata.rst
-	struct_discord_user.rst
 	struct_edit_channel.rst
 	struct_edit_message.rst
 	struct_event_pool_workload.rst
@@ -100,8 +48,8 @@ Overview
 
 	typedef struct :ref:`websocket_client<doxid-structwebsocket__client>` :target:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`;
 	typedef struct :ref:`bot_client<doxid-structbot__client>` :target:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`;
-	typedef struct :ref:`disco_event_callbacks<doxid-structdisco__event__callbacks>` :target:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`;
-	typedef void* (*:target:`disco_struct_fn<doxid-disco_8h_1a1f86d140429595f417c14ea0d8d61196>`)(cJSON *);
+	typedef struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>` :target:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`;
+	typedef void* (*:target:`discord_struct_fn<doxid-disco_8h_1a8a25f93386668617d0992c9c6cd7a5e9>`)(cJSON *);
 	typedef struct :ref:`event_pool_workload<doxid-structevent__pool__workload>` :target:`event_pool_workload_t<doxid-event_8h_1ac08afc125a8a5dae2125d0dbc6040783>`;
 	typedef struct :ref:`bot_client<doxid-structbot__client>` :target:`bot_client_t<doxid-message_8h_1ab503de679841020121923d5f2daaca09>`;
 
@@ -127,19 +75,19 @@ Overview
 	// enums
 
 	enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>`;
-	enum :ref:`Discord_Application_Command_Option_Type<doxid-command_8h_1a86fea36705d944ecef474828dda5d689>`;
-	enum :ref:`Discord_Application_Command_Type<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05>`;
-	enum :ref:`Discord_Button_Style<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42>`;
-	enum :ref:`Discord_Channel_Type<doxid-channel_8h_1afe6f6623ab579045c945d82d3585e7e5>`;
-	enum :ref:`Discord_Component_Type<doxid-component_8h_1a5a21a94b8c3b12f5c79299ea0d51a493>`;
-	enum :ref:`Discord_Interaction_Callback_Type<doxid-interaction_8h_1a44639091014a7389213a89e4711df05e>`;
-	enum :ref:`Discord_Interaction_Type<doxid-interaction_8h_1a9cd73e7691786ef8a2c4192f0316067b>`;
-	enum :ref:`Discord_Message_Activity_Type<doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253e>`;
-	enum :ref:`Discord_Sticker_Format<doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1a>`;
-	enum :ref:`Discord_Sticker_Type<doxid-sticker_8h_1a9a1278538e376dc685fbe43072af8a25>`;
-	enum :ref:`Discord_Text_Input_Style<doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0e>`;
+	enum :ref:`Discord_Application_Command_Option_Type<doxid-group___command_1ga86fea36705d944ecef474828dda5d689>`;
+	enum :ref:`Discord_Application_Command_Type<doxid-group___command_1gafaab89847119cdbc55d73bbe1dd99d05>`;
+	enum :ref:`Discord_Button_Style<doxid-group___component_1gab8df5866681c4fb3ada395a2655b8e42>`;
+	enum :ref:`Discord_Channel_Type<doxid-group___channel_1gafe6f6623ab579045c945d82d3585e7e5>`;
+	enum :ref:`Discord_Component_Type<doxid-group___component_1ga5a21a94b8c3b12f5c79299ea0d51a493>`;
+	enum :ref:`Discord_Interaction_Callback_Type<doxid-group___interaction_1ga44639091014a7389213a89e4711df05e>`;
+	enum :ref:`Discord_Interaction_Type<doxid-group___interaction_1ga9cd73e7691786ef8a2c4192f0316067b>`;
+	enum :ref:`Discord_Message_Activity_Type<doxid-group___message___activity_1ga86ad05fa9d113fff81d22ecdef88253e>`;
+	enum :ref:`Discord_Sticker_Format<doxid-group___sticker_1gab3b2b14507d18cbe1445bc63f834db1a>`;
+	enum :ref:`Discord_Sticker_Type<doxid-group___sticker_1ga9a1278538e376dc685fbe43072af8a25>`;
+	enum :ref:`Discord_Text_Input_Style<doxid-group___component_1ga6f6b887098c67c3f78131bd564313c0e>`;
 	enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>`;
-	enum :ref:`Value_Type<doxid-interaction_8h_1a20d4902e57aa9edc7abd91611c0ed49b>`;
+	enum :ref:`Value_Type<doxid-group___interaction_1ga20d4902e57aa9edc7abd91611c0ed49b>`;
 	enum :ref:`discord_message_type<doxid-group___message_1ga4cbf1d7273a59d1e86cc8e947f29875a>`;
 
 	// structs
@@ -149,7 +97,6 @@ Overview
 	struct :ref:`buffer<doxid-structbuffer>`;
 	struct :ref:`delete_channel<doxid-structdelete__channel>`;
 	struct :ref:`delete_message<doxid-structdelete__message>`;
-	struct :ref:`disco_event_callbacks<doxid-structdisco__event__callbacks>`;
 	struct :ref:`discord_action_row<doxid-structdiscord__action__row>`;
 	struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`;
 	struct :ref:`discord_application<doxid-structdiscord__application>`;
@@ -169,6 +116,7 @@ Overview
 	struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`;
 	struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`;
 	struct :ref:`discord_emoji<doxid-structdiscord__emoji>`;
+	struct :ref:`discord_event_callbacks<doxid-structdiscord__event__callbacks>`;
 	struct :ref:`discord_guild<doxid-structdiscord__guild>`;
 	struct :ref:`discord_interaction<doxid-structdiscord__interaction>`;
 	struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`;
@@ -275,90 +223,56 @@ Overview
 	Tibbo Technology Inc Vladimir Gladkov Doxyrest maintainers Permission is hereby free of to any person obtaining a :ref:`copy<doxid-license-lua_8txt_1aeedb5baa3591a5404c3f9d7de92e8529>` of this software and associated documentation :target:`files<doxid-license_8txt_1a573227072382b8578840c4cd82b38942>`(the "Software");
 	:target:`Copyright<doxid-license-expat_8txt_1a191cbc6360e4470ae2c34175444232a1>`(c);
 	free of to any person obtaining a :ref:`copy<doxid-license-lua_8txt_1aeedb5baa3591a5404c3f9d7de92e8529>` of this software and associated documentation :target:`files<doxid-license-expat_8txt_1a63948ae43cdb47ea39c6265642cb208b>`(the "Software");
-	int :target:`main<doxid-main_8c_1a3c04138a5bfe5d72780bb7e82a18e627>`(int argc, char** argv);
-	int :target:`main<doxid-register_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4>`();
-	void* :target:`disco_create_application_struct_json<doxid-application_8c_1acbce70e30380cf0554e36721a1351d40>`(cJSON* data);
-	void :target:`disco_destroy_application<doxid-application_8c_1a7d6dc97b51a8211c5c7308f377cf74be>`(struct :ref:`discord_application<doxid-structdiscord__application>`* application);
-	void* :ref:`disco_create_attachment_struct_json<doxid-attachment_8c_1af59f1ce741cfbb4421795741693874c7>`(cJSON* data);
-	void :ref:`disco_destroy_attachment<doxid-attachment_8c_1a22ef506e41660aab7a385a0418c3c7e8>`(struct :ref:`discord_attachment<doxid-structdiscord__attachment>`* attachment);
-	void* :ref:`disco_create_channel_struct_json<doxid-channel_8c_1a7a182476459bfe4ab935a4dc5d366ae9>`(cJSON* data);
-	void :ref:`disco_destroy_channel<doxid-channel_8c_1ae8939046624f5b842d5624c43f2aa927>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch);
-	void* :ref:`disco_create_channel_mention_struct_json<doxid-channel_8c_1ae35c134c59f03e4864735cf48bab7586>`(cJSON* data);
-	void :ref:`disco_destroy_channel_mention<doxid-channel_8c_1a5456c2bb18e078f3ae0c4bdd53291f48>`(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch);
+	void* :ref:`discord_create_attachment_struct_json<doxid-group___attachment_1ga3e77f9ca25d607fe70c20835bd1d514d>`(cJSON* data);
+	void :ref:`discord_destroy_attachment<doxid-group___attachment_1gafdd27636ecd50efda242d30cb617eab2>`(struct :ref:`discord_attachment<doxid-structdiscord__attachment>`* attachment);
+	void* :ref:`discord_create_channel_struct_json<doxid-group___channel_1gaaf363e4ab59f9d5f85f1ebe51d4bd87e>`(cJSON* data);
+	void :ref:`discord_destroy_channel<doxid-group___channel_1ga46a43fc3549a0fbd8e3d508f58bf0d3e>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch);
+	void* :ref:`discord_create_channel_mention_struct_json<doxid-group___channel_1ga4e73990736b06eabbb07bfc682c1e549>`(cJSON* data);
+	void :ref:`discord_destroy_channel_mention<doxid-group___channel_1gac01c4086cd1f2c2aef71912c09d1f404>`(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch);
 
-	void :ref:`discord_fill_json_with_locales<doxid-command_8c_1a1c5c9cea7bdfb0b9cfcd63cdbeddf1a3>`(
+	void :ref:`discord_fill_json_with_locales<doxid-group___command_1ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3>`(
 		cJSON* json,
 		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* locales
 	);
 
-	static void :target:`add_choice<doxid-command_8c_1a80ab805f10cafe64ef214a68e5a3239f>`(
-		cJSON* json,
-		struct :ref:`discord_application_command_option_choice<doxid-structdiscord__application__command__option__choice>`* choice,
-		enum :ref:`Discord_Application_Command_Option_Type<doxid-command_8h_1a86fea36705d944ecef474828dda5d689>` type
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_channel_send_message<doxid-message__send_8h_1a556b7ad86b470b33662c6363f0962473>`(
+		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
+		char* content,
+		uint64_t channel_id,
+		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
+		bool return_struct
 	);
 
-	static void :target:`add_option<doxid-command_8c_1ade6e1db120b32d373d76029a66c7222d>`(
-		cJSON* json,
-		struct :ref:`discord_application_command_option<doxid-structdiscord__application__command__option>`* option
+	void :target:`discord_channel_edit_message<doxid-message__send_8h_1a8413655b1c5cb3b8f113bc4175d43736>`(
+		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
+		char* content,
+		uint64_t channel_id,
+		uint64_t message_id,
+		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
 	);
 
-	static int :target:`format_json<doxid-command_8c_1a2c7acfcbd1cea59d12b4d75a88cc4da7>`(cJSON* json, struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command);
-	int :target:`discord_command_register<doxid-command_8c_1a1f9371a93506c1ef8d5061e2383205ab>`(struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command);
+	void* :ref:`discord_create_select_option_struct<doxid-group___component_1ga420b43ab6dbef093f78e8c10fafd66a2>`(cJSON* data);
+	void :ref:`discord_destroy_select_option<doxid-group___component_1gab64a2fc906409112bc50ad4d9f0fb4cc>`(struct :ref:`discord_select_option<doxid-structdiscord__select__option>`* option);
+	void* :ref:`discord_create_component_struct_json<doxid-group___component_1ga8b4cf15d2bb344c8c16a6be3fe1c822c>`(cJSON* data);
+	void :ref:`discord_destroy_component<doxid-group___component_1gac9715399e2d9c1e7b9be03a94912bc06>`(struct :ref:`discord_component<doxid-structdiscord__component>`* c);
 
-	int :target:`discord_command_update<doxid-command_8c_1a75e9f03c95e593bf8655d60e66d51c2f>`(
-		struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command,
-		int64_t command_id
-	);
-
-	int :target:`discord_command_delete_global<doxid-command_8c_1ae92007769ade8ee360fd5a0f080dc380>`(int64_t command_id);
-	int :target:`discord_command_delete_guild<doxid-command_8c_1aea17fb803f00cc7d3c8916cf3e74af43>`(int64_t guild_id, int64_t command_id);
-	void* :ref:`disco_create_component_struct_json<doxid-component_8c_1a9e2cc31d672692120ec7c4989ff0586a>`(cJSON* data);
-	void :ref:`disco_destroy_component<doxid-component_8c_1a55862e34f07072afa186dc8add0748e1>`(struct :ref:`discord_component<doxid-structdiscord__component>`* c);
-	void* :ref:`disco_create_select_option_struct<doxid-component_8c_1ab934da595b8417cb3a2f6a960e398cc5>`(cJSON* data);
-	void :ref:`disco_destroy_select_option<doxid-component_8c_1aa646f51072e6d13ca18435d31d38ff45>`(struct :ref:`discord_select_option<doxid-structdiscord__select__option>`* option);
-
-	void :ref:`discord_fill_json_with_component<doxid-component_8c_1a9a14431e142019405c294f95b0a8c4f0>`(
+	void :ref:`discord_fill_json_with_component<doxid-group___component_1ga0d6ca689a9c6d6e142043f82d3ba7149>`(
 		cJSON* json,
 		struct :ref:`discord_component<doxid-structdiscord__component>`* component
 	);
 
-	void :ref:`disco_start_bot<doxid-disco_8c_1a18aaf89bf302e2e7a16188c6b7f45a76>`(:ref:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`* callbacks);
-	char* :target:`get_string_from_json<doxid-disco_8c_1a3d048182694329d15b4534169becf944>`(cJSON* data, const char* name);
-	bool :ref:`get_bool_from_json<doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c>`(cJSON* data, const char* name, int default_);
-	int :ref:`get_int_from_json<doxid-disco_8c_1a32b66596edf0d38a4be3bb491a5f60f3>`(cJSON* data, const char* name, int default_);
-
-	int :target:`get_array_from_json<doxid-disco_8c_1a9ee37a7fe697d5b5be83c1aec6324da5>`(
-		cJSON* data,
-		const char* name,
-		void*** array,
-		size_t s,
-		:ref:`disco_struct_fn<doxid-disco_8h_1a1f86d140429595f417c14ea0d8d61196>` func
-	);
-
-	uint64_t :target:`get_long_from_string_json<doxid-disco_8c_1a1b40c934e3e9bc8eef9d8d593e56d66d>`(
-		cJSON* data,
-		const char* name,
-		uint64_t default_
-	);
-
-	double :target:`get_double_from_string_json<doxid-disco_8c_1a62ec041efd41d5fbcc1a7102f200809c>`(
-		cJSON* data,
-		const char* name,
-		double default_
-	);
-
-	void :ref:`disco_start_bot<doxid-disco_8h_1a18aaf89bf302e2e7a16188c6b7f45a76>`(:ref:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`* callbacks);
-	void :ref:`disco_free_bot<doxid-disco_8h_1a574e14c65822608f9c0494f03259b4d8>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
+	void :ref:`discord_start_bot<doxid-disco_8h_1a4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks);
+	void :ref:`discord_free_bot<doxid-disco_8h_1a80e1160f6820069af67ff4ed4b5871d9>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
 	char* :target:`get_string_from_json<doxid-disco_8h_1a3d048182694329d15b4534169becf944>`(cJSON* data, const char* name);
 	bool :ref:`get_bool_from_json<doxid-disco_8h_1a8793f41af7b3cc35217311c6bb439c7c>`(cJSON* data, const char* name, int default_);
 	int :ref:`get_int_from_json<doxid-disco_8h_1a32b66596edf0d38a4be3bb491a5f60f3>`(cJSON* data, const char* name, int default_);
 
-	int :target:`get_array_from_json<doxid-disco_8h_1a9ee37a7fe697d5b5be83c1aec6324da5>`(
+	int :target:`get_array_from_json<doxid-disco_8h_1acc7d55c27f59407b991e4099b999f158>`(
 		cJSON* data,
 		const char* name,
 		void*** array,
 		size_t s,
-		:ref:`disco_struct_fn<doxid-disco_8h_1a1f86d140429595f417c14ea0d8d61196>` func
+		:ref:`discord_struct_fn<doxid-disco_8h_1a8a25f93386668617d0992c9c6cd7a5e9>` func
 	);
 
 	uint64_t :target:`get_long_from_string_json<doxid-disco_8h_1a1b40c934e3e9bc8eef9d8d593e56d66d>`(
@@ -373,20 +287,157 @@ Overview
 		double default_
 	);
 
-	void* :ref:`disco_create_embed_struct_json<doxid-embed_8c_1a22aa141aa7eaa406c426964270b9f926>`(cJSON* data);
-	void :ref:`disco_destroy_embed<doxid-embed_8c_1adba28cb015c74e550c169d6205a98901>`(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed);
-	void* :ref:`disco_create_embed_footer_struct_json<doxid-embed_8c_1a743948a5ddb5fdde9eec252ed9b98b5c>`(cJSON* data);
-	void :ref:`disco_destroy_embed_footer<doxid-embed_8c_1a6c0793b67c6e12b5fc93e999541b3dde>`(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer);
-	void* :ref:`disco_create_embed_media_struct_json<doxid-embed_8c_1ae4ffada5eab80fbd218e8ace493787a1>`(cJSON* data);
-	void :ref:`disco_destroy_embed_media<doxid-embed_8c_1ae15eb6b90c047dec8257a42795f4025a>`(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media);
-	void* :ref:`disco_create_embed_provider_struct_json<doxid-embed_8c_1a3d2cde350dbc80871ef5aa791d2c854e>`(cJSON* data);
-	void :ref:`disco_destroy_embed_provider<doxid-embed_8c_1afb963fd611d3102106847523deac08ce>`(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider);
-	void* :ref:`disco_create_embed_author_struct_json<doxid-embed_8c_1aa235055f7b4797c1626e38dc655db607>`(cJSON* data);
-	void :ref:`disco_destroy_embed_author<doxid-embed_8c_1aefa3363aa6ea2dd117e6539e7969add7>`(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author);
-	void* :ref:`disco_create_embed_field_struct_json<doxid-embed_8c_1a5c7913fcba9256432ad53a4a14ef4042>`(cJSON* data);
-	void :ref:`disco_destroy_embed_field<doxid-embed_8c_1a826f790ecaa7e1dd16c499c56569633d>`(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field);
-	void* :target:`disco_create_emoji_struct_json<doxid-emoji_8c_1af3bb8914f05d05241a68442374593909>`(cJSON* data);
-	void :target:`disco_destroy_emoji<doxid-emoji_8c_1ac7f3fa0490ffed7783a1e1fc06324d66>`(struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* emoji);
+	void* :ref:`discord_create_embed_footer_struct_json<doxid-group___embed_1ga781dc57dcbda3ec8fd9f9a79d6aaa099>`(cJSON* data);
+	void :ref:`discord_destroy_embed_footer<doxid-group___embed_1gaa905984d9c1cce62e6aad434f861a26b>`(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer);
+	void* :ref:`discord_create_embed_media_struct_json<doxid-group___embed_1ga0a83a844e966aea951bdc2975378bbcc>`(cJSON* data);
+	void :ref:`discord_destroy_embed_media<doxid-group___embed_1gaa6021af12cfbf2083675d877ddee4ce1>`(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media);
+	void* :ref:`discord_create_embed_provider_struct_json<doxid-group___embed_1ga32b0c043f08927ae1d0745ec9a86f7b7>`(cJSON* data);
+	void :ref:`discord_destroy_embed_provider<doxid-group___embed_1ga52fed8649e7d857d7a077c061fac4c48>`(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider);
+	void* :ref:`discord_create_embed_author_struct_json<doxid-group___embed_1ga98de65e7fece0deb145801f8391e8d8a>`(cJSON* data);
+	void :ref:`discord_destroy_embed_author<doxid-group___embed_1gaf04b5d82ae7e307e21af03bea4e06b3f>`(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author);
+	void* :ref:`discord_create_embed_field_struct_json<doxid-group___embed_1gaa9d5b560bb3a5fe4254fb438ed5faab8>`(cJSON* data);
+	void :ref:`discord_destroy_embed_field<doxid-group___embed_1ga65acea8a510625bbdbacccf0e2cdbff6>`(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field);
+	void* :ref:`discord_create_embed_struct_json<doxid-group___embed_1gaf6d013b6d1b055bd194e80c8a5fa854f>`(cJSON* data);
+	void :ref:`discord_destroy_embed<doxid-group___embed_1ga49f414a927cff280c603ec268b589087>`(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed);
+	void :ref:`event_handle<doxid-event_8h_1a0a0e68819bd46857f175b4ef0345767e>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, cJSON* data, char* event);
+	void* :ref:`discord_create_guild_struct_json<doxid-group___guild_1ga71c5333ffa9209f19ba8949d48547a0e>`(cJSON* data);
+	void :ref:`discord_destroy_guild<doxid-group___guild_1gabf66a8c20652697da5f1ae08c6f463bd>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
+
+	void :target:`discord_fill_json_interaction_callback<doxid-group___interaction_1ga07350717f4e66a3f900cd3fa64383cec>`(
+		cJSON* json,
+		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* callback
+	);
+
+	void* :ref:`discord_create_message_reference_struct_json<doxid-group___message_1ga163a4fb471139fc2881884f802ad8738>`(cJSON* data);
+	void :ref:`discord_destroy_message_reference<doxid-group___message_1ga422bd3fce67680fc21048279abfab917>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
+	void* :ref:`discord_create_message_struct_json<doxid-group___message_1ga1ab1c3aa8d10f97d7df4896289117973>`(cJSON* data);
+	void :ref:`discord_destroy_message<doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
+
+	void :ref:`discord_fill_json_with_message<doxid-group___message_1ga75bcd95cf036bba85d07daa7528600bb>`(
+		cJSON* json,
+		char* content,
+		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
+	);
+
+	void* :target:`discord_create_role_tags_struct_json<doxid-group___role_1gaaf94ec467feb8174bc2ecae07e38b086>`(cJSON* data);
+	void :target:`discord_destroy_role_tags<doxid-group___role_1ga651a619147b8b69d46d5a28a5a73fc94>`(struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>`* tags);
+	void* :target:`discord_create_role_struct_json<doxid-group___role_1gade137ce826caeb86984f68a1f5dc3754>`(cJSON* data);
+	void :target:`discord_destroy_role<doxid-group___role_1gad845de3687792c7cb960ebf61424e15b>`(struct :ref:`discord_role<doxid-structdiscord__role>`* role);
+	void* :ref:`discord_create_user_struct_json<doxid-group___user_1gaf11c652c59d2d32fbeffef7aa4fd8ad9>`(cJSON* data);
+	void :ref:`discord_destroy_user<doxid-group___user_1ga7288500a06048b7b011178b709aa0925>`(struct :ref:`discord_user<doxid-structdiscord__user>`* user);
+
+	int :ref:`discord_cache_init<doxid-cache_8h_1a4d8331ae5a2c94953a5e668299668011>`(
+		int message_cache_size,
+		int channel_cache_size,
+		int guild_cache_size,
+		:ref:`cache_destroy_callback_fn<doxid-cache_8h_1a3a2c76967f7fd059bb4ca547a911599e>` callback
+	);
+
+	void :ref:`discord_cache_destroy<doxid-cache_8h_1a81a1c1e1b3972c8e9dcbc90cca2ec195>`(void);
+	int :ref:`discord_cache_set_message<doxid-cache_8h_1a0d885224d57ff6aa08ece206a1e44586>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_cache_get_message<doxid-cache_8h_1a296a64475d6debc510dace71c0291c76>`(uint64_t id);
+	void :ref:`discord_cache_delete_message<doxid-cache_8h_1ad99724bf217d9eab3de06d27142e4699>`(uint64_t id);
+	int :ref:`discord_cache_set_channel<doxid-cache_8h_1a215176bc3913ce064686502970de2a30>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel);
+	struct :ref:`discord_channel<doxid-structdiscord__channel>`* :ref:`discord_cache_get_channel<doxid-cache_8h_1acb6845fdf41a71ceb0310278b4fd81f8>`(uint64_t id);
+	void :ref:`discord_cache_delete_channel<doxid-cache_8h_1a11df7744ff41f0fec695a2ef3893f879>`(uint64_t id);
+	int :ref:`discord_cache_set_guild<doxid-cache_8h_1ad143b7c2d82fce0dc2cd2cabce1f1d3e>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
+	struct :ref:`discord_guild<doxid-structdiscord__guild>`* :ref:`discord_cache_get_guild<doxid-cache_8h_1a0de846d3068f6e1c2bb78104209e7cc5>`(uint64_t id);
+	void :ref:`discord_cache_delete_guild<doxid-cache_8h_1ad0559549aa01d2930e7a798654b57e0b>`(uint64_t id);
+	void :target:`d_set_log_level<doxid-disco__logging_8h_1aafdec6b2ecd7cb0373aa303d1cb615cc>`(int flags);
+	int :target:`d_should_log_err<doxid-disco__logging_8h_1ad6aaed1ca7606c5eeb51de306b84f170>`(void);
+	int :target:`d_should_log_notice<doxid-disco__logging_8h_1a9e83092377a24e9d27df175f6733ed62>`(void);
+	int :target:`d_should_log_normal<doxid-disco__logging_8h_1a9bc2d75b2dba6c9b760a5e6e95c95dae>`(void);
+	int :target:`d_should_log_debug<doxid-disco__logging_8h_1a6c63e3f0a9e220944a7f245876f735c3>`(void);
+
+	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_push<doxid-prio__queue_8h_1a8039ef640c19907629907eb6558c7a30>`(
+		struct :ref:`prio_queue<doxid-structprio__queue>`* queue,
+		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type,
+		cJSON* data,
+		int retry_after
+	);
+
+	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_pop<doxid-prio__queue_8h_1a92eb054ee93b52ef0384fd98c6db6658>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
+	void :target:`prio_destroy_node<doxid-prio__queue_8h_1a0049238d9ae8be0678d639267247d923>`(:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* node);
+	void :target:`prio_destroy_queue<doxid-prio__queue_8h_1a6f714d888ada5be92c7bacb61ff34109>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
+	:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* :target:`t_pool_init<doxid-t__pool_8h_1af6906d6d879e426ca11341073e00e692>`(int num_t);
+	int :ref:`t_pool_add_work<doxid-t__pool_8h_1aa3e070b85293e5d6fdd860aba065eac2>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp, :ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` func, void* work);
+	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* :ref:`t_pool_pop_work<doxid-t__pool_8h_1ab8a1ec967a595f770edd2e5f2c818ca6>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
+	void :target:`t_pool_wait<doxid-t__pool_8h_1a00810d0b8204da37c10d6968e8c03f62>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
+	void :target:`t_pool_destroy<doxid-t__pool_8h_1a281ca3606c45d1b21b094bc4e0d72558>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
+	int :target:`t_process_count<doxid-t__pool_8h_1abe4e17164e848e3ec15bb001a8e4209e>`(void);
+	void :ref:`gateway_on_receive<doxid-gateway_8h_1a8dd303796c502667dc80381a12150f96>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, char* data, size_t len);
+	void* :ref:`gateway_heartbeat_loop<doxid-gateway_8h_1ae196cc6926770e97cbb48322d028bef6>`(void* vargp);
+	void :ref:`gateway_event_loop<doxid-gateway_8h_1af1d985c40864d2d78d43b3adf4bc62dd>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
+
+	CURLcode :ref:`request<doxid-request_8h_1ac087d90f7a10cb67b7d7b381cbbea52c>`(
+		char* url,
+		char** response,
+		cJSON* content,
+		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type
+	);
+
+	struct curl_slist* :ref:`curl_setup_discord_header<doxid-request_8h_1a9ce91e36169b27f6c89939cf6cdc0236>`(CURL* handle);
+	int :ref:`request_test<doxid-request_8h_1a8b26b274786bb9e5eb1d9b28113f9c9d>`(void);
+	int :ref:`websocket_send<doxid-websocket_8h_1a4441bdd6264675d37ad41f203f73d20f>`(struct lws* wsi, char* data, size_t len);
+	int :ref:`websocket_create<doxid-websocket_8h_1a25e61029244807bce89cf9b7df8283e9>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client, :ref:`callback_receive_fn<doxid-websocket_8h_1a75e027723976e4a1325be64cb272d01e>` on_receive);
+	int :ref:`websocket_connect<doxid-websocket_8h_1ad6005f40f7aeb320494eb2ab32d051f6>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
+	void :ref:`websocket_close<doxid-websocket_8h_1a3af18f27c14cdea777c48fb383100f57>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
+	void :ref:`websocket_reconnect<doxid-websocket_8h_1af32439469ba35f20294d4a9a516b6e2d>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
+	void :ref:`websocket_destroy_client<doxid-websocket_8h_1a371f513f4875190cbfd6681d08ff09ca>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client);
+	int :target:`websocket_test<doxid-websocket_8h_1ad7b1e0aedab3d4111d5ddb66a6e78dab>`(void);
+	int :target:`main<doxid-main_8c_1a3c04138a5bfe5d72780bb7e82a18e627>`(int argc, char** argv);
+	int :target:`main<doxid-register_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4>`();
+	void* :target:`discord_create_application_struct_json<doxid-group___application_1ga2e346e12ad5b70444327cda0361be700>`(cJSON* data);
+	void :target:`discord_destroy_application<doxid-group___application_1gadb7d7e5d83c7ebe5151cc3d953654474>`(struct :ref:`discord_application<doxid-structdiscord__application>`* application);
+
+	static void :target:`add_choice<doxid-command_8c_1a80ab805f10cafe64ef214a68e5a3239f>`(
+		cJSON* json,
+		struct :ref:`discord_application_command_option_choice<doxid-structdiscord__application__command__option__choice>`* choice,
+		enum :ref:`Discord_Application_Command_Option_Type<doxid-group___command_1ga86fea36705d944ecef474828dda5d689>` type
+	);
+
+	static void :target:`add_option<doxid-command_8c_1ade6e1db120b32d373d76029a66c7222d>`(
+		cJSON* json,
+		struct :ref:`discord_application_command_option<doxid-structdiscord__application__command__option>`* option
+	);
+
+	static int :target:`format_json<doxid-command_8c_1a2c7acfcbd1cea59d12b4d75a88cc4da7>`(cJSON* json, struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command);
+	int :target:`discord_command_register<doxid-group___command_1ga1f9371a93506c1ef8d5061e2383205ab>`(struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command);
+
+	int :target:`discord_command_update<doxid-group___command_1ga75e9f03c95e593bf8655d60e66d51c2f>`(
+		struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command,
+		int64_t command_id
+	);
+
+	int :target:`discord_command_delete_global<doxid-group___command_1gae92007769ade8ee360fd5a0f080dc380>`(int64_t command_id);
+	int :target:`discord_command_delete_guild<doxid-group___command_1gaea17fb803f00cc7d3c8916cf3e74af43>`(int64_t guild_id, int64_t command_id);
+	void :ref:`discord_start_bot<doxid-disco_8c_1a4f20272fb9c9721c9bea30eb4fbd091e>`(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks);
+	char* :target:`get_string_from_json<doxid-disco_8c_1a3d048182694329d15b4534169becf944>`(cJSON* data, const char* name);
+	bool :ref:`get_bool_from_json<doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c>`(cJSON* data, const char* name, int default_);
+	int :ref:`get_int_from_json<doxid-disco_8c_1a32b66596edf0d38a4be3bb491a5f60f3>`(cJSON* data, const char* name, int default_);
+
+	int :target:`get_array_from_json<doxid-disco_8c_1acc7d55c27f59407b991e4099b999f158>`(
+		cJSON* data,
+		const char* name,
+		void*** array,
+		size_t s,
+		:ref:`discord_struct_fn<doxid-disco_8h_1a8a25f93386668617d0992c9c6cd7a5e9>` func
+	);
+
+	uint64_t :target:`get_long_from_string_json<doxid-disco_8c_1a1b40c934e3e9bc8eef9d8d593e56d66d>`(
+		cJSON* data,
+		const char* name,
+		uint64_t default_
+	);
+
+	double :target:`get_double_from_string_json<doxid-disco_8c_1a62ec041efd41d5fbcc1a7102f200809c>`(
+		cJSON* data,
+		const char* name,
+		double default_
+	);
+
+	void* :target:`discord_create_emoji_struct_json<doxid-group___emoji_1gadfbe6b4cf1b8aa599bc3d253873339bf>`(cJSON* data);
+	void :target:`discord_destroy_emoji<doxid-group___emoji_1gafe7a48ec3126803eb14b7362e3957a29>`(struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* emoji);
 	void :target:`event_handle_ready<doxid-event_8c_1a9e582ff204208ed8480345e3ddb3b048>`(void* b);
 	void :target:`event_handle_message_create<doxid-event_8c_1af8ac571f2ebf98160bd7cbd38be09f74>`(void* w);
 	void :target:`event_handle_message_update<doxid-event_8c_1a589200b6e32decb643e90adc2ebe1f48>`(void* w);
@@ -396,17 +447,14 @@ Overview
 	void :target:`event_handle_channel_delete<doxid-event_8c_1ab48e17df14a015af71844c9f5a3eaa0a>`(void* w);
 	void :target:`event_handle_interaction_create<doxid-event_8c_1a1499ba3fcb4d66cb2117a9e03f09ce09>`(void* w);
 	void :ref:`event_handle<doxid-event_8c_1ac3984c74b045e0afadbf2f69ed76f597>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, cJSON* data, char* event);
-	void :ref:`event_handle<doxid-event_8h_1a0a0e68819bd46857f175b4ef0345767e>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, cJSON* data, char* event);
-	void* :ref:`disco_create_guild_struct_json<doxid-guild_8c_1a22691c9df59510b6dea15994091c5aa0>`(cJSON* data);
-	void :ref:`disco_destroy_guild<doxid-guild_8c_1a084339b2ff8ec44de5bace6344899332>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
-	void* :target:`disco_create_interaction_data_option_struct_json<doxid-interaction_8c_1a57aefdda3516395439ca36cd604d1335>`(cJSON* data);
-	void :target:`disco_destroy_interaction_data_option<doxid-interaction_8c_1a92c624d00c17a31ba321c27f573eb384>`(struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`* o);
-	void* :target:`disco_create_interaction_data_struct_json<doxid-interaction_8c_1a4f1bbf5a687bfbe65e0abf28f4f3c544>`(cJSON* data);
-	void :target:`disco_destroy_interaction_data<doxid-interaction_8c_1ac039b77db52c14e739a252a20c54a05e>`(struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`* interaction);
-	void* :target:`disco_create_interaction_struct_json<doxid-interaction_8c_1a04440337527c3b89828be37f5bb8c8db>`(cJSON* data);
-	void :target:`disco_destroy_interaction<doxid-interaction_8c_1a9b419f6a6a327a369c828d8b5a05be6a>`(struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* interaction);
+	void* :target:`discord_create_interaction_data_option_struct_json<doxid-group___interaction_1ga1dfd2e835d83e5a534f2a3a4d8634f7d>`(cJSON* data);
+	void :target:`discord_destroy_interaction_data_option<doxid-group___interaction_1ga3df587cf79ace7973baedf5763fa8d42>`(struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`* o);
+	void* :target:`discord_create_interaction_data_struct_json<doxid-group___interaction_1gaa10a9c1bcc7b829b8602835d3755847c>`(cJSON* data);
+	void :target:`discord_destroy_interaction_data<doxid-group___interaction_1ga74f29677ea349e0547ac44744c01d720>`(struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`* interaction);
+	void* :target:`discord_create_interaction_struct_json<doxid-group___interaction_1gafead489228e7e1926211de7b3ebc556d>`(cJSON* data);
+	void :target:`discord_destroy_interaction<doxid-group___interaction_1ga3e4b79e8d6ec03b92d30293f670962f4>`(struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* interaction);
 
-	void :target:`disco_send_interaction<doxid-interaction_8c_1ab99b1748f8a72e7dd25c14f9a18b4e84>`(
+	void :target:`discord_send_interaction<doxid-group___interaction_1gaa39a0f3ceffea83e7536265f0bed1f2d>`(
 		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* cb,
 		struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* recv
 	);
@@ -425,13 +473,7 @@ Overview
 	static cJSON* :target:`create_allowed_mentions<doxid-message_8c_1a17a0d8e1812a438804ba2be0c0929446>`(struct :ref:`discord_allowed_mentions<doxid-structdiscord__allowed__mentions>`* allowed_mentions);
 	static cJSON* :target:`create_message_reference<doxid-message_8c_1a1d4cc82e9ca1e888946c4394d98a6010>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* ref);
 
-	void :ref:`discord_fill_json_with_message<doxid-group___message_1ga75bcd95cf036bba85d07daa7528600bb>`(
-		cJSON* json,
-		char* content,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	);
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_channel_send_message<doxid-group___message_1gaee5633360f52065f9d778cf0cb9eb70c>`(
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_channel_send_message<doxid-message_8c_1a556b7ad86b470b33662c6363f0962473>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
@@ -439,87 +481,7 @@ Overview
 		bool return_struct
 	);
 
-	void* :ref:`disco_create_message_struct_json<doxid-group___message_1gac6295f7b779d42c57612ef1c1a705208>`(cJSON* data);
-	void :ref:`disco_destroy_message<doxid-group___message_1gaf8c130cb715240bb658ac80f52d3fed2>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-	void* :ref:`disco_create_message_reference_struct_json<doxid-group___message_1gaec2e33d8f4e1a565a9d9ded8832670ef>`(cJSON* data);
-	void :ref:`disco_destroy_message_reference<doxid-group___message_1ga0578c6d6515cc1fa4651abc5d9db75a1>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
-	void* :target:`disco_create_message_activity_struct_json<doxid-message__activity_8c_1ab78747a9838dc3e9d4e9c12294f3525b>`(cJSON* data);
-	void :target:`disco_destroy_message_activity<doxid-message__activity_8c_1a7c96cfd1f2ee41b10a7ac2147c42eb40>`(struct :ref:`discord_message_activity<doxid-structdiscord__message__activity>`* message);
-	void* :target:`disco_create_overwrite_struct_json<doxid-permission_8c_1a43b24841ae5198751d96a70b695dc285>`(cJSON* data);
-	void :target:`disco_destroy_overwrite<doxid-permission_8c_1a5fc6cb560c34ad9f12a1f28367f7b83b>`(struct :ref:`discord_overwrite<doxid-structdiscord__overwrite>`* overwrite);
-	void* :target:`disco_create_reaction_struct_json<doxid-reaction_8c_1ac8c0d3911ee55e81a0e51faf8f049b0d>`(cJSON* data);
-	void :target:`disco_destroy_reaction<doxid-reaction_8c_1ac7093da0010ad740a8267c497f8fe3f9>`(struct :ref:`discord_reaction<doxid-structdiscord__reaction>`* reaction);
-	void* :target:`disco_create_sticker_struct_json<doxid-sticker_8c_1ab68245ab2c2943e772323227587d9681>`(cJSON* data);
-	void :target:`disco_destroy_sticker<doxid-sticker_8c_1aab9bf81ea9ac3ff55b9affa916fda2b6>`(struct :ref:`discord_sticker<doxid-structdiscord__sticker>`* sticker);
-	void* :target:`disco_create_message_sticker_item_struct_json<doxid-sticker_8c_1addb71f84fd9c7be9aec75214d464dcc4>`(cJSON* data);
-	void :target:`disco_destroy_message_sticker<doxid-sticker_8c_1a939ab2e8312fbe2550488be258f9e775>`(struct :ref:`discord_message_sticker_item<doxid-structdiscord__message__sticker__item>`* sticker);
-	void* :target:`disco_create_application_struct_json<doxid-application_8h_1acbce70e30380cf0554e36721a1351d40>`(cJSON* data);
-	void :target:`disco_destroy_application<doxid-application_8h_1a7d6dc97b51a8211c5c7308f377cf74be>`(struct :ref:`discord_application<doxid-structdiscord__application>`* application);
-	void* :ref:`disco_create_attachment_struct_json<doxid-attachment_8h_1af59f1ce741cfbb4421795741693874c7>`(cJSON* data);
-	void :ref:`disco_destroy_attachment<doxid-attachment_8h_1a22ef506e41660aab7a385a0418c3c7e8>`(struct :ref:`discord_attachment<doxid-structdiscord__attachment>`* attachment);
-	void* :ref:`disco_create_channel_struct_json<doxid-channel_8h_1a7a182476459bfe4ab935a4dc5d366ae9>`(cJSON* data);
-	void :ref:`disco_destroy_channel<doxid-channel_8h_1ae8939046624f5b842d5624c43f2aa927>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch);
-	void* :ref:`disco_create_channel_mention_struct_json<doxid-channel_8h_1ae35c134c59f03e4864735cf48bab7586>`(cJSON* data);
-	void :ref:`disco_destroy_channel_mention<doxid-channel_8h_1a5456c2bb18e078f3ae0c4bdd53291f48>`(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch);
-
-	void :ref:`discord_fill_json_with_locales<doxid-command_8h_1a1c5c9cea7bdfb0b9cfcd63cdbeddf1a3>`(
-		cJSON* json,
-		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* locales
-	);
-
-	int :target:`discord_command_register<doxid-command_8h_1a1f9371a93506c1ef8d5061e2383205ab>`(struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command);
-
-	int :target:`discord_command_update<doxid-command_8h_1a75e9f03c95e593bf8655d60e66d51c2f>`(
-		struct :ref:`discord_application_command<doxid-structdiscord__application__command>`* command,
-		int64_t command_id
-	);
-
-	int :target:`discord_command_delete_global<doxid-command_8h_1ae92007769ade8ee360fd5a0f080dc380>`(int64_t command_id);
-	int :target:`discord_command_delete_guild<doxid-command_8h_1aea17fb803f00cc7d3c8916cf3e74af43>`(int64_t guild_id, int64_t command_id);
-	void* :ref:`disco_create_select_option_struct<doxid-component_8h_1ab934da595b8417cb3a2f6a960e398cc5>`(cJSON* data);
-	void :ref:`disco_destroy_select_option<doxid-component_8h_1aa646f51072e6d13ca18435d31d38ff45>`(struct :ref:`discord_select_option<doxid-structdiscord__select__option>`* option);
-	void* :ref:`disco_create_component_struct_json<doxid-component_8h_1a9e2cc31d672692120ec7c4989ff0586a>`(cJSON* data);
-	void :ref:`disco_destroy_component<doxid-component_8h_1a55862e34f07072afa186dc8add0748e1>`(struct :ref:`discord_component<doxid-structdiscord__component>`* c);
-
-	void :ref:`discord_fill_json_with_component<doxid-component_8h_1a0d6ca689a9c6d6e142043f82d3ba7149>`(
-		cJSON* json,
-		struct :ref:`discord_component<doxid-structdiscord__component>`* component
-	);
-
-	void* :ref:`disco_create_embed_footer_struct_json<doxid-embed_8h_1a743948a5ddb5fdde9eec252ed9b98b5c>`(cJSON* data);
-	void :ref:`disco_destroy_embed_footer<doxid-embed_8h_1a6c0793b67c6e12b5fc93e999541b3dde>`(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer);
-	void* :ref:`disco_create_embed_media_struct_json<doxid-embed_8h_1ae4ffada5eab80fbd218e8ace493787a1>`(cJSON* data);
-	void :ref:`disco_destroy_embed_media<doxid-embed_8h_1ae15eb6b90c047dec8257a42795f4025a>`(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media);
-	void* :ref:`disco_create_embed_provider_struct_json<doxid-embed_8h_1a3d2cde350dbc80871ef5aa791d2c854e>`(cJSON* data);
-	void :ref:`disco_destroy_embed_provider<doxid-embed_8h_1afb963fd611d3102106847523deac08ce>`(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider);
-	void* :ref:`disco_create_embed_author_struct_json<doxid-embed_8h_1aa235055f7b4797c1626e38dc655db607>`(cJSON* data);
-	void :ref:`disco_destroy_embed_author<doxid-embed_8h_1aefa3363aa6ea2dd117e6539e7969add7>`(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author);
-	void* :ref:`disco_create_embed_field_struct_json<doxid-embed_8h_1a5c7913fcba9256432ad53a4a14ef4042>`(cJSON* data);
-	void :ref:`disco_destroy_embed_field<doxid-embed_8h_1a826f790ecaa7e1dd16c499c56569633d>`(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field);
-	void* :ref:`disco_create_embed_struct_json<doxid-embed_8h_1a22aa141aa7eaa406c426964270b9f926>`(cJSON* data);
-	void :ref:`disco_destroy_embed<doxid-embed_8h_1adba28cb015c74e550c169d6205a98901>`(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed);
-	void* :target:`disco_create_emoji_struct_json<doxid-emoji_8h_1af3bb8914f05d05241a68442374593909>`(cJSON* data);
-	void :target:`disco_destroy_emoji<doxid-emoji_8h_1ac7f3fa0490ffed7783a1e1fc06324d66>`(struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* emoji);
-	void* :ref:`disco_create_guild_struct_json<doxid-guild_8h_1a22691c9df59510b6dea15994091c5aa0>`(cJSON* data);
-	void :ref:`disco_destroy_guild<doxid-guild_8h_1a084339b2ff8ec44de5bace6344899332>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
-	void* :target:`disco_create_interaction_data_option_struct_json<doxid-interaction_8h_1a57aefdda3516395439ca36cd604d1335>`(cJSON* data);
-	void :target:`disco_destroy_interaction_data_option<doxid-interaction_8h_1a2ec0c3381727de1f3b79c6b27721c387>`(struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`* interaction);
-	void* :target:`disco_create_interaction_data_struct_json<doxid-interaction_8h_1a4f1bbf5a687bfbe65e0abf28f4f3c544>`(cJSON* data);
-	void :target:`disco_destroy_interaction_data<doxid-interaction_8h_1ac039b77db52c14e739a252a20c54a05e>`(struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`* interaction);
-	void* :target:`disco_create_interaction_struct_json<doxid-interaction_8h_1a04440337527c3b89828be37f5bb8c8db>`(cJSON* data);
-	void :target:`disco_destroy_interaction<doxid-interaction_8h_1a9b419f6a6a327a369c828d8b5a05be6a>`(struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* interaction);
-
-	void :target:`disco_fill_json_interaction_callback<doxid-interaction_8h_1a5db0de719f3899dcba1137bad8481467>`(
-		cJSON* json,
-		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* callback
-	);
-
-	void :target:`disco_send_interaction<doxid-interaction_8h_1aa4247bdcb64da7ad994db2b67480ab56>`(
-		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* cb,
-		struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* received_interaction
-	);
-
-	void :target:`disco_channel_edit_message<doxid-group___message_1ga6204fbe77e397487fcc32a6637df4d90>`(
+	void :target:`discord_channel_edit_message<doxid-message_8c_1a8413655b1c5cb3b8f113bc4175d43736>`(
 		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
 		char* content,
 		uint64_t channel_id,
@@ -527,90 +489,53 @@ Overview
 		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
 	);
 
-	void* :target:`disco_create_message_activity_struct_json<doxid-message__activity_8h_1ab78747a9838dc3e9d4e9c12294f3525b>`(cJSON* data);
-	void :target:`disco_destroy_message_activity<doxid-message__activity_8h_1a28e1ff2678870161f8bdddd2f31ac40e>`(struct :ref:`discord_message_activity<doxid-structdiscord__message__activity>`* activity);
-	void* :target:`disco_create_overwrite_struct_json<doxid-permission_8h_1a43b24841ae5198751d96a70b695dc285>`(cJSON* data);
-	void :target:`disco_destroy_overwrite<doxid-permission_8h_1a5fc6cb560c34ad9f12a1f28367f7b83b>`(struct :ref:`discord_overwrite<doxid-structdiscord__overwrite>`* overwrite);
-	void* :target:`disco_create_reaction_struct_json<doxid-reaction_8h_1ac8c0d3911ee55e81a0e51faf8f049b0d>`(cJSON* data);
-	void :target:`disco_destroy_reaction<doxid-reaction_8h_1ac7093da0010ad740a8267c497f8fe3f9>`(struct :ref:`discord_reaction<doxid-structdiscord__reaction>`* reaction);
-	void* :target:`disco_create_role_tags_struct_json<doxid-role_8h_1a10257787ce4afa803ebed1844f9540d6>`(cJSON* data);
-	void :target:`disco_destroy_role_tags<doxid-role_8h_1a68a4e7638749993f022e78a897bf6001>`(struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>`* tags);
-	void* :target:`disco_create_role_struct_json<doxid-role_8h_1afd8b87d5cc81f000173c96f4b2ac8956>`(cJSON* data);
-	void :target:`disco_destroy_role<doxid-role_8h_1adc5aec40b8fe4b84ea322879ca189582>`(struct :ref:`discord_role<doxid-structdiscord__role>`* role);
-	void* :target:`disco_create_message_sticker_item_struct_json<doxid-sticker_8h_1addb71f84fd9c7be9aec75214d464dcc4>`(cJSON* data);
-	void :target:`disco_destroy_message_sticker<doxid-sticker_8h_1a2086144e95b1c24d8f7077ef60da4fdd>`(struct :ref:`discord_message_sticker_item<doxid-structdiscord__message__sticker__item>`* message_sticker);
-	void* :target:`disco_create_sticker_struct_json<doxid-sticker_8h_1ab68245ab2c2943e772323227587d9681>`(cJSON* data);
-	void :target:`disco_destroy_sticker<doxid-sticker_8h_1aab9bf81ea9ac3ff55b9affa916fda2b6>`(struct :ref:`discord_sticker<doxid-structdiscord__sticker>`* sticker);
-	void* :target:`disco_create_thread_metadata_struct_json<doxid-thread_8h_1ab47d6bf6ecc7f99d93ad9a0eabc58973>`(cJSON* data);
-	void :target:`disco_destroy_thread_metadata<doxid-thread_8h_1afd21c18740a6b041c942f15637fc6b43>`(struct :ref:`discord_thread_metadata<doxid-structdiscord__thread__metadata>`* thread);
-	void* :target:`disco_create_thread_member_struct_json<doxid-thread_8h_1a9a9c2e242080b44c24b1373d16d4248e>`(cJSON* data);
-	void :target:`disco_destroy_thread_member<doxid-thread_8h_1a95e1c1cdf47638348a32e61c2f16b5ba>`(struct :ref:`discord_thread_member<doxid-structdiscord__thread__member>`* member);
-	void* :ref:`disco_create_user_struct_json<doxid-user_8h_1af94f5c598b83cff67e8bfa7b59547b4a>`(cJSON* data);
-	void :ref:`disco_destroy_user<doxid-user_8h_1aa0ab98aafae680e0705278e9388873f1>`(struct :ref:`discord_user<doxid-structdiscord__user>`* user);
-	void* :target:`disco_create_member_struct_json<doxid-user_8h_1a22b920122eba2b3b756c30d1860f5458>`(cJSON* data, struct :ref:`discord_user<doxid-structdiscord__user>`* user);
-	void :target:`disco_destroy_member<doxid-user_8h_1a0aa2083fa091731e4d7762b3919ec4ed>`(struct :ref:`discord_member<doxid-structdiscord__member>`* member);
-	void* :target:`disco_create_thread_metadata_struct_json<doxid-thread_8c_1ab47d6bf6ecc7f99d93ad9a0eabc58973>`(cJSON* data);
-	void :target:`disco_destroy_thread_metadata<doxid-thread_8c_1afd21c18740a6b041c942f15637fc6b43>`(struct :ref:`discord_thread_metadata<doxid-structdiscord__thread__metadata>`* thread);
-	void* :target:`disco_create_thread_member_struct_json<doxid-thread_8c_1a9a9c2e242080b44c24b1373d16d4248e>`(cJSON* data);
-	void :target:`disco_destroy_thread_member<doxid-thread_8c_1a95e1c1cdf47638348a32e61c2f16b5ba>`(struct :ref:`discord_thread_member<doxid-structdiscord__thread__member>`* member);
-	void* :ref:`disco_create_user_struct_json<doxid-user_8c_1af94f5c598b83cff67e8bfa7b59547b4a>`(cJSON* data);
-	void :ref:`disco_destroy_user<doxid-user_8c_1aa0ab98aafae680e0705278e9388873f1>`(struct :ref:`discord_user<doxid-structdiscord__user>`* user);
-	void* :target:`disco_create_member_struct_json<doxid-user_8c_1a22b920122eba2b3b756c30d1860f5458>`(cJSON* data, struct :ref:`discord_user<doxid-structdiscord__user>`* user);
-	void :target:`disco_destroy_member<doxid-user_8c_1a0aa2083fa091731e4d7762b3919ec4ed>`(struct :ref:`discord_member<doxid-structdiscord__member>`* member);
+	void* :target:`discord_create_message_activity_struct_json<doxid-group___message___activity_1gad0176a25e399b4393773cd22eb1b9858>`(cJSON* data);
+	void :target:`discord_destroy_message_activity<doxid-group___message___activity_1ga3f9ac3091bd4fac7261daa9fae52ecb5>`(struct :ref:`discord_message_activity<doxid-structdiscord__message__activity>`* message);
+	void* :target:`discord_create_overwrite_struct_json<doxid-group___permission_1ga8ad47ab512e97435987670a962d2eb16>`(cJSON* data);
+	void :target:`discord_destroy_overwrite<doxid-group___permission_1ga84edb94cb8aaa86a76a43e17fd8b3570>`(struct :ref:`discord_overwrite<doxid-structdiscord__overwrite>`* overwrite);
+	void* :target:`discord_create_reaction_struct_json<doxid-group___reaction_1ga439ddcf7b4cc45f0f2675d4b91169a3e>`(cJSON* data);
+	void :target:`discord_destroy_reaction<doxid-group___reaction_1ga991f98fb2979fbeaa9655ecd676222e8>`(struct :ref:`discord_reaction<doxid-structdiscord__reaction>`* reaction);
+	void* :target:`discord_create_sticker_struct_json<doxid-group___sticker_1ga2bea5b64a7f871a0b302d5c0b708909c>`(cJSON* data);
+	void :target:`discord_destroy_sticker<doxid-group___sticker_1gaeb70a15ed1ac17be78ec15d7c94c0621>`(struct :ref:`discord_sticker<doxid-structdiscord__sticker>`* sticker);
+	void* :target:`discord_create_message_sticker_item_struct_json<doxid-group___sticker_1gae03b40304d1b7dc69f98cbe41a931251>`(cJSON* data);
+	void :target:`discord_destroy_message_sticker<doxid-group___sticker_1gae49e264bb7f4a0f457a24ac6a4aba160>`(struct :ref:`discord_message_sticker_item<doxid-structdiscord__message__sticker__item>`* sticker);
+	void* :target:`discord_create_thread_metadata_struct_json<doxid-group___thread_1ga77af21bdfc6e65cb76ab158d87c781e5>`(cJSON* data);
+	void :target:`discord_destroy_thread_metadata<doxid-group___thread_1gaf4c7b57cebfdaa5e5cb29ea1660da3ec>`(struct :ref:`discord_thread_metadata<doxid-structdiscord__thread__metadata>`* thread);
+	void* :target:`discord_create_thread_member_struct_json<doxid-group___thread_1ga28cae7610f45190063b16c44d0a9db5e>`(cJSON* data);
+	void :target:`discord_destroy_thread_member<doxid-group___thread_1gae7444e262b446063d92b9756e2acae9c>`(struct :ref:`discord_thread_member<doxid-structdiscord__thread__member>`* member);
+	void* :target:`discord_create_member_struct_json<doxid-group___member_1ga7f5fcd55053dd6e6baa0f8c0013b3110>`(cJSON* data, struct :ref:`discord_user<doxid-structdiscord__user>`* user);
+	void :target:`discord_destroy_member<doxid-group___member_1ga1da2c53cf3fd780d80a9fbadb27d2677>`(struct :ref:`discord_member<doxid-structdiscord__member>`* member);
 
 	static void :target:`default_destroy_callback<doxid-cache_8c_1a1dbbf43aa4a7a4e8073bc72c8d08986a>`(
 		enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type,
 		void* structure
 	);
 
-	int :ref:`disco_cache_init<doxid-cache_8c_1a98b5c2129a67d394da3830526d1ae247>`(
+	int :ref:`discord_cache_init<doxid-cache_8c_1a4d8331ae5a2c94953a5e668299668011>`(
 		int message_cache_size,
 		int channel_cache_size,
 		int guild_cache_size,
 		:ref:`cache_destroy_callback_fn<doxid-cache_8h_1a3a2c76967f7fd059bb4ca547a911599e>` callback
 	);
 
-	void :ref:`disco_cache_destroy<doxid-cache_8c_1ad69b13a7c195f8e49f2e3410bf524e83>`(void);
-	int :target:`disco_cache_set<doxid-cache_8c_1aeba2f27742d234c2fca3f4f5f13f206d>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, void* cont);
-	void* :target:`disco_cache_get<doxid-cache_8c_1a141010b66beb5b310cdc59754dcf7bad>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, uint64_t id);
-	void :target:`disco_cache_delete<doxid-cache_8c_1a8b89d1fd760b784957e0d871b2ab9bb1>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, uint64_t id);
-	int :ref:`disco_cache_set_message<doxid-cache_8c_1a956b108056f3cdae1c31f1584ba4ee0f>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_cache_get_message<doxid-cache_8c_1ace523fbf19d49f495ffc8bfc95c4e572>`(uint64_t id);
-	void :ref:`disco_cache_delete_message<doxid-cache_8c_1a5281ba3f361e1d54b29847d8b1a46182>`(uint64_t id);
-	int :ref:`disco_cache_set_channel<doxid-cache_8c_1a7c9a9dc6cac690ec485a0f031b0c0e8c>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel);
-	struct :ref:`discord_channel<doxid-structdiscord__channel>`* :ref:`disco_cache_get_channel<doxid-cache_8c_1a94c944689fdfce9d67ca25c60516e49c>`(uint64_t id);
-	void :ref:`disco_cache_delete_channel<doxid-cache_8c_1aafbc60891102579f1fbf6f97ed004123>`(uint64_t id);
-	int :ref:`disco_cache_set_guild<doxid-cache_8c_1accaa802263d40f247b2d094616f5cfa3>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
-	struct :ref:`discord_guild<doxid-structdiscord__guild>`* :ref:`disco_cache_get_guild<doxid-cache_8c_1a40d6e5b34fb34603ac79a8cbc31c8799>`(uint64_t id);
-	void :ref:`disco_cache_delete_guild<doxid-cache_8c_1a26f3a802577df53494fd7f7537677f50>`(uint64_t id);
-
-	int :ref:`disco_cache_init<doxid-cache_8h_1a98b5c2129a67d394da3830526d1ae247>`(
-		int message_cache_size,
-		int channel_cache_size,
-		int guild_cache_size,
-		:ref:`cache_destroy_callback_fn<doxid-cache_8h_1a3a2c76967f7fd059bb4ca547a911599e>` callback
-	);
-
-	void :ref:`disco_cache_destroy<doxid-cache_8h_1ad69b13a7c195f8e49f2e3410bf524e83>`(void);
-	int :ref:`disco_cache_set_message<doxid-cache_8h_1a956b108056f3cdae1c31f1584ba4ee0f>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_cache_get_message<doxid-cache_8h_1ace523fbf19d49f495ffc8bfc95c4e572>`(uint64_t id);
-	void :ref:`disco_cache_delete_message<doxid-cache_8h_1a5281ba3f361e1d54b29847d8b1a46182>`(uint64_t id);
-	int :ref:`disco_cache_set_channel<doxid-cache_8h_1a7c9a9dc6cac690ec485a0f031b0c0e8c>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel);
-	struct :ref:`discord_channel<doxid-structdiscord__channel>`* :ref:`disco_cache_get_channel<doxid-cache_8h_1a94c944689fdfce9d67ca25c60516e49c>`(uint64_t id);
-	void :ref:`disco_cache_delete_channel<doxid-cache_8h_1aafbc60891102579f1fbf6f97ed004123>`(uint64_t id);
-	int :ref:`disco_cache_set_guild<doxid-cache_8h_1accaa802263d40f247b2d094616f5cfa3>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
-	struct :ref:`discord_guild<doxid-structdiscord__guild>`* :ref:`disco_cache_get_guild<doxid-cache_8h_1a40d6e5b34fb34603ac79a8cbc31c8799>`(uint64_t id);
-	void :ref:`disco_cache_delete_guild<doxid-cache_8h_1a26f3a802577df53494fd7f7537677f50>`(uint64_t id);
+	void :ref:`discord_cache_destroy<doxid-cache_8c_1a81a1c1e1b3972c8e9dcbc90cca2ec195>`(void);
+	int :target:`discord_cache_set<doxid-cache_8c_1afa32f0b9ef9d24b124394bc8aa2dd355>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, void* cont);
+	void* :target:`discord_cache_get<doxid-cache_8c_1aa5366c2d4251b830eb61d7edbebef12e>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, uint64_t id);
+	void :target:`discord_cache_delete<doxid-cache_8c_1ae0a8a7e7cc948fec00738188fab562dc>`(enum :ref:`Disco_Cache_Type<doxid-cache_8h_1a85169eef86ba65be6fcacdc0c0ae111f>` type, uint64_t id);
+	int :ref:`discord_cache_set_message<doxid-cache_8c_1a0d885224d57ff6aa08ece206a1e44586>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
+	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`discord_cache_get_message<doxid-cache_8c_1a296a64475d6debc510dace71c0291c76>`(uint64_t id);
+	void :ref:`discord_cache_delete_message<doxid-cache_8c_1ad99724bf217d9eab3de06d27142e4699>`(uint64_t id);
+	int :ref:`discord_cache_set_channel<doxid-cache_8c_1a215176bc3913ce064686502970de2a30>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel);
+	struct :ref:`discord_channel<doxid-structdiscord__channel>`* :ref:`discord_cache_get_channel<doxid-cache_8c_1acb6845fdf41a71ceb0310278b4fd81f8>`(uint64_t id);
+	void :ref:`discord_cache_delete_channel<doxid-cache_8c_1a11df7744ff41f0fec695a2ef3893f879>`(uint64_t id);
+	int :ref:`discord_cache_set_guild<doxid-cache_8c_1ad143b7c2d82fce0dc2cd2cabce1f1d3e>`(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild);
+	struct :ref:`discord_guild<doxid-structdiscord__guild>`* :ref:`discord_cache_get_guild<doxid-cache_8c_1a0de846d3068f6e1c2bb78104209e7cc5>`(uint64_t id);
+	void :ref:`discord_cache_delete_guild<doxid-cache_8c_1ad0559549aa01d2930e7a798654b57e0b>`(uint64_t id);
 	void :target:`d_set_log_level<doxid-disco__logging_8c_1aafdec6b2ecd7cb0373aa303d1cb615cc>`(int flags);
 	int :target:`d_should_log_err<doxid-disco__logging_8c_1ad6aaed1ca7606c5eeb51de306b84f170>`(void);
 	int :target:`d_should_log_notice<doxid-disco__logging_8c_1a9e83092377a24e9d27df175f6733ed62>`(void);
 	int :target:`d_should_log_normal<doxid-disco__logging_8c_1a9bc2d75b2dba6c9b760a5e6e95c95dae>`(void);
 	int :target:`d_should_log_debug<doxid-disco__logging_8c_1a6c63e3f0a9e220944a7f245876f735c3>`(void);
-	void :target:`d_set_log_level<doxid-disco__logging_8h_1aafdec6b2ecd7cb0373aa303d1cb615cc>`(int flags);
-	int :target:`d_should_log_err<doxid-disco__logging_8h_1ad6aaed1ca7606c5eeb51de306b84f170>`(void);
-	int :target:`d_should_log_notice<doxid-disco__logging_8h_1a9e83092377a24e9d27df175f6733ed62>`(void);
-	int :target:`d_should_log_normal<doxid-disco__logging_8h_1a9bc2d75b2dba6c9b760a5e6e95c95dae>`(void);
-	int :target:`d_should_log_debug<doxid-disco__logging_8h_1a6c63e3f0a9e220944a7f245876f735c3>`(void);
 
 	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_push<doxid-prio__queue_8c_1a8039ef640c19907629907eb6558c7a30>`(
 		struct :ref:`prio_queue<doxid-structprio__queue>`* queue,
@@ -622,17 +547,6 @@ Overview
 	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_pop<doxid-prio__queue_8c_1a92eb054ee93b52ef0384fd98c6db6658>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
 	void :target:`prio_destroy_node<doxid-prio__queue_8c_1a0049238d9ae8be0678d639267247d923>`(:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* node);
 	void :target:`prio_destroy_queue<doxid-prio__queue_8c_1a6f714d888ada5be92c7bacb61ff34109>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
-
-	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_push<doxid-prio__queue_8h_1a8039ef640c19907629907eb6558c7a30>`(
-		struct :ref:`prio_queue<doxid-structprio__queue>`* queue,
-		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type,
-		cJSON* data,
-		int retry_after
-	);
-
-	:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* :target:`prio_pop<doxid-prio__queue_8h_1a92eb054ee93b52ef0384fd98c6db6658>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
-	void :target:`prio_destroy_node<doxid-prio__queue_8h_1a0049238d9ae8be0678d639267247d923>`(:ref:`prio_node_t<doxid-prio__queue_8h_1a036fb391f53e1003dec16ca82ed52f81>`* node);
-	void :target:`prio_destroy_queue<doxid-prio__queue_8h_1a6f714d888ada5be92c7bacb61ff34109>`(struct :ref:`prio_queue<doxid-structprio__queue>`* queue);
 	static void* :target:`thread_work_loop<doxid-t__pool_8c_1a476441050a0e3af21723d451258c5436>`(void* tp);
 	:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* :target:`t_pool_init<doxid-t__pool_8c_1af6906d6d879e426ca11341073e00e692>`(int num_t);
 	int :ref:`t_pool_add_work<doxid-t__pool_8c_1a0b1df3eff73aa56a3af8e406647dbed0>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp, :ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` func, void* work);
@@ -640,21 +554,12 @@ Overview
 	void :target:`t_pool_wait<doxid-t__pool_8c_1a00810d0b8204da37c10d6968e8c03f62>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
 	void :target:`t_pool_destroy<doxid-t__pool_8c_1a281ca3606c45d1b21b094bc4e0d72558>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
 	int :target:`t_process_count<doxid-t__pool_8c_1abe4e17164e848e3ec15bb001a8e4209e>`(void);
-	:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* :target:`t_pool_init<doxid-t__pool_8h_1af6906d6d879e426ca11341073e00e692>`(int num_t);
-	int :ref:`t_pool_add_work<doxid-t__pool_8h_1aa3e070b85293e5d6fdd860aba065eac2>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp, :ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` func, void* work);
-	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* :ref:`t_pool_pop_work<doxid-t__pool_8h_1ab8a1ec967a595f770edd2e5f2c818ca6>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
-	void :target:`t_pool_wait<doxid-t__pool_8h_1a00810d0b8204da37c10d6968e8c03f62>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
-	void :target:`t_pool_destroy<doxid-t__pool_8h_1a281ca3606c45d1b21b094bc4e0d72558>`(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp);
-	int :target:`t_process_count<doxid-t__pool_8h_1abe4e17164e848e3ec15bb001a8e4209e>`(void);
 	static void :target:`gateway_handle_identify<doxid-gateway_8c_1a75199724e0c3c35cb585a4306c3a8744>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client);
 	static void :target:`gateway_send_heartbeat<doxid-gateway_8c_1a59eb87aa8453c8c5d7faf4c0002b5a03>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client);
 	static void :target:`gateway_handle_dispatch<doxid-gateway_8c_1a0ae5ed06471447e38fa5edf7780989c3>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot, cJSON* json);
 	void :ref:`gateway_on_receive<doxid-gateway_8c_1abc6b6d909501ade6a804502c70c40d57>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, char* data, size_t len);
 	void* :ref:`gateway_heartbeat_loop<doxid-gateway_8c_1ae196cc6926770e97cbb48322d028bef6>`(void* vargp);
 	void :ref:`gateway_event_loop<doxid-gateway_8c_1af1d985c40864d2d78d43b3adf4bc62dd>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
-	void :ref:`gateway_on_receive<doxid-gateway_8h_1a8dd303796c502667dc80381a12150f96>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, char* data, size_t len);
-	void* :ref:`gateway_heartbeat_loop<doxid-gateway_8h_1ae196cc6926770e97cbb48322d028bef6>`(void* vargp);
-	void :ref:`gateway_event_loop<doxid-gateway_8h_1af1d985c40864d2d78d43b3adf4bc62dd>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot);
 	static size_t :ref:`write_data<doxid-request_8c_1ad1262acfd44e35f04459e159201eecd5>`(void* data, size_t s, size_t l, void* userp);
 
 	CURLcode :ref:`request<doxid-request_8c_1ac087d90f7a10cb67b7d7b381cbbea52c>`(
@@ -666,16 +571,6 @@ Overview
 
 	struct curl_slist* :ref:`curl_setup_discord_header<doxid-request_8c_1a9ce91e36169b27f6c89939cf6cdc0236>`(CURL* handle);
 	int :ref:`request_test<doxid-request_8c_1a8b26b274786bb9e5eb1d9b28113f9c9d>`(void);
-
-	CURLcode :ref:`request<doxid-request_8h_1ac087d90f7a10cb67b7d7b381cbbea52c>`(
-		char* url,
-		char** response,
-		cJSON* content,
-		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type
-	);
-
-	struct curl_slist* :ref:`curl_setup_discord_header<doxid-request_8h_1a9ce91e36169b27f6c89939cf6cdc0236>`(CURL* handle);
-	int :ref:`request_test<doxid-request_8h_1a8b26b274786bb9e5eb1d9b28113f9c9d>`(void);
 
 	static int :target:`websocket_callback<doxid-websocket_8c_1a28316ba3b1b7781024e58e31a9c27931>`(
 		struct lws* wsi,
@@ -693,13 +588,6 @@ Overview
 	void :ref:`websocket_close<doxid-websocket_8c_1a3af18f27c14cdea777c48fb383100f57>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
 	static void :target:`sigint_handler<doxid-websocket_8c_1aed429b7c618757d735b6bea2609c229a>`(int sig);
 	int :target:`websocket_test<doxid-websocket_8c_1ad7b1e0aedab3d4111d5ddb66a6e78dab>`(void);
-	int :ref:`websocket_send<doxid-websocket_8h_1a4441bdd6264675d37ad41f203f73d20f>`(struct lws* wsi, char* data, size_t len);
-	int :ref:`websocket_create<doxid-websocket_8h_1a25e61029244807bce89cf9b7df8283e9>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client, :ref:`callback_receive_fn<doxid-websocket_8h_1a75e027723976e4a1325be64cb272d01e>` on_receive);
-	int :ref:`websocket_connect<doxid-websocket_8h_1ad6005f40f7aeb320494eb2ab32d051f6>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
-	void :ref:`websocket_close<doxid-websocket_8h_1a3af18f27c14cdea777c48fb383100f57>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
-	void :ref:`websocket_reconnect<doxid-websocket_8h_1af32439469ba35f20294d4a9a516b6e2d>`(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client);
-	void :ref:`websocket_destroy_client<doxid-websocket_8h_1a371f513f4875190cbfd6681d08ff09ca>`(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client);
-	int :target:`websocket_test<doxid-websocket_8h_1ad7b1e0aedab3d4111d5ddb66a6e78dab>`(void);
 	void :target:`test_message_creation<doxid-test__discord_8c_1ab6e24e0276651581fbc2889a37282925>`(void);
 	void :target:`test_embed_creation<doxid-test__discord_8c_1adf03b279bfe559e0be918b4ea4b6fc8d>`(void);
 	void :target:`setUp<doxid-test__discord_8c_1a95c834d6178047ce9e1bce7cbfea2836>`(void);
@@ -785,168 +673,21 @@ This allows the user to choose what do with the structure however they want. The
 Global Functions
 ----------------
 
-.. index:: pair: function; disco_create_attachment_struct_json
-.. _doxid-attachment_8c_1af59f1ce741cfbb4421795741693874c7:
+.. index:: pair: function; discord_channel_send_message
+.. _doxid-message__send_8h_1a556b7ad86b470b33662c6363f0962473:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void* disco_create_attachment_struct_json(cJSON* data)
-
-Creates an attachment structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_attachment <doxid-structdiscord__attachment>` struct
-
-.. index:: pair: function; disco_destroy_attachment
-.. _doxid-attachment_8c_1a22ef506e41660aab7a385a0418c3c7e8:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_attachment(struct :ref:`discord_attachment<doxid-structdiscord__attachment>`* attachment)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- attachment
-
-		-
-
-.. index:: pair: function; disco_create_channel_struct_json
-.. _doxid-channel_8c_1a7a182476459bfe4ab935a4dc5d366ae9:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_channel_struct_json(cJSON* data)
-
-Creates a channel structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_channel <doxid-structdiscord__channel>` struct
-
-.. index:: pair: function; disco_destroy_channel
-.. _doxid-channel_8c_1ae8939046624f5b842d5624c43f2aa927:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- channel struct
-
-.. index:: pair: function; disco_create_channel_mention_struct_json
-.. _doxid-channel_8c_1ae35c134c59f03e4864735cf48bab7586:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_channel_mention_struct_json(cJSON* data)
-
-Creates a channel_mention structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_channel_mention <doxid-structdiscord__channel__mention>` struct
-
-.. index:: pair: function; disco_destroy_channel_mention
-.. _doxid-channel_8c_1a5456c2bb18e078f3ae0c4bdd53291f48:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_channel_mention(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- channel_mention struct
-
-.. index:: pair: function; discord_fill_json_with_locales
-.. _doxid-command_8c_1a1c5c9cea7bdfb0b9cfcd63cdbeddf1a3:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_locales(
-		cJSON* json,
-		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* locales
+	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_channel_send_message(
+		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
+		char* content,
+		uint64_t channel_id,
+		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
+		bool return_struct
 	)
 
-Fills a JSON with the values of a langauge locales struct.
+Sends a message and if enabled also returns the sent message struct.
 
 
 
@@ -956,152 +697,43 @@ Fills a JSON with the values of a langauge locales struct.
 	:widths: 20 80
 
 	*
-		- json
+		- bot
 
-		- JSON struct to fill the values in.
-
-	*
-		- locales
-
-		- struct to be used to fill in the JSON.
-
-.. index:: pair: function; disco_create_component_struct_json
-.. _doxid-component_8c_1a9e2cc31d672692120ec7c4989ff0586a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_component_struct_json(cJSON* data)
-
-Creates a component structure from a given JSON with the correct type.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
+		- Active bot instance
 
 	*
-		- data
+		- content
 
-		- 
+		- Message content to send (if empty, embed or components need to exist)
+
+	*
+		- channel_id
+
+		- ID of the channel the message should be sent in
+
+	*
+		- message
+
+		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
+
+	*
+		- return_struct
+
+		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`discord_destroy_message() <doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>` after)
 
 
 
 .. rubric:: Returns:
 
-void\* :ref:`discord_component <doxid-structdiscord__component>` struct
+struct discord_message\* NULL or the struct of the sent message
 
-.. index:: pair: function; disco_destroy_component
-.. _doxid-component_8c_1a55862e34f07072afa186dc8add0748e1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_component(struct :ref:`discord_component<doxid-structdiscord__component>`* c)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- c
-
-		- :ref:`discord_component <doxid-structdiscord__component>` struct
-
-.. index:: pair: function; disco_create_select_option_struct
-.. _doxid-component_8c_1ab934da595b8417cb3a2f6a960e398cc5:
+.. index:: pair: function; discord_start_bot
+.. _doxid-disco_8h_1a4f20272fb9c9721c9bea30eb4fbd091e:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void* disco_create_select_option_struct(cJSON* data)
-
-Creates a select option structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_select_option <doxid-structdiscord__select__option>` struct
-
-.. index:: pair: function; disco_destroy_select_option
-.. _doxid-component_8c_1aa646f51072e6d13ca18435d31d38ff45:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_select_option(struct :ref:`discord_select_option<doxid-structdiscord__select__option>`* option)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- option
-
-		-
-
-.. index:: pair: function; discord_fill_json_with_component
-.. _doxid-component_8c_1a9a14431e142019405c294f95b0a8c4f0:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_component(
-		cJSON* json,
-		struct :ref:`discord_component<doxid-structdiscord__component>`* component
-	)
-
-Fills in a JSON with the attributes of the component structure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- json
-
-		- JSON struct that should be filled in with the values.
-
-	*
-		- component
-
-		- The component that will be used to fill the JSON.
-
-.. index:: pair: function; disco_start_bot
-.. _doxid-disco_8c_1a18aaf89bf302e2e7a16188c6b7f45a76:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_start_bot(:ref:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`* callbacks)
+	void discord_start_bot(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks)
 
 High level abstraction which starts the bot.
 
@@ -1117,111 +749,13 @@ High level abstraction which starts the bot.
 
 		- A callbacks object containing the callbacks to the event functions.
 
-.. index:: pair: function; get_bool_from_json
-.. _doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c:
+.. index:: pair: function; discord_free_bot
+.. _doxid-disco_8h_1a80e1160f6820069af67ff4ed4b5871d9:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool get_bool_from_json(cJSON* data, const char* name, int default_)
-
-Get a bool from json object.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-	*
-		- name
-
-		- 
-
-	*
-		- default\_
-
-		- The default value incase the field doesn't exist
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; get_int_from_json
-.. _doxid-disco_8c_1a32b66596edf0d38a4be3bb491a5f60f3:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int get_int_from_json(cJSON* data, const char* name, int default_)
-
-Get an int from json object.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-	*
-		- name
-
-		- 
-
-	*
-		- default\_
-
-		- The default value incase the field doesn't exist
-
-
-
-.. rubric:: Returns:
-
-bool
-
-.. index:: pair: function; disco_start_bot
-.. _doxid-disco_8h_1a18aaf89bf302e2e7a16188c6b7f45a76:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_start_bot(:ref:`disco_event_callbacks_t<doxid-disco_8h_1aa118099808d9e7c62125e5818d39734b>`* callbacks)
-
-High level abstraction which starts the bot.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- callbacks
-
-		- A callbacks object containing the callbacks to the event functions.
-
-.. index:: pair: function; disco_free_bot
-.. _doxid-disco_8h_1a574e14c65822608f9c0494f03259b4d8:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_free_bot(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
+	void discord_free_bot(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
 
 Frees up memory for a bot instance.
 
@@ -1313,15 +847,782 @@ Get an int from json object.
 
 bool
 
-.. index:: pair: function; disco_create_embed_struct_json
-.. _doxid-embed_8c_1a22aa141aa7eaa406c426964270b9f926:
+.. index:: pair: function; event_handle
+.. _doxid-event_8h_1a0a0e68819bd46857f175b4ef0345767e:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void* disco_create_embed_struct_json(cJSON* data)
+	void event_handle(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, cJSON* data, char* event)
 
-Creates an embed structure from a given JSON.
+All event websocket responses call this function.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		- Active bot instance
+
+	*
+		- data
+
+		- The received data in a JSON struct
+
+	*
+		- event
+
+		- The event that was called as a string
+
+.. index:: pair: function; discord_cache_init
+.. _doxid-cache_8h_1a4d8331ae5a2c94953a5e668299668011:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int discord_cache_init(
+		int message_cache_size,
+		int channel_cache_size,
+		int guild_cache_size,
+		:ref:`cache_destroy_callback_fn<doxid-cache_8h_1a3a2c76967f7fd059bb4ca547a911599e>` callback
+	)
+
+Initializes all the caches.
+
+Should be called once when starting up the bot. Once the max cache size is reached, the oldest messages/channels/guilds will start to be cleaned up. Any time an object is edited on Discord, its "TTL" will be renewed in the cache.
+
+The minimum cache size is 2, because edits require both the old and new object in the cache. Any number lower than 2 will result in the cache being set to 2.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- message_cache_size
+
+		- Maximum amount of messages the cache can hold (> 1)
+
+	*
+		- channel_cach_size
+
+		- Maximum amount of channels the cache can hold (> 1)
+
+	*
+		- guild_cache_size
+
+		- Maximum amount of guilds the cache can hold (> 1)
+
+	*
+		- callback
+
+		- Callback that is called whenever a structure is taken out of the cache. It is up to the user if the structure should be freed or what happens to it. Keep it NULL to have the structures be freed up.
+
+
+
+.. rubric:: Returns:
+
+int 0 if succeeded, 1 otherwise
+
+.. index:: pair: function; discord_cache_destroy
+.. _doxid-cache_8h_1a81a1c1e1b3972c8e9dcbc90cca2ec195:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_cache_destroy(void)
+
+Cleans up the cache and frees all the structs it contains.
+
+.. index:: pair: function; discord_cache_set_message
+.. _doxid-cache_8h_1a0d885224d57ff6aa08ece206a1e44586:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int discord_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
+
+Adds a message to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- message
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; discord_cache_get_message
+.. _doxid-cache_8h_1a296a64475d6debc510dace71c0291c76:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_cache_get_message(uint64_t id)
+
+Retreives a message by ID in the cache.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+struct discord_message\* Pointer to the message struct. NULL if the message is not in the cache.
+
+.. index:: pair: function; discord_cache_delete_message
+.. _doxid-cache_8h_1ad99724bf217d9eab3de06d27142e4699:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_cache_delete_message(uint64_t id)
+
+Removes a message from the cache and deallocates the message from memory.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- ID of the message to remove
+
+.. index:: pair: function; discord_cache_set_channel
+.. _doxid-cache_8h_1a215176bc3913ce064686502970de2a30:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int discord_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
+
+Adds a channel to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- channel
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; discord_cache_get_channel
+.. _doxid-cache_8h_1acb6845fdf41a71ceb0310278b4fd81f8:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	struct :ref:`discord_channel<doxid-structdiscord__channel>`* discord_cache_get_channel(uint64_t id)
+
+Retreives a channel by ID in the cache.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+struct discord_channel\* Pointer to the channel struct. NULL if the channel is not in the cache.
+
+.. index:: pair: function; discord_cache_delete_channel
+.. _doxid-cache_8h_1a11df7744ff41f0fec695a2ef3893f879:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_cache_delete_channel(uint64_t id)
+
+Removes a channel from the cache and deallocates the channel from memory.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- ID of the channel to remove
+
+.. index:: pair: function; discord_cache_set_guild
+.. _doxid-cache_8h_1ad143b7c2d82fce0dc2cd2cabce1f1d3e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int discord_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
+
+Adds a guild to the cache by ID.
+
+If it already exists in cache, it frees and overwrites the previous entry.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- guild
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; discord_cache_get_guild
+.. _doxid-cache_8h_1a0de846d3068f6e1c2bb78104209e7cc5:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	struct :ref:`discord_guild<doxid-structdiscord__guild>`* discord_cache_get_guild(uint64_t id)
+
+Retreives a guild by ID in the cache.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+struct discord_guild\* Pointer to the guild struct. NULL if the guild is not in the cache.
+
+.. index:: pair: function; discord_cache_delete_guild
+.. _doxid-cache_8h_1ad0559549aa01d2930e7a798654b57e0b:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_cache_delete_guild(uint64_t id)
+
+Removes a guild from the cache and deallocates the guild from memory.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- id
+
+		- ID of the guild to remove
+
+.. index:: pair: function; t_pool_add_work
+.. _doxid-t__pool_8h_1aa3e070b85293e5d6fdd860aba065eac2:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int t_pool_add_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp, :ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` func, void* work)
+
+Adds work to the thread pool.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- tp
+
+		- 
+
+	*
+		- func
+
+		- 
+
+	*
+		- work
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; t_pool_pop_work
+.. _doxid-t__pool_8h_1ab8a1ec967a595f770edd2e5f2c818ca6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* t_pool_pop_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp)
+
+Pops the head of the pool and returns the pointer to the head.
+
+IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- tp
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+t_work_t\*
+
+.. index:: pair: function; gateway_on_receive
+.. _doxid-gateway_8h_1a8dd303796c502667dc80381a12150f96:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void gateway_on_receive(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, char* data, size_t len)
+
+Callback function for when a websocket package is received.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		- A bot instance
+
+	*
+		- data
+
+		- The data that was received
+
+	*
+		- len
+
+		- The length of the data
+
+.. index:: pair: function; gateway_heartbeat_loop
+.. _doxid-gateway_8h_1ae196cc6926770e97cbb48322d028bef6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* gateway_heartbeat_loop(void* vargp)
+
+Initiates the heartbeat loop.
+
+Intended to be run on a seperate thread.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- vargp
+
+		- Pointer to the active websocket client
+
+
+
+.. rubric:: Returns:
+
+void\*
+
+.. index:: pair: function; gateway_event_loop
+.. _doxid-gateway_8h_1af1d985c40864d2d78d43b3adf4bc62dd:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void gateway_event_loop(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
+
+Initiates the event loop.
+
+This is the main loop that needs to be run for the bot to work.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- bot
+
+		- Active bot instance
+
+.. index:: pair: function; request
+.. _doxid-request_8h_1ac087d90f7a10cb67b7d7b381cbbea52c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	CURLcode request(
+		char* url,
+		char** response,
+		cJSON* content,
+		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type
+	)
+
+Performs a HTTP request to the specified URL.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- uri
+
+		- URI to append to Discord Gateway
+
+	*
+		- response
+
+		- Pointer to a pointer that will be modified to point to point to the data
+
+	*
+		- content
+
+		- Pointer to JSON that should be sent. If there's nothing to send, it should be NULL.
+
+	*
+		- request_type
+
+		- The type of request to execute
+
+
+
+.. rubric:: Returns:
+
+CURLcode
+
+.. index:: pair: function; curl_setup_discord_header
+.. _doxid-request_8h_1a9ce91e36169b27f6c89939cf6cdc0236:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	struct curl_slist* curl_setup_discord_header(CURL* handle)
+
+Adds the correct Discord headers to a CURL handle.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- handle
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+struct curl_slist\*
+
+.. index:: pair: function; request_test
+.. _doxid-request_8h_1a8b26b274786bb9e5eb1d9b28113f9c9d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int request_test(void)
+
+Tests if request POST and GET work.
+
+
+
+.. rubric:: Returns:
+
+int 1 if it works, 0 else
+
+.. index:: pair: function; websocket_send
+.. _doxid-websocket_8h_1a4441bdd6264675d37ad41f203f73d20f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int websocket_send(struct lws* wsi, char* data, size_t len)
+
+Sends data through the websocket connection.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- wsi
+
+		- Websocket connection
+
+	*
+		- data
+
+		- Data to send
+
+	*
+		- len
+
+		- Length of data to send
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; websocket_create
+.. _doxid-websocket_8h_1a25e61029244807bce89cf9b7df8283e9:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int websocket_create(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client, :ref:`callback_receive_fn<doxid-websocket_8h_1a75e027723976e4a1325be64cb272d01e>` on_receive)
+
+Sets up the websocket client.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- client
+
+		- Pointer to a websocket client
+
+	*
+		- on_receive
+
+		- Callback function for the receiving websocket packages
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; websocket_connect
+.. _doxid-websocket_8h_1ad6005f40f7aeb320494eb2ab32d051f6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int websocket_connect(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
+
+Sends the initial handshake to connect to the Discord websocket The client is only marked as "connected" once an answer from Discord is received.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		- Bot client instance
+
+
+
+.. rubric:: Returns:
+
+int
+
+.. index:: pair: function; websocket_close
+.. _doxid-websocket_8h_1a3af18f27c14cdea777c48fb383100f57:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void websocket_close(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
+
+Closes the websocket connection and sends a normal close reason to the websocket server reason.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		-
+
+.. index:: pair: function; websocket_reconnect
+.. _doxid-websocket_8h_1af32439469ba35f20294d4a9a516b6e2d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void websocket_reconnect(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
+
+Reconnects to the websocket.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		-
+
+.. index:: pair: function; websocket_destroy_client
+.. _doxid-websocket_8h_1a371f513f4875190cbfd6681d08ff09ca:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void websocket_destroy_client(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client)
+
+Frees up all memory allocated with the :ref:`bot_client <doxid-structbot__client>` struct.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`bot_client <doxid-structbot__client>`
+
+		-
+
+.. index:: pair: function; discord_start_bot
+.. _doxid-disco_8c_1a4f20272fb9c9721c9bea30eb4fbd091e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_start_bot(:ref:`discord_event_callbacks_t<doxid-disco_8h_1af84e259f898478bd152e30311a2e177d>`* callbacks)
+
+High level abstraction which starts the bot.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- callbacks
+
+		- A callbacks object containing the callbacks to the event functions.
+
+.. index:: pair: function; get_bool_from_json
+.. _doxid-disco_8c_1a8793f41af7b3cc35217311c6bb439c7c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	bool get_bool_from_json(cJSON* data, const char* name, int default_)
+
+Get a bool from json object.
 
 
 
@@ -1335,43 +1636,31 @@ Creates an embed structure from a given JSON.
 
 		- 
 
+	*
+		- name
+
+		- 
+
+	*
+		- default\_
+
+		- The default value incase the field doesn't exist
+
 
 
 .. rubric:: Returns:
 
-void\* :ref:`discord_embed <doxid-structdiscord__embed>` struct
+int
 
-.. index:: pair: function; disco_destroy_embed
-.. _doxid-embed_8c_1adba28cb015c74e550c169d6205a98901:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- embed
-
-		-
-
-.. index:: pair: function; disco_create_embed_footer_struct_json
-.. _doxid-embed_8c_1a743948a5ddb5fdde9eec252ed9b98b5c:
+.. index:: pair: function; get_int_from_json
+.. _doxid-disco_8c_1a32b66596edf0d38a4be3bb491a5f60f3:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void* disco_create_embed_footer_struct_json(cJSON* data)
+	int get_int_from_json(cJSON* data, const char* name, int default_)
 
-Creates an embed_footer structure from a given JSON.
+Get an int from json object.
 
 
 
@@ -1385,233 +1674,21 @@ Creates an embed_footer structure from a given JSON.
 
 		- 
 
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_footer <doxid-structdiscord__embed__footer>` struct
-
-.. index:: pair: function; disco_destroy_embed_footer
-.. _doxid-embed_8c_1a6c0793b67c6e12b5fc93e999541b3dde:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_footer(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
 	*
-		- footer
-
-		-
-
-.. index:: pair: function; disco_create_embed_media_struct_json
-.. _doxid-embed_8c_1ae4ffada5eab80fbd218e8ace493787a1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_media_struct_json(cJSON* data)
-
-Creates an embed_media structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
+		- name
 
 		- 
 
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_media <doxid-structdiscord__embed__media>` struct
-
-.. index:: pair: function; disco_destroy_embed_media
-.. _doxid-embed_8c_1ae15eb6b90c047dec8257a42795f4025a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_media(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
 	*
-		- media
+		- default\_
 
-		-
-
-.. index:: pair: function; disco_create_embed_provider_struct_json
-.. _doxid-embed_8c_1a3d2cde350dbc80871ef5aa791d2c854e:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_provider_struct_json(cJSON* data)
-
-Creates an embed_provider structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
+		- The default value incase the field doesn't exist
 
 
 
 .. rubric:: Returns:
 
-void\* :ref:`discord_embed_provider <doxid-structdiscord__embed__provider>` struct
-
-.. index:: pair: function; disco_destroy_embed_provider
-.. _doxid-embed_8c_1afb963fd611d3102106847523deac08ce:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_provider(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- provider
-
-		-
-
-.. index:: pair: function; disco_create_embed_author_struct_json
-.. _doxid-embed_8c_1aa235055f7b4797c1626e38dc655db607:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_author_struct_json(cJSON* data)
-
-Creates an embed_author structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_author <doxid-structdiscord__embed__author>` struct
-
-.. index:: pair: function; disco_destroy_embed_author
-.. _doxid-embed_8c_1aefa3363aa6ea2dd117e6539e7969add7:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_author(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- author
-
-		-
-
-.. index:: pair: function; disco_create_embed_field_struct_json
-.. _doxid-embed_8c_1a5c7913fcba9256432ad53a4a14ef4042:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_field_struct_json(cJSON* data)
-
-Creates an embed_field structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_field <doxid-structdiscord__embed__field>` struct
-
-.. index:: pair: function; disco_destroy_embed_field
-.. _doxid-embed_8c_1a826f790ecaa7e1dd16c499c56569633d:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_field(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- field
-
-		-
+bool
 
 .. index:: pair: function; event_handle
 .. _doxid-event_8c_1ac3984c74b045e0afadbf2f69ed76f597:
@@ -1645,15 +1722,21 @@ All event websocket responses call this function.
 
 		- The event that was called as a string
 
-.. index:: pair: function; event_handle
-.. _doxid-event_8h_1a0a0e68819bd46857f175b4ef0345767e:
+.. index:: pair: function; discord_channel_send_message
+.. _doxid-message_8c_1a556b7ad86b470b33662c6363f0962473:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void event_handle(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, cJSON* data, char* event)
+	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_channel_send_message(
+		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
+		char* content,
+		uint64_t channel_id,
+		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
+		bool return_struct
+	)
 
-All event websocket responses call this function.
+Sends a message and if enabled also returns the sent message struct.
 
 
 
@@ -1663,837 +1746,43 @@ All event websocket responses call this function.
 	:widths: 20 80
 
 	*
-		- :ref:`bot_client <doxid-structbot__client>`
+		- bot
 
 		- Active bot instance
 
 	*
-		- data
+		- content
 
-		- The received data in a JSON struct
-
-	*
-		- event
-
-		- The event that was called as a string
-
-.. index:: pair: function; disco_create_guild_struct_json
-.. _doxid-guild_8c_1a22691c9df59510b6dea15994091c5aa0:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_guild_struct_json(cJSON* data)
-
-Creates a guild structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
+		- Message content to send (if empty, embed or components need to exist)
 
 	*
-		- data
+		- channel_id
 
-		- 
+		- ID of the channel the message should be sent in
+
+	*
+		- message
+
+		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
+
+	*
+		- return_struct
+
+		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`discord_destroy_message() <doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>` after)
 
 
 
 .. rubric:: Returns:
 
-void\* :ref:`discord_guild <doxid-structdiscord__guild>` struct
+struct discord_message\* NULL or the struct of the sent message
 
-.. index:: pair: function; disco_destroy_guild
-.. _doxid-guild_8c_1a084339b2ff8ec44de5bace6344899332:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- guild struct
-
-.. index:: pair: function; disco_create_attachment_struct_json
-.. _doxid-attachment_8h_1af59f1ce741cfbb4421795741693874c7:
+.. index:: pair: function; discord_cache_init
+.. _doxid-cache_8c_1a4d8331ae5a2c94953a5e668299668011:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void* disco_create_attachment_struct_json(cJSON* data)
-
-Creates an attachment structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_attachment <doxid-structdiscord__attachment>` struct
-
-.. index:: pair: function; disco_destroy_attachment
-.. _doxid-attachment_8h_1a22ef506e41660aab7a385a0418c3c7e8:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_attachment(struct :ref:`discord_attachment<doxid-structdiscord__attachment>`* attachment)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- attachment
-
-		-
-
-.. index:: pair: function; disco_create_channel_struct_json
-.. _doxid-channel_8h_1a7a182476459bfe4ab935a4dc5d366ae9:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_channel_struct_json(cJSON* data)
-
-Creates a channel structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_channel <doxid-structdiscord__channel>` struct
-
-.. index:: pair: function; disco_destroy_channel
-.. _doxid-channel_8h_1ae8939046624f5b842d5624c43f2aa927:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- channel struct
-
-.. index:: pair: function; disco_create_channel_mention_struct_json
-.. _doxid-channel_8h_1ae35c134c59f03e4864735cf48bab7586:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_channel_mention_struct_json(cJSON* data)
-
-Creates a channel_mention structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_channel_mention <doxid-structdiscord__channel__mention>` struct
-
-.. index:: pair: function; disco_destroy_channel_mention
-.. _doxid-channel_8h_1a5456c2bb18e078f3ae0c4bdd53291f48:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_channel_mention(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- channel_mention struct
-
-.. index:: pair: function; discord_fill_json_with_locales
-.. _doxid-command_8h_1a1c5c9cea7bdfb0b9cfcd63cdbeddf1a3:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_locales(
-		cJSON* json,
-		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* locales
-	)
-
-Fills a JSON with the values of a langauge locales struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- json
-
-		- JSON struct to fill the values in.
-
-	*
-		- locales
-
-		- struct to be used to fill in the JSON.
-
-.. index:: pair: function; disco_create_select_option_struct
-.. _doxid-component_8h_1ab934da595b8417cb3a2f6a960e398cc5:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_select_option_struct(cJSON* data)
-
-Creates a select option structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_select_option <doxid-structdiscord__select__option>` struct
-
-.. index:: pair: function; disco_destroy_select_option
-.. _doxid-component_8h_1aa646f51072e6d13ca18435d31d38ff45:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_select_option(struct :ref:`discord_select_option<doxid-structdiscord__select__option>`* option)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- option
-
-		-
-
-.. index:: pair: function; disco_create_component_struct_json
-.. _doxid-component_8h_1a9e2cc31d672692120ec7c4989ff0586a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_component_struct_json(cJSON* data)
-
-Creates a component structure from a given JSON with the correct type.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_component <doxid-structdiscord__component>` struct
-
-.. index:: pair: function; disco_destroy_component
-.. _doxid-component_8h_1a55862e34f07072afa186dc8add0748e1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_component(struct :ref:`discord_component<doxid-structdiscord__component>`* c)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- c
-
-		- :ref:`discord_component <doxid-structdiscord__component>` struct
-
-.. index:: pair: function; discord_fill_json_with_component
-.. _doxid-component_8h_1a0d6ca689a9c6d6e142043f82d3ba7149:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void discord_fill_json_with_component(
-		cJSON* json,
-		struct :ref:`discord_component<doxid-structdiscord__component>`* component
-	)
-
-Fills in a JSON with the attributes of the component structure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- json
-
-		- JSON struct that should be filled in with the values.
-
-	*
-		- component
-
-		- The component that will be used to fill the JSON.
-
-.. index:: pair: function; disco_create_embed_footer_struct_json
-.. _doxid-embed_8h_1a743948a5ddb5fdde9eec252ed9b98b5c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_footer_struct_json(cJSON* data)
-
-Creates an embed_footer structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_footer <doxid-structdiscord__embed__footer>` struct
-
-.. index:: pair: function; disco_destroy_embed_footer
-.. _doxid-embed_8h_1a6c0793b67c6e12b5fc93e999541b3dde:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_footer(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- footer
-
-		-
-
-.. index:: pair: function; disco_create_embed_media_struct_json
-.. _doxid-embed_8h_1ae4ffada5eab80fbd218e8ace493787a1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_media_struct_json(cJSON* data)
-
-Creates an embed_media structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_media <doxid-structdiscord__embed__media>` struct
-
-.. index:: pair: function; disco_destroy_embed_media
-.. _doxid-embed_8h_1ae15eb6b90c047dec8257a42795f4025a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_media(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- media
-
-		-
-
-.. index:: pair: function; disco_create_embed_provider_struct_json
-.. _doxid-embed_8h_1a3d2cde350dbc80871ef5aa791d2c854e:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_provider_struct_json(cJSON* data)
-
-Creates an embed_provider structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_provider <doxid-structdiscord__embed__provider>` struct
-
-.. index:: pair: function; disco_destroy_embed_provider
-.. _doxid-embed_8h_1afb963fd611d3102106847523deac08ce:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_provider(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- provider
-
-		-
-
-.. index:: pair: function; disco_create_embed_author_struct_json
-.. _doxid-embed_8h_1aa235055f7b4797c1626e38dc655db607:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_author_struct_json(cJSON* data)
-
-Creates an embed_author structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_author <doxid-structdiscord__embed__author>` struct
-
-.. index:: pair: function; disco_destroy_embed_author
-.. _doxid-embed_8h_1aefa3363aa6ea2dd117e6539e7969add7:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_author(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- author
-
-		-
-
-.. index:: pair: function; disco_create_embed_field_struct_json
-.. _doxid-embed_8h_1a5c7913fcba9256432ad53a4a14ef4042:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_field_struct_json(cJSON* data)
-
-Creates an embed_field structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed_field <doxid-structdiscord__embed__field>` struct
-
-.. index:: pair: function; disco_destroy_embed_field
-.. _doxid-embed_8h_1a826f790ecaa7e1dd16c499c56569633d:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed_field(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- field
-
-		-
-
-.. index:: pair: function; disco_create_embed_struct_json
-.. _doxid-embed_8h_1a22aa141aa7eaa406c426964270b9f926:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_embed_struct_json(cJSON* data)
-
-Creates an embed structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_embed <doxid-structdiscord__embed>` struct
-
-.. index:: pair: function; disco_destroy_embed
-.. _doxid-embed_8h_1adba28cb015c74e550c169d6205a98901:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_embed(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- embed
-
-		-
-
-.. index:: pair: function; disco_create_guild_struct_json
-.. _doxid-guild_8h_1a22691c9df59510b6dea15994091c5aa0:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_guild_struct_json(cJSON* data)
-
-Creates a guild structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_guild <doxid-structdiscord__guild>` struct
-
-.. index:: pair: function; disco_destroy_guild
-.. _doxid-guild_8h_1a084339b2ff8ec44de5bace6344899332:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- ch
-
-		- guild struct
-
-.. index:: pair: function; disco_create_user_struct_json
-.. _doxid-user_8h_1af94f5c598b83cff67e8bfa7b59547b4a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_user_struct_json(cJSON* data)
-
-Creates a discod_user struct with the passed in JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- The Discord JSON for a user
-
-
-
-.. rubric:: Returns:
-
-struct discord_user\*
-
-.. index:: pair: function; disco_destroy_user
-.. _doxid-user_8h_1aa0ab98aafae680e0705278e9388873f1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_user(struct :ref:`discord_user<doxid-structdiscord__user>`* user)
-
-Destroys the :ref:`discord_user <doxid-structdiscord__user>` structs and frees the passed in pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- user
-
-		-
-
-.. index:: pair: function; disco_create_user_struct_json
-.. _doxid-user_8c_1af94f5c598b83cff67e8bfa7b59547b4a:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_user_struct_json(cJSON* data)
-
-Creates a discod_user struct with the passed in JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- The Discord JSON for a user
-
-
-
-.. rubric:: Returns:
-
-struct discord_user\*
-
-.. index:: pair: function; disco_destroy_user
-.. _doxid-user_8c_1aa0ab98aafae680e0705278e9388873f1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_user(struct :ref:`discord_user<doxid-structdiscord__user>`* user)
-
-Destroys the :ref:`discord_user <doxid-structdiscord__user>` structs and frees the passed in pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- user
-
-		-
-
-.. index:: pair: function; disco_cache_init
-.. _doxid-cache_8c_1a98b5c2129a67d394da3830526d1ae247:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int disco_cache_init(
+	int discord_cache_init(
 		int message_cache_size,
 		int channel_cache_size,
 		int guild_cache_size,
@@ -2539,23 +1828,23 @@ The minimum cache size is 2, because edits require both the old and new object i
 
 int 0 if succeeded, 1 otherwise
 
-.. index:: pair: function; disco_cache_destroy
-.. _doxid-cache_8c_1ad69b13a7c195f8e49f2e3410bf524e83:
+.. index:: pair: function; discord_cache_destroy
+.. _doxid-cache_8c_1a81a1c1e1b3972c8e9dcbc90cca2ec195:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void disco_cache_destroy(void)
+	void discord_cache_destroy(void)
 
 Cleans up the cache and frees all the structs it contains.
 
-.. index:: pair: function; disco_cache_set_message
-.. _doxid-cache_8c_1a956b108056f3cdae1c31f1584ba4ee0f:
+.. index:: pair: function; discord_cache_set_message
+.. _doxid-cache_8c_1a0d885224d57ff6aa08ece206a1e44586:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	int disco_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
+	int discord_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
 
 Adds a message to the cache by ID.
 
@@ -2579,13 +1868,13 @@ If it already exists in cache, it frees and overwrites the previous entry.
 
 int
 
-.. index:: pair: function; disco_cache_get_message
-.. _doxid-cache_8c_1ace523fbf19d49f495ffc8bfc95c4e572:
+.. index:: pair: function; discord_cache_get_message
+.. _doxid-cache_8c_1a296a64475d6debc510dace71c0291c76:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	struct :ref:`discord_message<doxid-structdiscord__message>`* disco_cache_get_message(uint64_t id)
+	struct :ref:`discord_message<doxid-structdiscord__message>`* discord_cache_get_message(uint64_t id)
 
 Retreives a message by ID in the cache.
 
@@ -2607,13 +1896,13 @@ Retreives a message by ID in the cache.
 
 struct discord_message\* Pointer to the message struct. NULL if the message is not in the cache.
 
-.. index:: pair: function; disco_cache_delete_message
-.. _doxid-cache_8c_1a5281ba3f361e1d54b29847d8b1a46182:
+.. index:: pair: function; discord_cache_delete_message
+.. _doxid-cache_8c_1ad99724bf217d9eab3de06d27142e4699:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void disco_cache_delete_message(uint64_t id)
+	void discord_cache_delete_message(uint64_t id)
 
 Removes a message from the cache and deallocates the message from memory.
 
@@ -2629,13 +1918,13 @@ Removes a message from the cache and deallocates the message from memory.
 
 		- ID of the message to remove
 
-.. index:: pair: function; disco_cache_set_channel
-.. _doxid-cache_8c_1a7c9a9dc6cac690ec485a0f031b0c0e8c:
+.. index:: pair: function; discord_cache_set_channel
+.. _doxid-cache_8c_1a215176bc3913ce064686502970de2a30:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	int disco_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
+	int discord_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
 
 Adds a channel to the cache by ID.
 
@@ -2659,13 +1948,13 @@ If it already exists in cache, it frees and overwrites the previous entry.
 
 int
 
-.. index:: pair: function; disco_cache_get_channel
-.. _doxid-cache_8c_1a94c944689fdfce9d67ca25c60516e49c:
+.. index:: pair: function; discord_cache_get_channel
+.. _doxid-cache_8c_1acb6845fdf41a71ceb0310278b4fd81f8:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	struct :ref:`discord_channel<doxid-structdiscord__channel>`* disco_cache_get_channel(uint64_t id)
+	struct :ref:`discord_channel<doxid-structdiscord__channel>`* discord_cache_get_channel(uint64_t id)
 
 Retreives a channel by ID in the cache.
 
@@ -2687,13 +1976,13 @@ Retreives a channel by ID in the cache.
 
 struct discord_channel\* Pointer to the channel struct. NULL if the channel is not in the cache.
 
-.. index:: pair: function; disco_cache_delete_channel
-.. _doxid-cache_8c_1aafbc60891102579f1fbf6f97ed004123:
+.. index:: pair: function; discord_cache_delete_channel
+.. _doxid-cache_8c_1a11df7744ff41f0fec695a2ef3893f879:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void disco_cache_delete_channel(uint64_t id)
+	void discord_cache_delete_channel(uint64_t id)
 
 Removes a channel from the cache and deallocates the channel from memory.
 
@@ -2709,13 +1998,13 @@ Removes a channel from the cache and deallocates the channel from memory.
 
 		- ID of the channel to remove
 
-.. index:: pair: function; disco_cache_set_guild
-.. _doxid-cache_8c_1accaa802263d40f247b2d094616f5cfa3:
+.. index:: pair: function; discord_cache_set_guild
+.. _doxid-cache_8c_1ad143b7c2d82fce0dc2cd2cabce1f1d3e:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	int disco_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
+	int discord_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
 
 Adds a guild to the cache by ID.
 
@@ -2739,13 +2028,13 @@ If it already exists in cache, it frees and overwrites the previous entry.
 
 int
 
-.. index:: pair: function; disco_cache_get_guild
-.. _doxid-cache_8c_1a40d6e5b34fb34603ac79a8cbc31c8799:
+.. index:: pair: function; discord_cache_get_guild
+.. _doxid-cache_8c_1a0de846d3068f6e1c2bb78104209e7cc5:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	struct :ref:`discord_guild<doxid-structdiscord__guild>`* disco_cache_get_guild(uint64_t id)
+	struct :ref:`discord_guild<doxid-structdiscord__guild>`* discord_cache_get_guild(uint64_t id)
 
 Retreives a guild by ID in the cache.
 
@@ -2767,315 +2056,13 @@ Retreives a guild by ID in the cache.
 
 struct discord_guild\* Pointer to the guild struct. NULL if the guild is not in the cache.
 
-.. index:: pair: function; disco_cache_delete_guild
-.. _doxid-cache_8c_1a26f3a802577df53494fd7f7537677f50:
+.. index:: pair: function; discord_cache_delete_guild
+.. _doxid-cache_8c_1ad0559549aa01d2930e7a798654b57e0b:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void disco_cache_delete_guild(uint64_t id)
-
-Removes a guild from the cache and deallocates the guild from memory.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- ID of the guild to remove
-
-.. index:: pair: function; disco_cache_init
-.. _doxid-cache_8h_1a98b5c2129a67d394da3830526d1ae247:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int disco_cache_init(
-		int message_cache_size,
-		int channel_cache_size,
-		int guild_cache_size,
-		:ref:`cache_destroy_callback_fn<doxid-cache_8h_1a3a2c76967f7fd059bb4ca547a911599e>` callback
-	)
-
-Initializes all the caches.
-
-Should be called once when starting up the bot. Once the max cache size is reached, the oldest messages/channels/guilds will start to be cleaned up. Any time an object is edited on Discord, its "TTL" will be renewed in the cache.
-
-The minimum cache size is 2, because edits require both the old and new object in the cache. Any number lower than 2 will result in the cache being set to 2.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message_cache_size
-
-		- Maximum amount of messages the cache can hold (> 1)
-
-	*
-		- channel_cach_size
-
-		- Maximum amount of channels the cache can hold (> 1)
-
-	*
-		- guild_cache_size
-
-		- Maximum amount of guilds the cache can hold (> 1)
-
-	*
-		- callback
-
-		- Callback that is called whenever a structure is taken out of the cache. It is up to the user if the structure should be freed or what happens to it. Keep it NULL to have the structures be freed up.
-
-
-
-.. rubric:: Returns:
-
-int 0 if succeeded, 1 otherwise
-
-.. index:: pair: function; disco_cache_destroy
-.. _doxid-cache_8h_1ad69b13a7c195f8e49f2e3410bf524e83:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_cache_destroy(void)
-
-Cleans up the cache and frees all the structs it contains.
-
-.. index:: pair: function; disco_cache_set_message
-.. _doxid-cache_8h_1a956b108056f3cdae1c31f1584ba4ee0f:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int disco_cache_set_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
-
-Adds a message to the cache by ID.
-
-If it already exists in cache, it frees and overwrites the previous entry.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; disco_cache_get_message
-.. _doxid-cache_8h_1ace523fbf19d49f495ffc8bfc95c4e572:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* disco_cache_get_message(uint64_t id)
-
-Retreives a message by ID in the cache.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* Pointer to the message struct. NULL if the message is not in the cache.
-
-.. index:: pair: function; disco_cache_delete_message
-.. _doxid-cache_8h_1a5281ba3f361e1d54b29847d8b1a46182:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_cache_delete_message(uint64_t id)
-
-Removes a message from the cache and deallocates the message from memory.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- ID of the message to remove
-
-.. index:: pair: function; disco_cache_set_channel
-.. _doxid-cache_8h_1a7c9a9dc6cac690ec485a0f031b0c0e8c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int disco_cache_set_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* channel)
-
-Adds a channel to the cache by ID.
-
-If it already exists in cache, it frees and overwrites the previous entry.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- channel
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; disco_cache_get_channel
-.. _doxid-cache_8h_1a94c944689fdfce9d67ca25c60516e49c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_channel<doxid-structdiscord__channel>`* disco_cache_get_channel(uint64_t id)
-
-Retreives a channel by ID in the cache.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-struct discord_channel\* Pointer to the channel struct. NULL if the channel is not in the cache.
-
-.. index:: pair: function; disco_cache_delete_channel
-.. _doxid-cache_8h_1aafbc60891102579f1fbf6f97ed004123:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_cache_delete_channel(uint64_t id)
-
-Removes a channel from the cache and deallocates the channel from memory.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- ID of the channel to remove
-
-.. index:: pair: function; disco_cache_set_guild
-.. _doxid-cache_8h_1accaa802263d40f247b2d094616f5cfa3:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int disco_cache_set_guild(struct :ref:`discord_guild<doxid-structdiscord__guild>`* guild)
-
-Adds a guild to the cache by ID.
-
-If it already exists in cache, it frees and overwrites the previous entry.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- guild
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; disco_cache_get_guild
-.. _doxid-cache_8h_1a40d6e5b34fb34603ac79a8cbc31c8799:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_guild<doxid-structdiscord__guild>`* disco_cache_get_guild(uint64_t id)
-
-Retreives a guild by ID in the cache.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- id
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-struct discord_guild\* Pointer to the guild struct. NULL if the guild is not in the cache.
-
-.. index:: pair: function; disco_cache_delete_guild
-.. _doxid-cache_8h_1a26f3a802577df53494fd7f7537677f50:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_cache_delete_guild(uint64_t id)
+	void discord_cache_delete_guild(uint64_t id)
 
 Removes a guild from the cache and deallocates the guild from memory.
 
@@ -3131,74 +2118,6 @@ int
 
 .. index:: pair: function; t_pool_pop_work
 .. _doxid-t__pool_8c_1ab8a1ec967a595f770edd2e5f2c818ca6:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`t_work_t<doxid-t__pool_8h_1a0477412c87965e74998842734661503f>`* t_pool_pop_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp)
-
-Pops the head of the pool and returns the pointer to the head.
-
-IMPORTANT: The received work needs to be freed to avoid memory leak! (Not thread-safe)
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- tp
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-t_work_t\*
-
-.. index:: pair: function; t_pool_add_work
-.. _doxid-t__pool_8h_1aa3e070b85293e5d6fdd860aba065eac2:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int t_pool_add_work(:ref:`t_pool_t<doxid-t__pool_8h_1ab68dfb215d81bd4c578dc2e6013bb6f2>`* tp, :ref:`t_func<doxid-t__pool_8h_1ae4decbb2fbff2be5c486e86cbb811398>` func, void* work)
-
-Adds work to the thread pool.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- tp
-
-		- 
-
-	*
-		- func
-
-		- 
-
-	*
-		- work
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; t_pool_pop_work
-.. _doxid-t__pool_8h_1ab8a1ec967a595f770edd2e5f2c818ca6:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
@@ -3291,92 +2210,6 @@ void\*
 
 .. index:: pair: function; gateway_event_loop
 .. _doxid-gateway_8c_1af1d985c40864d2d78d43b3adf4bc62dd:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void gateway_event_loop(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot)
-
-Initiates the event loop.
-
-This is the main loop that needs to be run for the bot to work.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-.. index:: pair: function; gateway_on_receive
-.. _doxid-gateway_8h_1a8dd303796c502667dc80381a12150f96:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void gateway_on_receive(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client, char* data, size_t len)
-
-Callback function for when a websocket package is received.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`bot_client <doxid-structbot__client>`
-
-		- A bot instance
-
-	*
-		- data
-
-		- The data that was received
-
-	*
-		- len
-
-		- The length of the data
-
-.. index:: pair: function; gateway_heartbeat_loop
-.. _doxid-gateway_8h_1ae196cc6926770e97cbb48322d028bef6:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* gateway_heartbeat_loop(void* vargp)
-
-Initiates the heartbeat loop.
-
-Intended to be run on a seperate thread.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- vargp
-
-		- Pointer to the active websocket client
-
-
-
-.. rubric:: Returns:
-
-void\*
-
-.. index:: pair: function; gateway_event_loop
-.. _doxid-gateway_8h_1af1d985c40864d2d78d43b3adf4bc62dd:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
@@ -3520,98 +2353,6 @@ struct curl_slist\*
 
 .. index:: pair: function; request_test
 .. _doxid-request_8c_1a8b26b274786bb9e5eb1d9b28113f9c9d:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int request_test(void)
-
-Tests if request POST and GET work.
-
-
-
-.. rubric:: Returns:
-
-int 1 if it works, 0 else
-
-.. index:: pair: function; request
-.. _doxid-request_8h_1ac087d90f7a10cb67b7d7b381cbbea52c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	CURLcode request(
-		char* url,
-		char** response,
-		cJSON* content,
-		enum :ref:`Request_Type<doxid-request_8h_1ac78504b18bd8f2dc037e4fcfafd623d2>` request_type
-	)
-
-Performs a HTTP request to the specified URL.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- uri
-
-		- URI to append to Discord Gateway
-
-	*
-		- response
-
-		- Pointer to a pointer that will be modified to point to point to the data
-
-	*
-		- content
-
-		- Pointer to JSON that should be sent. If there's nothing to send, it should be NULL.
-
-	*
-		- request_type
-
-		- The type of request to execute
-
-
-
-.. rubric:: Returns:
-
-CURLcode
-
-.. index:: pair: function; curl_setup_discord_header
-.. _doxid-request_8h_1a9ce91e36169b27f6c89939cf6cdc0236:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct curl_slist* curl_setup_discord_header(CURL* handle)
-
-Adds the correct Discord headers to a CURL handle.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- handle
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-struct curl_slist\*
-
-.. index:: pair: function; request_test
-.. _doxid-request_8h_1a8b26b274786bb9e5eb1d9b28113f9c9d:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
@@ -3778,171 +2519,6 @@ Reconnects to the websocket.
 	void websocket_close(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
 
 Closes the websocket connection and sends a normal close reason to the websocket server reason.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`bot_client <doxid-structbot__client>`
-
-		-
-
-.. index:: pair: function; websocket_send
-.. _doxid-websocket_8h_1a4441bdd6264675d37ad41f203f73d20f:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int websocket_send(struct lws* wsi, char* data, size_t len)
-
-Sends data through the websocket connection.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- wsi
-
-		- Websocket connection
-
-	*
-		- data
-
-		- Data to send
-
-	*
-		- len
-
-		- Length of data to send
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; websocket_create
-.. _doxid-websocket_8h_1a25e61029244807bce89cf9b7df8283e9:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int websocket_create(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client, :ref:`callback_receive_fn<doxid-websocket_8h_1a75e027723976e4a1325be64cb272d01e>` on_receive)
-
-Sets up the websocket client.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- client
-
-		- Pointer to a websocket client
-
-	*
-		- on_receive
-
-		- Callback function for the receiving websocket packages
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; websocket_connect
-.. _doxid-websocket_8h_1ad6005f40f7aeb320494eb2ab32d051f6:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int websocket_connect(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
-
-Sends the initial handshake to connect to the Discord websocket The client is only marked as "connected" once an answer from Discord is received.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`bot_client <doxid-structbot__client>`
-
-		- Bot client instance
-
-
-
-.. rubric:: Returns:
-
-int
-
-.. index:: pair: function; websocket_close
-.. _doxid-websocket_8h_1a3af18f27c14cdea777c48fb383100f57:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void websocket_close(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
-
-Closes the websocket connection and sends a normal close reason to the websocket server reason.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`bot_client <doxid-structbot__client>`
-
-		-
-
-.. index:: pair: function; websocket_reconnect
-.. _doxid-websocket_8h_1af32439469ba35f20294d4a9a516b6e2d:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void websocket_reconnect(:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot_client)
-
-Reconnects to the websocket.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`bot_client <doxid-structbot__client>`
-
-		-
-
-.. index:: pair: function; websocket_destroy_client
-.. _doxid-websocket_8h_1a371f513f4875190cbfd6681d08ff09ca:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void websocket_destroy_client(:ref:`websocket_client_t<doxid-disco_8h_1a8faf897fafd3ec64e49756d0fe9c5fe6>`* client)
-
-Frees up all memory allocated with the :ref:`bot_client <doxid-structbot__client>` struct.
 
 
 

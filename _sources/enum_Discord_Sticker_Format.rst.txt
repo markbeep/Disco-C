@@ -1,5 +1,5 @@
 .. index:: pair: enum; Discord_Sticker_Format
-.. _doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1a:
+.. _doxid-group___sticker_1gab3b2b14507d18cbe1445bc63f834db1a:
 
 enum Discord_Sticker_Format
 ===========================
@@ -12,8 +12,8 @@ enum Discord_Sticker_Format
 	#include <sticker.h>
 
 	enum Discord_Sticker_Format {
-	    :target:`STICKER_FORMAT_PNG<doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1aadee06f32486dd0877d18e687e95dea37>`    = 1,
-	    :target:`STICKER_FORMAT_APNG<doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1aa3b99048637648301cd1af3f972a23167>`   = 2,
-	    :target:`STICKER_FORMAT_LOTTIE<doxid-sticker_8h_1ab3b2b14507d18cbe1445bc63f834db1aa49f3f2015aade7c728c221e92a5675ba>` = 3,
+	    :target:`STICKER_FORMAT_PNG<doxid-group___sticker_1ggab3b2b14507d18cbe1445bc63f834db1aadee06f32486dd0877d18e687e95dea37>`    = 1,
+	    :target:`STICKER_FORMAT_APNG<doxid-group___sticker_1ggab3b2b14507d18cbe1445bc63f834db1aa3b99048637648301cd1af3f972a23167>`   = 2,
+	    :target:`STICKER_FORMAT_LOTTIE<doxid-group___sticker_1ggab3b2b14507d18cbe1445bc63f834db1aa49f3f2015aade7c728c221e92a5675ba>` = 3,
 	};
 

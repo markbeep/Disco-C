@@ -1,0 +1,27 @@
+.. index:: pair: group; Reaction
+.. _doxid-group___reaction:
+
+Reaction
+========
+
+.. toctree::
+	:hidden:
+
+	struct_discord_reaction.rst
+
+Reaction functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// structs
+
+	struct :ref:`discord_reaction<doxid-structdiscord__reaction>`;
+
+	// global functions
+
+	void* :target:`discord_create_reaction_struct_json<doxid-group___reaction_1ga439ddcf7b4cc45f0f2675d4b91169a3e>`(cJSON* data);
+	void :target:`discord_destroy_reaction<doxid-group___reaction_1ga991f98fb2979fbeaa9655ecd676222e8>`(struct :ref:`discord_reaction<doxid-structdiscord__reaction>`* reaction);
+

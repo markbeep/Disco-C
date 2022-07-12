@@ -18,7 +18,7 @@ struct discord_application_command_option
 	struct discord_application_command_option {
 		// fields
 	
-		enum :ref:`Discord_Application_Command_Option_Type<doxid-command_8h_1a86fea36705d944ecef474828dda5d689>` :target:`type<doxid-structdiscord__application__command__option_1aea302def36434b41bdc21fda320a78d9>`;
+		enum :ref:`Discord_Application_Command_Option_Type<doxid-group___command_1ga86fea36705d944ecef474828dda5d689>` :target:`type<doxid-structdiscord__application__command__option_1aea302def36434b41bdc21fda320a78d9>`;
 		char* :target:`name<doxid-structdiscord__application__command__option_1a2b9d7ce772d4428e299b35adb733f4c5>`;
 		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`name_localizations<doxid-structdiscord__application__command__option_1a6b1de52f79bcbc9a8cc0030c2d8fd1ec>`;
 		char* :target:`description<doxid-structdiscord__application__command__option_1a50ed124fe4fb2224d123d58a2af364b4>`;
@@ -28,7 +28,7 @@ struct discord_application_command_option
 		int :target:`choices_count<doxid-structdiscord__application__command__option_1abaa9dee0c4d0663bb68c9ce7fe2d3a63>`;
 		struct discord_application_command_option** :target:`options<doxid-structdiscord__application__command__option_1a0bc7e50f240760caf024294bc7bbdfff>`;
 		int :target:`options_count<doxid-structdiscord__application__command__option_1aba3dcff46e7ed9d37751ba2b017875a3>`;
-		enum :ref:`Discord_Channel_Type<doxid-channel_8h_1afe6f6623ab579045c945d82d3585e7e5>`* :target:`channel_types<doxid-structdiscord__application__command__option_1acd67ac65b6506b25d59eff4ee7bdacb7>`;
+		enum :ref:`Discord_Channel_Type<doxid-group___channel_1gafe6f6623ab579045c945d82d3585e7e5>`* :target:`channel_types<doxid-structdiscord__application__command__option_1acd67ac65b6506b25d59eff4ee7bdacb7>`;
 		int :target:`channel_types_count<doxid-structdiscord__application__command__option_1a7a295f89c19d757e562874ea63593f02>`;
 		double :target:`min_value<doxid-structdiscord__application__command__option_1a324ffa8bbc17831fcebabd0e718494c0>`;
 		double :target:`max_value<doxid-structdiscord__application__command__option_1aed4a8f99baf10fb8d0085158e2b197c2>`;

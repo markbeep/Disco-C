@@ -1,5 +1,5 @@
 .. index:: pair: enum; Discord_Message_Activity_Type
-.. _doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253e:
+.. _doxid-group___message___activity_1ga86ad05fa9d113fff81d22ecdef88253e:
 
 enum Discord_Message_Activity_Type
 ==================================
@@ -12,9 +12,9 @@ enum Discord_Message_Activity_Type
 	#include <message_activity.h>
 
 	enum Discord_Message_Activity_Type {
-	    :target:`MESSAGE_ACTIVITY_JOIN<doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253ea4f84f10d788c89926746c9b6f5c54d2e>`         = 1,
-	    :target:`MESSAGE_ACTIVITY_SPECTATE<doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253ea5ac9d79790a34bd00fe8b52b64168991>`     = 2,
-	    :target:`MESSAGE_ACTIVITY_LISTEN<doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253ea0ca3aea856260e5f525b5ab2fab2c6bc>`       = 3,
-	    :target:`MESSAGE_ACTIVITY_JOIN_REQUEST<doxid-message__activity_8h_1a86ad05fa9d113fff81d22ecdef88253eadbf7f15a7aab08f942104b604c9fcd42>` = 5,
+	    :target:`MESSAGE_ACTIVITY_JOIN<doxid-group___message___activity_1gga86ad05fa9d113fff81d22ecdef88253ea4f84f10d788c89926746c9b6f5c54d2e>`         = 1,
+	    :target:`MESSAGE_ACTIVITY_SPECTATE<doxid-group___message___activity_1gga86ad05fa9d113fff81d22ecdef88253ea5ac9d79790a34bd00fe8b52b64168991>`     = 2,
+	    :target:`MESSAGE_ACTIVITY_LISTEN<doxid-group___message___activity_1gga86ad05fa9d113fff81d22ecdef88253ea0ca3aea856260e5f525b5ab2fab2c6bc>`       = 3,
+	    :target:`MESSAGE_ACTIVITY_JOIN_REQUEST<doxid-group___message___activity_1gga86ad05fa9d113fff81d22ecdef88253eadbf7f15a7aab08f942104b604c9fcd42>` = 5,
 	};
 

@@ -1,0 +1,31 @@
+.. index:: pair: group; Role
+.. _doxid-group___role:
+
+Role
+====
+
+.. toctree::
+	:hidden:
+
+	struct_discord_role.rst
+	struct_discord_role_tags.rst
+
+Role functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// structs
+
+	struct :ref:`discord_role<doxid-structdiscord__role>`;
+	struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>`;
+
+	// global functions
+
+	void* :target:`discord_create_role_tags_struct_json<doxid-group___role_1gaaf94ec467feb8174bc2ecae07e38b086>`(cJSON* data);
+	void :target:`discord_destroy_role_tags<doxid-group___role_1ga651a619147b8b69d46d5a28a5a73fc94>`(struct :ref:`discord_role_tags<doxid-structdiscord__role__tags>`* tags);
+	void* :target:`discord_create_role_struct_json<doxid-group___role_1gade137ce826caeb86984f68a1f5dc3754>`(cJSON* data);
+	void :target:`discord_destroy_role<doxid-group___role_1gad845de3687792c7cb960ebf61424e15b>`(struct :ref:`discord_role<doxid-structdiscord__role>`* role);
+

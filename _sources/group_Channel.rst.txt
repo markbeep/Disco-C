@@ -1,0 +1,149 @@
+.. index:: pair: group; Channel
+.. _doxid-group___channel:
+
+Channel
+=======
+
+.. toctree::
+	:hidden:
+
+	enum_Discord_Channel_Type.rst
+	struct_discord_channel.rst
+	struct_discord_channel_mention.rst
+
+Overview
+~~~~~~~~
+
+Channel functions and structures :ref:`More...<details-group___channel>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// enums
+
+	enum :ref:`Discord_Channel_Type<doxid-group___channel_1gafe6f6623ab579045c945d82d3585e7e5>`;
+
+	// structs
+
+	struct :ref:`discord_channel<doxid-structdiscord__channel>`;
+	struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`;
+
+	// global functions
+
+	void* :ref:`discord_create_channel_struct_json<doxid-group___channel_1gaaf363e4ab59f9d5f85f1ebe51d4bd87e>`(cJSON* data);
+	void :ref:`discord_destroy_channel<doxid-group___channel_1ga46a43fc3549a0fbd8e3d508f58bf0d3e>`(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch);
+	void* :ref:`discord_create_channel_mention_struct_json<doxid-group___channel_1ga4e73990736b06eabbb07bfc682c1e549>`(cJSON* data);
+	void :ref:`discord_destroy_channel_mention<doxid-group___channel_1gac01c4086cd1f2c2aef71912c09d1f404>`(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch);
+
+.. _details-group___channel:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Channel functions and structures
+
+Global Functions
+----------------
+
+.. index:: pair: function; discord_create_channel_struct_json
+.. _doxid-group___channel_1gaaf363e4ab59f9d5f85f1ebe51d4bd87e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_channel_struct_json(cJSON* data)
+
+Creates a channel structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_channel <doxid-structdiscord__channel>` struct
+
+.. index:: pair: function; discord_destroy_channel
+.. _doxid-group___channel_1ga46a43fc3549a0fbd8e3d508f58bf0d3e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_channel(struct :ref:`discord_channel<doxid-structdiscord__channel>`* ch)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- ch
+
+		- channel struct
+
+.. index:: pair: function; discord_create_channel_mention_struct_json
+.. _doxid-group___channel_1ga4e73990736b06eabbb07bfc682c1e549:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_channel_mention_struct_json(cJSON* data)
+
+Creates a channel_mention structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_channel_mention <doxid-structdiscord__channel__mention>` struct
+
+.. index:: pair: function; discord_destroy_channel_mention
+.. _doxid-group___channel_1gac01c4086cd1f2c2aef71912c09d1f404:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_channel_mention(struct :ref:`discord_channel_mention<doxid-structdiscord__channel__mention>`* ch)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- ch
+
+		- channel_mention struct
+

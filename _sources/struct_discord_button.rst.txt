@@ -18,7 +18,7 @@ struct discord_button
 	struct discord_button {
 		// fields
 	
-		enum :ref:`Discord_Button_Style<doxid-component_8h_1ab8df5866681c4fb3ada395a2655b8e42>` :target:`style<doxid-structdiscord__button_1ae01afdac9d0789bb7b884b3edcb8b279>`;
+		enum :ref:`Discord_Button_Style<doxid-group___component_1gab8df5866681c4fb3ada395a2655b8e42>` :target:`style<doxid-structdiscord__button_1ae01afdac9d0789bb7b884b3edcb8b279>`;
 		char* :target:`label<doxid-structdiscord__button_1a44927f4fa8e58b0af1fdb1252a829f83>`;
 		struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* :target:`emoji<doxid-structdiscord__button_1a025e88c52635d1f324ec53051f811a71>`;
 		char* :target:`custom_id<doxid-structdiscord__button_1a69c5fc7628e7b4acfa3160e3c7a0f407>`;

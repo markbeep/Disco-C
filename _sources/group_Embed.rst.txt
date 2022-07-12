@@ -1,0 +1,360 @@
+.. index:: pair: group; Embed
+.. _doxid-group___embed:
+
+Embed
+=====
+
+.. toctree::
+	:hidden:
+
+	struct_discord_embed.rst
+	struct_discord_embed_author.rst
+	struct_discord_embed_field.rst
+	struct_discord_embed_footer.rst
+	struct_discord_embed_media.rst
+	struct_discord_embed_provider.rst
+
+Overview
+~~~~~~~~
+
+Embed functions and structures :ref:`More...<details-group___embed>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// structs
+
+	struct :ref:`discord_embed<doxid-structdiscord__embed>`;
+	struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`;
+	struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`;
+	struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`;
+	struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`;
+	struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`;
+
+	// global functions
+
+	void* :ref:`discord_create_embed_footer_struct_json<doxid-group___embed_1ga781dc57dcbda3ec8fd9f9a79d6aaa099>`(cJSON* data);
+	void :ref:`discord_destroy_embed_footer<doxid-group___embed_1gaa905984d9c1cce62e6aad434f861a26b>`(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer);
+	void* :ref:`discord_create_embed_media_struct_json<doxid-group___embed_1ga0a83a844e966aea951bdc2975378bbcc>`(cJSON* data);
+	void :ref:`discord_destroy_embed_media<doxid-group___embed_1gaa6021af12cfbf2083675d877ddee4ce1>`(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media);
+	void* :ref:`discord_create_embed_provider_struct_json<doxid-group___embed_1ga32b0c043f08927ae1d0745ec9a86f7b7>`(cJSON* data);
+	void :ref:`discord_destroy_embed_provider<doxid-group___embed_1ga52fed8649e7d857d7a077c061fac4c48>`(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider);
+	void* :ref:`discord_create_embed_author_struct_json<doxid-group___embed_1ga98de65e7fece0deb145801f8391e8d8a>`(cJSON* data);
+	void :ref:`discord_destroy_embed_author<doxid-group___embed_1gaf04b5d82ae7e307e21af03bea4e06b3f>`(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author);
+	void* :ref:`discord_create_embed_field_struct_json<doxid-group___embed_1gaa9d5b560bb3a5fe4254fb438ed5faab8>`(cJSON* data);
+	void :ref:`discord_destroy_embed_field<doxid-group___embed_1ga65acea8a510625bbdbacccf0e2cdbff6>`(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field);
+	void* :ref:`discord_create_embed_struct_json<doxid-group___embed_1gaf6d013b6d1b055bd194e80c8a5fa854f>`(cJSON* data);
+	void :ref:`discord_destroy_embed<doxid-group___embed_1ga49f414a927cff280c603ec268b589087>`(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed);
+
+.. _details-group___embed:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Embed functions and structures
+
+Global Functions
+----------------
+
+.. index:: pair: function; discord_create_embed_footer_struct_json
+.. _doxid-group___embed_1ga781dc57dcbda3ec8fd9f9a79d6aaa099:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_footer_struct_json(cJSON* data)
+
+Creates an embed_footer structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed_footer <doxid-structdiscord__embed__footer>` struct
+
+.. index:: pair: function; discord_destroy_embed_footer
+.. _doxid-group___embed_1gaa905984d9c1cce62e6aad434f861a26b:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed_footer(struct :ref:`discord_embed_footer<doxid-structdiscord__embed__footer>`* footer)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- footer
+
+		-
+
+.. index:: pair: function; discord_create_embed_media_struct_json
+.. _doxid-group___embed_1ga0a83a844e966aea951bdc2975378bbcc:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_media_struct_json(cJSON* data)
+
+Creates an embed_media structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed_media <doxid-structdiscord__embed__media>` struct
+
+.. index:: pair: function; discord_destroy_embed_media
+.. _doxid-group___embed_1gaa6021af12cfbf2083675d877ddee4ce1:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed_media(struct :ref:`discord_embed_media<doxid-structdiscord__embed__media>`* media)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- media
+
+		-
+
+.. index:: pair: function; discord_create_embed_provider_struct_json
+.. _doxid-group___embed_1ga32b0c043f08927ae1d0745ec9a86f7b7:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_provider_struct_json(cJSON* data)
+
+Creates an embed_provider structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed_provider <doxid-structdiscord__embed__provider>` struct
+
+.. index:: pair: function; discord_destroy_embed_provider
+.. _doxid-group___embed_1ga52fed8649e7d857d7a077c061fac4c48:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed_provider(struct :ref:`discord_embed_provider<doxid-structdiscord__embed__provider>`* provider)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- provider
+
+		-
+
+.. index:: pair: function; discord_create_embed_author_struct_json
+.. _doxid-group___embed_1ga98de65e7fece0deb145801f8391e8d8a:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_author_struct_json(cJSON* data)
+
+Creates an embed_author structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed_author <doxid-structdiscord__embed__author>` struct
+
+.. index:: pair: function; discord_destroy_embed_author
+.. _doxid-group___embed_1gaf04b5d82ae7e307e21af03bea4e06b3f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed_author(struct :ref:`discord_embed_author<doxid-structdiscord__embed__author>`* author)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- author
+
+		-
+
+.. index:: pair: function; discord_create_embed_field_struct_json
+.. _doxid-group___embed_1gaa9d5b560bb3a5fe4254fb438ed5faab8:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_field_struct_json(cJSON* data)
+
+Creates an embed_field structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed_field <doxid-structdiscord__embed__field>` struct
+
+.. index:: pair: function; discord_destroy_embed_field
+.. _doxid-group___embed_1ga65acea8a510625bbdbacccf0e2cdbff6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed_field(struct :ref:`discord_embed_field<doxid-structdiscord__embed__field>`* field)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- field
+
+		-
+
+.. index:: pair: function; discord_create_embed_struct_json
+.. _doxid-group___embed_1gaf6d013b6d1b055bd194e80c8a5fa854f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_embed_struct_json(cJSON* data)
+
+Creates an embed structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_embed <doxid-structdiscord__embed>` struct
+
+.. index:: pair: function; discord_destroy_embed
+.. _doxid-group___embed_1ga49f414a927cff280c603ec268b589087:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_embed(struct :ref:`discord_embed<doxid-structdiscord__embed>`* embed)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- embed
+
+		-
+

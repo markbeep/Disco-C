@@ -1,5 +1,5 @@
 .. index:: pair: enum; Discord_Application_Command_Option_Type
-.. _doxid-command_8h_1a86fea36705d944ecef474828dda5d689:
+.. _doxid-group___command_1ga86fea36705d944ecef474828dda5d689:
 
 enum Discord_Application_Command_Option_Type
 ============================================
@@ -12,16 +12,16 @@ enum Discord_Application_Command_Option_Type
 	#include <command.h>
 
 	enum Discord_Application_Command_Option_Type {
-	    :target:`COMMAND_OPTION_SUB_COMMAND<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a2215cd77eef0901d909e073a7e993dae>`       = 1,
-	    :target:`COMMAND_OPTION_SUB_COMMAND_GROUP<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a3b68140e1cccbb9d59d9cc344a104e4f>` = 2,
-	    :target:`COMMAND_OPTION_STRING<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb>`            = 3,
-	    :target:`COMMAND_OPTION_INTEGER<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6>`           = 4,
-	    :target:`COMMAND_OPTION_BOOLEAN<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a003a07444c4959c2e43c503441042344>`           = 5,
-	    :target:`COMMAND_OPTION_USER<doxid-command_8h_1a86fea36705d944ecef474828dda5d689af4b71667474619259643cb2814cf303e>`              = 6,
-	    :target:`COMMAND_OPTION_CHANNEL<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a1618e98d8bde1efad5c1e0165896cb3c>`           = 7,
-	    :target:`COMMAND_OPTION_ROLE<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a83080e2afb3e48ec246675b90bc29876>`              = 8,
-	    :target:`COMMAND_OPTION_MENTIONABLE<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a7932dd0b3a3b2b3cc01aa6934864f666>`       = 9,
-	    :target:`COMMAND_OPTION_NUMBER<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af>`            = 10,
-	    :target:`COMMAND_OPTION_ATTACHMENT<doxid-command_8h_1a86fea36705d944ecef474828dda5d689a1b14bdc3aecee0f894d4dd9f28ae1d4f>`        = 11,
+	    :target:`COMMAND_OPTION_SUB_COMMAND<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a2215cd77eef0901d909e073a7e993dae>`       = 1,
+	    :target:`COMMAND_OPTION_SUB_COMMAND_GROUP<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a3b68140e1cccbb9d59d9cc344a104e4f>` = 2,
+	    :target:`COMMAND_OPTION_STRING<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb>`            = 3,
+	    :target:`COMMAND_OPTION_INTEGER<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6>`           = 4,
+	    :target:`COMMAND_OPTION_BOOLEAN<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a003a07444c4959c2e43c503441042344>`           = 5,
+	    :target:`COMMAND_OPTION_USER<doxid-group___command_1gga86fea36705d944ecef474828dda5d689af4b71667474619259643cb2814cf303e>`              = 6,
+	    :target:`COMMAND_OPTION_CHANNEL<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a1618e98d8bde1efad5c1e0165896cb3c>`           = 7,
+	    :target:`COMMAND_OPTION_ROLE<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a83080e2afb3e48ec246675b90bc29876>`              = 8,
+	    :target:`COMMAND_OPTION_MENTIONABLE<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a7932dd0b3a3b2b3cc01aa6934864f666>`       = 9,
+	    :target:`COMMAND_OPTION_NUMBER<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af>`            = 10,
+	    :target:`COMMAND_OPTION_ATTACHMENT<doxid-group___command_1gga86fea36705d944ecef474828dda5d689a1b14bdc3aecee0f894d4dd9f28ae1d4f>`        = 11,
 	};
 

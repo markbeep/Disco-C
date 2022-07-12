@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Command</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="_static/doxyrest-pygments.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/target-highlight.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="enum Discord_Application_Command_Option_Type" href="enum_Discord_Application_Command_Option_Type.html" />
+  <link rel="prev" title="struct discord_channel_mention" href="struct_discord_channel_mention.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">Disco-C</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#my-project-documentation"
+         class="nav-link  router-link-active">
+         my project documentation
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="global.html#global-namespace"
+         class="nav-link ">
+         global namespace
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="index.html#my-project-documentation"
+         class="nav-link  router-link-active">
+         my project documentation
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="global.html#global-namespace"
+         class="nav-link ">
+         global namespace
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#my-project-documentation">my project documentation</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Message.html" class="reference internal ">@{</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Application.html" class="reference internal ">Application</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Attachment.html" class="reference internal ">Attachment</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Channel.html" class="reference internal ">Channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Command</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#overview" class="reference internal">Overview</a></li>
+                
+                  <li class="toctree-l2"><a href="#detailed-documentation" class="reference internal">Detailed Documentation</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Component.html" class="reference internal ">Component</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Embed.html" class="reference internal ">Embed</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Emoji.html" class="reference internal ">Emoji</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Guild.html" class="reference internal ">Guild</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Interaction.html" class="reference internal ">Interaction</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Member.html" class="reference internal ">Member</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Message_Activity.html" class="reference internal ">Message_Activity</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Permission.html" class="reference internal ">Permission</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Reaction.html" class="reference internal ">Reaction</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Role.html" class="reference internal ">Role</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Sticker.html" class="reference internal ">Sticker</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_Thread.html" class="reference internal ">Thread</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="group_User.html" class="reference internal ">User</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="global.html#global-namespace">global namespace</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="namespace_cpplexer.html" class="reference internal ">namespace cpplexer</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="namespace_doxyrest.html" class="reference internal ">namespace doxyrest</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Disco_Cache_Type.html" class="reference internal ">enum Disco_Cache_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="enum_Request_Type.html" class="reference internal ">enum Request_Type</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_MemoryChunk.html" class="reference internal ">struct MemoryChunk</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_bot_client.html" class="reference internal ">struct bot_client</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_buffer.html" class="reference internal ">struct buffer</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_delete_channel.html" class="reference internal ">struct delete_channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_delete_message.html" class="reference internal ">struct delete_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_event_callbacks.html" class="reference internal ">struct discord_event_callbacks</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_discord_prio_packet.html" class="reference internal ">struct discord_prio_packet</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_edit_channel.html" class="reference internal ">struct edit_channel</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_edit_message.html" class="reference internal ">struct edit_message</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_event_pool_workload.html" class="reference internal ">struct event_pool_workload</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_node.html" class="reference internal ">struct node</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_prio_node.html" class="reference internal ">struct prio_node</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_prio_queue.html" class="reference internal ">struct prio_queue</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_t_pool.html" class="reference internal ">struct t_pool</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_t_work.html" class="reference internal ">struct t_work</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_websocket_callbacks.html" class="reference internal ">struct websocket_callbacks</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="struct_websocket_client.html" class="reference internal ">struct websocket_client</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>Command</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="struct_discord_channel_mention.html"
+       title="previous chapter">← struct discord_channel_mention</a>
+  </li>
+  <li class="next">
+    <a href="enum_Discord_Application_Command_Option_Type.html"
+       title="next chapter">enum Discord_Application_Command_Option_Type →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <div class="section" id="command">
+<span id="doxid-group-command"></span><span id="index-0"></span><h1>Command<a class="headerlink" href="#command" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>Command functions and structures <a class="reference internal" href="#details-group-command"><span class="std std-ref">More…</span></a></p>
+<pre class="highlight doxyrest-overview-code-block literal-block"><span></span><span class="c1">// enums</span>
+
+<span class="k">enum</span> <a class="reference internal" href="enum_Discord_Application_Command_Option_Type.html#doxid-group-command-1ga86fea36705d944ecef474828dda5d689"><span class="std std-ref">Discord_Application_Command_Option_Type</span></a><span></span><span class="p">;</span>
+<span class="k">enum</span> <a class="reference internal" href="enum_Discord_Application_Command_Type.html#doxid-group-command-1gafaab89847119cdbc55d73bbe1dd99d05"><span class="std std-ref">Discord_Application_Command_Type</span></a><span></span><span class="p">;</span>
+
+<span class="c1">// structs</span>
+
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command.html#doxid-structdiscord-application-command"><span class="std std-ref">discord_application_command</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command_option.html#doxid-structdiscord-application-command-option"><span class="std std-ref">discord_application_command_option</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command_option_choice.html#doxid-structdiscord-application-command-option-choice"><span class="std std-ref">discord_application_command_option_choice</span></a><span></span><span class="p">;</span>
+<span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="p">;</span>
+
+<span class="c1">// global functions</span>
+
+<span class="kt">void</span> <a class="reference internal" href="#doxid-group-command-1ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3"><span class="std std-ref">discord_fill_json_with_locales</span></a><span></span><span class="p">(</span>
+    <span class="n">cJSON</span><span class="o">*</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="o">*</span> <span class="n">locales</span>
+<span class="p">);</span>
+
+<span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-group-command-1ga1f9371a93506c1ef8d5061e2383205ab"><span></span><span class="n">discord_command_register</span></span><span></span><span class="p">(</span><span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command.html#doxid-structdiscord-application-command"><span class="std std-ref">discord_application_command</span></a><span></span><span class="o">*</span> <span class="n">command</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-group-command-1ga75e9f03c95e593bf8655d60e66d51c2f"><span></span><span class="n">discord_command_update</span></span><span></span><span class="p">(</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_application_command.html#doxid-structdiscord-application-command"><span class="std std-ref">discord_application_command</span></a><span></span><span class="o">*</span> <span class="n">command</span><span class="p">,</span>
+    <span class="kt">int64_t</span> <span class="n">command_id</span>
+<span class="p">);</span>
+
+<span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-group-command-1gae92007769ade8ee360fd5a0f080dc380"><span></span><span class="n">discord_command_delete_global</span></span><span></span><span class="p">(</span><span class="kt">int64_t</span> <span class="n">command_id</span><span class="p">);</span>
+<span class="kt">int</span> <span class="doxyrest-code-target target" id="doxid-group-command-1gaea17fb803f00cc7d3c8916cf3e74af43"><span></span><span class="n">discord_command_delete_guild</span></span><span></span><span class="p">(</span><span class="kt">int64_t</span> <span class="n">guild_id</span><span class="p">,</span> <span class="kt">int64_t</span> <span class="n">command_id</span><span class="p">);</span></pre>
+</div>
+<div class="section" id="detailed-documentation">
+<span id="details-group-command"></span><h2>Detailed Documentation<a class="headerlink" href="#detailed-documentation" title="Permalink to this heading">¶</a></h2>
+<p>Command functions and structures</p>
+<div class="section" id="global-functions">
+<h3>Global Functions<a class="headerlink" href="#global-functions" title="Permalink to this heading">¶</a></h3>
+<pre class="highlight doxyrest-title-code-block literal-block" id="doxid-group-command-1ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3"><span id="index-1"></span><span></span><span class="kt">void</span> <span class="n">discord_fill_json_with_locales</span><span class="p">(</span>
+    <span class="n">cJSON</span><span class="o">*</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">struct</span> <a class="reference internal" href="struct_discord_language_locales.html#doxid-structdiscord-language-locales"><span class="std std-ref">discord_language_locales</span></a><span></span><span class="o">*</span> <span class="n">locales</span>
+<span class="p">)</span></pre>
+<p>Fills a JSON with the values of a langauge locales struct.</p>
+<p class="rubric">Parameters:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>json</p></td>
+<td><p>JSON struct to fill the values in.</p></td>
+</tr>
+<tr class="row-even"><td><p>locales</p></td>
+<td><p>struct to be used to fill in the JSON.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="struct_discord_channel_mention.html"
+       title="previous chapter">← struct discord_channel_mention</a>
+  </li>
+  <li class="next">
+    <a href="enum_Discord_Application_Command_Option_Type.html"
+       title="next chapter">enum Discord_Application_Command_Option_Type →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, markbeep.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

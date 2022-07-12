@@ -19,7 +19,7 @@ struct discord_channel
 		// fields
 	
 		uint64_t :target:`id<doxid-structdiscord__channel_1a51bdc6af7d5a75010518ff884640de88>`;
-		enum :ref:`Discord_Channel_Type<doxid-channel_8h_1afe6f6623ab579045c945d82d3585e7e5>` :target:`type<doxid-structdiscord__channel_1a6adb577731fb61404306b357ab303914>`;
+		enum :ref:`Discord_Channel_Type<doxid-group___channel_1gafe6f6623ab579045c945d82d3585e7e5>` :target:`type<doxid-structdiscord__channel_1a6adb577731fb61404306b357ab303914>`;
 		uint64_t :target:`guild_id<doxid-structdiscord__channel_1af7845e8976f835b2a4e82811158563cf>`;
 		int :target:`position<doxid-structdiscord__channel_1a9f4bedc816990229576468649b8469e1>`;
 		struct :ref:`discord_overwrite<doxid-structdiscord__overwrite>`** :target:`permission_overwrites<doxid-structdiscord__channel_1ad5358327a1189b098b2ef0bb643130ed>`;

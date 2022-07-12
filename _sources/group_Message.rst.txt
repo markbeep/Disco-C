@@ -1,8 +1,8 @@
-.. index:: pair: group; Message
+.. index:: pair: group; @{
 .. _doxid-group___message:
 
-Message
-=======
+@{
+==
 
 .. toctree::
 	:hidden:
@@ -16,7 +16,7 @@ Message
 Overview
 ~~~~~~~~
 
-Message Functions and Structures :ref:`More...<details-group___message>`
+Message functions and structures :ref:`More...<details-group___message>`
 
 
 .. ref-code-block:: cpp
@@ -36,30 +36,14 @@ Message Functions and Structures :ref:`More...<details-group___message>`
 
 	// global functions
 
+	void* :ref:`discord_create_message_reference_struct_json<doxid-group___message_1ga163a4fb471139fc2881884f802ad8738>`(cJSON* data);
+	void :ref:`discord_destroy_message_reference<doxid-group___message_1ga422bd3fce67680fc21048279abfab917>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
+	void* :ref:`discord_create_message_struct_json<doxid-group___message_1ga1ab1c3aa8d10f97d7df4896289117973>`(cJSON* data);
+	void :ref:`discord_destroy_message<doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
+
 	void :ref:`discord_fill_json_with_message<doxid-group___message_1ga75bcd95cf036bba85d07daa7528600bb>`(
 		cJSON* json,
 		char* content,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
-	);
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* :ref:`disco_channel_send_message<doxid-group___message_1gaee5633360f52065f9d778cf0cb9eb70c>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	);
-
-	void* :ref:`disco_create_message_struct_json<doxid-group___message_1gac6295f7b779d42c57612ef1c1a705208>`(cJSON* data);
-	void :ref:`disco_destroy_message<doxid-group___message_1gaf8c130cb715240bb658ac80f52d3fed2>`(struct :ref:`discord_message<doxid-structdiscord__message>`* message);
-	void* :ref:`disco_create_message_reference_struct_json<doxid-group___message_1gaec2e33d8f4e1a565a9d9ded8832670ef>`(cJSON* data);
-	void :ref:`disco_destroy_message_reference<doxid-group___message_1ga0578c6d6515cc1fa4651abc5d9db75a1>`(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message);
-
-	void :target:`disco_channel_edit_message<doxid-group___message_1ga6204fbe77e397487fcc32a6637df4d90>`(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		uint64_t message_id,
 		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message
 	);
 
@@ -68,10 +52,110 @@ Message Functions and Structures :ref:`More...<details-group___message>`
 Detailed Documentation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Message Functions and Structures
+Message functions and structures
 
 Global Functions
 ----------------
+
+.. index:: pair: function; discord_create_message_reference_struct_json
+.. _doxid-group___message_1ga163a4fb471139fc2881884f802ad8738:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_message_reference_struct_json(cJSON* data)
+
+Creates a message_reference structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_message_reference <doxid-structdiscord__message__reference>` struct
+
+.. index:: pair: function; discord_destroy_message_reference
+.. _doxid-group___message_1ga422bd3fce67680fc21048279abfab917:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_message_reference(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- message
+
+		-
+
+.. index:: pair: function; discord_create_message_struct_json
+.. _doxid-group___message_1ga1ab1c3aa8d10f97d7df4896289117973:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void* discord_create_message_struct_json(cJSON* data)
+
+Creates a message structure from a given JSON.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- data
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+void\* :ref:`discord_message <doxid-structdiscord__message>` struct
+
+.. index:: pair: function; discord_destroy_message
+.. _doxid-group___message_1ga872f106303b2b802946a43f9c44a4aa6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void discord_destroy_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
+
+Destroys the given structure and frees the pointer.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- message
+
+		-
 
 .. index:: pair: function; discord_fill_json_with_message
 .. _doxid-group___message_1ga75bcd95cf036bba85d07daa7528600bb:
@@ -108,158 +192,4 @@ Fills in a JSON with the attributes of the message structure.
 		- message
 
 		- Create message struct.
-
-.. index:: pair: function; disco_channel_send_message
-.. _doxid-group___message_1gaee5633360f52065f9d778cf0cb9eb70c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	struct :ref:`discord_message<doxid-structdiscord__message>`* disco_channel_send_message(
-		:ref:`bot_client_t<doxid-disco_8h_1ab503de679841020121923d5f2daaca09>`* bot,
-		char* content,
-		uint64_t channel_id,
-		struct :ref:`discord_create_message<doxid-structdiscord__create__message>`* message,
-		bool return_struct
-	)
-
-Sends a message and if enabled also returns the sent message struct.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- bot
-
-		- Active bot instance
-
-	*
-		- content
-
-		- Message content to send (if empty, embed or components need to exist)
-
-	*
-		- channel_id
-
-		- ID of the channel the message should be sent in
-
-	*
-		- message
-
-		- A :ref:`discord_create_message <doxid-structdiscord__create__message>` struct. Can be NULL
-
-	*
-		- return_struct
-
-		- Bool if the sent message should be returned or not (if yes, it has to be destroyed with :ref:`disco_destroy_message() <doxid-group___message_1gaf8c130cb715240bb658ac80f52d3fed2>` after)
-
-
-
-.. rubric:: Returns:
-
-struct discord_message\* NULL or the struct of the sent message
-
-.. index:: pair: function; disco_create_message_struct_json
-.. _doxid-group___message_1gac6295f7b779d42c57612ef1c1a705208:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_struct_json(cJSON* data)
-
-Creates a message structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message <doxid-structdiscord__message>` struct
-
-.. index:: pair: function; disco_destroy_message
-.. _doxid-group___message_1gaf8c130cb715240bb658ac80f52d3fed2:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message(struct :ref:`discord_message<doxid-structdiscord__message>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
-
-.. index:: pair: function; disco_create_message_reference_struct_json
-.. _doxid-group___message_1gaec2e33d8f4e1a565a9d9ded8832670ef:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void* disco_create_message_reference_struct_json(cJSON* data)
-
-Creates a message_reference structure from a given JSON.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- data
-
-		- 
-
-
-
-.. rubric:: Returns:
-
-void\* :ref:`discord_message_reference <doxid-structdiscord__message__reference>` struct
-
-.. index:: pair: function; disco_destroy_message_reference
-.. _doxid-group___message_1ga0578c6d6515cc1fa4651abc5d9db75a1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void disco_destroy_message_reference(struct :ref:`discord_message_reference<doxid-structdiscord__message__reference>`* message)
-
-Destroys the given structure and frees the pointer.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- message
-
-		-
 

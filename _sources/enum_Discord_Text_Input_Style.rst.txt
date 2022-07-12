@@ -1,5 +1,5 @@
 .. index:: pair: enum; Discord_Text_Input_Style
-.. _doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0e:
+.. _doxid-group___component_1ga6f6b887098c67c3f78131bd564313c0e:
 
 enum Discord_Text_Input_Style
 =============================
@@ -12,7 +12,7 @@ enum Discord_Text_Input_Style
 	#include <component.h>
 
 	enum Discord_Text_Input_Style {
-	    :target:`TEXT_INPUT_SHORT<doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0eae0b20d51113f8a2c9727475c8ea5bed2>`     = 1,
-	    :target:`TEXT_INPUT_PARAGRAPH<doxid-component_8h_1a6f6b887098c67c3f78131bd564313c0ea1805887a0d58f76cbc86f16252ead3f3>` = 2,
+	    :target:`TEXT_INPUT_SHORT<doxid-group___component_1gga6f6b887098c67c3f78131bd564313c0eae0b20d51113f8a2c9727475c8ea5bed2>`     = 1,
+	    :target:`TEXT_INPUT_PARAGRAPH<doxid-group___component_1gga6f6b887098c67c3f78131bd564313c0ea1805887a0d58f76cbc86f16252ead3f3>` = 2,
 	};
 

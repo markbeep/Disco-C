@@ -20,13 +20,13 @@ struct discord_interaction_data
 	
 		uint64_t :target:`id<doxid-structdiscord__interaction__data_1a7637f964fee9f30d69d918fb5624ee3e>`;
 		char* :target:`name<doxid-structdiscord__interaction__data_1a306f118a55417b9029d1ef70e4366f5b>`;
-		enum :ref:`Discord_Application_Command_Type<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05>` :target:`type<doxid-structdiscord__interaction__data_1a5fc6d500e32cb9dbc3b67aac653f4bfe>`;
+		enum :ref:`Discord_Application_Command_Type<doxid-group___command_1gafaab89847119cdbc55d73bbe1dd99d05>` :target:`type<doxid-structdiscord__interaction__data_1a5fc6d500e32cb9dbc3b67aac653f4bfe>`;
 		struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`** :target:`options<doxid-structdiscord__interaction__data_1a16c83bcf14bdb0408634e0ab2c77294a>`;
 		int :target:`options_count<doxid-structdiscord__interaction__data_1a4a51aba595424d87dceaac1020cf85b3>`;
 		uint64_t :target:`guild_id<doxid-structdiscord__interaction__data_1a1727c6bdeca9b6fe43a572fcc81318ba>`;
 		uint64_t :target:`target_id<doxid-structdiscord__interaction__data_1a49db7b5679e0cb27cceb07979fc9277d>`;
 		char* :target:`custom_id<doxid-structdiscord__interaction__data_1ad6fc95bd66edbdab4b01f04f96e7cece>`;
-		enum :ref:`Discord_Component_Type<doxid-component_8h_1a5a21a94b8c3b12f5c79299ea0d51a493>` :target:`component_type<doxid-structdiscord__interaction__data_1ac2d46fd4d50a9d8ec2c047dc77866039>`;
+		enum :ref:`Discord_Component_Type<doxid-group___component_1ga5a21a94b8c3b12f5c79299ea0d51a493>` :target:`component_type<doxid-structdiscord__interaction__data_1ac2d46fd4d50a9d8ec2c047dc77866039>`;
 		struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`** :target:`values<doxid-structdiscord__interaction__data_1abe5287ec99c9fd7a59d23117dc82acf1>`;
 		int :target:`values_count<doxid-structdiscord__interaction__data_1a2d1d239b0aae5c48b4055dafa742d146>`;
 		struct :ref:`discord_component<doxid-structdiscord__component>`** :target:`components<doxid-structdiscord__interaction__data_1a925a1c2b7f3d882d023402d3c8a53c51>`;

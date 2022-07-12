@@ -1,0 +1,38 @@
+.. index:: pair: group; Sticker
+.. _doxid-group___sticker:
+
+Sticker
+=======
+
+.. toctree::
+	:hidden:
+
+	enum_Discord_Sticker_Format.rst
+	enum_Discord_Sticker_Type.rst
+	struct_discord_message_sticker_item.rst
+	struct_discord_sticker.rst
+
+Sticker functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// enums
+
+	enum :ref:`Discord_Sticker_Format<doxid-group___sticker_1gab3b2b14507d18cbe1445bc63f834db1a>`;
+	enum :ref:`Discord_Sticker_Type<doxid-group___sticker_1ga9a1278538e376dc685fbe43072af8a25>`;
+
+	// structs
+
+	struct :ref:`discord_message_sticker_item<doxid-structdiscord__message__sticker__item>`;
+	struct :ref:`discord_sticker<doxid-structdiscord__sticker>`;
+
+	// global functions
+
+	void* :target:`discord_create_sticker_struct_json<doxid-group___sticker_1ga2bea5b64a7f871a0b302d5c0b708909c>`(cJSON* data);
+	void :target:`discord_destroy_sticker<doxid-group___sticker_1gaeb70a15ed1ac17be78ec15d7c94c0621>`(struct :ref:`discord_sticker<doxid-structdiscord__sticker>`* sticker);
+	void* :target:`discord_create_message_sticker_item_struct_json<doxid-group___sticker_1gae03b40304d1b7dc69f98cbe41a931251>`(cJSON* data);
+	void :target:`discord_destroy_message_sticker<doxid-group___sticker_1gae49e264bb7f4a0f457a24ac6a4aba160>`(struct :ref:`discord_message_sticker_item<doxid-structdiscord__message__sticker__item>`* sticker);
+

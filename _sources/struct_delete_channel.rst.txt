@@ -20,6 +20,6 @@ struct delete_channel
 		uint64_t :target:`id<doxid-structdelete__channel_1a36907370563fb28eb6dadb82c08dd8ad>`;
 		uint64_t :target:`guild_id<doxid-structdelete__channel_1afa6593c76d106926c90fc44d5fb052f1>`;
 		uint64_t :target:`parent_id<doxid-structdelete__channel_1abc4d11175b681c77dee564d277b5623b>`;
-		enum :ref:`Discord_Channel_Type<doxid-channel_8h_1afe6f6623ab579045c945d82d3585e7e5>` :target:`type<doxid-structdelete__channel_1a7aa95c787c725f9c8dfa15c8f2ae28c7>`;
+		enum :ref:`Discord_Channel_Type<doxid-group___channel_1gafe6f6623ab579045c945d82d3585e7e5>` :target:`type<doxid-structdelete__channel_1a7aa95c787c725f9c8dfa15c8f2ae28c7>`;
 		struct :ref:`discord_channel<doxid-structdiscord__channel>`* :target:`channel<doxid-structdelete__channel_1ab720396117f00804cb2787fac7a08ee2>`;
 	};

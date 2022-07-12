@@ -18,7 +18,7 @@ struct discord_interaction_callback
 	struct discord_interaction_callback {
 		// fields
 	
-		enum :ref:`Discord_Interaction_Callback_Type<doxid-interaction_8h_1a44639091014a7389213a89e4711df05e>` :target:`type<doxid-structdiscord__interaction__callback_1a081d4fd5fef99b2355095ccc74023c3b>`;
+		enum :ref:`Discord_Interaction_Callback_Type<doxid-group___interaction_1ga44639091014a7389213a89e4711df05e>` :target:`type<doxid-structdiscord__interaction__callback_1a081d4fd5fef99b2355095ccc74023c3b>`;
 		bool :target:`tts<doxid-structdiscord__interaction__callback_1a554de4802e6e2c69b7043f55f405c544>`;
 		char* :target:`content<doxid-structdiscord__interaction__callback_1a10d34a5e18dd604b5ab41bd252d42007>`;
 		struct :ref:`discord_embed<doxid-structdiscord__embed>`** :target:`embeds<doxid-structdiscord__interaction__callback_1a3b5de49cea3e2980a9dd2c6a6dea8dec>`;

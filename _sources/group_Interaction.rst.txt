@@ -1,0 +1,56 @@
+.. index:: pair: group; Interaction
+.. _doxid-group___interaction:
+
+Interaction
+===========
+
+.. toctree::
+	:hidden:
+
+	enum_Discord_Interaction_Callback_Type.rst
+	enum_Discord_Interaction_Type.rst
+	enum_Value_Type.rst
+	struct_discord_interaction.rst
+	struct_discord_interaction_callback.rst
+	struct_discord_interaction_data.rst
+	struct_discord_interaction_data_option.rst
+
+Interaction functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// enums
+
+	enum :ref:`Discord_Interaction_Callback_Type<doxid-group___interaction_1ga44639091014a7389213a89e4711df05e>`;
+	enum :ref:`Discord_Interaction_Type<doxid-group___interaction_1ga9cd73e7691786ef8a2c4192f0316067b>`;
+	enum :ref:`Value_Type<doxid-group___interaction_1ga20d4902e57aa9edc7abd91611c0ed49b>`;
+
+	// structs
+
+	struct :ref:`discord_interaction<doxid-structdiscord__interaction>`;
+	struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`;
+	struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`;
+	struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`;
+
+	// global functions
+
+	void :target:`discord_fill_json_interaction_callback<doxid-group___interaction_1ga07350717f4e66a3f900cd3fa64383cec>`(
+		cJSON* json,
+		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* callback
+	);
+
+	void* :target:`discord_create_interaction_data_option_struct_json<doxid-group___interaction_1ga1dfd2e835d83e5a534f2a3a4d8634f7d>`(cJSON* data);
+	void :target:`discord_destroy_interaction_data_option<doxid-group___interaction_1ga3df587cf79ace7973baedf5763fa8d42>`(struct :ref:`discord_interaction_data_option<doxid-structdiscord__interaction__data__option>`* o);
+	void* :target:`discord_create_interaction_data_struct_json<doxid-group___interaction_1gaa10a9c1bcc7b829b8602835d3755847c>`(cJSON* data);
+	void :target:`discord_destroy_interaction_data<doxid-group___interaction_1ga74f29677ea349e0547ac44744c01d720>`(struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`* interaction);
+	void* :target:`discord_create_interaction_struct_json<doxid-group___interaction_1gafead489228e7e1926211de7b3ebc556d>`(cJSON* data);
+	void :target:`discord_destroy_interaction<doxid-group___interaction_1ga3e4b79e8d6ec03b92d30293f670962f4>`(struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* interaction);
+
+	void :target:`discord_send_interaction<doxid-group___interaction_1gaa39a0f3ceffea83e7536265f0bed1f2d>`(
+		struct :ref:`discord_interaction_callback<doxid-structdiscord__interaction__callback>`* cb,
+		struct :ref:`discord_interaction<doxid-structdiscord__interaction>`* recv
+	);
+

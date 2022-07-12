@@ -1,0 +1,27 @@
+.. index:: pair: group; Emoji
+.. _doxid-group___emoji:
+
+Emoji
+=====
+
+.. toctree::
+	:hidden:
+
+	struct_discord_emoji.rst
+
+Emoji functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// structs
+
+	struct :ref:`discord_emoji<doxid-structdiscord__emoji>`;
+
+	// global functions
+
+	void* :target:`discord_create_emoji_struct_json<doxid-group___emoji_1gadfbe6b4cf1b8aa599bc3d253873339bf>`(cJSON* data);
+	void :target:`discord_destroy_emoji<doxid-group___emoji_1gafe7a48ec3126803eb14b7362e3957a29>`(struct :ref:`discord_emoji<doxid-structdiscord__emoji>`* emoji);
+

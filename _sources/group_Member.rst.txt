@@ -1,0 +1,27 @@
+.. index:: pair: group; Member
+.. _doxid-group___member:
+
+Member
+======
+
+.. toctree::
+	:hidden:
+
+	struct_discord_member.rst
+
+Member functions and structures
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// structs
+
+	struct :ref:`discord_member<doxid-structdiscord__member>`;
+
+	// global functions
+
+	void* :target:`discord_create_member_struct_json<doxid-group___member_1ga7f5fcd55053dd6e6baa0f8c0013b3110>`(cJSON* data, struct :ref:`discord_user<doxid-structdiscord__user>`* user);
+	void :target:`discord_destroy_member<doxid-group___member_1ga1da2c53cf3fd780d80a9fbadb27d2677>`(struct :ref:`discord_member<doxid-structdiscord__member>`* member);
+

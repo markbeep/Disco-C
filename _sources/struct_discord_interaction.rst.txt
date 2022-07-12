@@ -20,7 +20,7 @@ struct discord_interaction
 	
 		uint64_t :target:`id<doxid-structdiscord__interaction_1a6612e5adf0e23203766d49e9e30287a3>`;
 		uint64_t :target:`application_id<doxid-structdiscord__interaction_1afc6a196f567263632002f0643ce50f14>`;
-		enum :ref:`Discord_Interaction_Type<doxid-interaction_8h_1a9cd73e7691786ef8a2c4192f0316067b>` :target:`type<doxid-structdiscord__interaction_1a6ec86b518fde64705f41141eb9d0147e>`;
+		enum :ref:`Discord_Interaction_Type<doxid-group___interaction_1ga9cd73e7691786ef8a2c4192f0316067b>` :target:`type<doxid-structdiscord__interaction_1a6ec86b518fde64705f41141eb9d0147e>`;
 		struct :ref:`discord_interaction_data<doxid-structdiscord__interaction__data>`* :target:`data<doxid-structdiscord__interaction_1aa51ca032313f3d65f2c6d641e569b0db>`;
 		uint64_t :target:`guild_id<doxid-structdiscord__interaction_1a5b500a89a711822cc09b0aa71afe0c41>`;
 		uint64_t :target:`channel_id<doxid-structdiscord__interaction_1aa095d53507f6ce061c83938ba6e8d8bd>`;

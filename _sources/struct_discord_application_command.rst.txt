@@ -19,7 +19,7 @@ struct discord_application_command
 		// fields
 	
 		int64_t* :target:`id<doxid-structdiscord__application__command_1aa53c912b5f28d2fb3cc636ce0d31708b>`;
-		enum :ref:`Discord_Application_Command_Type<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05>` :target:`type<doxid-structdiscord__application__command_1a13a1c9c90d7cf7ce5d4adf996a2c6bca>`;
+		enum :ref:`Discord_Application_Command_Type<doxid-group___command_1gafaab89847119cdbc55d73bbe1dd99d05>` :target:`type<doxid-structdiscord__application__command_1a13a1c9c90d7cf7ce5d4adf996a2c6bca>`;
 		int64_t :target:`guild_id<doxid-structdiscord__application__command_1a561efc11eb0af796f610133f77350ef8>`;
 		char* :target:`name<doxid-structdiscord__application__command_1a9e3bd59f3d5125d4d515363b7a07e489>`;
 		struct :ref:`discord_language_locales<doxid-structdiscord__language__locales>`* :target:`name_localizations<doxid-structdiscord__application__command_1a708e42698e317f049126c4d124d71bf4>`;

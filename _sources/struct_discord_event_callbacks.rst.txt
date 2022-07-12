@@ -1,0 +1,55 @@
+.. index:: pair: struct; discord_event_callbacks
+.. _doxid-structdiscord__event__callbacks:
+
+struct discord_event_callbacks
+==============================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <disco.h>
+	
+	struct discord_event_callbacks {
+		// fields
+	
+		void(* :target:`on_ready<doxid-structdiscord__event__callbacks_1a3c595a9eb8781bddab8e17d46993038f>`)(bot_client_t *);
+		void(* :target:`on_resumed<doxid-structdiscord__event__callbacks_1a1fa5fc1f637b67ec094af883256a4858>`)(bot_client_t *);
+		void(* :target:`on_message<doxid-structdiscord__event__callbacks_1ac53b34bd3b9c10c01542f27e35c5277a>`)(bot_client_t *, struct discord_message *message);
+		void(* :target:`on_message_edit<doxid-structdiscord__event__callbacks_1ac290b97433d30263d364061810ba6662>`)(bot_client_t *, struct discord_message *old, struct discord_message *new);
+		void(* :ref:`on_message_delete<doxid-structdiscord__event__callbacks_1a8711107ac21d78ddbdd605bf442e739b>`)(bot_client_t *, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *);
+		void(* :target:`on_channel_create<doxid-structdiscord__event__callbacks_1af1c3944954789b64ba3fb5ab0da5f0c3>`)(bot_client_t *, struct discord_channel *channel);
+		void(* :target:`on_channel_update<doxid-structdiscord__event__callbacks_1a194d5ee56bd39a63380801d1a2dc2e52>`)(bot_client_t *, struct discord_channel *old, struct discord_channel *new);
+		void(* :target:`on_channel_delete<doxid-structdiscord__event__callbacks_1a26c9664fa776f8db8d56caf9ba5cebbe>`)(bot_client_t *, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *);
+		void(* :target:`on_interaction<doxid-structdiscord__event__callbacks_1a7346feb27f51c006bcf9aadc03886bb7>`)(bot_client_t *, struct discord_interaction *);
+	};
+.. _details-structdiscord__event__callbacks:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Fields
+------
+
+.. index:: pair: variable; on_message_delete
+.. _doxid-structdiscord__event__callbacks_1a8711107ac21d78ddbdd605bf442e739b:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void(* on_message_delete)(bot_client_t *, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *)
+
+Function called if a message event is called.
+
+The message ID and channel ID are always given. If the message was sent in a guild, the guild ID is also included. If the message was in cache before being deleted, the message struct is also included.
+

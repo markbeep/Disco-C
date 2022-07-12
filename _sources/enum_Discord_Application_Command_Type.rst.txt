@@ -1,5 +1,5 @@
 .. index:: pair: enum; Discord_Application_Command_Type
-.. _doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05:
+.. _doxid-group___command_1gafaab89847119cdbc55d73bbe1dd99d05:
 
 enum Discord_Application_Command_Type
 =====================================
@@ -12,8 +12,8 @@ enum Discord_Application_Command_Type
 	#include <command.h>
 
 	enum Discord_Application_Command_Type {
-	    :target:`COMMAND_CHAT_INPUT<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05a7daa68c9d754d795650df3a5b1cb9db9>` = 1,
-	    :target:`COMMAND_USER<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05a5590c6255e8720cda848b28c2ce954d3>`       = 2,
-	    :target:`COMMAND_MESSAGE<doxid-command_8h_1afaab89847119cdbc55d73bbe1dd99d05a13d0eb0d1160a5d18aca42e1af76ec52>`    = 3,
+	    :target:`COMMAND_CHAT_INPUT<doxid-group___command_1ggafaab89847119cdbc55d73bbe1dd99d05a7daa68c9d754d795650df3a5b1cb9db9>` = 1,
+	    :target:`COMMAND_USER<doxid-group___command_1ggafaab89847119cdbc55d73bbe1dd99d05a5590c6255e8720cda848b28c2ce954d3>`       = 2,
+	    :target:`COMMAND_MESSAGE<doxid-group___command_1ggafaab89847119cdbc55d73bbe1dd99d05a13d0eb0d1160a5d18aca42e1af76ec52>`    = 3,
 	};
 
