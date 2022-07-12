@@ -84,7 +84,7 @@ EXTRA_PAGE_LIST = {}
 --! is not set (otherwise, the title of intro file will be used).
 --!
 
-INDEX_TITLE = "My Project Documentation"
+INDEX_TITLE = "Disco-C Documentation"
 
 --!
 --! File with project introduction (reStructuredText). When non-nil, this file
