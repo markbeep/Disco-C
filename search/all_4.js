@@ -203,5 +203,6 @@ var searchData=
   ['discovery_5fsplash_330',['discovery_splash',['../group___models.html#ga475ba81c3f6600402e68d456db8553eb',1,'discord_guild']]],
   ['discriminator_331',['discriminator',['../group___models.html#gaf2b570f7283599cc0b467713eba86a75',1,'discord_user']]],
   ['dm_5fpermission_332',['dm_permission',['../group___models.html#ga7d1f0983feda34352e99d73396ef99f0',1,'discord_application_command']]],
-  ['double_5f_333',['double_',['../group___models.html#gadee8309d15ef2a1cca95ad3c4ed42ae7',1,'discord_interaction_data_option::double_()'],['../group___models.html#ga86229e2ffe965f1de6d01a08819981f0',1,'discord_interaction_data_option::@2::double_()']]]
+  ['double_5f_333',['double_',['../group___models.html#gadee8309d15ef2a1cca95ad3c4ed42ae7',1,'discord_interaction_data_option::double_()'],['../group___models.html#ga86229e2ffe965f1de6d01a08819981f0',1,'discord_interaction_data_option::@2::double_()']]],
+  ['disco_2ec_2c_20an_20async_20discord_20c_20bot_20library_334',['Disco.c, an Async Discord C Bot Library',['../index.html',1,'']]]
 ];
