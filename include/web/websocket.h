@@ -32,6 +32,7 @@ typedef struct websocket_client {
     // if the connection should be reset
     int reconnect;
     pthread_t heartbeat_thread;
+    const char *token;
 } websocket_client_t;
 
 /**

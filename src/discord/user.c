@@ -43,9 +43,20 @@ void discord_destroy_user(struct discord_user *user) {
 
 // TODO implement
 void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) {
-    (void)data;
-    (void)user;
-    return NULL;
+    struct discord_member *mem = (struct discord_member *)calloc(1, sizeof(struct discord_member));
+    cJSON *tmp;
+    if (user) // we already have a user struct
+        mem->user = user;
+    else { // user information might be in the member json
+        tmp = cJSON_GetObjectItem(data, "user");
+        if (tmp)
+            mem->user = discord_create_user_struct_json(tmp);
+    }
+    mem->nick = get_string_from_json(data, "nick");
+    mem->avatar = get_string_from_json(data, "avatar");
+    // TODO roles and rest of implementation
+
+    return mem;
 }
 
 void discord_destroy_member(struct discord_member *member) {

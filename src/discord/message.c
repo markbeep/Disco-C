@@ -188,7 +188,6 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
 }
 
 struct discord_message *discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
-    (void)bot;
     cJSON *json = cJSON_CreateObject();
     discord_fill_json_with_message(json, content, message);
     d_log_debug("Snd msg: %s\n", cJSON_Print(json));
@@ -196,7 +195,7 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST);
+    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     struct discord_message *sent_message = NULL;
     if (res != CURLE_OK) {
         d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
@@ -220,7 +219,6 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
 }
 
 void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {
-    (void)bot;
     cJSON *json = cJSON_CreateObject();
 
     // content
@@ -252,7 +250,7 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
     char uri[100];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages/%ld", channel_id, message_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_PATCH);
+    CURLcode res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->token);
     if (res != CURLE_OK) {
         d_log_err("%d: PATCH failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)
@@ -276,7 +274,7 @@ void *discord_create_message_struct_json(cJSON *data) {
     msg->webhook_id = get_long_from_string_json(data, "webhook_id", 0);
     if (!msg->webhook_id) {
         // only creates a user if its not a webhook
-        cJSON *user = cJSON_GetObjectItem(data, "user");
+        cJSON *user = cJSON_GetObjectItem(data, "author");
         if (user)
             msg->author = (struct discord_user *)discord_create_user_struct_json(user);
         // if theres additionally a member, it creates that as well

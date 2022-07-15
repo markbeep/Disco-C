@@ -18,7 +18,7 @@ static struct timeval last_hearbeat;
 static void gateway_handle_identify(websocket_client_t *client) {
     lwsl_user("TX: Sending gateway identify\n");
     char response[256];
-    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", DISCORD_TOKEN);
+    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", client->token);
     websocket_send(client->wsi, response, strnlen(response, 256));
 
     if (!client->heartbeat_active) {

@@ -10,17 +10,17 @@ static websocket_client_t client = {0};
 void test_requests(void) {
     char *r;
     CURLcode c;
-    c = request("https://www.google.com/", &r, NULL, REQUEST_GET);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_GET, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
-    c = request("https://www.google.com/", &r, NULL, REQUEST_POST);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_POST, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
-    c = request("https://www.google.com/", &r, NULL, REQUEST_DELETE);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_DELETE, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
-    c = request("https://www.google.com/", &r, NULL, REQUEST_PATCH);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_PATCH, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
-    c = request("https://www.google.com/", &r, NULL, REQUEST_PUT);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_PUT, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
-    c = request("https://www.google.com/", &r, NULL, REQUEST_UPDATE);
+    c = request("https://www.google.com/", &r, NULL, REQUEST_UPDATE, "");
     TEST_ASSERT_EQUAL_INT((int)CURLE_OK, c);
 }
 

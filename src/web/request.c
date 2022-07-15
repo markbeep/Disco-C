@@ -1,4 +1,3 @@
-#include <config.h>
 #include <libwebsockets.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,10 +29,10 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type) {
+CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token) {
     // we create a new handle each call because we can't use the same handle over multiple threads
     CURL *handle = curl_easy_init();
-    struct curl_slist *list = curl_setup_discord_header(handle);
+    struct curl_slist *list = curl_setup_discord_header(handle, token);
 
     char *request_str = NULL;
     switch (request_type) {
@@ -101,12 +100,12 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
     return res;
 }
 
-struct curl_slist *curl_setup_discord_header(CURL *handle) {
+struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {
     curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
     curl_easy_setopt(handle, CURLOPT_ENCODING, "br, gzip, deflate");
     curl_easy_setopt(handle, CURLOPT_ACCEPT_ENCODING, "br, gzip, deflate");
     char authorizationHeader[100];
-    sprintf(authorizationHeader, "Authorization: Bot %s", DISCORD_TOKEN);
+    sprintf(authorizationHeader, "Authorization: Bot %s", token);
     struct curl_slist *list = NULL;
     list = curl_slist_append(list, authorizationHeader);
     list = curl_slist_append(list, "Accept: application/json");
@@ -114,36 +113,4 @@ struct curl_slist *curl_setup_discord_header(CURL *handle) {
     list = curl_slist_append(list, "User-Agent: DiscordBot (v0.0.1)");
     curl_easy_setopt(handle, CURLOPT_HTTPHEADER, list);
     return list;
-}
-
-int request_test(void) {
-    d_log_normal("Testing HTTP requests...\n");
-
-    char *url = "https://www.google.com/";
-    char *result;
-    CURLcode res;
-
-    // GET REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_GET);
-    if (res != CURLE_OK) {
-        d_log_err("%d: GET failed: %s\n", res, curl_easy_strerror(res));
-        if (res == CURLE_COULDNT_RESOLVE_HOST)
-            d_log_err("Have no connection to host\n");
-        return 1;
-    }
-    d_log_err("- GET request worked successfully\n");
-
-    // POST REQUEST TEST
-    res = request(url, &result, NULL, REQUEST_POST);
-    if (res != CURLE_OK) {
-        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
-        if (res == CURLE_COULDNT_RESOLVE_HOST)
-            d_log_err("Have no connection to host\n");
-        return 1;
-    }
-    d_log_notice("- POST request worked successfully\n");
-
-    free(result);
-
-    return 0;
 }

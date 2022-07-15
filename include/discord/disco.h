@@ -67,7 +67,7 @@ struct bot_client {
  * @param callbacks A callbacks object containing the callbacks to
  * the event functions.
  */
-void discord_start_bot(discord_event_callbacks_t *callbacks);
+void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token);
 
 /**
  * @brief Frees up memory for a bot instance.

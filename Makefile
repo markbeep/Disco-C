@@ -1,4 +1,4 @@
-all: main
+all: install
 
 LIBS 	= -lcurl -lpthread -lwebsockets
 CC 		= gcc
@@ -16,7 +16,6 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
 BUILD	= build
 TEST = tests
 INCLUDE = -Iinclude -Iexternal -I.
-COMPILE = $(CC) $(INCLUDE) $(CFLAGS) $(LIBS)
 
 WEB_SOURCES := $(wildcard src/web/*.c)
 WEB_OBJECTS=$(patsubst src/web/%.c, $(BUILD)/%.o, $(WEB_SOURCES))
@@ -39,22 +38,13 @@ TEST_EXECUTABLES=$(patsubst $(TEST)/%.c, $(TEST)/%, $(TEST_SOURCES))
 $(TEST_EXECUTABLES): $(TEST)/% : $(TEST)/%.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
 	$(CC) -zmuldefs $(CFLAGS) $(INCLUDE) $@.c $(WEB_OBJECTS) \
 	$(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(TEST_SOURCES) \
-	$(BUILD)/cJSON.o external/Unity/src/unity.c $(LIBS) -o $@
+	$(BUILD)/cJSON.o external/Unity/src/unity.c -o $@
 
-# COMPILES THE EXAMPLE FILES
-EXAMPLE_SOURCES := $(wildcard examples/*.c)
-EXAMPLE_OBJECTS=$(patsubst examples/%.c, $(BUILD)/%.o, $(EXAMPLE_SOURCES))
-$(EXAMPLE_OBJECTS): $(BUILD)/%.o : examples/%.c
-	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
+example:
+	(cd examples/example_bot_1 && make)
 
-# COMPILES THE EXAMPLE COMMAND FILES
-COMMAND_SOURCES := $(wildcard examples/example_slash_commands/*.c)
-COMMAND_OBJECTS=$(patsubst examples/example_slash_commands/%.c, $(BUILD)/%.o, $(COMMAND_SOURCES))
-$(COMMAND_OBJECTS): $(BUILD)/%.o : examples/example_slash_commands/%.c
-	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
-
-main: config.h build main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(COMMAND_OBJECTS) cJSON
-	$(CC) $(CFLAGS) $(INCLUDE) main.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(EXAMPLE_OBJECTS) $(COMMAND_OBJECTS) $(BUILD)/cJSON.o $(LIBS) -o $@
+install: config.h build $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) cJSON
+	ar -rsv libdisco.a $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(BUILD)/cJSON.o
 
 build:
 	mkdir -p $(BUILD)
@@ -68,7 +58,7 @@ config.h:
 	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@
 
 cJSON:
-	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o
+	$(CC) $(CFLAGS) -c $(INCLUDE) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o
 
 test: main $(TEST_EXECUTABLES)
 

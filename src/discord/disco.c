@@ -8,13 +8,14 @@
 #include <web/gateway.h>
 #include <web/request.h>
 
-void discord_start_bot(discord_event_callbacks_t *callbacks) {
+void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token) {
     // LOG LEVEL
     int logs = LLL_USER | LLL_ERR | LLL_WARN;
     lws_set_log_level(logs, NULL);
 
     bot_client_t bot = {0};
     websocket_client_t client = {0};
+    client.token = token;
 
     curl_global_init(CURL_GLOBAL_ALL);
 

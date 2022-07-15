@@ -126,10 +126,10 @@ struct discord_application_command {
  */
 
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
-int discord_command_register(struct discord_application_command *command);
-int discord_command_update(struct discord_application_command *command, int64_t command_id);
-int discord_command_delete_global(int64_t command_id);
-int discord_command_delete_guild(int64_t guild_id, int64_t command_id);
+int discord_command_register(struct discord_application_command *command, const char *token);
+int discord_command_update(struct discord_application_command *command, int64_t command_id, const char *token);
+int discord_command_delete_global(int64_t command_id, const char *token);
+int discord_command_delete_guild(int64_t guild_id, int64_t command_id, const char *token);
 
 /** @} @} */
 #endif

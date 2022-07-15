@@ -1,11 +1,13 @@
-#include "example.h"
 #include "example_slash_commands/example_slash.h"
 #include "sys/time.h"
+#include <config.h>
 #include <discord/commands/message_send.h>
+#include <discord/disco.h>
+#include <discord/message.h>
 #include <stdbool.h>
 #include <utils/disco_logging.h>
 
-void example_on_ready(bot_client_t *bot) {
+void on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
     printf("Username:\t%s\n", bot->user->username);
@@ -108,8 +110,31 @@ void example_interaction_create(bot_client_t *bot, struct discord_interaction *i
     d_log_notice("Interaction: id = %ld, type = %d, gid = %ld, cid = %ld\n", interaction->id, (int)interaction->type, interaction->guild_id, interaction->channel_id);
     d_log_notice("Data: name = %s, custom_id = %s", data->name, data->custom_id);
     if (strcmp(data->name, "hello") == 0) {
-        hello_callback(interaction);
+        hello_callback(bot, interaction);
     }
 
     discord_destroy_interaction(interaction); // cleanup once we don't need it anymore
+}
+
+int main(int argc, char **argv) {
+    (void)argc;
+    (void)argv;
+    // Enable logging
+    d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE);
+
+    // init to 0. Without this some errors could show up
+    discord_event_callbacks_t callbacks = {0};
+    callbacks.on_ready = &on_ready;
+    callbacks.on_message = &example_on_message;
+    callbacks.on_message_edit = &example_on_edit;
+    callbacks.on_message_delete = &example_on_delete;
+    callbacks.on_channel_create = &example_channel_create;
+    callbacks.on_channel_update = &example_channel_update;
+    callbacks.on_channel_delete = &example_channel_delete;
+    callbacks.on_interaction = &example_interaction_create;
+
+    // starts the bot. This function blocks
+    discord_start_bot(&callbacks, DISCORD_TOKEN);
+
+    return 0;
 }

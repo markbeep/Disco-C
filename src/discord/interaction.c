@@ -112,7 +112,7 @@ void discord_destroy_interaction(struct discord_interaction *interaction) {
     free(interaction);
 }
 
-void discord_send_interaction(struct discord_interaction_callback *cb, struct discord_interaction *recv) {
+void discord_send_interaction(bot_client_t *bot, struct discord_interaction_callback *cb, struct discord_interaction *recv) {
     cJSON *json = cJSON_CreateObject();
     cJSON_AddNumberToObject(json, "type", (double)cb->type);
 
@@ -186,7 +186,7 @@ void discord_send_interaction(struct discord_interaction_callback *cb, struct di
     char *uri = (char *)malloc(80 + token_len);
     sprintf(uri, "https://discord.com/api/v10/interactions/%ld/%s/callback", recv->id, recv->token);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST);
+    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     if (res != CURLE_OK) {
         d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
         if (res == CURLE_COULDNT_RESOLVE_HOST)

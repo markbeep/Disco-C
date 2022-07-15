@@ -1,9 +1,14 @@
-main
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+!Makefile
 .vscode
-config.json
-config.h
+config*.h
 build
 tests/test_discord
 tests/test_web
-register
 generated-docs
+*.a
