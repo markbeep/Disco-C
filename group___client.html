@@ -78,6 +78,9 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbot__client.html">bot_client</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__config.html">discord_config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discord configs which will be set when starting the bot.  <a href="structdiscord__config.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -86,9 +89,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga4f20272fb9c9721c9bea30eb4fbd091e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___client.html#ga4f20272fb9c9721c9bea30eb4fbd091e">discord_start_bot</a> (<a class="el" href="group___client.html#gaf84e259f898478bd152e30311a2e177d">discord_event_callbacks_t</a> *callbacks)</td></tr>
-<tr class="memdesc:ga4f20272fb9c9721c9bea30eb4fbd091e"><td class="mdescLeft">&#160;</td><td class="mdescRight">High level abstraction which starts the bot.  <a href="group___client.html#ga4f20272fb9c9721c9bea30eb4fbd091e">More...</a><br /></td></tr>
-<tr class="separator:ga4f20272fb9c9721c9bea30eb4fbd091e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">discord_start_bot</a> (<a class="el" href="group___client.html#gaf84e259f898478bd152e30311a2e177d">discord_event_callbacks_t</a> *callbacks, const char *token, struct <a class="el" href="structdiscord__config.html">discord_config</a> *config)</td></tr>
+<tr class="memdesc:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">High level abstraction which starts the bot.  <a href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">More...</a><br /></td></tr>
+<tr class="separator:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga80e1160f6820069af67ff4ed4b5871d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___client.html#ga80e1160f6820069af67ff4ed4b5871d9">discord_free_bot</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot)</td></tr>
 <tr class="memdesc:ga80e1160f6820069af67ff4ed4b5871d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees up memory for a bot instance.  <a href="group___client.html#ga80e1160f6820069af67ff4ed4b5871d9">More...</a><br /></td></tr>
 <tr class="separator:ga80e1160f6820069af67ff4ed4b5871d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,8 +140,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga4f20272fb9c9721c9bea30eb4fbd091e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4f20272fb9c9721c9bea30eb4fbd091e">&#9670;&nbsp;</a></span>discord_start_bot()</h2>
+<a id="gab4c31f13fcbde9d2441bd7f2397983c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab4c31f13fcbde9d2441bd7f2397983c1">&#9670;&nbsp;</a></span>discord_start_bot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,8 +150,24 @@ Functions</h2></td></tr>
           <td class="memname">void discord_start_bot </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group___client.html#gaf84e259f898478bd152e30311a2e177d">discord_event_callbacks_t</a> *&#160;</td>
-          <td class="paramname"><em>callbacks</em></td><td>)</td>
+          <td class="paramname"><em>callbacks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__config.html">discord_config</a> *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -157,13 +176,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callbacks</td><td>A callbacks object containing the callbacks to the event functions. </td></tr>
+    <tr><td class="paramname">token</td><td>Bot token as a string </td></tr>
+    <tr><td class="paramname">config</td><td>Optional additional config settings. Can be NULL to resort to the default configs. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structbot__client.html#a537b2531864764ad014f2352df5b4ce7">bot_client::callbacks</a>, <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="disco__logging_8h.html#ac9349f26bc8e4e8e0a3e2643f9c5b928">d_log_err</a>, <a class="el" href="cache_8h.html#a81a1c1e1b3972c8e9dcbc90cca2ec195">discord_cache_destroy()</a>, <a class="el" href="cache_8h.html#a4d8331ae5a2c94953a5e668299668011">discord_cache_init()</a>, <a class="el" href="group___user.html#ga7288500a06048b7b011178b709aa0925">discord_destroy_user()</a>, <a class="el" href="gateway_8h.html#af1d985c40864d2d78d43b3adf4bc62dd">gateway_event_loop()</a>, <a class="el" href="gateway_8h.html#a8dd303796c502667dc80381a12150f96">gateway_on_receive()</a>, <a class="el" href="t__pool_8h.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8h.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8h.html#abe4e17164e848e3ec15bb001a8e4209e">t_process_count()</a>, <a class="el" href="structbot__client.html#a6abb620b458000fdc3b3dc53d47f4b0d">bot_client::thread_pool</a>, <a class="el" href="structbot__client.html#a55e2a3821d0f13e0919ffa971702accf">bot_client::user</a>, <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>, <a class="el" href="websocket_8h.html#ad6005f40f7aeb320494eb2ab32d051f6">websocket_connect()</a>, <a class="el" href="websocket_8h.html#a25e61029244807bce89cf9b7df8283e9">websocket_create()</a>, and <a class="el" href="websocket_8h.html#a371f513f4875190cbfd6681d08ff09ca">websocket_destroy_client()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+<p class="reference">References <a class="el" href="structbot__client.html#a537b2531864764ad014f2352df5b4ce7">bot_client::callbacks</a>, <a class="el" href="structdiscord__config.html#a12229236c27b45faa36124b0eead3513">discord_config::channel_cache_size</a>, <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="disco__logging_8h.html#ac9349f26bc8e4e8e0a3e2643f9c5b928">d_log_err</a>, <a class="el" href="cache_8h.html#a81a1c1e1b3972c8e9dcbc90cca2ec195">discord_cache_destroy()</a>, <a class="el" href="cache_8h.html#a4d8331ae5a2c94953a5e668299668011">discord_cache_init()</a>, <a class="el" href="group___user.html#ga7288500a06048b7b011178b709aa0925">discord_destroy_user()</a>, <a class="el" href="gateway_8h.html#af1d985c40864d2d78d43b3adf4bc62dd">gateway_event_loop()</a>, <a class="el" href="gateway_8h.html#a8dd303796c502667dc80381a12150f96">gateway_on_receive()</a>, <a class="el" href="structdiscord__config.html#a30e8268e72cb7a04d10960a5ee6a78ef">discord_config::guild_cache_size</a>, <a class="el" href="structdiscord__config.html#af0683a11fddb1fca146a9bfa0b4fb36f">discord_config::message_cache_size</a>, <a class="el" href="t__pool_8h.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8h.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8h.html#abe4e17164e848e3ec15bb001a8e4209e">t_process_count()</a>, <a class="el" href="structbot__client.html#a6abb620b458000fdc3b3dc53d47f4b0d">bot_client::thread_pool</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="structbot__client.html#a55e2a3821d0f13e0919ffa971702accf">bot_client::user</a>, <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>, <a class="el" href="websocket_8h.html#ad6005f40f7aeb320494eb2ab32d051f6">websocket_connect()</a>, <a class="el" href="websocket_8h.html#a25e61029244807bce89cf9b7df8283e9">websocket_create()</a>, and <a class="el" href="websocket_8h.html#a371f513f4875190cbfd6681d08ff09ca">websocket_destroy_client()</a>.</p>
 
 </div>
 </div>

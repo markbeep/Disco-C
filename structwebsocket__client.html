@@ -94,8 +94,12 @@ Data Fields</h2></td></tr>
 <tr class="separator:aeb5d2b27e174289fdf313c8dedf7d749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afed6b9db53c8a361bdee200fe10fcadb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwebsocket__client.html#afed6b9db53c8a361bdee200fe10fcadb">reconnect</a></td></tr>
 <tr class="separator:afed6b9db53c8a361bdee200fe10fcadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa29554907bfcf7d3fe07c482505b7d56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwebsocket__client.html#aa29554907bfcf7d3fe07c482505b7d56">exit</a></td></tr>
+<tr class="separator:aa29554907bfcf7d3fe07c482505b7d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7577dcd5f111b99a1cfb09ac14d51e5e"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwebsocket__client.html#a7577dcd5f111b99a1cfb09ac14d51e5e">heartbeat_thread</a></td></tr>
 <tr class="separator:a7577dcd5f111b99a1cfb09ac14d51e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad84d0aed5c55cb73eb9fc0d7cc99ca3e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">token</a></td></tr>
+<tr class="separator:ad84d0aed5c55cb73eb9fc0d7cc99ca3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
 <a id="a964ba3c0de77d4920a8312b16a1a0bf0"></a>
@@ -178,6 +182,22 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="aa29554907bfcf7d3fe07c482505b7d56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa29554907bfcf7d3fe07c482505b7d56">&#9670;&nbsp;</a></span>exit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int websocket_client::exit</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931">websocket_callback()</a>, <a class="el" href="websocket_8c.html#a25e61029244807bce89cf9b7df8283e9">websocket_create()</a>, and <a class="el" href="websocket_8c.html#a34f2b1448720da2b96b8fd7bdd13860e">websocket_exit()</a>.</p>
+
+</div>
+</div>
 <a id="aeb5d2b27e174289fdf313c8dedf7d749"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeb5d2b27e174289fdf313c8dedf7d749">&#9670;&nbsp;</a></span>heartbeat_active</h2>
 
@@ -222,7 +242,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="test__web_8c.html#a072ecbe023e38ff7398e7d705dde56b0">test_websocket_connect()</a>, <a class="el" href="test__web_8c.html#aab915172720ef6c59717d7307db98940">test_websocket_create()</a>, <a class="el" href="websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931">websocket_callback()</a>, and <a class="el" href="websocket_8c.html#af32439469ba35f20294d4a9a516b6e2d">websocket_reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="test__web_8c.html#a072ecbe023e38ff7398e7d705dde56b0">test_websocket_connect()</a>, <a class="el" href="test__web_8c.html#aab915172720ef6c59717d7307db98940">test_websocket_create()</a>, <a class="el" href="websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931">websocket_callback()</a>, <a class="el" href="websocket_8c.html#a25e61029244807bce89cf9b7df8283e9">websocket_create()</a>, and <a class="el" href="websocket_8c.html#af32439469ba35f20294d4a9a516b6e2d">websocket_reconnect()</a>.</p>
 
 </div>
 </div>
@@ -255,6 +275,22 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="gateway_8c.html#abc6b6d909501ade6a804502c70c40d57">gateway_on_receive()</a>, <a class="el" href="test__web_8c.html#a072ecbe023e38ff7398e7d705dde56b0">test_websocket_connect()</a>, <a class="el" href="test__web_8c.html#aab915172720ef6c59717d7307db98940">test_websocket_create()</a>, <a class="el" href="websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931">websocket_callback()</a>, and <a class="el" href="websocket_8c.html#a25e61029244807bce89cf9b7df8283e9">websocket_create()</a>.</p>
+
+</div>
+</div>
+<a id="ad84d0aed5c55cb73eb9fc0d7cc99ca3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">&#9670;&nbsp;</a></span>token</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* websocket_client::token</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga8413655b1c5cb3b8f113bc4175d43736">discord_channel_edit_message()</a>, <a class="el" href="group___message.html#ga556b7ad86b470b33662c6363f0962473">discord_channel_send_message()</a>, <a class="el" href="group___interaction.html#ga1ddab83efb21adf935e88b94bb30cf64">discord_send_interaction()</a>, <a class="el" href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">discord_start_bot()</a>, and <a class="el" href="gateway_8c.html#a75199724e0c3c35cb585a4306c3a8744">gateway_handle_identify()</a>.</p>
 
 </div>
 </div>

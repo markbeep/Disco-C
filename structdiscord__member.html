@@ -70,36 +70,52 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Discord guild member structure.  
+ <a href="structdiscord__member.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="user_8h_source.html">user.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:gab5d96a6f6968a917943f4bd4c35dbfab"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__user.html">discord_user</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab">user</a></td></tr>
+<tr class="memdesc:gab5d96a6f6968a917943f4bd4c35dbfab"><td class="mdescLeft">&#160;</td><td class="mdescRight">User structure if given.  <a href="group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab">More...</a><br /></td></tr>
 <tr class="separator:gab5d96a6f6968a917943f4bd4c35dbfab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2796f66f6b7bc86ad024785d6d8ba0ce"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga2796f66f6b7bc86ad024785d6d8ba0ce">nick</a></td></tr>
+<tr class="memdesc:ga2796f66f6b7bc86ad024785d6d8ba0ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guild nickname. NULL if member has no nickname.  <a href="group___models.html#ga2796f66f6b7bc86ad024785d6d8ba0ce">More...</a><br /></td></tr>
 <tr class="separator:ga2796f66f6b7bc86ad024785d6d8ba0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4775fea7f718eddee3ec98f1c450a8a5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga4775fea7f718eddee3ec98f1c450a8a5">avatar</a></td></tr>
+<tr class="memdesc:ga4775fea7f718eddee3ec98f1c450a8a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avatar hash if the member has a avatar.  <a href="group___models.html#ga4775fea7f718eddee3ec98f1c450a8a5">More...</a><br /></td></tr>
 <tr class="separator:ga4775fea7f718eddee3ec98f1c450a8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7dd77a0592e4936ccc17f1bdd4635fce"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga7dd77a0592e4936ccc17f1bdd4635fce">roles</a></td></tr>
-<tr class="separator:ga7dd77a0592e4936ccc17f1bdd4635fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b2d5cdb877053b2575080a65ddd75ae"><td class="memItemLeft" align="right" valign="top">uint64_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga0b2d5cdb877053b2575080a65ddd75ae">roles</a></td></tr>
+<tr class="memdesc:ga0b2d5cdb877053b2575080a65ddd75ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of roles the member has.  <a href="group___models.html#ga0b2d5cdb877053b2575080a65ddd75ae">More...</a><br /></td></tr>
+<tr class="separator:ga0b2d5cdb877053b2575080a65ddd75ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7a62eae2d7ddf73a2efeac4dc7bc4f30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga7a62eae2d7ddf73a2efeac4dc7bc4f30">roles_count</a></td></tr>
 <tr class="separator:ga7a62eae2d7ddf73a2efeac4dc7bc4f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7638bf19c7353fdf7065bc1f0a830b60"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga7638bf19c7353fdf7065bc1f0a830b60">joined_at</a></td></tr>
 <tr class="separator:ga7638bf19c7353fdf7065bc1f0a830b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa15b7eec5bcba97a819089785701326a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#gaa15b7eec5bcba97a819089785701326a">premium_since</a></td></tr>
+<tr class="memdesc:gaa15b7eec5bcba97a819089785701326a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISO8601 timestamp when the user started boosting the server.  <a href="group___models.html#gaa15b7eec5bcba97a819089785701326a">More...</a><br /></td></tr>
 <tr class="separator:gaa15b7eec5bcba97a819089785701326a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0a1e57af2d289c0f031c23e0bc422bbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga0a1e57af2d289c0f031c23e0bc422bbb">deaf</a></td></tr>
+<tr class="memdesc:ga0a1e57af2d289c0f031c23e0bc422bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the user is deafened inside a voice channel.  <a href="group___models.html#ga0a1e57af2d289c0f031c23e0bc422bbb">More...</a><br /></td></tr>
 <tr class="separator:ga0a1e57af2d289c0f031c23e0bc422bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1181297d55c169da5c927d65523e24b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga1181297d55c169da5c927d65523e24b8">mute</a></td></tr>
+<tr class="memdesc:ga1181297d55c169da5c927d65523e24b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the user is muted inside a voice channel.  <a href="group___models.html#ga1181297d55c169da5c927d65523e24b8">More...</a><br /></td></tr>
 <tr class="separator:ga1181297d55c169da5c927d65523e24b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6b16e6c0d79b4a613cc524d9183058af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga6b16e6c0d79b4a613cc524d9183058af">pending</a></td></tr>
+<tr class="memdesc:ga6b16e6c0d79b4a613cc524d9183058af"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether the user has not yet passed the guild's Membership Screening requirements.  <a href="group___models.html#ga6b16e6c0d79b4a613cc524d9183058af">More...</a><br /></td></tr>
 <tr class="separator:ga6b16e6c0d79b4a613cc524d9183058af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga764466a9258ba8fdfce62073c4e456cf"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#ga764466a9258ba8fdfce62073c4e456cf">permissions</a></td></tr>
+<tr class="memdesc:ga764466a9258ba8fdfce62073c4e456cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">total permissions of the member in the channel.  <a href="group___models.html#ga764466a9258ba8fdfce62073c4e456cf">More...</a><br /></td></tr>
 <tr class="separator:ga764466a9258ba8fdfce62073c4e456cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabdbca82d8f6e9dc19bb5b174b86c3de1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___models.html#gabdbca82d8f6e9dc19bb5b174b86c3de1">communication_disabled_until</a></td></tr>
+<tr class="memdesc:gabdbca82d8f6e9dc19bb5b174b86c3de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISO8601 timestamp when the user's timeout will end.  <a href="group___models.html#gabdbca82d8f6e9dc19bb5b174b86c3de1">More...</a><br /></td></tr>
 <tr class="separator:gabdbca82d8f6e9dc19bb5b174b86c3de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Discord guild member structure. </p>
+<p>This structure is mostly available on events that are given inside of guilds. Events like a message being created inside a guild. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/discord/<a class="el" href="user_8h_source.html">user.h</a></li>
 </ul>
 </div><!-- contents -->

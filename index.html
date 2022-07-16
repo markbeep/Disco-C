@@ -106,7 +106,7 @@ Required Libraries:</h2>
 <p><em>Note:</em> When building the project yourself, make sure to add <code>-Iinclude -Iexternal -I.</code> to add those three include directories. The local include path is because the <code>config.h</code> with the bot token will be in the local directory. Additionally you'll find the <code>cJSON.c</code> and <code>unity.c</code> files in the <code>external</code> directory.</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 File Explanations</h1>
-<p>The file layout is intended to follow the Pitchfork standard. Some things aren't yet done (like the <a class="el" href="main_8c.html" title="Example of what the main file of a bot using this library could look like.">main.c</a> file being out in the open), but it's in the making.</p><ul>
+<p>The file layout is intended to follow the Pitchfork standard. Some things aren't yet done (like the main.c file being out in the open), but it's in the making.</p><ul>
 <li>src/web/<ul>
 <li><b>websocket</b>: Contains the required methods to abstract the background websocket connection.</li>
 <li><b>gateway</b>: Handles the websocket connection to the Discord Gateway. Making sure the heartbeat is regularly sent and the incoming responses are all properly handled.</li>
