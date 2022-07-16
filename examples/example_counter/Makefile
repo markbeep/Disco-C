@@ -12,8 +12,6 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
     -O0 \
     -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
     -lm
-BUILD	= build
-TEST = tests
 INCLUDE = -I../../include -I../../external -I../..
 
 main: main.c

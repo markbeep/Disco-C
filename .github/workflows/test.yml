@@ -21,9 +21,6 @@ jobs:
             sudo apt update
             sudo apt install libcurl4-gnutls-dev
             sudo apt install libwebsockets-dev
-      
-    - name: Build main
-      run: make main
     
     - name: Build test
       run: make test

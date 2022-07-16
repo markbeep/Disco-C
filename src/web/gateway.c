@@ -15,19 +15,6 @@ static int s = -1;
 static unsigned int HEARTBEAT_INTERVAL = 10000;
 static struct timeval last_hearbeat;
 
-static void gateway_handle_identify(websocket_client_t *client) {
-    lwsl_user("TX: Sending gateway identify\n");
-    char response[256];
-    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", client->token);
-    websocket_send(client->wsi, response, strnlen(response, 256));
-
-    if (!client->heartbeat_active) {
-        d_log_notice("Creating heartbeat thread\n");
-        client->heartbeat_active = 1;
-        pthread_create(&client->heartbeat_thread, NULL, gateway_heartbeat_loop, (void *)client);
-    }
-}
-
 static void gateway_send_heartbeat(websocket_client_t *client) {
     lwsl_user("TX: Sending heartbeat\n");
     char response[128];
@@ -37,6 +24,20 @@ static void gateway_send_heartbeat(websocket_client_t *client) {
         sprintf(response, "{\"op\":1, \"d\":%d}", s);
     websocket_send(client->wsi, response, strnlen(response, 128));
     gettimeofday(&last_hearbeat, NULL);
+}
+
+static void gateway_handle_identify(websocket_client_t *client) {
+    lwsl_user("TX: Sending gateway identify\n");
+    gateway_send_heartbeat(client);
+    char response[256];
+    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", client->token);
+    websocket_send(client->wsi, response, strnlen(response, 256));
+
+    if (!client->heartbeat_active) {
+        d_log_notice("Creating heartbeat thread\n");
+        client->heartbeat_active = 1;
+        pthread_create(&client->heartbeat_thread, NULL, gateway_heartbeat_loop, (void *)client);
+    }
 }
 
 static void gateway_handle_dispatch(bot_client_t *bot, cJSON *json) {
@@ -123,7 +124,7 @@ json_cleanup:
 
 void *gateway_heartbeat_loop(void *vargp) {
     websocket_client_t *client = (websocket_client_t *)vargp;
-    uint64_t t = HEARTBEAT_INTERVAL;
+    uint64_t t = 0;
     // every 100 ms the client checks if it's time to end the loop
     useconds_t slp = 1e4; // 10ms
     while (client->active && client->heartbeat_active) {

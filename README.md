@@ -58,7 +58,7 @@ The file layout is intended to follow the Pitchfork standard. Some things aren't
     - [x] Global
     - [x] Guild
   - [x] Send interaction response
-  - [ ] Components (untested, but implementation exists)
+    - [ ] Components (untested, but implementation exists)
 - Commands (API Calls)
   - Channel ![](https://progress-bar.dev/11/?title=2/18)
     - [ ] Get channel
