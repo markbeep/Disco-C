@@ -29,8 +29,6 @@ typedef struct websocket_client {
     int active;
     // if a heartbeat thread has already been started
     int heartbeat_active;
-    // if the connection should be reset
-    int reconnect;
     // if the websocket should be exited
     int exit;
     pthread_t heartbeat_thread;

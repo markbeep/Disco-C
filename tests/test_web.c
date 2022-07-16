@@ -36,7 +36,7 @@ void test_websocket_create(void) {
     TEST_ASSERT_EQUAL_INT(1, client.active);
     TEST_ASSERT_EQUAL_INT(0, client.connected);
     TEST_ASSERT_EQUAL_INT(0, client.heartbeat_active);
-    TEST_ASSERT_EQUAL_INT(0, client.reconnect);
+    TEST_ASSERT_EQUAL_INT(0, client.exit);
     TEST_ASSERT_EQUAL_INT(0, client.success_login);
 }
 
@@ -46,7 +46,7 @@ void test_websocket_connect(void) {
     TEST_ASSERT_EQUAL_INT(1, client.active);
     TEST_ASSERT_EQUAL_INT(0, client.connected);
     TEST_ASSERT_EQUAL_INT(0, client.heartbeat_active);
-    TEST_ASSERT_EQUAL_INT(0, client.reconnect);
+    TEST_ASSERT_EQUAL_INT(0, client.exit);
     TEST_ASSERT_EQUAL_INT(0, client.success_login);
     TEST_ASSERT_EQUAL_INT64(NULL, bot_static.callbacks);
     TEST_ASSERT_EQUAL_INT64(NULL, bot_static.thread_pool);

@@ -65,8 +65,8 @@ struct discord_member {
     char *nick;                         ///< Guild nickname. NULL if member has no nickname.
     char *avatar;                       ///< Avatar hash if the member has a avatar.
     uint64_t *roles;                    ///< List of roles the member has
-    int roles_count;                    //< Amount of roles the member has.
-    char *joined_at;                    //< ISO8601 timestamp when the user joined.
+    int roles_count;                    ///< Amount of roles the member has.
+    char *joined_at;                    ///< ISO8601 timestamp when the user joined.
     char *premium_since;                ///< ISO8601 timestamp when the user started boosting the server.
     bool deaf;                          ///< If the user is deafened inside a voice channel
     bool mute;                          ///< If the user is muted inside a voice channel
