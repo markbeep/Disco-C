@@ -113,11 +113,14 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
         d_log_normal("Received a READY event\n");
         // adds the user struct to the bot struct
         cJSON *user_data = cJSON_GetObjectItem(data, "user");
-        if (bot->user) {
-            d_log_debug("Received a second READY event, recreating the bot user...\n");
-            discord_destroy_user(bot->user);
+        if (user_data) {
+            if (bot->user) {
+                d_log_debug("Received a second READY event, recreating the bot user...\n");
+                discord_destroy_user(bot->user);
+            }
+            bot->user = (struct discord_user *)discord_create_user_struct_json(user_data);
         }
-        bot->user = (struct discord_user *)discord_create_user_struct_json(user_data);
+
         // calls the on_ready callback
         if (bot->callbacks->on_ready)
             t_pool_add_work(bot->thread_pool, event_handle_ready, (void *)bot);

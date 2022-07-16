@@ -8,7 +8,7 @@
 #include <web/gateway.h>
 #include <web/request.h>
 
-void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token) {
+void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, struct discord_config *config) {
     // LOG LEVEL
     int logs = LLL_USER | LLL_ERR | LLL_WARN;
     lws_set_log_level(logs, NULL);
@@ -24,7 +24,16 @@ void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token) 
     bot.thread_pool = t_pool_init(t_process_count());
 
     // inits the cache
-    if (0 != discord_cache_init(1000, 1000, 1000, NULL)) {
+    int message_cache_size = 1000, channel_cache_size = 1000, guild_cache_size = 1000;
+    if (config) {
+        if (config->message_cache_size)
+            message_cache_size = config->message_cache_size;
+        if (config->channel_cache_size)
+            channel_cache_size = config->channel_cache_size;
+        if (config->guild_cache_size)
+            guild_cache_size = config->guild_cache_size;
+    }
+    if (0 != discord_cache_init(message_cache_size, channel_cache_size, guild_cache_size, NULL)) {
         d_log_err("Cache initialization failed\n");
         exit(1);
     }
@@ -87,8 +96,8 @@ int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, 
 
 uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_) {
     cJSON *tmp = cJSON_GetObjectItem(data, name);
-    if (cJSON_IsNumber(tmp))
-        return (uint64_t)tmp->valueint;
+    if (cJSON_IsNumber(tmp)) // then value is a JSON number
+        return (uint64_t)tmp->valuedouble;
     if (!cJSON_IsString(tmp))
         return default_;
     return (uint64_t)strtoll(tmp->valuestring, NULL, 10);

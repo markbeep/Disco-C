@@ -55,19 +55,24 @@ void discord_destroy_user(struct discord_user *user);
  */
 
 // https://discord.com/developers/docs/resources/guild#guild-member-object
+/**
+ * @brief Discord guild member structure.
+ * This structure is mostly available on events that are given inside of guilds.
+ * Events like a message being created inside a guild.
+ */
 struct discord_member {
-    struct discord_user *user;
-    char *nick;
-    char *avatar;
-    char **roles;
-    int roles_count;
-    char *joined_at;
-    char *premium_since;
-    bool deaf;
-    bool mute;
-    bool pending;
-    char *permissions;
-    char *communication_disabled_until;
+    struct discord_user *user;          ///< User structure if given.
+    char *nick;                         ///< Guild nickname. NULL if member has no nickname.
+    char *avatar;                       ///< Avatar hash if the member has a avatar.
+    uint64_t *roles;                    ///< List of roles the member has
+    int roles_count;                    //< Amount of roles the member has.
+    char *joined_at;                    //< ISO8601 timestamp when the user joined.
+    char *premium_since;                ///< ISO8601 timestamp when the user started boosting the server.
+    bool deaf;                          ///< If the user is deafened inside a voice channel
+    bool mute;                          ///< If the user is muted inside a voice channel
+    bool pending;                       ///< whether the user has not yet passed the guild's Membership Screening requirements.
+    char *permissions;                  ///< total permissions of the member in the channel.
+    char *communication_disabled_until; ///< ISO8601 timestamp when the user's timeout will end
 };
 
 // TODO comment

@@ -1,7 +1,9 @@
-LIBSPATH= -L../..
+all: main
+
+LIBSPATH= -L..
 LIBS 	= -ldisco -lcurl -lpthread -lwebsockets
 CC 		= gcc
-CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
+CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wconversion \
     -Wextra -Wno-missing-field-initializers -Wformat=2 \
     -Wswitch-default -Wswitch -Wcast-align -Wpointer-arith \
     -Wno-bad-function-cast -Wstrict-prototypes -Winline \
@@ -12,7 +14,11 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
     -O0 \
     -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
     -lm
-INCLUDE = -I../../include -I../../external -I../..
+INCLUDE = -I../include -I../external -I..
 
-main: main.c example_slash_commands/example_hello.c example_slash_commands/example_ping.c
-	$(CC) $(INCLUDE) main.c example_slash_commands/example_hello.c example_slash_commands/example_ping.c -o $@ $(LIBSPATH) $(LIBS)
+TEST_SOURCES := $(wildcard *.c)
+TEST_EXECUTABLES=$(patsubst %.c, %, $(TEST_SOURCES))
+$(TEST_EXECUTABLES): % : %.c
+	$(CC) -zmuldefs $@.c $(CFLAGS) $(INCLUDE) ../external/Unity/src/unity.c -o $@ $(LIBSPATH) $(LIBS)
+
+main: $(TEST_EXECUTABLES)

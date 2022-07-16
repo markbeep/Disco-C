@@ -17,11 +17,9 @@ jobs:
           sudo apt update
           sudo apt install doxygen graphviz
           cd docs
-          git submodule add https://github.com/jothepro/doxygen-awesome-css.git
-          cd doxygen-awesome-css
-          git checkout v2.0.3
-          cd
-          
+          git submodule add -f https://github.com/jothepro/doxygen-awesome-css.git
+          (cd doxygen-awesome-css && git checkout v2.0.3)
+
       - name: Generate Doxygen
         run: doxygen docs/Doxyfile
         

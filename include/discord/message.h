@@ -25,9 +25,9 @@ typedef struct bot_client bot_client_t;
 
 // https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
 struct discord_allowed_mentions {
-    int parse_role_mentions;     // if roles should be mentioned
-    int parse_user_mentions;     // if users should be mentioned
-    int parse_everyone_mentions; // if @everyone should mention
+    int parse_role_mentions;     ///< if roles should be mentioned
+    int parse_user_mentions;     ///< if users should be mentioned
+    int parse_everyone_mentions; ///< if @everyone should mention
     uint64_t *roles;
     int roles_count;
     uint64_t *users;
@@ -104,7 +104,7 @@ struct discord_message {
     uint64_t id;
     uint64_t channel_id;
     uint64_t guild_id;
-    struct discord_user *author;
+    struct discord_user *user;
     struct discord_member *member;
     char *content;
     char *timestamp;

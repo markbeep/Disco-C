@@ -62,12 +62,24 @@ struct bot_client {
 };
 
 /**
+ * @brief Discord configs which will be set when starting the bot.
+ * Set settings as 0 to use the default.
+ */
+struct discord_config {
+    int message_cache_size; ///< Amount of messages to store in the cache (default 1000)
+    int channel_cache_size; ///< Amount of channels to store in the cache (default 1000)
+    int guild_cache_size;   ///< Amount of guilds to store in the cache (default 1000)
+};
+
+/**
  * @brief High level abstraction which starts the bot.
  *
  * @param callbacks A callbacks object containing the callbacks to
  * the event functions.
+ * @param token Bot token as a string
+ * @param config Optional additional config settings. Can be NULL to resort to the default configs.
  */
-void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token);
+void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, struct discord_config *config);
 
 /**
  * @brief Frees up memory for a bot instance.

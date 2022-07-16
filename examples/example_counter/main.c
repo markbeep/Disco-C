@@ -1,4 +1,15 @@
-#include <config2.h>
+/**
+ * @file main.c
+ * @author markbeep
+ * @brief Example file that receives a number and one ups it
+ * @version 0.1
+ * @date 2022-07-15
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
+#include <config2.h> // note that this uses a different config file to run a different instance
 #include <discord/commands/message_send.h>
 #include <discord/disco.h>
 #include <discord/message.h>
@@ -14,17 +25,31 @@ void on_ready(bot_client_t *bot) {
 }
 
 static int watch = 0;
+static uint64_t count_channel_id = 996746797236105236UL;
+static uint64_t owner_id = 205704051856244736UL;
 
 void on_message(bot_client_t *bot, struct discord_message *message) {
-    // no content or no member given
+    // no content or no member (so not a guild message)
     if (!message->content || !message->member)
         return;
 
     // change watch score
-    // if (message->member->user->id == )
+    if (message->user->id == owner_id && strncmp(message->content, "!count", 6) == 0) {
+        char *token, *rest = message->content;
+        // we do it twice to skip the !count from the beginning
+        token = strtok_r(rest, " ", &rest);
+        token = strtok_r(rest, " ", &rest);
+        if (!token)
+            return;
+        watch = (int)strtol(token, NULL, 10);
+        char s[20];
+        sprintf(s, "Watching for `%d`", watch);
+        discord_channel_send_message(bot, s, message->channel_id, NULL, false);
+        return;
+    }
 
-    // if not count channel
-    if (message->member->user->id == bot->user->id || message->channel_id != 996746797236105236)
+    // if it's the myself or not the count channel
+    if (message->user->id == bot->user->id || message->channel_id != count_channel_id)
         return;
     int n = (int)strtol(message->content, NULL, 10);
     if (n == watch) {
@@ -43,7 +68,11 @@ int main(int argc, char **argv) {
     callbacks.on_ready = &on_ready;
     callbacks.on_message = &on_message;
 
+    // optionally sets the allowed messages in the cache
+    struct discord_config conf = {0};
+    conf.message_cache_size = 2;
+
     // starts the bot. This function blocks
-    discord_start_bot(&callbacks, DISCORD_TOKEN);
+    discord_start_bot(&callbacks, DISCORD_TOKEN, &conf);
     return 0;
 }

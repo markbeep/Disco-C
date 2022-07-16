@@ -41,7 +41,6 @@ void discord_destroy_user(struct discord_user *user) {
     free(user);
 }
 
-// TODO implement
 void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) {
     struct discord_member *mem = (struct discord_member *)calloc(1, sizeof(struct discord_member));
     cJSON *tmp;
@@ -54,11 +53,43 @@ void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) 
     }
     mem->nick = get_string_from_json(data, "nick");
     mem->avatar = get_string_from_json(data, "avatar");
-    // TODO roles and rest of implementation
+    tmp = cJSON_GetObjectItem(data, "roles");
+    mem->roles_count = cJSON_GetArraySize(tmp);
+    if (mem->roles_count > 0) {
+        mem->roles = (uint64_t *)malloc((size_t)mem->roles_count * sizeof(uint64_t));
+        int i = 0;
+        cJSON *cur = NULL;
+        cJSON_ArrayForEach(cur, tmp) {
+            mem->roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
+        }
+    }
+    mem->joined_at = get_string_from_json(data, "joined_at");
+    mem->premium_since = get_string_from_json(data, "premium_since");
+    mem->deaf = get_bool_from_json(data, "deaf", 0);
+    mem->mute = get_bool_from_json(data, "mute", 0);
+    mem->pending = get_bool_from_json(data, "pending", 0);
+    mem->permissions = get_string_from_json(data, "permissions");
+    mem->communication_disabled_until = get_string_from_json(data, "communication_disabled_until");
 
     return mem;
 }
 
-void discord_destroy_member(struct discord_member *member) {
-    (void)member;
+void discord_destroy_member(struct discord_member *mem) {
+    char *strings[6] = {
+        mem->nick,
+        mem->avatar,
+        mem->joined_at,
+        mem->premium_since,
+        mem->permissions,
+        mem->communication_disabled_until,
+    };
+    for (int i = 0; i < 6; i++) {
+        if (strings[i])
+            free(strings[i]);
+    }
+    if (mem->roles)
+        free(mem->roles);
+    if (mem->user)
+        discord_destroy_user(mem->user);
+    free(mem);
 }

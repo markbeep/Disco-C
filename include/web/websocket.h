@@ -31,6 +31,8 @@ typedef struct websocket_client {
     int heartbeat_active;
     // if the connection should be reset
     int reconnect;
+    // if the websocket should be exited
+    int exit;
     pthread_t heartbeat_thread;
     const char *token;
 } websocket_client_t;
@@ -65,8 +67,15 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
 int websocket_connect(bot_client_t *bot_client);
 
 /**
- * @brief Closes the websocket connection and sends a
- * normal close reason to the websocket server reason.
+ * @brief Exits the websocket connection completely
+ *
+ * @param bot_client
+ */
+void websocket_exit(bot_client_t *bot_client);
+
+/**
+ * @brief Requests the websocket to close
+ * If the exit flag is not set this will result in a reconnect.
  *
  * @param bot_client
  */

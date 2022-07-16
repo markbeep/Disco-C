@@ -275,12 +275,14 @@ void *discord_create_message_struct_json(cJSON *data) {
     if (!msg->webhook_id) {
         // only creates a user if its not a webhook
         cJSON *user = cJSON_GetObjectItem(data, "author");
-        if (user)
-            msg->author = (struct discord_user *)discord_create_user_struct_json(user);
+        if (user) {
+            msg->user = (struct discord_user *)discord_create_user_struct_json(user);
+        }
         // if theres additionally a member, it creates that as well
         cJSON *member = cJSON_GetObjectItem(data, "member");
-        if (member)
-            msg->member = (struct discord_member *)discord_create_member_struct_json(member, msg->author);
+        if (member) {
+            msg->member = (struct discord_member *)discord_create_member_struct_json(member, msg->user);
+        }
     }
     msg->content = get_string_from_json(data, "content");
     // gives us the guarantee that if the message content is empty,
@@ -295,9 +297,9 @@ void *discord_create_message_struct_json(cJSON *data) {
     tmp_json = cJSON_GetObjectItem(data, "mentions");
     msg->mentions_count = cJSON_GetArraySize(tmp_json);
     if (msg->mentions_count > 0) {
-        cJSON *cur = NULL;
         msg->mentions = (struct discord_member **)malloc((size_t)msg->mentions_count * sizeof(struct discord_members *));
         int i = 0;
+        cJSON *cur = NULL;
         cJSON_ArrayForEach(cur, tmp_json) {
             msg->mentions[i++] = (struct discord_member *)discord_create_member_struct_json(cur, NULL);
         }
@@ -369,10 +371,10 @@ void *discord_create_message_struct_json(cJSON *data) {
 }
 
 void discord_destroy_message(struct discord_message *message) {
-    if (message->author)
-        discord_destroy_user(message->author);
     if (message->member)
         discord_destroy_member(message->member);
+    else if (message->user) // only delete user if there was no member (user is deleted in member)
+        discord_destroy_user(message->user);
     if (message->content)
         free(message->content);
     if (message->timestamp)

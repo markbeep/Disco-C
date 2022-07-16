@@ -18,7 +18,7 @@ void on_ready(bot_client_t *bot) {
 void example_on_message(bot_client_t *bot, struct discord_message *message) {
     (void)bot;
     if (message->content) { // message content is NULL if there's none
-        if (message->author && message->author->bot) {
+        if (message->user && message->user->bot) {
             fprintf(stderr, "User is a bot. Ignoring\n");
             return;
         }
@@ -53,7 +53,7 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 
         } else if (strncmp(message->content, "!exit", 6) == 0) {
             // softly ends the bot
-            websocket_close(bot);
+            websocket_exit(bot);
 
         } else if (strncmp(message->content, "!r", 3) == 0) {
             // reconnects the websocket
@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
     callbacks.on_interaction = &example_interaction_create;
 
     // starts the bot. This function blocks
-    discord_start_bot(&callbacks, DISCORD_TOKEN);
+    discord_start_bot(&callbacks, DISCORD_TOKEN, NULL);
 
     return 0;
 }

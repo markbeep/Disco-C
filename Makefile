@@ -14,7 +14,6 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
     -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
     -lm
 BUILD	= build
-TEST = tests
 INCLUDE = -Iinclude -Iexternal -I.
 
 WEB_SOURCES := $(wildcard src/web/*.c)
@@ -31,14 +30,6 @@ DISCORD_SOURCES := $(wildcard src/discord/*.c)
 DISCORD_OBJECTS=$(patsubst src/discord/%.c, $(BUILD)/%.o, $(DISCORD_SOURCES))
 $(DISCORD_OBJECTS): $(BUILD)/%.o : src/discord/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
-
-# COMPILES THE TEST FILES
-TEST_SOURCES := $(wildcard $(TEST)/*.c)
-TEST_EXECUTABLES=$(patsubst $(TEST)/%.c, $(TEST)/%, $(TEST_SOURCES))
-$(TEST_EXECUTABLES): $(TEST)/% : $(TEST)/%.c $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS)
-	$(CC) -zmuldefs $(CFLAGS) $(INCLUDE) $@.c $(WEB_OBJECTS) \
-	$(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(TEST_SOURCES) \
-	$(BUILD)/cJSON.o external/Unity/src/unity.c -o $@
 
 example:
 	(cd examples/example_bot_1 && make)
@@ -60,7 +51,8 @@ config.h:
 cJSON:
 	$(CC) $(CFLAGS) -c $(INCLUDE) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o
 
-test: main $(TEST_EXECUTABLES)
+test: install
+	(cd tests && make)
 
 clean_test:
 	rm -f $(TEST_EXECUTABLES)

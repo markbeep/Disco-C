@@ -38,15 +38,21 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
             bot_client->websocket_client->reconnect = 0;
         } else { // internet failed or the websocket was closed on purpose
             bot_client->websocket_client->active = 0;
-            if (!bot_client->websocket_client->success_login)
+            if (!bot_client->websocket_client->success_login) {
                 lwsl_err("Connection closed. Probably the Discord token is invalid.\n");
-            else
-                lwsl_err("Connection closed.\n");
-            websocket_close(bot_client);
-            bot_client->websocket_client->connected = 0;
-            client->success_login = 0;
+                return -1;
+            } else if (bot_client->websocket_client->exit) {
+                lwsl_err("Exiting connection.\n");
+                websocket_close(bot_client);
+                bot_client->websocket_client->connected = 0;
+                client->success_login = 0;
+                return -1;
+            } else {
+                lwsl_err("Reconnecting lost connection\n");
+                websocket_connect(bot_client);
+            }
         }
-        return -1;
+        return 0;
 
     case LWS_CALLBACK_CLIENT_RECEIVE:
         // we add a EOL at the end of the input data
@@ -108,6 +114,8 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
     client->callbacks = (struct websocket_callbacks *)malloc(sizeof(struct websocket_callbacks));
     client->callbacks->on_receive = on_receive;
     client->success_login = 0;
+    client->reconnect = 0;
+    client->exit = 0;
 
     return 0;
 }
@@ -161,6 +169,11 @@ int websocket_send(struct lws *wsi, char *data, size_t len) {
 void websocket_reconnect(bot_client_t *bot_client) {
     lwsl_notice("Reconnecting\n");
     bot_client->websocket_client->reconnect = 1;
+    websocket_close(bot_client);
+}
+
+void websocket_exit(bot_client_t *bot_client) {
+    bot_client->websocket_client->exit = 1;
     websocket_close(bot_client);
 }
 
