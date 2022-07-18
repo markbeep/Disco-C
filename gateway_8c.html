@@ -78,6 +78,7 @@ $(function() {
 <code>#include &lt;config.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="event_8h_source.html">discord/event.h</a>&gt;</code><br />
 <code>#include &lt;pthread.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="disco__logging_8h_source.html">utils/disco_logging.h</a>&gt;</code><br />
@@ -104,8 +105,8 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a339d22b3e442946380f98ed19e320db2"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gateway_8c.html#a339d22b3e442946380f98ed19e320db2">s</a> = -1</td></tr>
-<tr class="separator:a339d22b3e442946380f98ed19e320db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ef966cdecc2e582959632b5c35eaef"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gateway_8c.html#a96ef966cdecc2e582959632b5c35eaef">seq</a> = -1</td></tr>
+<tr class="separator:a96ef966cdecc2e582959632b5c35eaef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff7899501086a2e99a84915731d8b0c8"><td class="memItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gateway_8c.html#aff7899501086a2e99a84915731d8b0c8">HEARTBEAT_INTERVAL</a> = 10000</td></tr>
 <tr class="separator:aff7899501086a2e99a84915731d8b0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79a817eefc1547db5e5c043d3004c794"><td class="memItemLeft" align="right" valign="top">static struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gateway_8c.html#a79a817eefc1547db5e5c043d3004c794">last_hearbeat</a></td></tr>
@@ -177,7 +178,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="event_8h.html#a0a0e68819bd46857f175b4ef0345767e">event_handle()</a>, and <a class="el" href="gateway_8c.html#a339d22b3e442946380f98ed19e320db2">s</a>.</p>
+<p class="reference">References <a class="el" href="event_8h.html#a0a0e68819bd46857f175b4ef0345767e">event_handle()</a>, and <a class="el" href="gateway_8c.html#a96ef966cdecc2e582959632b5c35eaef">seq</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="gateway_8c.html#abc6b6d909501ade6a804502c70c40d57">gateway_on_receive()</a>.</p>
 
@@ -207,7 +208,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="disco__logging_8h.html#a316cacf7ee1e1dacebad5ab1dfb0a509">d_log_notice</a>, <a class="el" href="gateway_8c.html#ae196cc6926770e97cbb48322d028bef6">gateway_heartbeat_loop()</a>, <a class="el" href="gateway_8c.html#a59eb87aa8453c8c5d7faf4c0002b5a03">gateway_send_heartbeat()</a>, <a class="el" href="structwebsocket__client.html#aeb5d2b27e174289fdf313c8dedf7d749">websocket_client::heartbeat_active</a>, <a class="el" href="structwebsocket__client.html#a7577dcd5f111b99a1cfb09ac14d51e5e">websocket_client::heartbeat_thread</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="websocket_8h.html#a4441bdd6264675d37ad41f203f73d20f">websocket_send()</a>, and <a class="el" href="structwebsocket__client.html#abb30c6cbcb6fd9d9eab05d83c666cbae">websocket_client::wsi</a>.</p>
+<p class="reference">References <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="disco__logging_8h.html#a316cacf7ee1e1dacebad5ab1dfb0a509">d_log_notice</a>, <a class="el" href="gateway_8c.html#ae196cc6926770e97cbb48322d028bef6">gateway_heartbeat_loop()</a>, <a class="el" href="gateway_8c.html#a59eb87aa8453c8c5d7faf4c0002b5a03">gateway_send_heartbeat()</a>, <a class="el" href="structwebsocket__client.html#aeb5d2b27e174289fdf313c8dedf7d749">websocket_client::heartbeat_active</a>, <a class="el" href="structwebsocket__client.html#a7577dcd5f111b99a1cfb09ac14d51e5e">websocket_client::heartbeat_thread</a>, <a class="el" href="gateway_8c.html#a96ef966cdecc2e582959632b5c35eaef">seq</a>, <a class="el" href="structwebsocket__client.html#a3e137fc1c63aeb04db7389018658771c">websocket_client::session_id</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="websocket_8h.html#a4441bdd6264675d37ad41f203f73d20f">websocket_send()</a>, and <a class="el" href="structwebsocket__client.html#abb30c6cbcb6fd9d9eab05d83c666cbae">websocket_client::wsi</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="gateway_8c.html#abc6b6d909501ade6a804502c70c40d57">gateway_on_receive()</a>.</p>
 
@@ -317,7 +318,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="gateway_8c.html#a79a817eefc1547db5e5c043d3004c794">last_hearbeat</a>, <a class="el" href="gateway_8c.html#a339d22b3e442946380f98ed19e320db2">s</a>, <a class="el" href="websocket_8h.html#a4441bdd6264675d37ad41f203f73d20f">websocket_send()</a>, and <a class="el" href="structwebsocket__client.html#abb30c6cbcb6fd9d9eab05d83c666cbae">websocket_client::wsi</a>.</p>
+<p class="reference">References <a class="el" href="test__web_8c.html#a5acf8ba73e229d445b88352d065a29db">client</a>, <a class="el" href="gateway_8c.html#a79a817eefc1547db5e5c043d3004c794">last_hearbeat</a>, <a class="el" href="gateway_8c.html#a96ef966cdecc2e582959632b5c35eaef">seq</a>, <a class="el" href="websocket_8h.html#a4441bdd6264675d37ad41f203f73d20f">websocket_send()</a>, and <a class="el" href="structwebsocket__client.html#abb30c6cbcb6fd9d9eab05d83c666cbae">websocket_client::wsi</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="gateway_8c.html#a75199724e0c3c35cb585a4306c3a8744">gateway_handle_identify()</a>, <a class="el" href="gateway_8c.html#ae196cc6926770e97cbb48322d028bef6">gateway_heartbeat_loop()</a>, and <a class="el" href="gateway_8c.html#abc6b6d909501ade6a804502c70c40d57">gateway_on_receive()</a>.</p>
 
@@ -372,8 +373,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a339d22b3e442946380f98ed19e320db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a339d22b3e442946380f98ed19e320db2">&#9670;&nbsp;</a></span>s</h2>
+<a id="a96ef966cdecc2e582959632b5c35eaef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ef966cdecc2e582959632b5c35eaef">&#9670;&nbsp;</a></span>seq</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,7 +383,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int s = -1</td>
+          <td class="memname">int seq = -1</td>
         </tr>
       </table>
   </td>
@@ -392,7 +393,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="gateway_8c.html#a0ae5ed06471447e38fa5edf7780989c3">gateway_handle_dispatch()</a>, <a class="el" href="gateway_8c.html#a59eb87aa8453c8c5d7faf4c0002b5a03">gateway_send_heartbeat()</a>, <a class="el" href="disco_8c.html#acc7d55c27f59407b991e4099b999f158">get_array_from_json()</a>, and <a class="el" href="request_8c.html#ad1262acfd44e35f04459e159201eecd5">write_data()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="gateway_8c.html#a0ae5ed06471447e38fa5edf7780989c3">gateway_handle_dispatch()</a>, <a class="el" href="gateway_8c.html#a75199724e0c3c35cb585a4306c3a8744">gateway_handle_identify()</a>, and <a class="el" href="gateway_8c.html#a59eb87aa8453c8c5d7faf4c0002b5a03">gateway_send_heartbeat()</a>.</p>
 
 </div>
 </div>
