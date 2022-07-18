@@ -33,6 +33,8 @@ typedef struct websocket_client {
     int exit;
     pthread_t heartbeat_thread;
     const char *token;
+    // session id used to reconnect
+    char *session_id;
 } websocket_client_t;
 
 /**

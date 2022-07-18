@@ -74,11 +74,14 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
 
     case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
-        lwsl_notice("server initiated connection close: len = %lu, in = %u\n", (unsigned long)len, (*(uint16_t *)in));
+        lwsl_notice("server initiated connection close: len = %d, in = %u\n", ntohs(len), ntohs(*(uint16_t *)in));
         break;
-
+    case LWS_CALLBACK_CLIENT_WRITEABLE: // we can ignore this callback
+        break;
     default:
-        lwsl_notice("other callback message\n");
+        lwsl_notice("other callback message %d\n", (int)reason);
+        if (in)
+            lwsl_notice("\textra info: %s\n", (char *)in);
         break;
     }
 
@@ -112,6 +115,7 @@ int websocket_create(websocket_client_t *client, callback_receive_fn on_receive)
     client->callbacks->on_receive = on_receive;
     client->success_login = 0;
     client->exit = 0;
+    client->session_id = NULL;
 
     return 0;
 }
@@ -148,6 +152,8 @@ void websocket_destroy_client(websocket_client_t *client) {
     client->heartbeat_active = 0;
     free(client->callbacks);
     free(client->content);
+    if (client->session_id)
+        free(client->session_id);
     if (client->heartbeat_active)
         pthread_join(client->heartbeat_thread, NULL);
 }

@@ -2,6 +2,7 @@
 #include <config.h>
 #include <discord/event.h>
 #include <pthread.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
@@ -9,7 +10,7 @@
 #include <web/websocket.h>
 
 // sequence id
-static int s = -1;
+static int seq = -1;
 // time to wait between heartbeats
 // gets set dynamically upon receiving the HELLO event
 static unsigned int HEARTBEAT_INTERVAL = 10000;
@@ -18,10 +19,10 @@ static struct timeval last_hearbeat;
 static void gateway_send_heartbeat(websocket_client_t *client) {
     lwsl_user("TX: Sending heartbeat\n");
     char response[128];
-    if (s == -1)
+    if (seq == -1)
         sprintf(response, "{\"op\":1, \"d\":null}");
     else
-        sprintf(response, "{\"op\":1, \"d\":%d}", s);
+        sprintf(response, "{\"op\":1, \"d\":%d}", seq);
     websocket_send(client->wsi, response, strnlen(response, 128));
     gettimeofday(&last_hearbeat, NULL);
 }
@@ -30,7 +31,10 @@ static void gateway_handle_identify(websocket_client_t *client) {
     lwsl_user("TX: Sending gateway identify\n");
     gateway_send_heartbeat(client);
     char response[256];
-    sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", client->token);
+    if (client->session_id) // if there's a session_id, we can try reconnecting
+        sprintf(response, "{\"op\":6, \"d\":{\"token\":\"%s\",\"session_id\":\"%s\", \"seq\": %d}}", client->token, client->session_id, seq);
+    else
+        sprintf(response, "{\"op\":2, \"d\":{\"token\":\"%s\",\"intents\":513, \"properties\":{\"$os\":\"linux\",\"$browser\":\"Disco-C\",\"$device\":\"Disco-C\"}}}", client->token);
     websocket_send(client->wsi, response, strnlen(response, 256));
 
     if (!client->heartbeat_active) {
@@ -43,8 +47,8 @@ static void gateway_handle_identify(websocket_client_t *client) {
 static void gateway_handle_dispatch(bot_client_t *bot, cJSON *json) {
     // increases the sequence ID if the new value is greater
     cJSON *local_s = cJSON_GetObjectItemCaseSensitive(json, "s");
-    if (cJSON_IsNumber(local_s) && local_s->valueint > s)
-        s = local_s->valueint;
+    if (cJSON_IsNumber(local_s) && local_s->valueint > seq)
+        seq = local_s->valueint;
 
     // freed after the event is handled
     cJSON *event_type = cJSON_GetObjectItemCaseSensitive(json, "t");

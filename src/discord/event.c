@@ -1,5 +1,6 @@
 #include <discord/event.h>
 #include <discord/user.h>
+#include <string.h>
 #include <utils/cache.h>
 #include <utils/disco_logging.h>
 #include <utils/t_pool.h>
@@ -120,7 +121,11 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             }
             bot->user = (struct discord_user *)discord_create_user_struct_json(user_data);
         }
-
+        user_data = cJSON_GetObjectItem(data, "session_id");
+        if (user_data) {
+            d_log_debug("Received the sequence id: %s\n", user_data->valuestring);
+            bot->websocket_client->session_id = strndup(user_data->valuestring, 100);
+        }
         // calls the on_ready callback
         if (bot->callbacks->on_ready)
             t_pool_add_work(bot->thread_pool, event_handle_ready, (void *)bot);
