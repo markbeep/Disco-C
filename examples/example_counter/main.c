@@ -39,10 +39,14 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         // we do it twice to skip the !count from the beginning
         token = strtok_r(rest, " ", &rest);
         token = strtok_r(rest, " ", &rest);
-        if (!token)
+        if (!token) {
+            char s[40];
+            sprintf(s, "Watching for `%d`", watch);
+            discord_channel_send_message(bot, s, message->channel_id, NULL, false);
             return;
+        }
         watch = (int)strtol(token, NULL, 10);
-        char s[20];
+        char s[40];
         sprintf(s, "Watching for `%d`", watch);
         discord_channel_send_message(bot, s, message->channel_id, NULL, false);
         return;

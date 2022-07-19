@@ -194,6 +194,7 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
+    printf("%s\n", uri);
     char *response;
     CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     struct discord_message *sent_message = NULL;
