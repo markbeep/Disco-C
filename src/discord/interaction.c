@@ -95,10 +95,10 @@ void *discord_create_interaction_struct_json(cJSON *data) {
 void discord_destroy_interaction(struct discord_interaction *interaction) {
     if (interaction->data)
         discord_destroy_interaction_data(interaction->data);
-    if (interaction->user)
-        discord_destroy_user(interaction->user);
     if (interaction->member)
         discord_destroy_member(interaction->member);
+    else if (interaction->user) // only delete solely user if there's no member
+        discord_destroy_user(interaction->user);
     if (interaction->token)
         free(interaction->token);
     if (interaction->message)

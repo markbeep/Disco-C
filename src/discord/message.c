@@ -190,7 +190,6 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
 struct discord_message *discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
     cJSON *json = cJSON_CreateObject();
     discord_fill_json_with_message(json, content, message);
-    d_log_debug("Snd msg: %s\n", cJSON_Print(json));
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
@@ -203,8 +202,7 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
         if (res == CURLE_COULDNT_RESOLVE_HOST)
             d_log_err("Have no connection to host\n");
     } else {
-        d_log_debug("Message sent!\n");
-        d_log_debug("Response: char = %s\n", response);
+        d_log_debug("Message sent! Response: char = %s\n", response);
 
         if (return_struct) { // only if a struct is requested to be returned
             cJSON *res_json = cJSON_Parse(response);

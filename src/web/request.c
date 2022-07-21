@@ -1,6 +1,8 @@
 #include <libwebsockets.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
 #include <utils/timer.h>
@@ -72,7 +74,8 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
     }
 
     CURLcode res;
-    int sent_message = 0;
+    bool sent_message = false;
+    int iterations = 0;
     do {
         chunk.memory = NULL;
         chunk.size = 0;
@@ -88,8 +91,16 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
                 lwsl_notice("We are being ratelimited, waiting %d ms.\n", wait_ms->valueint);
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
+        } else if (*response && strstr(*response, "502: Bad Gateway")) {
+            if (iterations >= 10) {
+                d_log_err("Unable to send request due to 502 Bad Gateway. Breaking out of loop.\n");
+                break;
+            }
+            d_log_err("502 Bad Gateway received on request. Waiting 15 seconds. Iteration: %d\n", iterations);
+            usleep((useconds_t)15e6);
+            iterations++;
         } else
-            sent_message = 1;
+            sent_message = true;
         cJSON_Delete(res_json);
     } while (!sent_message);
 
