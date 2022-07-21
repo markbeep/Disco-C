@@ -134,6 +134,11 @@ File Explanations</h1>
 <li><b>tests</b>: Basic tests which don't really test a lot.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md7"></a>
+Problems</h1>
+<ul>
+<li>Currently it is possible for the cache to delete a message/channel/guild structure while the struct is still being used in another thread. This happens very rarely and only with small cache sizes, but it is possible.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Progress</h1>
 <ul>
 <li>Interactions <img src="https://progress-bar.dev/100/?title=4/4" alt="" class="inline"/><ul>
