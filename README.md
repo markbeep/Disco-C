@@ -50,6 +50,9 @@ The file layout is intended to follow the Pitchfork standard. Some things aren't
 - **docs**: Configuration files to automatically generate the wiki.
 - **tests**: Basic tests which don't really test a lot.
 
+## Problems
+- Currently it is possible for the cache to delete a message/channel/guild structure while the struct is still being used in another thread. This happens very rarely and only with small cache sizes, but it is possible.
+
 ## Progress
 - Interactions ![](https://progress-bar.dev/100/?title=4/4)
   - [x] Application Command Object
