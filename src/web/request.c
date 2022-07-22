@@ -83,15 +83,17 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
         *response = chunk.memory;
 
         // checks if we're being ratelimited, if yes it waits
+        long http;
+        curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http);
+        printf("code = %ld\n", http);
         cJSON *res_json = cJSON_Parse(*response);
-        cJSON *res_msg = cJSON_GetObjectItem(res_json, "message");
-        if (cJSON_IsString(res_msg) && strncmp(res_msg->valuestring, "You are being rate limited.", 28) == 0) {
+        if (http == 429) {
             cJSON *wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
             if (cJSON_IsNumber(wait_ms)) {
                 lwsl_notice("We are being ratelimited, waiting %d ms.\n", wait_ms->valueint);
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
-        } else if (*response && strstr(*response, "502: Bad Gateway")) {
+        } else if (http == 502) {
             if (iterations >= 10) {
                 d_log_err("Unable to send request due to 502 Bad Gateway. Breaking out of loop.\n");
                 break;
