@@ -195,22 +195,15 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
     printf("%s\n", uri);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
+    long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     struct discord_message *sent_message = NULL;
-    if (res != CURLE_OK) {
-        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
-        if (res == CURLE_COULDNT_RESOLVE_HOST)
-            d_log_err("Have no connection to host\n");
-    } else {
-        d_log_debug("Message sent! Response: char = %s\n", response);
-
-        if (return_struct) { // only if a struct is requested to be returned
-            cJSON *res_json = cJSON_Parse(response);
-            sent_message = (struct discord_message *)discord_create_message_struct_json(res_json);
-            cJSON_Delete(res_json);
-        }
+    d_log_debug("Message sent! Response: %ld\n", res);
+    printf("Message sent! Response: %ld\n", res);
+    if (response && res != 0 && return_struct) { // only if a struct is requested to be returned
+        cJSON *res_json = cJSON_Parse(response);
+        sent_message = (struct discord_message *)discord_create_message_struct_json(res_json);
+        cJSON_Delete(res_json);
     }
-
     // free up allocated stuff
     cJSON_Delete(json);
     free(response);
@@ -249,15 +242,8 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
     char uri[100];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages/%ld", channel_id, message_id);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->token);
-    if (res != CURLE_OK) {
-        d_log_err("%d: PATCH failed: %s\n", res, curl_easy_strerror(res));
-        if (res == CURLE_COULDNT_RESOLVE_HOST)
-            d_log_err("Have no connection to host\n");
-        return;
-    }
-    d_log_debug("Message sent!\n");
-    d_log_debug("Response: char = %s\n", response);
+    long res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->token);
+    d_log_err("Message Edited. Response: %ld\n", res);
 
     cJSON_Delete(json);
     free(response);

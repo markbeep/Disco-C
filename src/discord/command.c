@@ -196,12 +196,12 @@ int discord_command_register(struct discord_application_command *command, const 
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ld/commands", APPLICATION_ID, command->guild_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands", APPLICATION_ID);
-    CURLcode c = request(url, &response, json, REQUEST_POST, token);
+    long c = request(url, &response, json, REQUEST_POST, token);
     cJSON_Delete(json);
     d_log_notice("Command Response: %s\n", response);
     free(response);
-    if (c == CURLE_OK)
-        return 1;
+    if (c == 0)
+        return 1; // failed
     return 0;
 }
 
@@ -214,11 +214,11 @@ int discord_command_update(struct discord_application_command *command, int64_t 
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ld/commands/%ld", APPLICATION_ID, command->guild_id, command_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ld", APPLICATION_ID, command_id);
-    CURLcode c = request(url, &response, json, REQUEST_PATCH, token);
+    long c = request(url, &response, json, REQUEST_PATCH, token);
     cJSON_Delete(json);
     free(response);
-    if (c == CURLE_OK)
-        return 1;
+    if (c == 0)
+        return 1; // failed
     return 0;
 }
 
@@ -226,10 +226,10 @@ int discord_command_delete_global(int64_t command_id, const char *token) {
     char url[120];
     char *response;
     sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ld", APPLICATION_ID, command_id);
-    CURLcode c = request(url, &response, NULL, REQUEST_DELETE, token);
+    long c = request(url, &response, NULL, REQUEST_DELETE, token);
     free(response);
-    if (c == CURLE_OK)
-        return 1;
+    if (c == 0)
+        return 1; // failed
     return 0;
 }
 
@@ -237,9 +237,9 @@ int discord_command_delete_guild(int64_t guild_id, int64_t command_id, const cha
     char url[120];
     char *response;
     sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ld/commands/%ld", APPLICATION_ID, guild_id, command_id);
-    CURLcode c = request(url, &response, NULL, REQUEST_DELETE, token);
+    long c = request(url, &response, NULL, REQUEST_DELETE, token);
     free(response);
-    if (c == CURLE_OK)
-        return 1;
+    if (c == 0)
+        return 1; // failed
     return 0;
 }

@@ -186,15 +186,8 @@ void discord_send_interaction(bot_client_t *bot, struct discord_interaction_call
     char *uri = (char *)malloc(80 + token_len);
     sprintf(uri, "https://discord.com/api/v10/interactions/%ld/%s/callback", recv->id, recv->token);
     char *response;
-    CURLcode res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
-    if (res != CURLE_OK) {
-        d_log_err("%d: POST failed: %s\n", res, curl_easy_strerror(res));
-        if (res == CURLE_COULDNT_RESOLVE_HOST)
-            d_log_err("Have no connection to host\n");
-    } else {
-        d_log_debug("Interaction sent!\n");
-        d_log_debug("Response: char = %s\n", response);
-    }
+    long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
+    d_log_debug("Interaction sent! Response: %ld\n", res);
 
     // free up allocated stuff
     cJSON_Delete(json);

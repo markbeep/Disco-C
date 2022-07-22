@@ -29,9 +29,9 @@ enum Request_Type { REQUEST_GET,
  * @param content Pointer to JSON that should be sent. If there's
  *                nothing to send, it should be NULL.
  * @param request_type The type of request to execute
- * @return CURLcode
+ * @return long HTTP response code
  */
-CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token);
+long request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token);
 
 /**
  * @brief Adds the correct Discord headers to a CURL handle

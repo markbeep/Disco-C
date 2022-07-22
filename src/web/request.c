@@ -31,7 +31,7 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-CURLcode request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token) {
+long request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token) {
     // we create a new handle each call because we can't use the same handle over multiple threads
     CURL *handle = curl_easy_init();
     struct curl_slist *list = curl_setup_discord_header(handle, token);
@@ -76,14 +76,14 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
     CURLcode res;
     bool sent_message = false;
     int iterations = 0;
+    long http = 0;
     do {
         chunk.memory = NULL;
         chunk.size = 0;
         res = curl_easy_perform(handle);
         *response = chunk.memory;
 
-        // checks if we're being ratelimited, if yes it waits
-        long http;
+        // checks if we're being ratelimited or there's another error, if yes it waits
         curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http);
         printf("code = %ld\n", http);
         cJSON *res_json = cJSON_Parse(*response);
@@ -93,13 +93,16 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
                 lwsl_notice("We are being ratelimited, waiting %d ms.\n", wait_ms->valueint);
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
-        } else if (http == 502) {
+        } else if (http == 502 || res == CURLE_COULDNT_RESOLVE_HOST) {
             if (iterations >= 10) {
-                d_log_err("Unable to send request due to 502 Bad Gateway. Breaking out of loop.\n");
+                d_log_err("Breaking out of request retry loop.\n");
                 break;
             }
-            d_log_err("502 Bad Gateway received on request. Waiting 15 seconds. Iteration: %d\n", iterations);
-            usleep((useconds_t)15e6);
+            if (http == 502)
+                d_log_err("502 Bad Gateway received on request. Waiting 15 seconds. Iteration: %d\n", iterations);
+            if (res == CURLE_COULDNT_RESOLVE_HOST)
+                d_log_err("Couldn't resolve host. Waiting 15 seconds. Iteration: %d\n", iterations);
+            usleep((useconds_t)15e6); // wait 15 seconds
             iterations++;
         } else
             sent_message = true;
@@ -110,7 +113,7 @@ CURLcode request(char *url, char **response, cJSON *content, enum Request_Type r
         free(content_p);
     curl_slist_free_all(list);
     curl_easy_cleanup(handle);
-    return res;
+    return http;
 }
 
 struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {

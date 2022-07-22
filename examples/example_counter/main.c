@@ -15,6 +15,7 @@
 #include <discord/message.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <utils/disco_logging.h>
 
 void on_ready(bot_client_t *bot) {
     printf("====================================\n");
@@ -75,6 +76,9 @@ int main(int argc, char **argv) {
     // optionally sets the allowed messages in the cache
     struct discord_config conf = {0};
     conf.message_cache_size = 2;
+
+    // Make errors show up in the console
+    d_set_log_level(D_LOG_ERR);
 
     // starts the bot. This function blocks
     discord_start_bot(&callbacks, DISCORD_TOKEN, &conf);
