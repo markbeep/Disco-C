@@ -23,6 +23,7 @@ void on_ready(bot_client_t *bot) {
     printf("Username:\t%s\n", bot->user->username);
     printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
+    fflush(stdout);
 }
 
 static int watch = 0;
