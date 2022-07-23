@@ -21,7 +21,7 @@ void on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
     printf("Username:\t%s\n", bot->user->username);
-    printf("User ID:\t%jd\n", bot->user->id);
+    printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
 }
 

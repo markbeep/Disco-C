@@ -103,9 +103,9 @@ struct discord_application_command_option {
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure
 struct discord_application_command {
-    int64_t *id;
+    uint64_t *id;
     enum Discord_Application_Command_Type type;
-    int64_t guild_id;
+    uint64_t guild_id;
     char *name;
     struct discord_language_locales *name_localizations;
     char *description;
@@ -115,7 +115,7 @@ struct discord_application_command {
     char *default_member_permissions;
     bool dm_permission;
     bool default_permission;
-    int64_t version;
+    uint64_t version;
 };
 
 /**
@@ -127,9 +127,9 @@ struct discord_application_command {
 
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
 int discord_command_register(struct discord_application_command *command, const char *token);
-int discord_command_update(struct discord_application_command *command, int64_t command_id, const char *token);
-int discord_command_delete_global(int64_t command_id, const char *token);
-int discord_command_delete_guild(int64_t guild_id, int64_t command_id, const char *token);
+int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token);
+int discord_command_delete_global(uint64_t command_id, const char *token);
+int discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token);
 
 /** @} @} */
 #endif

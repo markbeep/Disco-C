@@ -11,7 +11,7 @@ void on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
     printf("Username:\t%s\n", bot->user->username);
-    printf("User ID:\t%jd\n", bot->user->id);
+    printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
 }
 
@@ -64,18 +64,18 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 
 void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
     char content[120];
-    sprintf(content, "Message %ld was edited. Message in cache: %s. Old message ID = %ld", new->id, old ? "Yes" : "No", old ? old->id : 0);
+    sprintf(content, "Message %ju was edited. Message in cache: %s. Old message ID = %ju", new->id, old ? "Yes" : "No", old ? old->id : 0);
     discord_channel_send_message(bot, content, new->channel_id, NULL, false);
 }
 
 void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *message) {
     if (message) {
         char content[50];
-        sprintf(content, "Cache: Yes\nID: `%ld`", message_id);
+        sprintf(content, "Cache: Yes\nID: `%ju`", message_id);
         discord_channel_send_message(bot, content, channel_id, NULL, false);
     } else {
         char content[100];
-        sprintf(content, "Cache: No\nID: %ld, channel ID: %ld, guild ID: %ld", message_id, channel_id, guild_id);
+        sprintf(content, "Cache: No\nID: %ju, channel ID: %ju, guild ID: %ju", message_id, channel_id, guild_id);
         discord_channel_send_message(bot, content, channel_id, NULL, false);
     }
 }

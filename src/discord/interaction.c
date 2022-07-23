@@ -184,7 +184,7 @@ void discord_send_interaction(bot_client_t *bot, struct discord_interaction_call
     // there's no documented max token length
     size_t token_len = strnlen(recv->token, 500);
     char *uri = (char *)malloc(80 + token_len);
-    sprintf(uri, "https://discord.com/api/v10/interactions/%ld/%s/callback", recv->id, recv->token);
+    sprintf(uri, "https://discord.com/api/v10/interactions/%ju/%s/callback", recv->id, recv->token);
     char *response;
     long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     d_log_debug("Interaction sent! Response: %ld\n", res);

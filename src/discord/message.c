@@ -105,7 +105,7 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
         cJSON *roles = cJSON_AddArrayToObject(allowed_mentions_obj, "roles");
         for (int i = 0; i < allowed_mentions->roles_count; i++) {
             char tmp[20];
-            sprintf(tmp, "%ld", allowed_mentions->roles[i]);
+            sprintf(tmp, "%ju", allowed_mentions->roles[i]);
             cJSON_AddItemToArray(roles, cJSON_CreateString(tmp));
         }
     }
@@ -113,7 +113,7 @@ static cJSON *create_allowed_mentions(struct discord_allowed_mentions *allowed_m
         cJSON *users = cJSON_AddArrayToObject(allowed_mentions_obj, "users");
         for (int i = 0; i < allowed_mentions->users_count; i++) {
             char tmp[20];
-            sprintf(tmp, "%ld", allowed_mentions->users[i]);
+            sprintf(tmp, "%ju", allowed_mentions->users[i]);
             cJSON_AddItemToArray(users, cJSON_CreateString(tmp));
         }
     }
@@ -128,15 +128,15 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     cJSON *ref_obj = cJSON_CreateObject();
     char tmp[20];
     if (ref->message_id) {
-        sprintf(tmp, "%ld", ref->message_id);
+        sprintf(tmp, "%ju", ref->message_id);
         cJSON_AddItemToObject(ref_obj, "message_id", cJSON_CreateString(tmp));
     }
     if (ref->channel_id) {
-        sprintf(tmp, "%ld", ref->channel_id);
+        sprintf(tmp, "%ju", ref->channel_id);
         cJSON_AddItemToObject(ref_obj, "channel_id", cJSON_CreateString(tmp));
     }
     if (ref->guild_id) {
-        sprintf(tmp, "%ld", ref->guild_id);
+        sprintf(tmp, "%ju", ref->guild_id);
         cJSON_AddItemToObject(ref_obj, "guild_id", cJSON_CreateString(tmp));
     }
     if (ref->fail_if_not_exists)
@@ -172,7 +172,7 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
             cJSON *stickers = cJSON_CreateArray();
             for (int i = 0; i < message->sticker_ids_count; i++) {
                 char tmp[20];
-                sprintf(tmp, "%ld", message->sticker_ids[i]);
+                sprintf(tmp, "%ju", message->sticker_ids[i]);
                 cJSON_AddItemToArray(stickers, cJSON_CreateString(tmp));
             }
             cJSON_AddItemToObject(json, "sticker_ids", stickers);
@@ -192,7 +192,7 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
     discord_fill_json_with_message(json, content, message);
 
     char uri[80];
-    sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
+    sprintf(uri, "https://discord.com/api/channels/%ju/messages", channel_id);
     char *response;
     long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     struct discord_message *sent_message = NULL;
@@ -238,7 +238,7 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
     }
 
     char uri[100];
-    sprintf(uri, "https://discord.com/api/channels/%ld/messages/%ld", channel_id, message_id);
+    sprintf(uri, "https://discord.com/api/channels/%ju/messages/%ju", channel_id, message_id);
     char *response;
     long res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->token);
     d_log_err("Message Edited. Response: %ld\n", res);
