@@ -42,7 +42,7 @@ struct delete_message {
 void event_handle_message_delete(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct delete_message *del = (struct delete_message *)work->data;
-    d_log_notice("id = %ld, cid = %ld, gid = %ld\n", del->id, del->channel_id, del->guild_id);
+    d_log_notice("id = %ju, cid = %ju, gid = %ju\n", del->id, del->channel_id, del->guild_id);
 
     if (!del->id || !del->channel_id) {
         d_log_debug("Message or channel ID in event_handle_message_delete is NULL\n");
@@ -84,7 +84,7 @@ struct delete_channel {
 void event_handle_channel_delete(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct delete_channel *del = (struct delete_channel *)work->data;
-    d_log_notice("id = %ld, pid = %ld, gid = %ld\n", del->id, del->parent_id, del->guild_id);
+    d_log_notice("id = %ju, pid = %ju, gid = %ju\n", del->id, del->parent_id, del->guild_id);
 
     if (!del->id || !del->guild_id) {
         d_log_debug("Channel or guild ID in event_handle_channel_delete is NULL\n");
@@ -144,7 +144,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             work->bot = bot;
             struct discord_channel *channel = discord_create_channel_struct_json(data);
             work->data = (void *)channel;
-            d_log_debug("Channel ID = %ld\n", channel->id);
+            d_log_debug("Channel ID = %ju\n", channel->id);
 
             // adds the channel to cache
             discord_cache_set_channel(channel);
@@ -165,7 +165,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_channel->new = channel;
             work->data = (void *)edt_channel;
 
-            d_log_debug("Channel ID = %ld\n", channel->id);
+            d_log_debug("Channel ID = %ju\n", channel->id);
 
             // adds the new channel to the cache
             discord_cache_set_channel(channel);
@@ -268,7 +268,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // we free the message struct when cleaning up the cache
             struct discord_message *message = discord_create_message_struct_json(data);
             work->data = (void *)message;
-            d_log_debug("Message ID = %ld\n", message->id);
+            d_log_debug("Message ID = %ju\n", message->id);
 
             // adds the message to cache
             discord_cache_set_message(message);
@@ -288,7 +288,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             edt_msg->new = message;
             work->data = (void *)edt_msg;
 
-            d_log_debug("Message ID = %ld\n", message->id);
+            d_log_debug("Message ID = %ju\n", message->id);
 
             // adds the message to cache
             discord_cache_set_message(message);

@@ -82,14 +82,14 @@ void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_
 
 void example_channel_create(bot_client_t *bot, struct discord_channel *channel) {
     (void)bot;
-    d_log_normal("Channel created with ID %ld\n", channel->id);
+    d_log_normal("Channel created with ID %ju\n", channel->id);
 }
 void example_channel_update(bot_client_t *bot, struct discord_channel *old, struct discord_channel *new) {
     (void)bot;
     if (old) {
-        d_log_normal("Channel in cache was updated: %ld\n", old->id);
+        d_log_normal("Channel in cache was updated: %ju\n", old->id);
     } else {
-        d_log_normal("Channel NOT in cache was updated: %ld\n", new->id);
+        d_log_normal("Channel NOT in cache was updated: %ju\n", new->id);
     }
 }
 void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
@@ -98,16 +98,16 @@ void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t gui
     (void)parent_id;
     (void)type;
     if (channel) {
-        d_log_normal("Channel in cache was deleted: %ld\n", channel->id);
+        d_log_normal("Channel in cache was deleted: %ju\n", channel->id);
     } else {
-        d_log_normal("Channel NOT in cache was deleted: %ld\n", channel_id);
+        d_log_normal("Channel NOT in cache was deleted: %ju\n", channel_id);
     }
 }
 
 void example_interaction_create(bot_client_t *bot, struct discord_interaction *interaction) {
     (void)bot;
     struct discord_interaction_data *data = interaction->data;
-    d_log_notice("Interaction: id = %ld, type = %d, gid = %ld, cid = %ld\n", interaction->id, (int)interaction->type, interaction->guild_id, interaction->channel_id);
+    d_log_notice("Interaction: id = %ju, type = %d, gid = %ju, cid = %ju\n", interaction->id, (int)interaction->type, interaction->guild_id, interaction->channel_id);
     d_log_notice("Data: name = %s, custom_id = %s", data->name, data->custom_id);
     if (strcmp(data->name, "hello") == 0) {
         hello_callback(bot, interaction);
