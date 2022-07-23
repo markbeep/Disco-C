@@ -115,12 +115,12 @@ Functions</h2></td></tr>
 <tr class="separator:ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7e2cfbc40e7d36cbcf9450f3a3eef2a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga7e2cfbc40e7d36cbcf9450f3a3eef2a9">discord_command_register</a> (struct <a class="el" href="structdiscord__application__command.html">discord_application_command</a> *command, const char *token)</td></tr>
 <tr class="separator:ga7e2cfbc40e7d36cbcf9450f3a3eef2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga40f8cb834a35a7a3c09960cee2ae7bcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga40f8cb834a35a7a3c09960cee2ae7bcc">discord_command_update</a> (struct <a class="el" href="structdiscord__application__command.html">discord_application_command</a> *command, int64_t command_id, const char *token)</td></tr>
-<tr class="separator:ga40f8cb834a35a7a3c09960cee2ae7bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3243555c563ecef52d430ce0b4ebdd02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga3243555c563ecef52d430ce0b4ebdd02">discord_command_delete_global</a> (int64_t command_id, const char *token)</td></tr>
-<tr class="separator:ga3243555c563ecef52d430ce0b4ebdd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga550304693b49d17bcb566b553ef2d543"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga550304693b49d17bcb566b553ef2d543">discord_command_delete_guild</a> (int64_t guild_id, int64_t command_id, const char *token)</td></tr>
-<tr class="separator:ga550304693b49d17bcb566b553ef2d543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a35d8a03a5f01f1b547aa14387c9114"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga6a35d8a03a5f01f1b547aa14387c9114">discord_command_update</a> (struct <a class="el" href="structdiscord__application__command.html">discord_application_command</a> *command, uint64_t command_id, const char *token)</td></tr>
+<tr class="separator:ga6a35d8a03a5f01f1b547aa14387c9114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad48a1f2774657ababa079d1318191afa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#gad48a1f2774657ababa079d1318191afa">discord_command_delete_global</a> (uint64_t command_id, const char *token)</td></tr>
+<tr class="separator:gad48a1f2774657ababa079d1318191afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga762c8116c4eac512f76b6942766e1c40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command.html#ga762c8116c4eac512f76b6942766e1c40">discord_command_delete_guild</a> (uint64_t guild_id, uint64_t command_id, const char *token)</td></tr>
+<tr class="separator:ga762c8116c4eac512f76b6942766e1c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Command functions and structures </p>
@@ -172,8 +172,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga3243555c563ecef52d430ce0b4ebdd02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3243555c563ecef52d430ce0b4ebdd02">&#9670;&nbsp;</a></span>discord_command_delete_global()</h2>
+<a id="gad48a1f2774657ababa079d1318191afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad48a1f2774657ababa079d1318191afa">&#9670;&nbsp;</a></span>discord_command_delete_global()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +181,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int discord_command_delete_global </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>command_id</em>, </td>
         </tr>
         <tr>
@@ -202,8 +202,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga550304693b49d17bcb566b553ef2d543"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga550304693b49d17bcb566b553ef2d543">&#9670;&nbsp;</a></span>discord_command_delete_guild()</h2>
+<a id="ga762c8116c4eac512f76b6942766e1c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga762c8116c4eac512f76b6942766e1c40">&#9670;&nbsp;</a></span>discord_command_delete_guild()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,13 +211,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int discord_command_delete_guild </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>guild_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>command_id</em>, </td>
         </tr>
         <tr>
@@ -264,12 +264,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="disco__logging_8h.html#a316cacf7ee1e1dacebad5ab1dfb0a509">d_log_notice</a>, <a class="el" href="command_8c.html#a2c7acfcbd1cea59d12b4d75a88cc4da7">format_json()</a>, <a class="el" href="group___models.html#ga561efc11eb0af796f610133f77350ef8">discord_application_command::guild_id</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, and <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>.</p>
+<p class="reference">References <a class="el" href="disco__logging_8h.html#a316cacf7ee1e1dacebad5ab1dfb0a509">d_log_notice</a>, <a class="el" href="command_8c.html#a2c7acfcbd1cea59d12b4d75a88cc4da7">format_json()</a>, <a class="el" href="group___models.html#ga47f4c048c14512e531c609885876b9ef">discord_application_command::guild_id</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, and <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>.</p>
 
 </div>
 </div>
-<a id="ga40f8cb834a35a7a3c09960cee2ae7bcc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga40f8cb834a35a7a3c09960cee2ae7bcc">&#9670;&nbsp;</a></span>discord_command_update()</h2>
+<a id="ga6a35d8a03a5f01f1b547aa14387c9114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6a35d8a03a5f01f1b547aa14387c9114">&#9670;&nbsp;</a></span>discord_command_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,7 +283,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>command_id</em>, </td>
         </tr>
         <tr>
@@ -300,7 +300,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="command_8c.html#a2c7acfcbd1cea59d12b4d75a88cc4da7">format_json()</a>, <a class="el" href="group___models.html#ga561efc11eb0af796f610133f77350ef8">discord_application_command::guild_id</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, and <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af9a317520e948a9926d24487bc2dabb6">REQUEST_PATCH</a>.</p>
+<p class="reference">References <a class="el" href="command_8c.html#a2c7acfcbd1cea59d12b4d75a88cc4da7">format_json()</a>, <a class="el" href="group___models.html#ga47f4c048c14512e531c609885876b9ef">discord_application_command::guild_id</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, and <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af9a317520e948a9926d24487bc2dabb6">REQUEST_PATCH</a>.</p>
 
 </div>
 </div>
