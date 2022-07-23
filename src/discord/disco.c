@@ -9,9 +9,8 @@
 #include <web/request.h>
 
 void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, struct discord_config *config) {
-    // LOG LEVEL
-    int logs = LLL_USER | LLL_ERR | LLL_WARN;
-    lws_set_log_level(logs, NULL);
+    // Turn off logs
+    lws_set_log_level(0, NULL);
 
     bot_client_t bot = {0};
     websocket_client_t client = {0};

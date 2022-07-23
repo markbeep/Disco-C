@@ -77,36 +77,68 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
     bool sent_message = false;
     int iterations = 0;
     long http = 0;
+    cJSON *res_json, *wait_ms; // response json, rate limit timeout json field
     do {
+        if (iterations >= 5) {
+            if (res == 0) {
+                d_log_err("CURL failed. Code: %d\n", (int)res);
+            } else if (http == 502) {
+                d_log_err("GATEWAY UNAVAILABLE. There was not a gateway available to process the request.\n");
+            }
+            break;
+        }
+
         chunk.memory = NULL;
         chunk.size = 0;
         res = curl_easy_perform(handle);
         *response = chunk.memory;
-
-        // checks if we're being ratelimited or there's another error, if yes it waits
+        // gets the http code
         curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http);
-        printf("code = %ld\n", http);
-        cJSON *res_json = cJSON_Parse(*response);
-        if (http == 429) {
-            cJSON *wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
+        switch (http) {
+        case 200:
+        case 201:
+        case 204:
+        case 304:
+            sent_message = true;
+            break;
+        case 400:
+            d_log_err("BAD REQUEST. Request was improperly formatted.\n");
+            sent_message = true;
+            break;
+        case 401:
+            d_log_err("UNAUTHORIZED. The Authorization header was missing or invalid.\n");
+            sent_message = true;
+            break;
+        case 403:
+            d_log_err("FORBIDDEN. The Authorization token you passed did not have permission to the resource.\n");
+            sent_message = true;
+            break;
+        case 404:
+            d_log_err("NOT FOUND. The resource at the location specified doesn't exist.\n");
+            sent_message = true;
+            break;
+        case 405:
+            d_log_err("METHOD NOT ALLOWED. The HTTP method used is not valid for the location specified.\n");
+            sent_message = true;
+            break;
+        case 429: // simply retry after waiting the time
+            res_json = cJSON_Parse(*response);
+            wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
+            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
             if (cJSON_IsNumber(wait_ms)) {
-                lwsl_notice("We are being ratelimited, waiting %d ms.\n", wait_ms->valueint);
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
-        } else if (http == 502 || res == CURLE_COULDNT_RESOLVE_HOST) {
-            if (iterations >= 10) {
-                d_log_err("Breaking out of request retry loop.\n");
-                break;
-            }
-            if (http == 502)
-                d_log_err("502 Bad Gateway received on request. Waiting 15 seconds. Iteration: %d\n", iterations);
-            if (res == CURLE_COULDNT_RESOLVE_HOST)
-                d_log_err("Couldn't resolve host. Waiting 15 seconds. Iteration: %d\n", iterations);
-            usleep((useconds_t)15e6); // wait 15 seconds
+            cJSON_Delete(res_json);
+            break;
+        case 0:   // if CURL fails we get 0
+        case 502: // we simply retry again after a few seconds
+            usleep((1 << iterations) * 1000000u);
             iterations++;
-        } else
+            break;
+        default:
+            d_log_notice("Unhandled HTTP response code: %ld\n", http);
             sent_message = true;
-        cJSON_Delete(res_json);
+        }
     } while (!sent_message);
 
     if (content_p)

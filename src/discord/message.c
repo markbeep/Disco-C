@@ -193,12 +193,10 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ld/messages", channel_id);
-    printf("%s\n", uri);
     char *response;
     long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
     struct discord_message *sent_message = NULL;
     d_log_debug("Message sent! Response: %ld\n", res);
-    printf("Message sent! Response: %ld\n", res);
     if (response && res != 0 && return_struct) { // only if a struct is requested to be returned
         cJSON *res_json = cJSON_Parse(response);
         sent_message = (struct discord_message *)discord_create_message_struct_json(res_json);

@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     // Enable logging
-    d_set_log_level(D_LOG_ERR | D_LOG_NORMAL | D_LOG_NOTICE);
+    d_set_log_level(D_LOG_ERR);
 
     // init to 0. Without this some errors could show up
     discord_event_callbacks_t callbacks = {0};
@@ -133,8 +133,10 @@ int main(int argc, char **argv) {
     callbacks.on_channel_delete = &example_channel_delete;
     callbacks.on_interaction = &example_interaction_create;
 
+    struct discord_config config = {.message_cache_size = 2};
+
     // starts the bot. This function blocks
-    discord_start_bot(&callbacks, DISCORD_TOKEN, NULL);
+    discord_start_bot(&callbacks, DISCORD_TOKEN, &config);
 
     return 0;
 }
