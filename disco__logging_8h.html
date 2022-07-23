@@ -127,20 +127,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a490a5aa381b7c1b7f193323c8a7c1b0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a490a5aa381b7c1b7f193323c8a7c1b0a">&#9670;&nbsp;</a></span>D_LOG_DEBUG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define D_LOG_DEBUG&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a653b70f1baded882e334b1e1fd1e4be4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a653b70f1baded882e334b1e1fd1e4be4">&#9670;&nbsp;</a></span>d_log_debug</h2>
 
@@ -173,14 +159,14 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aef4a4ae99941ededac12ad9b980c88fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef4a4ae99941ededac12ad9b980c88fc">&#9670;&nbsp;</a></span>D_LOG_ERR</h2>
+<a id="a490a5aa381b7c1b7f193323c8a7c1b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490a5aa381b7c1b7f193323c8a7c1b0a">&#9670;&nbsp;</a></span>D_LOG_DEBUG</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define D_LOG_ERR&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+          <td class="memname">#define D_LOG_DEBUG&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -219,14 +205,14 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="abaa54a191442605856d599306c95f571"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaa54a191442605856d599306c95f571">&#9670;&nbsp;</a></span>D_LOG_NORMAL</h2>
+<a id="aef4a4ae99941ededac12ad9b980c88fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef4a4ae99941ededac12ad9b980c88fc">&#9670;&nbsp;</a></span>D_LOG_ERR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define D_LOG_NORMAL&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
+          <td class="memname">#define D_LOG_ERR&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -265,14 +251,14 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a4e2dd249193e1952afb9c895f52bd71d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e2dd249193e1952afb9c895f52bd71d">&#9670;&nbsp;</a></span>D_LOG_NOTICE</h2>
+<a id="abaa54a191442605856d599306c95f571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa54a191442605856d599306c95f571">&#9670;&nbsp;</a></span>D_LOG_NORMAL</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define D_LOG_NOTICE&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+          <td class="memname">#define D_LOG_NORMAL&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -309,6 +295,20 @@ Functions</h2></td></tr>
 <div class="line">            fprintf(stderr, <span class="stringliteral">&quot;[%s:%d] \033[95m&quot;</span> str <span class="stringliteral">&quot;\033[0m&quot;</span>, __FILE__, __LINE__, ##__VA_ARGS__); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a4e2dd249193e1952afb9c895f52bd71d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e2dd249193e1952afb9c895f52bd71d">&#9670;&nbsp;</a></span>D_LOG_NOTICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_LOG_NOTICE&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
