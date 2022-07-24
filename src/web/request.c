@@ -136,7 +136,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
             iterations++;
             break;
         default:
-            d_log_notice("Unhandled HTTP response code: %ld\n", http);
+            d_log_err("Unhandled HTTP response code: %ld\n", http);
             sent_message = true;
         }
     } while (!sent_message);
@@ -150,8 +150,6 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
 
 struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {
     curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
-    curl_easy_setopt(handle, CURLOPT_ENCODING, "br, gzip, deflate");
-    curl_easy_setopt(handle, CURLOPT_ACCEPT_ENCODING, "br, gzip, deflate");
     char authorizationHeader[100];
     sprintf(authorizationHeader, "Authorization: Bot %s", token);
     struct curl_slist *list = NULL;
