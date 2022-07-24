@@ -12,3 +12,4 @@ tests/test_discord
 tests/test_web
 generated-docs
 *.a
+log.txt

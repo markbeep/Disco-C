@@ -54,6 +54,8 @@ void on_ready(bot_client_t *bot) {
 
     // checks what the last count is and sends the next one
     watch = get_last_message_count(bot);
+    if (watch == -1)
+        return;
     send_new_count(bot);
 }
 
