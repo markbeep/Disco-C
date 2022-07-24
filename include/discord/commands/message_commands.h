@@ -6,7 +6,7 @@
 
 /** @addtogroup Commands
  * @{
- * @addtogroup Message
+ * @addtogroup Message_Commands
  * @{
  */
 
