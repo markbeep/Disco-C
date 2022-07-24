@@ -1,7 +1,6 @@
 #include "example_slash_commands/example_slash.h"
 #include "sys/time.h"
 #include <config.h>
-#include <discord/commands/message_send.h>
 #include <discord/disco.h>
 #include <discord/message.h>
 #include <stdbool.h>

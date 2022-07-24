@@ -75,7 +75,7 @@ struct discord_create_message {
 };
 
 // https://discord.com/developers/docs/resources/channel#message-object-message-types
-enum discord_message_type { DEFAULT,
+enum Discord_Message_Type { DEFAULT,
                             RECIPIENT_ADD,
                             RECIPIENT_REMOVE,
                             CALL,
@@ -126,7 +126,7 @@ struct discord_message {
     char *nonce;
     bool pinned;
     uint64_t webhook_id;
-    enum discord_message_type type;
+    enum Discord_Message_Type type;
     struct discord_message_activity *activity;
     struct discord_application *application;
     uint64_t application_id;

@@ -5,6 +5,7 @@
 #include <discord/application.h>
 #include <discord/attachment.h>
 #include <discord/channel.h>
+#include <discord/commands/message_commands.h>
 #include <discord/component.h>
 #include <discord/guild.h>
 #include <discord/interaction.h>

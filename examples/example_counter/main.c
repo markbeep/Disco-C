@@ -1,21 +1,48 @@
 /**
  * @file main.c
  * @author markbeep
- * @brief Example file that receives a number and one ups it
+ * @brief Example file that receives a number and one ups it in the specified channel.
  * @version 0.1
- * @date 2022-07-15
+ * @date 2022-07-24
  *
  * @copyright Copyright (c) 2022
  *
  */
 
 #include <config2.h> // note that this uses a different config file to run a different instance
-#include <discord/commands/message_send.h>
 #include <discord/disco.h>
 #include <discord/message.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <utils/disco_logging.h>
+
+static int watch = 0;
+static uint64_t count_channel_id = 996746797236105236UL;
+static uint64_t owner_id = 205704051856244736UL;
+
+/**
+ * @brief Gets the last sent integer in the channel.
+ *
+ * @param bot
+ * @return int
+ */
+static int get_last_message_count(bot_client_t *bot) {
+    struct discord_message **arr;
+    int arr_size = discord_get_messages(bot, count_channel_id, &arr, 1, 0, 0, 0);
+    int res = -1;
+    if (arr_size > 0 && arr[0]) {
+        res = (int)strtol(arr[0]->content, NULL, 10);
+        free(arr);
+    }
+    return res;
+}
+
+static void send_new_count(bot_client_t *bot) {
+    char s[20];
+    sprintf(s, "%d", watch + 1);
+    watch += 2;
+    discord_channel_send_message(bot, s, count_channel_id, NULL, false);
+}
 
 void on_ready(bot_client_t *bot) {
     printf("====================================\n");
@@ -24,11 +51,11 @@ void on_ready(bot_client_t *bot) {
     printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
     fflush(stdout);
-}
 
-static int watch = 0;
-static uint64_t count_channel_id = 996746797236105236UL;
-static uint64_t owner_id = 205704051856244736UL;
+    // checks what the last count is and sends the next one
+    watch = get_last_message_count(bot);
+    send_new_count(bot);
+}
 
 void on_message(bot_client_t *bot, struct discord_message *message) {
     // no content or no member (so not a guild message)

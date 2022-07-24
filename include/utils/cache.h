@@ -61,7 +61,7 @@ void discord_cache_destroy(void);
 int discord_cache_set_message(struct discord_message *message);
 
 /**
- * @brief Retreives a message by ID in the cache.
+ * @brief Retrieves a message by ID in the cache.
  *
  * @param id
  * @return struct discord_message* Pointer to the message struct.
@@ -86,7 +86,7 @@ void discord_cache_delete_message(uint64_t id);
 int discord_cache_set_channel(struct discord_channel *channel);
 
 /**
- * @brief Retreives a channel by ID in the cache.
+ * @brief Retrieves a channel by ID in the cache.
  *
  * @param id
  * @return struct discord_channel* Pointer to the channel struct.
@@ -111,7 +111,7 @@ void discord_cache_delete_channel(uint64_t id);
 int discord_cache_set_guild(struct discord_guild *guild);
 
 /**
- * @brief Retreives a guild by ID in the cache.
+ * @brief Retrieves a guild by ID in the cache.
  *
  * @param id
  * @return struct discord_guild* Pointer to the guild struct.

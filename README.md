@@ -7,11 +7,15 @@ The library is built to work async, which means that every received event is han
 The wiki is still under developement, but it is available here: https://markc.su/Disco-C/
 
 ## Table of Contents
-1. [Installing](#installing)
-    1. [Copy Paste Command](#copy-paste-command)
-    2. [Required Libraries](#required-libraries)
-2. [File Explanations](#file-explanations)
-3. [Progress](#progress)
+- [Disco.c, an Async Discord C Bot Library](#discoc-an-async-discord-c-bot-library)
+  - [Wiki](#wiki)
+  - [Table of Contents](#table-of-contents)
+  - [Installing](#installing)
+    - [Copy Paste Command](#copy-paste-command)
+    - [Required Libraries:](#required-libraries)
+  - [File Explanations](#file-explanations)
+  - [Problems](#problems)
+  - [Progress](#progress)
 
 ## Installing
 ### Copy Paste Command
@@ -63,14 +67,14 @@ The file layout is intended to follow the Pitchfork standard. Some things aren't
   - [x] Send interaction response
     - [ ] Components (untested, but implementation exists)
 - Commands (API Calls)
-  - Channel ![](https://progress-bar.dev/11/?title=2/18)
+  - Channel ![](https://progress-bar.dev/16/?title=3/18)
     - [ ] Get channel
     - [ ] Edit channel
       - [ ] Basic stuff (name, desc)
       - [ ] Add permissions
       - [ ] Remove permissions
     - [ ] Delete channel
-    - [ ] Get channel message
+    - [x] Get channel message
     - [x] Send message
       - [x] Content
       - [x] Embeds
