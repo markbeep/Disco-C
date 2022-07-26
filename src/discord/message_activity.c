@@ -1,7 +1,7 @@
 #include <discord/message_activity.h>
 
 // TODO implement
-void *discord_create_message_activity_struct_json(cJSON *data) {
+void *_d_json_to_message_activity(cJSON *data) {
     (void)data;
     return NULL;
 }

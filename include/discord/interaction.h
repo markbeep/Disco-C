@@ -88,7 +88,27 @@ struct discord_interaction {
     char *guild_locale;
 };
 
-void *discord_create_interaction_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction structure from a given JSON.
+ *
+ * @param data
+ * @return void*
+ */
+void *_d_json_to_interaction(cJSON *data);
+
+/**
+ * @brief Copies an interaction structure.
+ *
+ * @param src Interaction to copy.
+ * @return struct discord_interaction*
+ */
+struct discord_interaction *_d_copy_interaction(struct discord_interaction *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction(struct discord_interaction *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type

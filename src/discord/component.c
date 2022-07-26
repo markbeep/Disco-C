@@ -2,7 +2,7 @@
 #include <discord/disco.h>
 #include <discord/emoji.h>
 
-void *discord_create_component_struct_json(cJSON *data) {
+void *_d_json_to_component(cJSON *data) {
     struct discord_component *comp = (struct discord_component *)calloc(1, sizeof(struct discord_component));
     cJSON *tmp = NULL;
     comp->type = get_int_from_json(data, "type", 0);
@@ -14,7 +14,7 @@ void *discord_create_component_struct_json(cJSON *data) {
             "components",
             (void ***)&comp->comp.action_row->components,
             sizeof(struct discord_component),
-            &discord_create_component_struct_json);
+            &_d_json_to_component);
         break;
     case COMPONENT_BUTTON:
         comp->comp.button = (struct discord_button *)calloc(1, sizeof(struct discord_button));
@@ -123,7 +123,7 @@ void discord_destroy_select_option(struct discord_select_option *option) {
 }
 
 // TODO implement
-void discord_fill_json_with_component(cJSON *json, struct discord_component *c) {
+void _d_component_to_json(cJSON *json, struct discord_component *c) {
     (void)json;
     (void)c;
 }

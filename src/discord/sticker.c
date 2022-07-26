@@ -1,7 +1,7 @@
 #include <discord/sticker.h>
 
 // TODO implement
-void *discord_create_sticker_struct_json(cJSON *data) {
+void *_d_json_to_sticker(cJSON *data) {
     (void)data;
     return NULL;
 }
@@ -10,7 +10,7 @@ void discord_destroy_sticker(struct discord_sticker *sticker) {
     (void)sticker;
 }
 
-void *discord_create_message_sticker_item_struct_json(cJSON *data) {
+void *_d_json_to_sticker_item(cJSON *data) {
     (void)data;
     return NULL;
 }

@@ -21,8 +21,27 @@ struct discord_reaction {
     struct discord_emoji *emoji;
 };
 
-// TODO implement
-void *discord_create_reaction_struct_json(cJSON *data);
+/**
+ * @brief Creates a reaction structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_reaction struct
+ */
+void *_d_json_to_reaction(cJSON *data);
+
+/**
+ * @brief Copies a reaction structure.
+ *
+ * @param reaction Reaction to copy.
+ * @return struct discord_reaction*
+ */
+struct discord_reaction *_d_copy_reaction(struct discord_reaction *reaction);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param reaction
+ */
 void discord_destroy_reaction(struct discord_reaction *reaction);
 
 /** @} @} */

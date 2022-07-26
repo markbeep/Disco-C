@@ -65,7 +65,27 @@ struct discord_application {
     char *custom_install_url;
 };
 
-void *discord_create_application_struct_json(cJSON *data);
+/**
+ * @brief Creates an application structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_application struct
+ */
+void *_d_json_to_application(cJSON *data);
+
+/**
+ * @brief Copies a application structure.
+ *
+ * @param src Application structure to copy.
+ * @return struct discord_application*
+ */
+struct discord_application *_d_copy_application(struct discord_application *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param application
+ */
 void discord_destroy_application(struct discord_application *application);
 
 /** @} @} */

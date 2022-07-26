@@ -15,7 +15,7 @@ void *discord_create_embed_struct_json(cJSON *data) {
     // adds the sub-structs of the embed
     tmp = cJSON_GetObjectItem(data, "footer");
     if (tmp)
-        embed->footer = (struct discord_embed_footer *)discord_create_embed_footer_struct_json(tmp);
+        embed->footer = (struct discord_embed_footer *)_d_json_to_embed(tmp);
     tmp = cJSON_GetObjectItem(data, "image");
     if (tmp)
         embed->image = (struct discord_embed_media *)discord_create_embed_media_struct_json(tmp);
@@ -64,7 +64,7 @@ void discord_destroy_embed(struct discord_embed *embed) {
     free(embed);
 }
 
-void *discord_create_embed_footer_struct_json(cJSON *data) {
+void *_d_json_to_embed(cJSON *data) {
     struct discord_embed_footer *footer = (struct discord_embed_footer *)calloc(1, sizeof(struct discord_embed_footer));
     footer->text = get_string_from_json(data, "text");
     footer->icon_url = get_string_from_json(data, "icon_url");

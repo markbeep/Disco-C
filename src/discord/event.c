@@ -346,7 +346,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
         if (bot->callbacks->on_interaction) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
-            struct discord_interaction *interaction = discord_create_interaction_struct_json(data);
+            struct discord_interaction *interaction = _d_json_to_interaction(data);
             work->data = (void *)interaction;
 
             t_pool_add_work(bot->thread_pool, &event_handle_interaction_create, work);

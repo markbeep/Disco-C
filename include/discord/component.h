@@ -111,7 +111,16 @@ struct discord_component {
  * @param data
  * @return void* discord_component struct
  */
-void *discord_create_component_struct_json(cJSON *data);
+void *_d_json_to_component(cJSON *data);
+
+/**
+ * @brief Copies a component structure.
+ *
+ * @param src Component to copy.
+ * @return struct discord_component*
+ */
+struct discord_component *_d_copy_component(struct discord_component *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -125,7 +134,7 @@ void discord_destroy_component(struct discord_component *c);
  * @param json JSON struct that should be filled in with the values.
  * @param component The component that will be used to fill the JSON.
  */
-void discord_fill_json_with_component(cJSON *json, struct discord_component *component);
+void _d_component_to_json(cJSON *json, struct discord_component *component);
 
 /** @} @} */
 #endif

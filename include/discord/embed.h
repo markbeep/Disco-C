@@ -25,7 +25,16 @@ struct discord_embed_footer {
  * @param data
  * @return void* discord_embed_footer struct
  */
-void *discord_create_embed_footer_struct_json(cJSON *data);
+void *_d_json_to_embed(cJSON *data);
+
+/**
+ * @brief Copies an embed structure.
+ *
+ * @param embed Embed to copy.
+ * @return struct discord_embed*
+ */
+struct discord_embed *_d_copy_embed(struct discord_embed *embed);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *

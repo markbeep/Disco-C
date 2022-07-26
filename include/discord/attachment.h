@@ -34,7 +34,16 @@ struct discord_attachment {
  * @param data
  * @return void* discord_attachment struct
  */
-void *discord_create_attachment_struct_json(cJSON *data);
+void *_d_json_to_attachment(cJSON *data);
+
+/**
+ * @brief Copies an attachment structure.
+ *
+ * @param attachment Attachment to copy.
+ * @return struct discord_attachment*
+ */
+struct discord_attachment *_d_copy_attachment(struct discord_attachment *attachment);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *

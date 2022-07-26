@@ -39,9 +39,9 @@ void *discord_create_interaction_data_struct_json(cJSON *data) {
     d->guild_id = get_long_from_string_json(data, "guild_id", 0);
     d->target_id = get_long_from_string_json(data, "target_id", 0);
 
-    d->custom_id = get_string_from_json(data, "custom_id");                                                                                                           // message/modal
-    d->values_count = get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct);          // message
-    d->components_count = get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &discord_create_component_struct_json); // modal
+    d->custom_id = get_string_from_json(data, "custom_id");                                                                                                  // message/modal
+    d->values_count = get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct); // message
+    d->components_count = get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &_d_json_to_component);        // modal
     return d;
 }
 
@@ -63,7 +63,7 @@ void discord_destroy_interaction_data(struct discord_interaction_data *interacti
     free(interaction);
 }
 
-void *discord_create_interaction_struct_json(cJSON *data) {
+void *_d_json_to_interaction(cJSON *data) {
     cJSON *tmp;
     struct discord_interaction *inter = (struct discord_interaction *)calloc(1, sizeof(struct discord_interaction));
     inter->id = get_long_from_string_json(data, "id", 0);
@@ -169,7 +169,7 @@ void discord_send_interaction(bot_client_t *bot, struct discord_interaction_call
             for (int i = 0; i < cb->data.modal.components_count; i++) {
                 cJSON *comp = cJSON_CreateObject();
                 cJSON_AddItemToArray(components, comp);
-                discord_fill_json_with_component(comp, cb->data.modal.components[i]);
+                _d_component_to_json(comp, cb->data.modal.components[i]);
             }
         }
         break;
