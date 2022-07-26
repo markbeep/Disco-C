@@ -60,7 +60,7 @@ void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) 
         int i = 0;
         cJSON *cur = NULL;
         cJSON_ArrayForEach(cur, tmp) {
-            mem->roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
+            mem->roles[i++] = (uint64_t)strtoull(cur->valuestring, NULL, 10);
         }
     }
     mem->joined_at = get_string_from_json(data, "joined_at");

@@ -99,7 +99,7 @@ uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t defau
         return (uint64_t)tmp->valuedouble;
     if (!cJSON_IsString(tmp))
         return default_;
-    return (uint64_t)strtoll(tmp->valuestring, NULL, 10);
+    return (uint64_t)strtoull(tmp->valuestring, NULL, 10);
 }
 
 double get_double_from_string_json(cJSON *data, const char *name, double default_) {
