@@ -109,8 +109,8 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         return;
     }
 
-    // if it's not the bot I'm watching or not the count channel
-    if (message->user->id == bot_to_watch ||
+    // if it's not the bot I'm watching (nor the owner) or not the count channel
+    if ((message->user->id != owner_id && message->user->id != bot_to_watch) ||
         message->channel_id != count_channel_id)
         return;
     int n = (int)strtol(message->content, NULL, 10);
