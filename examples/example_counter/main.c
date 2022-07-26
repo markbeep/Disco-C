@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <utils/disco_logging.h>
 
-static int count = 0;
+static int count = 0; // keeps track of what the last sent count is
 static uint64_t bot_to_watch = 0UL;
 static uint64_t count_channel_id = 996746797236105236UL;
 static uint64_t owner_id = 205704051856244736UL;
@@ -51,31 +51,26 @@ void on_ready(bot_client_t *bot) {
 }
 
 static void cmd_count(bot_client_t *bot, struct discord_message *message) {
-    char *token, *rest = message->content;
-    // we do it twice to skip the !count from the beginning
-    token = strtok_r(rest, " ", &rest);
-    token = strtok_r(rest, " ", &rest);
     struct discord_embed embed = {0};
     struct discord_create_message msg = {.embed = &embed};
     embed.color = 0xadd8e6;
     char s[40];
     embed.description = s;
-    if (token) {
-        count = (int)strtol(token, NULL, 10);
-    }
     sprintf(s, "Count = `%d`", count);
     discord_channel_send_message(bot, NULL, message->channel_id, &msg, false);
 }
 
 static void cmd_watch(bot_client_t *bot, struct discord_message *message) {
-    char *token, *rest = message->content;
-    token = strtok_r(rest, " ", &rest);
-    token = strtok_r(rest, " ", &rest);
     struct discord_embed embed = {0};
     struct discord_create_message msg = {.embed = &embed};
     embed.color = 0xadd8e6;
     char s[50];
     embed.description = s;
+
+    // parse input
+    char *token, *rest = message->content;
+    token = strtok_r(rest, " ", &rest);
+    token = strtok_r(rest, " ", &rest);
     if (token) {
         bot_to_watch = (uint64_t)strtoull(token, NULL, 10);
     }
@@ -87,10 +82,9 @@ static void cmd_watch(bot_client_t *bot, struct discord_message *message) {
     discord_channel_send_message(bot, NULL, message->channel_id, &msg, false);
 }
 
-static void send_new_count(bot_client_t *bot) {
+static void send_count(bot_client_t *bot, int n) {
     char s[20];
-    sprintf(s, "%d", count + 1);
-    count += 2;
+    sprintf(s, "%d", n);
     discord_channel_send_message(bot, s, count_channel_id, NULL, false);
 }
 
@@ -114,9 +108,8 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         message->channel_id != count_channel_id)
         return;
     int n = (int)strtol(message->content, NULL, 10);
-    if (n == count) {
-        send_new_count(bot);
-    }
+    count = n;
+    send_count(bot, n + 1);
 }
 
 int main(int argc, char **argv) {
