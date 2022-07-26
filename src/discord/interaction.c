@@ -76,15 +76,15 @@ void *discord_create_interaction_struct_json(cJSON *data) {
     inter->channel_id = get_long_from_string_json(data, "channel_id", 0);
     tmp = cJSON_GetObjectItem(data, "user");
     if (tmp)
-        inter->user = discord_create_user_struct_json(tmp);
+        inter->user = _d_json_to_user(tmp);
     tmp = cJSON_GetObjectItem(data, "member");
     if (tmp)
-        inter->member = discord_create_member_struct_json(tmp, inter->user);
+        inter->member = _d_json_to_member(tmp, inter->user);
     inter->token = get_string_from_json(data, "token");
     inter->version = get_int_from_json(data, "version", 0);
     tmp = cJSON_GetObjectItem(data, "message");
     if (tmp)
-        inter->message = discord_create_message_struct_json(tmp);
+        inter->message = _d_json_to_message(tmp);
     inter->app_permissions = get_string_from_json(data, "app_permissions");
     inter->locale = get_string_from_json(data, "locale");
     inter->guild_locale = get_string_from_json(data, "guild_locale");
@@ -133,7 +133,7 @@ void discord_send_interaction(bot_client_t *bot, struct discord_interaction_call
         msg.components_count = cb->data.message.components_count;
         msg.attachments = cb->data.message.attachments;
         msg.attachments_count = cb->data.message.attachments_count;
-        discord_fill_json_with_message(data, cb->data.message.content, &msg);
+        _d_create_message_to_json(data, cb->data.message.content, &msg);
         break;
 
     case DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT:

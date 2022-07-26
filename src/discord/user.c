@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void *discord_create_user_struct_json(cJSON *data) {
+void *_d_json_to_user(cJSON *data) {
     struct discord_user *user = (struct discord_user *)calloc(1, sizeof(struct discord_user));
     user->id = get_long_from_string_json(data, "id", 0);
     user->username = get_string_from_json(data, "username");
@@ -41,7 +41,7 @@ void discord_destroy_user(struct discord_user *user) {
     free(user);
 }
 
-void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) {
+void *_d_json_to_member(cJSON *data, struct discord_user *user) {
     struct discord_member *mem = (struct discord_member *)calloc(1, sizeof(struct discord_member));
     cJSON *tmp;
     if (user) // we already have a user struct
@@ -49,7 +49,7 @@ void *discord_create_member_struct_json(cJSON *data, struct discord_user *user) 
     else { // user information might be in the member json
         tmp = cJSON_GetObjectItem(data, "user");
         if (tmp)
-            mem->user = discord_create_user_struct_json(tmp);
+            mem->user = _d_json_to_user(tmp);
     }
     mem->nick = get_string_from_json(data, "nick");
     mem->avatar = get_string_from_json(data, "avatar");

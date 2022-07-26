@@ -77,7 +77,16 @@ struct discord_channel_mention {
  * @param data
  * @return void* discord_channel struct
  */
-void *discord_create_channel_struct_json(cJSON *data);
+void *_d_json_to_channel(cJSON *data);
+
+/**
+ * @brief Copies a channel structure.
+ *
+ * @param channel Channel to copy.
+ * @return struct discord_channel*
+ */
+struct discord_channel *_d_copy_channel(struct discord_channel *channel);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -91,7 +100,7 @@ void discord_destroy_channel(struct discord_channel *ch);
  * @param data
  * @return void* discord_channel_mention struct
  */
-void *discord_create_channel_mention_struct_json(cJSON *data);
+void *_d_json_to_channel_mention(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *

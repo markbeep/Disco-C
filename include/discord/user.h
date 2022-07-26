@@ -34,12 +34,20 @@ struct discord_user {
 };
 
 /**
- * @brief Creates a discod_user struct with the passed in JSON
+ * @brief Creates a discord_user struct with the passed in JSON
  *
  * @param data The Discord JSON for a user
  * @return struct discord_user*
  */
-void *discord_create_user_struct_json(cJSON *data);
+void *_d_json_to_user(cJSON *data);
+
+/**
+ * @brief Copies a user structure.
+ *
+ * @param user User to copy.
+ * @return struct discord_user*
+ */
+struct discord_user *_d_copy_user(struct discord_user *user);
 
 /**
  * @brief Destroys the discord_user structs and frees the passed in pointer
@@ -75,8 +83,23 @@ struct discord_member {
     char *communication_disabled_until; ///< ISO8601 timestamp when the user's timeout will end
 };
 
-// TODO comment
-void *discord_create_member_struct_json(cJSON *data, struct discord_user *user);
+/**
+ * @brief Creates a discord_member struct with the passed in JSON.
+ *
+ * @param data The Discord JSON for a member.
+ * @return struct discord_member*
+ */
+void *_d_json_to_member(cJSON *data, struct discord_user *user);
+
+/**
+ * @brief Copies a member structure.
+ *
+ * @param member Member to copy.
+ * @param user User to add to the member struct. Doesn't get copied again.
+ * @return struct discord_member*
+ */
+struct discord_member *_d_copy_member(struct discord_member *member, struct discord_user *user);
+
 void discord_destroy_member(struct discord_member *member);
 
 /** @} @} */

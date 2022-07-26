@@ -3,7 +3,7 @@
 #include <discord/message.h>
 #include <discord/thread.h>
 
-void *discord_create_channel_struct_json(cJSON *data) {
+void *_d_json_to_channel(cJSON *data) {
     struct discord_channel *ch = (struct discord_channel *)calloc(1, sizeof(struct discord_channel));
     cJSON *tmp = NULL;
     ch->id = get_long_from_string_json(data, "id", 0);
@@ -18,7 +18,7 @@ void *discord_create_channel_struct_json(cJSON *data) {
     ch->bitrate = get_int_from_json(data, "bitrate", 0);
     ch->user_limit = get_int_from_json(data, "user_limit", 0);
     ch->rate_limit_per_user = get_int_from_json(data, "rate_limit_per_user", 0);
-    ch->recipients_count = get_array_from_json(data, "recipients", (void ***)&ch->recipients, sizeof(struct discord_user), &discord_create_user_struct_json);
+    ch->recipients_count = get_array_from_json(data, "recipients", (void ***)&ch->recipients, sizeof(struct discord_user), &_d_json_to_user);
     ch->icon = get_string_from_json(data, "icon");
     ch->owner_id = get_long_from_string_json(data, "owner_id", 0);
     ch->application_id = get_long_from_string_json(data, "application_id", 0);
@@ -67,7 +67,7 @@ void discord_destroy_channel(struct discord_channel *ch) {
     free(ch);
 }
 
-void *discord_create_channel_mention_struct_json(cJSON *data) {
+void *_d_json_to_channel_mention(cJSON *data) {
     struct discord_channel_mention *ch = (struct discord_channel_mention *)calloc(1, sizeof(struct discord_channel_mention));
     ch->id = get_long_from_string_json(data, "id", 0);
     ch->guild_id = get_long_from_string_json(data, "guild_id", 0);

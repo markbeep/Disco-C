@@ -49,7 +49,7 @@ struct discord_message_reference {
  * @param data
  * @return void* discord_message_reference struct
  */
-void *discord_create_message_reference_struct_json(cJSON *data);
+void *_d_json_to_message_reference(cJSON *data);
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -149,7 +149,16 @@ struct discord_message {
  * @param data
  * @return void* discord_message struct
  */
-void *discord_create_message_struct_json(cJSON *data);
+void *_d_json_to_message(cJSON *data);
+
+/**
+ * @brief Copies a message structure.
+ *
+ * @param message Message to copy.
+ * @return struct discord_message*
+ */
+struct discord_message *_d_copy_message(struct discord_message *message);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -164,7 +173,7 @@ void discord_destroy_message(struct discord_message *message);
  * @param content Discord message content.
  * @param message Create message struct.
  */
-void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message);
+void _d_create_message_to_json(cJSON *json, char *content, struct discord_create_message *message);
 
 /** @} @} */
 #endif

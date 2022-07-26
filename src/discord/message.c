@@ -6,7 +6,7 @@
 #include <utils/disco_logging.h>
 #include <web/request.h>
 
-void *discord_create_message_struct_json(cJSON *data) {
+void *_d_json_to_message(cJSON *data) {
     struct discord_message *msg = (struct discord_message *)calloc(1, sizeof(struct discord_message));
     cJSON *tmp_json = NULL;
 
@@ -18,12 +18,12 @@ void *discord_create_message_struct_json(cJSON *data) {
         // only creates a user if its not a webhook
         cJSON *user = cJSON_GetObjectItem(data, "author");
         if (user) {
-            msg->user = (struct discord_user *)discord_create_user_struct_json(user);
+            msg->user = (struct discord_user *)_d_json_to_user(user);
         }
         // if theres additionally a member, it creates that as well
         cJSON *member = cJSON_GetObjectItem(data, "member");
         if (member) {
-            msg->member = (struct discord_member *)discord_create_member_struct_json(member, msg->user);
+            msg->member = (struct discord_member *)_d_json_to_member(member, msg->user);
         }
     }
     msg->content = get_string_from_json(data, "content");
@@ -43,7 +43,7 @@ void *discord_create_message_struct_json(cJSON *data) {
         int i = 0;
         cJSON *cur = NULL;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mentions[i++] = (struct discord_member *)discord_create_member_struct_json(cur, NULL);
+            msg->mentions[i++] = (struct discord_member *)_d_json_to_member(cur, NULL);
         }
     }
 
@@ -60,7 +60,7 @@ void *discord_create_message_struct_json(cJSON *data) {
     }
 
     // mention channels
-    msg->mention_channels_count = get_array_from_json(data, "mention_channels", (void ***)&msg->mention_channels, sizeof(struct discord_channel_mention), &discord_create_channel_mention_struct_json);
+    msg->mention_channels_count = get_array_from_json(data, "mention_channels", (void ***)&msg->mention_channels, sizeof(struct discord_channel_mention), &_d_json_to_channel_mention);
 
     // attachments
     msg->attachments_count = get_array_from_json(data, "attachments", (void ***)&msg->attachments, sizeof(struct discord_attachment), &discord_create_attachment_struct_json);
@@ -86,14 +86,14 @@ void *discord_create_message_struct_json(cJSON *data) {
     // message_reference
     tmp_json = cJSON_GetObjectItem(data, "message_reference");
     if (tmp_json)
-        msg->message_reference = (struct discord_message_reference *)discord_create_message_reference_struct_json(tmp_json);
+        msg->message_reference = (struct discord_message_reference *)_d_json_to_message_reference(tmp_json);
 
     msg->flags = get_int_from_json(data, "flags", 0);
 
     // referenced_message
     tmp_json = cJSON_GetObjectItem(data, "referenced_message");
     if (tmp_json && !cJSON_IsNull(tmp_json))
-        msg->referenced_message = (struct discord_message *)discord_create_message_struct_json(tmp_json);
+        msg->referenced_message = (struct discord_message *)_d_json_to_message(tmp_json);
 
     // interaction
     tmp_json = cJSON_GetObjectItem(data, "interaction");
@@ -110,6 +110,26 @@ void *discord_create_message_struct_json(cJSON *data) {
     msg->stickers_count = get_array_from_json(data, "stickers", (void ***)&msg->stickers, sizeof(struct discord_sticker), &discord_create_sticker_struct_json);
 
     return msg;
+}
+
+struct discord_message *_d_copy_message(struct discord_message *msg) {
+    struct discord_message *c = (struct discord_message *)calloc(1, sizeof(struct discord_message));
+    memcpy(c, msg, sizeof(struct discord_message));
+    c->user = _d_copy_user(msg->user);
+    c->member = _d_copy_member(c->member, c->user);
+    c->content = strndup(msg->content, 4096);
+    c->timestamp = strndup(msg->timestamp, 50);
+    c->edited_timestamp = strndup(msg->edited_timestamp, 50);
+    if (c->mentions_count > 0) {
+        c->mentions = (struct discord_member **)malloc(c->mentions_count * sizeof(struct discord_member *));
+        for (int i = 0; i < c->mentions_count; i++)
+            c->mentions[i] = _d_copy_member(msg->mentions[i], NULL);
+    }
+    if (c->mention_channels_count > 0) {
+        c->mention_channels = (struct discord_channel **)malloc(c->mention_channels_count * sizeof(struct discord_channel *));
+        for (int i = 0; i < c->mention_channels_count; i++)
+            c->mention_channels[i] = _d_copy_channel(msg->mention_channels[i]);
+    }
 }
 
 void discord_destroy_message(struct discord_message *message) {
@@ -172,13 +192,14 @@ void discord_destroy_message(struct discord_message *message) {
     free(message);
 }
 
-void *discord_create_message_reference_struct_json(cJSON *data) {
+void *_d_json_to_message_reference(cJSON *data) {
     struct discord_message_reference *msg = (struct discord_message_reference *)calloc(1, sizeof(struct discord_message_reference));
     msg->message_id = get_long_from_string_json(data, "message_id", 0);
     msg->channel_id = get_long_from_string_json(data, "channel_id", 0);
     msg->guild_id = get_long_from_string_json(data, "guild_id", 0);
     return msg;
 }
+
 void discord_destroy_message_reference(struct discord_message_reference *message) {
     free(message);
 }
@@ -324,7 +345,7 @@ static cJSON *create_message_reference(struct discord_message_reference *ref) {
     return ref_obj;
 }
 
-void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message) {
+void _d_create_message_to_json(cJSON *json, char *content, struct discord_create_message *message) {
     // content
     if (content && strnlen(content, 1) > 0) {
         cJSON_AddItemToObject(json, "content", cJSON_CreateString(content));
@@ -367,7 +388,7 @@ void discord_fill_json_with_message(cJSON *json, char *content, struct discord_c
 
 struct discord_message *discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
     cJSON *json = cJSON_CreateObject();
-    discord_fill_json_with_message(json, content, message);
+    _d_create_message_to_json(json, content, message);
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ju/messages", channel_id);
@@ -377,7 +398,7 @@ struct discord_message *discord_channel_send_message(bot_client_t *bot, char *co
     d_log_debug("Message sent! Response: %ld\n", res);
     if (response && res != 0 && return_struct) { // only if a struct is requested to be returned
         cJSON *res_json = cJSON_Parse(response);
-        sent_message = (struct discord_message *)discord_create_message_struct_json(res_json);
+        sent_message = (struct discord_message *)_d_json_to_message(res_json);
         cJSON_Delete(res_json);
     }
     // free up allocated stuff
@@ -463,7 +484,7 @@ int discord_get_messages(bot_client_t *bot, uint64_t channel_id, struct discord_
     cJSON *c_message;
     struct discord_message *msg;
     cJSON_ArrayForEach(c_message, recv) {
-        msg = (struct discord_message *)discord_create_message_struct_json(c_message);
+        msg = (struct discord_message *)_d_json_to_message(c_message);
         (*message_array)[received++] = msg;
         if (msg)
             discord_cache_set_message(msg);
@@ -487,7 +508,7 @@ struct discord_message *discord_fetch_message(bot_client_t *bot, uint64_t channe
     cJSON *c_message = cJSON_Parse(response);
     if (res != 200 || !c_message)
         return NULL; // no result or no response
-    struct discord_message *msg = (struct discord_message *)discord_create_message_struct_json(c_message);
+    struct discord_message *msg = (struct discord_message *)_d_json_to_message(c_message);
     if (msg)
         discord_cache_set_message(msg);
     return msg;

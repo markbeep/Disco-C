@@ -11,7 +11,7 @@ void test_message_creation(void) {
 
     // test for an empty created message
     json = cJSON_CreateObject();
-    discord_fill_json_with_message(json, NULL, &msg);
+    _d_create_message_to_json(json, NULL, &msg);
     TEST_ASSERT_EQUAL_INT(false, get_bool_from_json(json, "tts", false));
     j = cJSON_GetObjectItem(json, "content");
     TEST_ASSERT_EQUAL_INT64(NULL, j);
@@ -43,7 +43,7 @@ void test_message_creation(void) {
     msg.sticker_ids = sticker_ids;
     msg.sticker_ids_count = 3;
     msg.flags = 1 << 4;
-    discord_fill_json_with_message(json, content, &msg);
+    _d_create_message_to_json(json, content, &msg);
     TEST_ASSERT_EQUAL_INT(true, get_bool_from_json(json, "tts", true));
     j = cJSON_GetObjectItem(json, "content");
     TEST_ASSERT_EQUAL_STRING_LEN("test message", cJSON_GetStringValue(j), 13);

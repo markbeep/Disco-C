@@ -119,7 +119,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
                 d_log_debug("Received a second READY event, recreating the bot user...\n");
                 discord_destroy_user(bot->user);
             }
-            bot->user = (struct discord_user *)discord_create_user_struct_json(user_data);
+            bot->user = (struct discord_user *)_d_json_to_user(user_data);
         }
         user_data = cJSON_GetObjectItem(data, "session_id");
         if (user_data) {
@@ -142,7 +142,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // the work struct is then freed inside the thread function
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
-            struct discord_channel *channel = discord_create_channel_struct_json(data);
+            struct discord_channel *channel = _d_json_to_channel(data);
             work->data = (void *)channel;
             d_log_debug("Channel ID = %ju\n", channel->id);
 
@@ -158,7 +158,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the channel struct when cleaning up the cache
-            struct discord_channel *channel = discord_create_channel_struct_json(data);
+            struct discord_channel *channel = _d_json_to_channel(data);
             // to be freed inside the event handle function
             struct edit_channel *edt_channel = (struct edit_channel *)malloc(sizeof(struct edit_channel));
             edt_channel->old = discord_cache_get_channel(channel->id);
@@ -266,7 +266,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the message struct when cleaning up the cache
-            struct discord_message *message = discord_create_message_struct_json(data);
+            struct discord_message *message = _d_json_to_message(data);
             work->data = (void *)message;
             d_log_debug("Message ID = %ju\n", message->id);
 
@@ -281,7 +281,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the message struct when cleaning up the cache
-            struct discord_message *message = discord_create_message_struct_json(data);
+            struct discord_message *message = _d_json_to_message(data);
             // to be freed inside the event handle function
             struct edit_message *edt_msg = (struct edit_message *)malloc(sizeof(struct edit_message));
             edt_msg->old = discord_cache_get_message(message->id);
