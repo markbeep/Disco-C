@@ -8,6 +8,12 @@ void *_d_json_to_application(cJSON *data) {
     return app;
 }
 
+// TODO implement
+struct discord_application *_d_copy_application(struct discord_application *src) {
+    (void)src;
+    return NULL;
+}
+
 void discord_destroy_application(struct discord_application *application) {
     free(application);
 }

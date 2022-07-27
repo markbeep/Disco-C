@@ -4,19 +4,36 @@
 #include <utils/disco_logging.h>
 #include <web/request.h>
 
-void *discord_create_interaction_data_option_struct_json(cJSON *data) {
+void *_d_json_to_interaction_data_option(cJSON *data) {
     struct discord_interaction_data_option *opt = (struct discord_interaction_data_option *)calloc(1, sizeof(struct discord_interaction_data_option));
-    opt->name = get_string_from_json(data, "name");
-    opt->type = (enum Discord_Application_Command_Option_Type)get_int_from_json(data, "type", 0);
+    opt->name = _d_get_string_from_json(data, "name");
+    opt->type = (enum Discord_Application_Command_Option_Type)_d_get_int_from_json(data, "type", 0);
     if (opt->type == COMMAND_OPTION_STRING)
-        opt->value.string_ = get_string_from_json(data, "value");
+        opt->value.string_ = _d_get_string_from_json(data, "value");
     else if (opt->type == COMMAND_OPTION_INTEGER)
-        opt->value.int_ = get_int_from_json(data, "value", 0);
+        opt->value.int_ = _d_get_int_from_json(data, "value", 0);
     else if (opt->type == COMMAND_OPTION_NUMBER)
-        opt->value.double_ = get_double_from_string_json(data, "value", 0.);
-    opt->options_count = get_array_from_json(data, "options", (void ***)&opt->options, sizeof(struct discord_interaction_data_option), &discord_create_interaction_data_option_struct_json);
-    opt->focused = get_bool_from_json(data, "focused", 0);
+        opt->value.double_ = _d_get_double_from_string_json(data, "value", 0.);
+    opt->options_count = _d_get_array_from_json(data, "options", (void ***)&opt->options, sizeof(struct discord_interaction_data_option), &_d_json_to_interaction_data_option);
+    opt->focused = _d_get_bool_from_json(data, "focused", 0);
     return opt;
+}
+
+struct discord_interaction_data_option *_d_copy_interaction_data_option(struct discord_interaction_data_option *src) {
+    if (!src)
+        return NULL;
+    struct discord_interaction_data_option *c = (struct discord_interaction_data_option *)malloc(sizeof(struct discord_interaction_data_option));
+    memcpy(c, src, sizeof(struct discord_interaction_data_option));
+    c->name = strndup(src->name, 50);
+    if (c->value_type == VALUE_STRING)
+        c->value.string_ = strndup(src->value.string_, 120);
+    if (c->options_count > 0) {
+        c->options = (struct discord_interaction_data_option **)malloc(c->options_count * sizeof(struct discord_interaction_data_option *));
+        for (int i = 0; i < c->options_count; i++) {
+            c->options[i] = _d_copy_interaction_data_option(src->options[i]);
+        }
+    }
+    return c;
 }
 
 void discord_destroy_interaction_data_option(struct discord_interaction_data_option *o) {
@@ -30,19 +47,47 @@ void discord_destroy_interaction_data_option(struct discord_interaction_data_opt
     free(o);
 }
 
-void *discord_create_interaction_data_struct_json(cJSON *data) {
+void *_d_json_to_interaction_data(cJSON *data) {
     struct discord_interaction_data *d = (struct discord_interaction_data *)calloc(1, sizeof(struct discord_interaction_data));
-    d->id = get_long_from_string_json(data, "id", 0);
-    d->name = get_string_from_json(data, "name");
-    d->type = (enum Discord_Application_Command_Type)get_int_from_json(data, "type", 1);
-    d->options_count = get_array_from_json(data, "options", (void ***)&d->options, sizeof(struct discord_interaction_data_option), &discord_create_interaction_data_option_struct_json);
-    d->guild_id = get_long_from_string_json(data, "guild_id", 0);
-    d->target_id = get_long_from_string_json(data, "target_id", 0);
+    d->id = _d_get_long_from_string_json(data, "id", 0);
+    d->name = _d_get_string_from_json(data, "name");
+    d->type = (enum Discord_Application_Command_Type)_d_get_int_from_json(data, "type", 1);
+    d->options_count = _d_get_array_from_json(data, "options", (void ***)&d->options, sizeof(struct discord_interaction_data_option), &_d_json_to_interaction_data_option);
+    d->guild_id = _d_get_long_from_string_json(data, "guild_id", 0);
+    d->target_id = _d_get_long_from_string_json(data, "target_id", 0);
 
-    d->custom_id = get_string_from_json(data, "custom_id");                                                                                                  // message/modal
-    d->values_count = get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct); // message
-    d->components_count = get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &_d_json_to_component);        // modal
+    d->custom_id = _d_get_string_from_json(data, "custom_id");                                                                                                  // message/modal
+    d->values_count = _d_get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct); // message
+    d->components_count = _d_get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &_d_json_to_component);        // modal
     return d;
+}
+
+struct discord_interaction_data *_d_copy_interaction_data(struct discord_interaction_data *src) {
+    if (!src)
+        return NULL;
+    struct discord_interaction_data *c = (struct discord_interaction_data *)malloc(sizeof(struct discord_interaction_data));
+    memcpy(c, src, sizeof(struct discord_interaction_data));
+    c->name = strndup(src->name, 100);
+    if (c->options_count > 0) {
+        c->options = (struct discord_interaction_data_option **)malloc(c->options_count * sizeof(struct discord_interaction_data_option *));
+        for (int i = 0; i < c->options_count; i++) {
+            c->options[i] = _d_copy_interaction_data_option(src->options[i]);
+        }
+    }
+    c->custom_id = strndup(src->custom_id, 50);
+    if (c->values_count > 0) {
+        c->values = (struct discord_interaction_data_option **)malloc(c->values_count * sizeof(struct discord_interaction_data_option *));
+        for (int i = 0; i < c->values_count; i++) {
+            c->values[i] = _d_copy_interaction_data_option(src->values[i]);
+        }
+    }
+    if (c->components_count > 0) {
+        c->components = (struct discord_component **)malloc(c->components_count * sizeof(struct discord_component *));
+        for (int i = 0; i < c->components_count; i++) {
+            c->components[i] = _d_copy_interaction_data_option(src->components[i]);
+        }
+    }
+    return c;
 }
 
 void discord_destroy_interaction_data(struct discord_interaction_data *interaction) {
@@ -66,30 +111,46 @@ void discord_destroy_interaction_data(struct discord_interaction_data *interacti
 void *_d_json_to_interaction(cJSON *data) {
     cJSON *tmp;
     struct discord_interaction *inter = (struct discord_interaction *)calloc(1, sizeof(struct discord_interaction));
-    inter->id = get_long_from_string_json(data, "id", 0);
-    inter->application_id = get_long_from_string_json(data, "application_id", 0);
-    inter->type = (enum Discord_Interaction_Type)get_int_from_json(data, "type", 1);
+    inter->id = _d_get_long_from_string_json(data, "id", 0);
+    inter->application_id = _d_get_long_from_string_json(data, "application_id", 0);
+    inter->type = (enum Discord_Interaction_Type)_d_get_int_from_json(data, "type", 1);
     tmp = cJSON_GetObjectItem(data, "data");
     if (tmp)
-        inter->data = discord_create_interaction_data_struct_json(tmp);
-    inter->guild_id = get_long_from_string_json(data, "guild_id", 0);
-    inter->channel_id = get_long_from_string_json(data, "channel_id", 0);
+        inter->data = _d_json_to_interaction_data(tmp);
+    inter->guild_id = _d_get_long_from_string_json(data, "guild_id", 0);
+    inter->channel_id = _d_get_long_from_string_json(data, "channel_id", 0);
     tmp = cJSON_GetObjectItem(data, "user");
     if (tmp)
         inter->user = _d_json_to_user(tmp);
     tmp = cJSON_GetObjectItem(data, "member");
     if (tmp)
         inter->member = _d_json_to_member(tmp, inter->user);
-    inter->token = get_string_from_json(data, "token");
-    inter->version = get_int_from_json(data, "version", 0);
+    inter->token = _d_get_string_from_json(data, "token");
+    inter->version = _d_get_int_from_json(data, "version", 0);
     tmp = cJSON_GetObjectItem(data, "message");
     if (tmp)
         inter->message = _d_json_to_message(tmp);
-    inter->app_permissions = get_string_from_json(data, "app_permissions");
-    inter->locale = get_string_from_json(data, "locale");
-    inter->guild_locale = get_string_from_json(data, "guild_locale");
+    inter->app_permissions = _d_get_string_from_json(data, "app_permissions");
+    inter->locale = _d_get_string_from_json(data, "locale");
+    inter->guild_locale = _d_get_string_from_json(data, "guild_locale");
 
     return inter;
+}
+
+struct discord_interaction *_d_copy_interaction(struct discord_interaction *src) {
+    if (!src)
+        return NULL;
+    struct discord_interaction *c = (struct discord_interaction *)malloc(sizeof(struct discord_interaction));
+    memcpy(c, src, sizeof(struct discord_interaction));
+    c->data = _d_copy_interaction_data(src->data);
+    c->user = _d_copy_user(src->user);
+    c->member = _d_copy_member(src->member, c->user);
+    c->token = strndup(src->token, 100);
+    c->message = _d_copy_message(src->message);
+    c->app_permissions = strndup(src->app_permissions, 50);
+    c->locale = strndup(src->locale, 10);
+    c->guild_locale = strndup(src->guild_locale, 10);
+    return c;
 }
 
 void discord_destroy_interaction(struct discord_interaction *interaction) {

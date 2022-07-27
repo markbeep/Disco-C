@@ -5,11 +5,11 @@
 void *_d_json_to_component(cJSON *data) {
     struct discord_component *comp = (struct discord_component *)calloc(1, sizeof(struct discord_component));
     cJSON *tmp = NULL;
-    comp->type = get_int_from_json(data, "type", 0);
+    comp->type = _d_get_int_from_json(data, "type", 0);
     switch (comp->type) {
     case COMPONENT_ACTION_ROW:
         comp->comp.action_row = (struct discord_action_row *)malloc(sizeof(struct discord_action_row));
-        comp->comp.action_row->components_count = get_array_from_json(
+        comp->comp.action_row->components_count = _d_get_array_from_json(
             data,
             "components",
             (void ***)&comp->comp.action_row->components,
@@ -18,39 +18,39 @@ void *_d_json_to_component(cJSON *data) {
         break;
     case COMPONENT_BUTTON:
         comp->comp.button = (struct discord_button *)calloc(1, sizeof(struct discord_button));
-        comp->comp.button->style = (enum Discord_Button_Style)get_int_from_json(data, "style", 1);
-        comp->comp.button->label = get_string_from_json(data, "label");
+        comp->comp.button->style = (enum Discord_Button_Style)_d_get_int_from_json(data, "style", 1);
+        comp->comp.button->label = _d_get_string_from_json(data, "label");
         tmp = cJSON_GetObjectItem(data, "emoji");
         if (tmp)
             comp->comp.button->emoji = discord_create_emoji_struct_json(tmp);
-        comp->comp.button->custom_id = get_string_from_json(data, "custom_id");
-        comp->comp.button->url = get_string_from_json(data, "url");
-        comp->comp.button->disabled = get_bool_from_json(data, "disabled", 0);
+        comp->comp.button->custom_id = _d_get_string_from_json(data, "custom_id");
+        comp->comp.button->url = _d_get_string_from_json(data, "url");
+        comp->comp.button->disabled = _d_get_bool_from_json(data, "disabled", 0);
         break;
     case COMPONENT_SELECT_MENU:
         comp->comp.select_menu = (struct discord_select_menu *)calloc(1, sizeof(struct discord_select_menu));
-        comp->comp.select_menu->custom_id = get_string_from_json(data, "custom_id");
-        comp->comp.select_menu->options_count = get_array_from_json(
+        comp->comp.select_menu->custom_id = _d_get_string_from_json(data, "custom_id");
+        comp->comp.select_menu->options_count = _d_get_array_from_json(
             data,
             "options",
             (void ***)&comp->comp.select_menu->options,
             sizeof(struct discord_select_option),
             &discord_create_select_option_struct);
-        comp->comp.select_menu->placeholder = get_string_from_json(data, "placeholder");
-        comp->comp.select_menu->min_values = get_int_from_json(data, "min_values", 1);
-        comp->comp.select_menu->max_values = get_int_from_json(data, "max_values", 1);
-        comp->comp.select_menu->disabled = get_bool_from_json(data, "disabled", 0);
+        comp->comp.select_menu->placeholder = _d_get_string_from_json(data, "placeholder");
+        comp->comp.select_menu->min_values = _d_get_int_from_json(data, "min_values", 1);
+        comp->comp.select_menu->max_values = _d_get_int_from_json(data, "max_values", 1);
+        comp->comp.select_menu->disabled = _d_get_bool_from_json(data, "disabled", 0);
         break;
     case COMPONENT_TEXT_INPUT:
         comp->comp.text_input = (struct discord_text_input *)calloc(1, sizeof(struct discord_text_input));
-        comp->comp.text_input->custom_id = get_string_from_json(data, "custom_id");
-        comp->comp.text_input->style = (enum Discord_Text_Input_Style)get_int_from_json(data, "style", 1);
-        comp->comp.text_input->label = get_string_from_json(data, "label");
-        comp->comp.text_input->min_length = get_int_from_json(data, "min_length", 0);
-        comp->comp.text_input->max_length = get_int_from_json(data, "max_length", 1);
-        comp->comp.text_input->required = get_bool_from_json(data, "required", 0);
-        comp->comp.text_input->value = get_string_from_json(data, "value");
-        comp->comp.text_input->placeholder = get_string_from_json(data, "placeholder");
+        comp->comp.text_input->custom_id = _d_get_string_from_json(data, "custom_id");
+        comp->comp.text_input->style = (enum Discord_Text_Input_Style)_d_get_int_from_json(data, "style", 1);
+        comp->comp.text_input->label = _d_get_string_from_json(data, "label");
+        comp->comp.text_input->min_length = _d_get_int_from_json(data, "min_length", 0);
+        comp->comp.text_input->max_length = _d_get_int_from_json(data, "max_length", 1);
+        comp->comp.text_input->required = _d_get_bool_from_json(data, "required", 0);
+        comp->comp.text_input->value = _d_get_string_from_json(data, "value");
+        comp->comp.text_input->placeholder = _d_get_string_from_json(data, "placeholder");
         break;
     default:
         return NULL;
@@ -103,13 +103,13 @@ void discord_destroy_component(struct discord_component *c) {
 
 void *discord_create_select_option_struct(cJSON *data) {
     struct discord_select_option *option = (struct discord_select_option *)calloc(1, sizeof(struct discord_select_option));
-    option->label = get_string_from_json(data, "label");
-    option->value = get_string_from_json(data, "value");
-    option->description = get_string_from_json(data, "description");
+    option->label = _d_get_string_from_json(data, "label");
+    option->value = _d_get_string_from_json(data, "value");
+    option->description = _d_get_string_from_json(data, "description");
     cJSON *tmp = cJSON_GetObjectItem(data, "emoji");
     if (tmp)
         option->emoji = discord_create_emoji_struct_json(tmp);
-    option->_default = get_bool_from_json(data, "default", 0);
+    option->_default = _d_get_bool_from_json(data, "default", 0);
     return option;
 }
 void discord_destroy_select_option(struct discord_select_option *option) {

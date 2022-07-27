@@ -5,12 +5,12 @@ void *discord_create_embed_struct_json(cJSON *data) {
     struct discord_embed *embed = (struct discord_embed *)calloc(1, sizeof(struct discord_embed));
     cJSON *tmp = NULL;
 
-    embed->title = get_string_from_json(data, "title");
-    embed->type = get_string_from_json(data, "type");
-    embed->description = get_string_from_json(data, "description");
-    embed->url = get_string_from_json(data, "url");
-    embed->timestamp = get_string_from_json(data, "timestamp");
-    embed->color = get_int_from_json(data, "color", 0);
+    embed->title = _d_get_string_from_json(data, "title");
+    embed->type = _d_get_string_from_json(data, "type");
+    embed->description = _d_get_string_from_json(data, "description");
+    embed->url = _d_get_string_from_json(data, "url");
+    embed->timestamp = _d_get_string_from_json(data, "timestamp");
+    embed->color = _d_get_int_from_json(data, "color", 0);
 
     // adds the sub-structs of the embed
     tmp = cJSON_GetObjectItem(data, "footer");
@@ -31,7 +31,7 @@ void *discord_create_embed_struct_json(cJSON *data) {
     tmp = cJSON_GetObjectItem(data, "author");
     if (tmp)
         embed->author = (struct discord_embed_author *)discord_create_embed_author_struct_json(tmp);
-    embed->fields_count = get_array_from_json(data, "fields", (void ***)&embed->fields, sizeof(struct discord_embed_field), &discord_create_embed_field_struct_json);
+    embed->fields_count = _d_get_array_from_json(data, "fields", (void ***)&embed->fields, sizeof(struct discord_embed_field), &discord_create_embed_field_struct_json);
     return embed;
 }
 void discord_destroy_embed(struct discord_embed *embed) {
@@ -66,9 +66,9 @@ void discord_destroy_embed(struct discord_embed *embed) {
 
 void *_d_json_to_embed(cJSON *data) {
     struct discord_embed_footer *footer = (struct discord_embed_footer *)calloc(1, sizeof(struct discord_embed_footer));
-    footer->text = get_string_from_json(data, "text");
-    footer->icon_url = get_string_from_json(data, "icon_url");
-    footer->proxy_icon_url = get_string_from_json(data, "proxy_icon_url");
+    footer->text = _d_get_string_from_json(data, "text");
+    footer->icon_url = _d_get_string_from_json(data, "icon_url");
+    footer->proxy_icon_url = _d_get_string_from_json(data, "proxy_icon_url");
     return footer;
 }
 void discord_destroy_embed_footer(struct discord_embed_footer *footer) {
@@ -83,10 +83,10 @@ void discord_destroy_embed_footer(struct discord_embed_footer *footer) {
 
 void *discord_create_embed_media_struct_json(cJSON *data) {
     struct discord_embed_media *media = (struct discord_embed_media *)calloc(1, sizeof(struct discord_embed_media));
-    media->url = get_string_from_json(data, "url");
-    media->proxy_url = get_string_from_json(data, "url");
-    media->height = get_int_from_json(data, "height", -1);
-    media->width = get_int_from_json(data, "width", -1);
+    media->url = _d_get_string_from_json(data, "url");
+    media->proxy_url = _d_get_string_from_json(data, "url");
+    media->height = _d_get_int_from_json(data, "height", -1);
+    media->width = _d_get_int_from_json(data, "width", -1);
     return media;
 }
 void discord_destroy_embed_media(struct discord_embed_media *media) {
@@ -99,8 +99,8 @@ void discord_destroy_embed_media(struct discord_embed_media *media) {
 
 void *discord_create_embed_provider_struct_json(cJSON *data) {
     struct discord_embed_provider *prov = (struct discord_embed_provider *)calloc(1, sizeof(struct discord_embed_provider));
-    prov->name = get_string_from_json(data, "name");
-    prov->url = get_string_from_json(data, "url");
+    prov->name = _d_get_string_from_json(data, "name");
+    prov->url = _d_get_string_from_json(data, "url");
     return prov;
 }
 void discord_destroy_embed_provider(struct discord_embed_provider *provider) {
@@ -113,10 +113,10 @@ void discord_destroy_embed_provider(struct discord_embed_provider *provider) {
 
 void *discord_create_embed_author_struct_json(cJSON *data) {
     struct discord_embed_author *author = (struct discord_embed_author *)calloc(1, sizeof(struct discord_embed_author));
-    author->name = get_string_from_json(data, "name");
-    author->url = get_string_from_json(data, "url");
-    author->icon_url = get_string_from_json(data, "icon_url");
-    author->proxy_icon_url = get_string_from_json(data, "proxy_icon_url");
+    author->name = _d_get_string_from_json(data, "name");
+    author->url = _d_get_string_from_json(data, "url");
+    author->icon_url = _d_get_string_from_json(data, "icon_url");
+    author->proxy_icon_url = _d_get_string_from_json(data, "proxy_icon_url");
     return author;
 }
 void discord_destroy_embed_author(struct discord_embed_author *author) {
@@ -133,9 +133,9 @@ void discord_destroy_embed_author(struct discord_embed_author *author) {
 
 void *discord_create_embed_field_struct_json(cJSON *data) {
     struct discord_embed_field *field = (struct discord_embed_field *)calloc(1, sizeof(struct discord_embed_field));
-    field->name = get_string_from_json(data, "name");
-    field->value = get_string_from_json(data, "value");
-    field->_inline = get_bool_from_json(data, "inline", 0);
+    field->name = _d_get_string_from_json(data, "name");
+    field->value = _d_get_string_from_json(data, "value");
+    field->_inline = _d_get_bool_from_json(data, "inline", 0);
     return field;
 }
 void discord_destroy_embed_field(struct discord_embed_field *field) {

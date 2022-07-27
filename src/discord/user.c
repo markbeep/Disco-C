@@ -7,21 +7,21 @@
 
 void *_d_json_to_user(cJSON *data) {
     struct discord_user *user = (struct discord_user *)calloc(1, sizeof(struct discord_user));
-    user->id = get_long_from_string_json(data, "id", 0);
-    user->username = get_string_from_json(data, "username");
-    user->discriminator = get_string_from_json(data, "discriminator");
-    user->avatar = get_string_from_json(data, "avatar");
-    user->bot = get_bool_from_json(data, "bot", 0);
-    user->system = get_bool_from_json(data, "system", 0);
-    user->mfa_enabled = get_bool_from_json(data, "mfa_enabled", 0);
-    user->banner = get_string_from_json(data, "banner");
-    user->accent_color = get_int_from_json(data, "accent_color", 0);
-    user->locale = get_string_from_json(data, "locale");
-    user->verified = get_bool_from_json(data, "verified", 0);
-    user->email = get_string_from_json(data, "email");
-    user->flags = get_int_from_json(data, "flags", 0);
-    user->premium_type = get_int_from_json(data, "premium_type", 0);
-    user->public_flags = get_int_from_json(data, "public_flags", 0);
+    user->id = _d_get_long_from_string_json(data, "id", 0);
+    user->username = _d_get_string_from_json(data, "username");
+    user->discriminator = _d_get_string_from_json(data, "discriminator");
+    user->avatar = _d_get_string_from_json(data, "avatar");
+    user->bot = _d_get_bool_from_json(data, "bot", 0);
+    user->system = _d_get_bool_from_json(data, "system", 0);
+    user->mfa_enabled = _d_get_bool_from_json(data, "mfa_enabled", 0);
+    user->banner = _d_get_string_from_json(data, "banner");
+    user->accent_color = _d_get_int_from_json(data, "accent_color", 0);
+    user->locale = _d_get_string_from_json(data, "locale");
+    user->verified = _d_get_bool_from_json(data, "verified", 0);
+    user->email = _d_get_string_from_json(data, "email");
+    user->flags = _d_get_int_from_json(data, "flags", 0);
+    user->premium_type = _d_get_int_from_json(data, "premium_type", 0);
+    user->public_flags = _d_get_int_from_json(data, "public_flags", 0);
     return user;
 }
 
@@ -51,8 +51,8 @@ void *_d_json_to_member(cJSON *data, struct discord_user *user) {
         if (tmp)
             mem->user = _d_json_to_user(tmp);
     }
-    mem->nick = get_string_from_json(data, "nick");
-    mem->avatar = get_string_from_json(data, "avatar");
+    mem->nick = _d_get_string_from_json(data, "nick");
+    mem->avatar = _d_get_string_from_json(data, "avatar");
     tmp = cJSON_GetObjectItem(data, "roles");
     mem->roles_count = cJSON_GetArraySize(tmp);
     if (mem->roles_count > 0) {
@@ -63,13 +63,13 @@ void *_d_json_to_member(cJSON *data, struct discord_user *user) {
             mem->roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
         }
     }
-    mem->joined_at = get_string_from_json(data, "joined_at");
-    mem->premium_since = get_string_from_json(data, "premium_since");
-    mem->deaf = get_bool_from_json(data, "deaf", 0);
-    mem->mute = get_bool_from_json(data, "mute", 0);
-    mem->pending = get_bool_from_json(data, "pending", 0);
-    mem->permissions = get_string_from_json(data, "permissions");
-    mem->communication_disabled_until = get_string_from_json(data, "communication_disabled_until");
+    mem->joined_at = _d_get_string_from_json(data, "joined_at");
+    mem->premium_since = _d_get_string_from_json(data, "premium_since");
+    mem->deaf = _d_get_bool_from_json(data, "deaf", 0);
+    mem->mute = _d_get_bool_from_json(data, "mute", 0);
+    mem->pending = _d_get_bool_from_json(data, "pending", 0);
+    mem->permissions = _d_get_string_from_json(data, "permissions");
+    mem->communication_disabled_until = _d_get_string_from_json(data, "communication_disabled_until");
 
     return mem;
 }

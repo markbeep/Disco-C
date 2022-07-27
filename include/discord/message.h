@@ -44,10 +44,10 @@ struct discord_message_reference {
 };
 
 /**
- * @brief Creates a message_reference structure from a given JSON
+ * @brief Creates a message_reference structure from a given JSON.
  *
  * @param data
- * @return void* discord_message_reference struct
+ * @return void* discord_message_reference struct.
  */
 void *_d_json_to_message_reference(cJSON *data);
 

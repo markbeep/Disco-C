@@ -25,8 +25,7 @@
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
 
-// definitions so that the compiler stops complaining
-// that they don't exist
+// definitions needed for the below structure definition
 struct discord_message;
 struct discord_interaction;
 
@@ -91,7 +90,7 @@ void discord_free_bot(bot_client_t *bot);
 
 /** @} */ // closes the client group
 
-char *get_string_from_json(cJSON *data, const char *name);
+char *_d_get_string_from_json(cJSON *data, const char *name);
 /**
  * @brief Get a bool from json object
  *
@@ -100,7 +99,7 @@ char *get_string_from_json(cJSON *data, const char *name);
  * @param default_ The default value incase the field doesn't exist
  * @return int
  */
-bool get_bool_from_json(cJSON *data, const char *name, int default_);
+bool _d_get_bool_from_json(cJSON *data, const char *name, int default_);
 /**
  * @brief Get an int from json object
  *
@@ -109,13 +108,13 @@ bool get_bool_from_json(cJSON *data, const char *name, int default_);
  * @param default_ The default value incase the field doesn't exist
  * @return bool
  */
-int get_int_from_json(cJSON *data, const char *name, int default_);
+int _d_get_int_from_json(cJSON *data, const char *name, int default_);
 
 typedef void *(*discord_struct_fn)(cJSON *);
-int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func);
+int _d_get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func);
 
-uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
+uint64_t _d_get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
 
-double get_double_from_string_json(cJSON *data, const char *name, double default_);
+double _d_get_double_from_string_json(cJSON *data, const char *name, double default_);
 
 #endif

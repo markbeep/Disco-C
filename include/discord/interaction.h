@@ -44,7 +44,27 @@ struct discord_interaction_data_option {
     bool focused;
 };
 
-void *discord_create_interaction_data_option_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction data option structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_interaction_data_option struct
+ */
+void *_d_json_to_interaction_data_option(cJSON *data);
+
+/**
+ * @brief Copies an interaction data option structure.
+ *
+ * @param src Interaction data option to copy.
+ * @return struct discord_interaction_data_option*
+ */
+struct discord_interaction_data_option *_d_copy_interaction_data_option(struct discord_interaction_data_option *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction_data_option(struct discord_interaction_data_option *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
@@ -67,7 +87,27 @@ struct discord_interaction_data {
     int components_count;                            // modal
 };
 
-void *discord_create_interaction_data_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction data structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_interaction_data struct
+ */
+void *_d_json_to_interaction_data(cJSON *data);
+
+/**
+ * @brief Copies an interaction data structure.
+ *
+ * @param src Interaction data to copy.
+ * @return struct discord_interaction_data*
+ */
+struct discord_interaction_data *_d_copy_interaction_data(struct discord_interaction_data *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction_data(struct discord_interaction_data *interaction);
 
 // https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure

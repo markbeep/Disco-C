@@ -12,7 +12,7 @@ void test_message_creation(void) {
     // test for an empty created message
     json = cJSON_CreateObject();
     _d_create_message_to_json(json, NULL, &msg);
-    TEST_ASSERT_EQUAL_INT(false, get_bool_from_json(json, "tts", false));
+    TEST_ASSERT_EQUAL_INT(false, _d_get_bool_from_json(json, "tts", false));
     j = cJSON_GetObjectItem(json, "content");
     TEST_ASSERT_EQUAL_INT64(NULL, j);
     j = cJSON_GetObjectItem(json, "embeds");
@@ -44,7 +44,7 @@ void test_message_creation(void) {
     msg.sticker_ids_count = 3;
     msg.flags = 1 << 4;
     _d_create_message_to_json(json, content, &msg);
-    TEST_ASSERT_EQUAL_INT(true, get_bool_from_json(json, "tts", true));
+    TEST_ASSERT_EQUAL_INT(true, _d_get_bool_from_json(json, "tts", true));
     j = cJSON_GetObjectItem(json, "content");
     TEST_ASSERT_EQUAL_STRING_LEN("test message", cJSON_GetStringValue(j), 13);
     j = cJSON_GetObjectItem(json, "embeds");
