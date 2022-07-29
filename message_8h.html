@@ -92,12 +92,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__allowed__mentions.html">discord_allowed_mentions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure">https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure</a>  <a href="structdiscord__allowed__mentions.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__message__reference.html">discord_message_reference</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#message-reference-object">https://discord.com/developers/docs/resources/channel#message-reference-object</a>  <a href="structdiscord__message__reference.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__create__message.html">discord_create_message</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#create-message">https://discord.com/developers/docs/resources/channel#create-message</a>  <a href="structdiscord__create__message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__message.html">discord_message</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#message-object">https://discord.com/developers/docs/resources/channel#message-object</a>  <a href="structdiscord__message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -138,25 +142,32 @@ Enumerations</h2></td></tr>
 <a class="el" href="group___message.html#ggac313b735a1ec70b158846ce911a6682ca67e1847dbc5441df0c6c520c6eb14016">CONTEXT_MENU_COMMAND</a>
 <br />
  }</td></tr>
+<tr class="memdesc:gac313b735a1ec70b158846ce911a6682c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#message-object-message-types">https://discord.com/developers/docs/resources/channel#message-object-message-types</a>  <a href="group___message.html#gac313b735a1ec70b158846ce911a6682c">More...</a><br /></td></tr>
 <tr class="separator:gac313b735a1ec70b158846ce911a6682c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga163a4fb471139fc2881884f802ad8738"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga163a4fb471139fc2881884f802ad8738">discord_create_message_reference_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:ga163a4fb471139fc2881884f802ad8738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message_reference structure from a given JSON.  <a href="group___message.html#ga163a4fb471139fc2881884f802ad8738">More...</a><br /></td></tr>
-<tr class="separator:ga163a4fb471139fc2881884f802ad8738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacfb3e29043dfb853a113483a173604cf"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#gacfb3e29043dfb853a113483a173604cf">_d_json_to_message_reference</a> (cJSON *data)</td></tr>
+<tr class="memdesc:gacfb3e29043dfb853a113483a173604cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message_reference structure from a given JSON.  <a href="group___message.html#gacfb3e29043dfb853a113483a173604cf">More...</a><br /></td></tr>
+<tr class="separator:gacfb3e29043dfb853a113483a173604cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f50900940d7403cd5f78d01677783b3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message__reference.html">discord_message_reference</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga3f50900940d7403cd5f78d01677783b3">_d_copy_message_reference</a> (struct <a class="el" href="structdiscord__message__reference.html">discord_message_reference</a> *src)</td></tr>
+<tr class="memdesc:ga3f50900940d7403cd5f78d01677783b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a message reference structure.  <a href="group___message.html#ga3f50900940d7403cd5f78d01677783b3">More...</a><br /></td></tr>
+<tr class="separator:ga3f50900940d7403cd5f78d01677783b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga422bd3fce67680fc21048279abfab917"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga422bd3fce67680fc21048279abfab917">discord_destroy_message_reference</a> (struct <a class="el" href="structdiscord__message__reference.html">discord_message_reference</a> *message)</td></tr>
 <tr class="memdesc:ga422bd3fce67680fc21048279abfab917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___message.html#ga422bd3fce67680fc21048279abfab917">More...</a><br /></td></tr>
 <tr class="separator:ga422bd3fce67680fc21048279abfab917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ab1c3aa8d10f97d7df4896289117973"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:ga1ab1c3aa8d10f97d7df4896289117973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message structure from a given JSON.  <a href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">More...</a><br /></td></tr>
-<tr class="separator:ga1ab1c3aa8d10f97d7df4896289117973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77789e1d92e71b77e936622164428d15"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga77789e1d92e71b77e936622164428d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message structure from a given JSON.  <a href="group___message.html#ga77789e1d92e71b77e936622164428d15">More...</a><br /></td></tr>
+<tr class="separator:ga77789e1d92e71b77e936622164428d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63673339652a7198de3380714256534c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message</a> (struct <a class="el" href="structdiscord__message.html">discord_message</a> *message)</td></tr>
+<tr class="memdesc:ga63673339652a7198de3380714256534c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a message structure.  <a href="group___message.html#ga63673339652a7198de3380714256534c">More...</a><br /></td></tr>
+<tr class="separator:ga63673339652a7198de3380714256534c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga872f106303b2b802946a43f9c44a4aa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga872f106303b2b802946a43f9c44a4aa6">discord_destroy_message</a> (struct <a class="el" href="structdiscord__message.html">discord_message</a> *message)</td></tr>
 <tr class="memdesc:ga872f106303b2b802946a43f9c44a4aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___message.html#ga872f106303b2b802946a43f9c44a4aa6">More...</a><br /></td></tr>
 <tr class="separator:ga872f106303b2b802946a43f9c44a4aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga75bcd95cf036bba85d07daa7528600bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#ga75bcd95cf036bba85d07daa7528600bb">discord_fill_json_with_message</a> (cJSON *json, char *content, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message)</td></tr>
-<tr class="memdesc:ga75bcd95cf036bba85d07daa7528600bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in a JSON with the attributes of the message structure.  <a href="group___message.html#ga75bcd95cf036bba85d07daa7528600bb">More...</a><br /></td></tr>
-<tr class="separator:ga75bcd95cf036bba85d07daa7528600bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee10281ca05e31be33f395e6328f50df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message.html#gaee10281ca05e31be33f395e6328f50df">_d_create_message_to_json</a> (cJSON *json, char *content, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message)</td></tr>
+<tr class="memdesc:gaee10281ca05e31be33f395e6328f50df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in a JSON with the attributes of the message structure.  <a href="group___message.html#gaee10281ca05e31be33f395e6328f50df">More...</a><br /></td></tr>
+<tr class="separator:gaee10281ca05e31be33f395e6328f50df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ab503de679841020121923d5f2daaca09"></a>

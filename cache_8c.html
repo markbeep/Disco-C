@@ -139,19 +139,19 @@ Variables</h2></td></tr>
 <tr class="separator:aae79345d0d5fe7ade7fc06b746ed93fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abae5844af77f07ebc5ec8630d2392af7"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structbuffer.html">buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#abae5844af77f07ebc5ec8630d2392af7">messages_queue</a></td></tr>
 <tr class="separator:abae5844af77f07ebc5ec8630d2392af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30554163527f83bc3897325522c7de8c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a30554163527f83bc3897325522c7de8c">max_message_cache_size</a></td></tr>
+<tr class="memitem:a30554163527f83bc3897325522c7de8c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a30554163527f83bc3897325522c7de8c">max_message_cache_size</a> = 1000</td></tr>
 <tr class="separator:a30554163527f83bc3897325522c7de8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a069029f5476e51f2a2978b9f32eb1861"><td class="memItemLeft" align="right" valign="top">static struct hashmap_s&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a069029f5476e51f2a2978b9f32eb1861">channels_map</a></td></tr>
 <tr class="separator:a069029f5476e51f2a2978b9f32eb1861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a676ccc5ac8c134cdb237ee1889a49706"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structbuffer.html">buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a676ccc5ac8c134cdb237ee1889a49706">channels_queue</a></td></tr>
 <tr class="separator:a676ccc5ac8c134cdb237ee1889a49706"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32bfdb5f5eacbfaf13e4cdc0ad1b1bae"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a32bfdb5f5eacbfaf13e4cdc0ad1b1bae">max_channel_cache_size</a></td></tr>
+<tr class="memitem:a32bfdb5f5eacbfaf13e4cdc0ad1b1bae"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a32bfdb5f5eacbfaf13e4cdc0ad1b1bae">max_channel_cache_size</a> = 1000</td></tr>
 <tr class="separator:a32bfdb5f5eacbfaf13e4cdc0ad1b1bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b932c9356ec20b4ec3dabc18074781"><td class="memItemLeft" align="right" valign="top">static struct hashmap_s&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a37b932c9356ec20b4ec3dabc18074781">guilds_map</a></td></tr>
 <tr class="separator:a37b932c9356ec20b4ec3dabc18074781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91da2e78aae387f8009aa28741255488"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structbuffer.html">buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a91da2e78aae387f8009aa28741255488">guilds_queue</a></td></tr>
 <tr class="separator:a91da2e78aae387f8009aa28741255488"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad81b87cde997b20dfecd65ea9e36ebac"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#ad81b87cde997b20dfecd65ea9e36ebac">max_guild_cache_size</a></td></tr>
+<tr class="memitem:ad81b87cde997b20dfecd65ea9e36ebac"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#ad81b87cde997b20dfecd65ea9e36ebac">max_guild_cache_size</a> = 1000</td></tr>
 <tr class="separator:ad81b87cde997b20dfecd65ea9e36ebac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64447acacfa22d39689a8cea43560939"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="cache_8h.html#a3a2c76967f7fd059bb4ca547a911599e">cache_destroy_callback_fn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html#a64447acacfa22d39689a8cea43560939">destroy_item_callback_fn</a></td></tr>
 <tr class="separator:a64447acacfa22d39689a8cea43560939"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -783,7 +783,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int max_channel_cache_size</td>
+          <td class="memname">int max_channel_cache_size = 1000</td>
         </tr>
       </table>
   </td>
@@ -807,7 +807,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int max_guild_cache_size</td>
+          <td class="memname">int max_guild_cache_size = 1000</td>
         </tr>
       </table>
   </td>
@@ -831,7 +831,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int max_message_cache_size</td>
+          <td class="memname">int max_message_cache_size = 1000</td>
         </tr>
       </table>
   </td>

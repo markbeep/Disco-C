@@ -1,14 +1,16 @@
 var searchData=
 [
-  ['websocket_5fcallback_1040',['websocket_callback',['../websocket_8c.html#a28316ba3b1b7781024e58e31a9c27931',1,'websocket.c']]],
-  ['websocket_5fclose_1041',['websocket_close',['../websocket_8h.html#a3af18f27c14cdea777c48fb383100f57',1,'websocket_close(bot_client_t *bot_client):&#160;websocket.c'],['../websocket_8c.html#a3af18f27c14cdea777c48fb383100f57',1,'websocket_close(bot_client_t *bot_client):&#160;websocket.c']]],
-  ['websocket_5fconnect_1042',['websocket_connect',['../websocket_8h.html#ad6005f40f7aeb320494eb2ab32d051f6',1,'websocket_connect(bot_client_t *bot_client):&#160;websocket.c'],['../websocket_8c.html#ad6005f40f7aeb320494eb2ab32d051f6',1,'websocket_connect(bot_client_t *bot_client):&#160;websocket.c']]],
-  ['websocket_5fcreate_1043',['websocket_create',['../websocket_8h.html#a25e61029244807bce89cf9b7df8283e9',1,'websocket_create(websocket_client_t *client, callback_receive_fn on_receive):&#160;websocket.c'],['../websocket_8c.html#a25e61029244807bce89cf9b7df8283e9',1,'websocket_create(websocket_client_t *client, callback_receive_fn on_receive):&#160;websocket.c']]],
-  ['websocket_5fdestroy_5fclient_1044',['websocket_destroy_client',['../websocket_8h.html#a371f513f4875190cbfd6681d08ff09ca',1,'websocket_destroy_client(websocket_client_t *client):&#160;websocket.c'],['../websocket_8c.html#a371f513f4875190cbfd6681d08ff09ca',1,'websocket_destroy_client(websocket_client_t *client):&#160;websocket.c']]],
-  ['websocket_5fexit_1045',['websocket_exit',['../websocket_8h.html#a34f2b1448720da2b96b8fd7bdd13860e',1,'websocket_exit(bot_client_t *bot_client):&#160;websocket.c'],['../websocket_8c.html#a34f2b1448720da2b96b8fd7bdd13860e',1,'websocket_exit(bot_client_t *bot_client):&#160;websocket.c']]],
-  ['websocket_5fon_5freceive_1046',['websocket_on_receive',['../test__web_8c.html#afd82d8b0e27ad4670e726a9a3a1885a8',1,'test_web.c']]],
-  ['websocket_5freconnect_1047',['websocket_reconnect',['../websocket_8h.html#af32439469ba35f20294d4a9a516b6e2d',1,'websocket_reconnect(bot_client_t *bot_client):&#160;websocket.c'],['../websocket_8c.html#af32439469ba35f20294d4a9a516b6e2d',1,'websocket_reconnect(bot_client_t *bot_client):&#160;websocket.c']]],
-  ['websocket_5fsend_1048',['websocket_send',['../websocket_8h.html#a4441bdd6264675d37ad41f203f73d20f',1,'websocket_send(struct lws *wsi, char *data, size_t len):&#160;websocket.c'],['../websocket_8c.html#a4441bdd6264675d37ad41f203f73d20f',1,'websocket_send(struct lws *wsi, char *data, size_t len):&#160;websocket.c']]],
-  ['websocket_5ftest_1049',['websocket_test',['../websocket_8h.html#ad7b1e0aedab3d4111d5ddb66a6e78dab',1,'websocket_test(void):&#160;websocket.c'],['../websocket_8c.html#ad7b1e0aedab3d4111d5ddb66a6e78dab',1,'websocket_test(void):&#160;websocket.c']]],
-  ['write_5fdata_1050',['write_data',['../request_8c.html#ad1262acfd44e35f04459e159201eecd5',1,'request.c']]]
+  ['t_5fpool_5fadd_5fwork_1080',['t_pool_add_work',['../t__pool_8h.html#aa3e070b85293e5d6fdd860aba065eac2',1,'t_pool_add_work(t_pool_t *tp, t_func func, void *work):&#160;t_pool.c'],['../t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0',1,'t_pool_add_work(t_pool_t *tp, t_func func, void *arg):&#160;t_pool.c']]],
+  ['t_5fpool_5fdestroy_1081',['t_pool_destroy',['../t__pool_8h.html#a281ca3606c45d1b21b094bc4e0d72558',1,'t_pool_destroy(t_pool_t *tp):&#160;t_pool.c'],['../t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558',1,'t_pool_destroy(t_pool_t *tp):&#160;t_pool.c']]],
+  ['t_5fpool_5finit_1082',['t_pool_init',['../t__pool_8h.html#af6906d6d879e426ca11341073e00e692',1,'t_pool_init(int num_t):&#160;t_pool.c'],['../t__pool_8c.html#af6906d6d879e426ca11341073e00e692',1,'t_pool_init(int num_t):&#160;t_pool.c']]],
+  ['t_5fpool_5fpop_5fwork_1083',['t_pool_pop_work',['../t__pool_8h.html#ab8a1ec967a595f770edd2e5f2c818ca6',1,'t_pool_pop_work(t_pool_t *tp):&#160;t_pool.c'],['../t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6',1,'t_pool_pop_work(t_pool_t *tp):&#160;t_pool.c']]],
+  ['t_5fpool_5fwait_1084',['t_pool_wait',['../t__pool_8h.html#a00810d0b8204da37c10d6968e8c03f62',1,'t_pool_wait(t_pool_t *tp):&#160;t_pool.c'],['../t__pool_8c.html#a00810d0b8204da37c10d6968e8c03f62',1,'t_pool_wait(t_pool_t *tp):&#160;t_pool.c']]],
+  ['t_5fprocess_5fcount_1085',['t_process_count',['../t__pool_8h.html#abe4e17164e848e3ec15bb001a8e4209e',1,'t_process_count(void):&#160;t_pool.c'],['../t__pool_8c.html#abe4e17164e848e3ec15bb001a8e4209e',1,'t_process_count(void):&#160;t_pool.c']]],
+  ['teardown_1086',['tearDown',['../test__discord_8c.html#a9909011e5fea0c018842eec4d93d0662',1,'tearDown(void):&#160;test_discord.c'],['../test__web_8c.html#a9909011e5fea0c018842eec4d93d0662',1,'tearDown(void):&#160;test_web.c']]],
+  ['test_5fembed_5fcreation_1087',['test_embed_creation',['../test__discord_8c.html#adf03b279bfe559e0be918b4ea4b6fc8d',1,'test_discord.c']]],
+  ['test_5fmessage_5fcreation_1088',['test_message_creation',['../test__discord_8c.html#ab6e24e0276651581fbc2889a37282925',1,'test_discord.c']]],
+  ['test_5frequests_1089',['test_requests',['../test__web_8c.html#abad392b27fbc695752828fc1ca6bff09',1,'test_web.c']]],
+  ['test_5fwebsocket_5fconnect_1090',['test_websocket_connect',['../test__web_8c.html#a072ecbe023e38ff7398e7d705dde56b0',1,'test_web.c']]],
+  ['test_5fwebsocket_5fcreate_1091',['test_websocket_create',['../test__web_8c.html#aab915172720ef6c59717d7307db98940',1,'test_web.c']]],
+  ['thread_5fwork_5floop_1092',['thread_work_loop',['../t__pool_8c.html#a476441050a0e3af21723d451258c5436',1,'t_pool.c']]]
 ];

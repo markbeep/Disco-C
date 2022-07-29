@@ -88,9 +88,14 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad0176a25e399b4393773cd22eb1b9858"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___activity.html#gad0176a25e399b4393773cd22eb1b9858">discord_create_message_activity_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:gad0176a25e399b4393773cd22eb1b9858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ed3c91611077755ad4c673743aae402"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___activity.html#ga3ed3c91611077755ad4c673743aae402">_d_json_to_message_activity</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga3ed3c91611077755ad4c673743aae402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message activity structure from a given JSON.  <a href="group___message___activity.html#ga3ed3c91611077755ad4c673743aae402">More...</a><br /></td></tr>
+<tr class="separator:ga3ed3c91611077755ad4c673743aae402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0989010069c449185056bc2b0e327551"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message__activity.html">discord_message_activity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___activity.html#ga0989010069c449185056bc2b0e327551">_d_copy_message_activity</a> (struct <a class="el" href="structdiscord__message__activity.html">discord_message_activity</a> *activity)</td></tr>
+<tr class="memdesc:ga0989010069c449185056bc2b0e327551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a message activity structure.  <a href="group___message___activity.html#ga0989010069c449185056bc2b0e327551">More...</a><br /></td></tr>
+<tr class="separator:ga0989010069c449185056bc2b0e327551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3f9ac3091bd4fac7261daa9fae52ecb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___activity.html#ga3f9ac3091bd4fac7261daa9fae52ecb5">discord_destroy_message_activity</a> (struct <a class="el" href="structdiscord__message__activity.html">discord_message_activity</a> *activity)</td></tr>
+<tr class="memdesc:ga3f9ac3091bd4fac7261daa9fae52ecb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure.  <a href="group___message___activity.html#ga3f9ac3091bd4fac7261daa9fae52ecb5">More...</a><br /></td></tr>
 <tr class="separator:ga3f9ac3091bd4fac7261daa9fae52ecb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -117,14 +122,43 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gad0176a25e399b4393773cd22eb1b9858"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad0176a25e399b4393773cd22eb1b9858">&#9670;&nbsp;</a></span>discord_create_message_activity_struct_json()</h2>
+<a id="ga0989010069c449185056bc2b0e327551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0989010069c449185056bc2b0e327551">&#9670;&nbsp;</a></span>_d_copy_message_activity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_message_activity_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__message__activity.html">discord_message_activity</a>* _d_copy_message_activity </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__message__activity.html">discord_message_activity</a> *&#160;</td>
+          <td class="paramname"><em>activity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a message activity structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activity</td><td>Message activity to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_message_activity* </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>.</p>
+
+</div>
+</div>
+<a id="ga3ed3c91611077755ad4c673743aae402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ed3c91611077755ad4c673743aae402">&#9670;&nbsp;</a></span>_d_json_to_message_activity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_message_activity </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -133,7 +167,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>.</p>
+<p>Creates a message activity structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>.</p>
 
 </div>
 </div>
@@ -152,6 +195,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destroys the given structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activity</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">Referenced by <a class="el" href="group___message.html#ga872f106303b2b802946a43f9c44a4aa6">discord_destroy_message()</a>.</p>
 

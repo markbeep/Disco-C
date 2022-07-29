@@ -75,12 +75,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure">https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure</a>  <a href="structdiscord__interaction__data__option.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data">https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data</a>  <a href="structdiscord__interaction__data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__interaction.html">discord_interaction</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure">https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure</a>  <a href="structdiscord__interaction.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__interaction__callback.html">discord_interaction_callback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure">https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure</a>  <a href="structdiscord__interaction__callback.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -111,21 +115,37 @@ Enumerations</h2></td></tr>
 <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05eab217b6c02bb0a2992c1efd3b9d5eeb54">DISCORD_CALLBACK_MODAL</a> = 9
 <br />
  }</td></tr>
+<tr class="memdesc:ga44639091014a7389213a89e4711df05e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type">https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type</a>  <a href="group___interaction.html#ga44639091014a7389213a89e4711df05e">More...</a><br /></td></tr>
 <tr class="separator:ga44639091014a7389213a89e4711df05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga1dfd2e835d83e5a534f2a3a4d8634f7d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:ga1dfd2e835d83e5a534f2a3a4d8634f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae080949ca2aaa35014acbd099a51965"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option</a> (cJSON *data)</td></tr>
+<tr class="memdesc:gaae080949ca2aaa35014acbd099a51965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an interaction data option structure from a given JSON.  <a href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">More...</a><br /></td></tr>
+<tr class="separator:gaae080949ca2aaa35014acbd099a51965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf40ca692ad7a959f88f6cf7850b7f9d7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gaf40ca692ad7a959f88f6cf7850b7f9d7">_d_copy_interaction_data_option</a> (struct <a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a> *src)</td></tr>
+<tr class="memdesc:gaf40ca692ad7a959f88f6cf7850b7f9d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies an interaction data option structure.  <a href="group___interaction.html#gaf40ca692ad7a959f88f6cf7850b7f9d7">More...</a><br /></td></tr>
+<tr class="separator:gaf40ca692ad7a959f88f6cf7850b7f9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3df587cf79ace7973baedf5763fa8d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga3df587cf79ace7973baedf5763fa8d42">discord_destroy_interaction_data_option</a> (struct <a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a> *interaction)</td></tr>
+<tr class="memdesc:ga3df587cf79ace7973baedf5763fa8d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___interaction.html#ga3df587cf79ace7973baedf5763fa8d42">More...</a><br /></td></tr>
 <tr class="separator:ga3df587cf79ace7973baedf5763fa8d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa10a9c1bcc7b829b8602835d3755847c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:gaa10a9c1bcc7b829b8602835d3755847c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga138ab0915a2b5ac3280e81ab59553189"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga138ab0915a2b5ac3280e81ab59553189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an interaction data structure from a given JSON.  <a href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">More...</a><br /></td></tr>
+<tr class="separator:ga138ab0915a2b5ac3280e81ab59553189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2cfd01bdffa1cb928763386953618e8f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga2cfd01bdffa1cb928763386953618e8f">_d_copy_interaction_data</a> (struct <a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a> *src)</td></tr>
+<tr class="memdesc:ga2cfd01bdffa1cb928763386953618e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies an interaction data structure.  <a href="group___interaction.html#ga2cfd01bdffa1cb928763386953618e8f">More...</a><br /></td></tr>
+<tr class="separator:ga2cfd01bdffa1cb928763386953618e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74f29677ea349e0547ac44744c01d720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga74f29677ea349e0547ac44744c01d720">discord_destroy_interaction_data</a> (struct <a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a> *interaction)</td></tr>
+<tr class="memdesc:ga74f29677ea349e0547ac44744c01d720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___interaction.html#ga74f29677ea349e0547ac44744c01d720">More...</a><br /></td></tr>
 <tr class="separator:ga74f29677ea349e0547ac44744c01d720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafead489228e7e1926211de7b3ebc556d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:gafead489228e7e1926211de7b3ebc556d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad652e961fe70d1ebe7c89b0783511eef"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction</a> (cJSON *data)</td></tr>
+<tr class="memdesc:gad652e961fe70d1ebe7c89b0783511eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an interaction structure from a given JSON.  <a href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">More...</a><br /></td></tr>
+<tr class="separator:gad652e961fe70d1ebe7c89b0783511eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacebb8b2ef044e4e292570f577d99f66d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__interaction.html">discord_interaction</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#gacebb8b2ef044e4e292570f577d99f66d">_d_copy_interaction</a> (struct <a class="el" href="structdiscord__interaction.html">discord_interaction</a> *src)</td></tr>
+<tr class="memdesc:gacebb8b2ef044e4e292570f577d99f66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies an interaction structure.  <a href="group___interaction.html#gacebb8b2ef044e4e292570f577d99f66d">More...</a><br /></td></tr>
+<tr class="separator:gacebb8b2ef044e4e292570f577d99f66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e4b79e8d6ec03b92d30293f670962f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga3e4b79e8d6ec03b92d30293f670962f4">discord_destroy_interaction</a> (struct <a class="el" href="structdiscord__interaction.html">discord_interaction</a> *interaction)</td></tr>
+<tr class="memdesc:ga3e4b79e8d6ec03b92d30293f670962f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___interaction.html#ga3e4b79e8d6ec03b92d30293f670962f4">More...</a><br /></td></tr>
 <tr class="separator:ga3e4b79e8d6ec03b92d30293f670962f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga07350717f4e66a3f900cd3fa64383cec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interaction.html#ga07350717f4e66a3f900cd3fa64383cec">discord_fill_json_interaction_callback</a> (cJSON *json, struct <a class="el" href="structdiscord__interaction__callback.html">discord_interaction_callback</a> *callback)</td></tr>
 <tr class="separator:ga07350717f4e66a3f900cd3fa64383cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +166,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type">https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type</a> </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga44639091014a7389213a89e4711df05ea53236e55e9d3c921142b079ba3f26d5a"></a>DISCORD_CALLBACK_PONG&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="gga44639091014a7389213a89e4711df05eaab5df0a5340dbce3493a400a0f6e5ee0"></a>DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE&#160;</td><td class="fielddoc"></td></tr>
@@ -199,14 +221,107 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga1dfd2e835d83e5a534f2a3a4d8634f7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1dfd2e835d83e5a534f2a3a4d8634f7d">&#9670;&nbsp;</a></span>discord_create_interaction_data_option_struct_json()</h2>
+<a id="gacebb8b2ef044e4e292570f577d99f66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacebb8b2ef044e4e292570f577d99f66d">&#9670;&nbsp;</a></span>_d_copy_interaction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_interaction_data_option_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__interaction.html">discord_interaction</a>* _d_copy_interaction </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__interaction.html">discord_interaction</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies an interaction structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Interaction to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_interaction* </dd></dl>
+
+<p class="reference">References <a class="el" href="group___interaction.html#ga2cfd01bdffa1cb928763386953618e8f">_d_copy_interaction_data()</a>, <a class="el" href="group___member.html#gacf0d2690a840dbcf0ad0245700677ffb">_d_copy_member()</a>, <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>, <a class="el" href="group___user.html#ga45959070b8e3158fe1acb592faf972fc">_d_copy_user()</a>, <a class="el" href="group___models.html#gac821a5f374017669d350c11b82883b9e">discord_interaction::app_permissions</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___models.html#ga9e9cd523322eddfe92d26bb4b55533b6">discord_interaction::guild_locale</a>, <a class="el" href="group___models.html#ga94c16c3aef8c827081c61c6e94daf946">discord_interaction::locale</a>, <a class="el" href="group___models.html#gae5b48345a0a4df9401ba3f74a2fe80a7">discord_interaction::member</a>, <a class="el" href="group___models.html#ga4fce044c325fa6452aaa1e8dd89b8d8c">discord_interaction::message</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, and <a class="el" href="group___models.html#gabe3d2fff6306f568e39e1b7ee9cdc8ff">discord_interaction::user</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>.</p>
+
+</div>
+</div>
+<a id="ga2cfd01bdffa1cb928763386953618e8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2cfd01bdffa1cb928763386953618e8f">&#9670;&nbsp;</a></span>_d_copy_interaction_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a>* _d_copy_interaction_data </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__interaction__data.html">discord_interaction_data</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies an interaction data structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Interaction data to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_interaction_data* </dd></dl>
+
+<p class="reference">References <a class="el" href="group___component.html#ga8d04ee4a276cb6388925576c9d081ed8">_d_copy_component()</a>, <a class="el" href="group___interaction.html#gaf40ca692ad7a959f88f6cf7850b7f9d7">_d_copy_interaction_data_option()</a>, <a class="el" href="group___models.html#ga925a1c2b7f3d882d023402d3c8a53c51">discord_interaction_data::components</a>, <a class="el" href="group___models.html#ga64397827f4ab14e544b9eda534718053">discord_interaction_data::components_count</a>, <a class="el" href="group___models.html#gad6fc95bd66edbdab4b01f04f96e7cece">discord_interaction_data::custom_id</a>, <a class="el" href="group___models.html#ga306f118a55417b9029d1ef70e4366f5b">discord_interaction_data::name</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="group___models.html#ga4a51aba595424d87dceaac1020cf85b3">discord_interaction_data::options_count</a>, <a class="el" href="group___models.html#gabe5287ec99c9fd7a59d23117dc82acf1">discord_interaction_data::values</a>, and <a class="el" href="group___models.html#ga2d1d239b0aae5c48b4055dafa742d146">discord_interaction_data::values_count</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#gacebb8b2ef044e4e292570f577d99f66d">_d_copy_interaction()</a>.</p>
+
+</div>
+</div>
+<a id="gaf40ca692ad7a959f88f6cf7850b7f9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf40ca692ad7a959f88f6cf7850b7f9d7">&#9670;&nbsp;</a></span>_d_copy_interaction_data_option()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a>* _d_copy_interaction_data_option </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__interaction__data__option.html">discord_interaction_data_option</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies an interaction data option structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Interaction data option to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_interaction_data_option* </dd></dl>
+
+<p class="reference">References <a class="el" href="group___models.html#gae7ec2cc1e33aa6651ea7197f262e35a1">discord_interaction_data_option::name</a>, <a class="el" href="group___models.html#gaa5f879360fa52176ff18875bc22cf1e2">discord_interaction_data_option::options</a>, <a class="el" href="group___models.html#ga25bc83df5aa2e4b00b96815738d48c06">discord_interaction_data_option::options_count</a>, <a class="el" href="group___models.html#ga453f316564d58b57353aa05b6fe04048">discord_interaction_data_option::string_</a>, <a class="el" href="group___models.html#ga32d860e9c6e7f6ecd2c2bbb7d7d1b1dd">discord_interaction_data_option::value</a>, <a class="el" href="group___interaction.html#gga20d4902e57aa9edc7abd91611c0ed49ba35da8b8ef95fd9827e1294f400d01c65">VALUE_STRING</a>, and <a class="el" href="group___models.html#gabad51ed6f06986d140b18f457ac96187">discord_interaction_data_option::value_type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#ga2cfd01bdffa1cb928763386953618e8f">_d_copy_interaction_data()</a>.</p>
+
+</div>
+</div>
+<a id="gad652e961fe70d1ebe7c89b0783511eef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad652e961fe70d1ebe7c89b0783511eef">&#9670;&nbsp;</a></span>_d_json_to_interaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_interaction </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -215,20 +330,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6">COMMAND_OPTION_INTEGER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af">COMMAND_OPTION_NUMBER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb">COMMAND_OPTION_STRING</a>, <a class="el" href="group___models.html#gadee8309d15ef2a1cca95ad3c4ed42ae7">discord_interaction_data_option::double_</a>, <a class="el" href="group___models.html#ga6cd2da1be5ebbe3f54152e2ccd1ed481">discord_interaction_data_option::focused</a>, <a class="el" href="disco_8h.html#acc7d55c27f59407b991e4099b999f158">get_array_from_json()</a>, <a class="el" href="disco_8h.html#a8793f41af7b3cc35217311c6bb439c7c">get_bool_from_json()</a>, <a class="el" href="disco_8h.html#a62ec041efd41d5fbcc1a7102f200809c">get_double_from_string_json()</a>, <a class="el" href="disco_8h.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#ga99a4a7dcc4541a8aca0df7eca7cf1ac2">discord_interaction_data_option::int_</a>, <a class="el" href="group___models.html#gae7ec2cc1e33aa6651ea7197f262e35a1">discord_interaction_data_option::name</a>, <a class="el" href="group___models.html#gaa5f879360fa52176ff18875bc22cf1e2">discord_interaction_data_option::options</a>, <a class="el" href="group___models.html#ga25bc83df5aa2e4b00b96815738d48c06">discord_interaction_data_option::options_count</a>, <a class="el" href="group___models.html#ga453f316564d58b57353aa05b6fe04048">discord_interaction_data_option::string_</a>, <a class="el" href="group___models.html#gaacfc18159eea78c647e233eae2eb102d">discord_interaction_data_option::type</a>, and <a class="el" href="group___models.html#ga32d860e9c6e7f6ecd2c2bbb7d7d1b1dd">discord_interaction_data_option::value</a>.</p>
+<p>Creates an interaction structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>.</p>
+<p class="reference">References <a class="el" href="disco_8h.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json()</a>, <a class="el" href="disco_8h.html#a050b19a699d9f1524f15beb570f3cb92">_d_get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">_d_json_to_member()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>, <a class="el" href="group___models.html#gac821a5f374017669d350c11b82883b9e">discord_interaction::app_permissions</a>, <a class="el" href="group___models.html#gafc6a196f567263632002f0643ce50f14">discord_interaction::application_id</a>, <a class="el" href="group___models.html#gaa095d53507f6ce061c83938ba6e8d8bd">discord_interaction::channel_id</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___models.html#ga5b500a89a711822cc09b0aa71afe0c41">discord_interaction::guild_id</a>, <a class="el" href="group___models.html#ga9e9cd523322eddfe92d26bb4b55533b6">discord_interaction::guild_locale</a>, <a class="el" href="group___models.html#ga6612e5adf0e23203766d49e9e30287a3">discord_interaction::id</a>, <a class="el" href="group___models.html#ga94c16c3aef8c827081c61c6e94daf946">discord_interaction::locale</a>, <a class="el" href="group___models.html#gae5b48345a0a4df9401ba3f74a2fe80a7">discord_interaction::member</a>, <a class="el" href="group___models.html#ga4fce044c325fa6452aaa1e8dd89b8d8c">discord_interaction::message</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, <a class="el" href="group___models.html#ga6ec86b518fde64705f41141eb9d0147e">discord_interaction::type</a>, <a class="el" href="group___models.html#gabe3d2fff6306f568e39e1b7ee9cdc8ff">discord_interaction::user</a>, and <a class="el" href="group___models.html#gaae4c8f8b39ad93af1ce9e3d40ce7402b">discord_interaction::version</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, and <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>.</p>
 
 </div>
 </div>
-<a id="gaa10a9c1bcc7b829b8602835d3755847c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa10a9c1bcc7b829b8602835d3755847c">&#9670;&nbsp;</a></span>discord_create_interaction_data_struct_json()</h2>
+<a id="ga138ab0915a2b5ac3280e81ab59553189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga138ab0915a2b5ac3280e81ab59553189">&#9670;&nbsp;</a></span>_d_json_to_interaction_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_interaction_data_struct_json </td>
+          <td class="memname">void* _d_json_to_interaction_data </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -237,20 +361,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#ga925a1c2b7f3d882d023402d3c8a53c51">discord_interaction_data::components</a>, <a class="el" href="group___models.html#ga64397827f4ab14e544b9eda534718053">discord_interaction_data::components_count</a>, <a class="el" href="group___models.html#gad6fc95bd66edbdab4b01f04f96e7cece">discord_interaction_data::custom_id</a>, <a class="el" href="group___component.html#ga8b4cf15d2bb344c8c16a6be3fe1c822c">discord_create_component_struct_json()</a>, <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>, <a class="el" href="group___component.html#ga420b43ab6dbef093f78e8c10fafd66a2">discord_create_select_option_struct()</a>, <a class="el" href="disco_8h.html#acc7d55c27f59407b991e4099b999f158">get_array_from_json()</a>, <a class="el" href="disco_8h.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json()</a>, <a class="el" href="disco_8h.html#a1b40c934e3e9bc8eef9d8d593e56d66d">get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#ga1727c6bdeca9b6fe43a572fcc81318ba">discord_interaction_data::guild_id</a>, <a class="el" href="group___models.html#ga7637f964fee9f30d69d918fb5624ee3e">discord_interaction_data::id</a>, <a class="el" href="group___models.html#ga306f118a55417b9029d1ef70e4366f5b">discord_interaction_data::name</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="group___models.html#ga4a51aba595424d87dceaac1020cf85b3">discord_interaction_data::options_count</a>, <a class="el" href="group___models.html#ga49db7b5679e0cb27cceb07979fc9277d">discord_interaction_data::target_id</a>, <a class="el" href="group___models.html#ga5fc6d500e32cb9dbc3b67aac653f4bfe">discord_interaction_data::type</a>, <a class="el" href="group___models.html#gabe5287ec99c9fd7a59d23117dc82acf1">discord_interaction_data::values</a>, and <a class="el" href="group___models.html#ga2d1d239b0aae5c48b4055dafa742d146">discord_interaction_data::values_count</a>.</p>
+<p>Creates an interaction data structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__interaction__data.html" title="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interact...">discord_interaction_data</a> struct </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json()</a>.</p>
+<p class="reference">References <a class="el" href="disco_8h.html#a67f5ab74e8b7ca7ba29e5ac571154055">_d_get_array_from_json()</a>, <a class="el" href="disco_8h.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json()</a>, <a class="el" href="disco_8h.html#a050b19a699d9f1524f15beb570f3cb92">_d_get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, <a class="el" href="group___component.html#ga5d727dcc8ed26ffdfde15f20815bb740">_d_json_to_select_option()</a>, <a class="el" href="group___models.html#ga925a1c2b7f3d882d023402d3c8a53c51">discord_interaction_data::components</a>, <a class="el" href="group___models.html#ga64397827f4ab14e544b9eda534718053">discord_interaction_data::components_count</a>, <a class="el" href="group___models.html#gad6fc95bd66edbdab4b01f04f96e7cece">discord_interaction_data::custom_id</a>, <a class="el" href="group___models.html#ga1727c6bdeca9b6fe43a572fcc81318ba">discord_interaction_data::guild_id</a>, <a class="el" href="group___models.html#ga7637f964fee9f30d69d918fb5624ee3e">discord_interaction_data::id</a>, <a class="el" href="group___models.html#ga306f118a55417b9029d1ef70e4366f5b">discord_interaction_data::name</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="group___models.html#ga4a51aba595424d87dceaac1020cf85b3">discord_interaction_data::options_count</a>, <a class="el" href="group___models.html#ga49db7b5679e0cb27cceb07979fc9277d">discord_interaction_data::target_id</a>, <a class="el" href="group___models.html#ga5fc6d500e32cb9dbc3b67aac653f4bfe">discord_interaction_data::type</a>, <a class="el" href="group___models.html#gabe5287ec99c9fd7a59d23117dc82acf1">discord_interaction_data::values</a>, and <a class="el" href="group___models.html#ga2d1d239b0aae5c48b4055dafa742d146">discord_interaction_data::values_count</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>.</p>
 
 </div>
 </div>
-<a id="gafead489228e7e1926211de7b3ebc556d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafead489228e7e1926211de7b3ebc556d">&#9670;&nbsp;</a></span>discord_create_interaction_struct_json()</h2>
+<a id="gaae080949ca2aaa35014acbd099a51965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaae080949ca2aaa35014acbd099a51965">&#9670;&nbsp;</a></span>_d_json_to_interaction_data_option()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_interaction_struct_json </td>
+          <td class="memname">void* _d_json_to_interaction_data_option </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -259,9 +392,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#gac821a5f374017669d350c11b82883b9e">discord_interaction::app_permissions</a>, <a class="el" href="group___models.html#gafc6a196f567263632002f0643ce50f14">discord_interaction::application_id</a>, <a class="el" href="group___models.html#gaa095d53507f6ce061c83938ba6e8d8bd">discord_interaction::channel_id</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>, <a class="el" href="group___member.html#ga7f5fcd55053dd6e6baa0f8c0013b3110">discord_create_member_struct_json()</a>, <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>, <a class="el" href="disco_8h.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json()</a>, <a class="el" href="disco_8h.html#a1b40c934e3e9bc8eef9d8d593e56d66d">get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#ga5b500a89a711822cc09b0aa71afe0c41">discord_interaction::guild_id</a>, <a class="el" href="group___models.html#ga9e9cd523322eddfe92d26bb4b55533b6">discord_interaction::guild_locale</a>, <a class="el" href="group___models.html#ga6612e5adf0e23203766d49e9e30287a3">discord_interaction::id</a>, <a class="el" href="group___models.html#ga94c16c3aef8c827081c61c6e94daf946">discord_interaction::locale</a>, <a class="el" href="group___models.html#gae5b48345a0a4df9401ba3f74a2fe80a7">discord_interaction::member</a>, <a class="el" href="group___models.html#ga4fce044c325fa6452aaa1e8dd89b8d8c">discord_interaction::message</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, <a class="el" href="group___models.html#ga6ec86b518fde64705f41141eb9d0147e">discord_interaction::type</a>, <a class="el" href="group___models.html#gabe3d2fff6306f568e39e1b7ee9cdc8ff">discord_interaction::user</a>, and <a class="el" href="group___models.html#gaae4c8f8b39ad93af1ce9e3d40ce7402b">discord_interaction::version</a>.</p>
+<p>Creates an interaction data option structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__interaction__data__option.html" title="https://discord.com/developers/docs/interactions/application-commands#application-command-object-appl...">discord_interaction_data_option</a> struct </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, and <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>.</p>
+<p class="reference">References <a class="el" href="disco_8h.html#a67f5ab74e8b7ca7ba29e5ac571154055">_d_get_array_from_json()</a>, <a class="el" href="disco_8h.html#a7c333fc4538b7a1ce74307b1666549fc">_d_get_bool_from_json()</a>, <a class="el" href="disco_8h.html#aaa2737c312d7a59cf20a59fad8358616">_d_get_double_from_string_json()</a>, <a class="el" href="disco_8h.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6">COMMAND_OPTION_INTEGER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af">COMMAND_OPTION_NUMBER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb">COMMAND_OPTION_STRING</a>, <a class="el" href="group___models.html#gadee8309d15ef2a1cca95ad3c4ed42ae7">discord_interaction_data_option::double_</a>, <a class="el" href="group___models.html#ga6cd2da1be5ebbe3f54152e2ccd1ed481">discord_interaction_data_option::focused</a>, <a class="el" href="group___models.html#ga99a4a7dcc4541a8aca0df7eca7cf1ac2">discord_interaction_data_option::int_</a>, <a class="el" href="group___models.html#gae7ec2cc1e33aa6651ea7197f262e35a1">discord_interaction_data_option::name</a>, <a class="el" href="group___models.html#gaa5f879360fa52176ff18875bc22cf1e2">discord_interaction_data_option::options</a>, <a class="el" href="group___models.html#ga25bc83df5aa2e4b00b96815738d48c06">discord_interaction_data_option::options_count</a>, <a class="el" href="group___models.html#ga453f316564d58b57353aa05b6fe04048">discord_interaction_data_option::string_</a>, <a class="el" href="group___models.html#gaacfc18159eea78c647e233eae2eb102d">discord_interaction_data_option::type</a>, and <a class="el" href="group___models.html#ga32d860e9c6e7f6ecd2c2bbb7d7d1b1dd">discord_interaction_data_option::value</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>.</p>
 
 </div>
 </div>
@@ -280,6 +422,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destroys the given structure and frees the pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interaction</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">References <a class="el" href="group___models.html#gac821a5f374017669d350c11b82883b9e">discord_interaction::app_permissions</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___interaction.html#ga74f29677ea349e0547ac44744c01d720">discord_destroy_interaction_data()</a>, <a class="el" href="group___member.html#ga1da2c53cf3fd780d80a9fbadb27d2677">discord_destroy_member()</a>, <a class="el" href="group___message.html#ga872f106303b2b802946a43f9c44a4aa6">discord_destroy_message()</a>, <a class="el" href="group___user.html#ga7288500a06048b7b011178b709aa0925">discord_destroy_user()</a>, <a class="el" href="group___models.html#ga9e9cd523322eddfe92d26bb4b55533b6">discord_interaction::guild_locale</a>, <a class="el" href="group___models.html#ga94c16c3aef8c827081c61c6e94daf946">discord_interaction::locale</a>, <a class="el" href="group___models.html#gae5b48345a0a4df9401ba3f74a2fe80a7">discord_interaction::member</a>, <a class="el" href="group___models.html#ga4fce044c325fa6452aaa1e8dd89b8d8c">discord_interaction::message</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, and <a class="el" href="group___models.html#gabe3d2fff6306f568e39e1b7ee9cdc8ff">discord_interaction::user</a>.</p>
 
@@ -303,6 +453,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Destroys the given structure and frees the pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interaction</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="reference">References <a class="el" href="group___models.html#ga925a1c2b7f3d882d023402d3c8a53c51">discord_interaction_data::components</a>, <a class="el" href="group___models.html#ga64397827f4ab14e544b9eda534718053">discord_interaction_data::components_count</a>, <a class="el" href="group___models.html#gad6fc95bd66edbdab4b01f04f96e7cece">discord_interaction_data::custom_id</a>, <a class="el" href="group___component.html#gac9715399e2d9c1e7b9be03a94912bc06">discord_destroy_component()</a>, <a class="el" href="group___interaction.html#ga3df587cf79ace7973baedf5763fa8d42">discord_destroy_interaction_data_option()</a>, <a class="el" href="group___models.html#ga306f118a55417b9029d1ef70e4366f5b">discord_interaction_data::name</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="group___models.html#ga4a51aba595424d87dceaac1020cf85b3">discord_interaction_data::options_count</a>, <a class="el" href="group___models.html#gabe5287ec99c9fd7a59d23117dc82acf1">discord_interaction_data::values</a>, and <a class="el" href="group___models.html#ga2d1d239b0aae5c48b4055dafa742d146">discord_interaction_data::values_count</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="group___interaction.html#ga3e4b79e8d6ec03b92d30293f670962f4">discord_destroy_interaction()</a>.</p>
@@ -324,6 +482,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destroys the given structure and frees the pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interaction</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">References <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb">COMMAND_OPTION_STRING</a>, <a class="el" href="group___models.html#gae7ec2cc1e33aa6651ea7197f262e35a1">discord_interaction_data_option::name</a>, <a class="el" href="group___models.html#gaa5f879360fa52176ff18875bc22cf1e2">discord_interaction_data_option::options</a>, <a class="el" href="group___models.html#ga25bc83df5aa2e4b00b96815738d48c06">discord_interaction_data_option::options_count</a>, <a class="el" href="group___models.html#ga453f316564d58b57353aa05b6fe04048">discord_interaction_data_option::string_</a>, <a class="el" href="group___models.html#gaacfc18159eea78c647e233eae2eb102d">discord_interaction_data_option::type</a>, and <a class="el" href="group___models.html#ga32d860e9c6e7f6ecd2c2bbb7d7d1b1dd">discord_interaction_data_option::value</a>.</p>
 
@@ -391,7 +557,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#gacc1efe63332dfa8afabb96d58b4ca5e3">discord_create_message::allowed_mentions</a>, <a class="el" href="group___models.html#ga092baa8d27b615a8cf8fcac53d183b9a">discord_create_message::attachments</a>, <a class="el" href="group___models.html#gabea9fd154f304746b0c9dcaa8c4618b3">discord_create_message::attachments_count</a>, <a class="el" href="group___models.html#gabfdcd0f21adf217a63ce0434b234931c">discord_interaction_callback::autocomplete</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6">COMMAND_OPTION_INTEGER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af">COMMAND_OPTION_NUMBER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb">COMMAND_OPTION_STRING</a>, <a class="el" href="group___models.html#ga2788b8b256f77554d4e27dd6eb527410">discord_create_message::components</a>, <a class="el" href="group___models.html#ga9040f196a169898e7e5961a175c892cb">discord_create_message::components_count</a>, <a class="el" href="disco__logging_8h.html#a653b70f1baded882e334b1e1fd1e4be4">d_log_debug</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___models.html#ga0a800bed77967623fc29e5d7b63aeb23">discord_interaction_callback::data</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ead88add4b6f0d2128a662aee02f9d48b9">DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05eaab5df0a5340dbce3493a400a0f6e5ee0">DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea1e5c440f5945f2bfea12668cea0eb4fb">DISCORD_CALLBACK_DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea7aa1ef816ecdf582c125ba5740ebc743">DISCORD_CALLBACK_DEFERRED_UPDATE_MESSAGE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05eab217b6c02bb0a2992c1efd3b9d5eeb54">DISCORD_CALLBACK_MODAL</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea53236e55e9d3c921142b079ba3f26d5a">DISCORD_CALLBACK_PONG</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea7268b907babc8755b130cbf0b2d6a01c">DISCORD_CALLBACK_UPDATE_MESSAGE</a>, <a class="el" href="group___component.html#ga0d6ca689a9c6d6e142043f82d3ba7149">discord_fill_json_with_component()</a>, <a class="el" href="group___command.html#ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3">discord_fill_json_with_locales()</a>, <a class="el" href="group___message.html#ga75bcd95cf036bba85d07daa7528600bb">discord_fill_json_with_message()</a>, <a class="el" href="group___models.html#ga43312b3ca8a1e4a75938feaecdad43f4">discord_create_message::embeds</a>, <a class="el" href="group___models.html#ga11730ccfa7ffa96a6f0362909a6bb74c">discord_create_message::embeds_count</a>, <a class="el" href="group___models.html#gab41024ce4ed3d4a1f6d3102140e36b2f">discord_create_message::flags</a>, <a class="el" href="group___models.html#ga6612e5adf0e23203766d49e9e30287a3">discord_interaction::id</a>, <a class="el" href="group___models.html#ga1af98a800792b8a0c8979ff155e8b26e">discord_interaction_callback::message</a>, <a class="el" href="group___models.html#gaea9251253db24dd822addb48c6151445">discord_interaction_callback::modal</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, <a class="el" href="group___models.html#gaa50da8a3cc92900b84f7b5ca69b44350">discord_create_message::tts</a>, <a class="el" href="group___models.html#gaacfc18159eea78c647e233eae2eb102d">discord_interaction_data_option::type</a>, <a class="el" href="group___models.html#ga081d4fd5fef99b2355095ccc74023c3b">discord_interaction_callback::type</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
+<p class="reference">References <a class="el" href="group___component.html#ga025e73bd47f883b0fc4da08c741e9467">_d_component_to_json()</a>, <a class="el" href="group___message.html#gaee10281ca05e31be33f395e6328f50df">_d_create_message_to_json()</a>, <a class="el" href="group___models.html#gacc1efe63332dfa8afabb96d58b4ca5e3">discord_create_message::allowed_mentions</a>, <a class="el" href="group___models.html#ga092baa8d27b615a8cf8fcac53d183b9a">discord_create_message::attachments</a>, <a class="el" href="group___models.html#gabea9fd154f304746b0c9dcaa8c4618b3">discord_create_message::attachments_count</a>, <a class="el" href="group___models.html#gabfdcd0f21adf217a63ce0434b234931c">discord_interaction_callback::autocomplete</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5fd0f587f08dfd2589ef73f5761933a6">COMMAND_OPTION_INTEGER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a5eaf898a4fbc9832678a8e30f80b65af">COMMAND_OPTION_NUMBER</a>, <a class="el" href="group___command.html#gga86fea36705d944ecef474828dda5d689a23b996007709dfd93cacedce313e67fb">COMMAND_OPTION_STRING</a>, <a class="el" href="group___models.html#ga2788b8b256f77554d4e27dd6eb527410">discord_create_message::components</a>, <a class="el" href="group___models.html#ga9040f196a169898e7e5961a175c892cb">discord_create_message::components_count</a>, <a class="el" href="disco__logging_8h.html#a653b70f1baded882e334b1e1fd1e4be4">d_log_debug</a>, <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>, <a class="el" href="group___models.html#ga0a800bed77967623fc29e5d7b63aeb23">discord_interaction_callback::data</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ead88add4b6f0d2128a662aee02f9d48b9">DISCORD_CALLBACK_APPLICATION_COMMAND_AUTOCOMPLETE_RESULT</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05eaab5df0a5340dbce3493a400a0f6e5ee0">DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea1e5c440f5945f2bfea12668cea0eb4fb">DISCORD_CALLBACK_DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea7aa1ef816ecdf582c125ba5740ebc743">DISCORD_CALLBACK_DEFERRED_UPDATE_MESSAGE</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05eab217b6c02bb0a2992c1efd3b9d5eeb54">DISCORD_CALLBACK_MODAL</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea53236e55e9d3c921142b079ba3f26d5a">DISCORD_CALLBACK_PONG</a>, <a class="el" href="group___interaction.html#gga44639091014a7389213a89e4711df05ea7268b907babc8755b130cbf0b2d6a01c">DISCORD_CALLBACK_UPDATE_MESSAGE</a>, <a class="el" href="group___command.html#ga1c5c9cea7bdfb0b9cfcd63cdbeddf1a3">discord_fill_json_with_locales()</a>, <a class="el" href="group___models.html#ga43312b3ca8a1e4a75938feaecdad43f4">discord_create_message::embeds</a>, <a class="el" href="group___models.html#ga11730ccfa7ffa96a6f0362909a6bb74c">discord_create_message::embeds_count</a>, <a class="el" href="group___models.html#gab41024ce4ed3d4a1f6d3102140e36b2f">discord_create_message::flags</a>, <a class="el" href="group___models.html#ga6612e5adf0e23203766d49e9e30287a3">discord_interaction::id</a>, <a class="el" href="group___models.html#ga1af98a800792b8a0c8979ff155e8b26e">discord_interaction_callback::message</a>, <a class="el" href="group___models.html#gaea9251253db24dd822addb48c6151445">discord_interaction_callback::modal</a>, <a class="el" href="group___models.html#ga16c83bcf14bdb0408634e0ab2c77294a">discord_interaction_data::options</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="group___models.html#gac1e97e032eec047868dce94121a7d234">discord_interaction::token</a>, <a class="el" href="group___models.html#gaa50da8a3cc92900b84f7b5ca69b44350">discord_create_message::tts</a>, <a class="el" href="group___models.html#gaacfc18159eea78c647e233eae2eb102d">discord_interaction_data_option::type</a>, <a class="el" href="group___models.html#ga081d4fd5fef99b2355095ccc74023c3b">discord_interaction_callback::type</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
 
 </div>
 </div>

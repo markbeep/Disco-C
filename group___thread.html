@@ -74,32 +74,102 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#thread-metadata-object">https://discord.com/developers/docs/resources/channel#thread-metadata-object</a>  <a href="structdiscord__thread__metadata.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__thread__member.html">discord_thread_member</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#thread-member-object">https://discord.com/developers/docs/resources/channel#thread-member-object</a>  <a href="structdiscord__thread__member.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga77af21bdfc6e65cb76ab158d87c781e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga77af21bdfc6e65cb76ab158d87c781e5">discord_create_thread_metadata_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:ga77af21bdfc6e65cb76ab158d87c781e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6dd9aad7345218e9f1d1aa0562a82d36"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga6dd9aad7345218e9f1d1aa0562a82d36">_d_json_to_thread_metadata</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga6dd9aad7345218e9f1d1aa0562a82d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a thread metadata structure from a given JSON.  <a href="group___thread.html#ga6dd9aad7345218e9f1d1aa0562a82d36">More...</a><br /></td></tr>
+<tr class="separator:ga6dd9aad7345218e9f1d1aa0562a82d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25805be441d790ea7fe41b6dc64c9c2f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga25805be441d790ea7fe41b6dc64c9c2f">_d_copy_thread_metadata</a> (struct <a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a> *src)</td></tr>
+<tr class="memdesc:ga25805be441d790ea7fe41b6dc64c9c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a thread metadata structure.  <a href="group___thread.html#ga25805be441d790ea7fe41b6dc64c9c2f">More...</a><br /></td></tr>
+<tr class="separator:ga25805be441d790ea7fe41b6dc64c9c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf4c7b57cebfdaa5e5cb29ea1660da3ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#gaf4c7b57cebfdaa5e5cb29ea1660da3ec">discord_destroy_thread_metadata</a> (struct <a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a> *thread)</td></tr>
+<tr class="memdesc:gaf4c7b57cebfdaa5e5cb29ea1660da3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___thread.html#gaf4c7b57cebfdaa5e5cb29ea1660da3ec">More...</a><br /></td></tr>
 <tr class="separator:gaf4c7b57cebfdaa5e5cb29ea1660da3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga28cae7610f45190063b16c44d0a9db5e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga28cae7610f45190063b16c44d0a9db5e">discord_create_thread_member_struct_json</a> (cJSON *data)</td></tr>
-<tr class="separator:ga28cae7610f45190063b16c44d0a9db5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga149bee29db6253bfc36143fbc934959b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga149bee29db6253bfc36143fbc934959b">_d_json_to_thread_member</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga149bee29db6253bfc36143fbc934959b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a thread member structure from a given JSON.  <a href="group___thread.html#ga149bee29db6253bfc36143fbc934959b">More...</a><br /></td></tr>
+<tr class="separator:ga149bee29db6253bfc36143fbc934959b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4a1ecbe95d4e8ad3dc7e79528113cd3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__thread__member.html">discord_thread_member</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#gac4a1ecbe95d4e8ad3dc7e79528113cd3">_d_copy_thread_member</a> (struct <a class="el" href="structdiscord__thread__member.html">discord_thread_member</a> *src)</td></tr>
+<tr class="memdesc:gac4a1ecbe95d4e8ad3dc7e79528113cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a thread member structure.  <a href="group___thread.html#gac4a1ecbe95d4e8ad3dc7e79528113cd3">More...</a><br /></td></tr>
+<tr class="separator:gac4a1ecbe95d4e8ad3dc7e79528113cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae7444e262b446063d92b9756e2acae9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#gae7444e262b446063d92b9756e2acae9c">discord_destroy_thread_member</a> (struct <a class="el" href="structdiscord__thread__member.html">discord_thread_member</a> *member)</td></tr>
+<tr class="memdesc:gae7444e262b446063d92b9756e2acae9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___thread.html#gae7444e262b446063d92b9756e2acae9c">More...</a><br /></td></tr>
 <tr class="separator:gae7444e262b446063d92b9756e2acae9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Thread functions and structures </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga28cae7610f45190063b16c44d0a9db5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga28cae7610f45190063b16c44d0a9db5e">&#9670;&nbsp;</a></span>discord_create_thread_member_struct_json()</h2>
+<a id="gac4a1ecbe95d4e8ad3dc7e79528113cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac4a1ecbe95d4e8ad3dc7e79528113cd3">&#9670;&nbsp;</a></span>_d_copy_thread_member()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_thread_member_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__thread__member.html">discord_thread_member</a>* _d_copy_thread_member </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__thread__member.html">discord_thread_member</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a thread member structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Thread member to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_thread_member* </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">_d_copy_channel()</a>.</p>
+
+</div>
+</div>
+<a id="ga25805be441d790ea7fe41b6dc64c9c2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga25805be441d790ea7fe41b6dc64c9c2f">&#9670;&nbsp;</a></span>_d_copy_thread_metadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a>* _d_copy_thread_metadata </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__thread__metadata.html">discord_thread_metadata</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a thread metadata structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Thread metadata to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_thread_metadata* </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">_d_copy_channel()</a>.</p>
+
+</div>
+</div>
+<a id="ga149bee29db6253bfc36143fbc934959b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga149bee29db6253bfc36143fbc934959b">&#9670;&nbsp;</a></span>_d_json_to_thread_member()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_thread_member </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -108,18 +178,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>.</p>
+<p>Creates a thread member structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__thread__member.html" title="https://discord.com/developers/docs/resources/channel#thread-member-object">discord_thread_member</a> struct </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>.</p>
 
 </div>
 </div>
-<a id="ga77af21bdfc6e65cb76ab158d87c781e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga77af21bdfc6e65cb76ab158d87c781e5">&#9670;&nbsp;</a></span>discord_create_thread_metadata_struct_json()</h2>
+<a id="ga6dd9aad7345218e9f1d1aa0562a82d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6dd9aad7345218e9f1d1aa0562a82d36">&#9670;&nbsp;</a></span>_d_json_to_thread_metadata()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_thread_metadata_struct_json </td>
+          <td class="memname">void* _d_json_to_thread_metadata </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -128,7 +207,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>.</p>
+<p>Creates a thread metadata structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__thread__metadata.html" title="https://discord.com/developers/docs/resources/channel#thread-metadata-object">discord_thread_metadata</a> struct </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>.</p>
 
 </div>
 </div>
@@ -148,7 +236,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#ga3365f145513b3f9b938d48e7d0487e7b">discord_message::member</a>.</p>
+<p>Destroys the given structure and frees the pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">member</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -168,7 +262,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#ga0cf481b0e351625aaf1105b8110525a6">discord_message::thread</a>.</p>
+<p>Destroys the given structure and frees the pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">thread</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

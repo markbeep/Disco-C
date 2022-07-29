@@ -88,30 +88,30 @@ Functions</h2></td></tr>
 <tr class="memitem:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">discord_start_bot</a> (<a class="el" href="group___client.html#gaf84e259f898478bd152e30311a2e177d">discord_event_callbacks_t</a> *callbacks, const char *token, struct <a class="el" href="structdiscord__config.html">discord_config</a> *config)</td></tr>
 <tr class="memdesc:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">High level abstraction which starts the bot.  <a href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">More...</a><br /></td></tr>
 <tr class="separator:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d048182694329d15b4534169becf944"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a3d048182694329d15b4534169becf944">get_string_from_json</a> (cJSON *data, const char *name)</td></tr>
-<tr class="separator:a3d048182694329d15b4534169becf944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8793f41af7b3cc35217311c6bb439c7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a8793f41af7b3cc35217311c6bb439c7c">get_bool_from_json</a> (cJSON *data, const char *name, int default_)</td></tr>
-<tr class="memdesc:a8793f41af7b3cc35217311c6bb439c7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a bool from json object.  <a href="disco_8c.html#a8793f41af7b3cc35217311c6bb439c7c">More...</a><br /></td></tr>
-<tr class="separator:a8793f41af7b3cc35217311c6bb439c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32b66596edf0d38a4be3bb491a5f60f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json</a> (cJSON *data, const char *name, int default_)</td></tr>
-<tr class="memdesc:a32b66596edf0d38a4be3bb491a5f60f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an int from json object.  <a href="disco_8c.html#a32b66596edf0d38a4be3bb491a5f60f3">More...</a><br /></td></tr>
-<tr class="separator:a32b66596edf0d38a4be3bb491a5f60f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc7d55c27f59407b991e4099b999f158"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#acc7d55c27f59407b991e4099b999f158">get_array_from_json</a> (cJSON *data, const char *name, void ***array, size_t s, <a class="el" href="disco_8h.html#a8a25f93386668617d0992c9c6cd7a5e9">discord_struct_fn</a> func)</td></tr>
-<tr class="separator:acc7d55c27f59407b991e4099b999f158"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b40c934e3e9bc8eef9d8d593e56d66d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a1b40c934e3e9bc8eef9d8d593e56d66d">get_long_from_string_json</a> (cJSON *data, const char *name, uint64_t default_)</td></tr>
-<tr class="separator:a1b40c934e3e9bc8eef9d8d593e56d66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62ec041efd41d5fbcc1a7102f200809c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a62ec041efd41d5fbcc1a7102f200809c">get_double_from_string_json</a> (cJSON *data, const char *name, double default_)</td></tr>
-<tr class="separator:a62ec041efd41d5fbcc1a7102f200809c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895229e55d460a52ae59619c5eb3e6a7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json</a> (cJSON *data, const char *name)</td></tr>
+<tr class="separator:a895229e55d460a52ae59619c5eb3e6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c333fc4538b7a1ce74307b1666549fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a7c333fc4538b7a1ce74307b1666549fc">_d_get_bool_from_json</a> (cJSON *data, const char *name, int default_)</td></tr>
+<tr class="memdesc:a7c333fc4538b7a1ce74307b1666549fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a bool from json object.  <a href="disco_8c.html#a7c333fc4538b7a1ce74307b1666549fc">More...</a><br /></td></tr>
+<tr class="separator:a7c333fc4538b7a1ce74307b1666549fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf31b2d9c9f01bd4e41628bee91d6e13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json</a> (cJSON *data, const char *name, int default_)</td></tr>
+<tr class="memdesc:adf31b2d9c9f01bd4e41628bee91d6e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an int from json object.  <a href="disco_8c.html#adf31b2d9c9f01bd4e41628bee91d6e13">More...</a><br /></td></tr>
+<tr class="separator:adf31b2d9c9f01bd4e41628bee91d6e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f5ab74e8b7ca7ba29e5ac571154055"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a67f5ab74e8b7ca7ba29e5ac571154055">_d_get_array_from_json</a> (cJSON *data, const char *name, void ***array, size_t s, <a class="el" href="disco_8h.html#a8a25f93386668617d0992c9c6cd7a5e9">discord_struct_fn</a> func)</td></tr>
+<tr class="separator:a67f5ab74e8b7ca7ba29e5ac571154055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a050b19a699d9f1524f15beb570f3cb92"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a050b19a699d9f1524f15beb570f3cb92">_d_get_long_from_string_json</a> (cJSON *data, const char *name, uint64_t default_)</td></tr>
+<tr class="separator:a050b19a699d9f1524f15beb570f3cb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa2737c312d7a59cf20a59fad8358616"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#aaa2737c312d7a59cf20a59fad8358616">_d_get_double_from_string_json</a> (cJSON *data, const char *name, double default_)</td></tr>
+<tr class="separator:aaa2737c312d7a59cf20a59fad8358616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="acc7d55c27f59407b991e4099b999f158"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc7d55c27f59407b991e4099b999f158">&#9670;&nbsp;</a></span>get_array_from_json()</h2>
+<a id="a67f5ab74e8b7ca7ba29e5ac571154055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67f5ab74e8b7ca7ba29e5ac571154055">&#9670;&nbsp;</a></span>_d_get_array_from_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int get_array_from_json </td>
+          <td class="memname">int _d_get_array_from_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -148,18 +148,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>, <a class="el" href="group___component.html#ga8b4cf15d2bb344c8c16a6be3fe1c822c">discord_create_component_struct_json()</a>, <a class="el" href="group___embed.html#gaf6d013b6d1b055bd194e80c8a5fa854f">discord_create_embed_struct_json()</a>, <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>, <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>, and <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___embed.html#ga426932458406fab7ee32d4145ef3da37">_d_json_to_embed()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, and <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>.</p>
 
 </div>
 </div>
-<a id="a8793f41af7b3cc35217311c6bb439c7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8793f41af7b3cc35217311c6bb439c7c">&#9670;&nbsp;</a></span>get_bool_from_json()</h2>
+<a id="a7c333fc4538b7a1ce74307b1666549fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c333fc4538b7a1ce74307b1666549fc">&#9670;&nbsp;</a></span>_d_get_bool_from_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool get_bool_from_json </td>
+          <td class="memname">bool _d_get_bool_from_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -195,18 +195,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga3e77f9ca25d607fe70c20835bd1d514d">discord_create_attachment_struct_json()</a>, <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>, <a class="el" href="group___component.html#ga8b4cf15d2bb344c8c16a6be3fe1c822c">discord_create_component_struct_json()</a>, <a class="el" href="group___embed.html#gaa9d5b560bb3a5fe4254fb438ed5faab8">discord_create_embed_field_struct_json()</a>, <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>, <a class="el" href="group___member.html#ga7f5fcd55053dd6e6baa0f8c0013b3110">discord_create_member_struct_json()</a>, <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, <a class="el" href="group___component.html#ga420b43ab6dbef093f78e8c10fafd66a2">discord_create_select_option_struct()</a>, <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>, and <a class="el" href="test__discord_8c.html#ab6e24e0276651581fbc2889a37282925">test_message_creation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga01aa2aa66a4024ba132e9b4b74e3d814">_d_json_to_attachment()</a>, <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___embed.html#ga8fa28cbb768f7d6f4eb17730070bed66">_d_json_to_embed_field()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, <a class="el" href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">_d_json_to_member()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___component.html#ga5d727dcc8ed26ffdfde15f20815bb740">_d_json_to_select_option()</a>, <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>, and <a class="el" href="test__discord_8c.html#ab6e24e0276651581fbc2889a37282925">test_message_creation()</a>.</p>
 
 </div>
 </div>
-<a id="a62ec041efd41d5fbcc1a7102f200809c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62ec041efd41d5fbcc1a7102f200809c">&#9670;&nbsp;</a></span>get_double_from_string_json()</h2>
+<a id="aaa2737c312d7a59cf20a59fad8358616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa2737c312d7a59cf20a59fad8358616">&#9670;&nbsp;</a></span>_d_get_double_from_string_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double get_double_from_string_json </td>
+          <td class="memname">double _d_get_double_from_string_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -231,18 +231,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>.</p>
 
 </div>
 </div>
-<a id="a32b66596edf0d38a4be3bb491a5f60f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32b66596edf0d38a4be3bb491a5f60f3">&#9670;&nbsp;</a></span>get_int_from_json()</h2>
+<a id="adf31b2d9c9f01bd4e41628bee91d6e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf31b2d9c9f01bd4e41628bee91d6e13">&#9670;&nbsp;</a></span>_d_get_int_from_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int get_int_from_json </td>
+          <td class="memname">int _d_get_int_from_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -278,18 +278,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga3e77f9ca25d607fe70c20835bd1d514d">discord_create_attachment_struct_json()</a>, <a class="el" href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">discord_create_channel_mention_struct_json()</a>, <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>, <a class="el" href="group___component.html#ga8b4cf15d2bb344c8c16a6be3fe1c822c">discord_create_component_struct_json()</a>, <a class="el" href="group___embed.html#ga0a83a844e966aea951bdc2975378bbcc">discord_create_embed_media_struct_json()</a>, <a class="el" href="group___embed.html#gaf6d013b6d1b055bd194e80c8a5fa854f">discord_create_embed_struct_json()</a>, <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>, <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>, <a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json()</a>, <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, and <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga01aa2aa66a4024ba132e9b4b74e3d814">_d_json_to_attachment()</a>, <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___embed.html#ga426932458406fab7ee32d4145ef3da37">_d_json_to_embed()</a>, <a class="el" href="group___embed.html#ga9d33b92911c32325744e082334216a73">_d_json_to_embed_media()</a>, <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, and <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>.</p>
 
 </div>
 </div>
-<a id="a1b40c934e3e9bc8eef9d8d593e56d66d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b40c934e3e9bc8eef9d8d593e56d66d">&#9670;&nbsp;</a></span>get_long_from_string_json()</h2>
+<a id="a050b19a699d9f1524f15beb570f3cb92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a050b19a699d9f1524f15beb570f3cb92">&#9670;&nbsp;</a></span>_d_get_long_from_string_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t get_long_from_string_json </td>
+          <td class="memname">uint64_t _d_get_long_from_string_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -314,18 +314,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga3e77f9ca25d607fe70c20835bd1d514d">discord_create_attachment_struct_json()</a>, <a class="el" href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">discord_create_channel_mention_struct_json()</a>, <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>, <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>, <a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json()</a>, <a class="el" href="group___message.html#ga163a4fb471139fc2881884f802ad8738">discord_create_message_reference_struct_json()</a>, <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, and <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga01aa2aa66a4024ba132e9b4b74e3d814">_d_json_to_attachment()</a>, <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention()</a>, <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___message.html#gacfb3e29043dfb853a113483a173604cf">_d_json_to_message_reference()</a>, and <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>.</p>
 
 </div>
 </div>
-<a id="a3d048182694329d15b4534169becf944"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d048182694329d15b4534169becf944">&#9670;&nbsp;</a></span>get_string_from_json()</h2>
+<a id="a895229e55d460a52ae59619c5eb3e6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895229e55d460a52ae59619c5eb3e6a7">&#9670;&nbsp;</a></span>_d_get_string_from_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* get_string_from_json </td>
+          <td class="memname">char* _d_get_string_from_json </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -344,7 +344,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga3e77f9ca25d607fe70c20835bd1d514d">discord_create_attachment_struct_json()</a>, <a class="el" href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">discord_create_channel_mention_struct_json()</a>, <a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json()</a>, <a class="el" href="group___component.html#ga8b4cf15d2bb344c8c16a6be3fe1c822c">discord_create_component_struct_json()</a>, <a class="el" href="group___embed.html#ga98de65e7fece0deb145801f8391e8d8a">discord_create_embed_author_struct_json()</a>, <a class="el" href="group___embed.html#gaa9d5b560bb3a5fe4254fb438ed5faab8">discord_create_embed_field_struct_json()</a>, <a class="el" href="group___embed.html#ga781dc57dcbda3ec8fd9f9a79d6aaa099">discord_create_embed_footer_struct_json()</a>, <a class="el" href="group___embed.html#ga0a83a844e966aea951bdc2975378bbcc">discord_create_embed_media_struct_json()</a>, <a class="el" href="group___embed.html#ga32b0c043f08927ae1d0745ec9a86f7b7">discord_create_embed_provider_struct_json()</a>, <a class="el" href="group___embed.html#gaf6d013b6d1b055bd194e80c8a5fa854f">discord_create_embed_struct_json()</a>, <a class="el" href="group___interaction.html#ga1dfd2e835d83e5a534f2a3a4d8634f7d">discord_create_interaction_data_option_struct_json()</a>, <a class="el" href="group___interaction.html#gaa10a9c1bcc7b829b8602835d3755847c">discord_create_interaction_data_struct_json()</a>, <a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json()</a>, <a class="el" href="group___member.html#ga7f5fcd55053dd6e6baa0f8c0013b3110">discord_create_member_struct_json()</a>, <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>, <a class="el" href="group___component.html#ga420b43ab6dbef093f78e8c10fafd66a2">discord_create_select_option_struct()</a>, and <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___attachment.html#ga01aa2aa66a4024ba132e9b4b74e3d814">_d_json_to_attachment()</a>, <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___embed.html#ga426932458406fab7ee32d4145ef3da37">_d_json_to_embed()</a>, <a class="el" href="group___embed.html#gac912a1a53365c3b9efed1a2ce8f83628">_d_json_to_embed_author()</a>, <a class="el" href="group___embed.html#ga8fa28cbb768f7d6f4eb17730070bed66">_d_json_to_embed_field()</a>, <a class="el" href="group___embed.html#gaa5fdb97ed914d2ae8d239090985ccce0">_d_json_to_embed_footer()</a>, <a class="el" href="group___embed.html#ga9d33b92911c32325744e082334216a73">_d_json_to_embed_media()</a>, <a class="el" href="group___embed.html#ga3191619833c028c804afe2b80394a308">_d_json_to_embed_provider()</a>, <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, <a class="el" href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">_d_json_to_member()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___component.html#ga5d727dcc8ed26ffdfde15f20815bb740">_d_json_to_select_option()</a>, and <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>.</p>
 
 </div>
 </div>

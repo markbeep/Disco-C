@@ -74,13 +74,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__guild.html">discord_guild</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/guild#guild-object">https://discord.com/developers/docs/resources/guild#guild-object</a>  <a href="structdiscord__guild.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga71c5333ffa9209f19ba8949d48547a0e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___guild.html#ga71c5333ffa9209f19ba8949d48547a0e">discord_create_guild_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:ga71c5333ffa9209f19ba8949d48547a0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a guild structure from a given JSON.  <a href="group___guild.html#ga71c5333ffa9209f19ba8949d48547a0e">More...</a><br /></td></tr>
-<tr class="separator:ga71c5333ffa9209f19ba8949d48547a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9fb71d9d6d0fea0dc4f639fb9ce65a2f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___guild.html#ga9fb71d9d6d0fea0dc4f639fb9ce65a2f">_d_json_to_guild</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga9fb71d9d6d0fea0dc4f639fb9ce65a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a guild structure from a given JSON.  <a href="group___guild.html#ga9fb71d9d6d0fea0dc4f639fb9ce65a2f">More...</a><br /></td></tr>
+<tr class="separator:ga9fb71d9d6d0fea0dc4f639fb9ce65a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb43f3476481caf6aa0dcd221e66b080"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__guild.html">discord_guild</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___guild.html#gabb43f3476481caf6aa0dcd221e66b080">_d_copy_guild</a> (struct <a class="el" href="structdiscord__guild.html">discord_guild</a> *src)</td></tr>
+<tr class="memdesc:gabb43f3476481caf6aa0dcd221e66b080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a guild structure.  <a href="group___guild.html#gabb43f3476481caf6aa0dcd221e66b080">More...</a><br /></td></tr>
+<tr class="separator:gabb43f3476481caf6aa0dcd221e66b080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf66a8c20652697da5f1ae08c6f463bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___guild.html#gabf66a8c20652697da5f1ae08c6f463bd">discord_destroy_guild</a> (struct <a class="el" href="structdiscord__guild.html">discord_guild</a> *guild)</td></tr>
 <tr class="memdesc:gabf66a8c20652697da5f1ae08c6f463bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___guild.html#gabf66a8c20652697da5f1ae08c6f463bd">More...</a><br /></td></tr>
 <tr class="separator:gabf66a8c20652697da5f1ae08c6f463bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,14 +92,41 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Guild functions and structures </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga71c5333ffa9209f19ba8949d48547a0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga71c5333ffa9209f19ba8949d48547a0e">&#9670;&nbsp;</a></span>discord_create_guild_struct_json()</h2>
+<a id="gabb43f3476481caf6aa0dcd221e66b080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb43f3476481caf6aa0dcd221e66b080">&#9670;&nbsp;</a></span>_d_copy_guild()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_guild_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__guild.html">discord_guild</a>* _d_copy_guild </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__guild.html">discord_guild</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a guild structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Guild to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct <a class="el" href="structdiscord__guild.html" title="https://discord.com/developers/docs/resources/guild#guild-object">discord_guild</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga9fb71d9d6d0fea0dc4f639fb9ce65a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9fb71d9d6d0fea0dc4f639fb9ce65a2f">&#9670;&nbsp;</a></span>_d_json_to_guild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_guild </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -111,7 +142,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__guild.html">discord_guild</a> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__guild.html" title="https://discord.com/developers/docs/resources/guild#guild-object">discord_guild</a> struct </dd></dl>
 
 <p class="reference">References <a class="el" href="group___models.html#gaa51ca032313f3d65f2c6d641e569b0db">discord_interaction::data</a>.</p>
 

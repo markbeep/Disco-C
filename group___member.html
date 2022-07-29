@@ -79,22 +79,68 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7f5fcd55053dd6e6baa0f8c0013b3110"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___member.html#ga7f5fcd55053dd6e6baa0f8c0013b3110">discord_create_member_struct_json</a> (cJSON *data, struct <a class="el" href="structdiscord__user.html">discord_user</a> *user)</td></tr>
-<tr class="separator:ga7f5fcd55053dd6e6baa0f8c0013b3110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac16d9ffb85b1ebc9f58b91b4aa21daaf"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">_d_json_to_member</a> (cJSON *data, struct <a class="el" href="structdiscord__user.html">discord_user</a> *user)</td></tr>
+<tr class="memdesc:gac16d9ffb85b1ebc9f58b91b4aa21daaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="structdiscord__member.html" title="Discord guild member structure.">discord_member</a> struct with the passed in JSON.  <a href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">More...</a><br /></td></tr>
+<tr class="separator:gac16d9ffb85b1ebc9f58b91b4aa21daaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf0d2690a840dbcf0ad0245700677ffb"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__member.html">discord_member</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___member.html#gacf0d2690a840dbcf0ad0245700677ffb">_d_copy_member</a> (struct <a class="el" href="structdiscord__member.html">discord_member</a> *member, struct <a class="el" href="structdiscord__user.html">discord_user</a> *user)</td></tr>
+<tr class="memdesc:gacf0d2690a840dbcf0ad0245700677ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a member structure.  <a href="group___member.html#gacf0d2690a840dbcf0ad0245700677ffb">More...</a><br /></td></tr>
+<tr class="separator:gacf0d2690a840dbcf0ad0245700677ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1da2c53cf3fd780d80a9fbadb27d2677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___member.html#ga1da2c53cf3fd780d80a9fbadb27d2677">discord_destroy_member</a> (struct <a class="el" href="structdiscord__member.html">discord_member</a> *member)</td></tr>
 <tr class="separator:ga1da2c53cf3fd780d80a9fbadb27d2677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Member functions and structures </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga7f5fcd55053dd6e6baa0f8c0013b3110"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7f5fcd55053dd6e6baa0f8c0013b3110">&#9670;&nbsp;</a></span>discord_create_member_struct_json()</h2>
+<a id="gacf0d2690a840dbcf0ad0245700677ffb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacf0d2690a840dbcf0ad0245700677ffb">&#9670;&nbsp;</a></span>_d_copy_member()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_member_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__member.html">discord_member</a>* _d_copy_member </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__member.html">discord_member</a> *&#160;</td>
+          <td class="paramname"><em>member</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__user.html">discord_user</a> *&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a member structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">member</td><td>Member to copy. </td></tr>
+    <tr><td class="paramname">user</td><td>User to add to the member struct. Doesn't get copied again. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_member* </dd></dl>
+
+<p class="reference">References <a class="el" href="group___models.html#ga4775fea7f718eddee3ec98f1c450a8a5">discord_member::avatar</a>, <a class="el" href="group___models.html#gabdbca82d8f6e9dc19bb5b174b86c3de1">discord_member::communication_disabled_until</a>, <a class="el" href="group___models.html#ga7638bf19c7353fdf7065bc1f0a830b60">discord_member::joined_at</a>, <a class="el" href="group___models.html#ga2796f66f6b7bc86ad024785d6d8ba0ce">discord_member::nick</a>, <a class="el" href="group___models.html#ga764466a9258ba8fdfce62073c4e456cf">discord_member::permissions</a>, <a class="el" href="group___models.html#gaa15b7eec5bcba97a819089785701326a">discord_member::premium_since</a>, <a class="el" href="group___models.html#ga0b2d5cdb877053b2575080a65ddd75ae">discord_member::roles</a>, <a class="el" href="group___models.html#ga7a62eae2d7ddf73a2efeac4dc7bc4f30">discord_member::roles_count</a>, and <a class="el" href="group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab">discord_member::user</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#gacebb8b2ef044e4e292570f577d99f66d">_d_copy_interaction()</a>, and <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>.</p>
+
+</div>
+</div>
+<a id="gac16d9ffb85b1ebc9f58b91b4aa21daaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac16d9ffb85b1ebc9f58b91b4aa21daaf">&#9670;&nbsp;</a></span>_d_json_to_member()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_member </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -113,9 +159,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="group___models.html#ga4775fea7f718eddee3ec98f1c450a8a5">discord_member::avatar</a>, <a class="el" href="group___models.html#gabdbca82d8f6e9dc19bb5b174b86c3de1">discord_member::communication_disabled_until</a>, <a class="el" href="group___models.html#ga0a1e57af2d289c0f031c23e0bc422bbb">discord_member::deaf</a>, <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>, <a class="el" href="disco_8h.html#a8793f41af7b3cc35217311c6bb439c7c">get_bool_from_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#ga7638bf19c7353fdf7065bc1f0a830b60">discord_member::joined_at</a>, <a class="el" href="group___models.html#ga1181297d55c169da5c927d65523e24b8">discord_member::mute</a>, <a class="el" href="group___models.html#ga2796f66f6b7bc86ad024785d6d8ba0ce">discord_member::nick</a>, <a class="el" href="group___models.html#ga6b16e6c0d79b4a613cc524d9183058af">discord_member::pending</a>, <a class="el" href="group___models.html#ga764466a9258ba8fdfce62073c4e456cf">discord_member::permissions</a>, <a class="el" href="group___models.html#gaa15b7eec5bcba97a819089785701326a">discord_member::premium_since</a>, <a class="el" href="group___models.html#ga0b2d5cdb877053b2575080a65ddd75ae">discord_member::roles</a>, <a class="el" href="group___models.html#ga7a62eae2d7ddf73a2efeac4dc7bc4f30">discord_member::roles_count</a>, and <a class="el" href="group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab">discord_member::user</a>.</p>
+<p>Creates a <a class="el" href="structdiscord__member.html" title="Discord guild member structure.">discord_member</a> struct with the passed in JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The Discord JSON for a member. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_member* </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___interaction.html#gafead489228e7e1926211de7b3ebc556d">discord_create_interaction_struct_json()</a>, and <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>.</p>
+<p class="reference">References <a class="el" href="disco_8h.html#a7c333fc4538b7a1ce74307b1666549fc">_d_get_bool_from_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>, <a class="el" href="group___models.html#ga4775fea7f718eddee3ec98f1c450a8a5">discord_member::avatar</a>, <a class="el" href="group___models.html#gabdbca82d8f6e9dc19bb5b174b86c3de1">discord_member::communication_disabled_until</a>, <a class="el" href="group___models.html#ga0a1e57af2d289c0f031c23e0bc422bbb">discord_member::deaf</a>, <a class="el" href="group___models.html#ga7638bf19c7353fdf7065bc1f0a830b60">discord_member::joined_at</a>, <a class="el" href="group___models.html#ga1181297d55c169da5c927d65523e24b8">discord_member::mute</a>, <a class="el" href="group___models.html#ga2796f66f6b7bc86ad024785d6d8ba0ce">discord_member::nick</a>, <a class="el" href="group___models.html#ga6b16e6c0d79b4a613cc524d9183058af">discord_member::pending</a>, <a class="el" href="group___models.html#ga764466a9258ba8fdfce62073c4e456cf">discord_member::permissions</a>, <a class="el" href="group___models.html#gaa15b7eec5bcba97a819089785701326a">discord_member::premium_since</a>, <a class="el" href="group___models.html#ga0b2d5cdb877053b2575080a65ddd75ae">discord_member::roles</a>, <a class="el" href="group___models.html#ga7a62eae2d7ddf73a2efeac4dc7bc4f30">discord_member::roles_count</a>, and <a class="el" href="group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab">discord_member::user</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>, and <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>.</p>
 
 </div>
 </div>

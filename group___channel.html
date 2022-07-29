@@ -75,8 +75,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__channel.html">discord_channel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-object">https://discord.com/developers/docs/resources/channel#channel-object</a>  <a href="structdiscord__channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__channel__mention.html">discord_channel_mention</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-mention-object">https://discord.com/developers/docs/resources/channel#channel-mention-object</a>  <a href="structdiscord__channel__mention.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -98,19 +100,23 @@ Enumerations</h2></td></tr>
 <a class="el" href="group___channel.html#ggafe6f6623ab579045c945d82d3585e7e5a09a79fa9fbc4027d32aa706ae2e408dd">CHANNEL_GUILD_FORUM</a> = 15
 <br />
  }</td></tr>
+<tr class="memdesc:gafe6f6623ab579045c945d82d3585e7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-object-channel-types">https://discord.com/developers/docs/resources/channel#channel-object-channel-types</a>  <a href="group___channel.html#gafe6f6623ab579045c945d82d3585e7e5">More...</a><br /></td></tr>
 <tr class="separator:gafe6f6623ab579045c945d82d3585e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel structure from a given JSON.  <a href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">More...</a><br /></td></tr>
-<tr class="separator:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b27dffcb72d2af869fd4a35098941e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga1b27dffcb72d2af869fd4a35098941e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel structure from a given JSON.  <a href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">More...</a><br /></td></tr>
+<tr class="separator:ga1b27dffcb72d2af869fd4a35098941e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">_d_copy_channel</a> (struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *channel)</td></tr>
+<tr class="memdesc:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a channel structure.  <a href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">More...</a><br /></td></tr>
+<tr class="separator:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga46a43fc3549a0fbd8e3d508f58bf0d3e">discord_destroy_channel</a> (struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *ch)</td></tr>
 <tr class="memdesc:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___channel.html#ga46a43fc3549a0fbd8e3d508f58bf0d3e">More...</a><br /></td></tr>
 <tr class="separator:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4e73990736b06eabbb07bfc682c1e549"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">discord_create_channel_mention_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:ga4e73990736b06eabbb07bfc682c1e549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel_mention structure from a given JSON.  <a href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">More...</a><br /></td></tr>
-<tr class="separator:ga4e73990736b06eabbb07bfc682c1e549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3524d787901fea0f61b54e5863fa99c4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga3524d787901fea0f61b54e5863fa99c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel_mention structure from a given JSON.  <a href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">More...</a><br /></td></tr>
+<tr class="separator:ga3524d787901fea0f61b54e5863fa99c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac01c4086cd1f2c2aef71912c09d1f404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gac01c4086cd1f2c2aef71912c09d1f404">discord_destroy_channel_mention</a> (struct <a class="el" href="structdiscord__channel__mention.html">discord_channel_mention</a> *ch)</td></tr>
 <tr class="memdesc:gac01c4086cd1f2c2aef71912c09d1f404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___channel.html#gac01c4086cd1f2c2aef71912c09d1f404">More...</a><br /></td></tr>
 <tr class="separator:gac01c4086cd1f2c2aef71912c09d1f404"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +135,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a href="https://discord.com/developers/docs/resources/channel#channel-object-channel-types">https://discord.com/developers/docs/resources/channel#channel-object-channel-types</a> </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggafe6f6623ab579045c945d82d3585e7e5a6db3a26d6234a8ff6a5291e9fa4184de"></a>CHANNEL_GUILD_TEXT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ggafe6f6623ab579045c945d82d3585e7e5afafa4db21c9ed01566a2be226a5ca7a0"></a>CHANNEL_DM&#160;</td><td class="fielddoc"></td></tr>
@@ -147,45 +155,45 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga4e73990736b06eabbb07bfc682c1e549"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4e73990736b06eabbb07bfc682c1e549">&#9670;&nbsp;</a></span>discord_create_channel_mention_struct_json()</h2>
+<a id="gaf7c7499994c95ce86d05cbbb2e6eb3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf7c7499994c95ce86d05cbbb2e6eb3c5">&#9670;&nbsp;</a></span>_d_copy_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_channel_mention_struct_json </td>
+          <td class="memname">struct <a class="el" href="structdiscord__channel.html">discord_channel</a>* _d_copy_channel </td>
           <td>(</td>
-          <td class="paramtype">cJSON *&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a channel_mention structure from a given JSON. </p>
+<p>Copies a channel structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">channel</td><td>Channel to copy. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__channel__mention.html">discord_channel_mention</a> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_channel* </dd></dl>
 
-<p class="reference">References <a class="el" href="disco_8h.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json()</a>, <a class="el" href="disco_8h.html#a1b40c934e3e9bc8eef9d8d593e56d66d">get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#ga69171ec9f334b09b134b9beafb01b614">discord_channel_mention::guild_id</a>, <a class="el" href="group___models.html#ga9df2ac726fdaa0ef721b6e9f8426f7bb">discord_channel_mention::id</a>, <a class="el" href="group___models.html#gaf16048a9da5f4ee194992c2d51ba58b2">discord_channel_mention::name</a>, and <a class="el" href="group___models.html#ga1f79b4fdcab26113fb894381e340cce0">discord_channel_mention::type</a>.</p>
+<p class="reference">References <a class="el" href="group___permission.html#gaa7d36845b190c815199b57650f229898">_d_copy_overwrite()</a>, <a class="el" href="group___thread.html#gac4a1ecbe95d4e8ad3dc7e79528113cd3">_d_copy_thread_member()</a>, <a class="el" href="group___thread.html#ga25805be441d790ea7fe41b6dc64c9c2f">_d_copy_thread_metadata()</a>, <a class="el" href="group___user.html#ga45959070b8e3158fe1acb592faf972fc">_d_copy_user()</a>, <a class="el" href="group___models.html#ga564314bbe8ddd958787c9568e5482fb2">discord_channel::icon</a>, <a class="el" href="group___models.html#ga0b4c9d4c8d1c13b3d46253a5cbad5e72">discord_channel::last_pin_timestamp</a>, <a class="el" href="group___models.html#ga005a619e397ed6f05c366aa2378d1a5d">discord_channel::member</a>, <a class="el" href="group___models.html#gac635e942878b9424da89185bedc9d273">discord_channel::name</a>, <a class="el" href="group___models.html#gad5358327a1189b098b2ef0bb643130ed">discord_channel::permission_overwrites</a>, <a class="el" href="group___models.html#gae39dd4ec2f30c20978d32eeaf34aaa6a">discord_channel::permission_overwrites_count</a>, <a class="el" href="group___models.html#ga77554518104e78150e3bada6ac2c8716">discord_channel::permissions</a>, <a class="el" href="group___models.html#ga3ab4703040aa87f70c1b94ab38a67620">discord_channel::recipients</a>, <a class="el" href="group___models.html#ga57decfa898718b63aa519be42b6ac4a6">discord_channel::recipients_count</a>, <a class="el" href="group___models.html#gab5ae5d7ef4e34e5fc4fc7439f13ff2ec">discord_channel::rtc_region</a>, <a class="el" href="group___models.html#ga646b4e712f05c59a18c7ba044c02bb71">discord_channel::thread_metadata</a>, and <a class="el" href="group___models.html#gade16154fe6f94a9a012505cfbabff126">discord_channel::topic</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="group___message.html#ga1ab1c3aa8d10f97d7df4896289117973">discord_create_message_struct_json()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>, and <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>.</p>
 
 </div>
 </div>
-<a id="gaaf363e4ab59f9d5f85f1ebe51d4bd87e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">&#9670;&nbsp;</a></span>discord_create_channel_struct_json()</h2>
+<a id="ga1b27dffcb72d2af869fd4a35098941e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1b27dffcb72d2af869fd4a35098941e5">&#9670;&nbsp;</a></span>_d_json_to_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* discord_create_channel_struct_json </td>
+          <td class="memname">void* _d_json_to_channel </td>
           <td>(</td>
           <td class="paramtype">cJSON *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -201,11 +209,42 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__channel.html">discord_channel</a> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__channel.html" title="https://discord.com/developers/docs/resources/channel#channel-object">discord_channel</a> struct </dd></dl>
 
-<p class="reference">References <a class="el" href="group___models.html#gaa751d005cd170f6297203287a37852cf">discord_channel::application_id</a>, <a class="el" href="group___models.html#ga46819a74f40cf5bc67d9a91da17d2836">discord_channel::bitrate</a>, <a class="el" href="group___models.html#ga0b4ffc3b1f46b00fd14458f858572b01">discord_channel::default_auto_archive_duration</a>, <a class="el" href="group___permission.html#ga8ad47ab512e97435987670a962d2eb16">discord_create_overwrite_struct_json()</a>, <a class="el" href="group___thread.html#ga28cae7610f45190063b16c44d0a9db5e">discord_create_thread_member_struct_json()</a>, <a class="el" href="group___thread.html#ga77af21bdfc6e65cb76ab158d87c781e5">discord_create_thread_metadata_struct_json()</a>, <a class="el" href="group___user.html#gaf11c652c59d2d32fbeffef7aa4fd8ad9">discord_create_user_struct_json()</a>, <a class="el" href="group___models.html#ga5551fa8f5c9819bea1afb1a32b985d62">discord_channel::flags</a>, <a class="el" href="disco_8h.html#acc7d55c27f59407b991e4099b999f158">get_array_from_json()</a>, <a class="el" href="disco_8h.html#a8793f41af7b3cc35217311c6bb439c7c">get_bool_from_json()</a>, <a class="el" href="disco_8h.html#a32b66596edf0d38a4be3bb491a5f60f3">get_int_from_json()</a>, <a class="el" href="disco_8h.html#a1b40c934e3e9bc8eef9d8d593e56d66d">get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a3d048182694329d15b4534169becf944">get_string_from_json()</a>, <a class="el" href="group___models.html#gaf7845e8976f835b2a4e82811158563cf">discord_channel::guild_id</a>, <a class="el" href="group___models.html#ga564314bbe8ddd958787c9568e5482fb2">discord_channel::icon</a>, <a class="el" href="group___models.html#ga51bdc6af7d5a75010518ff884640de88">discord_channel::id</a>, <a class="el" href="group___models.html#ga7fb4c968ea6239574faeb6f903f05fad">discord_channel::last_message_id</a>, <a class="el" href="group___models.html#ga0b4c9d4c8d1c13b3d46253a5cbad5e72">discord_channel::last_pin_timestamp</a>, <a class="el" href="group___models.html#ga005a619e397ed6f05c366aa2378d1a5d">discord_channel::member</a>, <a class="el" href="group___models.html#ga9db90b903ef4d06b50d4b0c3259bfba4">discord_channel::member_count</a>, <a class="el" href="group___models.html#gaf62e5e9076241728bf73fcb852cba2e1">discord_channel::message_count</a>, <a class="el" href="group___models.html#gac635e942878b9424da89185bedc9d273">discord_channel::name</a>, <a class="el" href="group___models.html#gab5467297c0038a929463958d3fb38d21">discord_channel::nsfw</a>, <a class="el" href="group___models.html#gaa7b564105a63b49cf83c10b376ef9660">discord_channel::owner_id</a>, <a class="el" href="group___models.html#gadba5ced617a5290ca301ceb813c61a20">discord_channel::parent_id</a>, <a class="el" href="group___models.html#gad5358327a1189b098b2ef0bb643130ed">discord_channel::permission_overwrites</a>, <a class="el" href="group___models.html#gae39dd4ec2f30c20978d32eeaf34aaa6a">discord_channel::permission_overwrites_count</a>, <a class="el" href="group___models.html#ga77554518104e78150e3bada6ac2c8716">discord_channel::permissions</a>, <a class="el" href="group___models.html#ga9f4bedc816990229576468649b8469e1">discord_channel::position</a>, <a class="el" href="group___models.html#gac762604c5b82f4f9877111cbc75ec421">discord_channel::rate_limit_per_user</a>, <a class="el" href="group___models.html#ga3ab4703040aa87f70c1b94ab38a67620">discord_channel::recipients</a>, <a class="el" href="group___models.html#ga57decfa898718b63aa519be42b6ac4a6">discord_channel::recipients_count</a>, <a class="el" href="group___models.html#gab5ae5d7ef4e34e5fc4fc7439f13ff2ec">discord_channel::rtc_region</a>, <a class="el" href="group___models.html#ga646b4e712f05c59a18c7ba044c02bb71">discord_channel::thread_metadata</a>, <a class="el" href="group___models.html#gade16154fe6f94a9a012505cfbabff126">discord_channel::topic</a>, <a class="el" href="group___models.html#ga6adb577731fb61404306b357ab303914">discord_channel::type</a>, <a class="el" href="group___models.html#ga28474740decb67bc753cd8b2fffd9680">discord_channel::user_limit</a>, and <a class="el" href="group___models.html#gaea3ab02fcef62931d5c5de9081620a2a">discord_channel::video_quality_mode</a>.</p>
+<p class="reference">References <a class="el" href="disco_8h.html#a67f5ab74e8b7ca7ba29e5ac571154055">_d_get_array_from_json()</a>, <a class="el" href="disco_8h.html#a7c333fc4538b7a1ce74307b1666549fc">_d_get_bool_from_json()</a>, <a class="el" href="disco_8h.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json()</a>, <a class="el" href="disco_8h.html#a050b19a699d9f1524f15beb570f3cb92">_d_get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___permission.html#ga679c0905156217165b912585af77519c">_d_json_to_overwrite()</a>, <a class="el" href="group___thread.html#ga149bee29db6253bfc36143fbc934959b">_d_json_to_thread_member()</a>, <a class="el" href="group___thread.html#ga6dd9aad7345218e9f1d1aa0562a82d36">_d_json_to_thread_metadata()</a>, <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>, <a class="el" href="group___models.html#gaa751d005cd170f6297203287a37852cf">discord_channel::application_id</a>, <a class="el" href="group___models.html#ga46819a74f40cf5bc67d9a91da17d2836">discord_channel::bitrate</a>, <a class="el" href="group___models.html#ga0b4ffc3b1f46b00fd14458f858572b01">discord_channel::default_auto_archive_duration</a>, <a class="el" href="group___models.html#ga5551fa8f5c9819bea1afb1a32b985d62">discord_channel::flags</a>, <a class="el" href="group___models.html#gaf7845e8976f835b2a4e82811158563cf">discord_channel::guild_id</a>, <a class="el" href="group___models.html#ga564314bbe8ddd958787c9568e5482fb2">discord_channel::icon</a>, <a class="el" href="group___models.html#ga51bdc6af7d5a75010518ff884640de88">discord_channel::id</a>, <a class="el" href="group___models.html#ga7fb4c968ea6239574faeb6f903f05fad">discord_channel::last_message_id</a>, <a class="el" href="group___models.html#ga0b4c9d4c8d1c13b3d46253a5cbad5e72">discord_channel::last_pin_timestamp</a>, <a class="el" href="group___models.html#ga005a619e397ed6f05c366aa2378d1a5d">discord_channel::member</a>, <a class="el" href="group___models.html#ga9db90b903ef4d06b50d4b0c3259bfba4">discord_channel::member_count</a>, <a class="el" href="group___models.html#gaf62e5e9076241728bf73fcb852cba2e1">discord_channel::message_count</a>, <a class="el" href="group___models.html#gac635e942878b9424da89185bedc9d273">discord_channel::name</a>, <a class="el" href="group___models.html#gab5467297c0038a929463958d3fb38d21">discord_channel::nsfw</a>, <a class="el" href="group___models.html#gaa7b564105a63b49cf83c10b376ef9660">discord_channel::owner_id</a>, <a class="el" href="group___models.html#gadba5ced617a5290ca301ceb813c61a20">discord_channel::parent_id</a>, <a class="el" href="group___models.html#gad5358327a1189b098b2ef0bb643130ed">discord_channel::permission_overwrites</a>, <a class="el" href="group___models.html#gae39dd4ec2f30c20978d32eeaf34aaa6a">discord_channel::permission_overwrites_count</a>, <a class="el" href="group___models.html#ga77554518104e78150e3bada6ac2c8716">discord_channel::permissions</a>, <a class="el" href="group___models.html#ga9f4bedc816990229576468649b8469e1">discord_channel::position</a>, <a class="el" href="group___models.html#gac762604c5b82f4f9877111cbc75ec421">discord_channel::rate_limit_per_user</a>, <a class="el" href="group___models.html#ga3ab4703040aa87f70c1b94ab38a67620">discord_channel::recipients</a>, <a class="el" href="group___models.html#ga57decfa898718b63aa519be42b6ac4a6">discord_channel::recipients_count</a>, <a class="el" href="group___models.html#gab5ae5d7ef4e34e5fc4fc7439f13ff2ec">discord_channel::rtc_region</a>, <a class="el" href="group___models.html#ga646b4e712f05c59a18c7ba044c02bb71">discord_channel::thread_metadata</a>, <a class="el" href="group___models.html#gade16154fe6f94a9a012505cfbabff126">discord_channel::topic</a>, <a class="el" href="group___models.html#ga6adb577731fb61404306b357ab303914">discord_channel::type</a>, <a class="el" href="group___models.html#ga28474740decb67bc753cd8b2fffd9680">discord_channel::user_limit</a>, and <a class="el" href="group___models.html#gaea3ab02fcef62931d5c5de9081620a2a">discord_channel::video_quality_mode</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>.</p>
+
+</div>
+</div>
+<a id="ga3524d787901fea0f61b54e5863fa99c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3524d787901fea0f61b54e5863fa99c4">&#9670;&nbsp;</a></span>_d_json_to_channel_mention()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* _d_json_to_channel_mention </td>
+          <td>(</td>
+          <td class="paramtype">cJSON *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a channel_mention structure from a given JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void* <a class="el" href="structdiscord__channel__mention.html" title="https://discord.com/developers/docs/resources/channel#channel-mention-object">discord_channel_mention</a> struct </dd></dl>
+
+<p class="reference">References <a class="el" href="disco_8h.html#adf31b2d9c9f01bd4e41628bee91d6e13">_d_get_int_from_json()</a>, <a class="el" href="disco_8h.html#a050b19a699d9f1524f15beb570f3cb92">_d_get_long_from_string_json()</a>, <a class="el" href="disco_8h.html#a895229e55d460a52ae59619c5eb3e6a7">_d_get_string_from_json()</a>, <a class="el" href="group___models.html#ga69171ec9f334b09b134b9beafb01b614">discord_channel_mention::guild_id</a>, <a class="el" href="group___models.html#ga9df2ac726fdaa0ef721b6e9f8426f7bb">discord_channel_mention::id</a>, <a class="el" href="group___models.html#gaf16048a9da5f4ee194992c2d51ba58b2">discord_channel_mention::name</a>, and <a class="el" href="group___models.html#ga1f79b4fdcab26113fb894381e340cce0">discord_channel_mention::type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>.</p>
 
 </div>
 </div>

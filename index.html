@@ -84,7 +84,7 @@ Table of Contents</h1>
 </ul>
 </li>
 <li><a href="#file-explanations">File Explanations</a></li>
-<li><a href="#problems">Problems</a></li>
+<li><a href="#cache-and-destroying-structures">Cache and Destroying Structures</a></li>
 <li><a href="#progress">Progress</a></li>
 </ul>
 </li>
@@ -140,10 +140,9 @@ File Explanations</h1>
 <li><b>tests</b>: Basic tests which don't really test a lot.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md7"></a>
-Problems</h1>
-<ul>
-<li>Currently it is possible for the cache to delete a message/channel/guild structure while the struct is still being used in another thread. This happens very rarely and only with small cache sizes, but it is possible.</li>
-</ul>
+Cache and Destroying Structures</h1>
+<p>There exists a cache which will keep track of messages, channels and guilds so that when they are updated/deleted, you still get access to the data instead of simply an ID. To not have the cache completely overfill there is a max amount of items that are stored in the cache. The default is a size of 1000 items for each data type. The last used item will be removed once a new item is added and there are 1000 items in the cache. Per default the removed items will simply be destroyed. If you want to do something else with them, you can pass in a different callback in the <code><a class="el" href="structdiscord__config.html" title="Discord configs which will be set when starting the bot.">discord_config</a></code> struct which can be passed in upon starting the bot with <code>discord_start_bot</code>.</p>
+<p>Even though there is a cache that retreives already existing structures, every event will always provide a newly allocated structure. Meaning you will always have to free the received structures in every event callback. This is for consistency and thread safety reasons, so that a specific message struct doesn't get freed while another event still uses it.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Progress</h1>
 <ul>

@@ -86,8 +86,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__channel.html">discord_channel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-object">https://discord.com/developers/docs/resources/channel#channel-object</a>  <a href="structdiscord__channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__channel__mention.html">discord_channel_mention</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-mention-object">https://discord.com/developers/docs/resources/channel#channel-mention-object</a>  <a href="structdiscord__channel__mention.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -109,19 +111,23 @@ Enumerations</h2></td></tr>
 <a class="el" href="group___channel.html#ggafe6f6623ab579045c945d82d3585e7e5a09a79fa9fbc4027d32aa706ae2e408dd">CHANNEL_GUILD_FORUM</a> = 15
 <br />
  }</td></tr>
+<tr class="memdesc:gafe6f6623ab579045c945d82d3585e7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://discord.com/developers/docs/resources/channel#channel-object-channel-types">https://discord.com/developers/docs/resources/channel#channel-object-channel-types</a>  <a href="group___channel.html#gafe6f6623ab579045c945d82d3585e7e5">More...</a><br /></td></tr>
 <tr class="separator:gafe6f6623ab579045c945d82d3585e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">discord_create_channel_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel structure from a given JSON.  <a href="group___channel.html#gaaf363e4ab59f9d5f85f1ebe51d4bd87e">More...</a><br /></td></tr>
-<tr class="separator:gaaf363e4ab59f9d5f85f1ebe51d4bd87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b27dffcb72d2af869fd4a35098941e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga1b27dffcb72d2af869fd4a35098941e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel structure from a given JSON.  <a href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">More...</a><br /></td></tr>
+<tr class="separator:ga1b27dffcb72d2af869fd4a35098941e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">_d_copy_channel</a> (struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *channel)</td></tr>
+<tr class="memdesc:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a channel structure.  <a href="group___channel.html#gaf7c7499994c95ce86d05cbbb2e6eb3c5">More...</a><br /></td></tr>
+<tr class="separator:gaf7c7499994c95ce86d05cbbb2e6eb3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga46a43fc3549a0fbd8e3d508f58bf0d3e">discord_destroy_channel</a> (struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *ch)</td></tr>
 <tr class="memdesc:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___channel.html#ga46a43fc3549a0fbd8e3d508f58bf0d3e">More...</a><br /></td></tr>
 <tr class="separator:ga46a43fc3549a0fbd8e3d508f58bf0d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4e73990736b06eabbb07bfc682c1e549"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">discord_create_channel_mention_struct_json</a> (cJSON *data)</td></tr>
-<tr class="memdesc:ga4e73990736b06eabbb07bfc682c1e549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel_mention structure from a given JSON.  <a href="group___channel.html#ga4e73990736b06eabbb07bfc682c1e549">More...</a><br /></td></tr>
-<tr class="separator:ga4e73990736b06eabbb07bfc682c1e549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3524d787901fea0f61b54e5863fa99c4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention</a> (cJSON *data)</td></tr>
+<tr class="memdesc:ga3524d787901fea0f61b54e5863fa99c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a channel_mention structure from a given JSON.  <a href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">More...</a><br /></td></tr>
+<tr class="separator:ga3524d787901fea0f61b54e5863fa99c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac01c4086cd1f2c2aef71912c09d1f404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___channel.html#gac01c4086cd1f2c2aef71912c09d1f404">discord_destroy_channel_mention</a> (struct <a class="el" href="structdiscord__channel__mention.html">discord_channel_mention</a> *ch)</td></tr>
 <tr class="memdesc:gac01c4086cd1f2c2aef71912c09d1f404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the given structure and frees the pointer.  <a href="group___channel.html#gac01c4086cd1f2c2aef71912c09d1f404">More...</a><br /></td></tr>
 <tr class="separator:gac01c4086cd1f2c2aef71912c09d1f404"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setup_1025',['setUp',['../test__discord_8c.html#a95c834d6178047ce9e1bce7cbfea2836',1,'setUp(void):&#160;test_discord.c'],['../test__web_8c.html#a95c834d6178047ce9e1bce7cbfea2836',1,'setUp(void):&#160;test_web.c']]],
-  ['sigint_5fhandler_1026',['sigint_handler',['../websocket_8c.html#aed429b7c618757d735b6bea2609c229a',1,'websocket.c']]]
+  ['request_1076',['request',['../request_8h.html#a733566209f2ad2e14fffa957bd88c8ed',1,'request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token):&#160;request.c'],['../request_8c.html#a733566209f2ad2e14fffa957bd88c8ed',1,'request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token):&#160;request.c']]],
+  ['request_5ftest_1077',['request_test',['../request_8h.html#a8b26b274786bb9e5eb1d9b28113f9c9d',1,'request.h']]]
 ];
