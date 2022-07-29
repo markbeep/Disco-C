@@ -37,15 +37,15 @@ static struct hashmap_s messages_map;
 // queue with node pointers in the order they were received
 static struct buffer messages_queue;
 // message cache size
-static int max_message_cache_size;
+static int max_message_cache_size = 1000;
 
 static struct hashmap_s channels_map;
 static struct buffer channels_queue;
-static int max_channel_cache_size;
+static int max_channel_cache_size = 1000;
 
 static struct hashmap_s guilds_map;
 static struct buffer guilds_queue;
-static int max_guild_cache_size;
+static int max_guild_cache_size = 1000;
 
 static cache_destroy_callback_fn destroy_item_callback_fn;
 
@@ -169,7 +169,7 @@ int discord_cache_set(enum Disco_Cache_Type type, void *cont) {
         max_cache_size = max_guild_cache_size;
         break;
     default:
-        break;
+        max_cache_size = 1000;
     }
 
     struct node *old = (struct node *)hashmap_get(map, (char *)&id, sizeof(uint64_t));
