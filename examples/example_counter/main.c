@@ -108,7 +108,7 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         message->channel_id != count_channel_id)
         goto cleanup;
     int n = (int)strtol(message->content, NULL, 10);
-    if (n > count) { // ignore any number below our count
+    if (n >= count) { // ignore any number below our count
         count = n;
         send_count(bot, n + 1);
     }

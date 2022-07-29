@@ -38,7 +38,7 @@ void *_d_json_to_embed(cJSON *data) {
 struct discord_embed *_d_copy_embed(struct discord_embed *src) {
     if (!src)
         return NULL;
-    struct discord_embed *c = (struct discord_embed *)malloc(sizeof(struct discord_embed));
+    struct discord_embed *c = (struct discord_embed *)calloc(1, sizeof(struct discord_embed));
     memcpy(c, src, sizeof(struct discord_embed));
     if (src->title)
         c->title = strndup(src->title, 257);
@@ -105,7 +105,7 @@ void *_d_json_to_embed_footer(cJSON *data) {
 struct discord_embed_footer *_d_copy_embed_footer(struct discord_embed_footer *src) {
     if (!src)
         return NULL;
-    struct discord_embed_footer *c = (struct discord_embed_footer *)malloc(sizeof(struct discord_embed_footer));
+    struct discord_embed_footer *c = (struct discord_embed_footer *)calloc(1, sizeof(struct discord_embed_footer));
     if (src->text)
         c->text = strndup(src->text, 2050);
     if (src->icon_url)
@@ -137,7 +137,7 @@ void *_d_json_to_embed_media(cJSON *data) {
 struct discord_embed_media *_d_copy_embed_media(struct discord_embed_media *src) {
     if (!src)
         return NULL;
-    struct discord_embed_media *c = (struct discord_embed_media *)malloc(sizeof(struct discord_embed_media));
+    struct discord_embed_media *c = (struct discord_embed_media *)calloc(1, sizeof(struct discord_embed_media));
     if (src->url)
         c->url = strndup(src->url, 2050);
     if (src->proxy_url)
@@ -165,7 +165,7 @@ void *_d_json_to_embed_provider(cJSON *data) {
 struct discord_embed_provider *_d_copy_embed_provider(struct discord_embed_provider *src) {
     if (!src)
         return NULL;
-    struct discord_embed_provider *c = (struct discord_embed_provider *)malloc(sizeof(struct discord_embed_provider));
+    struct discord_embed_provider *c = (struct discord_embed_provider *)calloc(1, sizeof(struct discord_embed_provider));
     if (src->name)
         c->name = strndup(src->name, 2050);
     if (src->url)
@@ -193,7 +193,7 @@ void *_d_json_to_embed_author(cJSON *data) {
 struct discord_embed_author *_d_copy_embed_author(struct discord_embed_author *src) {
     if (!src)
         return NULL;
-    struct discord_embed_author *c = (struct discord_embed_author *)malloc(sizeof(struct discord_embed_author));
+    struct discord_embed_author *c = (struct discord_embed_author *)calloc(1, sizeof(struct discord_embed_author));
     if (src->name)
         c->name = strndup(src->name, 257);
     if (src->url)
@@ -228,7 +228,7 @@ void *_d_json_to_embed_field(cJSON *data) {
 struct discord_embed_field *_d_copy_embed_field(struct discord_embed_field *src) {
     if (!src)
         return NULL;
-    struct discord_embed_field *c = (struct discord_embed_field *)malloc(sizeof(struct discord_embed_field));
+    struct discord_embed_field *c = (struct discord_embed_field *)calloc(1, sizeof(struct discord_embed_field));
     if (src->name)
         c->name = strndup(src->name, 257);
     if (src->value)

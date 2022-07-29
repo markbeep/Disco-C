@@ -170,6 +170,7 @@ int discord_cache_set(enum Disco_Cache_Type type, void *cont) {
         break;
     default:
         max_cache_size = 1000;
+        break;
     }
 
     struct node *old = (struct node *)hashmap_get(map, (char *)&id, sizeof(uint64_t));
@@ -213,7 +214,7 @@ int discord_cache_set(enum Disco_Cache_Type type, void *cont) {
             }
         }
     }
-    d_log_notice("%s cache size = %d\n", cache_name, queue->size);
+    d_log_debug("%s cache size = %d / %d\n", cache_name, queue->size, max_cache_size);
 
     return 0;
 }

@@ -8,7 +8,7 @@ void *_d_json_to_component(cJSON *data) {
     comp->type = _d_get_int_from_json(data, "type", 0);
     switch (comp->type) {
     case COMPONENT_ACTION_ROW:
-        comp->comp.action_row = (struct discord_action_row *)malloc(sizeof(struct discord_action_row));
+        comp->comp.action_row = (struct discord_action_row *)calloc(1, sizeof(struct discord_action_row));
         comp->comp.action_row->components_count = _d_get_array_from_json(
             data,
             "components",
@@ -61,11 +61,11 @@ void *_d_json_to_component(cJSON *data) {
 struct discord_component *_d_copy_component(struct discord_component *src) {
     if (!src)
         return NULL;
-    struct discord_component *c = (struct discord_component *)malloc(sizeof(struct discord_component));
+    struct discord_component *c = (struct discord_component *)calloc(1, sizeof(struct discord_component));
     c->type = src->type;
     switch (c->type) {
     case COMPONENT_ACTION_ROW:
-        c->comp.action_row = (struct discord_action_row *)malloc(sizeof(struct discord_action_row));
+        c->comp.action_row = (struct discord_action_row *)calloc(1, sizeof(struct discord_action_row));
         c->comp.action_row->components_count = src->comp.action_row->components_count;
         if (c->comp.action_row->components_count > 0) {
             c->comp.action_row->components = (struct discord_component **)malloc(c->comp.action_row->components_count * sizeof(struct discord_component *));
@@ -74,7 +74,7 @@ struct discord_component *_d_copy_component(struct discord_component *src) {
         }
         break;
     case COMPONENT_BUTTON:
-        c->comp.button = (struct discord_button *)malloc(sizeof(struct discord_button));
+        c->comp.button = (struct discord_button *)calloc(1, sizeof(struct discord_button));
         c->comp.button->style = src->comp.button->style;
         if (src->comp.button->label)
             c->comp.button->label = strndup(src->comp.button->label, 101);
@@ -86,7 +86,7 @@ struct discord_component *_d_copy_component(struct discord_component *src) {
         c->comp.button->disabled = src->comp.button->disabled;
         break;
     case COMPONENT_SELECT_MENU:
-        c->comp.select_menu = (struct discord_select_menu *)malloc(sizeof(struct discord_select_menu));
+        c->comp.select_menu = (struct discord_select_menu *)calloc(1, sizeof(struct discord_select_menu));
         memcpy(c->comp.select_menu, src->comp.select_menu, sizeof(struct discord_select_menu));
         if (src->comp.select_menu->custom_id)
             c->comp.select_menu->custom_id = strndup(src->comp.select_menu->custom_id, 101);
@@ -99,7 +99,7 @@ struct discord_component *_d_copy_component(struct discord_component *src) {
             c->comp.select_menu->placeholder = strndup(src->comp.select_menu->placeholder, 151);
         break;
     case COMPONENT_TEXT_INPUT:
-        c->comp.text_input = (struct discord_text_input *)malloc(sizeof(struct discord_text_input));
+        c->comp.text_input = (struct discord_text_input *)calloc(1, sizeof(struct discord_text_input));
         memcpy(c->comp.select_menu, src->comp.select_menu, sizeof(struct discord_text_input));
         if (src->comp.text_input->custom_id)
             c->comp.text_input->custom_id = strndup(src->comp.text_input->custom_id, 101);
@@ -175,7 +175,7 @@ void *_d_json_to_select_option(cJSON *data) {
 struct discord_select_option *_d_copy_select_option(struct discord_select_option *src) {
     if (!src)
         return NULL;
-    struct discord_select_option *c = (struct discord_select_option *)malloc(sizeof(struct discord_select_option));
+    struct discord_select_option *c = (struct discord_select_option *)calloc(1, sizeof(struct discord_select_option));
     if (src->label)
         c->label = strndup(src->label, 101);
     if (src->value)

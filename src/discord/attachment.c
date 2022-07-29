@@ -19,7 +19,7 @@ void *_d_json_to_attachment(cJSON *data) {
 struct discord_attachment *_d_copy_attachment(struct discord_attachment *src) {
     if (!src)
         return NULL;
-    struct discord_attachment *c = (struct discord_attachment *)malloc(sizeof(struct discord_attachment));
+    struct discord_attachment *c = (struct discord_attachment *)calloc(1, sizeof(struct discord_attachment));
     memcpy(c, src, sizeof(struct discord_attachment));
     if (src->filename)
         c->filename = strndup(src->filename, 100);

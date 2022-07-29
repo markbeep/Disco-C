@@ -103,7 +103,7 @@ void event_handle_interaction_create(void *w) {
 }
 
 void event_handle(bot_client_t *bot, cJSON *data, char *event) {
-    d_log_notice("Event: %s\n", event);
+    d_log_debug("Event: %s\n", event);
 
     if (!bot->callbacks) {
         d_log_err("No callback functions defined!\n");

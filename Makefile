@@ -62,7 +62,7 @@ install: build $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) cJSON
 	ar -rsv libdisco.a $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(BUILD)/cJSON.o
 
 dev: build $(DEV_WEB_OBJECTS) $(DEV_UTILS_OBJECTS) $(DEV_DISCORD_OBJECTS) cJSON
-	ar -rsv dev-libdisco.a $(DEV_WEB_OBJECTS) $(DEV_UTILS_OBJECTS) $(DEV_DISCORD_OBJECTS) $(BUILD)/cJSON.o
+	ar -rsv libdevdisco.a $(DEV_WEB_OBJECTS) $(DEV_UTILS_OBJECTS) $(DEV_DISCORD_OBJECTS) $(BUILD)/cJSON.o
 
 build:
 	mkdir -p $(BUILD)
@@ -70,7 +70,7 @@ build:
 clean: clean_test
 	rm -rf $(BUILD)
 	rm -f libdisco.a
-	rm -f dev-libdisco.a
+	rm -f libdevdisco.a
 
 cJSON:
 	$(CC) $(CFLAGS) -c $(INCLUDE) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o

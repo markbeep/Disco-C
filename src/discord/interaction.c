@@ -22,7 +22,7 @@ void *_d_json_to_interaction_data_option(cJSON *data) {
 struct discord_interaction_data_option *_d_copy_interaction_data_option(struct discord_interaction_data_option *src) {
     if (!src)
         return NULL;
-    struct discord_interaction_data_option *c = (struct discord_interaction_data_option *)malloc(sizeof(struct discord_interaction_data_option));
+    struct discord_interaction_data_option *c = (struct discord_interaction_data_option *)calloc(1, sizeof(struct discord_interaction_data_option));
     memcpy(c, src, sizeof(struct discord_interaction_data_option));
     if (src->name)
         c->name = strndup(src->name, 50);
@@ -66,7 +66,7 @@ void *_d_json_to_interaction_data(cJSON *data) {
 struct discord_interaction_data *_d_copy_interaction_data(struct discord_interaction_data *src) {
     if (!src)
         return NULL;
-    struct discord_interaction_data *c = (struct discord_interaction_data *)malloc(sizeof(struct discord_interaction_data));
+    struct discord_interaction_data *c = (struct discord_interaction_data *)calloc(1, sizeof(struct discord_interaction_data));
     memcpy(c, src, sizeof(struct discord_interaction_data));
     if (src->name)
         c->name = strndup(src->name, 100);
@@ -143,7 +143,7 @@ void *_d_json_to_interaction(cJSON *data) {
 struct discord_interaction *_d_copy_interaction(struct discord_interaction *src) {
     if (!src)
         return NULL;
-    struct discord_interaction *c = (struct discord_interaction *)malloc(sizeof(struct discord_interaction));
+    struct discord_interaction *c = (struct discord_interaction *)calloc(1, sizeof(struct discord_interaction));
     memcpy(c, src, sizeof(struct discord_interaction));
     c->data = _d_copy_interaction_data(src->data);
     c->user = _d_copy_user(src->user);

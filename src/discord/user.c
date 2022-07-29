@@ -28,7 +28,7 @@ void *_d_json_to_user(cJSON *data) {
 struct discord_user *_d_copy_user(struct discord_user *src) {
     if (!src)
         return NULL;
-    struct discord_user *c = (struct discord_user *)malloc(sizeof(struct discord_user));
+    struct discord_user *c = (struct discord_user *)calloc(1, sizeof(struct discord_user));
     memcpy(c, src, sizeof(struct discord_user));
     if (src->username)
         c->username = strndup(src->username, 50);
@@ -97,7 +97,7 @@ void *_d_json_to_member(cJSON *data, struct discord_user *user) {
 struct discord_member *_d_copy_member(struct discord_member *src, struct discord_user *user) {
     if (!src)
         return NULL;
-    struct discord_member *c = (struct discord_member *)malloc(sizeof(struct discord_member));
+    struct discord_member *c = (struct discord_member *)calloc(1, sizeof(struct discord_member));
     memcpy(c, src, sizeof(struct discord_member));
     c->user = user;
     if (src->nick)

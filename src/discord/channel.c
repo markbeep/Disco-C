@@ -44,7 +44,7 @@ void *_d_json_to_channel(cJSON *data) {
 struct discord_channel *_d_copy_channel(struct discord_channel *src) {
     if (!src)
         return NULL;
-    struct discord_channel *c = (struct discord_channel *)malloc(sizeof(struct discord_channel));
+    struct discord_channel *c = (struct discord_channel *)calloc(1, sizeof(struct discord_channel));
     memcpy(c, src, sizeof(struct discord_channel));
     if (c->permission_overwrites_count > 0) {
         c->permission_overwrites = (struct discord_overwrite **)malloc(c->permission_overwrites_count * sizeof(struct discord_overwrite *));
