@@ -3,7 +3,7 @@ all: main
 LIBSPATH= -L..
 LIBS 	= -ldisco -lcurl -lpthread -lwebsockets
 CC 		= gcc
-CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wnoonversion \
+CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
     -Wextra -Wno-missing-field-initializers -Wformat=2 \
     -Wswitch-default -Wswitch -Wcast-align -Wpointer-arith \
     -Wno-bad-function-cast -Wstrict-prototypes -Winline \
