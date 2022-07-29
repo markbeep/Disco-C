@@ -19,14 +19,14 @@
 #include <discord/user.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <utils/cache.h>
 #include <utils/t_pool.h>
 #include <web/websocket.h>
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
 
-// definitions so that the compiler stops complaining
-// that they don't exist
+// definitions needed for the below structure definition
 struct discord_message;
 struct discord_interaction;
 
@@ -40,7 +40,7 @@ typedef struct discord_event_callbacks {
     void (*on_ready)(bot_client_t *);
     void (*on_resumed)(bot_client_t *);
     void (*on_message)(bot_client_t *, struct discord_message *message);
-    void (*on_message_edit)(bot_client_t *, struct discord_message *old, struct discord_message *new);
+    void (*on_message_edit)(bot_client_t *, struct discord_message *old, struct discord_message *new_);
     /**
      * @brief Function called if a message event is called. The message ID and channel ID are always given.
      * If the message was sent in a guild, the guild ID is also included. If the message was in cache before being
@@ -49,9 +49,9 @@ typedef struct discord_event_callbacks {
      */
     void (*on_message_delete)(bot_client_t *, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *);
     void (*on_channel_create)(bot_client_t *, struct discord_channel *channel);
-    void (*on_channel_update)(bot_client_t *, struct discord_channel *old, struct discord_channel *new);
+    void (*on_channel_update)(bot_client_t *, struct discord_channel *old, struct discord_channel *new_);
     void (*on_channel_delete)(bot_client_t *, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *);
-    void (*on_interaction)(bot_client_t *, struct discord_interaction *);
+    void (*on_interaction_create)(bot_client_t *, struct discord_interaction *);
 } discord_event_callbacks_t;
 
 struct bot_client {
@@ -67,9 +67,10 @@ struct bot_client {
  * Set settings as 0 to use the default.
  */
 struct discord_config {
-    int message_cache_size; ///< Amount of messages to store in the cache (default 1000)
-    int channel_cache_size; ///< Amount of channels to store in the cache (default 1000)
-    int guild_cache_size;   ///< Amount of guilds to store in the cache (default 1000)
+    int message_cache_size;                    ///< Amount of messages to store in the cache (default 1000).
+    int channel_cache_size;                    ///< Amount of channels to store in the cache (default 1000).
+    int guild_cache_size;                      ///< Amount of guilds to store in the cache (default 1000).
+    cache_destroy_callback_fn *cache_callback; ///< Callback that will be called when an element is dumped from the cache (default destroys the object).
 };
 
 /**
@@ -91,7 +92,7 @@ void discord_free_bot(bot_client_t *bot);
 
 /** @} */ // closes the client group
 
-char *get_string_from_json(cJSON *data, const char *name);
+char *_d_get_string_from_json(cJSON *data, const char *name);
 /**
  * @brief Get a bool from json object
  *
@@ -100,7 +101,7 @@ char *get_string_from_json(cJSON *data, const char *name);
  * @param default_ The default value incase the field doesn't exist
  * @return int
  */
-bool get_bool_from_json(cJSON *data, const char *name, int default_);
+bool _d_get_bool_from_json(cJSON *data, const char *name, int default_);
 /**
  * @brief Get an int from json object
  *
@@ -109,13 +110,13 @@ bool get_bool_from_json(cJSON *data, const char *name, int default_);
  * @param default_ The default value incase the field doesn't exist
  * @return bool
  */
-int get_int_from_json(cJSON *data, const char *name, int default_);
+int _d_get_int_from_json(cJSON *data, const char *name, int default_);
 
 typedef void *(*discord_struct_fn)(cJSON *);
-int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func);
+int _d_get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func);
 
-uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
+uint64_t _d_get_long_from_string_json(cJSON *data, const char *name, uint64_t default_);
 
-double get_double_from_string_json(cJSON *data, const char *name, double default_);
+double _d_get_double_from_string_json(cJSON *data, const char *name, double default_);
 
 #endif

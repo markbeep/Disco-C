@@ -16,7 +16,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/guild#guild-object
+/** https://discord.com/developers/docs/resources/guild#guild-object */
 struct discord_guild {
     uint64_t id;
     char *name;
@@ -69,7 +69,15 @@ struct discord_guild {
  * @param data
  * @return void* discord_guild struct
  */
-void *discord_create_guild_struct_json(cJSON *data);
+void *_d_json_to_guild(cJSON *data);
+
+/**
+ * @brief Copies a guild structure.
+ *
+ * @param src Guild to copy.
+ * @return struct discord_guild
+ */
+struct discord_guild *_d_copy_guild(struct discord_guild *src);
 
 /**
  * @brief Destroys the given structure and frees the pointer

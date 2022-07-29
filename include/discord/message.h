@@ -23,7 +23,7 @@ typedef struct bot_client bot_client_t;
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+/** https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure */
 struct discord_allowed_mentions {
     int parse_role_mentions;     ///< if roles should be mentioned
     int parse_user_mentions;     ///< if users should be mentioned
@@ -35,7 +35,7 @@ struct discord_allowed_mentions {
     bool replied_user;
 };
 
-// https://discord.com/developers/docs/resources/channel#message-reference-object
+/** https://discord.com/developers/docs/resources/channel#message-reference-object */
 struct discord_message_reference {
     uint64_t message_id;
     uint64_t channel_id;
@@ -44,12 +44,21 @@ struct discord_message_reference {
 };
 
 /**
- * @brief Creates a message_reference structure from a given JSON
+ * @brief Creates a message_reference structure from a given JSON.
  *
  * @param data
- * @return void* discord_message_reference struct
+ * @return void* discord_message_reference struct.
  */
-void *discord_create_message_reference_struct_json(cJSON *data);
+void *_d_json_to_message_reference(cJSON *data);
+
+/**
+ * @brief Copies a message reference structure.
+ *
+ * @param message Message reference to copy.
+ * @return struct discord_message_reference*
+ */
+struct discord_message_reference *_d_copy_message_reference(struct discord_message_reference *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -57,7 +66,7 @@ void *discord_create_message_reference_struct_json(cJSON *data);
  */
 void discord_destroy_message_reference(struct discord_message_reference *message);
 
-// https://discord.com/developers/docs/resources/channel#create-message
+/** https://discord.com/developers/docs/resources/channel#create-message */
 struct discord_create_message {
     bool tts;
     struct discord_embed *embed; // for single embeds this can be used
@@ -74,7 +83,7 @@ struct discord_create_message {
     int flags;
 };
 
-// https://discord.com/developers/docs/resources/channel#message-object-message-types
+/** https://discord.com/developers/docs/resources/channel#message-object-message-types */
 enum Discord_Message_Type { DEFAULT,
                             RECIPIENT_ADD,
                             RECIPIENT_REMOVE,
@@ -99,7 +108,7 @@ enum Discord_Message_Type { DEFAULT,
                             GUILD_INVITE_REMINDER,
                             CONTEXT_MENU_COMMAND };
 
-// https://discord.com/developers/docs/resources/channel#message-object
+/** https://discord.com/developers/docs/resources/channel#message-object */
 struct discord_message {
     uint64_t id;
     uint64_t channel_id;
@@ -144,14 +153,23 @@ struct discord_message {
 };
 
 /**
- * @brief Creates a message structure from a given JSON
+ * @brief Creates a message structure from a given JSON.
  *
  * @param data
  * @return void* discord_message struct
  */
-void *discord_create_message_struct_json(cJSON *data);
+void *_d_json_to_message(cJSON *data);
+
 /**
- * @brief Destroys the given structure and frees the pointer
+ * @brief Copies a message structure.
+ *
+ * @param message Message to copy.
+ * @return struct discord_message*
+ */
+struct discord_message *_d_copy_message(struct discord_message *message);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
  *
  * @param message
  */
@@ -164,7 +182,7 @@ void discord_destroy_message(struct discord_message *message);
  * @param content Discord message content.
  * @param message Create message struct.
  */
-void discord_fill_json_with_message(cJSON *json, char *content, struct discord_create_message *message);
+void _d_create_message_to_json(cJSON *json, char *content, struct discord_create_message *message);
 
 /** @} @} */
 #endif

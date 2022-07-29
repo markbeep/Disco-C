@@ -14,7 +14,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#thread-metadata-object
+/** https://discord.com/developers/docs/resources/channel#thread-metadata-object */
 struct discord_thread_metadata {
     bool archived;
     int auto_archive_duration;
@@ -24,11 +24,30 @@ struct discord_thread_metadata {
     char *create_timestamp;
 };
 
-// TODO implement
-void *discord_create_thread_metadata_struct_json(cJSON *data);
+/**
+ * @brief Creates a thread metadata structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_thread_metadata struct
+ */
+void *_d_json_to_thread_metadata(cJSON *data);
+
+/**
+ * @brief Copies a thread metadata structure.
+ *
+ * @param src Thread metadata to copy.
+ * @return struct discord_thread_metadata*
+ */
+struct discord_thread_metadata *_d_copy_thread_metadata(struct discord_thread_metadata *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param thread
+ */
 void discord_destroy_thread_metadata(struct discord_thread_metadata *thread);
 
-// https://discord.com/developers/docs/resources/channel#thread-member-object
+/** https://discord.com/developers/docs/resources/channel#thread-member-object */
 struct discord_thread_member {
     uint64_t id;
     uint64_t user_id;
@@ -36,8 +55,27 @@ struct discord_thread_member {
     int flags;
 };
 
-// TODO implement
-void *discord_create_thread_member_struct_json(cJSON *data);
+/**
+ * @brief Creates a thread member structure from a given JSON
+ *
+ * @param data
+ * @return void* discord_thread_member struct
+ */
+void *_d_json_to_thread_member(cJSON *data);
+
+/**
+ * @brief Copies a thread member structure.
+ *
+ * @param src Thread member to copy.
+ * @return struct discord_thread_member*
+ */
+struct discord_thread_member *_d_copy_thread_member(struct discord_thread_member *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param member
+ */
 void discord_destroy_thread_member(struct discord_thread_member *member);
 
 /** @} @} */

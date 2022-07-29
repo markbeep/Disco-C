@@ -23,8 +23,27 @@ struct discord_message_activity {
     uint64_t party_id;
 };
 
-// TODO implement
-void *discord_create_message_activity_struct_json(cJSON *data);
+/**
+ * @brief Creates a message activity structure from a given JSON.
+ *
+ * @param data
+ * @return void*
+ */
+void *_d_json_to_message_activity(cJSON *data);
+
+/**
+ * @brief Copies a message activity structure.
+ *
+ * @param activity Message activity to copy.
+ * @return struct discord_message_activity*
+ */
+struct discord_message_activity *_d_copy_message_activity(struct discord_message_activity *activity);
+
+/**
+ * @brief Destroys the given structure.
+ *
+ * @param activity
+ */
 void discord_destroy_message_activity(struct discord_message_activity *activity);
 
 /** @} @} */

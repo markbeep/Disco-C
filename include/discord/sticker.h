@@ -19,21 +19,32 @@ enum Discord_Sticker_Format { STICKER_FORMAT_PNG = 1,
                               STICKER_FORMAT_APNG = 2,
                               STICKER_FORMAT_LOTTIE = 3 };
 
-// https://discord.com/developers/docs/resources/sticker#sticker-item-object
+/** https://discord.com/developers/docs/resources/sticker#sticker-item-object */
 struct discord_message_sticker_item {
     char *id;
     char *name;
     enum Discord_Sticker_Format format_type;
 };
 
-// TODO implement
-void *discord_create_message_sticker_item_struct_json(cJSON *data);
+/**
+ * @brief Creates a sticker struct item with the given JSON.
+ *
+ * @param data
+ * @return void*
+ */
+void *_d_json_to_sticker_item(cJSON *data);
+
+/**
+ * @brief Destroys the sticker item structure and frees the pointer.
+ *
+ * @param sticker
+ */
 void discord_destroy_message_sticker(struct discord_message_sticker_item *message_sticker);
 
 enum Discord_Sticker_Type { STICKER_TYPE_STANDARD = 1,
                             STICKER_TYPE_GUILD = 2 };
 
-// https://discord.com/developers/docs/resources/sticker#sticker-object
+/** https://discord.com/developers/docs/resources/sticker#sticker-object */
 struct discord_sticker {
     char *id;
     uint64_t pack_id;
@@ -48,8 +59,27 @@ struct discord_sticker {
     int sort_value;
 };
 
-// TODO implement
-void *discord_create_sticker_struct_json(cJSON *data);
+/**
+ * @brief Creates a sticker struct with the given JSON.
+ *
+ * @param data
+ * @return void*
+ */
+void *_d_json_to_sticker(cJSON *data);
+
+/**
+ * @brief Copies a sticker structure.
+ *
+ * @param src Sticker to copy.
+ * @return struct discord_sticker*
+ */
+struct discord_sticker *_d_copy_sticker(struct discord_sticker *src);
+
+/**
+ * @brief Destroys the sticker structure and frees the pointer.
+ *
+ * @param sticker
+ */
 void discord_destroy_sticker(struct discord_sticker *sticker);
 
 /** @} @} */

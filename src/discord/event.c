@@ -98,7 +98,7 @@ void event_handle_channel_delete(void *w) {
 void event_handle_interaction_create(void *w) {
     event_pool_workload_t *work = (event_pool_workload_t *)w;
     struct discord_interaction *interaction = (struct discord_interaction *)work->data;
-    work->bot->callbacks->on_interaction(work->bot, interaction);
+    work->bot->callbacks->on_interaction_create(work->bot, interaction);
     free(work);
 }
 
@@ -119,7 +119,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
                 d_log_debug("Received a second READY event, recreating the bot user...\n");
                 discord_destroy_user(bot->user);
             }
-            bot->user = (struct discord_user *)discord_create_user_struct_json(user_data);
+            bot->user = (struct discord_user *)_d_json_to_user(user_data);
         }
         user_data = cJSON_GetObjectItem(data, "session_id");
         if (user_data) {
@@ -142,8 +142,8 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // the work struct is then freed inside the thread function
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
-            struct discord_channel *channel = discord_create_channel_struct_json(data);
-            work->data = (void *)channel;
+            struct discord_channel *channel = _d_json_to_channel(data);
+            work->data = (void *)_d_copy_channel(channel);
             d_log_debug("Channel ID = %ju\n", channel->id);
 
             // adds the channel to cache
@@ -158,11 +158,12 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the channel struct when cleaning up the cache
-            struct discord_channel *channel = discord_create_channel_struct_json(data);
-            // to be freed inside the event handle function
+            struct discord_channel *channel = _d_json_to_channel(data);
+
+            // this gets freed inside the event handle function
             struct edit_channel *edt_channel = (struct edit_channel *)malloc(sizeof(struct edit_channel));
-            edt_channel->old = discord_cache_get_channel(channel->id);
-            edt_channel->new = channel;
+            edt_channel->old = _d_copy_channel(discord_cache_get_channel(channel->id));
+            edt_channel->new = _d_copy_channel(channel);
             work->data = (void *)edt_channel;
 
             d_log_debug("Channel ID = %ju\n", channel->id);
@@ -191,7 +192,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
                 del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
             cJSON *c = cJSON_GetObjectItem(data, "type");
             del->type = c->valueint;
-            del->channel = del->id ? discord_cache_get_channel(del->id) : NULL;
+            del->channel = del->id ? _d_copy_channel(discord_cache_get_channel(del->id)) : NULL;
             work->data = (void *)del;
             t_pool_add_work(bot->thread_pool, &event_handle_channel_delete, work);
         }
@@ -266,8 +267,8 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the message struct when cleaning up the cache
-            struct discord_message *message = discord_create_message_struct_json(data);
-            work->data = (void *)message;
+            struct discord_message *message = _d_json_to_message(data);
+            work->data = (void *)_d_copy_message(message);
             d_log_debug("Message ID = %ju\n", message->id);
 
             // adds the message to cache
@@ -281,11 +282,11 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
             // we free the message struct when cleaning up the cache
-            struct discord_message *message = discord_create_message_struct_json(data);
+            struct discord_message *message = _d_json_to_message(data);
             // to be freed inside the event handle function
             struct edit_message *edt_msg = (struct edit_message *)malloc(sizeof(struct edit_message));
-            edt_msg->old = discord_cache_get_message(message->id);
-            edt_msg->new = message;
+            edt_msg->old = _d_copy_message(discord_cache_get_message(message->id));
+            edt_msg->new = _d_copy_message(message);
             work->data = (void *)edt_msg;
 
             d_log_debug("Message ID = %ju\n", message->id);
@@ -311,7 +312,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
             if (del_guild_id)
                 del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
-            del->message = del->id ? discord_cache_get_message(del->id) : NULL;
+            del->message = del->id ? _d_copy_message(discord_cache_get_message(del->id)) : NULL;
             work->data = (void *)del;
             t_pool_add_work(bot->thread_pool, &event_handle_message_delete, work);
         }
@@ -343,10 +344,10 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
 
     } else if (strncmp(event, "WEBHOOKS_UPDATE", 16) == 0) {
     } else if (strncmp(event, "INTERACTION_CREATE", 19) == 0) {
-        if (bot->callbacks->on_interaction) {
+        if (bot->callbacks->on_interaction_create) {
             event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
             work->bot = bot;
-            struct discord_interaction *interaction = discord_create_interaction_struct_json(data);
+            struct discord_interaction *interaction = _d_json_to_interaction(data);
             work->data = (void *)interaction;
 
             t_pool_add_work(bot->thread_pool, &event_handle_interaction_create, work);

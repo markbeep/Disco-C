@@ -56,14 +56,14 @@ void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, 
     discord_cache_destroy();
 }
 
-char *get_string_from_json(cJSON *data, const char *name) {
+char *_d_get_string_from_json(cJSON *data, const char *name) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsString(field))
         return NULL;
-    return strndup(field->valuestring, 4096);
+    return strndup(field->valuestring, 4097); // 4096 + '\0'
 }
 
-bool get_bool_from_json(cJSON *data, const char *name, int default_) {
+bool _d_get_bool_from_json(cJSON *data, const char *name, int default_) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsBool(field))
         return default_;
@@ -72,14 +72,14 @@ bool get_bool_from_json(cJSON *data, const char *name, int default_) {
     return false;
 }
 
-int get_int_from_json(cJSON *data, const char *name, int default_) {
+int _d_get_int_from_json(cJSON *data, const char *name, int default_) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsNumber(field))
         return default_;
     return field->valueint;
 }
 
-int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func) {
+int _d_get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, discord_struct_fn func) {
     cJSON *tmp = cJSON_GetObjectItem(data, name);
     int size = cJSON_GetArraySize(tmp);
     if (size <= 0)
@@ -93,7 +93,7 @@ int get_array_from_json(cJSON *data, const char *name, void ***array, size_t s, 
     return size;
 }
 
-uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t default_) {
+uint64_t _d_get_long_from_string_json(cJSON *data, const char *name, uint64_t default_) {
     cJSON *tmp = cJSON_GetObjectItem(data, name);
     if (cJSON_IsNumber(tmp)) // then value is a JSON number
         return (uint64_t)tmp->valuedouble;
@@ -102,7 +102,7 @@ uint64_t get_long_from_string_json(cJSON *data, const char *name, uint64_t defau
     return (uint64_t)strtoull(tmp->valuestring, NULL, 10);
 }
 
-double get_double_from_string_json(cJSON *data, const char *name, double default_) {
+double _d_get_double_from_string_json(cJSON *data, const char *name, double default_) {
     cJSON *tmp = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsNumber(tmp))
         return default_;

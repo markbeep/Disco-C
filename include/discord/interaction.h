@@ -29,7 +29,7 @@ enum Value_Type { VALUE_STRING,
                   VALUE_INTEGER,
                   VALUE_DOUBLE };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure */
 struct discord_interaction_data_option {
     char *name;
     enum Discord_Application_Command_Option_Type type;
@@ -44,10 +44,30 @@ struct discord_interaction_data_option {
     bool focused;
 };
 
-void *discord_create_interaction_data_option_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction data option structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_interaction_data_option struct
+ */
+void *_d_json_to_interaction_data_option(cJSON *data);
+
+/**
+ * @brief Copies an interaction data option structure.
+ *
+ * @param src Interaction data option to copy.
+ * @return struct discord_interaction_data_option*
+ */
+struct discord_interaction_data_option *_d_copy_interaction_data_option(struct discord_interaction_data_option *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction_data_option(struct discord_interaction_data_option *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data */
 struct discord_interaction_data {
     // base application command data structure
     uint64_t id;
@@ -67,10 +87,30 @@ struct discord_interaction_data {
     int components_count;                            // modal
 };
 
-void *discord_create_interaction_data_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction data structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_interaction_data struct
+ */
+void *_d_json_to_interaction_data(cJSON *data);
+
+/**
+ * @brief Copies an interaction data structure.
+ *
+ * @param src Interaction data to copy.
+ * @return struct discord_interaction_data*
+ */
+struct discord_interaction_data *_d_copy_interaction_data(struct discord_interaction_data *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction_data(struct discord_interaction_data *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure */
 struct discord_interaction {
     uint64_t id;
     uint64_t application_id;
@@ -88,10 +128,30 @@ struct discord_interaction {
     char *guild_locale;
 };
 
-void *discord_create_interaction_struct_json(cJSON *data);
+/**
+ * @brief Creates an interaction structure from a given JSON.
+ *
+ * @param data
+ * @return void*
+ */
+void *_d_json_to_interaction(cJSON *data);
+
+/**
+ * @brief Copies an interaction structure.
+ *
+ * @param src Interaction to copy.
+ * @return struct discord_interaction*
+ */
+struct discord_interaction *_d_copy_interaction(struct discord_interaction *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param interaction
+ */
 void discord_destroy_interaction(struct discord_interaction *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type */
 enum Discord_Interaction_Callback_Type {
     DISCORD_CALLBACK_PONG = 1,
     DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE = 4,
@@ -102,7 +162,7 @@ enum Discord_Interaction_Callback_Type {
     DISCORD_CALLBACK_MODAL = 9
 };
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure */
 struct discord_interaction_callback {
     enum Discord_Interaction_Callback_Type type;
     union {

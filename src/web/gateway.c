@@ -1,5 +1,4 @@
 #include <cJSON/cJSON.h>
-#include <config.h>
 #include <discord/event.h>
 #include <pthread.h>
 #include <string.h>

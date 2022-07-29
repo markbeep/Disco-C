@@ -1,19 +1,29 @@
 #include <discord/sticker.h>
 
 // TODO implement
-void *discord_create_sticker_struct_json(cJSON *data) {
+void *_d_json_to_sticker(cJSON *data) {
     (void)data;
     return NULL;
 }
 
+// TODO implement
+struct discord_sticker *_d_copy_sticker(struct discord_sticker *src) {
+    (void)src;
+    return NULL;
+}
+
+// TODO implement
 void discord_destroy_sticker(struct discord_sticker *sticker) {
     (void)sticker;
 }
 
-void *discord_create_message_sticker_item_struct_json(cJSON *data) {
+// TODO implement
+void *_d_json_to_sticker_item(cJSON *data) {
     (void)data;
     return NULL;
 }
+
+// TODO implement
 void discord_destroy_message_sticker(struct discord_message_sticker_item *sticker) {
     (void)sticker;
 }

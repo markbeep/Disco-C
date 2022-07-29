@@ -14,7 +14,7 @@
  * @{
  */
 
-// https://discord.com/developers/docs/topics/teams#data-models-team-member-object
+/** https://discord.com/developers/docs/topics/teams#data-models-team-member-object */
 struct discord_team_member {
     int membership_state;
     char **permissions;
@@ -23,7 +23,7 @@ struct discord_team_member {
     struct discord_user *user;
 };
 
-// https://discord.com/developers/docs/topics/teams#data-models-team-object
+/** https://discord.com/developers/docs/topics/teams#data-models-team-object */
 struct discord_team {
     char *icon;
     uint64_t id;
@@ -33,14 +33,14 @@ struct discord_team {
     uint64_t owner_user_id;
 };
 
-// https://discord.com/developers/docs/resources/application#install-params-object
+/** https://discord.com/developers/docs/resources/application#install-params-object */
 struct discord_params {
     char **scopes;
     int scopes_count;
     char *permissions;
 };
 
-// https://discord.com/developers/docs/resources/application#application-object
+/** https://discord.com/developers/docs/resources/application#application-object */
 struct discord_application {
     uint64_t id;
     char *name;
@@ -65,7 +65,27 @@ struct discord_application {
     char *custom_install_url;
 };
 
-void *discord_create_application_struct_json(cJSON *data);
+/**
+ * @brief Creates an application structure from a given JSON.
+ *
+ * @param data
+ * @return void* discord_application struct
+ */
+void *_d_json_to_application(cJSON *data);
+
+/**
+ * @brief Copies a application structure.
+ *
+ * @param src Application structure to copy.
+ * @return struct discord_application*
+ */
+struct discord_application *_d_copy_application(struct discord_application *src);
+
+/**
+ * @brief Destroys the given structure and frees the pointer.
+ *
+ * @param application
+ */
 void discord_destroy_application(struct discord_application *application);
 
 /** @} @} */
