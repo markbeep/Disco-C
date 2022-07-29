@@ -60,7 +60,7 @@ char *_d_get_string_from_json(cJSON *data, const char *name) {
     cJSON *field = cJSON_GetObjectItem(data, name);
     if (!cJSON_IsString(field))
         return NULL;
-    return strndup(field->valuestring, 4096);
+    return strndup(field->valuestring, 4097); // 4096 + '\0'
 }
 
 bool _d_get_bool_from_json(cJSON *data, const char *name, int default_) {

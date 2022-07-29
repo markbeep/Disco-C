@@ -2,6 +2,7 @@
 #include <discord/disco.h>
 #include <discord/message.h>
 #include <discord/thread.h>
+#include <string.h>
 
 void *_d_json_to_channel(cJSON *data) {
     struct discord_channel *ch = (struct discord_channel *)calloc(1, sizeof(struct discord_channel));
@@ -10,7 +11,7 @@ void *_d_json_to_channel(cJSON *data) {
     ch->type = (enum Discord_Channel_Type)_d_get_int_from_json(data, "type", 0);
     ch->guild_id = _d_get_long_from_string_json(data, "guild_id", 0);
     ch->position = _d_get_int_from_json(data, "position", -1);
-    ch->permission_overwrites_count = _d_get_array_from_json(data, "permission_overwrites", (void ***)&ch->permission_overwrites, sizeof(struct discord_overwrite), &discord_create_overwrite_struct_json);
+    ch->permission_overwrites_count = _d_get_array_from_json(data, "permission_overwrites", (void ***)&ch->permission_overwrites, sizeof(struct discord_overwrite), &_d_json_to_overwrite);
     ch->name = _d_get_string_from_json(data, "name");
     ch->topic = _d_get_string_from_json(data, "topic");
     ch->nsfw = _d_get_bool_from_json(data, "nsfw", 0);
@@ -30,15 +31,48 @@ void *_d_json_to_channel(cJSON *data) {
     ch->member_count = _d_get_int_from_json(data, "member_count", 0);
     tmp = cJSON_GetObjectItem(data, "thread_metadata");
     if (tmp)
-        ch->thread_metadata = discord_create_thread_metadata_struct_json(tmp);
+        ch->thread_metadata = _d_json_to_thread_metadata(tmp);
     tmp = cJSON_GetObjectItem(data, "member");
     if (tmp)
-        ch->member = discord_create_thread_member_struct_json(tmp);
+        ch->member = _d_json_to_thread_member(tmp);
     ch->default_auto_archive_duration = _d_get_int_from_json(data, "default_auto_archive_duration", 0);
     ch->permissions = _d_get_string_from_json(data, "permissions");
     ch->flags = _d_get_int_from_json(data, "flags", 0);
     return ch;
 }
+
+struct discord_channel *_d_copy_channel(struct discord_channel *src) {
+    if (!src)
+        return NULL;
+    struct discord_channel *c = (struct discord_channel *)malloc(sizeof(struct discord_channel));
+    memcpy(c, src, sizeof(struct discord_channel));
+    if (c->permission_overwrites_count > 0) {
+        c->permission_overwrites = (struct discord_overwrite **)malloc(c->permission_overwrites_count * sizeof(struct discord_overwrite *));
+        for (int i = 0; i < c->permission_overwrites_count; i++)
+            c->permission_overwrites[i] = _d_copy_overwrite(src->permission_overwrites[i]);
+    }
+    if (src->name)
+        c->name = strndup(src->name, 101);
+    if (src->topic)
+        c->topic = strndup(src->topic, 1025);
+    if (c->recipients_count > 0) {
+        c->recipients = (struct discord_user **)malloc(c->recipients_count * sizeof(struct discord_user *));
+        for (int i = 0; i < c->recipients_count; i++)
+            c->recipients[i] = _d_copy_user(src->recipients[i]);
+    }
+    if (src->icon)
+        c->topic = strndup(src->icon, 1025);
+    if (src->last_pin_timestamp)
+        c->last_pin_timestamp = strndup(src->last_pin_timestamp, 100);
+    if (src->rtc_region)
+        c->rtc_region = strndup(src->rtc_region, 100);
+    c->thread_metadata = _d_copy_thread_metadata(src->thread_metadata);
+    c->member = _d_copy_thread_member(src->member);
+    if (src->permissions)
+        c->permissions = strndup(src->permissions, 100);
+    return c;
+}
+
 void discord_destroy_channel(struct discord_channel *ch) {
     // frees all the char pointers
     char *to_free[12] = {

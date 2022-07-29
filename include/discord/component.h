@@ -23,7 +23,7 @@ enum Discord_Component_Type { COMPONENT_ACTION_ROW = 1,
                               COMPONENT_SELECT_MENU = 3,
                               COMPONENT_TEXT_INPUT = 4 };
 
-// https://discord.com/developers/docs/interactions/message-components#action-rows
+/** https://discord.com/developers/docs/interactions/message-components#action-rows */
 struct discord_action_row {
     struct discord_component **components;
     int components_count;
@@ -35,7 +35,7 @@ enum Discord_Button_Style { BUTTON_PRIMARY = 1,
                             BUTTON_DANGER = 4,
                             BUTTON_LINK = 5 };
 
-// https://discord.com/developers/docs/interactions/message-components#button-object
+/** https://discord.com/developers/docs/interactions/message-components#button-object */
 struct discord_button {
     enum Discord_Button_Style style;
     char *label;
@@ -45,7 +45,7 @@ struct discord_button {
     bool disabled;
 };
 
-// https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
+/** https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure */
 struct discord_select_option {
     char *label;
     char *value;
@@ -60,7 +60,16 @@ struct discord_select_option {
  * @param data
  * @return void* discord_select_option struct
  */
-void *discord_create_select_option_struct(cJSON *data);
+void *_d_json_to_select_option(cJSON *data);
+
+/**
+ * @brief Copies a select option structure.
+ *
+ * @param src Select option to copy.
+ * @return struct discord_select option*
+ */
+struct discord_select_option *_d_copy_select_option(struct discord_select_option *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -68,7 +77,7 @@ void *discord_create_select_option_struct(cJSON *data);
  */
 void discord_destroy_select_option(struct discord_select_option *option);
 
-// https://discord.com/developers/docs/interactions/message-components#select-menu-object
+/** https://discord.com/developers/docs/interactions/message-components#select-menu-object */
 struct discord_select_menu {
     char *custom_id;
     struct discord_select_option **options;
@@ -82,7 +91,7 @@ struct discord_select_menu {
 enum Discord_Text_Input_Style { TEXT_INPUT_SHORT = 1,
                                 TEXT_INPUT_PARAGRAPH = 2 };
 
-// https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+/** https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure */
 struct discord_text_input {
     char *custom_id;
     enum Discord_Text_Input_Style style;
@@ -94,7 +103,7 @@ struct discord_text_input {
     char *placeholder;
 };
 
-// https://discord.com/developers/docs/interactions/message-components#component-object
+/** https://discord.com/developers/docs/interactions/message-components#component-object */
 struct discord_component {
     enum Discord_Component_Type type;
     union {

@@ -25,6 +25,26 @@ void *_d_json_to_user(cJSON *data) {
     return user;
 }
 
+struct discord_user *_d_copy_user(struct discord_user *src) {
+    if (!src)
+        return NULL;
+    struct discord_user *c = (struct discord_user *)malloc(sizeof(struct discord_user));
+    memcpy(c, src, sizeof(struct discord_user));
+    if (src->username)
+        c->username = strndup(src->username, 50);
+    if (src->discriminator)
+        c->discriminator = strndup(src->discriminator, 5);
+    if (src->avatar)
+        c->avatar = strndup(src->avatar, 100);
+    if (src->banner)
+        c->banner = strndup(src->banner, 100);
+    if (src->locale)
+        c->locale = strndup(src->locale, 10);
+    if (src->email)
+        c->email = strndup(src->email, 100);
+    return c;
+}
+
 void discord_destroy_user(struct discord_user *user) {
     if (user->username)
         free(user->username);
@@ -72,6 +92,31 @@ void *_d_json_to_member(cJSON *data, struct discord_user *user) {
     mem->communication_disabled_until = _d_get_string_from_json(data, "communication_disabled_until");
 
     return mem;
+}
+
+struct discord_member *_d_copy_member(struct discord_member *src, struct discord_user *user) {
+    if (!src)
+        return NULL;
+    struct discord_member *c = (struct discord_member *)malloc(sizeof(struct discord_member));
+    memcpy(c, src, sizeof(struct discord_member));
+    c->user = user;
+    if (src->nick)
+        c->nick = strndup(src->nick, 50);
+    if (src->avatar)
+        c->avatar = strndup(src->avatar, 100);
+    if (c->roles_count > 0) {
+        c->roles = (uint64_t *)malloc(sizeof(uint64_t) * src->roles_count);
+        memcpy(c->roles, src->roles, sizeof(uint64_t) * src->roles_count);
+    }
+    if (src->joined_at)
+        c->joined_at = strndup(src->joined_at, 50);
+    if (src->premium_since)
+        c->premium_since = strndup(src->premium_since, 50);
+    if (src->permissions)
+        c->permissions = strndup(src->permissions, 50);
+    if (src->communication_disabled_until)
+        c->communication_disabled_until = strndup(src->communication_disabled_until, 50);
+    return c;
 }
 
 void discord_destroy_member(struct discord_member *mem) {

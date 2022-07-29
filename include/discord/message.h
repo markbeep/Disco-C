@@ -23,7 +23,7 @@ typedef struct bot_client bot_client_t;
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+/** https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure */
 struct discord_allowed_mentions {
     int parse_role_mentions;     ///< if roles should be mentioned
     int parse_user_mentions;     ///< if users should be mentioned
@@ -35,7 +35,7 @@ struct discord_allowed_mentions {
     bool replied_user;
 };
 
-// https://discord.com/developers/docs/resources/channel#message-reference-object
+/** https://discord.com/developers/docs/resources/channel#message-reference-object */
 struct discord_message_reference {
     uint64_t message_id;
     uint64_t channel_id;
@@ -66,7 +66,7 @@ struct discord_message_reference *_d_copy_message_reference(struct discord_messa
  */
 void discord_destroy_message_reference(struct discord_message_reference *message);
 
-// https://discord.com/developers/docs/resources/channel#create-message
+/** https://discord.com/developers/docs/resources/channel#create-message */
 struct discord_create_message {
     bool tts;
     struct discord_embed *embed; // for single embeds this can be used
@@ -83,7 +83,7 @@ struct discord_create_message {
     int flags;
 };
 
-// https://discord.com/developers/docs/resources/channel#message-object-message-types
+/** https://discord.com/developers/docs/resources/channel#message-object-message-types */
 enum Discord_Message_Type { DEFAULT,
                             RECIPIENT_ADD,
                             RECIPIENT_REMOVE,
@@ -108,7 +108,7 @@ enum Discord_Message_Type { DEFAULT,
                             GUILD_INVITE_REMINDER,
                             CONTEXT_MENU_COMMAND };
 
-// https://discord.com/developers/docs/resources/channel#message-object
+/** https://discord.com/developers/docs/resources/channel#message-object */
 struct discord_message {
     uint64_t id;
     uint64_t channel_id;

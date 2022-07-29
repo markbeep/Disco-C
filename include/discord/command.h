@@ -14,14 +14,14 @@
  *
  */
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types */
 enum Discord_Application_Command_Type {
     COMMAND_CHAT_INPUT = 1,
     COMMAND_USER = 2,
     COMMAND_MESSAGE = 3
 };
 
-// https://discord.com/developers/docs/reference#locales
+/** https://discord.com/developers/docs/reference#locales */
 struct discord_language_locales {
     char *da;
     char *de;
@@ -55,7 +55,7 @@ struct discord_language_locales {
     char *ko;
 };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure */
 struct discord_application_command_option_choice {
     char *name;
     struct discord_language_locales *name_localizations;
@@ -65,7 +65,7 @@ struct discord_application_command_option_choice {
     } value; // type of value depends on the option type
 };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type */
 enum Discord_Application_Command_Option_Type {
     COMMAND_OPTION_SUB_COMMAND = 1,
     COMMAND_OPTION_SUB_COMMAND_GROUP = 2,
@@ -80,7 +80,7 @@ enum Discord_Application_Command_Option_Type {
     COMMAND_OPTION_ATTACHMENT = 11
 };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure */
 struct discord_application_command_option {
     enum Discord_Application_Command_Option_Type type;
     char *name;
@@ -101,7 +101,7 @@ struct discord_application_command_option {
     bool autocomplete;
 };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure */
 struct discord_application_command {
     uint64_t *id;
     enum Discord_Application_Command_Type type;
@@ -126,10 +126,10 @@ struct discord_application_command {
  */
 
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
-int discord_command_register(struct discord_application_command *command, const char *token);
-int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token);
-int discord_command_delete_global(uint64_t command_id, const char *token);
-int discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token);
+int discord_command_register(struct discord_application_command *command, const char *token, const char *application_id);
+int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id);
+int discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id);
+int discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id);
 
 /** @} @} */
 #endif

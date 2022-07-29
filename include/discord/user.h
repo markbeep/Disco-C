@@ -14,7 +14,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/user#user-object
+/** https://discord.com/developers/docs/resources/user#user-object */
 struct discord_user {
     uint64_t id;
     char *username;
@@ -62,11 +62,11 @@ void discord_destroy_user(struct discord_user *user);
  * @{
  */
 
-// https://discord.com/developers/docs/resources/guild#guild-member-object
 /**
  * @brief Discord guild member structure.
  * This structure is mostly available on events that are given inside of guilds.
  * Events like a message being created inside a guild.
+ * Discord docs: https://discord.com/developers/docs/resources/guild#guild-member-object
  */
 struct discord_member {
     struct discord_user *user;          ///< User structure if given.

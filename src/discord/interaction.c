@@ -24,8 +24,9 @@ struct discord_interaction_data_option *_d_copy_interaction_data_option(struct d
         return NULL;
     struct discord_interaction_data_option *c = (struct discord_interaction_data_option *)malloc(sizeof(struct discord_interaction_data_option));
     memcpy(c, src, sizeof(struct discord_interaction_data_option));
-    c->name = strndup(src->name, 50);
-    if (c->value_type == VALUE_STRING)
+    if (src->name)
+        c->name = strndup(src->name, 50);
+    if (c->value_type == VALUE_STRING && src->value.string_)
         c->value.string_ = strndup(src->value.string_, 120);
     if (c->options_count > 0) {
         c->options = (struct discord_interaction_data_option **)malloc(c->options_count * sizeof(struct discord_interaction_data_option *));
@@ -56,9 +57,9 @@ void *_d_json_to_interaction_data(cJSON *data) {
     d->guild_id = _d_get_long_from_string_json(data, "guild_id", 0);
     d->target_id = _d_get_long_from_string_json(data, "target_id", 0);
 
-    d->custom_id = _d_get_string_from_json(data, "custom_id");                                                                                                  // message/modal
-    d->values_count = _d_get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &discord_create_select_option_struct); // message
-    d->components_count = _d_get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &_d_json_to_component);        // modal
+    d->custom_id = _d_get_string_from_json(data, "custom_id");                                                                                           // message/modal
+    d->values_count = _d_get_array_from_json(data, "values", (void ***)&d->values, sizeof(struct discord_select_option), &_d_json_to_select_option);     // message
+    d->components_count = _d_get_array_from_json(data, "components", (void ***)&d->components, sizeof(struct discord_component), &_d_json_to_component); // modal
     return d;
 }
 
@@ -67,14 +68,16 @@ struct discord_interaction_data *_d_copy_interaction_data(struct discord_interac
         return NULL;
     struct discord_interaction_data *c = (struct discord_interaction_data *)malloc(sizeof(struct discord_interaction_data));
     memcpy(c, src, sizeof(struct discord_interaction_data));
-    c->name = strndup(src->name, 100);
+    if (src->name)
+        c->name = strndup(src->name, 100);
     if (c->options_count > 0) {
         c->options = (struct discord_interaction_data_option **)malloc(c->options_count * sizeof(struct discord_interaction_data_option *));
         for (int i = 0; i < c->options_count; i++) {
             c->options[i] = _d_copy_interaction_data_option(src->options[i]);
         }
     }
-    c->custom_id = strndup(src->custom_id, 50);
+    if (src->custom_id)
+        c->custom_id = strndup(src->custom_id, 50);
     if (c->values_count > 0) {
         c->values = (struct discord_interaction_data_option **)malloc(c->values_count * sizeof(struct discord_interaction_data_option *));
         for (int i = 0; i < c->values_count; i++) {
@@ -84,7 +87,7 @@ struct discord_interaction_data *_d_copy_interaction_data(struct discord_interac
     if (c->components_count > 0) {
         c->components = (struct discord_component **)malloc(c->components_count * sizeof(struct discord_component *));
         for (int i = 0; i < c->components_count; i++) {
-            c->components[i] = _d_copy_interaction_data_option(src->components[i]);
+            c->components[i] = _d_copy_component(src->components[i]);
         }
     }
     return c;
@@ -145,11 +148,15 @@ struct discord_interaction *_d_copy_interaction(struct discord_interaction *src)
     c->data = _d_copy_interaction_data(src->data);
     c->user = _d_copy_user(src->user);
     c->member = _d_copy_member(src->member, c->user);
-    c->token = strndup(src->token, 100);
+    if (src->token)
+        c->token = strndup(src->token, 100);
     c->message = _d_copy_message(src->message);
-    c->app_permissions = strndup(src->app_permissions, 50);
-    c->locale = strndup(src->locale, 10);
-    c->guild_locale = strndup(src->guild_locale, 10);
+    if (src->app_permissions)
+        c->app_permissions = strndup(src->app_permissions, 50);
+    if (src->locale)
+        c->locale = strndup(src->locale, 10);
+    if (src->guild_locale)
+        c->guild_locale = strndup(src->guild_locale, 10);
     return c;
 }
 

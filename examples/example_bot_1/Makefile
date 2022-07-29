@@ -15,4 +15,4 @@ CFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
 INCLUDE = -I../../include -I../../external -I../..
 
 main: main.c example_slash_commands/example_hello.c example_slash_commands/example_ping.c
-	$(CC) $(INCLUDE) main.c example_slash_commands/example_hello.c example_slash_commands/example_ping.c -o $@ $(LIBSPATH) $(LIBS)
+	$(CC) $(INCLUDE) main.c $(CFLAGS) example_slash_commands/example_hello.c example_slash_commands/example_ping.c -o $@ $(LIBSPATH) $(LIBS)

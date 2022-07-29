@@ -14,7 +14,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#attachment-object
+/** https://discord.com/developers/docs/resources/channel#attachment-object */
 struct discord_attachment {
     uint64_t id;
     char *filename;

@@ -29,7 +29,7 @@ enum Value_Type { VALUE_STRING,
                   VALUE_INTEGER,
                   VALUE_DOUBLE };
 
-// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+/** https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure */
 struct discord_interaction_data_option {
     char *name;
     enum Discord_Application_Command_Option_Type type;
@@ -67,7 +67,7 @@ struct discord_interaction_data_option *_d_copy_interaction_data_option(struct d
  */
 void discord_destroy_interaction_data_option(struct discord_interaction_data_option *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data */
 struct discord_interaction_data {
     // base application command data structure
     uint64_t id;
@@ -110,7 +110,7 @@ struct discord_interaction_data *_d_copy_interaction_data(struct discord_interac
  */
 void discord_destroy_interaction_data(struct discord_interaction_data *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure */
 struct discord_interaction {
     uint64_t id;
     uint64_t application_id;
@@ -151,7 +151,7 @@ struct discord_interaction *_d_copy_interaction(struct discord_interaction *src)
  */
 void discord_destroy_interaction(struct discord_interaction *interaction);
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type */
 enum Discord_Interaction_Callback_Type {
     DISCORD_CALLBACK_PONG = 1,
     DISCORD_CALLBACK_CHANNEL_MESSAGE_WITH_SOURCE = 4,
@@ -162,7 +162,7 @@ enum Discord_Interaction_Callback_Type {
     DISCORD_CALLBACK_MODAL = 9
 };
 
-// https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure
+/** https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-response-structure */
 struct discord_interaction_callback {
     enum Discord_Interaction_Callback_Type type;
     union {

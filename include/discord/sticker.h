@@ -19,7 +19,7 @@ enum Discord_Sticker_Format { STICKER_FORMAT_PNG = 1,
                               STICKER_FORMAT_APNG = 2,
                               STICKER_FORMAT_LOTTIE = 3 };
 
-// https://discord.com/developers/docs/resources/sticker#sticker-item-object
+/** https://discord.com/developers/docs/resources/sticker#sticker-item-object */
 struct discord_message_sticker_item {
     char *id;
     char *name;
@@ -44,7 +44,7 @@ void discord_destroy_message_sticker(struct discord_message_sticker_item *messag
 enum Discord_Sticker_Type { STICKER_TYPE_STANDARD = 1,
                             STICKER_TYPE_GUILD = 2 };
 
-// https://discord.com/developers/docs/resources/sticker#sticker-object
+/** https://discord.com/developers/docs/resources/sticker#sticker-object */
 struct discord_sticker {
     char *id;
     uint64_t pack_id;

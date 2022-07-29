@@ -17,24 +17,24 @@ BUILD	= build
 INCLUDE = -Iinclude -Iexternal -I.
 
 WEB_SOURCES := $(wildcard src/web/*.c)
-WEB_OBJECTS=$(patsubst src/web/%.c, $(BUILD)/%.o, $(WEB_SOURCES))
-$(WEB_OBJECTS): $(BUILD)/%.o : src/web/%.c
+WEB_OBJECTS=$(patsubst src/web/%.c, $(BUILD)/web-%.o, $(WEB_SOURCES))
+$(WEB_OBJECTS): $(BUILD)/web-%.o : src/web/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 UTILS_SOURCES := $(wildcard src/utils/*.c)
-UTILS_OBJECTS=$(patsubst src/utils/%.c, $(BUILD)/%.o, $(UTILS_SOURCES))
-$(UTILS_OBJECTS): $(BUILD)/%.o : src/utils/%.c
+UTILS_OBJECTS=$(patsubst src/utils/%.c, $(BUILD)/utils-%.o, $(UTILS_SOURCES))
+$(UTILS_OBJECTS): $(BUILD)/utils-%.o : src/utils/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 DISCORD_SOURCES := $(wildcard src/discord/*.c)
-DISCORD_OBJECTS=$(patsubst src/discord/%.c, $(BUILD)/%.o, $(DISCORD_SOURCES))
-$(DISCORD_OBJECTS): $(BUILD)/%.o : src/discord/%.c
+DISCORD_OBJECTS=$(patsubst src/discord/%.c, $(BUILD)/discord-%.o, $(DISCORD_SOURCES))
+$(DISCORD_OBJECTS): $(BUILD)/discord-%.o : src/discord/%.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $(LIBS) $< -o $@
 
 example:
 	(cd examples/example_bot_1 && make)
 
-install: config.h build $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) cJSON
+install: build $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) cJSON
 	ar -rsv libdisco.a $(WEB_OBJECTS) $(UTILS_OBJECTS) $(DISCORD_OBJECTS) $(BUILD)/cJSON.o
 
 build:
@@ -42,11 +42,7 @@ build:
 
 clean: clean_test
 	rm -rf $(BUILD)
-	rm -f main
-	rm -f examples/register
-
-config.h:
-	@echo '#define DISCORD_TOKEN "token_placeholder"\n#define APPLICATION_ID "bot/application ID"' > $@
+	rm libdisco.a
 
 cJSON:
 	$(CC) $(CFLAGS) -c $(INCLUDE) external/cJSON/cJSON.c -o $(BUILD)/cJSON.o

@@ -14,7 +14,7 @@
  * @{
  */
 
-// https://discord.com/developers/docs/topics/teams#data-models-team-member-object
+/** https://discord.com/developers/docs/topics/teams#data-models-team-member-object */
 struct discord_team_member {
     int membership_state;
     char **permissions;
@@ -23,7 +23,7 @@ struct discord_team_member {
     struct discord_user *user;
 };
 
-// https://discord.com/developers/docs/topics/teams#data-models-team-object
+/** https://discord.com/developers/docs/topics/teams#data-models-team-object */
 struct discord_team {
     char *icon;
     uint64_t id;
@@ -33,14 +33,14 @@ struct discord_team {
     uint64_t owner_user_id;
 };
 
-// https://discord.com/developers/docs/resources/application#install-params-object
+/** https://discord.com/developers/docs/resources/application#install-params-object */
 struct discord_params {
     char **scopes;
     int scopes_count;
     char *permissions;
 };
 
-// https://discord.com/developers/docs/resources/application#application-object
+/** https://discord.com/developers/docs/resources/application#application-object */
 struct discord_application {
     uint64_t id;
     char *name;

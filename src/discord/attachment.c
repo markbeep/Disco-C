@@ -16,6 +16,26 @@ void *_d_json_to_attachment(cJSON *data) {
     return attach;
 }
 
+struct discord_attachment *_d_copy_attachment(struct discord_attachment *src) {
+    if (!src)
+        return NULL;
+    struct discord_attachment *c = (struct discord_attachment *)malloc(sizeof(struct discord_attachment));
+    memcpy(c, src, sizeof(struct discord_attachment));
+    if (src->filename)
+        c->filename = strndup(src->filename, 100);
+    if (src->description)
+        c->description = strndup(src->description, 1025);
+    if (src->content_type)
+        c->content_type = strndup(src->content_type, 50);
+    if (src->url)
+        c->url = strndup(src->url, 100);
+    if (src->url)
+        c->url = strndup(src->url, 2048);
+    if (src->proxy_url)
+        c->proxy_url = strndup(src->proxy_url, 2048);
+    return c;
+}
+
 void discord_destroy_attachment(struct discord_attachment *attachment) {
     if (attachment->filename)
         free(attachment->filename);

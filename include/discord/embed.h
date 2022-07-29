@@ -13,6 +13,7 @@
  *
  */
 
+/** https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure */
 struct discord_embed_footer {
     char *text;
     char *icon_url;
@@ -25,15 +26,15 @@ struct discord_embed_footer {
  * @param data
  * @return void* discord_embed_footer struct
  */
-void *_d_json_to_embed(cJSON *data);
+void *_d_json_to_embed_footer(cJSON *data);
 
 /**
- * @brief Copies an embed structure.
+ * @brief Copies an embed footer structure.
  *
- * @param embed Embed to copy.
- * @return struct discord_embed*
+ * @param src Embed to copy.
+ * @return struct discord_embed_footer*
  */
-struct discord_embed *_d_copy_embed(struct discord_embed *embed);
+struct discord_embed_footer *_d_copy_embed_footer(struct discord_embed_footer *src);
 
 /**
  * @brief Destroys the given structure and frees the pointer
@@ -56,7 +57,16 @@ struct discord_embed_media {
  * @param data
  * @return void* discord_embed_media struct
  */
-void *discord_create_embed_media_struct_json(cJSON *data);
+void *_d_json_to_embed_media(cJSON *data);
+
+/**
+ * @brief Copies an embed media structure.
+ *
+ * @param src Embed media to copy.
+ * @return struct discord_embed_media*
+ */
+struct discord_embed_media *_d_copy_embed_media(struct discord_embed_media *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -64,6 +74,7 @@ void *discord_create_embed_media_struct_json(cJSON *data);
  */
 void discord_destroy_embed_media(struct discord_embed_media *media);
 
+/** https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure */
 struct discord_embed_provider {
     char *name;
     char *url;
@@ -75,7 +86,16 @@ struct discord_embed_provider {
  * @param data
  * @return void* discord_embed_provider struct
  */
-void *discord_create_embed_provider_struct_json(cJSON *data);
+void *_d_json_to_embed_provider(cJSON *data);
+
+/**
+ * @brief Copies an embed provider structure.
+ *
+ * @param src Embed provider to copy.
+ * @return struct discord_embed_provider*
+ */
+struct discord_embed_provider *_d_copy_embed_provider(struct discord_embed_provider *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -96,7 +116,16 @@ struct discord_embed_author {
  * @param data
  * @return void* discord_embed_author struct
  */
-void *discord_create_embed_author_struct_json(cJSON *data);
+void *_d_json_to_embed_author(cJSON *data);
+
+/**
+ * @brief Copies an embed author structure.
+ *
+ * @param src Embed author to copy.
+ * @return struct discord_embed_author*
+ */
+struct discord_embed_author *_d_copy_embed_author(struct discord_embed_author *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -116,7 +145,16 @@ struct discord_embed_field {
  * @param data
  * @return void* discord_embed_field struct
  */
-void *discord_create_embed_field_struct_json(cJSON *data);
+void *_d_json_to_embed_field(cJSON *data);
+
+/**
+ * @brief Copies an embed field structure.
+ *
+ * @param src Embed field to copy.
+ * @return struct discord_embed_field*
+ */
+struct discord_embed_field *_d_copy_embed_field(struct discord_embed_field *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *
@@ -124,7 +162,7 @@ void *discord_create_embed_field_struct_json(cJSON *data);
  */
 void discord_destroy_embed_field(struct discord_embed_field *field);
 
-// https://discord.com/developers/docs/resources/channel#embed-object
+/** https://discord.com/developers/docs/resources/channel#embed-object */
 struct discord_embed {
     char *title;
     char *type; // should always be "rich" for generic embed
@@ -148,7 +186,16 @@ struct discord_embed {
  * @param data
  * @return void* discord_embed struct
  */
-void *discord_create_embed_struct_json(cJSON *data);
+void *_d_json_to_embed(cJSON *data);
+
+/**
+ * @brief Copies an embed structure.
+ *
+ * @param src Embed to copy.
+ * @return struct discord_embed*
+ */
+struct discord_embed *_d_copy_embed(struct discord_embed *src);
+
 /**
  * @brief Destroys the given structure and frees the pointer
  *

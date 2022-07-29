@@ -14,7 +14,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#reaction-object
+/** https://discord.com/developers/docs/resources/channel#reaction-object */
 struct discord_reaction {
     int count;
     bool me;

@@ -29,8 +29,10 @@ void *_d_json_to_message(cJSON *data) {
     msg->content = _d_get_string_from_json(data, "content");
     // gives us the guarantee that if the message content is empty,
     // the pointer is NULL
-    if (msg->content && strnlen(msg->content, 1) == 0)
+    if (msg->content && strnlen(msg->content, 1) == 0) {
+        free(msg->content);
         msg->content = NULL;
+    }
     msg->timestamp = _d_get_string_from_json(data, "timestamp");
     msg->tts = _d_get_bool_from_json(data, "tts", 0);
     msg->mention_everyone = _d_get_bool_from_json(data, "mention_everyone", 0);
@@ -119,9 +121,12 @@ struct discord_message *_d_copy_message(struct discord_message *msg) {
     memcpy(c, msg, sizeof(struct discord_message));
     c->user = _d_copy_user(msg->user);
     c->member = _d_copy_member(c->member, c->user);
-    c->content = strndup(msg->content, 4096);
-    c->timestamp = strndup(msg->timestamp, 50);
-    c->edited_timestamp = strndup(msg->edited_timestamp, 50);
+    if (msg->content)
+        c->content = strndup(msg->content, 4096);
+    if (msg->timestamp)
+        c->timestamp = strndup(msg->timestamp, 50);
+    if (msg->edited_timestamp)
+        c->edited_timestamp = strndup(msg->edited_timestamp, 50);
     if (c->mentions_count > 0) {
         c->mentions = (struct discord_member **)malloc(c->mentions_count * sizeof(struct discord_member *));
         for (int i = 0; i < c->mentions_count; i++)
@@ -152,7 +157,8 @@ struct discord_message *_d_copy_message(struct discord_message *msg) {
         for (int i = 0; i < c->reactions_count; i++)
             c->reactions[i] = _d_copy_reaction(msg->reactions[i]);
     }
-    c->nonce = strndup(msg->nonce, 200);
+    if (msg->nonce)
+        c->nonce = strndup(msg->nonce, 200);
     c->activity = _d_copy_message_activity(msg->activity);
     c->application = _d_copy_application(msg->application);
     c->message_reference = _d_copy_message_reference(msg->message_reference);

@@ -14,7 +14,7 @@ The wiki is still under developement, but it is available here: https://markc.su
     - [Copy Paste Command](#copy-paste-command)
     - [Required Libraries:](#required-libraries)
   - [File Explanations](#file-explanations)
-  - [Problems](#problems)
+  - [Cache and Destroying Structures](#cache-and-destroying-structures)
   - [Progress](#progress)
 
 ## Installing
@@ -54,8 +54,10 @@ The file layout is intended to follow the Pitchfork standard. Some things aren't
 - **docs**: Configuration files to automatically generate the wiki.
 - **tests**: Basic tests which don't really test a lot.
 
-## Problems
-- Currently it is possible for the cache to delete a message/channel/guild structure while the struct is still being used in another thread. This happens very rarely and only with small cache sizes, but it is possible.
+## Cache and Destroying Structures
+There exists a cache which will keep track of messages, channels and guilds so that when they are updated/deleted, you still get access to the data instead of simply an ID. To not have the cache completely overfill there is a max amount of items that are stored in the cache. The default is a size of 1000 items for each data type. The last used item will be removed once a new item is added and there are 1000 items in the cache. Per default the removed items will simply be destroyed. If you want to do something else with them, you can pass in a different callback in the `discord_config` struct which can be passed in upon starting the bot with `discord_start_bot`.
+
+Even though there is a cache that retreives already existing structures, every event will always provide a newly allocated structure. Meaning you will always have to free the received structures in every event callback. This is for consistency and thread safety reasons, so that a specific message struct doesn't get freed while another event still uses it.
 
 ## Progress
 - Interactions ![](https://progress-bar.dev/100/?title=4/4)

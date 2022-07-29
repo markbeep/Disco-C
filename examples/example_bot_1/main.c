@@ -20,6 +20,7 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
     if (message->content) { // message content is NULL if there's none
         if (message->user && message->user->bot) {
             fprintf(stderr, "User is a bot. Ignoring\n");
+            discord_destroy_message(message);
             return;
         }
         // example of a ping command
@@ -53,19 +54,27 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
 
         } else if (strncmp(message->content, "!exit", 6) == 0) {
             // softly ends the bot
+            discord_destroy_message(message);
             websocket_exit(bot);
+            return;
 
         } else if (strncmp(message->content, "!r", 3) == 0) {
             // reconnects the websocket
             websocket_reconnect(bot);
         }
     }
+    discord_destroy_message(message);
 }
 
 void example_on_edit(bot_client_t *bot, struct discord_message *old, struct discord_message *new) {
     char content[120];
     sprintf(content, "Message %ju was edited. Message in cache: %s. Old message ID = %ju", new->id, old ? "Yes" : "No", old ? old->id : 0);
     discord_channel_send_message(bot, content, new->channel_id, NULL, false);
+
+    if (old)
+        discord_destroy_message(old);
+    if (new)
+        discord_destroy_message(new);
 }
 
 void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_id, uint64_t guild_id, struct discord_message *message) {
@@ -78,11 +87,16 @@ void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_
         sprintf(content, "Cache: No\nID: %ju, channel ID: %ju, guild ID: %ju", message_id, channel_id, guild_id);
         discord_channel_send_message(bot, content, channel_id, NULL, false);
     }
+
+    if (message)
+        discord_destroy_message(message);
 }
 
 void example_channel_create(bot_client_t *bot, struct discord_channel *channel) {
     (void)bot;
     d_log_normal("Channel created with ID %ju\n", channel->id);
+
+    discord_destroy_channel(channel);
 }
 void example_channel_update(bot_client_t *bot, struct discord_channel *old, struct discord_channel *new) {
     (void)bot;
@@ -91,6 +105,11 @@ void example_channel_update(bot_client_t *bot, struct discord_channel *old, stru
     } else {
         d_log_normal("Channel NOT in cache was updated: %ju\n", new->id);
     }
+
+    if (old)
+        discord_destroy_channel(old);
+    if (new)
+        discord_destroy_channel(new);
 }
 void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t guild_id, uint64_t parent_id, enum Discord_Channel_Type type, struct discord_channel *channel) {
     (void)bot;
@@ -102,6 +121,9 @@ void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t gui
     } else {
         d_log_normal("Channel NOT in cache was deleted: %ju\n", channel_id);
     }
+
+    if (channel)
+        discord_destroy_channel(channel);
 }
 
 void example_interaction_create(bot_client_t *bot, struct discord_interaction *interaction) {
@@ -131,7 +153,7 @@ int main(int argc, char **argv) {
     callbacks.on_channel_create = &example_channel_create;
     callbacks.on_channel_update = &example_channel_update;
     callbacks.on_channel_delete = &example_channel_delete;
-    callbacks.on_interaction = &example_interaction_create;
+    callbacks.on_interaction_create = &example_interaction_create;
 
     struct discord_config config = {.message_cache_size = 2};
 

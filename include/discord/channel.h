@@ -16,7 +16,7 @@
  *
  */
 
-// https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+/** https://discord.com/developers/docs/resources/channel#channel-object-channel-types */
 enum Discord_Channel_Type { CHANNEL_GUILD_TEXT = 0,
                             CHANNEL_DM = 1,
                             CHANNEL_GROUP_DM = 1,
@@ -30,7 +30,7 @@ enum Discord_Channel_Type { CHANNEL_GUILD_TEXT = 0,
                             CHANNEL_GUILD_DIRECTORY = 14,
                             CHANNEL_GUILD_FORUM = 15 };
 
-// https://discord.com/developers/docs/resources/channel#channel-object
+/** https://discord.com/developers/docs/resources/channel#channel-object */
 struct discord_channel {
     uint64_t id;
     enum Discord_Channel_Type type;
@@ -63,7 +63,7 @@ struct discord_channel {
     int flags;
 };
 
-// https://discord.com/developers/docs/resources/channel#channel-mention-object
+/** https://discord.com/developers/docs/resources/channel#channel-mention-object */
 struct discord_channel_mention {
     uint64_t id;
     uint64_t guild_id;
@@ -88,7 +88,7 @@ void *_d_json_to_channel(cJSON *data);
 struct discord_channel *_d_copy_channel(struct discord_channel *channel);
 
 /**
- * @brief Destroys the given structure and frees the pointer
+ * @brief Destroys the given structure and frees the pointer.
  *
  * @param ch channel struct
  */
