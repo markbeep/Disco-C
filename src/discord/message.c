@@ -57,7 +57,7 @@ void *_d_json_to_message(cJSON *data) {
         msg->mention_roles = (uint64_t *)malloc((size_t)msg->mention_roles_count * sizeof(uint64_t));
         int i = 0;
         cJSON_ArrayForEach(cur, tmp_json) {
-            msg->mention_roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
+            msg->mention_roles[i++] = (uint64_t)strtoull(cur->valuestring, NULL, 10);
         }
     }
 

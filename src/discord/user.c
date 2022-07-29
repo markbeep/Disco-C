@@ -80,7 +80,7 @@ void *_d_json_to_member(cJSON *data, struct discord_user *user) {
         int i = 0;
         cJSON *cur = NULL;
         cJSON_ArrayForEach(cur, tmp) {
-            mem->roles[i++] = (uint64_t)strtoll(cur->valuestring, NULL, 10);
+            mem->roles[i++] = (uint64_t)strtoull(cur->valuestring, NULL, 10);
         }
     }
     mem->joined_at = _d_get_string_from_json(data, "joined_at");

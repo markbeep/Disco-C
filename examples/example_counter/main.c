@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include <utils/disco_logging.h>
 
-static int watch = 0;
+static int count = 0; // keeps track of what the last sent count is
+static uint64_t bot_to_watch = 0UL;
 static uint64_t count_channel_id = 996746797236105236UL;
 static uint64_t owner_id = 205704051856244736UL;
 
@@ -37,13 +38,6 @@ static int get_last_message_count(bot_client_t *bot) {
     return res;
 }
 
-static void send_new_count(bot_client_t *bot) {
-    char s[20];
-    sprintf(s, "%d", watch + 1);
-    watch += 2;
-    discord_channel_send_message(bot, s, count_channel_id, NULL, false);
-}
-
 void on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
@@ -52,11 +46,46 @@ void on_ready(bot_client_t *bot) {
     printf("====================================\n\n");
     fflush(stdout);
 
-    // checks what the last count is and sends the next one
-    watch = get_last_message_count(bot);
-    if (watch == -1)
-        return;
-    send_new_count(bot);
+    // checks what the last count is
+    count = get_last_message_count(bot);
+}
+
+static void cmd_count(bot_client_t *bot, struct discord_message *message) {
+    struct discord_embed embed = {0};
+    struct discord_create_message msg = {.embed = &embed};
+    embed.color = 0xadd8e6;
+    char s[40];
+    embed.description = s;
+    sprintf(s, "Count = `%d`", count);
+    discord_channel_send_message(bot, NULL, message->channel_id, &msg, false);
+}
+
+static void cmd_watch(bot_client_t *bot, struct discord_message *message) {
+    struct discord_embed embed = {0};
+    struct discord_create_message msg = {.embed = &embed};
+    embed.color = 0xadd8e6;
+    char s[50];
+    embed.description = s;
+
+    // parse input
+    char *token, *rest = message->content;
+    token = strtok_r(rest, " ", &rest);
+    token = strtok_r(rest, " ", &rest);
+    if (token) {
+        bot_to_watch = (uint64_t)strtoull(token, NULL, 10);
+    }
+    if (bot_to_watch == 0) {
+        sprintf(s, "Watch = nobody <:sadge:851469686578741298>");
+    } else {
+        sprintf(s, "Watch = <@%ju>", bot_to_watch);
+    }
+    discord_channel_send_message(bot, NULL, message->channel_id, &msg, false);
+}
+
+static void send_count(bot_client_t *bot, int n) {
+    char s[20];
+    sprintf(s, "%d", n);
+    discord_channel_send_message(bot, s, count_channel_id, NULL, false);
 }
 
 void on_message(bot_client_t *bot, struct discord_message *message) {
@@ -64,35 +93,23 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
     if (!message->content || !message->member)
         return;
 
-    // change watch score
+    // commands to call
     if (message->user->id == owner_id && strncmp(message->content, "!count", 6) == 0) {
-        char *token, *rest = message->content;
-        // we do it twice to skip the !count from the beginning
-        token = strtok_r(rest, " ", &rest);
-        token = strtok_r(rest, " ", &rest);
-        if (!token) {
-            char s[40];
-            sprintf(s, "Watching for `%d`", watch);
-            discord_channel_send_message(bot, s, message->channel_id, NULL, false);
-            return;
-        }
-        watch = (int)strtol(token, NULL, 10);
-        char s[40];
-        sprintf(s, "Watching for `%d`", watch);
-        discord_channel_send_message(bot, s, message->channel_id, NULL, false);
+        cmd_count(bot, message);
+        return;
+    }
+    if (message->user->id == owner_id && strncmp(message->content, "!watch", 6) == 0) {
+        cmd_watch(bot, message);
         return;
     }
 
-    // if it's the myself or not the count channel
-    if (message->user->id == bot->user->id || message->channel_id != count_channel_id)
+    // if it's not the bot I'm watching (nor the owner) or not the count channel
+    if ((message->user->id != owner_id && message->user->id != bot_to_watch) ||
+        message->channel_id != count_channel_id)
         return;
     int n = (int)strtol(message->content, NULL, 10);
-    if (n == watch) {
-        char s[20];
-        watch += 2;
-        sprintf(s, "%d", ++n);
-        discord_channel_send_message(bot, s, message->channel_id, NULL, false);
-    }
+    count = n;
+    send_count(bot, n + 1);
 }
 
 int main(int argc, char **argv) {

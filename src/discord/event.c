@@ -183,13 +183,13 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
             char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
             if (del_id)
-                del->id = (uint64_t)strtoll(del_id, NULL, 10);
+                del->id = (uint64_t)strtoull(del_id, NULL, 10);
             char *del_parent_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
             if (del_parent_id)
-                del->parent_id = (uint64_t)strtoll(del_parent_id, NULL, 10);
+                del->parent_id = (uint64_t)strtoull(del_parent_id, NULL, 10);
             char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
             if (del_guild_id)
-                del->guild_id = (uint64_t)strtoll(del_guild_id, NULL, 10);
+                del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
             cJSON *c = cJSON_GetObjectItem(data, "type");
             del->type = c->valueint;
             del->channel = del->id ? _d_copy_channel(discord_cache_get_channel(del->id)) : NULL;
@@ -305,13 +305,13 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
             char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
             if (del_id)
-                del->id = (uint64_t)strtoll(del_id, NULL, 10);
+                del->id = (uint64_t)strtoull(del_id, NULL, 10);
             char *del_channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
             if (del_channel_id)
-                del->channel_id = (uint64_t)strtoll(del_channel_id, NULL, 10);
+                del->channel_id = (uint64_t)strtoull(del_channel_id, NULL, 10);
             char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
             if (del_guild_id)
-                del->guild_id = (uint64_t)strtoll(del_guild_id, NULL, 10);
+                del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
             del->message = del->id ? _d_copy_message(discord_cache_get_message(del->id)) : NULL;
             work->data = (void *)del;
             t_pool_add_work(bot->thread_pool, &event_handle_message_delete, work);
