@@ -79,9 +79,9 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
     case LWS_CALLBACK_CLIENT_WRITEABLE: // we can ignore this callback
         break;
     default:
-        lwsl_notice("other callback message %d\n", (int)reason);
+        lwsl_debug("other callback message %d\n", (int)reason);
         if (in)
-            lwsl_notice("\textra info: %s\n", (char *)in);
+            lwsl_debug("\textra info: %s\n", (char *)in);
         break;
     }
 

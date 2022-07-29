@@ -124,7 +124,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
         case 429: // simply retry after waiting the time
             res_json = cJSON_Parse(*response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
-            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
+            lwsl_debug("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
             if (cJSON_IsNumber(wait_ms)) {
                 usleep((unsigned int)wait_ms->valueint * 1000u);
             }
@@ -132,6 +132,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
             break;
         case 0:   // if CURL fails we get 0
         case 502: // we simply retry again after a few seconds
+            lwsl_notice("Received a %ld error\n", http);
             usleep((1 << iterations) * 1000000u);
             iterations++;
             break;

@@ -91,25 +91,30 @@ static void send_count(bot_client_t *bot, int n) {
 void on_message(bot_client_t *bot, struct discord_message *message) {
     // no content or no member (so not a guild message)
     if (!message->content || !message->member)
-        return;
+        goto cleanup;
 
     // commands to call
-    if (message->user->id == owner_id && strncmp(message->content, "!count", 6) == 0) {
+    if (strncmp(message->content, "!count", 6) == 0) {
         cmd_count(bot, message);
-        return;
+        goto cleanup;
     }
     if (message->user->id == owner_id && strncmp(message->content, "!watch", 6) == 0) {
         cmd_watch(bot, message);
-        return;
+        goto cleanup;
     }
 
     // if it's not the bot I'm watching (nor the owner) or not the count channel
     if ((message->user->id != owner_id && message->user->id != bot_to_watch) ||
         message->channel_id != count_channel_id)
-        return;
+        goto cleanup;
     int n = (int)strtol(message->content, NULL, 10);
-    count = n;
-    send_count(bot, n + 1);
+    if (n > count) { // ignore any number below our count
+        count = n;
+        send_count(bot, n + 1);
+    }
+
+cleanup:
+    discord_destroy_message(message);
 }
 
 int main(int argc, char **argv) {
@@ -125,7 +130,7 @@ int main(int argc, char **argv) {
     conf.message_cache_size = 2;
 
     // Make errors show up in the console
-    d_set_log_level(D_LOG_ERR);
+    d_set_log_level(D_LOG_ERR | D_LOG_NOTICE);
 
     // starts the bot. This function blocks
     discord_start_bot(&callbacks, DISCORD_TOKEN, &conf);

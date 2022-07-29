@@ -69,12 +69,11 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
     }
     cJSON *op = cJSON_GetObjectItemCaseSensitive(result, "op");
     if (cJSON_IsNumber(op)) {
-        d_log_notice("Received opcode: %d\n", op->valueint);
+        d_log_debug("Received opcode: %d\n", op->valueint);
         switch (op->valueint) {
         case DISCORD_DISPATCH:
             bot->websocket_client->success_login = 1;
-            d_log_notice("Received DISPATCH \n");
-            d_log_debug("Dispatch data: %s\n", data);
+            d_log_debug("Received DISPATCH: data: %s\n", data);
 
             gateway_handle_dispatch(bot, result);
             break;

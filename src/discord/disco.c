@@ -10,7 +10,7 @@
 
 void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, struct discord_config *config) {
     // Turn off logs
-    lws_set_log_level(0, NULL);
+    lws_set_log_level(LLL_NOTICE | LLL_ERR | LLL_WARN, NULL);
 
     bot_client_t bot = {0};
     websocket_client_t client = {0};
