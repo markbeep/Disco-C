@@ -2,6 +2,7 @@
 #define DISCO_LOGGING
 
 #include <stdio.h>
+#include <time.h>
 
 #define D_LOG_ERR (1 << 0)
 #define D_LOG_NOTICE (1 << 1)
@@ -15,36 +16,46 @@ int d_should_log_notice(void);
 int d_should_log_normal(void);
 int d_should_log_debug(void);
 
-#define d_log_err(str, ...)                                                                       \
-    do {                                                                                          \
-        if (d_should_log_err()) {                                                                 \
-            fprintf(stderr, "[%s:%d] \033[91m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
-            fflush(stderr);                                                                       \
-        }                                                                                         \
+void _d_datetime(char s[50]);
+
+#define d_log_err(str, ...)                                                   \
+    do {                                                                      \
+        if (d_should_log_err()) {                                             \
+            char s[50];                                                       \
+            _d_datetime(s);                                                   \
+            fprintf(stderr, "[%s] \033[91m" str "\033[0m", s, ##__VA_ARGS__); \
+            fflush(stderr);                                                   \
+        }                                                                     \
     } while (0);
 
-#define d_log_notice(str, ...)                                                                    \
-    do {                                                                                          \
-        if (d_should_log_notice()) {                                                              \
-            fprintf(stderr, "[%s:%d] \033[95m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
-            fflush(stderr);                                                                       \
-        }                                                                                         \
+#define d_log_notice(str, ...)                                                \
+    do {                                                                      \
+        if (d_should_log_notice()) {                                          \
+            char s[50];                                                       \
+            _d_datetime(s);                                                   \
+            fprintf(stdout, "[%s] \033[95m" str "\033[0m", s, ##__VA_ARGS__); \
+            fflush(stdout);                                                   \
+        }                                                                     \
     } while (0);
 
-#define d_log_normal(str, ...)                                                  \
-    do {                                                                        \
-        if (d_should_log_normal()) {                                            \
-            fprintf(stderr, "[%s:%d] " str, __FILE__, __LINE__, ##__VA_ARGS__); \
-            fflush(stderr);                                                     \
-        }                                                                       \
+#define d_log_normal(str, ...)                              \
+    do {                                                    \
+        if (d_should_log_normal()) {                        \
+            char s[50];                                     \
+            _d_datetime(s);                                 \
+            fprintf(stdout, "[%s] " str, s, ##__VA_ARGS__); \
+            fflush(stdout);                                 \
+        }                                                   \
     } while (0);
 
-#define d_log_debug(str, ...)                                                                     \
-    do {                                                                                          \
-        if (d_should_log_debug()) {                                                               \
-            fprintf(stderr, "[%s:%d] \033[92m" str "\033[0m", __FILE__, __LINE__, ##__VA_ARGS__); \
-            fflush(stderr);                                                                       \
-        }                                                                                         \
+#define d_log_debug(str, ...)                                                 \
+    do {                                                                      \
+        if (d_should_log_debug()) {                                           \
+            char s[50];                                                       \
+            _d_datetime(s);                                                   \
+            fprintf(stdout, "[%s] \033[92m" str "\033[0m", s, ##__VA_ARGS__); \
+            fflush(stdout);                                                   \
+        }                                                                     \
     } while (0);
 
 #endif

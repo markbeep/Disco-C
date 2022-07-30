@@ -15,12 +15,11 @@ char *d_getenv(const char *file, const char *name) {
     int n = strnlen(name, 1000);
     // valid: if we're on a valid line
     // found: if we found the name
-    int val = 1, found = 0;
     // offset: how far the value is in the file
     // cur: how far we currently are in the file
     // count: index of name
     // env_len: length of the variable name
-    size_t offset = 0, cur = 0, count = 0, env_len = 0;
+    int val = 1, found = 0, offset = 0, cur = 0, count = 0, env_len = 0;
     while ((c = fgetc(fp)) != EOF) {
         cur++;
         if (found)
