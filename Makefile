@@ -1,4 +1,5 @@
 all: install
+main: install
 
 CC 		= gcc
 DEVFLAGS	= -std=gnu11 -g -pedantic -Wall -Wno-conversion \
