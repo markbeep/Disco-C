@@ -1,7 +1,6 @@
 #ifndef DISCO_EMOJI
 #define DISCO_EMOJI
 
-#include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 

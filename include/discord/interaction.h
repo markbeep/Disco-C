@@ -4,7 +4,6 @@
 #include "command.h"
 #include "component.h"
 #include "message.h"
-#include "user.h"
 #include <cJSON/cJSON.h>
 #include <discord/disco.h>
 #include <stdbool.h>

@@ -1,7 +1,6 @@
 #ifndef DISCO_STICKER
 #define DISCO_STICKER
 
-#include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>

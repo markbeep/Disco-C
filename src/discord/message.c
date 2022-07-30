@@ -1,4 +1,5 @@
 #include <discord/commands/message_commands.h>
+#include <discord/embed.h>
 #include <discord/interaction.h>
 #include <discord/message.h>
 #include <string.h>

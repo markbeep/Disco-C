@@ -1,4 +1,4 @@
-#include "cJSON/cJSON.h"
+#include <cJSON/cJSON.h>
 #include <web/request.h>
 
 struct discord_prio_packet {

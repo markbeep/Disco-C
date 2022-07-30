@@ -119,12 +119,11 @@ struct discord_application_command {
 };
 
 /**
- * @brief Fills a JSON with the values of a langauge locales struct.
+ * @brief Fills a JSON with the values of a language locales struct.
  *
  * @param json JSON struct to fill the values in.
  * @param locales struct to be used to fill in the JSON.
  */
-
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
 int discord_command_register(struct discord_application_command *command, const char *token, const char *application_id);
 int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id);

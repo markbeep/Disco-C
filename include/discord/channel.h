@@ -1,9 +1,7 @@
 #ifndef DISCO_CHANNEL
 #define DISCO_CHANNEL
 
-#include "permission.h"
-#include "thread.h"
-#include "user.h"
+#include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>
 

@@ -1,7 +1,6 @@
 #ifndef DISCO_REACTION
 #define DISCO_REACTION
 
-#include "emoji.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 

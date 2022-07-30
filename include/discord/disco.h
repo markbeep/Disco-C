@@ -7,6 +7,7 @@
 #include <discord/channel.h>
 #include <discord/commands/message_commands.h>
 #include <discord/component.h>
+#include <discord/embed.h>
 #include <discord/guild.h>
 #include <discord/interaction.h>
 #include <discord/message.h>
@@ -25,10 +26,6 @@
 
 typedef struct websocket_client websocket_client_t;
 typedef struct bot_client bot_client_t;
-
-// definitions needed for the below structure definition
-struct discord_message;
-struct discord_interaction;
 
 /**
  * @addtogroup Client

@@ -1,8 +1,6 @@
 #ifndef DISCO_COMPONENT
 #define DISCO_COMPONENT
 
-#include "emoji.h"
-#include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>

@@ -1,14 +1,7 @@
 #ifndef DISCO_MESSAGE
 #define DISCO_MESSAGE
 
-#include "attachment.h"
-#include "channel.h"
-#include "component.h"
-#include "embed.h"
-#include "message_activity.h"
-#include "reaction.h"
-#include "sticker.h"
-#include "user.h"
+#include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>
 

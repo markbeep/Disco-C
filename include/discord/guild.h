@@ -1,9 +1,7 @@
 #ifndef DISCO_GUILD
 #define DISCO_GUILD
 
-#include "emoji.h"
-#include "role.h"
-#include "sticker.h"
+#include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>
 

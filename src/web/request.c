@@ -5,7 +5,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
-#include <utils/timer.h>
 #include <web/request.h>
 
 /**
@@ -132,6 +131,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
             break;
         case 0:   // if CURL fails we get 0
         case 502: // we simply retry again after a few seconds
+        case 503:
             lwsl_notice("Received a %ld error\n", http);
             usleep((1 << iterations) * 1000000u);
             iterations++;

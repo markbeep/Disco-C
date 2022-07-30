@@ -1,7 +1,6 @@
 #ifndef DISCO_APPLICATION
 #define DISCO_APPLICATION
 
-#include "user.h"
 #include <cJSON/cJSON.h>
 #include <stdbool.h>
 #include <stdint.h>
