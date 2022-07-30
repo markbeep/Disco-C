@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Disco-C: src/utils Directory Reference</title>
+<title>Disco-C: include/utils/env_parse.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,29 +63,66 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_313caf1132e152dd9b58bea13a4052ca.html">utils</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_821002d4f10779a80d4fb17bc32f21f1.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">utils Directory Reference</div>  </div>
+<div class="title">env_parse.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a href="env__parse_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:cache_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cache_8c.html">cache.c</a></td></tr>
-<tr class="memdesc:cache_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file handles a cache for messages, guilds and channels. Structures are kept alive in the queue even if a new structure for the ID is created (message was edited). The structure will be cleaned up though if it is at the beginning of the queue and the max cache size is reached. struct. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:disco__logging_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco__logging_8c.html">disco_logging.c</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:env__parse_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="env__parse_8c.html">env_parse.c</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:prio__queue_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html">prio_queue.c</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:t__pool_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="t__pool_8c.html">t_pool.c</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab86dd83274a1a90c64c5fac7b8a7fbc3"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="env__parse_8h.html#ab86dd83274a1a90c64c5fac7b8a7fbc3">d_getenv</a> (const char *file, const char *name)</td></tr>
+<tr class="memdesc:ab86dd83274a1a90c64c5fac7b8a7fbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of a .env file variable.  <a href="env__parse_8h.html#ab86dd83274a1a90c64c5fac7b8a7fbc3">More...</a><br /></td></tr>
+<tr class="separator:ab86dd83274a1a90c64c5fac7b8a7fbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab86dd83274a1a90c64c5fac7b8a7fbc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86dd83274a1a90c64c5fac7b8a7fbc3">&#9670;&nbsp;</a></span>d_getenv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* d_getenv </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the value of a .env file variable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>Filename </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the variable. Can't be over 1000 characters long. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+<p class="reference">References <a class="el" href="group___models.html#ga206e938ca74fc8b283b8e10bf8a1c57b">discord_guild::name</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
