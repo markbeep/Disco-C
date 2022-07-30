@@ -11,7 +11,7 @@ char *d_getenv(const char *file, const char *name) {
     }
 
     // finds the length of the env value
-    char c;
+    signed char c;
     int n = strnlen(name, 1000);
     // valid: if we're on a valid line
     // found: if we found the name
