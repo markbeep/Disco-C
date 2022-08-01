@@ -107,7 +107,7 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
             break;
 
         case DISCORD_HEARTBEAT_ACK:
-            d_log_notice("Received HEARTBEAT ACK\n");
+            d_log_debug("Received HEARTBEAT ACK\n");
             struct timeval heartbeat_recv;
             gettimeofday(&heartbeat_recv, NULL);
             bot->heartbeat_latency = (heartbeat_recv.tv_sec - last_hearbeat.tv_sec) * 1000 + (heartbeat_recv.tv_usec - last_hearbeat.tv_usec) / 1000;
