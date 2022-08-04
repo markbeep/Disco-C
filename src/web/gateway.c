@@ -65,7 +65,7 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
         if (error_ptr) {
             d_log_err("Error or no JSON format at: %s\n", error_ptr);
         }
-        goto json_cleanup;
+        return;
     }
     cJSON *op = cJSON_GetObjectItemCaseSensitive(result, "op");
     if (cJSON_IsNumber(op)) {
@@ -120,7 +120,6 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
         d_log_err("JSON missing opcode\n");
     }
 
-json_cleanup:
     cJSON_Delete(result);
 }
 

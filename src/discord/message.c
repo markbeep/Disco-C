@@ -171,6 +171,11 @@ struct discord_message *_d_copy_message(struct discord_message *msg) {
         for (int i = 0; i < c->components_count; i++)
             c->components[i] = _d_copy_component(msg->components[i]);
     }
+    if (c->sticker_items_count > 0) {
+        c->sticker_items = (struct discord_sticker **)malloc(c->sticker_items_count * sizeof(struct discord_sticker *));
+        for (int i = 0; i < c->sticker_items_count; i++)
+            c->sticker_items[i] = _d_copy_sticker_item(msg->sticker_items[i]);
+    }
     if (c->stickers_count > 0) {
         c->stickers = (struct discord_sticker **)malloc(c->stickers_count * sizeof(struct discord_sticker *));
         for (int i = 0; i < c->stickers_count; i++)
