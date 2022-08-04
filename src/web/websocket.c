@@ -36,9 +36,8 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         if (!bot_client->websocket_client->success_login) {
             lwsl_err("Connection closed. Probably the Discord token is invalid.\n");
             bot_client->websocket_client->exit = 1;
-        }
-        // connection close isn't on purpose, so try reconnecting
-        if (!bot_client->websocket_client->exit) {
+        } else if (!bot_client->websocket_client->exit) {
+            // connection close isn't on purpose, so try reconnecting
             lwsl_err("Reconnecting lost connection\n");
             websocket_connect(bot_client);
             return 0;
@@ -146,7 +145,7 @@ int websocket_connect(bot_client_t *bot_client) {
 void websocket_destroy_client(websocket_client_t *client) {
     // closes the connection if there is one
     if (client->connected)
-        lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
+        lws_set_timeout(client->wsi, PENDING_TIMEOUT_CLOSE_SEND, LWS_TO_KILL_ASYNC);
     lws_context_destroy(client->context);
     client->active = 0;
     client->heartbeat_active = 0;
@@ -185,7 +184,7 @@ void websocket_close(bot_client_t *bot_client) {
         pthread_join(client->heartbeat_thread, NULL);
     }
     lws_close_reason(client->wsi, 1001, NULL, 0);
-    lws_set_timeout(client->wsi, LWS_CLOSE_STATUS_NORMAL, LWS_TO_KILL_ASYNC);
+    lws_set_timeout(client->wsi, PENDING_TIMEOUT_CLOSE_SEND, LWS_TO_KILL_ASYNC);
     lws_cancel_service(client->context);
 }
 
