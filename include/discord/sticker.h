@@ -34,11 +34,19 @@ struct discord_message_sticker_item {
 void *_d_json_to_sticker_item(cJSON *data);
 
 /**
+ * @brief Copies a sticker item structure.
+ *
+ * @param src Sticker item to copy.
+ * @return struct discord_message_sticker_item*
+ */
+struct discord_message_sticker_item *_d_copy_sticker_item(struct discord_message_sticker_item *src);
+
+/**
  * @brief Destroys the sticker item structure and frees the pointer.
  *
  * @param sticker
  */
-void discord_destroy_message_sticker(struct discord_message_sticker_item *message_sticker);
+void discord_destroy_message_sticker_item(struct discord_message_sticker_item *message_sticker);
 
 enum Discord_Sticker_Type { STICKER_TYPE_STANDARD = 1,
                             STICKER_TYPE_GUILD = 2 };
