@@ -98,9 +98,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9af4e577d613240325ff72d82f14f8fe"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sticker.html#ga9af4e577d613240325ff72d82f14f8fe">_d_json_to_sticker_item</a> (cJSON *data)</td></tr>
 <tr class="memdesc:ga9af4e577d613240325ff72d82f14f8fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sticker struct item with the given JSON.  <a href="group___sticker.html#ga9af4e577d613240325ff72d82f14f8fe">More...</a><br /></td></tr>
 <tr class="separator:ga9af4e577d613240325ff72d82f14f8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae49e264bb7f4a0f457a24ac6a4aba160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sticker.html#gae49e264bb7f4a0f457a24ac6a4aba160">discord_destroy_message_sticker</a> (struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *message_sticker)</td></tr>
-<tr class="memdesc:gae49e264bb7f4a0f457a24ac6a4aba160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the sticker item structure and frees the pointer.  <a href="group___sticker.html#gae49e264bb7f4a0f457a24ac6a4aba160">More...</a><br /></td></tr>
-<tr class="separator:gae49e264bb7f4a0f457a24ac6a4aba160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae98e05abcb3906796df52a44a6f0351d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sticker.html#gae98e05abcb3906796df52a44a6f0351d">_d_copy_sticker_item</a> (struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *src)</td></tr>
+<tr class="memdesc:gae98e05abcb3906796df52a44a6f0351d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a sticker item structure.  <a href="group___sticker.html#gae98e05abcb3906796df52a44a6f0351d">More...</a><br /></td></tr>
+<tr class="separator:gae98e05abcb3906796df52a44a6f0351d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb758488f7250784505dd401964de73b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sticker.html#gadb758488f7250784505dd401964de73b">discord_destroy_message_sticker_item</a> (struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *message_sticker)</td></tr>
+<tr class="memdesc:gadb758488f7250784505dd401964de73b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the sticker item structure and frees the pointer.  <a href="group___sticker.html#gadb758488f7250784505dd401964de73b">More...</a><br /></td></tr>
+<tr class="separator:gadb758488f7250784505dd401964de73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab24cf5dc22ac805dab0af0332157fc94"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sticker.html#gab24cf5dc22ac805dab0af0332157fc94">_d_json_to_sticker</a> (cJSON *data)</td></tr>
 <tr class="memdesc:gab24cf5dc22ac805dab0af0332157fc94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sticker struct with the given JSON.  <a href="group___sticker.html#gab24cf5dc22ac805dab0af0332157fc94">More...</a><br /></td></tr>
 <tr class="separator:gab24cf5dc22ac805dab0af0332157fc94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,6 +184,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gae98e05abcb3906796df52a44a6f0351d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae98e05abcb3906796df52a44a6f0351d">&#9670;&nbsp;</a></span>_d_copy_sticker_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a>* _d_copy_sticker_item </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a sticker item structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Sticker item to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>struct discord_message_sticker_item* </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="group___message.html#ga63673339652a7198de3380714256534c">_d_copy_message()</a>.</p>
+
+</div>
+</div>
 <a id="gab24cf5dc22ac805dab0af0332157fc94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab24cf5dc22ac805dab0af0332157fc94">&#9670;&nbsp;</a></span>_d_json_to_sticker()</h2>
 
@@ -239,14 +271,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae49e264bb7f4a0f457a24ac6a4aba160"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae49e264bb7f4a0f457a24ac6a4aba160">&#9670;&nbsp;</a></span>discord_destroy_message_sticker()</h2>
+<a id="gadb758488f7250784505dd401964de73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadb758488f7250784505dd401964de73b">&#9670;&nbsp;</a></span>discord_destroy_message_sticker_item()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void discord_destroy_message_sticker </td>
+          <td class="memname">void discord_destroy_message_sticker_item </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdiscord__message__sticker__item.html">discord_message_sticker_item</a> *&#160;</td>
           <td class="paramname"><em>message_sticker</em></td><td>)</td>
