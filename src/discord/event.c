@@ -7,101 +7,6 @@
 #include <utils/timer.h>
 #include <web/websocket.h>
 
-void event_handle_ready(void *b) {
-    bot_client_t *bot = (bot_client_t *)b;
-    bot->callbacks->on_ready(bot);
-}
-
-void event_handle_message_create(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct discord_message *message = (struct discord_message *)work->data;
-    work->bot->callbacks->on_message(work->bot, message);
-    free(work);
-}
-
-struct edit_message {
-    struct discord_message *old;
-    struct discord_message *new;
-};
-
-void event_handle_message_update(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct edit_message *edit = (struct edit_message *)work->data;
-    work->bot->callbacks->on_message_edit(work->bot, edit->old, edit->new);
-    free(edit);
-    free(work);
-}
-
-struct delete_message {
-    uint64_t id;
-    uint64_t channel_id;
-    uint64_t guild_id;
-    struct discord_message *message;
-};
-
-void event_handle_message_delete(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct delete_message *del = (struct delete_message *)work->data;
-    d_log_notice("id = %ju, cid = %ju, gid = %ju\n", del->id, del->channel_id, del->guild_id);
-
-    if (!del->id || !del->channel_id) {
-        d_log_debug("Message or channel ID in event_handle_message_delete is NULL\n");
-    } else {
-        work->bot->callbacks->on_message_delete(work->bot, del->id, del->channel_id, del->guild_id, del->message);
-    }
-    free(del);
-    free(work);
-}
-
-void event_handle_channel_create(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct discord_channel *channel = (struct discord_channel *)work->data;
-    work->bot->callbacks->on_channel_create(work->bot, channel);
-    free(work);
-}
-
-struct edit_channel {
-    struct discord_channel *old;
-    struct discord_channel *new;
-};
-
-void event_handle_channel_update(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct edit_channel *edit = (struct edit_channel *)work->data;
-    work->bot->callbacks->on_channel_update(work->bot, edit->old, edit->new);
-    free(edit);
-    free(work);
-}
-
-struct delete_channel {
-    uint64_t id;
-    uint64_t guild_id;
-    uint64_t parent_id;
-    enum Discord_Channel_Type type;
-    struct discord_channel *channel;
-};
-
-void event_handle_channel_delete(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct delete_channel *del = (struct delete_channel *)work->data;
-    d_log_notice("id = %ju, pid = %ju, gid = %ju\n", del->id, del->parent_id, del->guild_id);
-
-    if (!del->id || !del->guild_id) {
-        d_log_debug("Channel or guild ID in event_handle_channel_delete is NULL\n");
-    } else {
-        work->bot->callbacks->on_channel_delete(work->bot, del->id, del->guild_id, del->parent_id, del->type, del->channel);
-    }
-    free(del);
-    free(work);
-}
-
-void event_handle_interaction_create(void *w) {
-    event_pool_workload_t *work = (event_pool_workload_t *)w;
-    struct discord_interaction *interaction = (struct discord_interaction *)work->data;
-    work->bot->callbacks->on_interaction_create(work->bot, interaction);
-    free(work);
-}
-
 void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     d_log_debug("Event: %s\n", event);
 
@@ -128,7 +33,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
         }
         // calls the on_ready callback
         if (bot->callbacks->on_ready)
-            t_pool_add_work(bot->thread_pool, event_handle_ready, (void *)bot);
+            bot->callbacks->on_ready(bot);
     } else if (strncmp(event, "RESUMED", 8) == 0) {
 
     } else if (strncmp(event, "RECONNECT", 10) == 0) {
@@ -140,61 +45,52 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     } else if (strncmp(event, "CHANNEL_CREATE", 15) == 0) {
         if (bot->callbacks->on_channel_create) {
             // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
             struct discord_channel *channel = _d_json_to_channel(data);
-            work->data = (void *)_d_copy_channel(channel);
+            struct discord_channel *copy = (void *)_d_copy_channel(channel);
             d_log_debug("Channel ID = %ju\n", channel->id);
 
             // adds the channel to cache
             discord_cache_set_channel(channel);
 
-            t_pool_add_work(bot->thread_pool, &event_handle_channel_create, work);
+            bot->callbacks->on_channel_create(bot, copy);
         }
 
     } else if (strncmp(event, "CHANNEL_UPDATE", 15) == 0) {
         if (bot->callbacks->on_channel_update) {
-            // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
             // we free the channel struct when cleaning up the cache
             struct discord_channel *channel = _d_json_to_channel(data);
 
             // this gets freed inside the event handle function
-            struct edit_channel *edt_channel = (struct edit_channel *)malloc(sizeof(struct edit_channel));
-            edt_channel->old = _d_copy_channel(discord_cache_get_channel(channel->id));
-            edt_channel->new = _d_copy_channel(channel);
-            work->data = (void *)edt_channel;
+            struct discord_channel *old = _d_copy_channel(discord_cache_get_channel(channel->id));
+            struct discord_channel *new = _d_copy_channel(channel);
 
             d_log_debug("Channel ID = %ju\n", channel->id);
 
             // adds the new channel to the cache
             discord_cache_set_channel(channel);
 
-            t_pool_add_work(bot->thread_pool, &event_handle_channel_update, work);
+            bot->callbacks->on_channel_update(bot, old, new);
         }
 
     } else if (strncmp(event, "CHANNEL_DELETE", 15) == 0) {
         if (bot->callbacks->on_channel_delete) {
-            // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
-            struct delete_channel *del = (struct delete_channel *)malloc(sizeof(struct delete_channel));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
-            char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
-            if (del_id)
-                del->id = (uint64_t)strtoull(del_id, NULL, 10);
-            char *del_parent_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
-            if (del_parent_id)
-                del->parent_id = (uint64_t)strtoull(del_parent_id, NULL, 10);
-            char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
-            if (del_guild_id)
-                del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
+            char *del_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
+            uint64_t del_id = 0;
+            if (del_id_s)
+                del_id = (uint64_t)strtoull(del_id_s, NULL, 10);
+            char *del_parent_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "parent_id"));
+            uint64_t del_parent_id = 0;
+            if (del_parent_id_s)
+                del_parent_id = (uint64_t)strtoull(del_parent_id_s, NULL, 10);
+            char *del_guild_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
+            uint64_t del_guild_id = 0;
+            if (del_guild_id_s)
+                del_guild_id = (uint64_t)strtoull(del_guild_id_s, NULL, 10);
             cJSON *c = cJSON_GetObjectItem(data, "type");
-            del->type = c->valueint;
-            del->channel = del->id ? _d_copy_channel(discord_cache_get_channel(del->id)) : NULL;
-            work->data = (void *)del;
-            t_pool_add_work(bot->thread_pool, &event_handle_channel_delete, work);
+            enum Discord_Channel_Type type = c->valueint;
+            struct discord_channel *old = del_id ? _d_copy_channel(discord_cache_get_channel(del_id)) : NULL;
+            bot->callbacks->on_channel_delete(bot, del_id, del_guild_id, del_parent_id, type, old);
         }
 
     } else if (strncmp(event, "CHANNEL_PINS_UPDATE", 20) == 0) {
@@ -263,58 +159,49 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
 
     } else if (strncmp(event, "MESSAGE_CREATE", 15) == 0) {
         if (bot->callbacks->on_message) {
-            // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
             // we free the message struct when cleaning up the cache
             struct discord_message *message = _d_json_to_message(data);
-            work->data = (void *)_d_copy_message(message);
+            struct discord_message *copy = (void *)_d_copy_message(message);
             d_log_debug("Message ID = %ju\n", message->id);
 
             // adds the message to cache
             discord_cache_set_message(message);
 
-            t_pool_add_work(bot->thread_pool, &event_handle_message_create, work);
+            bot->callbacks->on_message(bot, copy);
         }
     } else if (strncmp(event, "MESSAGE_UPDATE", 15) == 0) {
         if (bot->callbacks->on_message_edit) {
-            // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
             // we free the message struct when cleaning up the cache
             struct discord_message *message = _d_json_to_message(data);
             // to be freed inside the event handle function
-            struct edit_message *edt_msg = (struct edit_message *)malloc(sizeof(struct edit_message));
-            edt_msg->old = _d_copy_message(discord_cache_get_message(message->id));
-            edt_msg->new = _d_copy_message(message);
-            work->data = (void *)edt_msg;
+            struct discord_message *old = _d_copy_message(discord_cache_get_message(message->id));
+            struct discord_message *new = _d_copy_message(message);
 
             d_log_debug("Message ID = %ju\n", message->id);
 
             // adds the message to cache
             discord_cache_set_message(message);
 
-            t_pool_add_work(bot->thread_pool, &event_handle_message_update, work);
+            bot->callbacks->on_message_edit(bot, old, new);
         }
     } else if (strncmp(event, "MESSAGE_DELETE", 15) == 0) {
         if (bot->callbacks->on_message_delete) {
-            // the work struct is then freed inside the thread function
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
-            struct delete_message *del = (struct delete_message *)malloc(sizeof(struct delete_message));
             // we need to allocate the IDs anew, because the JSON with the original IDs gets freed
-            char *del_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
-            if (del_id)
-                del->id = (uint64_t)strtoull(del_id, NULL, 10);
-            char *del_channel_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
-            if (del_channel_id)
-                del->channel_id = (uint64_t)strtoull(del_channel_id, NULL, 10);
-            char *del_guild_id = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
-            if (del_guild_id)
-                del->guild_id = (uint64_t)strtoull(del_guild_id, NULL, 10);
-            del->message = del->id ? _d_copy_message(discord_cache_get_message(del->id)) : NULL;
-            work->data = (void *)del;
-            t_pool_add_work(bot->thread_pool, &event_handle_message_delete, work);
+            char *del_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "id"));
+            uint64_t del_id = 0;
+            if (del_id_s)
+                del_id = (uint64_t)strtoull(del_id_s, NULL, 10);
+            char *del_channel_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "channel_id"));
+            uint64_t del_channel_id = 0;
+            if (del_channel_id_s)
+                del_channel_id = (uint64_t)strtoull(del_channel_id_s, NULL, 10);
+            char *del_guild_id_s = cJSON_GetStringValue(cJSON_GetObjectItem(data, "guild_id"));
+            uint64_t del_guild_id = 0;
+            if (del_guild_id_s)
+                del_guild_id = (uint64_t)strtoull(del_guild_id_s, NULL, 10);
+            struct discord_message *old = del_id ? _d_copy_message(discord_cache_get_message(del_id)) : NULL;
+
+            bot->callbacks->on_message_delete(bot, del_id, del_channel_id, del_guild_id, old);
         }
     } else if (strncmp(event, "MESSAGE_DELETE_BULK", 20) == 0) {
 
@@ -345,12 +232,8 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     } else if (strncmp(event, "WEBHOOKS_UPDATE", 16) == 0) {
     } else if (strncmp(event, "INTERACTION_CREATE", 19) == 0) {
         if (bot->callbacks->on_interaction_create) {
-            event_pool_workload_t *work = (event_pool_workload_t *)malloc(sizeof(struct event_pool_workload));
-            work->bot = bot;
             struct discord_interaction *interaction = _d_json_to_interaction(data);
-            work->data = (void *)interaction;
-
-            t_pool_add_work(bot->thread_pool, &event_handle_interaction_create, work);
+            bot->callbacks->on_interaction_create(bot, interaction);
         }
     }
 }

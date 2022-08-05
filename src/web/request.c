@@ -1,3 +1,4 @@
+#include <discord/disco.h>
 #include <libwebsockets.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -5,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
+#include <utils/t_pool.h>
 #include <web/request.h>
 
 /**
@@ -30,13 +32,22 @@ static size_t write_data(void *data, size_t s, size_t l, void *userp) {
     return realsize;
 }
 
-long request(char *url, char **response, cJSON *content, enum Request_Type request_type, const char *token) {
-    // we create a new handle each call because we can't use the same handle over multiple threads
+struct request_work_node {
+    char *url;
+    char *json;
+    enum Request_Type request_type;
+    char *token;
+    struct request_callback *rc;
+    bot_client_t *bot;
+};
+
+static void request_t_pool(void *w) {
+    struct request_work_node *n = (struct request_work_node *)w;
     CURL *handle = curl_easy_init();
-    struct curl_slist *list = curl_setup_discord_header(handle, token);
+    struct curl_slist *list = curl_setup_discord_header(handle, n->token);
 
     char *request_str = NULL;
-    switch (request_type) {
+    switch (n->request_type) {
     case REQUEST_GET:
         request_str = "GET";
         break;
@@ -61,21 +72,20 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
 
     struct MemoryChunk chunk;
 
-    d_log_normal("REQUEST '%s' URL: %s\n", request_str, url);
+    d_log_normal("REQUEST '%s' URL: %s\n", request_str, n->url);
 
-    curl_easy_setopt(handle, CURLOPT_URL, url);
+    curl_easy_setopt(handle, CURLOPT_URL, n->url);
     curl_easy_setopt(handle, CURLOPT_CUSTOMREQUEST, request_str);
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)&chunk);
-    char *content_p = NULL;
-    if (content) {
-        content_p = cJSON_Print(content);
-        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, content_p);
+    if (n->json) {
+        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, n->json);
     }
 
     CURLcode res;
     bool sent_message = false;
     int iterations = 0;
     long http = 0;
+    char *response;
     cJSON *res_json, *wait_ms; // response json, rate limit timeout json field
     do {
         if (iterations >= 5) {
@@ -90,7 +100,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
         chunk.memory = NULL;
         chunk.size = 0;
         res = curl_easy_perform(handle);
-        *response = chunk.memory;
+        response = chunk.memory;
         // gets the http code
         curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http);
         switch (http) {
@@ -121,7 +131,7 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
             sent_message = true;
             break;
         case 429: // simply retry after waiting the time
-            res_json = cJSON_Parse(*response);
+            res_json = cJSON_Parse(response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
             lwsl_debug("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
             if (cJSON_IsNumber(wait_ms)) {
@@ -142,11 +152,62 @@ long request(char *url, char **response, cJSON *content, enum Request_Type reque
         }
     } while (!sent_message);
 
-    if (content_p)
-        free(content_p);
+    if (n->json)
+        free(n->json);
+    free(n->url);
+    free(n->token);
     curl_slist_free_all(list);
     curl_easy_cleanup(handle);
-    return http;
+
+    // declarations for the switch cases
+    res_json = cJSON_Parse(response);
+    struct discord_message *msg;
+    // handle the callbacks
+    if (n->rc) {
+        switch (n->rc->type) {
+        case DISCORD_MESSAGE_CALLBACK:;
+            msg = (struct discord_message *)_d_json_to_message(res_json);
+            struct discord_message_cb *cb = (struct discord_message_cb *)n->rc->cb_struct;
+            cb->cb(n->bot, msg, cb->data);
+            break;
+        case DISCORD_MULTIPLE_MESSAGE_CALLBACK:;
+            struct discord_multiple_message_cb *cb_mul = (struct discord_multiple_message_cb *)n->rc->cb_struct;
+            if (!cJSON_IsArray(res_json)) {
+                cb_mul->cb(n->bot, 0, NULL, cb_mul->data);
+            } else {
+                int received = 0;
+                struct discord_message **message_array = (struct discord_message **)malloc(sizeof(struct discord_message *) * received);
+                cJSON *c_message;
+                cJSON_ArrayForEach(c_message, res_json) {
+                    msg = (struct discord_message *)_d_json_to_message(c_message);
+                    message_array[received++] = msg;
+                    if (msg)
+                        discord_cache_set_message(msg);
+                }
+                cb_mul->cb(n->bot, received, message_array, cb_mul->data);
+            }
+
+        default:
+            break;
+        }
+        if (res_json)
+            cJSON_Delete(res_json);
+        free(n->rc);
+    }
+}
+
+void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc) {
+    // we create a new handle each call because we can't use the same handle over multiple threads
+    struct request_work_node *n = (struct request_work_node *)malloc(sizeof(struct request_work_node));
+    n->url = strndup(url, 2050);
+    if (content)
+        n->json = cJSON_Print(content);
+    n->request_type = request_type;
+    n->token = strndup(token, 200);
+    n->rc = rc;
+    n->bot = bot;
+    struct timeval t0 = {0};
+    t_pool_add_work(bot->thread_pool, &request_t_pool, (void *)n, t0);
 }
 
 struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {

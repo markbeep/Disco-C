@@ -2,7 +2,6 @@
 #include <discord/event.h>
 #include <pthread.h>
 #include <string.h>
-#include <time.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
 #include <web/gateway.h>

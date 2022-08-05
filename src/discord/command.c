@@ -186,59 +186,38 @@ static int format_json(cJSON *json, struct discord_application_command *command)
     return 0;
 }
 
-int discord_command_register(struct discord_application_command *command, const char *token, const char *application_id) {
+void discord_command_register(struct discord_application_command *command, const char *token, const char *application_id) {
     cJSON *json = cJSON_CreateObject();
     format_json(json, command);
     char url[120];
-    char *response;
     if (command->guild_id)
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands", application_id, command->guild_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands", application_id);
-    long c = request(url, &response, json, REQUEST_POST, token);
+    request(url, json, REQUEST_POST, token, NULL, NULL);
     cJSON_Delete(json);
-    d_log_notice("Command Response: %s\n", response);
-    free(response);
-    if (c == 0)
-        return 1; // failed
-    return 0;
 }
 
-int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id) {
+void discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id) {
     cJSON *json = cJSON_CreateObject();
     format_json(json, command);
     char url[120];
-    char *response;
     if (command->guild_id)
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands/%ju", application_id, command->guild_id, command_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ju", application_id, command_id);
-    long c = request(url, &response, json, REQUEST_PATCH, token);
+    request(url, json, REQUEST_PATCH, token, NULL, NULL);
     cJSON_Delete(json);
-    free(response);
-    if (c == 0)
-        return 1; // failed
-    return 0;
 }
 
-int discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id) {
+void discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id) {
     char url[120];
-    char *response;
     sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ju", application_id, command_id);
-    long c = request(url, &response, NULL, REQUEST_DELETE, token);
-    free(response);
-    if (c == 0)
-        return 1; // failed
-    return 0;
+    request(url, NULL, REQUEST_DELETE, token,NULL,  NULL);
 }
 
-int discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id) {
+void discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id) {
     char url[120];
-    char *response;
     sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands/%ju", application_id, guild_id, command_id);
-    long c = request(url, &response, NULL, REQUEST_DELETE, token);
-    free(response);
-    if (c == 0)
-        return 1; // failed
-    return 0;
+    request(url, NULL, REQUEST_DELETE, token,NULL,  NULL);
 }
