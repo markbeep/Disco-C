@@ -39,6 +39,9 @@ struct request_work_node {
     char *token;
     struct request_callback *rc;
     bot_client_t *bot;
+    int iteration;
+    long http;
+    CURLcode res;
 };
 
 static void request_t_pool(void *w) {
@@ -81,29 +84,25 @@ static void request_t_pool(void *w) {
         curl_easy_setopt(handle, CURLOPT_POSTFIELDS, n->json);
     }
 
-    CURLcode res;
     bool sent_message = false;
     int iterations = 0;
-    long http = 0;
     char *response;
     cJSON *res_json, *wait_ms; // response json, rate limit timeout json field
-    do {
-        if (iterations >= 5) {
-            if (res == 0) {
-                d_log_err("CURL failed. Code: %d\n", (int)res);
-            } else if (http == 502) {
-                d_log_err("GATEWAY UNAVAILABLE. There was not a gateway available to process the request.\n");
-            }
-            break;
+    if (n->iteration >= 5) {
+        if (n->res == 0) {
+            d_log_err("CURL failed. Code: %d\n", (int)n->res);
+        } else if (n->http == 502) {
+            d_log_err("GATEWAY UNAVAILABLE. There was not a gateway available to process the request.\n");
         }
-
+        sent_message = true;
+    } else {
         chunk.memory = NULL;
         chunk.size = 0;
-        res = curl_easy_perform(handle);
+        n->res = curl_easy_perform(handle);
         response = chunk.memory;
         // gets the http code
-        curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http);
-        switch (http) {
+        curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &n->http);
+        switch (n->http) {
         case 200:
         case 201:
         case 204:
@@ -135,32 +134,50 @@ static void request_t_pool(void *w) {
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
             lwsl_debug("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
             if (cJSON_IsNumber(wait_ms)) {
-                usleep((unsigned int)wait_ms->valueint * 1000u);
+                struct timeval t0;
+                gettimeofday(&t0, NULL);
+                t0.tv_sec += (time_t)wait_ms / 1000;
+                t0.tv_usec += (time_t)wait_ms * 1000;
+                // check for overflow
+                if (t0.tv_usec < 0) {
+                    t0.tv_sec++;
+                    t0.tv_usec -= (time_t)1000000;
+                }
+                t_pool_add_work(n->bot->thread_pool, &request_t_pool, (void *)n, t0);
             }
             cJSON_Delete(res_json);
             break;
         case 0:   // if CURL fails we get 0
         case 502: // we simply retry again after a few seconds
         case 503:
-            lwsl_notice("Received a %ld error\n", http);
+            lwsl_notice("Received a %ld error\n", n->http);
             usleep((1 << iterations) * 1000000u);
-            iterations++;
+            struct timeval t0;
+            gettimeofday(&t0, NULL);
+            t0.tv_sec += (time_t)1 << n->iteration;
+            n->iteration++;
+            t_pool_add_work(n->bot->thread_pool, &request_t_pool, (void *)n, t0);
             break;
         default:
-            d_log_err("Unhandled HTTP response code: %ld\n", http);
+            d_log_err("Unhandled HTTP response code: %ld\n", n->http);
             sent_message = true;
         }
-    } while (!sent_message);
+    }
+
+    curl_slist_free_all(list);
+    curl_easy_cleanup(handle);
+
+    if (!sent_message)
+        return;
 
     if (n->json)
         free(n->json);
     free(n->url);
     free(n->token);
-    curl_slist_free_all(list);
-    curl_easy_cleanup(handle);
 
     // declarations for the switch cases
-    res_json = cJSON_Parse(response);
+    if (response)
+        res_json = cJSON_Parse(response);
     struct discord_message *msg;
     // handle the callbacks
     if (n->rc) {
@@ -206,6 +223,7 @@ void request(char *url, cJSON *content, enum Request_Type request_type, const ch
     n->token = strndup(token, 200);
     n->rc = rc;
     n->bot = bot;
+    n->iteration = 0;
     struct timeval t0 = {0};
     t_pool_add_work(bot->thread_pool, &request_t_pool, (void *)n, t0);
 }
