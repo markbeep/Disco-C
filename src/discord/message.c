@@ -459,6 +459,7 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
         rc->type = DISCORD_MESSAGE_CALLBACK;
     }
     request(uri, json, REQUEST_POST, bot->websocket_client->token, bot, rc);
+    cJSON_Delete(json);
 }
 
 void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {

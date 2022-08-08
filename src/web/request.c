@@ -137,9 +137,9 @@ static void request_t_pool(void *w) {
                 struct timeval t0;
                 gettimeofday(&t0, NULL);
                 t0.tv_sec += (time_t)wait_ms->valueint / 1000;
-                t0.tv_usec += (time_t)wait_ms->valueint * 1000;
+                t0.tv_usec += (time_t)wait_ms->valueint % 1000 * 1000;
                 // check for overflow
-                if (t0.tv_usec < 0) {
+                if (t0.tv_usec > 1000000) {
                     t0.tv_sec++;
                     t0.tv_usec -= (time_t)1000000;
                 }
@@ -176,8 +176,10 @@ static void request_t_pool(void *w) {
     free(n->token);
 
     // declarations for the switch cases
-    if (response)
+    if (response) {
         res_json = cJSON_Parse(response);
+        free(response);
+    }
     struct discord_message *msg;
     // handle the callbacks
     if (n->rc) {
@@ -207,10 +209,11 @@ static void request_t_pool(void *w) {
         default:
             break;
         }
-        if (res_json)
-            cJSON_Delete(res_json);
         free(n->rc);
     }
+    if (res_json)
+        cJSON_Delete(res_json);
+    free(n);
 }
 
 void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc) {

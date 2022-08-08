@@ -23,7 +23,6 @@ typedef struct t_pool {
     pthread_mutex_t *lock;
     pthread_cond_t *work_cond;
     pthread_cond_t *finished_cond;
-    bool sleep; ///< Set to true if the newest element requires waiting
     struct timeval sleep_until;
 } t_pool_t;
 
