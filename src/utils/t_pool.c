@@ -74,6 +74,7 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg, struct timeval wait_un
     pthread_mutex_lock(tp->lock);
     prio_push(&tp->queue, (void *)work, wait_until);
 
+    // TODO
     // we check if the threads should sleep until the timer of the first node is off
     struct timeval now;
     gettimeofday(&now, NULL);
