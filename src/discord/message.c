@@ -446,25 +446,20 @@ void _d_create_message_to_json(cJSON *json, char *content, struct discord_create
     }
 }
 
-struct discord_message *discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, bool return_struct) {
+void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t channel_id, struct discord_create_message *message, struct discord_message_cb *cb) {
     cJSON *json = cJSON_CreateObject();
     _d_create_message_to_json(json, content, message);
 
     char uri[80];
     sprintf(uri, "https://discord.com/api/channels/%ju/messages", channel_id);
-    char *response;
-    long res = request(uri, &response, json, REQUEST_POST, bot->websocket_client->token);
-    struct discord_message *sent_message = NULL;
-    d_log_debug("Message sent! Response: %ld\n", res);
-    if (response && res != 0 && return_struct) { // only if a struct is requested to be returned
-        cJSON *res_json = cJSON_Parse(response);
-        sent_message = (struct discord_message *)_d_json_to_message(res_json);
-        cJSON_Delete(res_json);
+    struct request_callback *rc = NULL;
+    if (cb) {
+        rc = (struct request_callback *)malloc(sizeof(struct request_callback));
+        rc->cb_struct = cb;
+        rc->type = DISCORD_MESSAGE_CALLBACK;
     }
-    // free up allocated stuff
+    request(uri, json, REQUEST_POST, bot->websocket_client->token, bot, rc);
     cJSON_Delete(json);
-    free(response);
-    return sent_message;
 }
 
 void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t channel_id, uint64_t message_id, struct discord_create_message *message) {
@@ -498,15 +493,10 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
 
     char uri[100];
     sprintf(uri, "https://discord.com/api/channels/%ju/messages/%ju", channel_id, message_id);
-    char *response;
-    long res = request(uri, &response, json, REQUEST_PATCH, bot->websocket_client->token);
-    d_log_err("Message Edited. Response: %ld\n", res);
-
-    cJSON_Delete(json);
-    free(response);
+    request(uri, json, REQUEST_PATCH, bot->websocket_client->token, bot, NULL);
 }
 
-int discord_get_messages(bot_client_t *bot, uint64_t channel_id, struct discord_message ***message_array, int limit, uint64_t around, uint64_t before, uint64_t after) {
+void discord_get_messages(bot_client_t *bot, uint64_t channel_id, int limit, uint64_t around, uint64_t before, uint64_t after, struct discord_multiple_message_cb *cb) {
     char url[200];
     sprintf(url, "https://discord.com/api/channels/%ju/messages?", channel_id);
     char id_field[35];
@@ -531,45 +521,29 @@ int discord_get_messages(bot_client_t *bot, uint64_t channel_id, struct discord_
             sprintf(lim, "limit=%d", limit);
         strncat(url, lim, 15);
     }
-    char *response;
-    long res = request(url, &response, NULL, REQUEST_GET, bot->websocket_client->token);
-
-    // handle the response and parse the json into a message array
-    int received = 0;
-    cJSON *recv = cJSON_Parse(response);
-    if (res != 200 || !cJSON_IsArray(recv))
-        return 0;
-
-    *message_array = (struct discord_message **)malloc(sizeof(struct discord_message *) * received);
-    cJSON *c_message;
-    struct discord_message *msg;
-    cJSON_ArrayForEach(c_message, recv) {
-        msg = (struct discord_message *)_d_json_to_message(c_message);
-        (*message_array)[received++] = msg;
-        if (msg)
-            discord_cache_set_message(msg);
-    }
-
-    return received;
+    struct request_callback *rc = (struct request_callback *)malloc(sizeof(struct request_callback));
+    rc->cb_struct = cb;
+    rc->type = DISCORD_MULTIPLE_MESSAGE_CALLBACK;
+    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc);
 }
 
-struct discord_message *discord_get_message(bot_client_t *bot, uint64_t channel_id, uint64_t message_id) {
+void discord_get_message(bot_client_t *bot, uint64_t channel_id, uint64_t message_id, struct discord_message_cb *cb) {
+    if (!cb)
+        return;
     struct discord_message *msg = discord_cache_get_message(message_id);
-    if (msg)
-        return msg;
-    return discord_fetch_message(bot, channel_id, message_id);
+    if (msg) {
+        cb->cb(bot, msg, cb->data);
+    }
+    discord_fetch_message(bot, channel_id, message_id, cb);
 }
 
-struct discord_message *discord_fetch_message(bot_client_t *bot, uint64_t channel_id, uint64_t message_id) {
+void discord_fetch_message(bot_client_t *bot, uint64_t channel_id, uint64_t message_id, struct discord_message_cb *cb) {
+    if (!cb)
+        return;
     char url[100];
     sprintf(url, "https://discord.com/api/channels/%ju/messages/%ju", channel_id, message_id);
-    char *response;
-    long res = request(url, &response, NULL, REQUEST_GET, bot->websocket_client->token);
-    cJSON *c_message = cJSON_Parse(response);
-    if (res != 200 || !c_message)
-        return NULL; // no result or no response
-    struct discord_message *msg = (struct discord_message *)_d_json_to_message(c_message);
-    if (msg)
-        discord_cache_set_message(msg);
-    return msg;
+    struct request_callback *rc = (struct request_callback *)malloc(sizeof(struct request_callback));
+    rc->cb_struct = cb;
+    rc->type = DISCORD_MESSAGE_CALLBACK;
+    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc);
 }

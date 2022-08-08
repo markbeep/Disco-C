@@ -1,9 +1,9 @@
 #include "example_slash_commands/example_slash.h"
-#include "sys/time.h"
 #include <config.h>
 #include <discord/disco.h>
 #include <discord/message.h>
 #include <stdbool.h>
+#include <sys/time.h>
 #include <utils/disco_logging.h>
 
 void on_ready(bot_client_t *bot) {
@@ -13,6 +13,27 @@ void on_ready(bot_client_t *bot) {
     printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
     fflush(stdout);
+}
+
+static void pong_callback(bot_client_t *bot, struct discord_message *msg, void *data) {
+    // gets the time passed
+    struct timeval stop, *start = (struct timeval *)data;
+    gettimeofday(&stop, NULL);
+    char time_passed[32];
+    long delta = (stop.tv_sec - start->tv_sec) * 1000 + (stop.tv_usec - start->tv_usec) / 1000;
+    sprintf(time_passed, "Ping: %lu ms\nHeartbeat: %lu ms", delta, bot->heartbeat_latency);
+
+    struct discord_embed embed = {
+        .description = time_passed,
+        .color = 0x8000,
+    };
+    struct discord_create_message send_message = {
+        .embed = &embed,
+    };
+    // edits the message right after the message has been sent to check the latency
+    discord_channel_edit_message(bot, NULL, msg->channel_id, msg->id, &send_message);
+    // don't forget to destroy the received message in the end to avoid memory leaks
+    discord_destroy_message(msg);
 }
 
 void example_on_message(bot_client_t *bot, struct discord_message *message) {
@@ -25,8 +46,8 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
         }
         // example of a ping command
         if (strncmp(message->content, "!ping", 6) == 0) {
-            struct timeval stop, start;
-            gettimeofday(&start, NULL);
+            struct timeval *start = malloc(sizeof(struct timeval));
+            gettimeofday(start, NULL);
 
             // creates the embed
             struct discord_embed embed = {
@@ -37,20 +58,12 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
                 .embed = &embed,
             };
             // sends the initial message to a channel
-            struct discord_message *msg = discord_channel_send_message(bot, NULL, message->channel_id, &send_message, true);
+            struct discord_message_cb *cb = (struct discord_message_cb *)malloc(sizeof(struct discord_message_cb));
 
-            // gets the time passed
-            gettimeofday(&stop, NULL);
-            char time_passed[32];
-            long delta = (stop.tv_sec - start.tv_sec) * 1000 + (stop.tv_usec - start.tv_usec) / 1000;
-            sprintf(time_passed, "Ping: %lu ms\nHeartbeat: %lu ms", delta, bot->heartbeat_latency);
-
-            // we can reuse the create_message struct from before
-            embed.description = time_passed;
-            // edits the message right after the message has been sent to check the latency
-            discord_channel_edit_message(bot, NULL, msg->channel_id, msg->id, &send_message);
-            // don't forget to destroy the received message in the end to avoid memory leaks
-            discord_destroy_message(msg);
+            // creates the callback, because we want to receive the message
+            cb->cb = &pong_callback;
+            cb->data = start;
+            discord_channel_send_message(bot, NULL, message->channel_id, &send_message, cb);
 
         } else if (strncmp(message->content, "!exit", 6) == 0) {
             // softly ends the bot
@@ -94,16 +107,16 @@ void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_
 
 void example_channel_create(bot_client_t *bot, struct discord_channel *channel) {
     (void)bot;
-    d_log_normal("Channel created with ID %ju\n", channel->id);
+    d_log_info("Channel created with ID %ju\n", channel->id);
 
     discord_destroy_channel(channel);
 }
 void example_channel_update(bot_client_t *bot, struct discord_channel *old, struct discord_channel *new) {
     (void)bot;
     if (old) {
-        d_log_normal("Channel in cache was updated: %ju\n", old->id);
+        d_log_info("Channel in cache was updated: %ju\n", old->id);
     } else {
-        d_log_normal("Channel NOT in cache was updated: %ju\n", new->id);
+        d_log_info("Channel NOT in cache was updated: %ju\n", new->id);
     }
 
     if (old)
@@ -117,9 +130,9 @@ void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t gui
     (void)parent_id;
     (void)type;
     if (channel) {
-        d_log_normal("Channel in cache was deleted: %ju\n", channel->id);
+        d_log_info("Channel in cache was deleted: %ju\n", channel->id);
     } else {
-        d_log_normal("Channel NOT in cache was deleted: %ju\n", channel_id);
+        d_log_info("Channel NOT in cache was deleted: %ju\n", channel_id);
     }
 
     if (channel)
@@ -142,7 +155,7 @@ int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     // Enable logging
-    d_set_log_level(D_LOG_ERR);
+    d_set_log_level(D_LOG_NOTICE | D_LOG_ERR | D_LOG_INFO);
 
     // init to 0. Without this some errors could show up
     discord_event_callbacks_t callbacks = {0};

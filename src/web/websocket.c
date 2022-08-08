@@ -79,8 +79,6 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         break;
     default:
         lwsl_debug("other callback message %d\n", (int)reason);
-        if (in)
-            lwsl_debug("\textra info: %s\n", (char *)in);
         break;
     }
 

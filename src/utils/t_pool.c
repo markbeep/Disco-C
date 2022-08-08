@@ -2,14 +2,36 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <utils/disco_logging.h>
+#include <utils/prio_queue.h>
 #include <utils/t_pool.h>
+
+/**
+ * @brief Returns true if t is in the future
+ *
+ * @param t
+ * @return true
+ * @return false
+ */
+static bool is_future(struct timeval t) {
+    struct timeval a;
+    gettimeofday(&a, NULL);
+    return a.tv_sec < t.tv_sec || (a.tv_sec == t.tv_sec && a.tv_usec <= t.tv_usec);
+}
 
 static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
     while (1) {
         pthread_mutex_lock(pool->lock);
-        while (pool->work_count == 0 && !pool->stop) {
-            pthread_cond_wait(pool->work_cond, pool->lock);
+        while (!pool->stop && (is_future(pool->sleep_until) || pool->queue.size == 0)) {
+            if (is_future(pool->sleep_until)) { // sleep until the first node is free again
+                struct timespec wait_until = {
+                    .tv_sec = pool->sleep_until.tv_sec,
+                    .tv_nsec = pool->sleep_until.tv_usec * 1000L,
+                };
+                pthread_cond_timedwait(pool->work_cond, pool->lock, &wait_until);
+            } else { // wait normally
+                pthread_cond_wait(pool->work_cond, pool->lock);
+            }
         }
         if (pool->stop) {
             pool->thread_count--;
@@ -22,6 +44,13 @@ static void *thread_work_loop(void *tp) {
 
         // we can now unlock as the work afterwards is single memory
         pthread_mutex_unlock(pool->lock);
+
+        // check if we can use the work node already
+        if (is_future(work->wait_until)) {
+            t_pool_add_work(pool, work->func, work->arg, work->wait_until);
+            continue;
+        }
+
         work->func(work->arg);
         free(work);
     }
@@ -30,10 +59,8 @@ static void *thread_work_loop(void *tp) {
 
 t_pool_t *t_pool_init(int num_t) {
     t_pool_t *pool = malloc(sizeof(struct t_pool));
-    pool->first_work = NULL;
-    pool->last_work = NULL;
+    prio_init(&pool->queue);
     pool->thread_count = num_t;
-    pool->work_count = 0;
     pool->stop = 0;
     pool->work_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
     pool->finished_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
@@ -49,22 +76,24 @@ t_pool_t *t_pool_init(int num_t) {
     return pool;
 }
 
-int t_pool_add_work(t_pool_t *tp, t_func func, void *arg) {
+int t_pool_add_work(t_pool_t *tp, t_func func, void *arg, struct timeval wait_until) {
     // creates the new work node
     t_work_t *work = (t_work_t *)malloc(sizeof(struct t_work));
     work->arg = arg;
     work->func = func;
+    work->wait_until = wait_until;
     work->next = NULL;
 
     // coarsely locks the queue
     pthread_mutex_lock(tp->lock);
-    t_work_t *last = tp->last_work;
-    if (last)
-        last->next = work;
-    else
-        tp->first_work = work;
-    tp->last_work = work;
-    tp->work_count++;
+    prio_push(&tp->queue, (void *)work, wait_until);
+
+    // if new time is shorter
+    if (tp->sleep_until.tv_sec < tp->queue.head->wait_until.tv_sec ||
+        (tp->sleep_until.tv_sec == tp->queue.head->wait_until.tv_sec &&
+         tp->sleep_until.tv_usec < tp->queue.head->wait_until.tv_usec)) {
+        tp->sleep_until = tp->queue.head->wait_until;
+    }
     pthread_cond_signal(tp->work_cond);
     pthread_mutex_unlock(tp->lock);
 
@@ -72,17 +101,16 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg) {
 }
 
 t_work_t *t_pool_pop_work(t_pool_t *tp) {
-    if (tp->work_count == 0)
+    prio_node_t *node = prio_pop(&tp->queue);
+    if (!node)
         return NULL;
-    t_work_t *head = tp->first_work;
-    if (head->next) // there are still elements in the queue
-        tp->first_work = head->next;
-    else { // we removed the last element in the queue
-        tp->first_work = NULL;
-        tp->last_work = NULL;
+    t_work_t *work = (t_work_t *)node->data;
+    free(node);
+    // makes the new sleep until the new node's time
+    if (tp->queue.head) {
+        tp->sleep_until = tp->queue.head->wait_until;
     }
-    tp->work_count--;
-    return head;
+    return work;
 }
 
 void t_pool_wait(t_pool_t *tp) {
@@ -94,16 +122,16 @@ void t_pool_wait(t_pool_t *tp) {
 
 void t_pool_destroy(t_pool_t *tp) {
     pthread_mutex_lock(tp->lock);
-    tp->stop = 1;
+    tp->stop = true;
     // delete all nodes still in the queue
-    t_work_t *cur = tp->first_work, *prev = NULL;
+    prio_node_t *cur = tp->queue.head, *prev = NULL;
     while (cur) {
         prev = cur;
         cur = cur->next;
         if (prev)
-            free(prev);
+            free(prev->data);
     }
-    tp->work_count = 0;
+    prio_destroy_queue(&tp->queue);
     // wakes up all sleeping threads
     pthread_cond_broadcast(tp->work_cond);
     pthread_mutex_unlock(tp->lock);

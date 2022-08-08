@@ -125,10 +125,10 @@ struct discord_application_command {
  * @param locales struct to be used to fill in the JSON.
  */
 void discord_fill_json_with_locales(cJSON *json, struct discord_language_locales *locales);
-int discord_command_register(struct discord_application_command *command, const char *token, const char *application_id);
-int discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id);
-int discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id);
-int discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id);
+void discord_command_register(struct discord_application_command *command, const char *token, const char *application_id);
+void discord_command_update(struct discord_application_command *command, uint64_t command_id, const char *token, const char *application_id);
+void discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id);
+void discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id);
 
 /** @} @} */
 #endif

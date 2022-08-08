@@ -9,7 +9,7 @@
  *
  */
 
-#include <config2.h> // note that this uses a different config file to run a different instance
+#include <config.h> // note that this uses a different config file to run a different instance
 #include <discord/disco.h>
 #include <discord/message.h>
 #include <stdio.h>
@@ -21,23 +21,6 @@ static uint64_t bot_to_watch = 0UL;
 static uint64_t count_channel_id = 996746797236105236UL;
 static uint64_t owner_id = 205704051856244736UL;
 
-/**
- * @brief Gets the last sent integer in the channel.
- *
- * @param bot
- * @return int
- */
-static int get_last_message_count(bot_client_t *bot) {
-    struct discord_message **arr;
-    int arr_size = discord_get_messages(bot, count_channel_id, &arr, 1, 0, 0, 0);
-    int res = -1;
-    if (arr_size > 0 && arr[0]) {
-        res = (int)strtol(arr[0]->content, NULL, 10);
-        free(arr);
-    }
-    return res;
-}
-
 void on_ready(bot_client_t *bot) {
     printf("====================================\n");
     printf("Successfully logged in\n");
@@ -45,9 +28,6 @@ void on_ready(bot_client_t *bot) {
     printf("User ID:\t%ju\n", bot->user->id);
     printf("====================================\n\n");
     fflush(stdout);
-
-    // checks what the last count is
-    count = get_last_message_count(bot);
 }
 
 static void cmd_count(bot_client_t *bot, struct discord_message *message) {
@@ -94,7 +74,7 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         goto cleanup;
 
     // commands to call
-    if (strncmp(message->content, "!count", 6) == 0) {
+    if (strncmp(message->content, "-count", 6) == 0) {
         cmd_count(bot, message);
         goto cleanup;
     }

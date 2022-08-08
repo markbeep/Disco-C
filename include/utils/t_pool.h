@@ -2,6 +2,9 @@
 #define T_POOL
 
 #include <pthread.h>
+#include <stdbool.h>
+#include <sys/time.h>
+#include <utils/prio_queue.h>
 
 typedef void (*t_func)(void *);
 typedef struct t_work t_work_t;
@@ -10,17 +13,17 @@ struct t_work {
     t_func func;
     void *arg;
     t_work_t *next;
+    struct timeval wait_until;
 };
 
 typedef struct t_pool {
-    t_work_t *first_work;
-    t_work_t *last_work;
-    int work_count;   // amount of active work load
-    int thread_count; // amount of active threads
-    int stop;         // bool is threads should stop
+    struct prio_queue queue;
+    int thread_count; ///< amount of active threads
+    bool stop;        ///< bool is threads should stop
     pthread_mutex_t *lock;
     pthread_cond_t *work_cond;
     pthread_cond_t *finished_cond;
+    struct timeval sleep_until;
 } t_pool_t;
 
 t_pool_t *t_pool_init(int num_t);
@@ -32,7 +35,7 @@ t_pool_t *t_pool_init(int num_t);
  * @param work
  * @return int
  */
-int t_pool_add_work(t_pool_t *tp, t_func func, void *work);
+int t_pool_add_work(t_pool_t *tp, t_func func, void *work, struct timeval wait_until);
 /**
  * @brief Pops the head of the pool and returns the pointer to the head.
  * IMPORTANT: The received work needs to be freed to avoid memory leak!
