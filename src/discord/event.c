@@ -16,7 +16,7 @@ void event_handle(bot_client_t *bot, cJSON *data, char *event) {
     }
 
     if (strncmp(event, "READY", 6) == 0) {
-        d_log_normal("Received a READY event\n");
+        d_log_info("Received a READY event\n");
         // adds the user struct to the bot struct
         cJSON *user_data = cJSON_GetObjectItem(data, "user");
         if (user_data) {

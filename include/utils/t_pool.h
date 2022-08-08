@@ -18,11 +18,13 @@ struct t_work {
 
 typedef struct t_pool {
     struct prio_queue queue;
-    int thread_count; // amount of active threads
-    bool stop;        // bool is threads should stop
+    int thread_count; ///< amount of active threads
+    bool stop;        ///< bool is threads should stop
     pthread_mutex_t *lock;
     pthread_cond_t *work_cond;
     pthread_cond_t *finished_cond;
+    bool sleep; ///< Set to true if the newest element requires waiting
+    struct timeval sleep_until;
 } t_pool_t;
 
 t_pool_t *t_pool_init(int num_t);

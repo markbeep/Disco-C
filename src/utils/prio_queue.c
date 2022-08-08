@@ -6,10 +6,10 @@ void prio_init(struct prio_queue *queue) {
     queue->size = 0;
 }
 
-prio_node_t *prio_push(struct prio_queue *queue, void *data, long retry_after) {
+prio_node_t *prio_push(struct prio_queue *queue, void *data, struct timeval wait_until) {
     prio_node_t *node = (prio_node_t *)malloc(sizeof(struct prio_node));
     node->data = data;
-    node->retry_after = retry_after;
+    node->wait_until = wait_until;
     node->next = NULL;
     if (!queue->head) {
         queue->head = node;
@@ -19,7 +19,7 @@ prio_node_t *prio_push(struct prio_queue *queue, void *data, long retry_after) {
     queue->size++;
     prio_node_t *cur = queue->head;
     prio_node_t *prev = NULL;
-    while (cur->next && cur->retry_after <= retry_after) {
+    while (cur->next && (cur->wait_until.tv_sec < wait_until.tv_sec || (cur->wait_until.tv_sec == wait_until.tv_sec && cur->wait_until.tv_usec <= wait_until.tv_usec))) {
         prev = cur;
         cur = cur->next;
     }

@@ -6,14 +6,14 @@
 
 #define D_LOG_ERR (1 << 0)
 #define D_LOG_NOTICE (1 << 1)
-#define D_LOG_NORMAL (1 << 2)
+#define D_LOG_INFO (1 << 2)
 #define D_LOG_DEBUG (1 << 3)
-#define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_NORMAL | D_LOG_DEBUG
+#define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_INFO | D_LOG_DEBUG
 
 void d_set_log_level(int flags);
 int d_should_log_err(void);
 int d_should_log_notice(void);
-int d_should_log_normal(void);
+int d_should_log_info(void);
 int d_should_log_debug(void);
 
 void _d_datetime(char s[50]);
@@ -38,9 +38,9 @@ void _d_datetime(char s[50]);
         }                                                                     \
     } while (0);
 
-#define d_log_normal(str, ...)                              \
+#define d_log_info(str, ...)                                \
     do {                                                    \
-        if (d_should_log_normal()) {                        \
+        if (d_should_log_info()) {                          \
             char s[50];                                     \
             _d_datetime(s);                                 \
             fprintf(stdout, "[%s] " str, s, ##__VA_ARGS__); \

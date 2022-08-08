@@ -107,16 +107,16 @@ void example_on_delete(bot_client_t *bot, uint64_t message_id, uint64_t channel_
 
 void example_channel_create(bot_client_t *bot, struct discord_channel *channel) {
     (void)bot;
-    d_log_normal("Channel created with ID %ju\n", channel->id);
+    d_log_info("Channel created with ID %ju\n", channel->id);
 
     discord_destroy_channel(channel);
 }
 void example_channel_update(bot_client_t *bot, struct discord_channel *old, struct discord_channel *new) {
     (void)bot;
     if (old) {
-        d_log_normal("Channel in cache was updated: %ju\n", old->id);
+        d_log_info("Channel in cache was updated: %ju\n", old->id);
     } else {
-        d_log_normal("Channel NOT in cache was updated: %ju\n", new->id);
+        d_log_info("Channel NOT in cache was updated: %ju\n", new->id);
     }
 
     if (old)
@@ -130,9 +130,9 @@ void example_channel_delete(bot_client_t *bot, uint64_t channel_id, uint64_t gui
     (void)parent_id;
     (void)type;
     if (channel) {
-        d_log_normal("Channel in cache was deleted: %ju\n", channel->id);
+        d_log_info("Channel in cache was deleted: %ju\n", channel->id);
     } else {
-        d_log_normal("Channel NOT in cache was deleted: %ju\n", channel_id);
+        d_log_info("Channel NOT in cache was deleted: %ju\n", channel_id);
     }
 
     if (channel)
@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     // Enable logging
-    d_set_log_level(D_LOG_ALL);
+    d_set_log_level(D_LOG_NOTICE | D_LOG_ERR | D_LOG_INFO);
 
     // init to 0. Without this some errors could show up
     discord_event_callbacks_t callbacks = {0};

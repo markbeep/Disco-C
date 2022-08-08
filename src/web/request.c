@@ -75,7 +75,7 @@ static void request_t_pool(void *w) {
 
     struct MemoryChunk chunk;
 
-    d_log_normal("REQUEST '%s' URL: %s\n", request_str, n->url);
+    d_log_info("REQUEST '%s' URL: %s\n", request_str, n->url);
 
     curl_easy_setopt(handle, CURLOPT_URL, n->url);
     curl_easy_setopt(handle, CURLOPT_CUSTOMREQUEST, request_str);
@@ -132,12 +132,12 @@ static void request_t_pool(void *w) {
         case 429: // simply retry after waiting the time
             res_json = cJSON_Parse(response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
-            lwsl_debug("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
+            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
             if (cJSON_IsNumber(wait_ms)) {
                 struct timeval t0;
                 gettimeofday(&t0, NULL);
-                t0.tv_sec += (time_t)wait_ms / 1000;
-                t0.tv_usec += (time_t)wait_ms * 1000;
+                t0.tv_sec += (time_t)wait_ms->valueint / 1000;
+                t0.tv_usec += (time_t)wait_ms->valueint * 1000;
                 // check for overflow
                 if (t0.tv_usec < 0) {
                     t0.tv_sec++;

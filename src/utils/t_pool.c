@@ -9,9 +9,10 @@ static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
     while (1) {
         pthread_mutex_lock(pool->lock);
-        while (!pool->stop && pool->queue.size == 0) {
+        while (!pool->stop && (pool->sleep || pool->queue.size == 0)) {
             pthread_cond_wait(pool->work_cond, pool->lock);
         }
+        d_log_info("Thread took work in thread pool\n");
         if (pool->stop) {
             pool->thread_count--;
             pthread_cond_signal(pool->finished_cond);
@@ -29,7 +30,8 @@ static void *thread_work_loop(void *tp) {
         gettimeofday(&now, NULL);
         long wait_ms = 0;
         if (work->wait_until.tv_sec > 0 && work->wait_until.tv_usec > 0)
-            wait_ms = (now.tv_sec - work->wait_until.tv_sec) * 1000 + (now.tv_usec - work->wait_until.tv_usec) / 1000;
+            wait_ms = (work->wait_until.tv_sec - now.tv_sec) * 1000 + (work->wait_until.tv_usec - now.tv_usec) / 1000;
+        d_log_notice("Wait MS: %ld\n", wait_ms);
         if (wait_ms > 0) {
             t_pool_add_work(pool, work->func, work->arg, work->wait_until);
             continue;
@@ -69,13 +71,19 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg, struct timeval wait_un
     work->next = NULL;
 
     // coarsely locks the queue
+    pthread_mutex_lock(tp->lock);
+    prio_push(&tp->queue, (void *)work, wait_until);
+
+    // we check if the threads should sleep until the timer of the first node is off
     struct timeval now;
     gettimeofday(&now, NULL);
-    long retry_after = 0;
-    if (wait_until.tv_sec > 0 && wait_until.tv_usec > 0)
-        retry_after = (now.tv_sec - work->wait_until.tv_sec) * 1000 + (now.tv_usec - work->wait_until.tv_usec) / 1000;
-    pthread_mutex_lock(tp->lock);
-    prio_push(&tp->queue, (void *)work, retry_after);
+    struct timeval sleep_until = {0};
+    if (tp->queue.head)
+        sleep_until = tp->queue.head->wait_until;
+    if (sleep_until.tv_sec > now.tv_sec || (sleep_until.tv_sec == now.tv_sec && sleep_until.tv_usec > now.tv_usec)) {
+        tp->sleep = true;
+        tp->sleep_until = sleep_until;
+    }
     pthread_cond_signal(tp->work_cond);
     pthread_mutex_unlock(tp->lock);
 

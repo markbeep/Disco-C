@@ -13,8 +13,8 @@ int d_should_log_err(void) {
 int d_should_log_notice(void) {
     return log_level & D_LOG_NOTICE;
 }
-int d_should_log_normal(void) {
-    return log_level & D_LOG_NORMAL;
+int d_should_log_info(void) {
+    return log_level & D_LOG_INFO;
 }
 int d_should_log_debug(void) {
     return log_level & D_LOG_DEBUG;
