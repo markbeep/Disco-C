@@ -79,14 +79,14 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#aef4a4ae99941ededac12ad9b980c88fc">    7</a></span>&#160;<span class="preprocessor">#define D_LOG_ERR (1 &lt;&lt; 0)</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a4e2dd249193e1952afb9c895f52bd71d">    8</a></span>&#160;<span class="preprocessor">#define D_LOG_NOTICE (1 &lt;&lt; 1)</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#abaa54a191442605856d599306c95f571">    9</a></span>&#160;<span class="preprocessor">#define D_LOG_NORMAL (1 &lt;&lt; 2)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a5c4cd70116752ff0d49f1cb6cbb95abd">    9</a></span>&#160;<span class="preprocessor">#define D_LOG_INFO (1 &lt;&lt; 2)</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a490a5aa381b7c1b7f193323c8a7c1b0a">   10</a></span>&#160;<span class="preprocessor">#define D_LOG_DEBUG (1 &lt;&lt; 3)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a61c9a75d34677aaccb5175ddcfec9c38">   11</a></span>&#160;<span class="preprocessor">#define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_NORMAL | D_LOG_DEBUG</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a61c9a75d34677aaccb5175ddcfec9c38">   11</a></span>&#160;<span class="preprocessor">#define D_LOG_ALL D_LOG_ERR | D_LOG_NOTICE | D_LOG_INFO | D_LOG_DEBUG</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="disco__logging_8h.html#aafdec6b2ecd7cb0373aa303d1cb615cc">d_set_log_level</a>(<span class="keywordtype">int</span> flags);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="disco__logging_8h.html#ad6aaed1ca7606c5eeb51de306b84f170">d_should_log_err</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="disco__logging_8h.html#a9e83092377a24e9d27df175f6733ed62">d_should_log_notice</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="disco__logging_8h.html#a9bc2d75b2dba6c9b760a5e6e95c95dae">d_should_log_normal</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="disco__logging_8h.html#ae06e047d140c91a12f18375ebe3c1b64">d_should_log_info</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="disco__logging_8h.html#a6c63e3f0a9e220944a7f245876f735c3">d_should_log_debug</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="disco__logging_8h.html#af2de1d7babf5741d21012440bfe2c65d">_d_datetime</a>(<span class="keywordtype">char</span> s[50]);</div>
@@ -111,9 +111,9 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">        }                                                                     \</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">    } while (0);</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a61597fb836d09465db7f7a89d2db74f4">   41</a></span>&#160;<span class="preprocessor">#define d_log_normal(str, ...)                              \</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="disco__logging_8h.html#a43a877ba4fb9208bdd10c13b19db7870">   41</a></span>&#160;<span class="preprocessor">#define d_log_info(str, ...)                                \</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">    do {                                                    \</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">        if (d_should_log_normal()) {                        \</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">        if (d_should_log_info()) {                          \</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">            char s[50];                                     \</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">            _d_datetime(s);                                 \</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">            fprintf(stdout, &quot;[%s] &quot; str, s, ##__VA_ARGS__); \</span></div>
@@ -133,11 +133,11 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="adisco__logging_8h_html_ae06e047d140c91a12f18375ebe3c1b64"><div class="ttname"><a href="disco__logging_8h.html#ae06e047d140c91a12f18375ebe3c1b64">d_should_log_info</a></div><div class="ttdeci">int d_should_log_info(void)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:16</div></div>
 <div class="ttc" id="adisco__logging_8h_html_ad6aaed1ca7606c5eeb51de306b84f170"><div class="ttname"><a href="disco__logging_8h.html#ad6aaed1ca7606c5eeb51de306b84f170">d_should_log_err</a></div><div class="ttdeci">int d_should_log_err(void)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:10</div></div>
 <div class="ttc" id="adisco__logging_8h_html_a6c63e3f0a9e220944a7f245876f735c3"><div class="ttname"><a href="disco__logging_8h.html#a6c63e3f0a9e220944a7f245876f735c3">d_should_log_debug</a></div><div class="ttdeci">int d_should_log_debug(void)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:19</div></div>
 <div class="ttc" id="adisco__logging_8h_html_aafdec6b2ecd7cb0373aa303d1cb615cc"><div class="ttname"><a href="disco__logging_8h.html#aafdec6b2ecd7cb0373aa303d1cb615cc">d_set_log_level</a></div><div class="ttdeci">void d_set_log_level(int flags)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:6</div></div>
 <div class="ttc" id="adisco__logging_8h_html_af2de1d7babf5741d21012440bfe2c65d"><div class="ttname"><a href="disco__logging_8h.html#af2de1d7babf5741d21012440bfe2c65d">_d_datetime</a></div><div class="ttdeci">void _d_datetime(char s[50])</div><div class="ttdef"><b>Definition:</b> disco_logging.c:23</div></div>
-<div class="ttc" id="adisco__logging_8h_html_a9bc2d75b2dba6c9b760a5e6e95c95dae"><div class="ttname"><a href="disco__logging_8h.html#a9bc2d75b2dba6c9b760a5e6e95c95dae">d_should_log_normal</a></div><div class="ttdeci">int d_should_log_normal(void)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:16</div></div>
 <div class="ttc" id="adisco__logging_8h_html_a9e83092377a24e9d27df175f6733ed62"><div class="ttname"><a href="disco__logging_8h.html#a9e83092377a24e9d27df175f6733ed62">d_should_log_notice</a></div><div class="ttdeci">int d_should_log_notice(void)</div><div class="ttdef"><b>Definition:</b> disco_logging.c:13</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

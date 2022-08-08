@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Disco-C: edit_channel Struct Reference</title>
+<title>Disco-C: discord_multiple_message_cb Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,52 +66,21 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">edit_channel Struct Reference</div>  </div>
+<div class="title">discord_multiple_message_cb Struct Reference<div class="ingroups"><a class="el" href="group___commands.html">Commands</a> &raquo; <a class="el" href="group___message___commands.html">Message_Commands</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="message__commands_8h_source.html">message_commands.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a7a4329ab18da71d369b5238e00b74bb3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedit__channel.html#a7a4329ab18da71d369b5238e00b74bb3">old</a></td></tr>
-<tr class="separator:a7a4329ab18da71d369b5238e00b74bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a226d659791a40ea2475574477f966d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__channel.html">discord_channel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedit__channel.html#a1a226d659791a40ea2475574477f966d">new</a></td></tr>
-<tr class="separator:a1a226d659791a40ea2475574477f966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69d40a138fc0dda7829904abc47f10b3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#ga69d40a138fc0dda7829904abc47f10b3">data</a></td></tr>
+<tr class="separator:ga69d40a138fc0dda7829904abc47f10b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32662b8b509684fb7a0b3686a77d1566"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#ga32662b8b509684fb7a0b3686a77d1566">cb</a> )(<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *, size_t size, struct <a class="el" href="structdiscord__message.html">discord_message</a> **arr, void *<a class="el" href="group___commands.html#ga69d40a138fc0dda7829904abc47f10b3">data</a>)</td></tr>
+<tr class="separator:ga32662b8b509684fb7a0b3686a77d1566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
-<a id="a1a226d659791a40ea2475574477f966d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a226d659791a40ea2475574477f966d">&#9670;&nbsp;</a></span>new</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__channel.html">discord_channel</a>* edit_channel::new</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>, and <a class="el" href="event_8c.html#abb82c3a29fb79ae21050c624f513ca31">event_handle_channel_update()</a>.</p>
-
-</div>
-</div>
-<a id="a7a4329ab18da71d369b5238e00b74bb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a4329ab18da71d369b5238e00b74bb3">&#9670;&nbsp;</a></span>old</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__channel.html">discord_channel</a>* edit_channel::old</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="event_8c.html#ac3984c74b045e0afadbf2f69ed76f597">event_handle()</a>, and <a class="el" href="event_8c.html#abb82c3a29fb79ae21050c624f513ca31">event_handle_channel_update()</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/discord/<a class="el" href="event_8c.html">event.c</a></li>
+<li>include/discord/commands/<a class="el" href="message__commands_8h_source.html">message_commands.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

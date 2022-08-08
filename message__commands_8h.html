@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">message_commands.h File Reference</div>  </div>
@@ -78,23 +79,31 @@ $(function() {
 </div>
 <p><a href="message__commands_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__message__cb.html">discord_message_cb</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discord Message Callback.  <a href="structdiscord__message__cb.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__multiple__message__cb.html">discord_multiple_message_cb</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga556b7ad86b470b33662c6363f0962473"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga556b7ad86b470b33662c6363f0962473">discord_channel_send_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message, bool return_struct)</td></tr>
-<tr class="memdesc:ga556b7ad86b470b33662c6363f0962473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message and if enabled also returns the sent message struct.  <a href="group___message___commands.html#ga556b7ad86b470b33662c6363f0962473">More...</a><br /></td></tr>
-<tr class="separator:ga556b7ad86b470b33662c6363f0962473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga443ee972b53083fc45377e322c76d988"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga443ee972b53083fc45377e322c76d988">discord_channel_send_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:ga443ee972b53083fc45377e322c76d988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message and if enabled also returns the sent message struct.  <a href="group___message___commands.html#ga443ee972b53083fc45377e322c76d988">More...</a><br /></td></tr>
+<tr class="separator:ga443ee972b53083fc45377e322c76d988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8413655b1c5cb3b8f113bc4175d43736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga8413655b1c5cb3b8f113bc4175d43736">discord_channel_edit_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message)</td></tr>
 <tr class="memdesc:ga8413655b1c5cb3b8f113bc4175d43736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a message.  <a href="group___message___commands.html#ga8413655b1c5cb3b8f113bc4175d43736">More...</a><br /></td></tr>
 <tr class="separator:ga8413655b1c5cb3b8f113bc4175d43736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gad6ee7f866673f13d71b90fb0b8a337d6">discord_get_messages</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, struct <a class="el" href="structdiscord__message.html">discord_message</a> ***message_array, int limit, uint64_t around, uint64_t before, uint64_t after)</td></tr>
-<tr class="memdesc:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of Discord message structs.  <a href="group___message___commands.html#gad6ee7f866673f13d71b90fb0b8a337d6">More...</a><br /></td></tr>
-<tr class="separator:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga15f3a08908e247787c3a98c674e2e2ce"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga15f3a08908e247787c3a98c674e2e2ce">discord_get_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id)</td></tr>
-<tr class="memdesc:ga15f3a08908e247787c3a98c674e2e2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific message by channel and message ID.  <a href="group___message___commands.html#ga15f3a08908e247787c3a98c674e2e2ce">More...</a><br /></td></tr>
-<tr class="separator:ga15f3a08908e247787c3a98c674e2e2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga001911743cb204978707d5669badd6ad"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga001911743cb204978707d5669badd6ad">discord_fetch_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id)</td></tr>
-<tr class="memdesc:ga001911743cb204978707d5669badd6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the message from Discord without first checking if it's in the cache.  <a href="group___message___commands.html#ga001911743cb204978707d5669badd6ad">More...</a><br /></td></tr>
-<tr class="separator:ga001911743cb204978707d5669badd6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae51f7923b5c5693de3f7d68d04ec6690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gae51f7923b5c5693de3f7d68d04ec6690">discord_get_messages</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, int limit, uint64_t around, uint64_t before, uint64_t after, struct <a class="el" href="structdiscord__multiple__message__cb.html">discord_multiple_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:gae51f7923b5c5693de3f7d68d04ec6690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of Discord message structs.  <a href="group___message___commands.html#gae51f7923b5c5693de3f7d68d04ec6690">More...</a><br /></td></tr>
+<tr class="separator:gae51f7923b5c5693de3f7d68d04ec6690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga688b5151b3d7093f500f59e678a5b4f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">discord_get_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:ga688b5151b3d7093f500f59e678a5b4f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific message by channel and message ID.  <a href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">More...</a><br /></td></tr>
+<tr class="separator:ga688b5151b3d7093f500f59e678a5b4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">discord_fetch_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the message from Discord without first checking if it's in the cache.  <a href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">More...</a><br /></td></tr>
+<tr class="separator:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

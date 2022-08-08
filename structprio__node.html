@@ -74,41 +74,57 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a22cd6d2739ef01cf3bf81e3994720cad"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__prio__packet.html">discord_prio_packet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprio__node.html#a22cd6d2739ef01cf3bf81e3994720cad">data</a></td></tr>
-<tr class="separator:a22cd6d2739ef01cf3bf81e3994720cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa10a569281685b7ab8b40ffc2acdbb97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprio__node.html#aa10a569281685b7ab8b40ffc2acdbb97">next</a></td></tr>
-<tr class="separator:aa10a569281685b7ab8b40ffc2acdbb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea566ffe8f7bd75f3655d6520d70d5e4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprio__node.html#aea566ffe8f7bd75f3655d6520d70d5e4">data</a></td></tr>
+<tr class="separator:aea566ffe8f7bd75f3655d6520d70d5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a650d9600c57d8a3867b4c4f9f66b936f"><td class="memItemLeft" align="right" valign="top">struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprio__node.html#a650d9600c57d8a3867b4c4f9f66b936f">wait_until</a></td></tr>
+<tr class="separator:a650d9600c57d8a3867b4c4f9f66b936f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3250563b4d3acdfcce437ed9af0f24"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structprio__node.html">prio_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprio__node.html#a1b3250563b4d3acdfcce437ed9af0f24">next</a></td></tr>
+<tr class="separator:a1b3250563b4d3acdfcce437ed9af0f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="a22cd6d2739ef01cf3bf81e3994720cad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22cd6d2739ef01cf3bf81e3994720cad">&#9670;&nbsp;</a></span>data</h2>
+<a id="aea566ffe8f7bd75f3655d6520d70d5e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea566ffe8f7bd75f3655d6520d70d5e4">&#9670;&nbsp;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__prio__packet.html">discord_prio_packet</a>* prio_node::data</td>
+          <td class="memname">void* prio_node::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="prio__queue_8c.html#a8039ef640c19907629907eb6558c7a30">prio_push()</a>.</p>
-
 </div>
 </div>
-<a id="aa10a569281685b7ab8b40ffc2acdbb97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa10a569281685b7ab8b40ffc2acdbb97">&#9670;&nbsp;</a></span>next</h2>
+<a id="a1b3250563b4d3acdfcce437ed9af0f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3250563b4d3acdfcce437ed9af0f24">&#9670;&nbsp;</a></span>next</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a>* prio_node::next</td>
+          <td class="memname">struct <a class="el" href="structprio__node.html">prio_node</a>* prio_node::next</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="prio__queue_8c.html#a6f714d888ada5be92c7bacb61ff34109">prio_destroy_queue()</a>, <a class="el" href="prio__queue_8c.html#a8039ef640c19907629907eb6558c7a30">prio_push()</a>, and <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="prio__queue_8c.html#a6f714d888ada5be92c7bacb61ff34109">prio_destroy_queue()</a>, <a class="el" href="prio__queue_8c.html#a9690864657c36f4e6ff8a72e86e68990">prio_push()</a>, and <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>.</p>
+
+</div>
+</div>
+<a id="a650d9600c57d8a3867b4c4f9f66b936f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a650d9600c57d8a3867b4c4f9f66b936f">&#9670;&nbsp;</a></span>wait_until</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct timeval prio_node::wait_until</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="prio__queue_8c.html#a9690864657c36f4e6ff8a72e86e68990">prio_push()</a>, <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>, and <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>.</p>
 
 </div>
 </div>

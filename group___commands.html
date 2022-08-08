@@ -64,7 +64,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Commands</div>  </div>
 </div><!--header-->
@@ -74,8 +75,87 @@ $(function() {
 Modules</h2></td></tr>
 <tr class="memitem:group___message___commands"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html">Message_Commands</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gad1137855d421c8af7ef069fc90237fab"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#gad1137855d421c8af7ef069fc90237fab">discord_message_cb::data</a></td></tr>
+<tr class="memdesc:gad1137855d421c8af7ef069fc90237fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data that will be passed along the callback function.  <a href="group___commands.html#gad1137855d421c8af7ef069fc90237fab">More...</a><br /></td></tr>
+<tr class="separator:gad1137855d421c8af7ef069fc90237fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaffb6ea209c7e88717f5b0cc89dd6b02c"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#gaffb6ea209c7e88717f5b0cc89dd6b02c">discord_message_cb::cb</a> )(<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *, struct <a class="el" href="structdiscord__message.html">discord_message</a> *, void *<a class="el" href="group___commands.html#gad1137855d421c8af7ef069fc90237fab">data</a>)</td></tr>
+<tr class="separator:gaffb6ea209c7e88717f5b0cc89dd6b02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69d40a138fc0dda7829904abc47f10b3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#ga69d40a138fc0dda7829904abc47f10b3">discord_multiple_message_cb::data</a></td></tr>
+<tr class="separator:ga69d40a138fc0dda7829904abc47f10b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32662b8b509684fb7a0b3686a77d1566"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___commands.html#ga32662b8b509684fb7a0b3686a77d1566">discord_multiple_message_cb::cb</a> )(<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *, size_t size, struct <a class="el" href="structdiscord__message.html">discord_message</a> **arr, void *<a class="el" href="group___commands.html#ga69d40a138fc0dda7829904abc47f10b3">data</a>)</td></tr>
+<tr class="separator:ga32662b8b509684fb7a0b3686a77d1566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ga32662b8b509684fb7a0b3686a77d1566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga32662b8b509684fb7a0b3686a77d1566">&#9670;&nbsp;</a></span>cb <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* discord_multiple_message_cb::cb) (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *, size_t size, struct <a class="el" href="structdiscord__message.html">discord_message</a> **arr, void *<a class="el" href="group___commands.html#ga69d40a138fc0dda7829904abc47f10b3">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="request_8c.html#aa5bdffe954ce80a8e4529abb5fcc8ffa">request_t_pool()</a>.</p>
+
+</div>
+</div>
+<a id="gaffb6ea209c7e88717f5b0cc89dd6b02c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaffb6ea209c7e88717f5b0cc89dd6b02c">&#9670;&nbsp;</a></span>cb <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* discord_message_cb::cb) (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *, struct <a class="el" href="structdiscord__message.html">discord_message</a> *, void *<a class="el" href="group___commands.html#gad1137855d421c8af7ef069fc90237fab">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">discord_get_message()</a>, and <a class="el" href="request_8c.html#aa5bdffe954ce80a8e4529abb5fcc8ffa">request_t_pool()</a>.</p>
+
+</div>
+</div>
+<a id="gad1137855d421c8af7ef069fc90237fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1137855d421c8af7ef069fc90237fab">&#9670;&nbsp;</a></span>data <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* discord_message_cb::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Data that will be passed along the callback function. </p>
+
+<p class="reference">Referenced by <a class="el" href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">discord_get_message()</a>.</p>
+
+</div>
+</div>
+<a id="ga69d40a138fc0dda7829904abc47f10b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga69d40a138fc0dda7829904abc47f10b3">&#9670;&nbsp;</a></span>data <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* discord_multiple_message_cb::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="request_8c.html#aa5bdffe954ce80a8e4529abb5fcc8ffa">request_t_pool()</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

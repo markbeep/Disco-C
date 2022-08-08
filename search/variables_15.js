@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['value_1437',['value',['../group___models.html#ga3f0b9fc4e67cdc04674fc7db32bff636',1,'discord_application_command_option_choice::value()'],['../group___models.html#gae870ce85bd283e415e791756f4cee915',1,'discord_select_option::value()'],['../group___models.html#ga093c7c685057da3b42e93fd0f2661604',1,'discord_text_input::value()'],['../group___models.html#ga3d86d857fc2eef075929de9ab67d8a30',1,'discord_embed_field::value()'],['../group___models.html#ga32d860e9c6e7f6ecd2c2bbb7d7d1b1dd',1,'discord_interaction_data_option::value()']]],
-  ['value_5ftype_1438',['value_type',['../group___models.html#gabad51ed6f06986d140b18f457ac96187',1,'discord_interaction_data_option']]],
-  ['values_1439',['values',['../group___models.html#gabe5287ec99c9fd7a59d23117dc82acf1',1,'discord_interaction_data']]],
-  ['values_5fcount_1440',['values_count',['../group___models.html#ga2d1d239b0aae5c48b4055dafa742d146',1,'discord_interaction_data']]],
-  ['vanity_5furl_5fcode_1441',['vanity_url_code',['../group___models.html#ga5e5b650011255b7eed0430ce443363ec',1,'discord_guild']]],
-  ['verification_5flevel_1442',['verification_level',['../group___models.html#ga0dc1f87817c2acdf421d170e3a6275f5',1,'discord_guild']]],
-  ['verified_1443',['verified',['../group___models.html#ga92c74af20b3f0d2fb1820bb36c41e365',1,'discord_user']]],
-  ['verify_5fkey_1444',['verify_key',['../group___models.html#gaef94357e5d612a8a36b58e8e1ff716d2',1,'discord_application']]],
-  ['version_1445',['version',['../group___models.html#gafcaf86908525ff98c60427cb8d74e710',1,'discord_application_command::version()'],['../group___models.html#gaae4c8f8b39ad93af1ce9e3d40ce7402b',1,'discord_interaction::version()']]],
-  ['vi_1446',['vi',['../group___models.html#gafcf8a7c1dbcc117743d3d31054a951b9',1,'discord_language_locales']]],
-  ['video_1447',['video',['../group___models.html#ga389a9cf6c90b33a86a5d302ee9b66c78',1,'discord_embed']]],
-  ['video_5fquality_5fmode_1448',['video_quality_mode',['../group___models.html#gaea3ab02fcef62931d5c5de9081620a2a',1,'discord_channel']]]
+  ['uk_1424',['uk',['../group___models.html#gae6381bd3e57320a95279093a7cfe267d',1,'discord_language_locales']]],
+  ['unicode_5femoji_1425',['unicode_emoji',['../group___models.html#ga5d642976136fa66598b37155a0046051',1,'discord_role']]],
+  ['url_1426',['url',['../group___models.html#ga43df4bd77de38da3cf20638aa77ed4d4',1,'discord_attachment::url()'],['../group___models.html#ga5ca9d62564668ebe04efe394bdbbe58f',1,'discord_button::url()'],['../group___models.html#gae4973390f6881d945319bbc8f50c5caa',1,'discord_embed_media::url()'],['../group___models.html#ga0ea5543fce4b7898be853511dc507941',1,'discord_embed_provider::url()'],['../group___models.html#ga156c00cb09a6197093735b3f158ac14e',1,'discord_embed_author::url()'],['../group___models.html#gae5fed021fd2c671b3a25fb775febb7db',1,'discord_embed::url()'],['../structrequest__work__node.html#a9a7be932009196a24120593133cd467f',1,'request_work_node::url()']]],
+  ['user_1427',['user',['../group___models.html#ga98a4af765381e1d04095ac529133ffee',1,'discord_team_member::user()'],['../structbot__client.html#a55e2a3821d0f13e0919ffa971702accf',1,'bot_client::user()'],['../group___models.html#ga2f8f871daa760513aca81c79f0c9ad82',1,'discord_emoji::user()'],['../group___models.html#gabe3d2fff6306f568e39e1b7ee9cdc8ff',1,'discord_interaction::user()'],['../group___models.html#ga6253a1467efc2d8c160e02dbf84106b3',1,'discord_message::user()'],['../group___models.html#ga0ae67e50e9822d041b27c2c414268afd',1,'discord_sticker::user()'],['../group___models.html#gab5d96a6f6968a917943f4bd4c35dbfab',1,'discord_member::user()']]],
+  ['user_5fid_1428',['user_id',['../group___models.html#gace3269ce356aec4ff44ed6e38970055e',1,'discord_thread_member']]],
+  ['user_5flimit_1429',['user_limit',['../group___models.html#ga28474740decb67bc753cd8b2fffd9680',1,'discord_channel']]],
+  ['username_1430',['username',['../group___models.html#gaa778953d6508e4ed8019be82689ae861',1,'discord_user']]],
+  ['users_1431',['users',['../group___models.html#gaceab6053048c0d9e29e4ba2972de78ab',1,'discord_allowed_mentions']]],
+  ['users_5fcount_1432',['users_count',['../group___models.html#ga15630d20b08f15ad037173628b01df7b',1,'discord_allowed_mentions']]]
 ];

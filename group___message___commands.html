@@ -64,29 +64,38 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Message_Commands<div class="ingroups"><a class="el" href="group___commands.html">Commands</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__message__cb.html">discord_message_cb</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discord Message Callback.  <a href="structdiscord__message__cb.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscord__multiple__message__cb.html">discord_multiple_message_cb</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga556b7ad86b470b33662c6363f0962473"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga556b7ad86b470b33662c6363f0962473">discord_channel_send_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message, bool return_struct)</td></tr>
-<tr class="memdesc:ga556b7ad86b470b33662c6363f0962473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message and if enabled also returns the sent message struct.  <a href="group___message___commands.html#ga556b7ad86b470b33662c6363f0962473">More...</a><br /></td></tr>
-<tr class="separator:ga556b7ad86b470b33662c6363f0962473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga443ee972b53083fc45377e322c76d988"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga443ee972b53083fc45377e322c76d988">discord_channel_send_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:ga443ee972b53083fc45377e322c76d988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message and if enabled also returns the sent message struct.  <a href="group___message___commands.html#ga443ee972b53083fc45377e322c76d988">More...</a><br /></td></tr>
+<tr class="separator:ga443ee972b53083fc45377e322c76d988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8413655b1c5cb3b8f113bc4175d43736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga8413655b1c5cb3b8f113bc4175d43736">discord_channel_edit_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, char *content, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__create__message.html">discord_create_message</a> *message)</td></tr>
 <tr class="memdesc:ga8413655b1c5cb3b8f113bc4175d43736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a message.  <a href="group___message___commands.html#ga8413655b1c5cb3b8f113bc4175d43736">More...</a><br /></td></tr>
 <tr class="separator:ga8413655b1c5cb3b8f113bc4175d43736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gad6ee7f866673f13d71b90fb0b8a337d6">discord_get_messages</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, struct <a class="el" href="structdiscord__message.html">discord_message</a> ***message_array, int limit, uint64_t around, uint64_t before, uint64_t after)</td></tr>
-<tr class="memdesc:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of Discord message structs.  <a href="group___message___commands.html#gad6ee7f866673f13d71b90fb0b8a337d6">More...</a><br /></td></tr>
-<tr class="separator:gad6ee7f866673f13d71b90fb0b8a337d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga15f3a08908e247787c3a98c674e2e2ce"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga15f3a08908e247787c3a98c674e2e2ce">discord_get_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id)</td></tr>
-<tr class="memdesc:ga15f3a08908e247787c3a98c674e2e2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific message by channel and message ID.  <a href="group___message___commands.html#ga15f3a08908e247787c3a98c674e2e2ce">More...</a><br /></td></tr>
-<tr class="separator:ga15f3a08908e247787c3a98c674e2e2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga001911743cb204978707d5669badd6ad"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdiscord__message.html">discord_message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga001911743cb204978707d5669badd6ad">discord_fetch_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id)</td></tr>
-<tr class="memdesc:ga001911743cb204978707d5669badd6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the message from Discord without first checking if it's in the cache.  <a href="group___message___commands.html#ga001911743cb204978707d5669badd6ad">More...</a><br /></td></tr>
-<tr class="separator:ga001911743cb204978707d5669badd6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae51f7923b5c5693de3f7d68d04ec6690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gae51f7923b5c5693de3f7d68d04ec6690">discord_get_messages</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, int limit, uint64_t around, uint64_t before, uint64_t after, struct <a class="el" href="structdiscord__multiple__message__cb.html">discord_multiple_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:gae51f7923b5c5693de3f7d68d04ec6690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of Discord message structs.  <a href="group___message___commands.html#gae51f7923b5c5693de3f7d68d04ec6690">More...</a><br /></td></tr>
+<tr class="separator:gae51f7923b5c5693de3f7d68d04ec6690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga688b5151b3d7093f500f59e678a5b4f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">discord_get_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:ga688b5151b3d7093f500f59e678a5b4f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific message by channel and message ID.  <a href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">More...</a><br /></td></tr>
+<tr class="separator:ga688b5151b3d7093f500f59e678a5b4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">discord_fetch_message</a> (<a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, uint64_t channel_id, uint64_t message_id, struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *cb)</td></tr>
+<tr class="memdesc:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the message from Discord without first checking if it's in the cache.  <a href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">More...</a><br /></td></tr>
+<tr class="separator:gaa8216ce15ad5b503f3e103ee4e03bc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -146,18 +155,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___models.html#gacc1efe63332dfa8afabb96d58b4ca5e3">discord_create_message::allowed_mentions</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="group___models.html#gaa48b4b9a69db9fae0bb8be3f139317ae">discord_message::content</a>, <a class="el" href="message_8c.html#a17a0d8e1812a438804ba2be0c0929446">create_allowed_mentions()</a>, <a class="el" href="message_8c.html#a5e02a42f0c13faadd122d12dfa6f4587">create_embed_json()</a>, <a class="el" href="disco__logging_8h.html#ac9349f26bc8e4e8e0a3e2643f9c5b928">d_log_err</a>, <a class="el" href="group___models.html#gaf4ae2f6b6c7d198b3f00f9f34fddc193">discord_create_message::embed</a>, <a class="el" href="group___models.html#ga43312b3ca8a1e4a75938feaecdad43f4">discord_create_message::embeds</a>, <a class="el" href="group___models.html#ga0a72af97350afa7a2eaeabbb61a0a640">discord_message::embeds</a>, <a class="el" href="group___models.html#ga11730ccfa7ffa96a6f0362909a6bb74c">discord_create_message::embeds_count</a>, <a class="el" href="group___models.html#gab41024ce4ed3d4a1f6d3102140e36b2f">discord_create_message::flags</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af9a317520e948a9926d24487bc2dabb6">REQUEST_PATCH</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
+<p class="reference">References <a class="el" href="group___models.html#gacc1efe63332dfa8afabb96d58b4ca5e3">discord_create_message::allowed_mentions</a>, <a class="el" href="message_8c.html#a17a0d8e1812a438804ba2be0c0929446">create_allowed_mentions()</a>, <a class="el" href="message_8c.html#a5e02a42f0c13faadd122d12dfa6f4587">create_embed_json()</a>, <a class="el" href="group___models.html#gaf4ae2f6b6c7d198b3f00f9f34fddc193">discord_create_message::embed</a>, <a class="el" href="group___models.html#ga43312b3ca8a1e4a75938feaecdad43f4">discord_create_message::embeds</a>, <a class="el" href="group___models.html#ga11730ccfa7ffa96a6f0362909a6bb74c">discord_create_message::embeds_count</a>, <a class="el" href="group___models.html#gab41024ce4ed3d4a1f6d3102140e36b2f">discord_create_message::flags</a>, <a class="el" href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af9a317520e948a9926d24487bc2dabb6">REQUEST_PATCH</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
 
 </div>
 </div>
-<a id="ga556b7ad86b470b33662c6363f0962473"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga556b7ad86b470b33662c6363f0962473">&#9670;&nbsp;</a></span>discord_channel_send_message()</h2>
+<a id="ga443ee972b53083fc45377e322c76d988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga443ee972b53083fc45377e322c76d988">&#9670;&nbsp;</a></span>discord_channel_send_message()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__message.html">discord_message</a>* discord_channel_send_message </td>
+          <td class="memname">void discord_channel_send_message </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *&#160;</td>
           <td class="paramname"><em>bot</em>, </td>
@@ -183,8 +192,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>return_struct</em>&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -201,24 +210,23 @@ Functions</h2></td></tr>
     <tr><td class="paramname">content</td><td>Message content to send (if empty, embed or components need to exist). </td></tr>
     <tr><td class="paramname">channel_id</td><td>ID of the channel the message should be sent in. </td></tr>
     <tr><td class="paramname">message</td><td>A <a class="el" href="structdiscord__create__message.html" title="https://discord.com/developers/docs/resources/channel#create-message">discord_create_message</a> struct. Can be NULL. </td></tr>
-    <tr><td class="paramname">return_struct</td><td>Bool if the sent message should be returned or not (if yes, it has to be destroyed with <a class="el" href="group___message.html#ga872f106303b2b802946a43f9c44a4aa6" title="Destroys the given structure and frees the pointer.">discord_destroy_message()</a> after) </td></tr>
+    <tr><td class="paramname">cb</td><td><a class="el" href="structdiscord__message__cb.html" title="Discord Message Callback.">discord_message_cb</a> struct which contains a callback that will be called with the given data. Can be NULL to ignore. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>struct discord_message* NULL or the struct of the sent message. </dd></dl>
 
-<p class="reference">References <a class="el" href="group___message.html#gaee10281ca05e31be33f395e6328f50df">_d_create_message_to_json()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="group___models.html#gaa48b4b9a69db9fae0bb8be3f139317ae">discord_message::content</a>, <a class="el" href="disco__logging_8h.html#a653b70f1baded882e334b1e1fd1e4be4">d_log_debug</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
+<p class="reference">References <a class="el" href="group___message.html#gaee10281ca05e31be33f395e6328f50df">_d_create_message_to_json()</a>, <a class="el" href="structrequest__callback.html#a6bf363ed2cf96440460fb75fa72e465e">request_callback::cb_struct</a>, <a class="el" href="group___models.html#gadfd3b4f8e5707faf31eab374767b08fb">discord_message_reference::channel_id</a>, <a class="el" href="request_8h.html#abe9f42b1dd89260a930e9fc3c072d5b3a6c9d63ba9106f946e2b9b969c6b1d40a">DISCORD_MESSAGE_CALLBACK</a>, <a class="el" href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2ae0fcba425dcb93d3e90bb3f49a4d6637">REQUEST_POST</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="structrequest__callback.html#acf2aa95eb4f7a38a5d76dca17fbdff2f">request_callback::type</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
 
 </div>
 </div>
-<a id="ga001911743cb204978707d5669badd6ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga001911743cb204978707d5669badd6ad">&#9670;&nbsp;</a></span>discord_fetch_message()</h2>
+<a id="gaa8216ce15ad5b503f3e103ee4e03bc09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8216ce15ad5b503f3e103ee4e03bc09">&#9670;&nbsp;</a></span>discord_fetch_message()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__message.html">discord_message</a>* discord_fetch_message </td>
+          <td class="memname">void discord_fetch_message </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *&#160;</td>
           <td class="paramname"><em>bot</em>, </td>
@@ -233,7 +241,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>message_id</em>&#160;</td>
+          <td class="paramname"><em>message_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -252,22 +266,21 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>struct discord_message* Struct of the message or NULL if the message doesn't exist. </dd></dl>
 
-<p class="reference">References <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="cache_8h.html#a0d885224d57ff6aa08ece206a1e44586">discord_cache_set_message()</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af1251d3fc8fcf478f731967eab2f11b3">REQUEST_GET</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
+<p class="reference">References <a class="el" href="structrequest__callback.html#a6bf363ed2cf96440460fb75fa72e465e">request_callback::cb_struct</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="request_8h.html#abe9f42b1dd89260a930e9fc3c072d5b3a6c9d63ba9106f946e2b9b969c6b1d40a">DISCORD_MESSAGE_CALLBACK</a>, <a class="el" href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af1251d3fc8fcf478f731967eab2f11b3">REQUEST_GET</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="structrequest__callback.html#acf2aa95eb4f7a38a5d76dca17fbdff2f">request_callback::type</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="group___message___commands.html#ga15f3a08908e247787c3a98c674e2e2ce">discord_get_message()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___message___commands.html#ga688b5151b3d7093f500f59e678a5b4f1">discord_get_message()</a>.</p>
 
 </div>
 </div>
-<a id="ga15f3a08908e247787c3a98c674e2e2ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga15f3a08908e247787c3a98c674e2e2ce">&#9670;&nbsp;</a></span>discord_get_message()</h2>
+<a id="ga688b5151b3d7093f500f59e678a5b4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga688b5151b3d7093f500f59e678a5b4f1">&#9670;&nbsp;</a></span>discord_get_message()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structdiscord__message.html">discord_message</a>* discord_get_message </td>
+          <td class="memname">void discord_get_message </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *&#160;</td>
           <td class="paramname"><em>bot</em>, </td>
@@ -282,7 +295,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>message_id</em>&#160;</td>
+          <td class="paramname"><em>message_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__message__cb.html">discord_message_cb</a> *&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -301,20 +320,19 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>struct discord_message* Struct of the message or NULL if the message doesn't exist. </dd></dl>
 
-<p class="reference">References <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="cache_8h.html#a296a64475d6debc510dace71c0291c76">discord_cache_get_message()</a>, and <a class="el" href="group___message___commands.html#ga001911743cb204978707d5669badd6ad">discord_fetch_message()</a>.</p>
+<p class="reference">References <a class="el" href="group___commands.html#gaffb6ea209c7e88717f5b0cc89dd6b02c">discord_message_cb::cb</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="group___commands.html#gad1137855d421c8af7ef069fc90237fab">discord_message_cb::data</a>, <a class="el" href="cache_8h.html#a296a64475d6debc510dace71c0291c76">discord_cache_get_message()</a>, and <a class="el" href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">discord_fetch_message()</a>.</p>
 
 </div>
 </div>
-<a id="gad6ee7f866673f13d71b90fb0b8a337d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad6ee7f866673f13d71b90fb0b8a337d6">&#9670;&nbsp;</a></span>discord_get_messages()</h2>
+<a id="gae51f7923b5c5693de3f7d68d04ec6690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae51f7923b5c5693de3f7d68d04ec6690">&#9670;&nbsp;</a></span>discord_get_messages()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int discord_get_messages </td>
+          <td class="memname">void discord_get_messages </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *&#160;</td>
           <td class="paramname"><em>bot</em>, </td>
@@ -324,12 +342,6 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>channel_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structdiscord__message.html">discord_message</a> ***&#160;</td>
-          <td class="paramname"><em>message_array</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -353,7 +365,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>after</em>&#160;</td>
+          <td class="paramname"><em>after</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structdiscord__multiple__message__cb.html">discord_multiple_message_cb</a> *&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -368,17 +386,16 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">bot</td><td>Active bot instance. </td></tr>
     <tr><td class="paramname">channel_id</td><td>Channel to fetch messages from. </td></tr>
-    <tr><td class="paramname">message_array</td><td>Pointer to a message array. This will be modified. </td></tr>
     <tr><td class="paramname">limit</td><td>Max number of messages to return (1-100). 0 to ignore and use the default of 50. </td></tr>
     <tr><td class="paramname">around</td><td>Get messages around this message ID. 0 to ignore. </td></tr>
     <tr><td class="paramname">before</td><td>Get messages before this message ID. 0 to ignore. </td></tr>
     <tr><td class="paramname">after</td><td>Get messages after this message ID. 0 to ignore. </td></tr>
+    <tr><td class="paramname">cb</td><td>Callback struct which is called once ther request is done. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int Amount of messages in the array. </dd></dl>
 
-<p class="reference">References <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___models.html#ga92b02bbf10f5b7abc41dddbc80fa8af8">discord_message::channel_id</a>, <a class="el" href="cache_8h.html#a0d885224d57ff6aa08ece206a1e44586">discord_cache_set_message()</a>, <a class="el" href="request_8h.html#a733566209f2ad2e14fffa957bd88c8ed">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af1251d3fc8fcf478f731967eab2f11b3">REQUEST_GET</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
+<p class="reference">References <a class="el" href="structrequest__callback.html#a6bf363ed2cf96440460fb75fa72e465e">request_callback::cb_struct</a>, <a class="el" href="request_8h.html#abe9f42b1dd89260a930e9fc3c072d5b3a827cae1e7b1923afd4d6c47b3a6eee7f">DISCORD_MULTIPLE_MESSAGE_CALLBACK</a>, <a class="el" href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">request()</a>, <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2af1251d3fc8fcf478f731967eab2f11b3">REQUEST_GET</a>, <a class="el" href="structwebsocket__client.html#ad84d0aed5c55cb73eb9fc0d7cc99ca3e">websocket_client::token</a>, <a class="el" href="structrequest__callback.html#acf2aa95eb4f7a38a5d76dca17fbdff2f">request_callback::type</a>, and <a class="el" href="structbot__client.html#aa44aa6c8d8a2f1656c6bcc8ee0869875">bot_client::websocket_client</a>.</p>
 
 </div>
 </div>

@@ -74,22 +74,22 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ae9806d7f4bc94b9fbb514385a7a5558c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="t__pool_8h.html#a0477412c87965e74998842734661503f">t_work_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#ae9806d7f4bc94b9fbb514385a7a5558c">first_work</a></td></tr>
-<tr class="separator:ae9806d7f4bc94b9fbb514385a7a5558c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bb34ae968793bc3b0969fd859cbb140"><td class="memItemLeft" align="right" valign="top"><a class="el" href="t__pool_8h.html#a0477412c87965e74998842734661503f">t_work_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#a1bb34ae968793bc3b0969fd859cbb140">last_work</a></td></tr>
-<tr class="separator:a1bb34ae968793bc3b0969fd859cbb140"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d9f8c599d1492be9e6c6f37fe1e2e2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#a8d9f8c599d1492be9e6c6f37fe1e2e2d">work_count</a></td></tr>
-<tr class="separator:a8d9f8c599d1492be9e6c6f37fe1e2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f64958e94da4373225ab5dfe6e7ad1"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structprio__queue.html">prio_queue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#a42f64958e94da4373225ab5dfe6e7ad1">queue</a></td></tr>
+<tr class="separator:a42f64958e94da4373225ab5dfe6e7ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab21392099d097e3734b1a33a41955f9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#ab21392099d097e3734b1a33a41955f9d">thread_count</a></td></tr>
+<tr class="memdesc:ab21392099d097e3734b1a33a41955f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">amount of active threads  <a href="structt__pool.html#ab21392099d097e3734b1a33a41955f9d">More...</a><br /></td></tr>
 <tr class="separator:ab21392099d097e3734b1a33a41955f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17a32510f761d757959ba25bdc7fa05a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#a17a32510f761d757959ba25bdc7fa05a">stop</a></td></tr>
-<tr class="separator:a17a32510f761d757959ba25bdc7fa05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e83a88a3fa2ab6ff49fb32ca75e99ad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#a0e83a88a3fa2ab6ff49fb32ca75e99ad">stop</a></td></tr>
+<tr class="memdesc:a0e83a88a3fa2ab6ff49fb32ca75e99ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool is threads should stop  <a href="structt__pool.html#a0e83a88a3fa2ab6ff49fb32ca75e99ad">More...</a><br /></td></tr>
+<tr class="separator:a0e83a88a3fa2ab6ff49fb32ca75e99ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed629f6cfdbdf3e8338033eaa93b0777"><td class="memItemLeft" align="right" valign="top">pthread_mutex_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#aed629f6cfdbdf3e8338033eaa93b0777">lock</a></td></tr>
 <tr class="separator:aed629f6cfdbdf3e8338033eaa93b0777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac806efc6bde6eab37dae7b2e6fc9606c"><td class="memItemLeft" align="right" valign="top">pthread_cond_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#ac806efc6bde6eab37dae7b2e6fc9606c">work_cond</a></td></tr>
 <tr class="separator:ac806efc6bde6eab37dae7b2e6fc9606c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1ae73a887b567c8582d6f4eb7c84921"><td class="memItemLeft" align="right" valign="top">pthread_cond_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#aa1ae73a887b567c8582d6f4eb7c84921">finished_cond</a></td></tr>
 <tr class="separator:aa1ae73a887b567c8582d6f4eb7c84921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad52dfd7ce7a6da9ea01c8fbeecdb0779"><td class="memItemLeft" align="right" valign="top">struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__pool.html#ad52dfd7ce7a6da9ea01c8fbeecdb0779">sleep_until</a></td></tr>
+<tr class="separator:ad52dfd7ce7a6da9ea01c8fbeecdb0779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
 <a id="aa1ae73a887b567c8582d6f4eb7c84921"></a>
@@ -108,38 +108,6 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="ae9806d7f4bc94b9fbb514385a7a5558c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9806d7f4bc94b9fbb514385a7a5558c">&#9670;&nbsp;</a></span>first_work</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="t__pool_8h.html#a0477412c87965e74998842734661503f">t_work_t</a>* t_pool::first_work</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, and <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>.</p>
-
-</div>
-</div>
-<a id="a1bb34ae968793bc3b0969fd859cbb140"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bb34ae968793bc3b0969fd859cbb140">&#9670;&nbsp;</a></span>last_work</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="t__pool_8h.html#a0477412c87965e74998842734661503f">t_work_t</a>* t_pool::last_work</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, and <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>.</p>
-
-</div>
-</div>
 <a id="aed629f6cfdbdf3e8338033eaa93b0777"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed629f6cfdbdf3e8338033eaa93b0777">&#9670;&nbsp;</a></span>lock</h2>
 
@@ -152,21 +120,55 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8c.html#a00810d0b8204da37c10d6968e8c03f62">t_pool_wait()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8c.html#a00810d0b8204da37c10d6968e8c03f62">t_pool_wait()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
 
 </div>
 </div>
-<a id="a17a32510f761d757959ba25bdc7fa05a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17a32510f761d757959ba25bdc7fa05a">&#9670;&nbsp;</a></span>stop</h2>
+<a id="a42f64958e94da4373225ab5dfe6e7ad1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f64958e94da4373225ab5dfe6e7ad1">&#9670;&nbsp;</a></span>queue</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int t_pool::stop</td>
+          <td class="memname">struct <a class="el" href="structprio__queue.html">prio_queue</a> t_pool::queue</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
+
+</div>
+</div>
+<a id="ad52dfd7ce7a6da9ea01c8fbeecdb0779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad52dfd7ce7a6da9ea01c8fbeecdb0779">&#9670;&nbsp;</a></span>sleep_until</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct timeval t_pool::sleep_until</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
+
+</div>
+</div>
+<a id="a0e83a88a3fa2ab6ff49fb32ca75e99ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e83a88a3fa2ab6ff49fb32ca75e99ad">&#9670;&nbsp;</a></span>stop</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool t_pool::stop</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>bool is threads should stop </p>
 
 <p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
 
@@ -184,6 +186,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>amount of active threads </p>
+
 <p class="reference">Referenced by <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8c.html#a00810d0b8204da37c10d6968e8c03f62">t_pool_wait()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
 
 </div>
@@ -200,23 +204,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
-
-</div>
-</div>
-<a id="a8d9f8c599d1492be9e6c6f37fe1e2e2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d9f8c599d1492be9e6c6f37fe1e2e2d">&#9670;&nbsp;</a></span>work_count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int t_pool::work_count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a0b1df3eff73aa56a3af8e406647dbed0">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>, <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>, <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>, and <a class="el" href="t__pool_8c.html#a476441050a0e3af21723d451258c5436">thread_work_loop()</a>.</p>
 
 </div>
 </div>

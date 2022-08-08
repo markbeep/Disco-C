@@ -78,8 +78,10 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8039ef640c19907629907eb6558c7a30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html#a8039ef640c19907629907eb6558c7a30">prio_push</a> (struct <a class="el" href="structprio__queue.html">prio_queue</a> *queue, enum <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2">Request_Type</a> request_type, cJSON *data, int retry_after)</td></tr>
-<tr class="separator:a8039ef640c19907629907eb6558c7a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af597c961cabc0044f727741791e60dec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html#af597c961cabc0044f727741791e60dec">prio_init</a> (struct <a class="el" href="structprio__queue.html">prio_queue</a> *queue)</td></tr>
+<tr class="separator:af597c961cabc0044f727741791e60dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9690864657c36f4e6ff8a72e86e68990"><td class="memItemLeft" align="right" valign="top"><a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html#a9690864657c36f4e6ff8a72e86e68990">prio_push</a> (struct <a class="el" href="structprio__queue.html">prio_queue</a> *queue, void *data, struct timeval wait_until)</td></tr>
+<tr class="separator:a9690864657c36f4e6ff8a72e86e68990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92eb054ee93b52ef0384fd98c6db6658"><td class="memItemLeft" align="right" valign="top"><a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html#a92eb054ee93b52ef0384fd98c6db6658">prio_pop</a> (struct <a class="el" href="structprio__queue.html">prio_queue</a> *queue)</td></tr>
 <tr class="separator:a92eb054ee93b52ef0384fd98c6db6658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0049238d9ae8be0678d639267247d923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prio__queue_8c.html#a0049238d9ae8be0678d639267247d923">prio_destroy_node</a> (<a class="el" href="prio__queue_8h.html#a036fb391f53e1003dec16ca82ed52f81">prio_node_t</a> *<a class="el" href="structnode.html">node</a>)</td></tr>
@@ -104,8 +106,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structnode.html#ae82853bbf3b0d2b71de205ae40799555">node::data</a>.</p>
-
 <p class="reference">Referenced by <a class="el" href="prio__queue_8c.html#a6f714d888ada5be92c7bacb61ff34109">prio_destroy_queue()</a>.</p>
 
 </div>
@@ -126,7 +126,31 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, <a class="el" href="structprio__node.html#aa10a569281685b7ab8b40ffc2acdbb97">prio_node::next</a>, and <a class="el" href="prio__queue_8c.html#a0049238d9ae8be0678d639267247d923">prio_destroy_node()</a>.</p>
+<p class="reference">References <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, <a class="el" href="structprio__node.html#a1b3250563b4d3acdfcce437ed9af0f24">prio_node::next</a>, and <a class="el" href="prio__queue_8c.html#a0049238d9ae8be0678d639267247d923">prio_destroy_node()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a281ca3606c45d1b21b094bc4e0d72558">t_pool_destroy()</a>.</p>
+
+</div>
+</div>
+<a id="af597c961cabc0044f727741791e60dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af597c961cabc0044f727741791e60dec">&#9670;&nbsp;</a></span>prio_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prio_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structprio__queue.html">prio_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, and <a class="el" href="structprio__queue.html#ae3c37da22dc9f194af0d24f268048f3e">prio_queue::size</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#af6906d6d879e426ca11341073e00e692">t_pool_init()</a>.</p>
 
 </div>
 </div>
@@ -146,12 +170,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>.</p>
+<p class="reference">References <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, and <a class="el" href="structprio__queue.html#ae3c37da22dc9f194af0d24f268048f3e">prio_queue::size</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#ab8a1ec967a595f770edd2e5f2c818ca6">t_pool_pop_work()</a>.</p>
 
 </div>
 </div>
-<a id="a8039ef640c19907629907eb6558c7a30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8039ef640c19907629907eb6558c7a30">&#9670;&nbsp;</a></span>prio_push()</h2>
+<a id="a9690864657c36f4e6ff8a72e86e68990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9690864657c36f4e6ff8a72e86e68990">&#9670;&nbsp;</a></span>prio_push()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,20 +191,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">enum <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2">Request_Type</a>&#160;</td>
-          <td class="paramname"><em>request_type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cJSON *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>retry_after</em>&#160;</td>
+          <td class="paramtype">struct timeval&#160;</td>
+          <td class="paramname"><em>wait_until</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -188,7 +208,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structprio__node.html#a22cd6d2739ef01cf3bf81e3994720cad">prio_node::data</a>, <a class="el" href="structnode.html#ae82853bbf3b0d2b71de205ae40799555">node::data</a>, <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, <a class="el" href="structprio__node.html#aa10a569281685b7ab8b40ffc2acdbb97">prio_node::next</a>, <a class="el" href="structdiscord__prio__packet.html#a6097af826970e0e4343368032efb6ba8">discord_prio_packet::request_type</a>, and <a class="el" href="structdiscord__prio__packet.html#aa227a0f24d7b8c65061f3219fa4ee480">discord_prio_packet::retry_after</a>.</p>
+<p class="reference">References <a class="el" href="structnode.html#ae82853bbf3b0d2b71de205ae40799555">node::data</a>, <a class="el" href="structprio__queue.html#a9caf7117dc35b18acc14a3009b4bdaa5">prio_queue::head</a>, <a class="el" href="structprio__node.html#a1b3250563b4d3acdfcce437ed9af0f24">prio_node::next</a>, <a class="el" href="structprio__queue.html#ae3c37da22dc9f194af0d24f268048f3e">prio_queue::size</a>, and <a class="el" href="structprio__node.html#a650d9600c57d8a3867b4c4f9f66b936f">prio_node::wait_until</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="t__pool_8c.html#a858490b13814cba8e85314fdf6f81232">t_pool_add_work()</a>.</p>
 
 </div>
 </div>
