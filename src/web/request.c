@@ -102,34 +102,25 @@ static void request_t_pool(void *w) {
         response = chunk.memory;
         // gets the http code
         curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &n->http);
-        switch (n->http) {
-        case 200:
-        case 201:
-        case 204:
-        case 304:
+        if (n->http >= 200 && n->http <= 299) {
             sent_message = true;
-            break;
-        case 400:
+
+        } else if (n->http == 400) {
             d_log_err("BAD REQUEST. Request was improperly formatted.\n");
             sent_message = true;
-            break;
-        case 401:
+        } else if (n->http == 401) {
             d_log_err("UNAUTHORIZED. The Authorization header was missing or invalid.\n");
             sent_message = true;
-            break;
-        case 403:
+        } else if (n->http == 403) {
             d_log_err("FORBIDDEN. The Authorization token you passed did not have permission to the resource.\n");
             sent_message = true;
-            break;
-        case 404:
+        } else if (n->http == 404) {
             d_log_err("NOT FOUND. The resource at the location specified doesn't exist.\n");
             sent_message = true;
-            break;
-        case 405:
+        } else if (n->http == 405) {
             d_log_err("METHOD NOT ALLOWED. The HTTP method used is not valid for the location specified.\n");
             sent_message = true;
-            break;
-        case 429: // simply retry after waiting the time
+        } else if (n->http == 429) {
             res_json = cJSON_Parse(response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
             lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
@@ -146,10 +137,7 @@ static void request_t_pool(void *w) {
                 t_pool_add_work(n->bot->thread_pool, &request_t_pool, (void *)n, t0);
             }
             cJSON_Delete(res_json);
-            break;
-        case 0:   // if CURL fails we get 0
-        case 502: // we simply retry again after a few seconds
-        case 503:
+        } else if (n->http == 0 || (n->http >= 500 && n->http <= 599)) { // if CURL fails we get 0
             lwsl_notice("Received a %ld error\n", n->http);
             usleep((1 << iterations) * 1000000u);
             struct timeval t0;
@@ -157,8 +145,7 @@ static void request_t_pool(void *w) {
             t0.tv_sec += (time_t)1 << n->iteration;
             n->iteration++;
             t_pool_add_work(n->bot->thread_pool, &request_t_pool, (void *)n, t0);
-            break;
-        default:
+        } else {
             d_log_err("Unhandled HTTP response code: %ld\n", n->http);
             sent_message = true;
         }
