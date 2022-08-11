@@ -74,13 +74,29 @@ $(function() {
 <a href="timer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;sys/time.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="timer_8h.html#add6626382f64a44717265c9f2505aa15">    4</a></span>&#160;<span class="preprocessor">#define TIMER_START_FIRST                   \</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">    struct timeval stop_timer, start_timer; \</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">    gettimeofday(&amp;start_timer, NULL);</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="timer_8h.html#a0534322773d9344f3d4c858e409ef175">    7</a></span>&#160;<span class="preprocessor">#define TIMER_START gettimeofday(&amp;start_timer, NULL);</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="timer_8h.html#a600fccec6779e40c9d129eeba14c994d">    8</a></span>&#160;<span class="preprocessor">#define TIMER_END(name)              \</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    gettimeofday(&amp;stop_timer, NULL); \</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    (printf(&quot;%s: %lu us\n&quot;, name, (stop_timer.tv_sec - start_timer.tv_sec) * 1000000 + (stop_timer.tv_usec - start_timer.tv_usec)))</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="timer_8h.html#add6626382f64a44717265c9f2505aa15">    4</a></span>&#160;<span class="preprocessor">#define TIMER_START_FIRST                      \</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">    struct timeval tend_109823, tstart_123123; \</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">    do {                                       \</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">        gettimeofday(&amp;tstart_123123, NULL);    \</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="timer_8h.html#a0534322773d9344f3d4c858e409ef175">    9</a></span>&#160;<span class="preprocessor">#define TIMER_START                         \</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    do {                                    \</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">        gettimeofday(&amp;tstart_123123, NULL); \</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="timer_8h.html#a600fccec6779e40c9d129eeba14c994d">   13</a></span>&#160;<span class="preprocessor">#define TIMER_END(name)                                                                                                                      \</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    do {                                                                                                                                     \</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">        gettimeofday(&amp;tend_109823, NULL);                                                                                                    \</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">        printf(&quot;%s: %lu us\n&quot;, name, (tend_109823.tv_sec - tstart_123123.tv_sec) * 1000000 + (tend_109823.tv_usec - tstart_123123.tv_usec)); \</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="timer_8h.html#acb0bc52430620bc5016476bf589d64de">   19</a></span>&#160;<span class="preprocessor">#define TIMER_FUNC(a)                                                                                                                \</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    do {                                                                                                                             \</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">        struct timeval stop_timer, start_timer;                                                                                      \</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">        gettimeofday(&amp;start_timer, NULL);                                                                                            \</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">        a;                                                                                                                           \</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">        gettimeofday(&amp;stop_timer, NULL);                                                                                             \</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">        printf(&quot;%s: %lu us\n&quot;, #a, (stop_timer.tv_sec - start_timer.tv_sec) * 1000000 + (stop_timer.tv_usec - start_timer.tv_usec)); \</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">    } while (0)</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

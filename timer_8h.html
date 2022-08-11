@@ -82,10 +82,12 @@ $(function() {
 Macros</h2></td></tr>
 <tr class="memitem:add6626382f64a44717265c9f2505aa15"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#add6626382f64a44717265c9f2505aa15">TIMER_START_FIRST</a></td></tr>
 <tr class="separator:add6626382f64a44717265c9f2505aa15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0534322773d9344f3d4c858e409ef175"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#a0534322773d9344f3d4c858e409ef175">TIMER_START</a>&#160;&#160;&#160;gettimeofday(&amp;start_timer, NULL);</td></tr>
+<tr class="memitem:a0534322773d9344f3d4c858e409ef175"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#a0534322773d9344f3d4c858e409ef175">TIMER_START</a></td></tr>
 <tr class="separator:a0534322773d9344f3d4c858e409ef175"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a600fccec6779e40c9d129eeba14c994d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#a600fccec6779e40c9d129eeba14c994d">TIMER_END</a>(name)</td></tr>
 <tr class="separator:a600fccec6779e40c9d129eeba14c994d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0bc52430620bc5016476bf589d64de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#acb0bc52430620bc5016476bf589d64de">TIMER_FUNC</a>(a)</td></tr>
+<tr class="separator:acb0bc52430620bc5016476bf589d64de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a600fccec6779e40c9d129eeba14c994d"></a>
@@ -103,8 +105,35 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    gettimeofday(&amp;stop_timer, NULL); \</div>
-<div class="line">    (printf(<span class="stringliteral">&quot;%s: %lu us\n&quot;</span>, name, (stop_timer.tv_sec - start_timer.tv_sec) * 1000000 + (stop_timer.tv_usec - start_timer.tv_usec)))</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                                                                                     \</div>
+<div class="line">        gettimeofday(&amp;tend_109823, NULL);                                                                                                    \</div>
+<div class="line">        printf(<span class="stringliteral">&quot;%s: %lu us\n&quot;</span>, name, (tend_109823.tv_sec - tstart_123123.tv_sec) * 1000000 + (tend_109823.tv_usec - tstart_123123.tv_usec)); \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acb0bc52430620bc5016476bf589d64de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0bc52430620bc5016476bf589d64de">&#9670;&nbsp;</a></span>TIMER_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMER_FUNC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                                                                                             \</div>
+<div class="line">        struct timeval stop_timer, start_timer;                                                                                      \</div>
+<div class="line">        gettimeofday(&amp;start_timer, NULL);                                                                                            \</div>
+<div class="line">        a;                                                                                                                           \</div>
+<div class="line">        gettimeofday(&amp;stop_timer, NULL);                                                                                             \</div>
+<div class="line">        printf(<span class="stringliteral">&quot;%s: %lu us\n&quot;</span>, #a, (stop_timer.tv_sec - start_timer.tv_sec) * 1000000 + (stop_timer.tv_usec - start_timer.tv_usec)); \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -115,11 +144,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TIMER_START&#160;&#160;&#160;gettimeofday(&amp;start_timer, NULL);</td>
+          <td class="memname">#define TIMER_START</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                    \</div>
+<div class="line">        gettimeofday(&amp;tstart_123123, NULL); \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="add6626382f64a44717265c9f2505aa15"></a>
@@ -133,8 +165,10 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">struct </span>timeval stop_timer, start_timer; \</div>
-<div class="line">    gettimeofday(&amp;start_timer, NULL);</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">struct </span>timeval tend_109823, tstart_123123; \</div>
+<div class="line">    do {                                       \</div>
+<div class="line">        gettimeofday(&amp;tstart_123123, NULL);    \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 </div>
 </div>
