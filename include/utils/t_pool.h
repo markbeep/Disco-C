@@ -1,12 +1,13 @@
 #ifndef T_POOL
 #define T_POOL
 
+#include <curl/curl.h>
 #include <pthread.h>
 #include <stdbool.h>
 #include <sys/time.h>
 #include <utils/prio_queue.h>
 
-typedef void (*t_func)(void *);
+typedef void (*t_func)(void *, CURL *);
 typedef struct t_work t_work_t;
 
 struct t_work {
@@ -24,9 +25,18 @@ typedef struct t_pool {
     pthread_cond_t *work_cond;
     pthread_cond_t *finished_cond;
     struct timeval sleep_until;
+    const char *token; ///< Bot token which will be used to setup CURL headers
 } t_pool_t;
 
-t_pool_t *t_pool_init(int num_t);
+/**
+ * @brief Initializes the thread pool.
+ *
+ * @param num_t Number of threads to use for the thread pool.
+ * @param token Bot token. Will be used to setup the CURL headers.
+ * @return t_pool_t*
+ */
+t_pool_t *t_pool_init(int num_t, const char *token);
+
 /**
  * @brief Adds work to the thread pool.
  *

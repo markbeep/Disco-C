@@ -18,8 +18,12 @@ static bool is_future(struct timeval t) {
     return a.tv_sec < t.tv_sec || (a.tv_sec == t.tv_sec && a.tv_usec <= t.tv_usec);
 }
 
+extern struct curl_slist *setup_handle(CURL *handle, const char *token);
+
 static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
+    CURL *handle = curl_easy_init();
+    struct curl_slist *list = setup_handle(handle, pool->token);
     while (1) {
         pthread_mutex_lock(pool->lock);
         while (!pool->stop && (is_future(pool->sleep_until) || pool->queue.size == 0)) {
@@ -51,13 +55,15 @@ static void *thread_work_loop(void *tp) {
             continue;
         }
 
-        work->func(work->arg);
+        work->func(work->arg, handle);
         free(work);
     }
+    curl_slist_free_all(list);
+    curl_easy_cleanup(handle);
     return NULL;
 }
 
-t_pool_t *t_pool_init(int num_t) {
+t_pool_t *t_pool_init(int num_t, const char *token) {
     t_pool_t *pool = malloc(sizeof(struct t_pool));
     prio_init(&pool->queue);
     pool->thread_count = num_t;
@@ -65,6 +71,7 @@ t_pool_t *t_pool_init(int num_t) {
     pool->work_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
     pool->finished_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
     pool->lock = (pthread_mutex_t *)calloc(1, sizeof(pthread_mutex_t));
+    pool->token = token;
     pthread_cond_init(pool->work_cond, NULL);
     pthread_cond_init(pool->finished_cond, NULL);
 

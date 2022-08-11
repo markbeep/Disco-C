@@ -20,7 +20,7 @@ void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, 
 
     bot.websocket_client = &client;
     bot.callbacks = callbacks;
-    bot.thread_pool = t_pool_init(t_process_count());
+    bot.thread_pool = t_pool_init(t_process_count(), token);
 
     // inits the cache
     int message_cache_size = 1000, channel_cache_size = 1000, guild_cache_size = 1000;

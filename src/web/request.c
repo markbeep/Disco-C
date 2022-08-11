@@ -42,12 +42,17 @@ struct request_work_node {
     int iteration;
     long http;
     CURLcode res;
+    CURL *handle;
 };
 
-static void request_t_pool(void *w) {
+struct curl_slist *setup_handle(CURL *handle, char *token) {
+    struct curl_slist *list = curl_setup_discord_header(handle, token);
+    return list;
+}
+
+static void request_t_pool(void *w, CURL *handle) {
     struct request_work_node *n = (struct request_work_node *)w;
-    CURL *handle = curl_easy_init();
-    struct curl_slist *list = curl_setup_discord_header(handle, n->token);
+    curl_setup_discord_header(handle, n->token);
 
     char *request_str = NULL;
     switch (n->request_type) {
@@ -82,12 +87,14 @@ static void request_t_pool(void *w) {
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)&chunk);
     if (n->json) {
         curl_easy_setopt(handle, CURLOPT_POSTFIELDS, n->json);
+    } else {
+        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, "");
     }
 
     bool sent_message = false;
     int iterations = 0;
     char *response;
-    cJSON *res_json, *wait_ms; // response json, rate limit timeout json field
+    cJSON *res_json = NULL, *wait_ms; // response json, rate limit timeout json field
     if (n->iteration >= 5) {
         if (n->res == 0) {
             d_log_err("CURL failed. Code: %d\n", (int)n->res);
@@ -137,6 +144,7 @@ static void request_t_pool(void *w) {
                 t_pool_add_work(n->bot->thread_pool, &request_t_pool, (void *)n, t0);
             }
             cJSON_Delete(res_json);
+            res_json = NULL;
         } else if (n->http == 0 || (n->http >= 500 && n->http <= 599)) { // if CURL fails we get 0
             lwsl_notice("Received a %ld error\n", n->http);
             usleep((1 << iterations) * 1000000u);
@@ -150,9 +158,6 @@ static void request_t_pool(void *w) {
             sent_message = true;
         }
     }
-
-    curl_slist_free_all(list);
-    curl_easy_cleanup(handle);
 
     if (!sent_message)
         return;
@@ -218,8 +223,8 @@ void request(char *url, cJSON *content, enum Request_Type request_type, const ch
     t_pool_add_work(bot->thread_pool, &request_t_pool, (void *)n, t0);
 }
 
-struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {
-    curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+struct curl_slist *curl_setup_discord_header(CURL *h, const char *token) {
+    curl_easy_setopt(h, CURLOPT_WRITEFUNCTION, write_data);
     char authorizationHeader[100];
     sprintf(authorizationHeader, "Authorization: Bot %s", token);
     struct curl_slist *list = NULL;
@@ -227,6 +232,6 @@ struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token) {
     list = curl_slist_append(list, "Accept: application/json");
     list = curl_slist_append(list, "Content-Type: application/json");
     list = curl_slist_append(list, "User-Agent: DiscordBot (v0.0.1)");
-    curl_easy_setopt(handle, CURLOPT_HTTPHEADER, list);
+    curl_easy_setopt(h, CURLOPT_HTTPHEADER, list);
     return list;
 }
