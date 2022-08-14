@@ -43,16 +43,19 @@ struct request_work_node {
     long http;
     CURLcode res;
     CURL *handle;
+    char **files;
+    int files_n;
 };
-
-struct curl_slist *setup_handle(CURL *handle, char *token) {
-    struct curl_slist *list = curl_setup_discord_header(handle, token);
-    return list;
-}
 
 static void request_t_pool(void *w, CURL *handle) {
     struct request_work_node *n = (struct request_work_node *)w;
-    curl_setup_discord_header(handle, n->token);
+
+    struct curl_slist *list;
+    if (n->files_n == 0) {
+        list = curl_setup_discord_header(handle, n->token);
+    } else {
+        list = curl_setup_discord_header_files(handle, n->token, n->files, n->files_n);
+    }
 
     char *request_str = NULL;
     switch (n->request_type) {
@@ -159,6 +162,9 @@ static void request_t_pool(void *w, CURL *handle) {
         }
     }
 
+    curl_easy_reset(handle);
+    curl_slist_free_all(list);
+
     if (!sent_message)
         return;
 
@@ -208,7 +214,7 @@ static void request_t_pool(void *w, CURL *handle) {
     free(n);
 }
 
-void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc) {
+void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc, char **files, int files_n) {
     // we create a new handle each call because we can't use the same handle over multiple threads
     struct request_work_node *n = (struct request_work_node *)malloc(sizeof(struct request_work_node));
     n->url = strndup(url, 2050);
@@ -219,8 +225,53 @@ void request(char *url, cJSON *content, enum Request_Type request_type, const ch
     n->rc = rc;
     n->bot = bot;
     n->iteration = 0;
+    n->files = files;
+    n->files_n = files_n;
     struct timeval t0 = {0};
     t_pool_add_work(bot->thread_pool, &request_t_pool, (void *)n, t0);
+}
+
+int debug_callback(CURL *handle,
+                   curl_infotype type,
+                   char *data,
+                   size_t size,
+                   void *userptr) {
+    (void)handle;
+    (void)type;
+    (void)userptr;
+    if (size > 0) {
+        printf("%s\n", data);
+    }
+    return 0;
+}
+
+struct curl_slist *curl_setup_discord_header_files(CURL *h, const char *token, char **files, int files_n) {
+    curl_easy_setopt(h, CURLOPT_WRITEFUNCTION, write_data);
+    char authorizationHeader[100];
+    sprintf(authorizationHeader, "Authorization: Bot %s", token);
+    struct curl_slist *list = NULL;
+    list = curl_slist_append(list, authorizationHeader);
+    list = curl_slist_append(list, "Accept: multipart/form-data");
+    list = curl_slist_append(list, "Content-Type: application/json");
+    list = curl_slist_append(list, "User-Agent: DiscordBot (v0.0.1)");
+    curl_easy_setopt(h, CURLOPT_HTTPHEADER, list);
+    curl_easy_setopt(h, CURLOPT_VERBOSE, 1L);
+    curl_easy_setopt(h, CURLOPT_DEBUGFUNCTION, debug_callback);
+    curl_easy_setopt(h, CURLOPT_FOLLOWLOCATION, 1L);
+
+    (void)files_n;
+    (void)files;
+    curl_mime *mime = curl_mime_init(h);
+    curl_mimepart *part = curl_mime_addpart(mime);
+    curl_mime_name(part, "files[0]");
+    curl_mime_type(part, "image/jpeg");
+
+    // upload file
+    curl_mime_filedata(part, "/home/maak/Documents/C/Disco-C/examples/example_bot_1/cat.jpeg");
+
+    curl_easy_setopt(h, CURLOPT_MIMEPOST, mime);
+
+    return list;
 }
 
 struct curl_slist *curl_setup_discord_header(CURL *h, const char *token) {

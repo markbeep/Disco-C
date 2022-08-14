@@ -253,7 +253,7 @@ void discord_send_interaction(bot_client_t *bot, struct discord_interaction_call
     size_t token_len = strnlen(recv->token, 500);
     char *uri = (char *)malloc(80 + token_len);
     sprintf(uri, "https://discord.com/api/v10/interactions/%ju/%s/callback", recv->id, recv->token);
-    request(uri, json, REQUEST_POST, bot->websocket_client->token, NULL, NULL);
+    request(uri, json, REQUEST_POST, bot->websocket_client->token, NULL, NULL, NULL, 0);
 
     // free up allocated stuff
     cJSON_Delete(json);

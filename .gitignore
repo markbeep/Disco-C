@@ -13,3 +13,6 @@ tests/test_web
 generated-docs
 *.a
 log.txt
+*.png
+*.jpg
+*.jpeg

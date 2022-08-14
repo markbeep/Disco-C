@@ -18,12 +18,9 @@ static bool is_future(struct timeval t) {
     return a.tv_sec < t.tv_sec || (a.tv_sec == t.tv_sec && a.tv_usec <= t.tv_usec);
 }
 
-extern struct curl_slist *setup_handle(CURL *handle, const char *token);
-
 static void *thread_work_loop(void *tp) {
     t_pool_t *pool = (t_pool_t *)tp;
     CURL *handle = curl_easy_init();
-    struct curl_slist *list = setup_handle(handle, pool->token);
     while (1) {
         pthread_mutex_lock(pool->lock);
         while (!pool->stop && (is_future(pool->sleep_until) || pool->queue.size == 0)) {
@@ -58,7 +55,6 @@ static void *thread_work_loop(void *tp) {
         work->func(work->arg, handle);
         free(work);
     }
-    curl_slist_free_all(list);
     curl_easy_cleanup(handle);
     return NULL;
 }
