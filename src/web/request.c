@@ -9,6 +9,9 @@
 #include <utils/t_pool.h>
 #include <web/request.h>
 
+static void d_curl_setup_discord_header_files(CURL *h, const char *token, char **files, int files_n, char *json, struct curl_slist *list, struct curl_slist *content_l, struct curl_slist **attachments_l, curl_mime *mime);
+static struct curl_slist *d_curl_setup_discord_header(CURL *handle, const char *token);
+
 /**
  * @brief Callback function to write receiving data into a memory buffer
  *
@@ -50,16 +53,18 @@ struct request_work_node {
 static void request_t_pool(void *w, CURL *handle) {
     struct request_work_node *n = (struct request_work_node *)w;
 
-    struct curl_slist *list;
+    struct curl_slist *list = NULL, **attachments_l = NULL, *content_l = NULL;
+    curl_mime *mime = NULL;
     if (n->files_n == 0) {
-        list = curl_setup_discord_header(handle, n->token);
+        list = d_curl_setup_discord_header(handle, n->token);
         if (n->json) {
             curl_easy_setopt(handle, CURLOPT_POSTFIELDS, n->json);
         } else {
             curl_easy_setopt(handle, CURLOPT_POSTFIELDS, "");
         }
     } else {
-        list = curl_setup_discord_header_files(handle, n->token, n->files, n->files_n, n->json);
+        attachments_l = malloc(sizeof(struct curl_slist *) * n->files_n);
+        d_curl_setup_discord_header_files(handle, n->token, n->files, n->files_n, n->json, list, content_l, attachments_l, mime);
     }
 
     char *request_str = NULL;
@@ -163,8 +168,19 @@ static void request_t_pool(void *w, CURL *handle) {
         }
     }
 
+    // CLEANUP
     curl_easy_reset(handle);
-    curl_slist_free_all(list);
+    if (list)
+        curl_slist_free_all(list);
+    if (content_l)
+        curl_slist_free_all(content_l);
+    if (attachments_l) {
+        for (int i = 0; i < n->files_n; i++)
+            curl_slist_free_all(attachments_l[i]);
+        free(attachments_l);
+    }
+    if (mime)
+        curl_mime_free(mime);
 
     if (!sent_message)
         return;
@@ -232,11 +248,24 @@ void request(char *url, cJSON *content, enum Request_Type request_type, const ch
     t_pool_add_work(bot->thread_pool, &request_t_pool, (void *)n, t0);
 }
 
-struct curl_slist *curl_setup_discord_header_files(CURL *h, const char *token, char **files, int files_n, char *json) {
+/**
+ * @brief Setups the request headers and body with attachments.
+ * list, content_l, attachments_l and mime all need to be freed.
+ * @param h CURL handle.
+ * @param token Bot token.
+ * @param files Array of filenames.
+ * @param files_n File amounts.
+ * @param json String of the json body-
+ * @param list Main headers.
+ * @param content_l Content headers.
+ * @param attachments_l Attachments headers.
+ * @param mime Mime part.
+ * @return struct curl_slist*
+ */
+static void d_curl_setup_discord_header_files(CURL *h, const char *token, char **files, int files_n, char *json, struct curl_slist *list, struct curl_slist *content_l, struct curl_slist **attachments_l, curl_mime *mime) {
     curl_easy_setopt(h, CURLOPT_WRITEFUNCTION, write_data);
     char authorizationHeader[100];
     sprintf(authorizationHeader, "Authorization: Bot %s", token);
-    struct curl_slist *list = NULL, *attachments_l = NULL, *content_l = NULL;
     list = curl_slist_append(list, authorizationHeader);
     list = curl_slist_append(list, "Accept: application/json");
     list = curl_slist_append(list, "Content-Type: multipart/form-data");
@@ -244,7 +273,7 @@ struct curl_slist *curl_setup_discord_header_files(CURL *h, const char *token, c
     curl_easy_setopt(h, CURLOPT_HTTPHEADER, list);
 
     curl_mimepart *part;
-    curl_mime *mime = curl_mime_init(h);
+    mime = curl_mime_init(h);
     // add json content
     part = curl_mime_addpart(mime);
     content_l = curl_slist_append(content_l, "Content-Type: application/json");
@@ -254,21 +283,26 @@ struct curl_slist *curl_setup_discord_header_files(CURL *h, const char *token, c
 
     // add files
     for (int i = 0; i < files_n; i++) {
-        part = curl_mime_addpart(mime);
         char disposition[200];
         sprintf(disposition, "Content-Disposition: form-data; name=\"files[%d]\"; filename=\"%s\"", i, files[i]);
-        attachments_l = curl_slist_append(attachments_l, disposition);
-        curl_mime_headers(part, attachments_l, 0);
+        attachments_l[i] = curl_slist_append(attachments_l[i], disposition);
+        part = curl_mime_addpart(mime);
+        curl_mime_headers(part, attachments_l[i], 0);
         // add the binary data
         curl_mime_filedata(part, files[i]);
     }
 
     curl_easy_setopt(h, CURLOPT_MIMEPOST, mime);
-
-    return list;
 }
 
-struct curl_slist *curl_setup_discord_header(CURL *h, const char *token) {
+/**
+ * @brief Adds the correct Discord headers to a CURL handle
+ *
+ * @param handle CURL handle.
+ * @param token Bot token.
+ * @return struct curl_slist*
+ */
+static struct curl_slist *d_curl_setup_discord_header(CURL *h, const char *token) {
     curl_easy_setopt(h, CURLOPT_WRITEFUNCTION, write_data);
     char authorizationHeader[100];
     sprintf(authorizationHeader, "Authorization: Bot %s", token);

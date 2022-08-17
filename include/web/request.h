@@ -46,17 +46,6 @@ struct request_callback {
  */
 void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc, char **files, int files_n);
 
-// TODO add description
-struct curl_slist *curl_setup_discord_header_files(CURL *h, const char *token, char **files, int files_n, char *json);
-
-/**
- * @brief Adds the correct Discord headers to a CURL handle
- *
- * @param handle
- * @return struct curl_slist*
- */
-struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token);
-
 /**
  * @brief Tests if request POST and GET work
  *
