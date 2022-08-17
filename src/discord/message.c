@@ -459,10 +459,8 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
     cJSON *json = cJSON_CreateObject();
     _d_create_message_to_json(json, content, message);
 
-    // char uri[80];
-    // sprintf(uri, "https://discord.com/api/v10/channels/%ju/messages", channel_id);
-    (void)channel_id;
-    char uri[] = "https://requestbin.io/vwb2d3vw";
+    char uri[80];
+    sprintf(uri, "https://discord.com/api/v10/channels/%ju/messages", channel_id);
     struct request_callback *rc = NULL;
     if (cb) {
         rc = (struct request_callback *)malloc(sizeof(struct request_callback));
