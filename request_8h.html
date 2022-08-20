@@ -115,12 +115,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aee5859e38fcb52742d24a4ae42ff7ca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">request</a> (char *url, cJSON *content, enum <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2">Request_Type</a> request_type, const char *token, <a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, struct <a class="el" href="structrequest__callback.html">request_callback</a> *rc)</td></tr>
-<tr class="memdesc:aee5859e38fcb52742d24a4ae42ff7ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a HTTP request to the specified URL.  <a href="request_8h.html#aee5859e38fcb52742d24a4ae42ff7ca4">More...</a><br /></td></tr>
-<tr class="separator:aee5859e38fcb52742d24a4ae42ff7ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c597c580695a5a4d0e43b247270a856"><td class="memItemLeft" align="right" valign="top">struct curl_slist *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="request_8h.html#a0c597c580695a5a4d0e43b247270a856">curl_setup_discord_header</a> (CURL *handle, const char *token)</td></tr>
-<tr class="memdesc:a0c597c580695a5a4d0e43b247270a856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the correct Discord headers to a CURL handle.  <a href="request_8h.html#a0c597c580695a5a4d0e43b247270a856">More...</a><br /></td></tr>
-<tr class="separator:a0c597c580695a5a4d0e43b247270a856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbffa4cfed01197c21d9f2996d6972e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="request_8h.html#aefbffa4cfed01197c21d9f2996d6972e">request</a> (char *url, cJSON *content, enum <a class="el" href="request_8h.html#ac78504b18bd8f2dc037e4fcfafd623d2">Request_Type</a> request_type, const char *token, <a class="el" href="disco_8h.html#ab503de679841020121923d5f2daaca09">bot_client_t</a> *bot, struct <a class="el" href="structrequest__callback.html">request_callback</a> *rc, char **files, int files_n)</td></tr>
+<tr class="memdesc:aefbffa4cfed01197c21d9f2996d6972e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a HTTP request to the specified URL.  <a href="request_8h.html#aefbffa4cfed01197c21d9f2996d6972e">More...</a><br /></td></tr>
+<tr class="separator:aefbffa4cfed01197c21d9f2996d6972e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b26b274786bb9e5eb1d9b28113f9c9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="request_8h.html#a8b26b274786bb9e5eb1d9b28113f9c9d">request_test</a> (void)</td></tr>
 <tr class="memdesc:a8b26b274786bb9e5eb1d9b28113f9c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if request POST and GET work.  <a href="request_8h.html#a8b26b274786bb9e5eb1d9b28113f9c9d">More...</a><br /></td></tr>
 <tr class="separator:a8b26b274786bb9e5eb1d9b28113f9c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,49 +179,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0c597c580695a5a4d0e43b247270a856"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c597c580695a5a4d0e43b247270a856">&#9670;&nbsp;</a></span>curl_setup_discord_header()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct curl_slist* curl_setup_discord_header </td>
-          <td>(</td>
-          <td class="paramtype">CURL *&#160;</td>
-          <td class="paramname"><em>handle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>token</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adds the correct Discord headers to a CURL handle. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>struct curl_slist* </dd></dl>
-
-<p class="reference">References <a class="el" href="request_8c.html#ad1262acfd44e35f04459e159201eecd5">write_data()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="request_8c.html#af6f45aec3bc3292145ea22c63b766381">request_t_pool()</a>, and <a class="el" href="request_8c.html#a18f38ee55485857f6209d474fd66109c">setup_handle()</a>.</p>
-
-</div>
-</div>
-<a id="aee5859e38fcb52742d24a4ae42ff7ca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee5859e38fcb52742d24a4ae42ff7ca4">&#9670;&nbsp;</a></span>request()</h2>
+<a id="aefbffa4cfed01197c21d9f2996d6972e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbffa4cfed01197c21d9f2996d6972e">&#9670;&nbsp;</a></span>request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +219,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">struct <a class="el" href="structrequest__callback.html">request_callback</a> *&#160;</td>
-          <td class="paramname"><em>rc</em>&#160;</td>
+          <td class="paramname"><em>rc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>files</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>files_n</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -286,7 +254,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>long HTTP response code </dd></dl>
 
-<p class="reference">References <a class="el" href="structrequest__work__node.html#ab1f2a2ce54047bda96b1188162313ab9">request_work_node::bot</a>, <a class="el" href="structrequest__work__node.html#a90259046ddcde91bece56f2aee110733">request_work_node::iteration</a>, <a class="el" href="structrequest__work__node.html#a8734992e9905f7ad5978270f1e022d10">request_work_node::json</a>, <a class="el" href="structrequest__work__node.html#a47dd89d15465ef00aec14e28ca97b908">request_work_node::rc</a>, <a class="el" href="request_8c.html#af6f45aec3bc3292145ea22c63b766381">request_t_pool()</a>, <a class="el" href="structrequest__work__node.html#adb253010462bf0a0426428c2d4bc788f">request_work_node::request_type</a>, <a class="el" href="t__pool_8h.html#a6a505766bfcb2200422ada0f30d09342">t_pool_add_work()</a>, <a class="el" href="structbot__client.html#a6abb620b458000fdc3b3dc53d47f4b0d">bot_client::thread_pool</a>, <a class="el" href="structrequest__work__node.html#a337f7511aaef6c9e2e07395ee8eb5ef0">request_work_node::token</a>, and <a class="el" href="structrequest__work__node.html#a9a7be932009196a24120593133cd467f">request_work_node::url</a>.</p>
+<p class="reference">References <a class="el" href="structrequest__work__node.html#ab1f2a2ce54047bda96b1188162313ab9">request_work_node::bot</a>, <a class="el" href="structrequest__work__node.html#a20dd5edb33353c2f2c4e1e8a720908e9">request_work_node::files</a>, <a class="el" href="structrequest__work__node.html#a347575f5675abfefc1d5d263a83bcbfa">request_work_node::files_n</a>, <a class="el" href="structrequest__work__node.html#a90259046ddcde91bece56f2aee110733">request_work_node::iteration</a>, <a class="el" href="structrequest__work__node.html#a8734992e9905f7ad5978270f1e022d10">request_work_node::json</a>, <a class="el" href="structrequest__work__node.html#a47dd89d15465ef00aec14e28ca97b908">request_work_node::rc</a>, <a class="el" href="request_8c.html#af6f45aec3bc3292145ea22c63b766381">request_t_pool()</a>, <a class="el" href="structrequest__work__node.html#adb253010462bf0a0426428c2d4bc788f">request_work_node::request_type</a>, <a class="el" href="t__pool_8h.html#a6a505766bfcb2200422ada0f30d09342">t_pool_add_work()</a>, <a class="el" href="structbot__client.html#a6abb620b458000fdc3b3dc53d47f4b0d">bot_client::thread_pool</a>, <a class="el" href="structrequest__work__node.html#a337f7511aaef6c9e2e07395ee8eb5ef0">request_work_node::token</a>, and <a class="el" href="structrequest__work__node.html#a9a7be932009196a24120593133cd467f">request_work_node::url</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="group___message___commands.html#ga8413655b1c5cb3b8f113bc4175d43736">discord_channel_edit_message()</a>, <a class="el" href="group___message___commands.html#ga443ee972b53083fc45377e322c76d988">discord_channel_send_message()</a>, <a class="el" href="group___command.html#ga1f77143d3df0c3611e91261cbbd41ae0">discord_command_delete_global()</a>, <a class="el" href="group___command.html#ga14e09482ce26a65e31931dbea400f432">discord_command_delete_guild()</a>, <a class="el" href="group___command.html#gaa4a59c4f2ce8cfdfced303243d9e7142">discord_command_register()</a>, <a class="el" href="group___command.html#ga63ff34670d98ff83dfa84bb69c5eedb0">discord_command_update()</a>, <a class="el" href="group___message___commands.html#gaa8216ce15ad5b503f3e103ee4e03bc09">discord_fetch_message()</a>, <a class="el" href="group___message___commands.html#gae51f7923b5c5693de3f7d68d04ec6690">discord_get_messages()</a>, and <a class="el" href="group___interaction.html#ga1ddab83efb21adf935e88b94bb30cf64">discord_send_interaction()</a>.</p>
 
