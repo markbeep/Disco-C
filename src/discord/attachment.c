@@ -28,8 +28,6 @@ struct discord_attachment *_d_copy_attachment(struct discord_attachment *src) {
     if (src->content_type)
         c->content_type = strndup(src->content_type, 50);
     if (src->url)
-        c->url = strndup(src->url, 100);
-    if (src->url)
         c->url = strndup(src->url, 2048);
     if (src->proxy_url)
         c->proxy_url = strndup(src->proxy_url, 2048);

@@ -194,7 +194,7 @@ void discord_command_register(struct discord_application_command *command, const
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands", application_id, command->guild_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands", application_id);
-    request(url, json, REQUEST_POST, token, NULL, NULL);
+    request(url, json, REQUEST_POST, token, NULL, NULL, NULL, 0);
     cJSON_Delete(json);
 }
 
@@ -206,18 +206,18 @@ void discord_command_update(struct discord_application_command *command, uint64_
         sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands/%ju", application_id, command->guild_id, command_id);
     else
         sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ju", application_id, command_id);
-    request(url, json, REQUEST_PATCH, token, NULL, NULL);
+    request(url, json, REQUEST_PATCH, token, NULL, NULL, NULL, 0);
     cJSON_Delete(json);
 }
 
 void discord_command_delete_global(uint64_t command_id, const char *token, const char *application_id) {
     char url[120];
     sprintf(url, "https://discord.com/api/v10/applications/%s/commands/%ju", application_id, command_id);
-    request(url, NULL, REQUEST_DELETE, token,NULL,  NULL);
+    request(url, NULL, REQUEST_DELETE, token, NULL, NULL, NULL, 0);
 }
 
 void discord_command_delete_guild(uint64_t guild_id, uint64_t command_id, const char *token, const char *application_id) {
     char url[120];
     sprintf(url, "https://discord.com/api/v10/applications/%s/guilds/%ju/commands/%ju", application_id, guild_id, command_id);
-    request(url, NULL, REQUEST_DELETE, token,NULL,  NULL);
+    request(url, NULL, REQUEST_DELETE, token, NULL, NULL, NULL, 0);
 }

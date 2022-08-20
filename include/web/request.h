@@ -44,15 +44,7 @@ struct request_callback {
  * @param rc The callback to execute if there is any.
  * @return long HTTP response code
  */
-void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc);
-
-/**
- * @brief Adds the correct Discord headers to a CURL handle
- *
- * @param handle
- * @return struct curl_slist*
- */
-struct curl_slist *curl_setup_discord_header(CURL *handle, const char *token);
+void request(char *url, cJSON *content, enum Request_Type request_type, const char *token, bot_client_t *bot, struct request_callback *rc, char **files, int files_n);
 
 /**
  * @brief Tests if request POST and GET work

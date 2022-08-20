@@ -71,6 +71,18 @@ void example_on_message(bot_client_t *bot, struct discord_message *message) {
             websocket_exit(bot);
             return;
 
+        } else if (strncmp(message->content, "!pic", 3) == 0) {
+            struct discord_attachment attachment = {
+                .id = 0,
+                .filename = "cat.jpeg",
+                .description = "Pic of a cat",
+            };
+            struct discord_attachment *atts[] = {&attachment};
+            struct discord_create_message send_message = {
+                .attachments = atts,
+                .attachments_count = 1,
+            };
+            discord_channel_send_message(bot, "pic", message->channel_id, &send_message, NULL);
         } else if (strncmp(message->content, "!r", 3) == 0) {
             // reconnects the websocket
             websocket_reconnect(bot);

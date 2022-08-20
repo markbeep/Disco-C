@@ -438,8 +438,17 @@ void _d_create_message_to_json(cJSON *json, char *content, struct discord_create
         }
         // TODO discord_component
         // if (message->components_count > 0) {}
-        // TODO attachments
-        // if (message->attachments_count > 0) {}
+        if (message->attachments_count > 0) {
+            cJSON *arr = cJSON_CreateArray();
+            for (int i = 0; i < message->attachments_count; i++) {
+                cJSON *att = cJSON_CreateObject();
+                cJSON_AddNumberToObject(att, "id", i);
+                cJSON_AddStringToObject(att, "description", message->attachments[i]->description);
+                cJSON_AddStringToObject(att, "filename", message->attachments[i]->filename);
+                cJSON_AddItemToArray(arr, att);
+            }
+            cJSON_AddItemToObject(json, "attachments", arr);
+        }
         // flags
         if (message->flags)
             cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
@@ -450,15 +459,27 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
     cJSON *json = cJSON_CreateObject();
     _d_create_message_to_json(json, content, message);
 
-    char uri[80];
-    sprintf(uri, "https://discord.com/api/channels/%ju/messages", channel_id);
+    char url[80];
+    sprintf(url, "https://discord.com/api/v10/channels/%ju/messages", channel_id);
     struct request_callback *rc = NULL;
     if (cb) {
         rc = (struct request_callback *)malloc(sizeof(struct request_callback));
         rc->cb_struct = cb;
         rc->type = DISCORD_MESSAGE_CALLBACK;
     }
-    request(uri, json, REQUEST_POST, bot->websocket_client->token, bot, rc);
+
+    // adds the filenames of the files into a string array which will then be used in the multipart request
+    char **filenames = NULL;
+    int files_n = 0;
+    if (message && message->attachments_count > 0) {
+        files_n = message->attachments_count;
+        filenames = malloc(sizeof(char *) * message->attachments_count);
+        for (int i = 0; i < message->attachments_count; i++) {
+            filenames[i] = strndup(message->attachments[i]->filename, 256);
+            printf("File: %s\n", filenames[i]);
+        }
+    }
+    request(url, json, REQUEST_POST, bot->websocket_client->token, bot, rc, filenames, files_n);
     cJSON_Delete(json);
 }
 
@@ -484,21 +505,27 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
             cJSON_AddItemToObject(json, "allowed_mentions", create_allowed_mentions(message->allowed_mentions));
         // TODO discord_component
         // if (message->components_count > 0) {}
-        // TODO attachments
-        // if (message->attachments_count > 0) {}
         // flags
         if (message->flags)
             cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
     }
 
+    char **filenames = NULL;
+    if (message->attachments_count > 0) {
+        filenames = malloc(sizeof(char *) * message->attachments_count);
+        for (int i = 0; i < message->attachments_count; i++) {
+            filenames[i] = strndup(message->attachments[i]->filename, 256);
+        }
+    }
     char uri[100];
-    sprintf(uri, "https://discord.com/api/channels/%ju/messages/%ju", channel_id, message_id);
-    request(uri, json, REQUEST_PATCH, bot->websocket_client->token, bot, NULL);
+    sprintf(uri, "https://discord.com/api/v10/channels/%ju/messages/%ju", channel_id, message_id);
+    // TODO add edit callback
+    request(uri, json, REQUEST_PATCH, bot->websocket_client->token, bot, NULL, filenames, message->attachments_count);
 }
 
 void discord_get_messages(bot_client_t *bot, uint64_t channel_id, int limit, uint64_t around, uint64_t before, uint64_t after, struct discord_multiple_message_cb *cb) {
     char url[200];
-    sprintf(url, "https://discord.com/api/channels/%ju/messages?", channel_id);
+    sprintf(url, "https://discord.com/api/v10/channels/%ju/messages?", channel_id);
     char id_field[35];
     bool added_id = false;
     if (around) {
@@ -524,7 +551,7 @@ void discord_get_messages(bot_client_t *bot, uint64_t channel_id, int limit, uin
     struct request_callback *rc = (struct request_callback *)malloc(sizeof(struct request_callback));
     rc->cb_struct = cb;
     rc->type = DISCORD_MULTIPLE_MESSAGE_CALLBACK;
-    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc);
+    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc, NULL, 0);
 }
 
 void discord_get_message(bot_client_t *bot, uint64_t channel_id, uint64_t message_id, struct discord_message_cb *cb) {
@@ -541,9 +568,9 @@ void discord_fetch_message(bot_client_t *bot, uint64_t channel_id, uint64_t mess
     if (!cb)
         return;
     char url[100];
-    sprintf(url, "https://discord.com/api/channels/%ju/messages/%ju", channel_id, message_id);
+    sprintf(url, "https://discord.com/api/v10/channels/%ju/messages/%ju", channel_id, message_id);
     struct request_callback *rc = (struct request_callback *)malloc(sizeof(struct request_callback));
     rc->cb_struct = cb;
     rc->type = DISCORD_MESSAGE_CALLBACK;
-    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc);
+    request(url, NULL, REQUEST_GET, bot->websocket_client->token, bot, rc, NULL, 0);
 }

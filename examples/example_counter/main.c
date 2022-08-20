@@ -78,7 +78,7 @@ void on_message(bot_client_t *bot, struct discord_message *message) {
         cmd_count(bot, message);
         goto cleanup;
     }
-    if (message->user->id == owner_id && strncmp(message->content, "!watch", 6) == 0) {
+    if (message->user->id == owner_id && strncmp(message->content, "-watch", 6) == 0) {
         cmd_watch(bot, message);
         goto cleanup;
     }
