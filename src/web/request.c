@@ -181,14 +181,15 @@ static void request_t_pool(void *w, CURL *handle) {
     }
     if (mime)
         curl_mime_free(mime);
+    if (n->files_n > 0) {
+        for (int i = 0; i < n->files_n; i++)
+            free(n->files[i]);
+        free(n->files);
+    }
 
+    // if the request wasn't sent, we don't call a callback
     if (!sent_message)
         return;
-
-    if (n->json)
-        free(n->json);
-    free(n->url);
-    free(n->token);
 
     // declarations for the switch cases
     if (response) {
@@ -226,8 +227,14 @@ static void request_t_pool(void *w, CURL *handle) {
         }
         free(n->rc);
     }
+
+    // CLEANUP
     if (res_json)
         cJSON_Delete(res_json);
+    if (n->json)
+        free(n->json);
+    free(n->url);
+    free(n->token);
     free(n);
 }
 

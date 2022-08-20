@@ -459,8 +459,8 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
     cJSON *json = cJSON_CreateObject();
     _d_create_message_to_json(json, content, message);
 
-    char uri[80];
-    sprintf(uri, "https://discord.com/api/v10/channels/%ju/messages", channel_id);
+    char url[80];
+    sprintf(url, "https://discord.com/api/v10/channels/%ju/messages", channel_id);
     struct request_callback *rc = NULL;
     if (cb) {
         rc = (struct request_callback *)malloc(sizeof(struct request_callback));
@@ -479,7 +479,7 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
             printf("File: %s\n", filenames[i]);
         }
     }
-    request(uri, json, REQUEST_POST, bot->websocket_client->token, bot, rc, filenames, files_n);
+    request(url, json, REQUEST_POST, bot->websocket_client->token, bot, rc, filenames, files_n);
     cJSON_Delete(json);
 }
 
@@ -505,8 +505,6 @@ void discord_channel_edit_message(bot_client_t *bot, char *content, uint64_t cha
             cJSON_AddItemToObject(json, "allowed_mentions", create_allowed_mentions(message->allowed_mentions));
         // TODO discord_component
         // if (message->components_count > 0) {}
-        // TODO attachments
-        // if (message->attachments_count > 0) {}
         // flags
         if (message->flags)
             cJSON_AddItemToObject(json, "flags", cJSON_CreateNumber(message->flags));
