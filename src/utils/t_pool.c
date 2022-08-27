@@ -50,12 +50,6 @@ static void *thread_work_loop(void *tp) {
         // we can now unlock as the work afterwards is single memory
         pthread_mutex_unlock(pool->lock);
 
-        // check if we can use the work node already
-        if (is_future(work->wait_until)) {
-            t_pool_add_work(pool, work->func, work->arg, work->wait_until);
-            continue;
-        }
-
         work->func(work->arg, handle);
         free(work);
     }

@@ -139,12 +139,12 @@ static void request_t_pool(void *w, CURL *handle) {
         } else if (n->http == 429) {
             res_json = cJSON_Parse(response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
-            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %d ms.\n", wait_ms->valueint);
+            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %.3f s.\n", wait_ms->valuedouble);
             if (cJSON_IsNumber(wait_ms)) {
                 struct timeval t0;
                 gettimeofday(&t0, NULL);
-                t0.tv_sec += (time_t)wait_ms->valueint / 1000;
-                t0.tv_usec += (time_t)wait_ms->valueint % 1000 * 1000;
+                t0.tv_sec += (time_t)wait_ms->valuedouble;
+                t0.tv_usec += (time_t)(wait_ms->valuedouble * 1e6) % (time_t)1e6;
                 // check for overflow
                 if (t0.tv_usec > 1000000) {
                     t0.tv_sec++;
