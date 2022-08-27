@@ -72,6 +72,7 @@ t_pool_t *t_pool_init(int num_t, const char *token) {
     pool->finished_cond = (pthread_cond_t *)calloc(1, sizeof(pthread_cond_t));
     pool->lock = (pthread_mutex_t *)calloc(1, sizeof(pthread_mutex_t));
     pool->token = token;
+    pool->sleep_until.tv_sec = -1;
     pthread_cond_init(pool->work_cond, NULL);
     pthread_cond_init(pool->finished_cond, NULL);
 
@@ -96,7 +97,8 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg, struct timeval wait_un
     prio_push(&tp->queue, (void *)work, wait_until);
 
     // if new time is shorter
-    if (tp->sleep_until.tv_sec > wait_until.tv_sec ||
+    if (tp->sleep_until.tv_sec == -1 ||
+        tp->sleep_until.tv_sec > wait_until.tv_sec ||
         (tp->sleep_until.tv_sec == wait_until.tv_sec &&
          tp->sleep_until.tv_usec > wait_until.tv_usec)) {
         tp->sleep_until = wait_until;
@@ -117,8 +119,7 @@ t_work_t *t_pool_pop_work(t_pool_t *tp) {
     if (tp->queue.head) {
         tp->sleep_until = tp->queue.head->wait_until;
     } else { // if the queue is empty now
-        tp->sleep_until.tv_sec = __INT_FAST64_MAX__;
-        tp->sleep_until.tv_usec = __INT_FAST64_MAX__;
+        tp->sleep_until.tv_sec = -1;
     }
     return work;
 }
