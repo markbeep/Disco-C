@@ -24,11 +24,15 @@ static void *thread_work_loop(void *tp) {
     while (1) {
         pthread_mutex_lock(pool->lock);
         while (!pool->stop && (is_future(pool->sleep_until) || pool->queue.size == 0)) {
-            if (is_future(pool->sleep_until)) { // sleep until the first node is free again
+            if (pool->queue.size > 0 && is_future(pool->sleep_until)) { // sleep until the first node is free again
                 struct timespec wait_until = {
                     .tv_sec = pool->sleep_until.tv_sec,
                     .tv_nsec = pool->sleep_until.tv_usec * 1000L,
                 };
+                if (wait_until.tv_nsec > 1e9) {
+                    wait_until.tv_sec += 1;
+                    wait_until.tv_nsec -= 1e9;
+                }
                 pthread_cond_timedwait(pool->work_cond, pool->lock, &wait_until);
             } else { // wait normally
                 pthread_cond_wait(pool->work_cond, pool->lock);
@@ -92,10 +96,10 @@ int t_pool_add_work(t_pool_t *tp, t_func func, void *arg, struct timeval wait_un
     prio_push(&tp->queue, (void *)work, wait_until);
 
     // if new time is shorter
-    if (tp->sleep_until.tv_sec < tp->queue.head->wait_until.tv_sec ||
-        (tp->sleep_until.tv_sec == tp->queue.head->wait_until.tv_sec &&
-         tp->sleep_until.tv_usec < tp->queue.head->wait_until.tv_usec)) {
-        tp->sleep_until = tp->queue.head->wait_until;
+    if (tp->sleep_until.tv_sec > wait_until.tv_sec ||
+        (tp->sleep_until.tv_sec == wait_until.tv_sec &&
+         tp->sleep_until.tv_usec > wait_until.tv_usec)) {
+        tp->sleep_until = wait_until;
     }
     pthread_cond_signal(tp->work_cond);
     pthread_mutex_unlock(tp->lock);
@@ -112,6 +116,9 @@ t_work_t *t_pool_pop_work(t_pool_t *tp) {
     // makes the new sleep until the new node's time
     if (tp->queue.head) {
         tp->sleep_until = tp->queue.head->wait_until;
+    } else { // if the queue is empty now
+        tp->sleep_until.tv_sec = __INT_FAST64_MAX__;
+        tp->sleep_until.tv_usec = __INT_FAST64_MAX__;
     }
     return work;
 }
