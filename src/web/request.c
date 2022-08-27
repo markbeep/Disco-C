@@ -242,6 +242,7 @@ void request(char *url, cJSON *content, enum Request_Type request_type, const ch
     // we create a new handle each call because we can't use the same handle over multiple threads
     struct request_work_node *n = (struct request_work_node *)malloc(sizeof(struct request_work_node));
     n->url = strndup(url, 2050);
+    n->json = NULL;
     if (content)
         n->json = cJSON_Print(content);
     n->request_type = request_type;
