@@ -476,7 +476,6 @@ void discord_channel_send_message(bot_client_t *bot, char *content, uint64_t cha
         filenames = malloc(sizeof(char *) * message->attachments_count);
         for (int i = 0; i < message->attachments_count; i++) {
             filenames[i] = strndup(message->attachments[i]->filename, 256);
-            printf("File: %s\n", filenames[i]);
         }
     }
     request(url, json, REQUEST_POST, bot->websocket_client->token, bot, rc, filenames, files_n);
