@@ -83,6 +83,7 @@ void gateway_on_receive(bot_client_t *bot, char *data, size_t len) {
 
         case DISCORD_INVALID_SESSION:
             d_log_notice("Received INVALID SESSION\n");
+            seq = -1; // we need to reset with the sequence ID
             websocket_reconnect(bot);
             break;
 
