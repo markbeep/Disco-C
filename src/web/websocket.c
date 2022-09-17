@@ -181,7 +181,6 @@ void websocket_close(bot_client_t *bot_client) {
         client->heartbeat_active = 0;
         pthread_join(client->heartbeat_thread, NULL);
     }
-    lws_close_reason(client->wsi, 1001, NULL, 0);
     lws_set_timeout(client->wsi, PENDING_TIMEOUT_CLOSE_SEND, LWS_TO_KILL_ASYNC);
     lws_cancel_service(client->context);
 }
