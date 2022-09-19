@@ -45,8 +45,10 @@ static void gateway_handle_identify(websocket_client_t *client) {
 static void gateway_handle_dispatch(bot_client_t *bot, cJSON *json) {
     // increases the sequence ID if the new value is greater
     cJSON *local_s = cJSON_GetObjectItemCaseSensitive(json, "s");
-    if (cJSON_IsNumber(local_s) && local_s->valueint > seq)
+    if (cJSON_IsNumber(local_s))
         seq = local_s->valueint;
+    else if (cJSON_IsNull(local_s))
+        seq = -1;
 
     // freed after the event is handled
     cJSON *event_type = cJSON_GetObjectItemCaseSensitive(json, "t");

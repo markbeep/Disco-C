@@ -139,7 +139,7 @@ static void request_t_pool(void *w, CURL *handle) {
         } else if (n->http == 429) {
             res_json = cJSON_Parse(response);
             wait_ms = cJSON_GetObjectItem(res_json, "retry_after");
-            lwsl_notice("TOO MANY REQUESTS. We are being rate limited, waiting %.3f s.\n", wait_ms->valuedouble);
+            lwsl_debug("TOO MANY REQUESTS. We are being rate limited, waiting %.3f s.\n", wait_ms->valuedouble);
             if (cJSON_IsNumber(wait_ms)) {
                 struct timeval t0;
                 gettimeofday(&t0, NULL);

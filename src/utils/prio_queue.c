@@ -60,5 +60,5 @@ void prio_destroy_queue(struct prio_queue *queue) {
         cur = cur->next;
         if (prev)
             prio_destroy_node(prev);
-    } while (cur->next);
+    } while (cur && cur->next);
 }
