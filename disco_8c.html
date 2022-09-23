@@ -68,7 +68,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">disco.c File Reference</div>  </div>
 </div><!--header-->
@@ -76,6 +77,7 @@ $(function() {
 <div class="textblock"><code>#include &lt;cJSON/cJSON.h&gt;</code><br />
 <code>#include &lt;curl/curl.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="disco_8h_source.html">discord/disco.h</a>&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="cache_8h_source.html">utils/cache.h</a>&gt;</code><br />
@@ -85,6 +87,8 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a94692df10e6d364d5cbaf38c431563e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#a94692df10e6d364d5cbaf38c431563e1">sighandle</a> (int signum)</td></tr>
+<tr class="separator:a94692df10e6d364d5cbaf38c431563e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">discord_start_bot</a> (<a class="el" href="group___client.html#gaf84e259f898478bd152e30311a2e177d">discord_event_callbacks_t</a> *callbacks, const char *token, struct <a class="el" href="structdiscord__config.html">discord_config</a> *config)</td></tr>
 <tr class="memdesc:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">High level abstraction which starts the bot.  <a href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">More...</a><br /></td></tr>
 <tr class="separator:gab4c31f13fcbde9d2441bd7f2397983c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,6 +106,11 @@ Functions</h2></td></tr>
 <tr class="separator:a050b19a699d9f1524f15beb570f3cb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa2737c312d7a59cf20a59fad8358616"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#aaa2737c312d7a59cf20a59fad8358616">_d_get_double_from_string_json</a> (cJSON *data, const char *name, double default_)</td></tr>
 <tr class="separator:aaa2737c312d7a59cf20a59fad8358616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae756dab93b919b2eedb5dba20f7d9cb1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disco_8c.html#ae756dab93b919b2eedb5dba20f7d9cb1">sigterm_recv</a></td></tr>
+<tr class="separator:ae756dab93b919b2eedb5dba20f7d9cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a67f5ab74e8b7ca7ba29e5ac571154055"></a>
@@ -345,6 +354,45 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="group___attachment.html#ga01aa2aa66a4024ba132e9b4b74e3d814">_d_json_to_attachment()</a>, <a class="el" href="group___channel.html#ga1b27dffcb72d2af869fd4a35098941e5">_d_json_to_channel()</a>, <a class="el" href="group___channel.html#ga3524d787901fea0f61b54e5863fa99c4">_d_json_to_channel_mention()</a>, <a class="el" href="group___component.html#ga2c823a8941acf038db76e246401339b0">_d_json_to_component()</a>, <a class="el" href="group___embed.html#ga426932458406fab7ee32d4145ef3da37">_d_json_to_embed()</a>, <a class="el" href="group___embed.html#gac912a1a53365c3b9efed1a2ce8f83628">_d_json_to_embed_author()</a>, <a class="el" href="group___embed.html#ga8fa28cbb768f7d6f4eb17730070bed66">_d_json_to_embed_field()</a>, <a class="el" href="group___embed.html#gaa5fdb97ed914d2ae8d239090985ccce0">_d_json_to_embed_footer()</a>, <a class="el" href="group___embed.html#ga9d33b92911c32325744e082334216a73">_d_json_to_embed_media()</a>, <a class="el" href="group___embed.html#ga3191619833c028c804afe2b80394a308">_d_json_to_embed_provider()</a>, <a class="el" href="group___interaction.html#gad652e961fe70d1ebe7c89b0783511eef">_d_json_to_interaction()</a>, <a class="el" href="group___interaction.html#ga138ab0915a2b5ac3280e81ab59553189">_d_json_to_interaction_data()</a>, <a class="el" href="group___interaction.html#gaae080949ca2aaa35014acbd099a51965">_d_json_to_interaction_data_option()</a>, <a class="el" href="group___member.html#gac16d9ffb85b1ebc9f58b91b4aa21daaf">_d_json_to_member()</a>, <a class="el" href="group___message.html#ga77789e1d92e71b77e936622164428d15">_d_json_to_message()</a>, <a class="el" href="group___component.html#ga5d727dcc8ed26ffdfde15f20815bb740">_d_json_to_select_option()</a>, and <a class="el" href="group___user.html#ga75ba6fba7d457c0a7cec6fd4293989d7">_d_json_to_user()</a>.</p>
+
+</div>
+</div>
+<a id="a94692df10e6d364d5cbaf38c431563e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94692df10e6d364d5cbaf38c431563e1">&#9670;&nbsp;</a></span>sighandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sighandle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="disco__logging_8h.html#ac9349f26bc8e4e8e0a3e2643f9c5b928">d_log_err</a>, and <a class="el" href="disco_8c.html#ae756dab93b919b2eedb5dba20f7d9cb1">sigterm_recv</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___client.html#gab4c31f13fcbde9d2441bd7f2397983c1">discord_start_bot()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae756dab93b919b2eedb5dba20f7d9cb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae756dab93b919b2eedb5dba20f7d9cb1">&#9670;&nbsp;</a></span>sigterm_recv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sigterm_recv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="gateway_8c.html#af1d985c40864d2d78d43b3adf4bc62dd">gateway_event_loop()</a>, and <a class="el" href="disco_8c.html#a94692df10e6d364d5cbaf38c431563e1">sighandle()</a>.</p>
 
 </div>
 </div>
