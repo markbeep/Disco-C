@@ -1,6 +1,7 @@
 #include <cJSON/cJSON.h>
 #include <curl/curl.h>
 #include <discord/disco.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <utils/cache.h>
@@ -8,9 +9,13 @@
 #include <web/gateway.h>
 #include <web/request.h>
 
+extern bool sigterm_recv;
+void sighandle(int signum);
+
 void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, struct discord_config *config) {
     // Turn off logs
     lws_set_log_level(LLL_NOTICE | LLL_ERR | LLL_WARN, NULL);
+    signal(SIGTERM, sighandle);
 
     bot_client_t bot = {0};
     websocket_client_t client = {0};
@@ -107,4 +112,10 @@ double _d_get_double_from_string_json(cJSON *data, const char *name, double defa
     if (!cJSON_IsNumber(tmp))
         return default_;
     return tmp->valuedouble;
+}
+
+void sighandle(int signum) {
+    (void)signum;
+    sigterm_recv = true;
+    d_log_err("SIGTERM received!\n");
 }

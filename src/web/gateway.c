@@ -13,6 +13,7 @@ static int seq = -1;
 // gets set dynamically upon receiving the HELLO event
 static unsigned int HEARTBEAT_INTERVAL = 10000;
 static struct timeval last_hearbeat;
+bool sigterm_recv = false;
 
 static void gateway_send_heartbeat(websocket_client_t *client) {
     lwsl_user("TX: Sending heartbeat\n");
@@ -143,7 +144,7 @@ void *gateway_heartbeat_loop(void *vargp) {
 }
 
 void gateway_event_loop(bot_client_t *bot) {
-    while (bot->websocket_client->active) {
+    while (bot->websocket_client->active && !sigterm_recv) {
         lws_service(bot->websocket_client->context, 0);
     }
 }
