@@ -144,7 +144,11 @@ void *gateway_heartbeat_loop(void *vargp) {
 }
 
 void gateway_event_loop(bot_client_t *bot) {
-    while (bot->websocket_client->active && !sigterm_recv) {
+    while (bot->websocket_client->active) {
         lws_service(bot->websocket_client->context, 0);
+        if (sigterm_recv) {
+            websocket_exit(bot);
+            break;
+        }
     }
 }

@@ -49,6 +49,9 @@ void discord_start_bot(discord_event_callbacks_t *callbacks, const char *token, 
 
     // starts the event loop which is BLOCKING
     gateway_event_loop(&bot);
+    if (sigterm_recv) {
+        d_log_err("SIGTERM received!\n");
+    }
 
     // cleanup
     // closes and waits for all threads
@@ -117,5 +120,4 @@ double _d_get_double_from_string_json(cJSON *data, const char *name, double defa
 void sighandle(int signum) {
     (void)signum;
     sigterm_recv = true;
-    d_log_err("SIGTERM received!\n");
 }
