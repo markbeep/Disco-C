@@ -154,7 +154,7 @@ static void request_t_pool(void *w, CURL *handle) {
             }
             cJSON_Delete(res_json);
             res_json = NULL;
-        } else if (n->http == 0 || (n->http >= 500 && n->http <= 599) | n->http == 409) { // if CURL fails we get 0
+        } else if (n->http == 0 || (n->http >= 500 && n->http <= 599) || n->http == 409) { // if CURL fails we get 0
             lwsl_notice("Received a %ld error\n", n->http);
             usleep((1 << iterations) * 1000000u);
             struct timeval t0;
