@@ -23,6 +23,7 @@ static int websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
         bot_client->websocket_client->active = 0;
         lwsl_err("CLIENT CONNECTION ERROR: %s\n", in ? (char *)in : "(null)");
         websocket_close(bot_client);
+        exit(1); // force exits the bot
         return -1;
 
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
